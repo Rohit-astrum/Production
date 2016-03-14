@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>CreditReportLogEdit</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>CreditReportLogEdit</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Credit Reporting History for Accounts</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer Account</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Credit Report Logs</relationshipLabel>
+        <relationshipName>Credit_Report_Logs</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Applicant_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicant Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Applicant_Score_Number__c</fullName>
+        <description>Applicant Score as a Number</description>
+        <externalId>false</externalId>
+        <formula>VALUE(Applicant_Score__c )</formula>
+        <inlineHelpText>Applicant Score as a Number</inlineHelpText>
+        <label>Applicant Score (Number)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Applicant_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicant Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Application #</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_Rep_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Sales Rep or Astrum Employee who requested the credit report</inlineHelpText>
+        <label>Astrum Rep Name</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Credit_Report_Logs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CEG_Approved_Binary__c</fullName>
+        <description>Is CEG Approved? 1=Yes 0=No</description>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(CEG_Approved__c,&apos;YES&apos;),1,0)</formula>
+        <inlineHelpText>Is CEG Approved? 1=Yes 0=No</inlineHelpText>
+        <label>CEG Approved Binary</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CEG_Approved__c</fullName>
+        <description>Was This Credit Accepted by CEG?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Was This Credit Accepted by CEG?</inlineHelpText>
+        <label>CEG Approved?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Co_Applicant_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Co-Applicant Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Co_Applicant_Score_Number__c</fullName>
+        <description>Co-Applicant Score as a Number</description>
+        <externalId>false</externalId>
+        <formula>VALUE(Co_Applicant_Score__c )</formula>
+        <inlineHelpText>Co-Applicant Score as a Number</inlineHelpText>
+        <label>Co-Applicant Score (Number)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Co_Applicant_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Co-Applicant Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Credit_Pull_Age_Days__c</fullName>
+        <description>Number of Days Since Credit Was Pulled</description>
+        <externalId>false</externalId>
+        <formula>TODAY() -Credit_Pull_Date__c</formula>
+        <inlineHelpText>Number of Days Since Credit Was Pulled</inlineHelpText>
+        <label>Credit Pull Age (Days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Pull_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Pull Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Credit_Rep__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Constellation Representative</inlineHelpText>
+        <label>Credit Rep</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FCRA_Letter_Sent__c</fullName>
+        <externalId>false</externalId>
+        <label>FCRA Letter Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Minimum_Score__c</fullName>
+        <description>The Minimum Credit Score of Applicant and Co-Applicant</description>
+        <externalId>false</externalId>
+        <formula>MIN(VALUE(Applicant_Score__c),VALUE( Co_Applicant_Score__c ))</formula>
+        <inlineHelpText>The Minimum Credit Score of Applicant and Co-Applicant</inlineHelpText>
+        <label>Minimum Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Credit Report Logs</relationshipLabel>
+        <relationshipName>Credit_Report_Logs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Credit Report Log</label>
+    <nameField>
+        <displayFormat>CRL-{000000}</displayFormat>
+        <label>Credit Report Log ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Credit Report Logs</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Credit_Pull_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>FCRA_Letter_Sent__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Astrum_Rep_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Applicant_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Co_Applicant_Name__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

@@ -1,0 +1,325 @@
+<!-- FILE: SystemDesignArraysEdit.page
+ * AUTHOR: Michael Katulka
+ * DATE: 2014-04-21
+ * PURPOSE: Page for creating and editing system design arrays, this is essentially the "step 2" page.
+ * MODIFICATION HISTORY:
+ * 10/07/2015 PB - SO Apv Process - Include Legacy Panels check   
+ *
+ -->
+<apex:page id="pg" StandardController="System_Design__c" extensions="SystemDesignEditControllerExtension" showHeader="true" sidebar="true" action="{!initArrayEditMode}" docType="html-5.0">
+<style>
+.odd { 
+background-color: #FCF7F7;
+}
+.even {
+background-color: #E3DCDB;
+}
+.ps {
+background-color: #B7CEEC;
+}
+
+
+.notesBox {
+	width:100%;	
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+.surfaceHeader {
+	color:#000; 
+	font-size:1.3em; 
+}
+
+#blockbckanim
+{
+	background-color:rgba(0, 14, 44, 0.7);
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	rgba(0, 0, 0, 0.71);
+	cursor: wait;
+}
+#apimgld
+{
+	width: 20px;
+	height: 20px;
+	top:49%;
+	left:45%;
+	position:fixed;
+	border-radius: 2px;
+	-webkit-border-radius: 2px ;
+	-moz-border-radius: 2px ;
+}
+
+</style> 
+
+<script type="text/javascript" language="javascript">	
+	function ShowLoading() {
+		document.getElementById('blockbckanim').style.display="block";
+	}
+	function HideLoading() {
+		document.getElementById('blockbckanim').style.display="none";
+	}
+</script>
+<apex:pageMessages id="messages"/><!-- Keep messages here because sometimes we have to hide the entire form and show a message -->
+<apex:form id="frm" rendered="{!NOT(hideForm)}">
+
+	<apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+	<div id="blockbckanim" style="display:none">
+	<img id="apimgld" style="" src="/img/loading32.gif" />
+	</div>
+
+	<!-- Hidden fields for controller extension access -->
+	<apex:inputField rendered="false" value="{!System_Design__c.Property__r.Utility_Company__c}" />
+	<apex:inputField rendered="false" value="{!System_Design__c.Property__r.Property_Owner__r.Client_Last_Name__c}" />
+	<apex:inputField rendered="false" value="{!System_Design__c.Default_CB_Panel__c}" />
+
+	
+	<apex:sectionHeader title="System Design" subtitle="{!System_Design__c.Name} - Assigning Panels" />
+	<apex:pageBlock title="Assign the Panels to Physical Surfaces">
+		
+		<apex:actionFunction action="{!saveArrays}" name="saveArrays" oncomplete="runSiteQuality();"/>
+		<apex:actionFunction action="{!runSiteQuality}" name="runSiteQuality" oncomplete="HideLoading();"/>
+
+		<apex:pageBlockButtons >			
+			<!-- Sandbox test: https://c.cs14.visual.force.com/apex/SystemDesignEdit?id=a0Uc0000001gwm6 -->
+			<apex:commandButton value="Save" onclick="ShowLoading(); saveArrays(); return false;" /><!-- prevent double-click, and can't rerender whole frm because using richtext -->			
+			<apex:commandButton action="{!CancelExn}" value="Cancel" immediate="true"/>						
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection title="Customer/Design Information" columns="2">
+			
+			<!-- Left Column -->						
+			<apex:outputText label="System Design"><a href="/{!System_Design__c.id}" target="_blank">{!System_Design__c.Name}</a></apex:outputText>
+				<!-- Right Column -->
+				<apex:outputField label="Street Address" value="{!System_Design__c.Property__c}" /> 	
+			<apex:outputField label="Name" value="{!System_Design__c.Property__r.Property_Owner__c}" /> 							
+				<apex:outputField label="City" value="{!System_Design__c.Property__r.Property_City__c}" /> 				
+			<apex:outputField label="Survey Name" value="{!System_Design__c.Survey__c}" />						
+				<apex:outputField label="State" value="{!System_Design__c.Property__r.Property_State__c}" /> 
+		</apex:pageBlockSection>
+
+		<apex:pageBlockSection title="Notes" columns="1">
+			<apex:inputTextarea rows="5" richText="true" value="{!System_Design__c.Notes__c}"/>
+			<apex:inputTextarea rows="5" value="{!System_Design__c.For_Customer_Notes__c}"  styleClass="notesBox"/>
+		</apex:pageBlockSection>
+
+		<apex:pageBlockSection title="System Details" columns="3" id="PanelConfig">
+
+			<!-- Include Legacy Panel -->
+			<apex:pageBlockSectionItem labelStyle="width:5%" dataStyle="width:2%" >
+			    <apex:outputLabel value="Include Legacy Panels?" for="inclegacypanels" />
+			     <apex:outputPanel >			           
+			        <apex:inputField id="inclegacypanels" value="{!System_Design__c.Include_Legacy_Panels__c}" >
+			        	<apex:actionSupport event="onchange" rerender="panels" status="processingStatus"/>
+			        </apex:inputField>
+			    </apex:outputPanel>
+			</apex:pageBlockSectionItem>
+
+			<!-- Default Panel -->
+			<apex:pageBlockSectionItem labelStyle="width:18%" dataStyle="width:10%" >
+
+			    <apex:outputLabel value="Default System Solar Panel" for="panels" />
+			     <apex:outputPanel >
+			          <div class="requiredInput">
+			          <div class="requiredBlock"></div> 
+			         <apex:selectList id="panels" value="{!System_Design__c.System_Panel__c}" size="1">
+						<apex:selectOptions value="{!panels}"></apex:selectOptions>
+					</apex:selectList>                    
+			        </div>
+			    </apex:outputPanel>
+			</apex:pageBlockSectionItem>			
+            
+            <!-- Default Inverter -->
+			<apex:pageBlockSectionItem labelStyle="width:18%" dataStyle="width:30%" >
+			    <apex:outputLabel value="Default System Inverter" for="inverters" />
+			     <apex:outputPanel >
+			        <div class="requiredInput">
+			        <div class="requiredBlock"></div>
+			        <apex:selectList id="inverters" value="{!System_Design__c.System_Inverter__c}" size="1">
+						<apex:selectOptions value="{!inverters}"></apex:selectOptions>
+					</apex:selectList>
+			        </div>
+			    </apex:outputPanel>
+			</apex:pageBlockSectionItem>			
+
+			
+			<apex:pageBlockSectionItem >
+	    		<apex:outputPanel style="white-space: nowrap;">
+		    		<apex:commandButton action="{!calc}" value="Recalculate" status="processingStatus" reRender="PanelConfig, DesignConfig, messages"/>
+		    		<strong>Totals Panels:</strong>&nbsp;{!panelQty}&nbsp;&nbsp;|&nbsp;&nbsp;
+		    		<strong>Blended TSRF:</strong>&nbsp;
+		    		<apex:outputText value="{0,number,0}%">
+		    			<apex:param value="{!blendedTSRF}" />
+		    		</apex:outputText>
+		    	</apex:outputPanel>
+			</apex:pageBlockSectionItem>
+
+		</apex:pageBlockSection>
+
+
+		<apex:pageBlockSection title="Design" columns="1" id="DesignConfig">
+			<!-- Surfaces list using cSurface cS -->
+			<apex:repeat value="{!cSurfaceList}" var="cS">
+				<apex:outputPanel layout="block" id="SurfacePanel">
+					
+					<apex:pageBlockTable value="{!cS}" var="containerNotUsed" id="ArrayTable" rowClasses="ps">
+						<apex:column headerValue="Array Surface">
+							<!-- Surface Name -->
+							<a href="/{!cS.ps.id}" target="_blank"><h2 class="surfaceHeader">Surface {!cS.ps.Physical_Surface_Assigned_Letter__c}</h2></a>
+						</apex:column>
+
+						<apex:column headerValue="Description">							
+							<apex:outputField value="{!cS.ps.Description__c}" />
+						</apex:column>						
+
+						
+						<apex:column headerValue="Surface Type">							
+							<apex:outputField value="{!cS.ps.Surface_Type__c}" />
+						</apex:column>
+							
+
+						<apex:column headerValue="Survey">
+							<!-- Surface Survey 
+								IMPORTANT: This will not work if you have required=true on other fields on this entire form that are not filled in, 
+								the validation will run and fail if something is blank.
+							-->
+							<apex:outputPanel >
+						        <div class="requiredInput">
+						        <div class="requiredBlock"></div>
+						        <apex:selectList id="surveys" value="{!cS.sda.Survey__c}" size="1" title="Survey">
+									<apex:selectOptions value="{!surveys}"></apex:selectOptions>
+									<apex:actionSupport event="onchange" rerender="LocationTable, messages" status="processingStatus" action="{!surveyChangeOnPS}">
+										<apex:param name="activePSidParam" assignTo="{!activePSid}" value="{!cS.ps.id}" />
+									</apex:actionSupport>
+								</apex:selectList>
+						        </div>
+						    </apex:outputPanel>
+						</apex:column>
+
+
+						<apex:column headerValue="Mounting Type">														
+							<apex:selectList id="mounting" value="{!cS.sda.Default_Mounting_Type__c}" size="1" title="Mounting Type">
+								<apex:selectOptions value="{!mountingItems}"></apex:selectOptions>								
+						    </apex:selectList>
+						</apex:column>
+						
+						<apex:column headerValue="Trench Type And Length(ft)" width="250px;">	
+							<apex:outputPanel >		
+								<apex:actionRegion >
+                             	 	<apex:selectList id="trenching" value="{!cS.sda.Trench_Type__c}" size="1" title="Trench Type">
+										<apex:selectOptions value="{!trenchItems}"></apex:selectOptions>
+										<apex:actionSupport event="onchange" rerender="tlength" status="processingStatus"/>
+								    </apex:selectList>
+                         		</apex:actionRegion>				
+								
+								<apex:outputPanel id="tlength">											
+										<apex:input type="number" value="{!cS.trenchLength}" id="theNumInput" rendered="{!cS.sda.Trench_Type__c != null}" style="width:50px;"/>									
+								</apex:outputPanel>	
+
+							</apex:outputPanel>							
+						</apex:column>					
+						
+
+						<apex:column headerValue="Surface Tilt">							
+							<apex:outputField value="{!cS.ps.Surface_Tilt__c}" />
+						</apex:column>
+
+						<apex:column headerValue="Surface Azimuth">							
+							<apex:outputField value="{!cS.ps.Surface_Azimuth__c}" />
+						</apex:column>
+
+						<apex:column headerValue="Number of Stories">							
+							<apex:outputField value="{!cS.ps.Number_of_Stories__c}" />
+						</apex:column>						
+
+
+						<!-- New row for stats -->
+                    	<apex:column breakbefore="true" colspan="9">                    		
+                    		<strong>Panel Qty:</strong>&nbsp;{!cS.panelQty}&nbsp;&nbsp;|&nbsp;&nbsp;
+                    		<strong>Blended TSRF:</strong>&nbsp;
+                    		<apex:outputText value="{0,number,0}%">
+                    			<apex:param value="{!cS.blendedTSRF}" />
+                    		</apex:outputText>
+                    	</apex:column>
+
+					</apex:pageBlockTable>
+
+					<!-- Install Location list for each surface using cInstallLocation cS -->
+					<apex:pageBlockTable value="{!cS.cIls}" var="cIls" id="LocationTable" rowClasses="even,odd">
+						<apex:column headerValue="Location">
+							<a href="/{!cIls.il.id}" target="_blank">{!cIls.il.Location__c}</a>
+						</apex:column>
+
+						<apex:column headerValue="Panel Quantity">
+							<apex:inputText value="{!cIls.quantity}" size="3"/>
+						</apex:column>
+						
+						<apex:column headerValue="TSRF">
+							<apex:outputText value="{0,number,0}%">
+							    <apex:param value="{!cIls.il.TSRF__c}" />
+							</apex:outputText>						
+						</apex:column>
+
+						<apex:column headerValue="Solar Access">
+							<apex:outputText value="{0,number,0}%">
+							    <apex:param value="{!cIls.il.Annual_Solar_Access__c}" />
+							</apex:outputText>						
+						</apex:column>
+
+						<apex:column headerValue="Tree Removal">
+							<apex:outputText value="{!if(cIls.il.Tree_Removal__c==true, 'Yes', 'No')}" />
+						</apex:column>
+
+						<apex:column headerValue="Verified SunEye">
+							<apex:outputText value="{!if(cIls.il.Verified_Single_SunEye_Data__c==true, 'Yes', 'No')}" />
+						</apex:column>					
+
+					</apex:pageBlockTable>									
+				</apex:outputPanel>
+
+			</apex:repeat>
+		</apex:pageBlockSection>
+
+		 <apex:outputPanel id="temp">
+        	<apex:variable var="rowNum" value="{!0}"  />
+        </apex:outputPanel>
+
+		<apex:pageBlockSection title="Special Parts" columns="2" id="SpecialParts">
+			
+			<apex:outputPanel id="sparts">
+				<apex:pageBlockTable value="{!specialParts}" var="pl" id="parts"> 
+
+					<apex:facet name="footer">
+	                    <apex:commandLink value="Add Special Part" action="{!addSpecialPart}" reRender="sparts,temp"/> <!-- MK - 2014-11-11 - Removed immediate="true" because it clears unsaved changes to other new rows that were added -->
+	                </apex:facet>
+
+	                <apex:column headerValue="Delete">
+	                    <apex:commandLink style="font-size:15px; font-weight:bold; text-align:center;color:red;" value="X" action="{!deleteSpecialPart}" reRender="sparts,temp"  immediate="true">
+	                        <apex:param value="{!rowNum}" name="index" />
+	                    </apex:commandLink>
+	                    <apex:variable var="rowNum" value="{!rowNum+1}"/>
+	                </apex:column>  
+	                
+	                <apex:column headerValue="Special Part">
+	                    <apex:selectList id="sid" value="{!pl.System_Design_Product__c}" size="1" title="Special Part">
+							<apex:selectOptions value="{!specialPartItems}"></apex:selectOptions>								
+					    </apex:selectList>	                    
+	                </apex:column> 
+
+	                <apex:column headerValue="Quantity">
+	                    <apex:inputField value="{!pl.Quantity__c}" /> 	                    
+	                </apex:column> 
+
+                </apex:pageBlockTable>
+            	     
+        	</apex:outputPanel>	
+
+		</apex:pageBlockSection>
+
+	</apex:pageBlock>
+</apex:form>
+</apex:page>

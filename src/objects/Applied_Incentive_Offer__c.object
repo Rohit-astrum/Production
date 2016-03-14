@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Astrum_Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Astrum Contract</label>
+        <referenceTo>Astrum_Contract__c</referenceTo>
+        <relationshipLabel>Applied Incentive Offers</relationshipLabel>
+        <relationshipName>Applied_Incentive_Offers</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Effective_Dollar_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective Dollar Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Eligible_Sector__c</fullName>
+        <externalId>false</externalId>
+        <label>Eligible Sector</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive_Offer__r.End_Date__c</formula>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Date_of_First_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Date of First Payment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Days_to_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Days to Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Payment_Month__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Payment Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Payment_Year_Offset__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Payment Year Offset</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Feed_In_Tariff_Earnings_After_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>Feed In Tariff Earnings After Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Flat_Rebate_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Flat Rebate Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Implementing_Sector__c</fullName>
+        <externalId>false</externalId>
+        <label>Implementing Sector</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Incentive_Automatically_Applied__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Incentive Automatically Applied</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Incentive_Offer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Incentive Offer</label>
+        <referenceTo>Incentive_Offer__c</referenceTo>
+        <relationshipLabel>Applied Incentive Offers</relationshipLabel>
+        <relationshipName>Applied_Incentive_Offers</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Incentive_Recipient__c</fullName>
+        <externalId>false</externalId>
+        <label>Incentive Recipient</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PBI_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>PBI Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Eligible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SAC Eligible</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Applied Incentive Offers</relationshipLabel>
+        <relationshipName>Applied_Incentive_Offers</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Incentive_Offer__r.Start_Date__c</formula>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>TSRF_Adjustment_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>TSRF Adjustment Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Credit_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Tax Credit Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Term_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Term (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_1_Incentive_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier 1 Incentive Rate ($/W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Tier_1_Maximum_System_Size_kW__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier 1 Maximum System Size (kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_2_Incentive_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier 2 Incentive Rate ($/W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Tier_2_Maximum_System_Size_kW__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier 2 Maximum System Size (kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tier_Pricing_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Tier Pricing Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_Company_Matching_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Utility Company Matching Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Applied Incentive Offer</label>
+    <nameField>
+        <label>Applied Incentive Offer Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Applied Incentive Offers</pluralLabel>
+    <recordTypes>
+        <fullName>Depreciation</fullName>
+        <active>true</active>
+        <label>Depreciation</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Feed_In_Tariff</fullName>
+        <active>true</active>
+        <label>Feed In Tariff</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PBI</fullName>
+        <active>true</active>
+        <label>PBI</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Rebate_Dollar_Per_Watt</fullName>
+        <active>true</active>
+        <label>Rebate ($/W)</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Rebate_Dollars</fullName>
+        <active>true</active>
+        <label>Rebate ($)</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Tax_Credit</fullName>
+        <active>true</active>
+        <label>Tax Credit</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

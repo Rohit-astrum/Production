@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Repair Plan Thank-You 01/11/16.Repair Plan Thank-You 01/11/16</name>
+    <style>none</style>
+    <subject>Thank you for meeting with us. Your special offer inside.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Thank you for meeting with us!
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for requesting your free consultation from Direct Energy Solar and for taking the time to discuss your energy needs with us. Your Solar Consultant was happy to share how much money you’ll save on your electricity bill by going solar with us. We hope to have the opportunity to become your chosen solar installer.
+
+You have qualified for a 6-month Heating &amp; Cooling Repair Essentials Plan from Direct Energy
+
+At Direct Energy Solar, providing our customers with peace of mind is important to us—from our going solar process to our warranties and guarantees. As a part of the Direct Energy family, we are proud to offer you even further peace of mind with a special offer from Direct Energy Protection Plans. 
+
+As a thank you for meeting with a Direct Energy Solar consultant, you have qualified for a Free* 6-month Heating &amp; Cooling Repair Essentials Plan. This plan provides worry-free coverage for inconvenient repairs.
+
+You will be soon be receiving by mail, if you have not already, a welcome kit from Direct Energy Protection Plans that includes coverage and other details about your plan. Please enjoy this special offer, with our compliments.
+
+Your 6-month Plan Includes:
+
+• No service visit charge, no deductibles, no age restrictions
+• $500 coverage per repair incident up to $2,000 annually
+• 24/7 emergency service
+
+If you have any questions about your Heating &amp; Cooling Repair Essentials Plan, please contact Direct Energy at 855-334-3577 or visit www.directenergyprotects.com/repair &lt;http://www.directenergyprotects.com/repair&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Meet with a Direct Energy Solar consultant for an in-home consultation between November 16, 2015–December 15, 2015 and receive a free 6-month trial of our Heating &amp; Cooling Repair Essentials Plan.
+
+*No extensions will be granted. An in-home consultation is contingent on your home being a good candidate for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the “Plan”) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one offer per household.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,90 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="PortalContactUsController">
+<apex:composition template="PortalSiteTemplate">
+
+<apex:define name="head-top">
+
+    <meta name='description' content='Direct Energy Solar Referral Partner Network - Contact Us' />
+    <title>Direct Energy Solar Referral Partner Network - Contact Us</title>
+
+</apex:define>
+
+<apex:define name="head-bottom">
+    <!--Google JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>    
+</apex:define>
+
+<apex:define name="navigation">
+
+    <c:EP_AccountInfo />
+
+     <apex:outputpanel rendered="{!$Profile.Name == 'Affiliate Partner Portal - Full User'}" >
+        <c:PortalAffiliateTopNav current="contact"/>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!$Profile.Name == 'Affinity Partner Portal - Full User'}" >
+        <c:PortalAffiliateTopNav current="contact"/>
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!$Profile.Name == 'Partner Portal - Full User'}" >
+        <c:PortalTopNav current="contact"/>
+    </apex:outputpanel>
+
+</apex:define>
+
+<apex:define name="content">
+
+    <apex:form >
+    
+        <div id="FullColumn">
+                        <h2>Contact Us</h2>
+                      <div class="ContactUs">
+                      
+                             <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[1]'))}">
+                                <table>
+                                    <tr>
+                                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                        <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                    </tr>
+                                </table>
+                            </apex:outputPanel>
+                              
+                            <apex:outputPanel layout="none" rendered="{!NOT(submitted==true)}">
+                      
+                                <h3>Partner Network Manager</h3>
+                                <h4>Suzanne Borneman</h4>
+                                <p>Phone: 240-278-8616</p>
+                                <p>Email: suzanne.borneman@directenergysolar.com</p>
+                                <div class="SubmitQuestionsForm">
+                                    <h3>Submit Questions or Concerns</h3>
+                            
+                                   
+                            
+                                    <div class="SubmitQuestionsFormSection">
+                                        <div class="SubmitQuestionsFormRow">
+                                            <apex:inputTextArea rows="3" value="{!issue}" rendered="{!NOT(submitted==true)}" styleClass="LongField {!IF(CONTAINS(errorFields,'[issue]'),'invalid','')}"/>
+                                        </div>
+                                    </div>
+                                    <div class="SubmitQuestionsFormSubmitButton">
+                                        
+                                        <apex:commandButton action="{!submitIssue}" styleClass="standardButton" value="{!'Submit'}" />
+                                       
+                                    </div>
+                                </div>
+                          </apex:outputPanel>
+                          
+                          <apex:outputText styleClass="blue" rendered="{!submitted==true}" value="Thank you for your inquiry. We will be in contact shortly."/>
+                          
+                            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                      </div>
+                    </div>
+    </apex:form>
+    
+</apex:define>
+
+</apex:composition>
+</apex:page>

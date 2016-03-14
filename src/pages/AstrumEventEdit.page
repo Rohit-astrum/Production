@@ -1,0 +1,353 @@
+<!-- FILE: AstrumEventEdit.page
+ * AUTHOR: Michael Katulka
+ * DATE: 2014-05-28
+ * PURPOSE: Page for creating and editing an Astrum Event
+ * MODIFICATION HISTORY:  
+ *
+ -->
+<apex:page id="pg" tabStyle="Astrum_Event__c" showHeader="{!showHS}" sidebar="{!showHS}" Controller="AstrumEventController">
+
+<style>
+.notesBox {
+    width:100%;
+    height:60px; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+#blockbckanim
+{
+    background-color:rgba(0, 14, 44, 0.7);
+    width:100%;
+    height:100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    rgba(0, 0, 0, 0.71);
+    cursor: wait;
+}
+#apimgld
+{
+    width: 20px;
+    height: 20px;
+    top:49%;
+    left:45%;
+    position:fixed;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px ;
+}
+
+.datetimeblock{
+    margin: 5px 5px 5px 5px;
+    width: 400px;   
+    height: 100%;
+    float: left;
+    background-color: #CCFFFF;
+}
+
+
+.navigateDateBlock{
+    margin: 5px 5px 5px 5px;
+    width: 400px;   
+    height: 100%;
+    float: left;    
+}
+
+
+#date, #time, #specifyDate{ 
+    margin: 5px 5px 5px 5px;
+    float: left;
+}
+
+#buttonblockright{
+    margin: 5px 5px 5px 5px;
+    float: right;
+}
+
+#buttonblockleft{
+    margin: 5px 5px 5px 5px;
+    float: left;
+}
+</style> 
+
+<script type="text/javascript" language="javascript">
+    function ShowLoading() {
+    document.getElementById('blockbckanim').style.display="block";
+    }
+    function HideLoading() {
+    document.getElementById('blockbckanim').style.display="none";
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
+    // This empty function overrides the SFDC standard function, and enables us to control initial field positioning
+    //--------------------------------------------------------------------------------------------------------------
+    function setFocusOnLoad() {
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
+    // This function prevents the user from accidentally submitting/cancelling the form through enter key
+    //--------------------------------------------------------------------------------------------------------------
+    function stopRKey(evt) {
+       var evt = (evt) ? evt : ((event) ? event : null);
+       var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+       if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+    }
+
+    document.onkeypress = stopRKey; 
+</script>
+
+
+<div id="blockbckanim" style="display:none">
+<img id="apimgld" style="" src="/img/loading32.gif" />
+</div> 
+
+<apex:pageMessages />
+ 
+<apex:form id="frm" rendered="{!NOT(hideForm)}">
+
+    <apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+    <div id="blockbckanim" style="display:none">
+        <img id="apimgld" style="" src="/img/loading32.gif" />
+    </div>
+
+    <!-- Hidden fields for controller extension access 
+    <apex:inputField rendered="false" value="{!event.Survey__c}" />--> 
+
+    <apex:sectionHeader title="{!if(isNew, 'Schedule New Event: Sales Visit', 'ReSchedule Event')}"/>
+    <apex:pageBlock > 
+
+        <!--
+        <apex:pageBlockButtons >                        
+            <apex:commandButton action="{!save}" value="Save" onclick="ShowLoading();"/>
+            <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
+        </apex:pageBlockButtons>
+        -->
+
+        <apex:pageBlockSection title="Opportunity/Property Info" columns="1" rendered="{!event.Opportunity__c != null}">            
+
+            <apex:outputField value="{!event.Opportunity__c}" style="width:225px" />
+            <apex:outputField value="{!opp.Property__c}" style="width:225px" />
+            <apex:outputField value="{!opp.Property__r.Property_Address_2__c}" style="width:225px" />   
+            <apex:outputField value="{!opp.Property__r.Property_City__c}" style="width:225px" />
+            <apex:outputField value="{!opp.Property__r.Property_State__c}" style="width:225px" />
+            <!--<apex:outputField value="{!opp.Property__r.Property_County__c}" style="width:225px" />-->
+            <apex:outputField value="{!opp.Property__r.Property_ZIP__c}" style="width:225px" />
+
+        </apex:pageBlockSection>
+
+
+        <apex:pageBlockSection title="Lead Info" columns="1" rendered="{!event.Lead__c != null}">           
+
+            <apex:outputField value="{!event.Lead__c}" style="width:225px" />
+            <apex:outputField value="{!theLead.Street}" style="width:225px" />          
+            <apex:outputField value="{!theLead.City}" style="width:225px" />
+            <apex:outputField value="{!theLead.State}" style="width:225px" />
+            <!--<apex:outputField value="{!theLead.County__c}" style="width:225px" />-->
+            <apex:outputField value="{!theLead.PostalCode}" style="width:225px" />
+
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Select Available Date/Time" columns="1">
+
+             <apex:outputPanel layout="block" styleClass="datetimeblock">
+                <div id="date">
+                    <apex:selectList id="datePicker" value="{!chosenDate}" size="1">
+                        <apex:selectOptions value="{!dates}"></apex:selectOptions>                      
+                        <apex:actionSupport event="onchange" action="{!dateChanged}" rerender="frm" status="processingStatus" />
+                    </apex:selectList>                  
+                </div>
+                <div id="time">
+                    <apex:selectList id="timePicker" value="{!chosenTime}" size="1">
+                        <apex:selectOptions value="{!times}"></apex:selectOptions>                                              
+                    </apex:selectList>                  
+                </div>
+                
+                
+            </apex:outputPanel>
+            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel for="specifyDate">Next Search Date</apex:outputLabel>
+                <apex:inputField id="specifyDate" value="{!dummyContact.Birthdate}"/>
+            </apex:pageBlockSectionItem>
+
+            
+            <apex:outputPanel layout="block" styleClass="navigateDateBlock">
+                <div id="buttonblockleft">
+                    <apex:commandButton action="{!Cancel}" value="Cancel" />
+                </div>
+                <div id="buttonblockright">                 
+                    <apex:commandButton action="{!lookForMore}" value="Look For More" onclick="ShowLoading();"/>
+                    <apex:commandButton action="{!showRestricted}" value="Include Restricted" onclick="ShowLoading();"  rendered="{!NOT(viewRestricted)}" title="Also includes the Date and Time where limits are corssed"/>
+                    <apex:commandButton action="{!hideRestricted}" value="Hide Restricted" onclick="ShowLoading();"  rendered="{!viewRestricted}" title="Hide the Date and Time where limits are corssed"/>
+                    <apex:commandButton action="{!startOver}" value="Start Over" onclick="ShowLoading();"/>
+                    <apex:commandButton action="{!bookit}" value="Book It" onclick="ShowLoading();"/>
+                </div>
+            </apex:outputPanel>
+            
+            <!--
+            <apex:outputField label="Start Date/Time" value="{!event.Start_Date_Time__c}" /> 
+            <apex:outputField label="End Date/Time" value="{!event.End_Date_Time__c}" /> 
+                
+            <apex:outputField label="Street Address" value="{!event.Property_Address_1__c}" /> 
+            <apex:outputField label="Street Address 2" value="{!event.Property_Address_2__c}" />
+            <apex:outputField label="City" value="{!event.Property_Address_2__c}" />
+                <apex:pageBlockSectionItem />
+            <apex:outputField label="City" value="{!prop.Property_City__c}" /> 
+                <apex:pageBlockSectionItem />
+            <apex:outputField label="State" value="{!prop.Property_State__c}" /> 
+                <apex:outputField label="Design Last Edited" value="{!event.LastModifiedDate}" rendered="{!event.id != null}"/>     
+                <apex:pageBlockSectionItem rendered="{!event.id == null}"/>
+            <apex:outputField label="Zip" value="{!prop.Property_ZIP__c}" /> 
+                <apex:outputField label="Design Last Edited By" value="{!event.LastModifiedByID}" rendered="{!event.id != null}"/>      
+                <apex:pageBlockSectionItem rendered="{!event.id == null}"/>
+            <apex:pageBlockSectionItem /><apex:pageBlockSectionItem />
+-->
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Contact Roles" columns="1" rendered="{!event.Opportunity__c != null}">
+            <apex:pageBlockTable value="{!opp.OpportunityContactRoles}" var="con"> 
+                <apex:column >
+                    <apex:outputLink value="/{!con.id}" target="_blank">{!con.contact.name}</apex:outputLink>                               
+                    <apex:facet name="header">Opp Contact Name</apex:facet>
+                </apex:column>
+                <apex:column value="{!con.IsPrimary}"/> 
+                <apex:column value="{!con.Role}"/>              
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Debug" columns="1" rendered="{!AND($CurrentPage.parameters.debug == '1', $Profile.Name == 'System Administrator')}">
+
+            <apex:outputField value="{!theLead.Name}" rendered="{!event.Lead__c != null}" />
+            <apex:outputText label="State" value="{!state}"/>
+            <!--<apex:outputText label="County" value="{!county}"/>
+            <apex:outputText label="QAS County" value="{!qascounty}"/>-->
+            <apex:outputText label="Zip Code" value="{!theLead.PostalCode}"/>
+            <apex:outputText label="Time Zone" value="{!tzID}"/>
+            
+            Potential Reps from the "Zip_Code_Schedule_Availability__c" object filtered for the correct time zone, and date range. 
+            <apex:pageBlockTable value="{!potentialReps}" var="pr">             
+                <!--<apex:column value="{!pr.County__r.Name}"/>-->
+                <apex:column value="{!pr.Name}"/>
+                <apex:column value="{!pr.Employee__r.Name}"/>
+                <apex:column value="{!pr.Start_Date__c}"/>
+                <apex:column value="{!pr.End_Date__c}"/>                
+            </apex:pageBlockTable>
+
+            <br/>
+            Event Options Ranks by most available Rep
+            <br/>
+            ***This will show you the times in your local time zone, so if you are in EDT and the customer is in PDT
+            then you should subtract 3 hours to see what the Salesperson/Customer's time is.
+            <apex:pageBlockTable value="{!eventOptions}" var="ev"> 
+                <apex:column >
+                    <apex:outputLink value="/{!ev.id}" target="_blank">{!ev.name}</apex:outputLink>                             
+                    <apex:facet name="header">Event Name</apex:facet>
+                </apex:column>
+                <apex:column value="{!ev.Start_Date_Time__c}"/>
+                <apex:column value="{!ev.Stop_Date_Time__c}"/>
+                <apex:column value="{!ev.DurationInMinutes__c}"/>               
+                <apex:column value="{!ev.ownerid}"/>                
+            </apex:pageBlockTable>
+
+
+            <br/> 
+            All Available Blocks (limited rows, sort order very important, should be sorted by Start Date/Time)
+            <br/>
+            ***This will show you the times in your local time zone, so if you are in EDT and the customer is in PDT
+            then you should subtract 3 hours to see what the Salesperson/Customer's time is.
+            <apex:pageBlockTable value="{!openBlocks}" var="ev"> 
+                <apex:column >
+                    <apex:outputLink value="/{!ev.id}" target="_blank">{!ev.name}</apex:outputLink>                             
+                    <apex:facet name="header">Event Name</apex:facet>
+                </apex:column>
+                <apex:column value="{!ev.Start_Date_Time__c}"/>
+                <apex:column value="{!ev.Stop_Date_Time__c}"/>
+                <apex:column value="{!ev.DurationInMinutes__c}"/>
+                <apex:column value="{!ev.ownerid}"/>                
+            </apex:pageBlockTable>
+            
+
+        </apex:pageBlockSection>
+
+
+<!--        <apex:pageBlockSection title="Design Information" columns="1">          
+
+            <apex:inputField value="{!event.Calculated_System_Price__c}" rendered="{!NOT(isSdInsert)}"/>
+            <apex:inputField label="Snow DeRate" value="{!prop.Snow_De_Rate_kWh_y_kW__c}" />                            
+            <apex:inputField value="{!event.Trenching_Required__c}" >           
+                <apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+                <apex:actionSupport event="onchange" rerender="frm" status="processingStatus" />                                                    
+            </apex:inputField>
+            
+
+
+            <apex:inputField value="{!event.Trench_Length__c}" rendered="{!event.Trenching_Required__c}"/>
+            
+            <apex:inputField label="Remote Meter" value="{!event.Includes_Remote_Meter__c}" />
+            <apex:inputField value="{!event.Includes_Outbuilding_Installation__c}" />
+            <apex:inputField value="{!event.Vent_Stack_Movement_Required__c}" />
+            <apex:inputField value="{!event.Inside_Only_Conduit__c}" />
+
+            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Default CB Panel" for="cbPanels" />
+                 <apex:outputPanel >                    
+                    <apex:selectList id="cbPanels" value="{!event.Default_CB_Panel__c}" size="1">
+                        <apex:selectOptions value="{!cbPanels}"></apex:selectOptions>
+                        <apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+                        <apex:actionSupport event="onchange" rerender="frm" status="processingStatus" />                                                
+                    </apex:selectList>                  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>        
+
+            
+            <apex:pageBlockSectionItem rendered="{!event.Default_CB_Panel__c == null}" >
+                <apex:outputLabel value="Bus Bar Rating" for="busRating" />
+                <apex:selectList id="busRating" value="{!busRatingAmps}" size="1">
+                        <apex:selectOption itemLabel="- none -"/>
+                        <apex:selectOption itemValue="100" itemLabel="100"/>
+                        <apex:selectOption itemValue="125" itemLabel="125"/>
+                        <apex:selectOption itemValue="150" itemLabel="150"/>
+                        <apex:selectOption itemValue="175" itemLabel="175"/>
+                        <apex:selectOption itemValue="200" itemLabel="200"/>
+                        <apex:selectOption itemValue="225" itemLabel="225"/>
+                        <apex:selectOption itemValue="250" itemLabel="250"/>
+                        <apex:selectOption itemValue="400" itemLabel="400"/>                        
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+            
+            
+            <apex:pageBlockSectionItem rendered="{!event.Default_CB_Panel__c == null}" >
+                <apex:outputLabel value="Main Breaker Rating" for="mainBreakerRatingAmps" />
+                <apex:selectList id="mainBreakerRatingAmps" value="{!mainBreakerRatingAmps}" size="1">
+                        <apex:selectOption itemLabel="- none -"/>
+                        <apex:selectOption itemValue="100" itemLabel="100"/>
+                        <apex:selectOption itemValue="125" itemLabel="125"/>
+                        <apex:selectOption itemValue="150" itemLabel="150"/>
+                        <apex:selectOption itemValue="175" itemLabel="175"/>
+                        <apex:selectOption itemValue="200" itemLabel="200"/>
+                        <apex:selectOption itemValue="225" itemLabel="225"/>
+                        <apex:selectOption itemValue="250" itemLabel="250"/>
+                        <apex:selectOption itemValue="400" itemLabel="400"/>                    
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+
+            <apex:inputText label="Open Circuits in CB Panel" value="{!countofOpenCircuits}" rendered="{!event.Default_CB_Panel__c == null}"/>
+
+
+            
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Notes" columns="1">
+            <apex:inputTextarea richText="false" value="{!event.Notes__c}"  styleClass="notesBox"/>
+        </apex:pageBlockSection>
+
+        -->
+
+    </apex:pageBlock>
+</apex:form>    
+
+</apex:page>

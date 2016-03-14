@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Case Work Request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case Work Request</name>
+    <style>none</style>
+    <subject>{!Case_Work_Request__c.Subject__c}</subject>
+    <type>text</type>
+</EmailTemplate>

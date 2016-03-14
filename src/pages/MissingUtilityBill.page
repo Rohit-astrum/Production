@@ -1,0 +1,162 @@
+<apex:page controller="MissingUtilityBillController" showHeader="false" sidebar="false" standardStylesheets="false">
+    <head>
+        <style type="text/css">
+          
+           #SendSurvey .SendSurveyRow .invalid {
+                background-color: #FFF0F0;
+            }
+            
+            #SendSurvey {              
+                background-color: #ffffff;
+                border: 2px solid #cccccc;  
+                padding: 20px;               
+                width: 430px;
+                height:400px;
+           }
+                
+           #SendSurvey .SendSurveyRow {
+                display: block;
+                padding: 5px 0;
+                width: 100%;
+            }
+
+            #SendSurvey .SendSurveyRow label {
+                color: #666666;
+                font-weight: bold;
+                display: block;
+                font-size: 14px;
+                line-height: 14px;
+                margin: 0 0 5px 0;
+                padding: 0;
+            }
+            
+            #SendSurvey .SendSurveyRow select {
+                background-color: #ffffff;
+                border: 1px solid #cccccc;
+                color: #666666;
+                font-size: 14px;
+                padding: 3px;
+                width: 100%;
+                border-radius: 0px;
+                -webkit-appearance: none;
+            }  
+            
+            #SendSurvey .SendSurveyRow textarea {
+            	width: 100%;
+            	height: 200px;
+            	resize: none;
+            }
+            
+            #SendSurvey .SendSurveyRow button.SendSurveyButtonSend {
+                color: #ffffff;
+                cursor: pointer;
+                background-color: #666666;
+                background-image: none;
+                border: 0;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: inline-block;
+                font-size:  12px;
+                margin-top: 5px;
+                margin-right: 5px;
+                padding: 5px;
+                width: 60px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            
+            #SendSurvey .SendSurveyRow button.SendSurveyButtonClose {
+                color: #ffffff;
+                cursor: pointer;
+                background-color: #666666;
+                background-image: none;
+                border: 0;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: inline-block;
+                font-size:  12px;
+                margin-top: 5px;
+                margin-right: 5px;
+                padding: 5px;
+                width: 60px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        </style>
+        
+        <apex:includeScript value="{!URLFOR($Resource.jQueryForPopup, '/jQuery/jquery-1.8.2.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jQueryForPopup, '/jQuery/postmessage/jquery.ba-postmessage.js')}"/>
+ 
+        <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+     
+            var parent_domain = '{!parentDomain}';
+            var isD2D = '{!isD2D}';
+     
+            j$(document).ready(function() {
+                if(isD2D == 'false'){
+                    alert('Missing bill is only applicable to D2D events.');
+                }
+                else
+                {
+                    postCrossMessage('open_modal_dialog');
+                }
+                //rerenderOnLoad();
+            });
+            
+            /*function closeIfSaved() {
+                var updateStatus = document.getElementById('{!$Component.survey.status}');
+                if(updateStatus.value == 'true')
+                {
+                    //setTimeout(postCrossMessage('close_modal_dialog_redirect'), 800);
+                }
+                
+                return false;
+            }*/
+             
+            function postCrossMessage(action) {
+                var cross_result = new Object();
+                cross_result.action = action;       
+                                 
+                j$.postMessage(
+                    cross_result,
+                    parent_domain,
+                    parent
+                );
+            }
+        </script>
+    </head>
+    <apex:form id="survey">  
+        <apex:actionFunction name="rerenderOnLoad" reRender="probpanel"/>
+        <div id="SendSurvey">
+            <!-- <div class="SendSurveyRow">
+            	<apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'ERROR -'))}">
+                    <table>
+                        <tr>
+                            <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                            <td><span>{!errorFields}</span></td>
+                        </tr>
+                    </table>
+                    <br/>
+                </apex:outputPanel>  
+            </div>--> 
+            <apex:outputPanel id="probpanel">
+                <apex:outputPanel id="reasonPanel">
+                    <div class="SendSurveyRow">
+                        <label>Notes (Optional)</label>
+                        <apex:inputTextarea value="{!notes}" id="missingBillNotes" styleClass="SendSurveySelect"/>                           
+                    </div>
+                </apex:outputPanel>
+            </apex:outputPanel> 
+            <div class="SendSurveyRow"> 
+                <button id="SendSurveyButtonSend" class="SendSurveyButtonSend" type="submit" onClick= "doSubmit(); postCrossMessage('close_modal_dialog'); return false;">Save</button>                   
+                <button class="SendSurveyButtonClose" type="button" onclick="postCrossMessage('close_modal_dialog');" >Cancel</button> 
+                <apex:actionFunction name="doSubmit" action="{!updateEventCompleted}" reRender="status,messages" oncomplete="closeIfSaved();" /> 
+                <!-- <apex:inputHidden value="{!updateStatus}" id="status"/> -->
+                <apex:pageMessages id="messages"/>
+            </div>
+        </div>
+    </apex:form>
+</apex:page>

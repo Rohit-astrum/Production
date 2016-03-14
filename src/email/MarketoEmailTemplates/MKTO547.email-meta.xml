@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>MA SREC II Limited Availability: February 2016.MA SREC II 022416 Leads: Limited</name>
+    <style>none</style>
+    <subject>Limited space left in SREC II program. Secure your spot.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Limited reservations are left in the Massachusetts SREC II program. Claim yours today.
+
+Dear {{lead.First Name:default=Friend}},
+
+Solar is booming in Massachusetts! Many of your neighbors went solar not only to save money on their electricity bill, but to benefit from Massachusetts Solar Renewable Energy Certificates (SRECs). SRECs are credits produced by your solar panels that you can sell back to utility companies.
+
+The takeaway? Not only can you save money by going solar, but you can offset your cost of going solar as well! For an average 7 kW system, that’s potential savings of $9,000 over the lifetime of your system!
+
+Due to the popularity of this incentive, the SREC II program in Massachusetts has been critical for driving the state’s massive solar growth—and now, only limited availability remains.
+
+Remaining capacity in the SREC II program is filling up fast and could be gone as early as April.
+
+On January 5, the Massachusetts Department of Energy Resources (DOER) announced that 120 MW would be set aside in the SREC II program for solar projects under 25 kW. On February 18, DOER provided a program status update—only 67 MW of the initial 120 MW remained. A mad rush to go solar in Massachusetts is under way—at this pace, it’s highly possible that the remaining 67 MW could be gone as early as April!
+
+At this time, there are no plans to increase or adjust the program cap. What does this mean for you?
+
+Timing is critical. Sign your contract by February 29 to reserve your spot—before no spots are left.
+
+Based on the most current program status information available, we are confident that you will be successfully registered for participation in the SREC II program if you sign your contract with us on or before February 29.(1)
+
+Why so soon? For a project to be successfully registered for SREC II participation, we need to secure the necessary approvals and municipal permits. Don’t worry, we take care of all of this for you.
+
+That’s why it’s important to choose a knowledgeable, experienced installer who knows this process inside and out—Direct Energy Solar is one of the largest solar installers in Massachusetts, we have the experience of installing thousands of solar systems in the state, and we’re right in your neighborhood!
+
+At this time, we can make no assurance that you will qualify if you sign after February 29, so don’t risk missing out on an incentive that so many of your neighbors are currently enjoying as an added benefit to having gone solar. Reserve your spot now.
+
+HURRY! Call us at 800-903-6130 to secure your spot!
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Direct Energy Solar system installation.
+
+(1)Should your project fail to qualify for the program due to unforeseen circumstances, you will have the option to cancel your contract with us.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

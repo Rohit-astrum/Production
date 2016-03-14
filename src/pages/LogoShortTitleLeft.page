@@ -1,0 +1,22 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+
+<apex:composition template="PartnerLandingBase">
+
+    <apex:define name="name-logo">                                
+        
+       <!--Logo / Title Short Left-->
+       <div class="logo-spot logo-short">
+           <div class="logo-info">
+               <h3><apex:insert name="logo-tagline"/></h3>
+           </div>
+           <apex:insert name="partner-logo">
+               <img src="{!URLFOR($Resource.LandingPagePackage2_Resources, 'images/small-logo.jpg')}" title="Logo Image" />
+           </apex:insert>
+       </div>
+        <!--END Logo / Title Short Left-->
+       
+    </apex:define>
+    
+</apex:composition>
+
+</apex:page>

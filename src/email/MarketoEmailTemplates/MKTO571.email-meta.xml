@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.What is the Best Way to Pay for Solar.Subject Line</name>
+    <style>none</style>
+    <subject>Understand your options for going solar.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=leasebuyloan&amp;utm_campaign=nurture-tk&amp;utm_content=leasebuyloan-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+What is the Best Way to Pay for Solar?
+
+Dear {{lead.First Name:default=Friend}},
+
+Everyone is different, so there’s no single best way to pay for solar. There are several options you can choose from, and each option offers its own unique advantages.
+
+All of the options offer both immediate and long-term savings. And all 3 allow you to reduce your carbon footprint.
+
+Let’s explore each option. You can decide what works best for you, your budget, and your financial goals.
+
+Understand Your Options for Getting a Solar System:
+&lt;[[http://www.directenergysolar.com/blog/post/what-is-the-best-way-to-pay-for-your-solar-pv-installation?utm_medium=email&amp;utm_source=leasebuyloan&amp;utm_campaign=nurture-tk&amp;utm_content=leasebuyloan-button-options]]&gt;
+
+“We break even in five and a half years and then have an income stream and all the equity. We were surprised it was such an attractive financial proposition.” - Eugene and Lena
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=leasebuyloan&amp;utm_campaign=nurture-tk&amp;utm_content=leasebuyloan-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=leasebuyloan&amp;utm_campaign=nurture-tk&amp;utm_content=leasebuyloan-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=leasebuyloan&amp;utm_campaign=nurture-tk&amp;utm_content=leasebuyloan-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

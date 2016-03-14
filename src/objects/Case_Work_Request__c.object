@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumCARE Work Requests related to Cases</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Case__c</fullName>
+        <description>Parent Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent Case</inlineHelpText>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Case Work Requests</relationshipLabel>
+        <relationshipName>Case_Work_Requests</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Date_Complete__c</fullName>
+        <description>Date Work Request Was Completed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Work Request Was Completed</inlineHelpText>
+        <label>Date Complete</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_Sent__c</fullName>
+        <defaultValue>NOW()</defaultValue>
+        <description>Date This Work Was Requested</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date This Work Was Requested</inlineHelpText>
+        <label>Date Sent</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <description>Department of To Whom User</description>
+        <externalId>false</externalId>
+        <formula>To_Whom__r.Department</formula>
+        <inlineHelpText>Department of To Whom User</inlineHelpText>
+        <label>Department</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Work Request Body</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Work Request Body</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Subject__c</fullName>
+        <description>Subject</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Subject</inlineHelpText>
+        <label>Subject</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>To_Whom_Email__c</fullName>
+        <description>Email Address of &quot;To Whom&quot;</description>
+        <externalId>false</externalId>
+        <formula>To_Whom__r.Email</formula>
+        <inlineHelpText>Email Address of &quot;To Whom&quot;</inlineHelpText>
+        <label>To Whom Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>To_Whom__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>User This Request Was Sent To</description>
+        <externalId>false</externalId>
+        <inlineHelpText>User This Request Was Sent To</inlineHelpText>
+        <label>To Whom</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Case_Work_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Case Work Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CWR-{0000000000}</displayFormat>
+        <label>Case Work Request Number</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Case Work Requests</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

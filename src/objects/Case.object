@@ -1,0 +1,2753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChangeStatus</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CloneAsChild</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CloseCase</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MassClose</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewCase</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <fieldSets>
+        <fullName>csmrgp__Case_Merge_Find</fullName>
+        <availableFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>AssetId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>BusinessHoursId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ClosedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CreatedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Description</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsClosed</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsClosedOnCreate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsDeleted</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsEscalated</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Origin</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ParentId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Priority</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Reason</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>csmrgp__Subject_Conversation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SuppliedCompany</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SuppliedName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SystemModstamp</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Case Merge Find results panel</description>
+        <displayedFields>
+            <field>CaseNumber</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Subject</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SuppliedPhone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SuppliedEmail</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>ContactId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>OwnerId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Property__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sub_Type_1__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sub_Type_2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sub_Type_3__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Case Merge Find</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>csmrgp__Case_Merge_Select</fullName>
+        <availableFields>
+            <field>AssetId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>BusinessHoursId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ClosedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>CreatedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Description</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsClosed</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsClosedOnCreate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsDeleted</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>IsEscalated</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>LastModifiedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>ParentId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Priority</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Reason</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>csmrgp__Subject_Conversation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SuppliedCompany</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SuppliedName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>SystemModstamp</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Case Merge Select main grid</description>
+        <displayedFields>
+            <field>CaseNumber</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Subject</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SuppliedPhone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SuppliedEmail</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>ContactId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>OwnerId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedDate</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Origin</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Property__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sub_Type_1__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sub_Type_2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Sub_Type_3__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Case Merge Select</label>
+    </fieldSets>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Actual_System_Production__c</fullName>
+        <description>Actual Annual Production of Customer&apos;s System</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual Annual Production of Customer&apos;s System</inlineHelpText>
+        <label>Actual System Production</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Array_Updated_Post_Visit__c</fullName>
+        <description>Status of Enphase Array in Enlighten Following a MNX Visit</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of Enphase Array in Enlighten Following a MNX Visit</inlineHelpText>
+        <label>Array Updated Post Visit</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>AssetId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BusinessHoursId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ClosedDate</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Comments</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Communications__c</fullName>
+        <description>Status of Communications</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of Communications</inlineHelpText>
+        <label>Communications</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Initial – Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Initial – Email Sent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Initial – Left Phone Message</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Initial – Spoke Via Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MNX Visit – Contacted By Us</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MNX Visit – Contacted Back</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MNX Visit – Confirmed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MNX Visit – Reschedule</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wrap Up – Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wrap Up – Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>ContactEmail</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactFax</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContactMobile</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContactPhone</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Conversion_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Conversion Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Trying to Reach</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conversion Contract Presented</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conversion Contract Signed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Order Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Lifecycle__c</fullName>
+        <description>What Stage of the Customer Lifecycle is the Customer for this Case Currently In?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What Stage of the Customer Lifecycle is the Customer for this Case Currently In?</inlineHelpText>
+        <label>Customer Lifecycle</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not a Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>After Care</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ongoing Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Handoff</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post-Handoff</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Estimate_vs_Actual_Production__c</fullName>
+        <description>Actual System Production / Estimated System Production</description>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISNULL(Estimated_System_Production__c ),ISNULL(Actual_System_Production__c)),0, Actual_System_Production__c / Estimated_System_Production__c )</formula>
+        <inlineHelpText>Actual System Production / Estimated System Production</inlineHelpText>
+        <label>Estimate vs Actual Production (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_System_Production__c</fullName>
+        <description>Estimated Annual Production of Customer&apos;s System</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimated Annual Production of Customer&apos;s System</inlineHelpText>
+        <label>Estimated System Production</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsClosedOnCreate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>IsEscalated</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>IsSelfServiceClosed</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>IsVisibleInSelfService</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Last_Customer_Contact__c</fullName>
+        <description>When did the customer last send us an email?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>When did the customer last send us an email?</inlineHelpText>
+        <label>Last Customer Contact</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>MNX_Visit_Completed__c</fullName>
+        <description>Date MNX Visit Completed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date MNX Visit Completed</inlineHelpText>
+        <label>MNX Visit Completed</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>MNX_Visit_Scheduled__c</fullName>
+        <description>Date MNX Visit is Scheduled</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date MNX Visit is Scheduled</inlineHelpText>
+        <label>MNX Visit Scheduled</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Maintenance_Office__c</fullName>
+        <description>Astrum Office for Maintenance (Assigned on Property)</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Property__r.Astrum_Office__c)</formula>
+        <inlineHelpText>Astrum Office for Maintenance (Assigned on Property)</inlineHelpText>
+        <label>Maintenance Office</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Origin</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Customer Care</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Satisfaction Survey</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Forwarded</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Originated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ParentId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Complete__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Payment to Customer Complete</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Payment to Customer Complete</inlineHelpText>
+        <label>Payment Complete</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Payment_to_Customer__c</fullName>
+        <description>Amount of Payment Related to this Case (if any)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount of Payment Related to this Case (if any)</inlineHelpText>
+        <label>Payment to Customer</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Pending_RMAs__c</fullName>
+        <description>Number of Pending RMAs</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Pending RMAs</inlineHelpText>
+        <label>Pending # RMAs</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Total System</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Priority</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Normal</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Attention</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Immediate Escalation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Property_State__c</fullName>
+        <description>The State/Province field from a related record. This prioritizes which related record&apos;s field is used in the following order: Property, Account, Contact</description>
+        <externalId>false</externalId>
+        <formula>IF( !ISBLANK(TEXT(Property__r.Property_State__c)),
+   TEXT(Property__r.Property_State__c),
+/*ELSE*/
+   IF( !ISBLANK(Account.BillingState),
+      Account.BillingState,
+   /*ELSE*/
+      IF( !ISBLANK(Account.ShippingState),
+         Account.ShippingState,
+      /*ELSE*/
+         Contact.MailingState
+      )
+   )
+)</formula>
+        <inlineHelpText>The State/Province field from a related record. This prioritizes which related record&apos;s field is used in the following order: Property, Account, Contact</inlineHelpText>
+        <label>Property State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Customer Property Related to this Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer Property Related to this Case</inlineHelpText>
+        <label>Property</label>
+        <referenceTo>Property__c</referenceTo>
+        <relationshipLabel>Cases</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Reason</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>User didn&apos;t attend training</fullName>
+                <cssExposed>false</cssExposed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complex functionality</fullName>
+                <cssExposed>false</cssExposed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Existing problem</fullName>
+                <cssExposed>false</cssExposed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Instructions not clear</fullName>
+                <cssExposed>false</cssExposed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New problem</fullName>
+                <cssExposed>false</cssExposed>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Cases</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <closed>false</closed>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Started/Assigned</fullName>
+                <closed>false</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Researching</fullName>
+                <closed>false</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Work Order Open</fullName>
+                <closed>false</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Escalated</fullName>
+                <closed>false</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Follow-Up</fullName>
+                <closed>false</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unresponsive</fullName>
+                <closed>false</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <closed>true</closed>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Duplicate</fullName>
+                <closed>true</closed>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Type_1__c</fullName>
+        <description>Sub Type 1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sub Type 1</inlineHelpText>
+        <label>Sub-Type 1</label>
+        <picklist>
+            <controllingField>Type</controllingField>
+            <picklistValues>
+                <fullName>Sales Prospect</fullName>
+                <controllingFieldValues>Not a Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Media</fullName>
+                <controllingFieldValues>Not a Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Vendor - Current</fullName>
+                <controllingFieldValues>Not a Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Vendor - Prospect</fullName>
+                <controllingFieldValues>Not a Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Job Seeker</fullName>
+                <controllingFieldValues>Not a Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complaint</fullName>
+                <controllingFieldValues>Not a Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Handoff Issues</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Handoff</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Equipment Maintenance</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account Maintenance</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SRECs</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grants</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Guarantees</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utilities</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Taxes</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Billing</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Promotions</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Referrals</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lease</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <controllingFieldValues>Customer</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Type_2__c</fullName>
+        <description>Sub Type 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sub Type 2</inlineHelpText>
+        <label>Sub-Type 2</label>
+        <picklist>
+            <controllingField>Sub_Type_1__c</controllingField>
+            <picklistValues>
+                <fullName>Enphase</fullName>
+                <controllingFieldValues>Equipment Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SolarEdge</fullName>
+                <controllingFieldValues>Equipment Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low Power or No Power</fullName>
+                <controllingFieldValues>Equipment Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Damage</fullName>
+                <controllingFieldValues>Equipment Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Roof Leak</fullName>
+                <controllingFieldValues>Equipment Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non Warranty Work</fullName>
+                <controllingFieldValues>Equipment Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enphase Account</fullName>
+                <controllingFieldValues>Account Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ownership Transfer</fullName>
+                <controllingFieldValues>Account Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>General Information Update</fullName>
+                <controllingFieldValues>Account Maintenance</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payment</fullName>
+                <controllingFieldValues>SRECs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Process</fullName>
+                <controllingFieldValues>SRECs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Policy</fullName>
+                <controllingFieldValues>SRECs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payment Timing</fullName>
+                <controllingFieldValues>Grants</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payment Amount</fullName>
+                <controllingFieldValues>Grants</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <controllingFieldValues>Grants</controllingFieldValues>
+                <controllingFieldValues>Lease</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New Roof Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Moving Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel Manufacturer&apos;s Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inverter Manufacturer&apos;s Warranty (Non Enphase)</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Astrum Purchase Warranty (10 Year)</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Production Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Billing Question</fullName>
+                <controllingFieldValues>Utilities</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Net Meter Installation</fullName>
+                <controllingFieldValues>Utilities</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meter Not Working</fullName>
+                <controllingFieldValues>Utilities</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Federal</fullName>
+                <controllingFieldValues>Taxes</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>State/County/Local</fullName>
+                <controllingFieldValues>Taxes</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conversion</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Constellation</fullName>
+                <controllingFieldValues>Lease</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CPF</fullName>
+                <controllingFieldValues>Lease</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sunnova</fullName>
+                <controllingFieldValues>Lease</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NRG</fullName>
+                <controllingFieldValues>Lease</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kilowatt</fullName>
+                <controllingFieldValues>Lease</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Type_3__c</fullName>
+        <description>Sub Type 3</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sub Type 3</inlineHelpText>
+        <label>Sub-Type 3</label>
+        <picklist>
+            <controllingField>Sub_Type_2__c</controllingField>
+            <picklistValues>
+                <fullName>Alert – ACFOOR</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - ACVOOR</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – DC too Low</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – DC to High</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – EMU / Envoy not reporting</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – GFI trip</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – Grid Gone</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – Micro Inverter failed to report</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert – Device produced no power</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low/No production</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inverter Skipping</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reporting issue</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Systemwide</fullName>
+                <controllingFieldValues>Low Power or No Power</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel(s)</fullName>
+                <controllingFieldValues>Low Power or No Power</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>String</fullName>
+                <controllingFieldValues>Low Power or No Power</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Astrum Caused</fullName>
+                <controllingFieldValues>Damage</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Act of God</fullName>
+                <controllingFieldValues>Damage</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Caused</fullName>
+                <controllingFieldValues>Damage</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel Remove and Replace</fullName>
+                <controllingFieldValues>Non Warranty Work</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EMU Replace</fullName>
+                <controllingFieldValues>Non Warranty Work</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Repair</fullName>
+                <controllingFieldValues>Non Warranty Work</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Need Login Credentials</fullName>
+                <controllingFieldValues>Enphase Account</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Software Update</fullName>
+                <controllingFieldValues>Enphase Account</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <controllingFieldValues>Enphase Account</controllingFieldValues>
+                <controllingFieldValues>Non Warranty Work</controllingFieldValues>
+                <controllingFieldValues>SolarEdge</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>String Fault</fullName>
+                <controllingFieldValues>SolarEdge</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inverter Energy Production Fault</fullName>
+                <controllingFieldValues>SolarEdge</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Power Optimizer Shutdown</fullName>
+                <controllingFieldValues>SolarEdge</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Communication fault</fullName>
+                <controllingFieldValues>SolarEdge</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Squirrel</fullName>
+                <controllingFieldValues>Damage</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Type__c</fullName>
+        <description>Sub-Type of Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sub-Type of Case</inlineHelpText>
+        <label>Sub-Type</label>
+        <picklist>
+            <controllingField>Type</controllingField>
+            <picklistValues>
+                <fullName>New Roof</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Moving</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inverter Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10 Year Warranty</fullName>
+                <controllingFieldValues>Guarantees</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Billing Question</fullName>
+                <controllingFieldValues>Utility</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Net Meter Installation</fullName>
+                <controllingFieldValues>Utility</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meter Not Working</fullName>
+                <controllingFieldValues>Utility</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - ACFOOR (AC Frequency Out of Range)</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - ACVOOR (AC Voltage Out of Range)</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - DC Too Low</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - DC Too High</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - Envoy/EMU Not Reporting</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - GFI Trip</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - Grid Gone</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - Micro-Inverter Failed to Report</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alert - Device Produced No Power</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New Email Address</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Need Login Credentials</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel(s) Showing No Production</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel(s) Showing Low Production</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inverter Skipping</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reporting Issue</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Software Update</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Federal</fullName>
+                <controllingFieldValues>Taxes</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>County/Local</fullName>
+                <controllingFieldValues>Taxes</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A1</fullName>
+                <controllingFieldValues>Eclipse</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A2</fullName>
+                <controllingFieldValues>Eclipse</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B</fullName>
+                <controllingFieldValues>Eclipse</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>P</fullName>
+                <controllingFieldValues>Eclipse</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R</fullName>
+                <controllingFieldValues>Eclipse</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Subject</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedCompany</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedEmail</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedName</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>SuppliedPhone</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Total_RMAs__c</fullName>
+        <description>Total Number of RMAs on this Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Number of RMAs on this Case</inlineHelpText>
+        <label>Total # RMAs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Eclipse</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enphase</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SRECs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grants</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Guarantees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Taxes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maintenance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Billing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Promotions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Referrals</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>References</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lease</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not a Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>csmrgp__Subject_Conversation__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>TRIM(SUBSTITUTE(  SUBSTITUTE(   SUBSTITUTE(  SUBSTITUTE(  SUBSTITUTE( SUBSTITUTE(
+Subject, &quot;Fwd:&quot;, &quot;&quot;), &quot;FW:&quot;, &quot;&quot;), &quot;Fw:&quot;, &quot;&quot;),&quot;RE:&quot;, &quot;&quot;), &quot;Re:&quot;, &quot;&quot;),&quot;[Email Loop Protection]&quot;,&quot;&quot;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Subject Conversation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__EngineeringReqNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Engineering Req Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__PotentialLiability__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Potential Liability</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <picklist>
+            <picklistValues>
+                <fullName>GC1040</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC1060</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC3020</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC3040</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC3060</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC5020</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC5040</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC5060</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GC1020</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>rstk__SLAViolation__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>SLA Violation</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>rstk__case_socontract__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Contract</label>
+        <referenceTo>rstk__socontract__c</referenceTo>
+        <relationshipLabel>Cases</relationshipLabel>
+        <relationshipName>cases</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__case_sowarr__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Covered Item</label>
+        <referenceTo>rstk__sowarr__c</referenceTo>
+        <relationshipLabel>Cases</relationshipLabel>
+        <relationshipName>cases</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <listViews>
+        <fullName>AllOpenCases</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.TYPE</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Last_Customer_Contact__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>All Open Cases</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Billing</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Billing</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Billing</label>
+    </listViews>
+    <listViews>
+        <fullName>Enphase</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Enphase</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Enphase</label>
+    </listViews>
+    <listViews>
+        <fullName>Grants</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Grants</value>
+        </filters>
+        <label>Grants</label>
+    </listViews>
+    <listViews>
+        <fullName>Guarantees</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Guarantees</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Guarantees</label>
+    </listViews>
+    <listViews>
+        <fullName>Lease</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Lease</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Lease</label>
+    </listViews>
+    <listViews>
+        <fullName>Maintenance</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Maintenance</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Maintenance</label>
+    </listViews>
+    <listViews>
+        <fullName>MyCases</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>MyOpenCases</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>Sub_Type_1__c</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.LAST_UPDATE</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>Property_State__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Open Cases</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Other</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Other</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Other</label>
+    </listViews>
+    <listViews>
+        <fullName>Promotions</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Promotions</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Promotions</label>
+    </listViews>
+    <listViews>
+        <fullName>References</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>References</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>References</label>
+    </listViews>
+    <listViews>
+        <fullName>Referrals</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Referrals</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Referrals</label>
+    </listViews>
+    <listViews>
+        <fullName>SRECs</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>SRECs</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>SRECs</label>
+    </listViews>
+    <listViews>
+        <fullName>Taxes</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Taxes</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Taxes</label>
+    </listViews>
+    <listViews>
+        <fullName>Utility</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Sub_Type__c</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>Customer_Lifecycle__c</columns>
+        <columns>Property__c</columns>
+        <columns>Maintenance_Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.TYPE</field>
+            <operation>equals</operation>
+            <value>Utility</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Utility</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__AllClosedCases</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Closed Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__AllOpenCases</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>All Open Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__MyCases</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__MyOpenCases</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Open Cases</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>CASES.CASE_NUMBER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CASES.SUBJECT</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CASES.CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CASES.PRIORITY</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CASES.CASE_NUMBER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CASES.SUBJECT</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CASES.STATUS</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CASES.CASE_NUMBER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CASES.SUBJECT</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CASES.STATUS</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CASE_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWriteTransfer</sharingModel>
+    <validationRules>
+        <fullName>rstk__socontract_validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>!ISBLANK( rstk__case_socontract__c ) &amp;&amp;  (
+rstk__case_socontract__r.rstk__socontract_active__c = false ||  rstk__case_socontract__r.rstk__socontract_cancelled__c = true)</errorConditionFormula>
+        <errorMessage>Sales Contract must be active and not cancelled</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>rstk__socontract_validation2</fullName>
+        <active>true</active>
+        <errorConditionFormula>!ISBLANK( rstk__case_socontract__c ) &amp;&amp;  
+(
+rstk__case_socontract__r.rstk__socontract_socust__r.rstk__socust_inactive__c = true || 
+(!ISBLANK( AccountId ) &amp;&amp; AccountId &lt;&gt;  rstk__case_socontract__r.rstk__socontract_socust__r.rstk__socust_sf_account__c )
+)</errorConditionFormula>
+        <errorMessage>Rootstock Customer associated with the case account must be active and must match the Rootstock Customer associated with the Sales Contract</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>rstk__sowarr_validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>!ISBLANK( rstk__case_sowarr__c ) &amp;&amp;
+!ISBLANK( rstk__case_socontract__c ) &amp;&amp; 
+(( rstk__case_sowarr__r.rstk__sowarr_socontract__c &lt;&gt; rstk__case_socontract__c ) || ( rstk__case_sowarr__r.rstk__sowarr_endusercust__c &lt;&gt;  rstk__case_socontract__r.rstk__socontract_socust__c ))</errorConditionFormula>
+        <errorMessage>Contract for the Covered Item must match the Sales Contract and the End User Customer for the Covered Item must match the Customer for the Sales Contract.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>rstk__sowarr_validation2</fullName>
+        <active>true</active>
+        <errorConditionFormula>!ISBLANK( rstk__case_sowarr__c ) &amp;&amp; !ISBLANK( AccountId ) &amp;&amp;
+( rstk__case_sowarr__r.rstk__sowarr_endusercust__r.rstk__socust_sf_account__c &lt;&gt; AccountId )</errorConditionFormula>
+        <errorMessage>The account for the Covered Item&apos;s End User Customer must match the case account.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>APXTConga4__Conga_Mail_Merge</fullName>
+        <availability>online</availability>
+        <description>*** This is an example of a simple Conga Composer button. *** 
+
+Copy the URL from this button and paste it into your own custom button or link. Then add optional parameters to finely tune the button&apos;s behavior. See the Conga Configuration Guide for details.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>false</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>450</height>
+        <isResizable>false</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Conga Composer</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.appextremes.com/apps/Conga/Composer.aspx
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_80}
+&amp;id={!Case.Id}</url>
+        <width>625</width>
+    </webLinks>
+    <webLinks>
+        <fullName>csmrgp__CsMrgFindDupes</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Find Duplicates</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var myURL = &apos;/apex/csmrgp__CsMrgPassThru?id={!Case.Id}&apos;;
+
+var isConsole = false;
+if(typeof srcUp == &apos;function&apos;) isConsole = true;
+
+if(isConsole)myURL += &apos;&amp;isdtp=vw&apos;;
+
+if(!isConsole){
+location = myURL;
+}
+else {
+srcUp(myURL);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>csmrgp__CsMrgListBtn</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Merge</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var records = {!GETRECORDIDS($ObjectType.Case)};
+var url;
+
+if (records.length &lt; 2){
+    alert(&quot;You must select at least two cases to merge.&quot;);
+} else if (records.length &gt; 9){
+    alert(&quot;You have selected too many cases to merge.&quot;);
+} else {
+    url = &apos;/apex/csmrgp__csmrgselect?&apos;;
+
+    for (var i = 0; i &lt; records.length; i++){ 
+        url = url + &quot;cs&quot; + (i+1)  + &quot;=&quot; +  records[i]+ &quot;&amp;&quot;;
+    } 
+
+    if (typeof srcUp == &apos;function&apos;) { 
+        srcUp(url + &apos;isdtp=vw&apos;);
+    } else {
+        window.location.href=url;
+    }
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Create_List</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create List</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;https://sforce.insidesales.com/js/json.js&apos;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/11.1/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jsonp.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/persist.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/ISConference.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c/ISClickToCall.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2csf.js&quot;)}
+
+var getTabClass = function() {
+    var bodytags = document.getElementsByTagName(&quot;body&quot;);
+    var classes  = bodytags[0].className.split(&apos; &apos;);
+    var hostname = window.location.hostname;
+    try {
+        try {
+            sforce.connection.sessionId=&quot;{!$Api.Session_ID}&quot;;
+        } catch (e) {
+            //
+        }
+        user  = sforce.connection.getUserInfo();
+        var theme = user.userUiSkin;
+        return {
+            &quot;css_base&quot;  : &quot;https://&quot;+window.location.hostname,
+            &quot;css_theme&quot; : theme,
+            &quot;css_class&quot; : classes[0]};
+    } catch (e) {
+        return {
+            &quot;css_base&quot; : &quot;https://&quot;+window.location.hostname,
+            &quot;css_class&quot; : classes[0],
+            &quot;css_theme&quot; : false
+        };
+    }
+};
+var getTabClassString = function() {
+    var css_info = getTabClass();
+    var tmp_url = &quot;&quot;;
+    tmp_url += &apos;&amp;css_base=&apos;+encodeURIComponent(css_info.css_base);
+    if (css_info.css_theme) {
+        tmp_url += &apos;&amp;css_theme=&apos;+encodeURIComponent(css_info.css_theme);
+    }
+    tmp_url += &apos;&amp;css_class=&apos;+encodeURIComponent(css_info.css_class);
+    return tmp_url;
+};
+
+var openPopup = function() {
+    var data = &quot;&quot;;
+    var items = idArray.join(&quot;,&quot;);
+
+    pd.setSalesforceInstance(true);
+    pd.makeRequest(&apos;getAuthToken&apos;,
+        function (result) {
+            var jwt = typeof result == &apos;object&apos; &amp;&amp; &apos;token&apos; in result ? result.token : &apos;&apos;;
+            var use_jwt = jwt != &apos;&apos;;
+            pd.makeRequest(&apos;createStaticDialerList&apos;,
+                function (data) {
+                    if (!data) {
+                        alert(&apos;There was a problem creating the list.&apos;);
+                        return;
+                    }
+                    if (data.errors &amp;&amp; data.errors.length &gt; 0) {
+                        var err = &quot;&quot;;
+                        if (data.errors[0] &amp;&amp; data.errors[0][&apos;message&apos;]) {
+                            err = &apos;\nThe following message was returned.\n\n&apos;+data.errors[0][&apos;message&apos;];
+                        }
+                        alert(&apos;There was a problem creating the list.&apos;+err);
+                        return;
+                    }
+                    if (!data.items || !data.items.length) {
+                        alert(&apos;At least one selected row must be related to an Account, Contact, or Lead.&apos;);
+                        return;
+                    }
+                    var html = &quot;&lt;form name=&apos;createList&apos; method=&apos;post&apos; action=&apos;https://{!$User.qbdialer__is_subdomain__c}.insidesales.com/noauth/create_sf_list?&quot;;
+                    html += &quot;salesforce_package_version=6.21.3&quot;;
+                    html += &quot;&amp;type=Task&quot;;
+                    if (!use_jwt) {
+                        html += &quot;&amp;organization_id={!$Organization.Id}&quot;;
+                        html += &quot;&amp;token={!User.qbdialer__is_token__c}&quot;;
+                    }
+                    html += &quot;&amp;agent_phone={!User.Phone}&quot;;
+                    html += getTabClassString();
+                    html += &quot;&apos;&gt;&lt;input type=&apos;submit&apos; style=&apos;visibility:hidden&apos;&gt;&quot;;
+                    if (use_jwt) {
+                        html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;Authorization&apos; value=&apos;&quot;+jwt+&quot;&apos;&gt;&quot;;
+                    }
+                    for (var i=0; i &lt; data.items.length; i++) {
+                        html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;leads[]&apos; value=&apos;&quot;+data.items[i]+&quot;&apos;&gt;&quot;;
+                    }
+                    html += &quot;&lt;&quot;+&quot;/form&gt;&quot;;
+                    html += &quot;&lt;script&gt;document.createList.submit();&lt;&quot;+&quot;/script&gt;&quot;;
+                    var host = document.location.protocol + &quot;//&quot; + document.location.hostname;
+                    var w = window.open(host, &quot;&quot;, &quot;height=700,width=800,menubar=0,resizable=1,scrollbars=1,status=0,titlebar=0,toolbar=0,location=0&quot;);
+                    w.document.write(html);
+                },
+                function (err) {
+                    alert(&apos;There was a problem creating the list.\n\n&apos;+err);
+                },
+                &quot;&amp;type=Case&amp;ids=&quot; + items
+            );
+        }
+    );
+}
+
+var user_oauth_token = &apos;{!JSENCODE($User.qbdialer__is_token__c)}&apos;;
+if (!user_oauth_token) {
+    window.location.href=&quot;/apex/qbdialer__InsideSales_OAuth_Setup&quot;;
+} else {
+    var idArray = {!GETRECORDIDS($ObjectType.Case)};
+    if (idArray.length == 0){
+        alert(&quot;Please select at least one row&quot;);
+    } else {
+        openPopup();
+    }
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Launch_Click_to_Call</fullName>
+        <availability>online</availability>
+        <description>For Beta</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Launch Click-to-Call</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var th = window.top.document.body;
+            var s = window.top.document.createElement(&apos;script&apos;);
+            s.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);
+            s.setAttribute(&apos;src&apos;,&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c_console.js&quot;);
+            th.appendChild(s);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Manage_Lists</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Manage Lists</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/11.1/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jsonp.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/persist.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/ISConference.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c/ISClickToCall.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2csf.js&quot;)}
+
+var openPopup = function() { 
+    pd.setSalesforceInstance(true);
+    pd.makeRequest(&apos;getAuthToken&apos;,
+        function (result) {
+            var jwt = typeof result == &apos;object&apos; &amp;&amp; &apos;token&apos; in result ? result.token : &apos;&apos;;
+            var use_jwt = jwt != &apos;&apos;;
+            var html = &quot;&lt;html&gt;&lt;body&gt;&lt;form id=&apos;createList&apos; name=&apos;createList&apos; method=&apos;post&apos; action=&apos;https://{!$User.qbdialer__is_subdomain__c}.insidesales.com/noauth/manage_sf_lists?&quot;;
+            html += &quot;salesforce_package_version=6.21.3&quot;;
+            if (!use_jwt) {
+                html += &quot;&amp;organization_id={!$Organization.Id}&quot;;
+                html += &quot;&amp;token={!User.qbdialer__is_token__c}&quot;;
+            }
+            html += &quot;&amp;agent_phone={!User.Phone}&apos;&gt;&quot;; 
+            if (use_jwt) {
+                html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;Authorization&apos; value=&apos;&quot;+jwt+&quot;&apos;&gt;&quot;;
+            }
+            html += &quot;&lt;input type=&apos;submit&apos; style=&apos;visibility:hidden&apos;&gt;&lt;&quot;+&quot;/form&gt;&quot;; 
+            html += &quot;&lt;script&gt;document.createList.submit();&lt;&quot;+&quot;/script&gt;&lt;/body&gt;&lt;/html&gt;&quot;; 
+            var host = document.location.protocol+&quot;//&quot;+ 
+            document.location.hostname; 
+            var w = window.open(host, &quot;&quot;, &quot;height=200,width=600,menubar=0,resizable=1,scrollbars=1,status=0,titlebar=0,toolbar=0,location=0&quot;); 
+            w.document.write(html); 
+        }
+    );
+} 
+
+var user_oauth_token = &apos;{!JSENCODE($User.qbdialer__is_token__c)}&apos;;
+if (!user_oauth_token) {
+    window.location.href=&quot;/apex/qbdialer__InsideSales_OAuth_Setup&quot;;
+} else {
+    openPopup();
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>rstk__Create_RMA</fullName>
+        <availability>online</availability>
+        <description>Create RMA</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create RMA</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>//This script is used in a custom button on the Salesforce Case page 
+//Label: Create Rootstock RMA
+//Display Type: Detail Page Button 
+//Behavior: Execute Javascript 
+//Content Source: OnClick JavaScript 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+var result = sforce.connection.describeGlobal(); 
+var sobjects = result.getArray(&quot;sobjects&quot;); 
+if (sobjects.length == 0) { sobjects = result.getArray(&quot;types&quot;); }
+var re = /([A-Za-z0-9]+)?(__)?(icixr__c)/; 
+var prefix = &apos;&apos;; 
+for (var i=0; i&lt;sobjects.length; i++) { 
+var mData = re.exec(sobjects[i]); 
+if (mData ==null) continue; 
+if (mData[3] == &apos;icixr__c&apos;) { 
+prefix = mData[1]==null?&apos;&apos;:(mData[1]+mData[2]); 
+break; 
+} 
+} 
+parent.location.href=&quot;/apex/&quot;+prefix+&quot;sorma?action=creatermafromcase&amp;caseid={! Case.Id }&quot;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>rstk__Create_Sales_Order</fullName>
+        <availability>online</availability>
+        <description>Create Sales Order From Case</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Sales Order</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>//This script is used in a custom button on the Salesforce Case page 
+//Label: Create SO From Case
+//Display Type: Detail Page Button 
+//Behavior: Execute Javascript 
+//Content Source: OnClick JavaScript 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+var result = sforce.connection.describeGlobal(); 
+var sobjects = result.getArray(&quot;sobjects&quot;); 
+if (sobjects.length == 0) { sobjects = result.getArray(&quot;types&quot;); }
+var re = /([A-Za-z0-9]+)?(__)?(icixr__c)/;
+var prefix = &apos;&apos;;
+for (var i=0; i&lt;sobjects.length; i++)  {
+  var mData = re.exec(sobjects[i]);
+  if (mData ==null) continue;
+  if (mData[3] == &apos;icixr__c&apos;) {
+    prefix = mData[1]==null?&apos;&apos;:(mData[1]+mData[2]);
+    break;
+  }
+}
+parent.location.href=&quot;/apex/&quot;+prefix+&quot;createsofromcase?caseid={!Case.Id}&quot;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>rstk__UpsellCrosssellOpportunity</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Up-sell / Cross-sell Opportunity</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>https://na1.salesforce.com/opp/oppedit.jsp?accid={!Account.Id}&amp;opp3=Up-sell+/+Cross-sell&amp;opp5=Existing+Customer&amp;opp6=Customer+Support</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sales Order Escalation FYI Notice</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Sales Order Escalation FYI Notice</name>
+    <style>none</style>
+    <subject>Sales Order {!SCRB_SalesOrder__c.Name} is Escalated for VP of Sales Approval</subject>
+    <textOnly>A Sales Order with the following details has been submitted for your approval.
+
+
+Customer Name: {!SCRB_SalesOrder__c.AccountId__c}
+City, State of Property: {!SCRB_SalesOrder__c.Installation_City__c}, {!SCRB_SalesOrder__c.Installation_State__c}
+Total System Size: {!SCRB_SalesOrder__c.System_Size_kW__c}
+Final System Price: {!SCRB_SalesOrder__c.Amount__c}
+Total Panel Count: {!SCRB_SalesOrder__c.Total_Panel_Count__c}
+Type &amp; Quantity:
+{!SCRB_SalesOrder__c.System_Makeup__c}
+Field Surveys Complete? {!SCRB_SalesOrder__c.Has_Field_Survey_Been__c}
+Hand Off Notes:
+{!SCRB_SalesOrder__c.Hand_Off_Notes__c}
+Approval Comments :
+{!SCRB_SalesOrder__c.Sales_Order_Approval_Comments__c}
+
+To Approve This Sales Order, please visit:  
+https://na8.salesforce.com/{!SCRB_SalesOrder__c.Id}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

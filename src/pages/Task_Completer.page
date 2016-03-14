@@ -1,0 +1,86 @@
+<apex:page standardController="Milestone1_Milestone__c"           
+           extensions="Task_Completer_Controller_Extension" showHeader="false" sidebar="false" id="page">
+           <apex:messages />
+    <apex:form id="completerForm">
+        <apex:pageBlock id="pageBlock"> 
+                  
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton action="{!doTaskSave}" value="Save"/>
+                <apex:commandButton value="Close" onclick="javascript:window.close();"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockTable value="{!milestoneTasks}" var="tempMilestoneTask">
+                <apex:column headerValue="Project Task Name"><apex:outputText value="{!tempMilestoneTask.name}"/></apex:column>
+                <apex:column headerValue="Description"><apex:outputText value="{!tempMilestoneTask.Description__c}"/></apex:column>
+                <apex:column headerValue="Assigned To"><apex:outputText value="{!tempMilestoneTask.Assigned_To__r.Name}"/></apex:column>
+
+                <apex:column headerValue="Due Date">               
+                   <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                        <apex:param value="{!tempMilestoneTask.Due_Date__c}" /> 
+                    </apex:outputText>                    
+                </apex:column>
+
+                <apex:column headerValue="Complete"><apex:inputField value="{!tempMilestoneTask.Complete__c}" id="completeCheck" onchange="setCompleteDateToCurrentDate('{!$Component.completeCheck}', '{!$Component.completeCheckDate}');"/></apex:column>
+                
+                <apex:column headerValue="Complete Date"><apex:inputField value="{!tempMilestoneTask.Complete_Date__c}" id="completeCheckDate"/></apex:column>
+   
+                <apex:column headerValue="Not Applicable"><apex:inputField value="{!tempMilestoneTask.Not_Applicable__c}" id="notApplicable" onchange="setCompleteCheckBox('{!$Component.notApplicable}', '{!$Component.completeCheck}', '{!$Component.completeCheckDate}');"/></apex:column>
+                
+                <apex:column headerValue="Blocked"><apex:inputField value="{!tempMilestoneTask.Blocked__c}"/></apex:column>
+                
+                <apex:column headerValue="Blocked Reason"><apex:inputField value="{!tempMilestoneTask.Blocked_Reason__c}"/></apex:column>
+                
+                <apex:column headerValue="Days Late">                
+                    <apex:outputText value="{0,number,0}"> <apex:param value="{!tempMilestoneTask.Days_Late__c}"/> </apex:outputText>
+                </apex:column>
+                
+                <apex:column headerValue="Overall Status"><apex:outputText value="{!tempMilestoneTask.Overall_Status__c}" /></apex:column>               
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+    var w=screen.width*0.85;
+    var h=screen.height*0.5;
+    var l=(screen.width/2)-(w/2);
+    var t=(screen.height/2)-(h/2);
+    window.onload=function(){window.moveTo(0,0);window.resizeTo(w,h);}
+    
+    function setCompleteDateToCurrentDate(completeCheckElementId, completeCheckDateElementId) {
+      var completeCheck = document.getElementById(completeCheckElementId);
+      var completeCheckDate = document.getElementById(completeCheckDateElementId);
+           
+      if (completeCheck.checked) {
+        completeCheckDate.value = getCurrentDate();
+      }
+      else {
+        completeCheckDate.value = "";
+      }           
+    }
+    
+    function getCurrentDate() {
+        var currentTime = new Date()
+        var month = currentTime.getMonth() + 1;
+        var day = currentTime.getDate();
+        var year = currentTime.getFullYear();
+        var currentDate = month + "/" + day + "/" + year;
+        
+        return currentDate;
+    }
+    
+    function setCompleteCheckBox(notApplicableElementId, completeCheckElementId, completeCheckDateElementId) {
+       var notApplicableElement = document.getElementById(notApplicableElementId);
+       var completeCheck = document.getElementById(completeCheckElementId);
+       var completeCheckDate = document.getElementById(completeCheckDateElementId);
+   
+       completeCheck.checked = notApplicableElement.checked;
+       
+       if (notApplicableElement.checked) {
+         completeCheckDate.value = getCurrentDate();
+       }
+       else {  
+         completeCheckDate.value = "";
+       }
+    }
+    
+    </script>
+    </apex:page>

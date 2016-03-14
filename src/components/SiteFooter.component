@@ -1,0 +1,10 @@
+<apex:component id="footerComponent">
+  
+  	<div class="ClearAll"></div>
+
+	<div id="Copyright">
+		<div id="CopyrightLeft"><h4><a href="http://www.astrumsolar.com/newsroom/in_the_news">In The News</a> | <a href="http://www.astrumsolar.com/newsroom/resource_library">Solar Resources</a> | <a href="http://www.astrumsolar.com/careers">Careers</a> | <a href="http://www.astrumsolar.com/astrumsrecs" target="_blank">Astrum SRECs</a> | <a href="http://www.astrumsolar.com/contact_us">Contact Us</a></h4></div>
+		<div id="CopyrightRight"><h4>Copyright &copy; 2012 Astrum Solar, Inc. <a href="http://www.astrumsolar.com/privacypolicy">Privacy Policy</a> | <a href="http://www.astrumsolar.com/termsandconditions">Terms &amp; Conditions</a></h4></div>
+	</div>
+  
+</apex:component>

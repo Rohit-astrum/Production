@@ -1,0 +1,38 @@
+<apex:component controller="EP_LoginController">
+
+<apex:form forceSSL="true">
+
+    <apex:pageMessages id="error"/>
+    
+    <div class="LoginContainer">
+
+        <div class="LoginPanel">
+            <h3>Login</h3>
+            <div class="LoginPanelForm">
+                <div class="LoginPanelFormRow">
+                    <label>User Name</label>
+                    <apex:inputText styleClass="username" value="{!username}"/>
+                </div>
+                <div class="LoginPanelFormRow">
+                    <label>Password</label>
+                    <apex:inputSecret styleClass="password" id="password" value="{!password}"/>
+                </div>
+                <div class="LoginPanelFormRow">
+                    <apex:inputCheckbox id="rememberMe" value="{!rememberMe}"/>
+                    <label class="LabelInline">Remember User Name</label>
+                </div>
+                <div class="LoginPanelSubmitButton">
+                    <input type="button" value="Login" class="standardButton" onclick="doLogin();return false;" />
+                    <apex:actionFunction name="doLogin" action="{!login}"/>
+                </div>
+                <div>
+                    <apex:outputLink styleClass="forgotPW" value="{!$Page.EP_ForgotPassword}">Forgot Password?</apex:outputLink>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+    
+</apex:form>
+
+</apex:component>

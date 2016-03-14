@@ -1,0 +1,5 @@
+<apex:page standardController="Event"           
+           extensions="Sales_Visit_Complete_Controller_Ext" showHeader="true" sidebar="true" 
+           action="{!updateEvent}" >
+           
+</apex:page>

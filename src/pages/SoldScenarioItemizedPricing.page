@@ -1,0 +1,156 @@
+<apex:page standardController="SCRB_SalesOrder__c" extensions="SoldScenarioItemizedPricingController">
+	<apex:pageMessages />
+
+	<apex:pageBlock title="Itemized Pricing">
+		<apex:pageBlockTable value="{!panel}" var="p" width="100%">
+			<apex:column headerValue="Component" width="10%">
+				<apex:outputText value="{!p.component}" />
+			</apex:column>
+			<apex:column headerValue="Description" width="60%">
+				<apex:outputText value="{!p.description}" />
+			</apex:column>
+			<apex:column headerValue="Quantity" width="10%">
+				<apex:outputText value="{!p.quantity}" />
+			</apex:column>
+			<apex:column headerValue="Price" width="20%">
+				<apex:outputText value="{!p.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!inverter}" var="i" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!i.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!i.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!i.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!i.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!mountings}" var="m" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!m.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!m.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!m.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!m.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!specialParts}" var="sp" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!sp.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!sp.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!sp.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!sp.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!trenchings}" var="t" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!t.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!t.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!t.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!t.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!entitlements}" var="e" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!e.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!e.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!e.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!e.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!promotions}" var="pr" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!pr.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!pr.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!pr.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!pr.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+		<apex:pageBlockTable value="{!vpOverrides}" var="vp" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!vp.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!vp.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!vp.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!vp.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+		
+        <apex:pageBlockTable value="{!incentives}" var="it" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!it.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!it.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!it.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!it.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+        
+		<apex:pageBlockTable value="{!srec}" var="s" width="100%">
+			<apex:column width="10%">
+				<apex:outputText value="{!s.component}" />
+			</apex:column>
+			<apex:column width="60%">
+				<apex:outputText value="{!s.description}" />
+			</apex:column>
+			<apex:column width="10%">
+				<apex:outputText value="{!s.quantity}" />
+			</apex:column>
+			<apex:column width="20%">
+				<apex:outputText value="{!s.price}" />
+			</apex:column>
+		</apex:pageBlockTable>
+
+	</apex:pageBlock>
+</apex:page>

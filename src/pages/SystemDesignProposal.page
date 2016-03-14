@@ -1,0 +1,31 @@
+<apex:page showHeader="false" sidebar="false" renderAs="pdf">
+
+	<!-- <apex:image url="{!$Resource.AstrumLogoWithName}" width="135" height="135" style="margin-top: -40px; margin-left: -18px; position: relative; z-index: -20;" /> -->
+	
+	<div style="width: 90%; height: 10px; position: absolute; top: 80px; left: 0px; z-index: -10; border-bottom: solid 1px #61af3f;">
+		
+	</div>
+	<div style="clear: both;"></div>
+	<div style="float: right; background-color: #fff; color: #61af3f; font-family: sans-serif; font-size: 8pt; font-weight: bold; padding-left: 0.5em; margin-top: -28px;">&nbsp;SEE A SUNNY DAY IN A WHOLE NEW WAY<sup><small>&reg;</small></sup></div>
+
+	<div style="clear: both;"></div>
+	<div style="padding: 20px 0; color: #61af3f; font-family: sans-serif; font-size: 14pt;">Demo: 12508 Deoudes Rd Boyds, MD</div>
+
+		<div style="border-bottom: solid 1px #61af3f; font-family: sans-serif; font-size: 10pt; margin: 0 0 36px 0; padding-left: 1em;">Solar Panel Design</div>
+			<center>
+			<apex:image url="/servlet/servlet.FileDownload?file={!$CurrentPage.parameters.id}" />
+			</center>
+
+		<div style="border-bottom: solid 1px #61af3f; font-family: sans-serif; font-size: 10pt; margin: 52px 0 36px 0; padding-left: 1em;">Summary</div>
+		<table style="width: 86%; margin-left: auto; margin-right: auto; font-family: sans-serif; font-size: 8pt;">
+			<tr>
+				<td><div style="border: solid 1px #808080; border-radius: 15px; background-color: #eee; text-align: center; margin: 10px; padding: 15px;"># OF 250 WATT PANELS<div style="font-size: 24pt; color: #61af3f">57</div></div></td>
+				<td><div style="border: solid 1px #808080; border-radius: 15px; background-color: #eee; text-align: center; margin: 10px; padding: 15px;">TOTAL SYSTEM SIZE (kW)<div style="font-size: 24pt; color: #61af3f">14.25</div></div></td>
+			</tr>
+			<tr>
+				<td><div style="border: solid 1px #808080; border-radius: 15px; background-color: #eee; text-align: center; margin: 10px; padding: 15px;">SITE QUALITY (kWh/kW/Year - TSRF)<div style="font-size: 24pt; color: #61af3f">1206 - 78%</div></div></td>
+				<td><div style="border: solid 1px #808080; border-radius: 15px; background-color: #eee; text-align: center; margin: 10px; padding: 15px;">ESTIMATED ANNUAL PRODUCTION (kWh)<div style="font-size: 24pt; color: #61af3f">17,183</div></div></td>
+			</tr>
+		</table>
+
+</apex:page>

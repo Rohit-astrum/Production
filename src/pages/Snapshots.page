@@ -1,0 +1,53 @@
+<apex:page controller="SnapshotsController" >
+
+<style type="text/css">
+	.center-col {
+		text-align: center;
+	}
+</style>
+
+	<apex:form >
+
+	<apex:outputPanel id="renderPane">
+	
+	<apex:pageBlock >
+	
+		<apex:pageBlockSection title="Sales Dashboard Snapshots [last 10 weeks]" collapsible="false">
+	
+			<apex:pageBlockTable value="{!snapshots}" var="s">
+			
+				<apex:column headerValue="Action" headerClass="center-col" styleClass="center-col">
+					<apex:commandButton value="{!IF(ISBLANK(s.lastModifiedBy),'Take snapshot','Retake snapshot')}" style="width:105px;" 
+						onclick="snap('{!JSENCODE(s.saleEndDate)}');return false;"/>
+				</apex:column>
+			
+				<apex:column headerValue="Sales Week Ending" headerClass="center-col" styleClass="center-col">
+					<apex:outputText value="{0,date,M/d/yyyy}">
+						<apex:param value="{!s.saleEnd}"/>
+					</apex:outputText>
+				</apex:column>
+				
+				<apex:column headerValue="Snapshot Taken">
+					<apex:outputText value="{!s.lastModified}"/> 
+				</apex:column>
+				
+				<apex:column headerValue="Taken By">
+					<apex:outputText value="{!s.lastModifiedBy}"/>
+				</apex:column>
+			
+			</apex:pageBlockTable>
+			
+			
+		</apex:pageBlockSection>
+	
+	</apex:pageBlock>
+	
+	</apex:outputPanel>
+
+	<apex:actionFunction name="snap" action="{!takeSnapshot}" rerender="renderPane">
+		<apex:param name="sDate" value="" assignTo="{!snapshotDate}"/> 
+	</apex:actionFunction>
+	
+	</apex:form>
+
+</apex:page>

@@ -1,0 +1,2451 @@
+<!--
+FILE: MyProjects2.page
+AUTHOR: Tino Mattheou
+DATE: March 12, 2012
+PURPOSE: Displays calendar and project grids for Astrum PM 2.0
+MODIFICATION HISTORY
+06/25/2012 TCM - zen-3 Bugfix for when date is added to calendar, should pass date serial long instead of JS date
+06/26/2012 TCM - zen-13 Sorting only shows 20 rows.  Set limit per grid to 500. 
+06/26/2012 TCM - zen-20 Customer Action Notes not editable in firefox
+06/27/2012 TCM - zen-2 Newly entered dates aren't sorted correctly (install, work completed, and customer care handoff)
+06/28/2012 TCM - fix for invalid long when moving calendar
+11/19/2012 TCM - multi-column layout for project leads
+01/18/2013 TCM - update to jquery 1.8.3, jquery ui 1.9.1
+01/18/2012 TCM - fix for notes disappear after sorting - zen-27
+01/21/2013 TCM - ajax loading
+04/4/2013 - JA - fixes for Datepicker/Timepicker and scrolling
+05/1/2013  RJ - Addition  of Change Request Icons
+05/17/2013  JA - Addition  of Change Request Icons
+01/17/2015  RJ - Fix for Calandar Drag Date - OPS-77
+10/28/2015	PB - SOA reflect survey date in calender and grid changes.
+12/15/2015  PB - SOA-38 Additional filters in MyProjects
+-->
+<apex:page controller="MyProjects2Controller" doctype="html-5.0" sidebar="false" title="My Projects" tabStyle="My_Projects2__tab" action="{!checkAccess}">
+
+<!-- forces Google Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+
+
+
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/redmond/jquery-ui.css"/>
+<link rel="stylesheet" type='text/css' href="{!URLFOR($Resource.fullcalendar153, 'fullcalendar/fullcalendar.css')}" />
+<link rel="stylesheet" type='text/css' href="{!URLFOR($Resource.fullcalendar153, 'fullcalendar/fullcalendar.print.css')}" media="print" />
+<link rel="stylesheet" type='text/css' href="{!URLFOR($Resource.jqGrid433, 'css/ui.jqgrid.css')}" />
+<link rel="stylesheet" type='text/css' href="{!URLFOR($Resource.timepicker100, 'jquery-ui-timepicker-addon.css')}" />
+
+<apex:variable var="kickoffField" value="Kickoff__c"/>
+<apex:variable var="surveyField" value="Survey_Date__c"/>
+<apex:variable var="approvalField" value="Approval_Date__c"/>
+<apex:variable var="installField" value="Install__c"/>
+<apex:variable var="inspectField" value="Inspection__c"/>
+<apex:variable var="handoffField" value="Customer_Care_Handoff__c"/>
+<apex:variable var="gCalURL" value="https://www.google.com/calendar/embed?src={!URLENCODE(SUBSTITUTE($User.Email,'astrumpm2',''))}&ctz={!userTimeZone}"/>
+
+<style type="text/css">
+
+    body, html {
+  
+    }
+    
+    #scrollWindow {
+        min-width: 3080px;
+        height: 100%;
+   
+    }
+    
+    
+  td.page-title {
+width: 200px;
+}
+ td.filter-block {
+width: 1300px;
+}
+
+td.ajax-loader {
+width: 300px;
+}
+
+.bPageBlock .detailList th, .bPageBlock .detailList td {
+vertical-align: middle;
+}
+  
+    
+    .pbSubheader {
+        margin-top: 5px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr { border-left : 1px solid; border-right : 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-rtl { border-left : 1px solid; border-right : 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { border-top: 1px solid; border-bottom: 1px solid; }
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #1D5987; }
+    .ui-jqgrid .ui-jqgrid-htable th { height: auto; }
+    .ui-jqgrid .ui-jqgrid-htable th div { overflow: visible; height: auto; }
+    
+    /* bug in Chrome v19 box-sizing and fixed table layout */
+    div.ui-jqgrid table.ui-jqgrid-htable th,
+    div.ui-jqgrid tr.jqgfirstrow td,
+    div.ui-jqgrid tr.jqgrow td {
+        padding: 0px 2px 0px 2px;
+        /* box-sizing: border-box; 
+        -webkit-box-sizing: border-box; */
+    }
+    
+    div.ui-jqgrid tr.jqgrow td {
+        border-left : 1px solid #ececec; border-right : 1px solid #ececec; 
+    }
+    
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column-header,
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { 
+        overflow: hidden;
+        background-image: none; 
+    }
+    
+    div.ui-jqgrid table.ui-jqgrid-htable, 
+    div.ui-jqgrid table.ui-jqgrid-btable {
+        border-collapse: collapse;
+    }
+    
+    div.ui-jqgrid div.ui-jqgrid-hdiv, 
+    div.ui-jqgrid div.ui-jqgrid-bdiv {
+        overflow: hidden;
+    }
+        
+    div.ui-jqgrid div.ui-jqgrid-view div.ui-jqgrid-hdiv {
+        border: none;
+    }
+    
+    
+    
+    #newProjects_name, 
+    #activeProjects_name, 
+    #onHoldProjects_name, 
+    #cancelledProjects_name, 
+    #plCompleteProjects_name, 
+    #finalCompleteProjects_name { 
+        border-top: 0px none; 
+    }
+
+
+th#newProjects_Ready_for_Installation__c, 
+th#activeProjects_Ready_for_Installation__c, 
+th#onHoldProjects_Ready_for_Installation__c, 
+th#cancelledProjects_Ready_for_Installation__c, 
+th#plCompleteProjects_Ready_for_Installation__c , 
+th#finalCompleteProjects_Ready_for_Installation__c {
+border-top: none!important;
+}
+
+    #newProjects_{!kickoffField}, 
+    #activeProjects_{!kickoffField}, 
+    #onHoldProjects_{!kickoffField}, 
+    #cancelledProjects_{!kickoffField}, 
+    #plCompleteProjects_{!kickoffField}, 
+    #finalCompleteProjects_{!kickoffField} { 
+        background-image: none; 
+        background-color: #fba751; /* astrum sunset 80% */ 
+    }
+    #jqgh_newProjects_{!kickoffField}, 
+    #jqgh_activeProjects_{!kickoffField}, 
+    #jqgh_onHoldProjects_{!kickoffField}, 
+    #jqgh_cancelledProjects_{!kickoffField}, 
+    #jqgh_plCompleteProjects_{!kickoffField},
+    #jqgh_finalCompleteProjects_{!kickoffField} {
+        color: black; 
+    }
+
+    #newProjects_{!surveyField}, 
+    #activeProjects_{!surveyField}, 
+    #onHoldProjects_{!surveyField}, 
+    #cancelledProjects_{!surveyField}, 
+    #plCompleteProjects_{!surveyField}, 
+    #finalCompleteProjects_{!surveyField} { 
+        background-image: none; 
+        background-color: #c014e1; /* purple */ 
+    }
+    #jqgh_newProjects_{!surveyField}, 
+    #jqgh_activeProjects_{!surveyField}, 
+    #jqgh_onHoldProjects_{!surveyField}, 
+    #jqgh_cancelledProjects_{!surveyField}, 
+    #jqgh_plCompleteProjects_{!surveyField},
+    #jqgh_finalCompleteProjects_{!surveyField} {
+        color: white; 
+    }
+
+    #newProjects_{!approvalField}, 
+    #activeProjects_{!approvalField}, 
+    #onHoldProjects_{!approvalField}, 
+    #cancelledProjects_{!approvalField}, 
+    #plCompleteProjects_{!approvalField}, 
+    #finalCompleteProjects_{!approvalField} { 
+        background-image: none; 
+        background-color: #008080; /* teal */ 
+    }
+    #jqgh_newProjects_{!approvalField}, 
+    #jqgh_activeProjects_{!approvalField}, 
+    #jqgh_onHoldProjects_{!approvalField}, 
+    #jqgh_cancelledProjects_{!approvalField}, 
+    #jqgh_plCompleteProjects_{!approvalField},
+    #jqgh_finalCompleteProjects_{!approvalField} {
+        color: white; 
+    }
+
+    #newProjects_{!installField}, 
+    #activeProjects_{!installField}, 
+    #onHoldProjects_{!installField}, 
+    #cancelledProjects_{!installField}, 
+    #plCompleteProjects_{!installField}, 
+    #finalCompleteProjects_{!installField} { 
+        background-color: #009DDC; /* astrum sky */
+    }
+    #jqgh_newProjects_{!installField}, 
+    #jqgh_activeProjects_{!installField}, 
+    #jqgh_onHoldProjects_{!installField}, 
+    #jqgh_cancelledProjects_{!installField}, 
+    #jqgh_plCompleteProjects_{!installField}, 
+    #jqgh_finalCompleteProjects_{!installField} { 
+        color: white; 
+    }
+    #newProjects_{!inspectField}, 
+    #activeProjects_{!inspectField}, 
+    #onHoldProjects_{!inspectField}, 
+    #cancelledProjects_{!inspectField}, 
+    #plCompleteProjects_{!inspectField}, 
+    #finalCompleteProjects_{!inspectField} { 
+        background-image: none; 
+        border-top: 0px none; 
+        background-color: #61AF3F; /* astrum leaf #282; */ 
+    }
+    #jqgh_newProjects_{!inspectField}, 
+    #jqgh_activeProjects_{!inspectField}, 
+    #jqgh_onHoldProjects_{!inspectField}, 
+    #jqgh_cancelledProjects_{!inspectField}, 
+    #jqgh_plCompleteProjects_{!inspectField}, 
+    #jqgh_finalCompleteProjects_{!inspectField} { 
+        color: white; 
+    }
+    #newProjects_{!handoffField}, 
+    #activeProjects_{!handoffField}, 
+    #onHoldProjects_{!handoffField}, 
+    #cancelledProjects_{!handoffField}, 
+    #plCompleteProjects_{!handoffField}, 
+    #finalCompleteProjects_{!handoffField} { 
+        background-image: none; 
+        border-top: 0px none; 
+        background-color: #fdf097; /* astrum sun 40% */
+    }
+    #jqgh_newProjects_{!handoffField}, 
+    #jqgh_activeProjects_{!handoffField}, 
+    #jqgh_onHoldProjects_{!handoffField}, 
+    #jqgh_cancelledProjects_{!handoffField}, 
+    #jqgh_plCompleteProjects_{!handoffField}, 
+    #jqgh_finalCompleteProjects_{!handoffField} { 
+        /* color: white; */ 
+    }
+    
+    .gridAltRows { color: black; background-color: lighcyan; background-image: none; }
+    
+    .noSidebarCell { padding-top: 0px; }
+    
+    .ui-widget-overlay { background-color: #404040; opacity: .65; background-image: none; }
+    
+    #binDialog .ui-dialog-buttonpane { 
+        margin: 0; 
+        border-top: 2px groove white;
+        background-color: #e3e3e3;
+    }
+    .ui-dialog .ui-dialog-buttonpane button { margin: 0; }
+    
+    .ui-dialog {
+        position: fixed;
+        }
+    
+    #calendar {
+        width: 1024px;
+        margin: 0;
+    }
+        
+    table#newProjects td.pcell, 
+    table#activeProjects td.pcell, 
+    table#onHoldProjects td.pcell, 
+    table#cancelledProjects td.pcell, 
+    table#plCompleteProjects td.pcell, 
+    table#finalCompleteProjects td.pcell { 
+        vertical-align: middle;
+    }
+
+    div#gbox_newProjects th.ui-th-column-header, 
+    div#gbox_activeProjects th.ui-th-column-header, 
+    div#gbox_onHoldProjects th.ui-th-column-header, 
+    div#gbox_cancelledProjects th.ui-th-column-header, 
+    div#gbox_plCompleteProjects th.ui-th-column-header, 
+    div#gbox_finalCompleteProjects th.ui-th-column-header { 
+        vertical-align: middle;
+    }
+    
+    table#newProjects .grid-checkbox,
+    table#activeProjects .grid-checkbox, 
+    table#onHoldProjects .grid-checkbox, 
+    table#cancelledProjects .grid-checkbox, 
+    table#plCompleteProjects .grid-checkbox, 
+    table#finalCompleteProjects .grid-checkbox { 
+        vertical-align: middle;
+    }
+    
+    .ui-jqgrid tr.jqgrow td {
+        font-weight: bold;
+    }
+    
+    .ui-jqgrid-sortable, .ui-jqgrid .ui-th-div-ie {
+        white-space: normal;
+        height: auto;
+    }
+    
+    .alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .green-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+     .orange-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .electric-alert-plus-note {
+        background-position: left top, right top, right center;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')}),url({!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')});
+    }
+
+    .alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')});
+    }
+    
+    .green-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')});
+    }
+    
+    .orange-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')});
+    }
+    
+    .electric-alert-only {
+        background-position: left top, right;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')});
+    }
+
+    .note-only {
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .grid-section-icon {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+        cursor: pointer;
+    }
+
+    .ui-state-highlight, .ui-widget-content .ui-state-highlight {
+        background-image: none;
+        background-color: #faf6de;
+    }
+
+    .ui-state-highlight.alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .ui-state-highlight.green-alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.green-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .ui-state-highlight.orange-alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.orange-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+
+    .ui-state-highlight.alert-only, .ui-widget-content .ui-state-highlight.alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')});
+    }
+    
+    .ui-state-highlight.green-alert-only, .ui-widget-content .ui-state-highlight.green-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')});
+    }
+    
+    .ui-state-highlight.orange-alert-only, .ui-widget-content .ui-state-highlight.orange-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')});
+    }
+
+    .ui-state-highlight.note-only, .ui-widget-content .ui-state-highlight.note-only {
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+
+    .inprogress-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')});
+        background-position: center;
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+    }
+    .ui-state-highlight.inprogress-only, .ui-widget-content .ui-state-highlight.inprogress-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')});
+        background-position: center;
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+    }
+    
+    .filter-block {
+        display: none;
+    }
+    
+    span.filter-button {
+        /* min-width: 120px; */
+        margin-right: 0px;
+        /* background-color: #paleturquoise important!; */
+        background-image: none;
+    }
+    
+    span.filter-button .ui-button-text {
+        text-align: left;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    
+    span.filter-button .ui-button-icon-secondary {
+        top: 75%;
+    }
+    
+    span.filter-button span.selections {
+        color: black;
+    }
+
+    .filter-label {
+        font-weight: bold;
+        vertical-align: top;
+        position: relative;
+        top: 12px;
+        margin-right: 5px;
+        font-size: 105%;
+    }
+
+    .filter-apply,
+    .filter-default {
+        vertical-align: top;
+        margin-left: 5px;
+    }
+
+    .filter-clear {
+        margin-left: 5px;
+    }
+    
+    .filter-hidden {
+        margin-left: 5px;
+        visibility: hidden;
+    }
+    
+    span.selections {
+        font-weight: normal;
+    }
+    
+    .option-selection-box {
+        padding: 10px;
+        box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+        border: 1px solid black;
+        z-index: 100;
+    }
+    
+    .pageDescription {
+        white-space: nowrap; 
+    }
+    
+    /* calendar styles */
+    
+    .fc-border-separate { border: 1px solid #2E6E9E; }
+    
+    #calendar {
+        margin-bottom: 10px;
+    }
+    
+    #calendar div.fc-day-number {
+        float: left;
+        padding: 0 2px;
+    }
+    #calendar td.fc-widget-content { 
+        border: 1px solid #DFEFFC; 
+    }
+    #calendar td.fc-first {
+        border-left: 1px solid #2E6E9E;
+    } 
+    #calendar td.fc-last {
+        border-right: 1px solid #2E6E9E;
+    } 
+    #calendar tr.fc-last td {
+        border-bottom: 1px solid #2E6E9E;
+    } 
+    #calendar table {
+        border-collapse: collapse;
+    }
+    #calendar th.fc-widget-header {
+        color: #2E6E9E;
+        background-color: #DFEFFC;
+        border: 1px solid #2E6E9E;
+    }
+    .fc-content { clear: none; }
+    
+    .fc-event { font-size: 1em; }
+    
+    a.fc-event-skin:hover { text-decoration: none; }
+    
+    .fc-event-skin { background-color: #009DDC; }
+    
+    td.fc-sat,
+    td.fc-sun {
+        background-color: #f0f0f0;
+    }
+    
+    .cal-kickoff-event .fc-event-skin {
+        background-color: #fba751; /* astrum sunset 80% */  /* sandyBrown #ffca6e*/
+        color: #000;
+    }
+    .cal-survey-event .fc-event-skin {
+        background-color: #c014e1; /* purple*/
+        color: #FFFFFF;
+    }
+
+    .cal-inspect-event .fc-event-skin {
+        background-color: #61AF3F; /* #228822 */
+    }
+    
+    .access-link {
+        margin: 10px;
+        font-weight: bold;
+        /* color: red; */
+        display: block;
+    /*  text-decoration: none; */
+        text-align: center;
+        float: right;
+        
+    }
+    .revoke-link {
+        margin: 10px;
+        font-weight: bold;
+        color: blue;
+        display: block;
+        /* text-decoration: none; */
+        text-align: center;
+        float: right;
+    }
+    .google-sync {
+        margin: 10px;
+        font-weight: bold;
+        /* color: red; */
+        display: block;
+        clear: right; 
+    /*  text-decoration: none; */
+        text-align: center;
+        float: right;
+    }
+    
+    #customer-action-notes {
+        width: 600px;
+        height: 400px;
+        margin: 3px;
+        resize: none;
+    }
+    
+    #projLeadOptions {
+        -webkit-column-count: 2;
+        width: 300px;       
+    }
+
+    #projLeadOptions div {
+        white-space: nowrap;
+    }
+
+    #projSurveyorOptions div {
+        white-space: nowrap;
+    }
+
+    #designerOptions div {
+        white-space: nowrap;
+    }
+
+    #engineerOptions div {
+        white-space: nowrap;
+    }
+    #installrOptions div {
+        white-space: nowrap;
+    }      
+   
+   
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.jqGrid433, 'js/i18n/grid.locale-en.js')}"></script>
+<script type='text/javascript'>$.jgrid.no_legacy_api = true;</script>
+<script type="text/javascript" src="{!URLFOR($Resource.jqGrid433, 'js/jquery.jqGrid.min.js')}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.fullcalendar153, 'fullcalendar/fullcalendar.min.js')}"></script>
+<!-- 
+<script type="text/javascript" src="{!URLFOR($Resource.timepicker100, 'jquery-ui-timepicker-addon.js')}"></script>
+--> 
+<script type="text/javascript" src="{!URLFOR($Resource.timepicker100tino)}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.jquery_scrolltofixed, 'js/jquery-scrolltofixed.js')}"></script>
+
+
+
+
+<script type='text/javascript'>
+
+    //TODO: create a javascript object to house these globals
+    var appName = 'PL';
+    
+    var nameToColIdMap = {}; 
+    var nameToColIndexMap = {};
+    
+    var projectFilters = [];
+    
+    var timezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
+    
+    var sorting = false;
+    
+    
+    var projectInfoCols = [
+        'Fact_Sheet__c',
+        'Property__r.Property_City__c',
+        'Property__r.Property_State__c',
+        'Property__r.Property_County__c',
+        'Sales_Order__r.Financing_Type__c',
+        'Constellation_Tranche__c',
+        'Project_Lead__r.Name', 
+        'Property__r.Astrum_Office__c',
+    ];
+
+    var preApprovalCols = [
+        <!-- Pre-Approval Bins -->
+        <apex:repeat value="{!binConfig}" var="bc">
+            <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Approval'}">
+                '{!bc.Field_Name__c}',
+            </apex:outputPanel>
+        </apex:repeat>
+    ]; 
+    
+    var preInstallCols = [
+        <!-- Pre-Installation Bins -->
+        <apex:repeat value="{!binConfig}" var="bc">
+            <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Installation'}">
+                '{!bc.Field_Name__c}',
+            </apex:outputPanel>
+        </apex:repeat>
+        'Customer_Action_Notes__c',
+        'Ready_for_Installation__c',
+    ];
+    
+    var postInstallCols = [
+        <!-- Post-Installation Bins -->
+        <apex:repeat value="{!binConfig}" var="bc">
+            <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Installation'}">
+                '{!bc.Field_Name__c}',
+            </apex:outputPanel>
+        </apex:repeat>
+    ];
+                
+    var postInspectCols = [
+        <!-- Post-Inspection Bins -->
+        <apex:repeat value="{!binConfig}" var="bc">
+            <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Inspection'}">
+                '{!bc.Field_Name__c}',
+            </apex:outputPanel>
+        </apex:repeat>
+    ];
+    
+    //formats project name into link
+    function projectLinkFormatter(cellValue, options, rowObject) {
+        if (cellValue) {
+            if (rowObject.Id == "EMPTYID" || rowObject.id == 'EMPTYID') {
+                return cellValue;
+            } else {
+                return '<a href="/' + (rowObject.Id ? rowObject.Id : rowObject.id)
+                    + '" target="_blank" style="text-decoration: underline;">' + cellValue + '</a>';
+            }
+        } else {
+            return "";
+        } 
+    }
+    
+    var emptyGrid = [ {Id: "EMPTYID", Name:"NO PROJECTS" } ];
+    
+    var hasNJ = false;
+    var hasMD = false;
+    
+    var requestCount = 0;
+    
+    var lastDateTimePick;
+    
+   
+    function populateGrid (status, selector) {
+        requestCount++;
+        MyProjects2Controller.getProjects(appName, status, projectFilters, function (result, event) {
+            requestCount--;
+            $(selector).jqGrid('clearGridData');
+            if (event.status) {
+                //populate grid data
+                if (result.length) {
+                    //reformat related data
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].Sales_Order__r && result[i].Sales_Order__r.Property__r) {
+                            //TODO: normalize names
+                            result[i]['Property__r.Property_City__c'] = result[i].Sales_Order__r.Property__r.Property_City__c;
+                            result[i]['Property__r.Property_State__c'] = result[i].Sales_Order__r.Property__r.Property_State__c;
+                            result[i]['Property__r.Property_County__c'] = result[i].Sales_Order__r.Property__r.Property_County__c;
+                            result[i]['Property__r.Astrum_Office__c'] = result[i].Sales_Order__r.Property__r.Astrum_Office__c;
+                            if (result[i]['Property__r.Property_State__c'] == 'NJ') {
+                                hasNJ = true;
+                            } else if (result[i]['Property__r.Property_State__c'] == 'MD') {
+                                hasMD = true;
+                            }
+                        }
+                        if (result[i].Sales_Order__r) {
+                            result[i]['Sales_Order__r.Financing_Type__c'] = result[i].Sales_Order__r.Financing_Type__c;
+                        }
+                        if (result[i].Project_Lead__r) {
+                            result[i]['Project_Lead__r.Name'] = result[i].Project_Lead__r.Name;
+                        }
+                    }
+                    var grid = $(selector); 
+                    grid.jqGrid('setGridParam', { 'cellEdit': true });
+                    grid.jqGrid('addRowData', 'Id', result);
+                    grid.data('projectGrid', { status: status });
+                    grid.data('projectIssuesNotes', { notes: result });
+                    addIssuesAndNotes(grid, result);
+                    markInProgress(grid, result);
+
+                    //only active projects go on the calendar
+                    if (status == 'Active') {
+                        populateCalendar(result);
+                    }
+                    //SOA PB 11/16/2015 - Make Ready for installation checkbox not editable
+                    //$(':checkbox', selector).removeAttr('disabled');                    
+                } else {
+                    $(selector).jqGrid('addRowData', 'Id', emptyGrid);
+                    $(selector).jqGrid('setGridParam', { 'cellEdit': false });
+                    $(':checkbox', selector).attr('disabled', 'disabled');
+                }
+            } else {
+                alert(event.message);
+            }
+            if (requestCount == 0) {
+                reloadGridComplete();
+            }
+        });
+    }
+    
+    function populateCalendar(result) {
+        var calEvents = [];
+        for (var i = 0; i < result.length; i++) {
+            var row = result[i];
+            //survey
+            if (row.Survey_Date__c) {
+                calEvents.push({
+                    id: row.Id + ':Survey_Date__c', 
+                    title: "Survey: " + row.Name,
+                    start: new Date(row.Survey_Date__c /* + timezoneOffset */),
+                    end: new Date(row.Survey_Date__c + 3600 * 1000 /* + timezoneOffset */),
+                    className: "cal-survey-event",
+                    url: '/' + row.Id,
+                    allDay: false
+                });
+            }//end
+            if (row.Kickoff__c) {
+                calEvents.push({
+                    id: row.Id + ':Kickoff__c', 
+                    title: "Kickoff: " + row.Name,
+                    start: new Date(row.Kickoff__c /* + timezoneOffset */),
+                    end: new Date(row.Kickoff__c + 3600 * 1000 /* + timezoneOffset */),
+                    className: "cal-kickoff-event",
+                    url: '/' + row.Id,
+                    allDay: false
+                });
+            }
+            if (row.Install__c) {
+                calEvents.push({ 
+                    id: row.Id + ':Install__c', 
+                    title: "Install: " + row.Name,
+                    start: new Date(row.Install__c + timezoneOffset), //salesforce Date becomes a GMT time, must convert to local to display properly
+                    className: "cal-install-event",
+                    url: '/' + row.Id
+                });
+            }
+            if (row.Inspection__c) {
+                calEvents.push({ 
+                    id: row.Id + ':Inspection__c', 
+                    title: "Inspection: " + row.Name,
+                    start: new Date(row.Inspection__c /* + timezoneOffset */),
+                    end: new Date(row.Inspection__c + 3600 * 1000 /* + timezoneOffset */),
+                    className: "cal-inspect-event",
+                    url: '/' + row.Id,
+                    allDay: false
+                });
+            }
+        }
+        if (calEvents.length > 0) {
+            $('#calendar').fullCalendar('addEventSource', calEvents);
+        }
+        $('#calendar a.fc-event').attr('target','_blank');  
+    }
+//SOA PB 10/28/2015
+    function markInProgress (grid, result) {
+        for (var i = 0; i < result.length; i++) {
+            var row = result[i];
+            var rowid = row.Id;
+
+            if(typeof row.Kickoff_Documents__c !== 'undefined' && typeof row.Survey_Docs__c !== 'undefined'){
+                var dt = new Date(row.Kickoff_Documents__c);
+                var dt2 = new Date(row.Survey_Docs__c);
+                
+                //Mark cells as in progress based on bin completion of certain bins
+                if(dt.getFullYear() < 4000 && dt2.getFullYear() < 4000 ){
+                    if(row.Prelim_Structural_Engineering_Review__c == null){                        
+                        var colIndex1 = nameToColIndexMap['Prelim Structural Engineering Review'];                       
+                        var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';
+                        $(selector1).addClass('inprogress-only');
+                        //var colid = nameToColIdMap['Prelim Structural Engineering Review'];
+                        //grid.jqGrid('setCell', rowid, colid, '', 'inprogress-only', { title: description });
+                    }
+                    if(row.Preliminary_Electric_Review__c == null){                        
+                        var colIndex1 = nameToColIndexMap['Preliminary Electric Review'];                       
+                        var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';
+                        $(selector1).addClass('inprogress-only');
+                        //grid.jqGrid('setCell', rowid, colIndex1, '', 'inprogress-only', { title: description });                        
+                    }
+                    if(row.Prelim_Solar_Engineering_Review__c == null){
+                        var colIndex1 = nameToColIndexMap['Prelim Solar Engineering Review'];                       
+                        var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';
+                        $(selector1).addClass('inprogress-only');
+                        //grid.jqGrid('setCell', rowid, colIndex1, '', 'inprogress-only', { title: description });                        
+                    }
+                }
+            }
+
+            //MIS-205 PB 01/28/2016 
+            //If Survey event completed make survey date not editable
+            var hasSurveyEvent = row.Events != null && row.Events.length > 0;            
+            var hasSurveyEventCompleted;
+
+            if(hasSurveyEvent){
+                console.log('hasSurveyEvent');
+                hasSurveyEventCompleted = row.Events[0].Completed__c ;               
+            }
+            if(typeof hasSurveyEventCompleted !== 'undefined' && hasSurveyEventCompleted){
+                console.log('hasSurveyEventCompleted');
+                var colIndex1 = nameToColIndexMap['Survey'];                       
+                var selector1 = '#' + row.Id + ' td:eq(' + colIndex1 + ')'; 
+                console.log(selector1);                        
+                $(selector1).addClass('not-editable-cell');
+            }   
+        }
+                                
+    }
+    
+    function addIssuesAndNotes(grid, result) {
+        //determine if there are any alerts
+        for (var i = 0; i < result.length; i++) {
+            var row = result[i];
+            var rowid = row.Id;
+            
+            var hasIssues = row.PM_Project_Issues__r != null && row.PM_Project_Issues__r.length > 0;
+            var hasNotes = row.Astrum_Docs__r != null && row.Astrum_Docs__r.length > 0;            
+            
+            if (hasIssues) {
+                for (var j = 0; j < row.PM_Project_Issues__r.length; j++) {
+                  
+                    var issue = row.PM_Project_Issues__r[j];                   
+                    if (issue.Bin__c) {                       
+                       
+                        var colid = nameToColIdMap[issue.Bin__c];
+                        if (colid) {    
+                            var colIndex1 = nameToColIndexMap[issue.Bin__c];                       
+                            var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';                                
+                            var description = 'ISSUE: ' + issue.Description__c; 
+                            
+                            if(issue.Status__c == 'Fixed' && issue.To__c != 'PL') 
+                            {  
+                                if ($(selector1).hasClass('orange-alert-only'))
+                                {
+                                    $(selector1).removeClass('orange-alert-only').addClass('green-alert-only');
+                                }     
+                                grid.jqGrid('setCell', rowid, colid, '', 'green-alert-only', { title: description });
+                            }    
+                            else if(issue.Status__c == 'Open' && issue.To__c != 'PL')  
+                            {                                     
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });
+                            }    
+                            else if(issue.Status__c == 'Open' && issue.To__c == 'PL') 
+                            {
+                                if ($(selector1).hasClass('orange-alert-only') )                                    
+                                     $(selector1).removeClass('orange-alert-only').addClass('alert-only');      
+                                if ($(selector1).hasClass('green-alert-only') )                                    
+                                     $(selector1).removeClass('green-alert-only').addClass('alert-only'); 
+                                
+                                grid.jqGrid('setCell', rowid, colid, '', 'alert-only', { title: description }); 
+                            }    
+                            else if(issue.Status__c == 'Fixed' && issue.To__c == 'PL' && issue.Bin__c == 'Electrical Review') 
+                            {
+                                if (!($(selector1).hasClass('alert-only')))   
+                                    grid.jqGrid('setCell', rowid, colid, '', 'green-alert-only', { title: description });  
+                             }       
+                            else if(issue.Status__c == 'Open' && issue.To__c == 'PL' && issue.Bin__c == 'Electrical Review')                                    
+                                grid.jqGrid('setCell', rowid, colid, '', 'alert-only', { title: description });                                   
+                            else
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });
+                                    
+                        }    
+                    }
+                }
+            }
+            
+            if (hasNotes) {
+                for (var j = 0; j < row.Astrum_Docs__r.length; j++) {
+                    var note = row.Astrum_Docs__r[j];
+                    if (note.Bin__c) {
+                        var colIndex = nameToColIndexMap[note.Bin__c];
+                        var selector = '#' + rowid + ' td:eq(' + colIndex + ')';
+                        if ($(selector).hasClass('alert-plus-note') || $(selector).hasClass('green-alert-plus-note') || $(selector).hasClass('orange-alert-plus-note') || $(selector).hasClass('note-only')) {
+                            //nothing to do here, already set
+                        } else if ($(selector).hasClass('alert-only')) {
+                            $(selector).removeClass('alert-only').addClass('alert-plus-note');     
+                        } else if ($(selector).hasClass('green-alert-only')) {
+                            $(selector).removeClass('green-alert-only').addClass('green-alert-plus-note');                                 
+                        } else if ($(selector).hasClass('orange-alert-only')) {
+                            $(selector).removeClass('orange-alert-only').addClass('orange-alert-plus-note');                                 
+                        } else {
+                            $(selector).removeClass('alert-only').addClass('note-only');
+                        }
+                    }
+                }
+            } 
+        }
+    }
+    
+    //collapse grid sections
+    function collapseSection(e) {
+        var $t = $(this);
+        var group = $t.attr('data-group');
+        var gridId = $('table.project-grid', $t.closest('div.ui-jqgrid')).attr('id');
+        var gridContainer = '#gbox_' + gridId;
+        gridId = '#' + gridId; 
+        var $icons = $('span.grid-section-icon', gridContainer);
+        var headerIndex = $icons.index(this);
+        
+        //determine the current state of the section headers
+        var expanded = {};
+        $icons.each(function (index, item) {
+            expanded[index] = $(this).hasClass('ui-icon-triangle-1-s');
+        });
+        
+        //unbind the click event on the section header icons
+        $icons.unbind('click');
+        
+        //hide or show the columns for the section
+        $(gridId).jqGrid(expanded[headerIndex] ? 'hideCol' : 'showCol', window[group]);
+       // $(gridId).jqGrid(hasNJ ? 'showCol' : 'hideCol', 'NJ_SREC_Docs__c');
+        $(gridId).jqGrid(hasMD ? 'showCol' : 'hideCol', 'Property_Tax_Approved__c');
+        
+        //collapsing or expanding sections, makes new sections
+        $icons = $('span.grid-section-icon', gridContainer);
+        
+        //reset the section headers to their previous state
+        $icons.each(function (index, item) {
+            if ($(this).hasClass('ui-icon-triangle-1-s') != expanded[index]) {
+                $(this).toggleClass('ui-icon-triangle-1-e ui-icon-triangle-1-s');
+            }
+        });
+        
+        //toggle the clicked section header
+        if ($icons.eq(headerIndex).hasClass('ui-icon-triangle-1-s') == expanded[headerIndex]) {
+            $icons.eq(headerIndex).toggleClass('ui-icon-triangle-1-e ui-icon-triangle-1-s');
+        }
+    
+        //bind the click event on the section header icons
+        $icons.bind('click', arguments.callee);
+    }
+
+    //reload the row    
+    function dialogClose(evt, ui) {       
+        var data = $('#binDialog').data('binDialog');
+       
+        MyProjects2Controller.getProjects(appName, data.status, projectFilters, function (result, event) {
+            if (event.status) {
+                for (var i = 0; i < result.length; i++) {
+                    if (result[i].Id == data.rowId) {                        
+                        var row = result[i];
+                        var binField = nameToColIdMap[data.binName];
+                        
+                        if (binField && row[binField] == undefined) {
+                            row[binField] = null;
+                        }
+                        data.jqGrid.jqGrid('setRowData', row.Id, row);
+
+                        //update the saved notes data for sorting                       
+                        var notesData = data.jqGrid.data('projectIssuesNotes');
+                        if (notesData != null && notesData.notes != null) {
+                            notesData = notesData.notes;
+                            for (var j = 0; j < notesData.length; j++) {
+                                if (notesData[j].Id == data.rowId) {
+                                    notesData[j] = row;
+                                    break;
+                                }
+                            }
+                        }
+                       
+                      
+                        $('td', '#'+row.Id).removeClass('alert-only').removeClass('note-only').removeClass('alert-plus-note').removeClass('green-alert-only').removeClass('orange-alert-only').removeClass('orange-alert-plus-note').removeClass('green-alert-plus-note');   
+                        addIssuesAndNotes(data.jqGrid, [row]);
+                        markInProgress(data.jqGrid, [row]);
+                        return false;
+                    }
+                }
+            } else {
+                alert(event.message);
+            }
+        });
+    }
+
+    //onload
+    $(function() {
+
+        //TODO: persist sections that are closed    
+        //close the calendar --
+        /*
+        $("img[name='Calendar']").each(function() {
+            twistSection(this);
+        });
+        */
+        
+        //fix for jqgrid width cutoff
+        $.jgrid.cellWidth = function() { return false; }
+        
+        $('#scrollWindow').scroll(function(e) {
+            e.preventDefault();
+        });
+        
+        
+        $("img[name='Google\\ Calendar'],img[name='New\\ Projects'],img[name='On-Hold\\ Projects'],img[name='Cancelled\\ Projects'],img[name='PL\\ Complete\\ Projects'],img[name='Final\\ Complete\\ Projects']").each(function() {
+            twistSection(this);
+        })
+        
+        //formats integer from remote to a date
+        var remoteDateFormatter = function (cellValue, options, rowObject) {
+            if (cellValue) {
+                var dt = new Date(cellValue);
+                if (isNaN(dt)) {
+                    return cellValue;
+                }
+             
+                var dtFormatted = (dt.getUTCMonth() + 1) + "/" + dt.getUTCDate() + "/" + (dt.getUTCFullYear() % 100); 
+                //var dtFormatted = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + (dt.getFullYear() % 100); 
+                
+                console.log('$$'+ dt.getFullYear());
+                //alert(dtFormatted + ' - '+dt.getFullYear() );
+                if (dt.getFullYear() > 30000) {                   
+                     return '<span>' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 27000) {                   
+                   return '<span style="color:darkorange">' + dtFormatted + '</span>';
+                }                
+                else if (dt.getFullYear() > 24000) {                   
+                    return '<span style="color:#FF0000">'  + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 20000) {                   
+                    return '<span style="color:#FF0000">' +  '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 16000) {                   
+                    return '<span style="color:#FF0000">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 14000) {                   
+                    return '<span style="color:#542172">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_fixed.gif')}"/>';
+                }    
+                else if (dt.getFullYear() > 8000) {                   
+                    return '<span style="color:darkorange">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')}"/>';
+                } else if (dt.getFullYear() > 6000) {
+                    return '<span style="color:blue">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/signed-16.png')}"/>';
+                } else if (dt.getFullYear() > 4000) {
+                    return '<span style="color:green">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/artists_alphabet_p.gif')}"/>';
+                } else {
+                    
+                    return dtFormatted;
+                }
+            } else {
+                return "";
+            } 
+        };
+
+        //do nothing...     
+        var textFormatter = function (cellValue, options, rowObject) {
+            if (cellValue) {
+                return cellValue;
+            }
+            return '';
+        }
+        
+        var customerActionFormatter = function (cellValue, options, rowObject) {
+         
+            if (rowObject['Customer_Action_Notes__c'] && !rowObject['Customer_Action_Resolved__c'] && !rowObject['CR_Status__c'] && !rowObject['Lease_Funding_Status__c']) {
+                return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+            }
+            else if (rowObject['Customer_Action_Notes__c'] && !rowObject['Customer_Action_Resolved__c'] && (rowObject['CR_Status__c'] || rowObject['Lease_Funding_Status__c'])) {
+                if(rowObject['CR_Status__c'] == 'S' || rowObject['Lease_Funding_Status__c'] == 'Change Pending'  )
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}"/><img width="16" height="16" style="vertical-align:middle;padding-left:3px;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'P' || rowObject['Lease_Funding_Status__c'] == 'Ready to Prepare' )
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}"/><img width="16" height="16" style="vertical-align:middle;padding-left:3px;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'C' || rowObject['Lease_Funding_Status__c'] == 'Ready to Install'  )
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}"/><img width="16" height="16" style="vertical-align:middle;padding-left:3px;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+                                        
+            }
+            else if (!rowObject['Customer_Action_Notes__c'] && !rowObject['Customer_Action_Resolved__c'] && (rowObject['CR_Status__c'] || rowObject['Lease_Funding_Status__c']))
+            {
+                if(rowObject['CR_Status__c'] == 'S' || rowObject['Lease_Funding_Status__c'] == 'Change Pending')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'P' || rowObject['Lease_Funding_Status__c'] == 'Ready to Prepare')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'C' || rowObject['Lease_Funding_Status__c'] == 'Ready to Install')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}"/>';
+                                        
+            }
+            
+             else if (rowObject['Customer_Action_Notes__c'] && rowObject['Customer_Action_Resolved__c'] && (rowObject['CR_Status__c'] || rowObject['Lease_Funding_Status__c']))
+            {
+                if(rowObject['CR_Status__c'] == 'S' || rowObject['Lease_Funding_Status__c'] == 'Change Pending')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'P' || rowObject['Lease_Funding_Status__c'] == 'Ready to Prepare')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'C' || rowObject['Lease_Funding_Status__c'] == 'Ready to Install')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}"/>';
+                                        
+            }
+ 
+            return '';
+        }
+
+        //formats integer from remote to a date
+        var dateTimeFormatter = function (cellValue, options, rowObject) {
+            if (cellValue) {
+                //alert('FORMATTER: ' + cellValue);
+            }
+            return remoteDateFormatter(cellValue, options, rowObject);
+        };
+
+        var dateTimeUnformatter = function (cellValue, options) {
+            //alert('UNFORMATTER: ' + $.datepicker.parseDate('m/d/y hh:mm tt', cellValue));
+        };
+        
+       
+        
+        var addDatePicker = function (elem) {
+            lastDateTimePick = null; 
+            $(elem).datepicker({
+                dateFormat: "m/d/y", 
+                numberOfMonths: 2,
+                onClose: function(dateText, inst) {
+                    lastDateTimePick = $(this).datepicker('getDate');
+                    var $grid = $('.project-grid', inst.input.closest('div.ui-jqgrid'));
+                    var iCol = inst.input.parent().index();
+                    var iRow = inst.input.attr('id').split('_')[0];
+                    $grid.jqGrid('saveCell', iRow, iCol);
+                },
+                beforeShow:  function ( input, inst ) {
+                    setTimeout(function() { $('#ui-datepicker-div').css('z-index', 999); }, 10)             
+                
+            }
+            })
+            .css('width', '92%');
+            ;
+            
+        }
+
+
+       
+
+        var addDateTimePicker = function (elem) {
+            var oldWidth = 80; //= $column.first().width();
+            lastDateTimePick = null; 
+            $(elem).datetimepicker({
+                dateFormat: "m/d/y", 
+                stepMinute: 15,
+                ampm: true,
+                showButtonPanel: false,
+                alwaysSetTime: true,
+                beforeShow: function ( input, inst ) {
+                    var rowId = inst.input.closest('tr').attr('id');
+                    var $jqgrid = inst.input.closest('div.ui-jqgrid');
+                    var $grid = $('.project-grid', $jqgrid);
+                    var row = $grid.jqGrid('getLocalRow', rowId);
+                    var elemId = inst.input.attr('id');
+                    var dateField = elemId.substr(elemId.indexOf('_') + 1);
+                    var savedValue = row[dateField];
+                    //convert to date time format 
+                    if (savedValue && typeof(savedValue) == 'number' ) {
+                        var dateValue = new Date(savedValue /* + timezoneOffset */);
+                        var inputValue = $.datepicker.formatDate('m/d/y', dateValue) + ' ' 
+                            + $.datepicker.formatTime('h:mm tt', {hour: dateValue.getHours(), minute: dateValue.getMinutes()}, {ampm: true});
+                        inst.input.val(inputValue);
+                    }
+                    var index = inst.input.parent().index();
+                    var $column = $('table.ui-jqgrid-htable tr:first th:eq(' + index + '), table.ui-jqgrid-btable tr:first td:eq(' + index + ')', $jqgrid); 
+                    oldWidth = $column.first().width();
+                    $column.width(100);
+                
+                    setTimeout(function() { $('#ui-datepicker-div').css('z-index', 999); }, 10)
+            
+                },
+                onClose: function(dateText, inst) {
+                    lastDateTimePick = $(this).datetimepicker('getDate');
+                    var index = inst.input.parent().index();
+                    var $jqgrid = inst.input.closest('div.ui-jqgrid');
+                    var $column = $('table.ui-jqgrid-htable tr:first th:eq(' + index + '), table.ui-jqgrid-btable tr:first td:eq(' + index + ')', $jqgrid); 
+                    $column.width(oldWidth);
+                    var $grid = $('.project-grid', inst.input.closest('div.ui-jqgrid'));
+                    var iCol = inst.input.parent().index();
+                    var iRow = inst.input.attr('id').split('_')[0];
+                    //$grid.jqGrid('saveCell', iRow, iCol);
+
+                    //MIS-212 PB 01/28/2016
+                    if(inst.id.toLowerCase().indexOf("survey_date__c") >=0){
+                        var projectId = $(this).closest('tr').attr('id');
+                        MyProjects2Controller.updateSurveyEventDate(projectId, dateText, function (result, event) {
+                            if (event.status) {
+                                $grid.jqGrid('saveCell', iRow, iCol);                                
+                            } else {
+                                alert(event.message);
+                            }
+                        });
+                    }else{
+                        $grid.jqGrid('saveCell', iRow, iCol);
+                    }
+                },
+            });
+        }
+        
+        //handles when grid cells are clicked on    
+        var onCellSelect = function (rowId, colId, cellContent, evt) {
+            
+            var $t = $(this);
+        
+            if (rowId == "EMPTYID") {
+                $t.jqGrid('resetSelection');
+                return false;
+            }
+
+            var binName = $t.jqGrid('getGridParam', "colNames")[colId];
+            
+            //editing a project date
+            if (binName == "Kickoff" || binName == "Install" || binName == "Inspection" || binName == 'Work Completed' || binName == "Approval" || binName == "Survey" ) {
+                return;
+            }
+            //non-editable columns
+            if (binName == "Project" || binName == "Ready for Install" || binName == "Fact Sheet"
+            || binName == "State" || binName == "Finance Type" || binName == "County" || binName == "City" || binName == "County"   
+            || binName == "Project Lead" || binName == "Astrum Office" || binName == "Tranche") {
+                return;
+            }
+            //customer action notes dialog
+            if (binName == "Customer Action Notes") {
+                var row = $t.jqGrid('getLocalRow', rowId);
+                $('#customer-action-notes').val(row.Customer_Action_Notes__c);
+                if (row.Customer_Action_Resolved__c) {
+                    $('#customer-action-resolved').attr('checked', 'checked');
+                } else {
+                    $('#customer-action-resolved').removeAttr('checked');
+                }
+                $(document).enableSelection();
+                $("#customer-action-dialog")
+                    .dialog("option", "title", row.Name)
+                    .data("customerAction", { 
+                        rowId: rowId,
+                        jqGrid: $t 
+                    }) 
+                    .dialog('open');
+                return false;
+            }
+
+         //Handoff to Customer Care dialog
+          if (binName == "Handoff to Customer Care") {
+                var handoffUrl = "/apex/ProjectHandoff?id=" + rowId;
+                var $handoffDialog = $("#handoffDialog");
+                var $handoffFrame = $("#handoffFrame");                 
+                $handoffDialog.dialog("option", "title", "Handoff to Customer Care");
+                
+                $("#handoffFrame").hide();
+                $("#handoffLoading").show();
+                $("#handoffFrame").load(function () {
+                    $(this).unbind('load');
+                    $("#handoffLoading").hide();
+                    $("#handoffFrame").show();
+                });
+                 $('#handoffDialog').dialog("open");
+                $("#handoffFrame").attr("src", handoffUrl );               
+                
+                return false;   
+                
+             }
+
+
+            $('td.ui-state-highlight', '#'+rowId).removeClass('ui-state-highlight'); 
+            var binUrl = "/apex/DocumentBinDialog?id=" + rowId + "&binName=" + encodeURIComponent(binName) + "&appName=" + appName;
+            var $binDialog = $("#binDialog");
+            var $binFrame = $("#binFrame"); 
+            $binDialog.dialog("option", "title", binName);
+//$binDialog.dialog("option", "position", { my: "center center", at: "center center", of: $t } );
+            $binFrame.hide();
+            $("#binFrameLoading").show();
+            $binFrame.load(function () {
+                $t.unbind('load');
+                $("#binFrameLoading").hide();
+                $binFrame.show();
+            });
+            //store data to use to update the grid after close
+            $binDialog.data('binDialog', { 
+                rowId: rowId,
+                colId: colId,
+                binName: binName,
+                status: $t.data('projectGrid').status,
+                jqGrid: $t 
+            });
+            $binDialog.dialog('open');
+            $binFrame.attr('src', binUrl);
+            
+            return false;   
+        }
+
+        //handle scroll window sizing/resizing
+        var resizer = function () {
+            $('#scrollWindow').width($(window).width() - 30);
+           // $('#scrollWindow').height($(window).height() - $('.bPageHeader').height());
+           
+        }
+        resizer();  
+        $(window).resize(resizer);
+    
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        
+        var calendar = $('#calendar').fullCalendar({
+            header: {
+                left: 'month,agendaWeek,agendaDay',
+                center: 'title',
+                right: 'prev,next'
+            },
+            //theme: true,
+            weekMode: 'liquid', 
+            firstHour: 8,
+            slotMinutes: 30,
+            timeFormat: 'h:mmtt',
+            contentHeight: 300, 
+            defaultView: 'month',
+            selectable: true,
+            selectHelper: true,
+            ignoreTimezone: false,
+            disableResizing: true,
+            editable: true,
+            eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
+                var idParts = event.id.split(':');
+                var rowid = idParts[0]; //project id
+                var colid = idParts[1]; //date field name
+                var gridId = '#' + $('table.project-grid', $('#' + rowid).closest('div.ui-jqgrid')).attr('id');
+                //full calendar doesn't work on UTC time... 
+                //var dateOffset = dayDelta * 86400000;
+                var newDateVal = event.start.getTime();
+                
+                //Salesforce Date should be saved as GMT time 
+                // OPS-77 RJ - 01/17/2015
+                if (colid != 'Kickoff__c' && colid != 'Inspection__c' && colid != 'Install__c' && colid != 'Approval_Date__c' && colid != 'Survey_Date__c' ) {                
+                    newDateVal = newDateVal - timezoneOffset;
+                }
+                //update grid
+                
+                $(gridId).jqGrid('setCell', rowid, colid, newDateVal);
+                //update salesforce
+                var formattedDate;
+                //if (colid == 'Kickoff__c' || colid == 'Inspection__c') {
+                    formattedDate = '' + newDateVal;
+                
+                //} else {
+                //  formattedDate = $.fullCalendar.formatDate(event.start, 'MM/dd/yyyy');
+                //}
+
+                MyProjects2Controller.setProjectDate(rowid, colid, formattedDate, function (result, event) {
+                    if (event.status) {
+                        //refresh google calendar, if connected
+                        <apex:outputPanel layout="none" rendered="{!showAccessLink=false}">
+                        setTimeout(function () {
+                            $('iframe#gCalEmbed').attr('src', $('iframe#gCalEmbed').attr('src'));
+                        }, 3000);
+                        </apex:outputPanel>
+                    } else {
+                        alert(event.message);
+                    }
+                });
+            }
+        });
+        
+        var allGrids = $("#activeProjects,#newProjects,#onHoldProjects,#cancelledProjects,#plCompleteProjects,#finalCompleteProjects"); 
+
+        //definition for grids
+        allGrids.jqGrid({
+            datatype: 'local',
+            colNames: [
+                'Project', 
+                
+                <!-- project info -->
+                'Fact Sheet',
+                'City', 
+                'State',
+                'County',
+                'Finance Type',
+                'Tranche',
+                'Project Lead',
+                'Astrum Office',
+                
+                'Kickoff',
+                'Survey',
+
+                <!-- Pre-Approval Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Approval'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                'Approval',
+                
+                <!-- Pre-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Installation'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                'Customer Action Notes',
+                'Customer Action Resolved', //hidden field
+                'Change Request Status ', //hidden field
+                'Lease Funding Status ', //hidden field
+                'Ready for Install',                 
+                'Install',
+                'Work Completed',
+
+                <!-- Post-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Installation'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+                
+                'Inspection',
+                
+                <!-- Post-Inspection Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Inspection'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+                
+                'Handoff to Customer Care'
+            ],
+            cmTemplate: {
+                align: 'center',
+                formatter: remoteDateFormatter,
+                width: 80,
+                classes: "pcell"
+            },
+            colModel: [  
+                {name: 'Name', width: 120, formatter: projectLinkFormatter, align: "left" },
+
+                {name: 'Fact_Sheet__c', align: "center", width: 55, hidden: true, sortable: false, 
+                    formatter: function(cellValue, options, rowObject) { return rowObject.Id == 'EMPTYID' ? '' : '<span class="fact-sheet">View</span>'; } 
+                },
+                {name: 'Property__r.Property_City__c', align: "left", formatter: textFormatter, sorttype: 'text', hidden: true },
+                {name: 'Property__r.Property_State__c', width: 55, align: "left", formatter: textFormatter, sorttype: 'text', hidden: true },
+                {name: 'Property__r.Property_County__c', align: "left", formatter: textFormatter, sorttype: 'text', hidden: true },
+                {name: 'Sales_Order__r.Financing_Type__c', align: "left", formatter: textFormatter, sorttype: 'text', width: 65, hidden: true },
+                {name: 'Constellation_Tranche__c', align: "center", width: 50, formatter: textFormatter, sorttype: 'text', hidden: true },
+                {name: 'Project_Lead__r.Name', align: "left", formatter: textFormatter, sorttype: 'text', hidden: true },
+                {name: 'Property__r.Astrum_Office__c', align: "center", formatter: textFormatter, sorttype: 'text', hidden: true },
+                
+                <apex:variable var="kickoffCount" value="{!2}"/>
+                {name: 'Kickoff__c', editable: true, width: 55, formatter: dateTimeFormatter, unformat: dateTimeUnformatter,
+                    editoptions: { dataInit: addDateTimePicker } },
+                {name: 'Survey_Date__c', editable: true, width: 55, formatter: dateTimeFormatter, unformat: dateTimeUnformatter,
+                    editoptions: { dataInit: addDateTimePicker } },
+
+                <!-- Pre-Approval Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Approval'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c} </apex:outputPanel>
+                        },
+                        <apex:variable var="kickoffCount" value="{!kickoffCount+1}"/>
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                <apex:variable var="ApprovalCount" value="{!1}"/>
+                {name: 'Approval_Date__c', editable: false, width: 60, editoptions: { dataInit: addDatePicker } },
+
+                <!-- Pre-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Installation'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c} </apex:outputPanel>
+                        },
+                        <apex:variable var="ApprovalCount" value="{!ApprovalCount+1}"/>
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                {name: 'Customer_Action_Notes__c', width: 65, formatter: customerActionFormatter },
+                <apex:variable var="ApprovalCount" value="{!ApprovalCount+1}"/>
+                {name: 'Customer_Action_Resolved__c', width: 0, hidden: true },
+                {name: 'CR_Status__c', width: 0, hidden: true },
+                {name: 'Lease_Funding_Status__c', width: 0, hidden: true },
+                <apex:variable var="ApprovalCount" value="{!ApprovalCount+1}"/>
+                {name: 'Ready_for_Installation__c', formatter: "checkbox", edittype: 'checkbox', editable: false, 
+                    formatoptions: { disabled: true }, editoptions: "true:false", width: 50, classes: "grid-checkbox" },
+                <apex:variable var="ApprovalCount" value="{!ApprovalCount+1}"/>
+                    
+                <apex:variable var="installCount" value="{!2}"/>
+                {name: 'Install__c', editable: true, width: 50, editoptions: { dataInit: addDatePicker } },
+                {name: 'Work_Completed__c', editable: true, width: 70, editoptions: { dataInit: addDatePicker } },
+
+                <!-- Post-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Installation'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c}, </apex:outputPanel> 
+                        },
+                        <apex:variable var="installCount" value="{!installCount+1}"/>
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                <apex:variable var="inspectCount" value="{!1}"/>
+                {name: 'Inspection__c', width: 80, editable: true, editoptions: { dataInit: addDateTimePicker } },
+
+                <!-- Post-Inspection Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Inspection'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c}, </apex:outputPanel> 
+                        },
+                        <apex:variable var="inspectCount" value="{!inspectCount+1}"/>
+                    </apex:outputPanel>
+                </apex:repeat>
+                
+               {name: 'Customer_Care_Handoff__c', width: 70, formatter: dateTimeFormatter, unformat: dateTimeUnformatter },
+                
+            ],
+            height: 'auto',
+            cellEdit: true,
+            cellsubmit: 'clientArray',
+            altRows: true,
+            rowNum: 500,
+            altclass: 'gridAltRows',
+            onCellSelect: onCellSelect,
+            beforeSaveCell: function (rowid, cellname, value, iRow, iCol) {
+//TODO: validate that time is set (required for a date)
+                //return the last datetimepicker date and time, if there is one
+                if (lastDateTimePick && (cellname == 'Kickoff__c' || cellname == 'Inspection__c'  
+                    || cellname == 'Survey_Date__c')) {
+                    return lastDateTimePick.getTime() /* - timezoneOffset */;
+                }
+                //return the last datepicker date adjusted
+                if (lastDateTimePick && (cellname == 'Install__c' || cellname == 'Customer_Care_Handoff__c' || cellname == 'Work_Completed__c')) { 
+                    return lastDateTimePick.getTime() /* - timezoneOffset */;
+                }
+                return value;
+            },
+            prmNames: {
+                id: "Id"
+            },
+            afterSaveCell: function (rowid, cellname, value, iRow, iCol) {
+               
+                if (cellname == 'Ready_for_Installation__c') {
+                    return;
+                }
+                var eventId = rowid + ':' + cellname;
+                var formattedDate = null;
+                var newDate = null;
+//TODO: date validation
+                if (value) {
+                    if (typeof(value) == 'string') {
+                        var dateParts = value.split('/');
+                        newDate = new Date(parseInt(dateParts[2],10)+2000, dateParts[0]-1, dateParts[1]);
+                        formattedDate = $.fullCalendar.formatDate(newDate, 'MM/dd/yyyy');
+                    } else if (typeof(value) == 'number') {
+                        newDate = new Date(value /* + timezoneOffset */);
+                        formattedDate = '' + value;
+                    } else if (typeof(value) == 'date') {
+                        newDate = value;
+                        formattedDate = $.fullCalendar.formatDate(newDate, 'MM/dd/yyyy');
+                    }
+                }
+                //update salesForce
+                MyProjects2Controller.setProjectDate(rowid, cellname, formattedDate, function (result, event) {
+                    if (event.status) {
+                        <apex:outputPanel layout="none" rendered="{!showAccessLink=false}">
+                        //refresh google calendar if connected and maps to google
+                        if (cellname == 'Kickoff__c' || cellname == 'Install__c' || cellname == 'Inspection__c' || cellname == 'Approval_Date__c' || cellname == 'Survey_Date__c') {
+                            setTimeout(function () {
+                                $('iframe#gCalEmbed').attr('src', $('iframe#gCalEmbed').attr('src'));
+                            }, 2000);
+                        }
+                        </apex:outputPanel>
+                    } else {
+                        alert(event.message);
+                    }
+                });
+                //update the calendar
+                var calEvent = $('#calendar').fullCalendar('clientEvents', eventId);
+                if (calEvent && calEvent.length > 0) {
+                    if (value) { //update the event
+                        calEvent[0].start = newDate;
+                        calEvent[0].end = new Date(newDate.getTime() + 3600 * 1000);
+                        $('#calendar').fullCalendar('updateEvent', calEvent[0]);
+                    } else { //remove the event
+                        $('#calendar').fullCalendar('removeEvents', eventId);
+                    }
+                } else if (newDate) { //create a new event
+                    var row = $(this).jqGrid('getLocalRow', rowid);
+                    var fakeRow = { Id: rowid, Name: row.Name };
+                    fakeRow[cellname] = newDate.getTime();
+                    populateCalendar([fakeRow]);
+                }
+            },
+            //create the fact sheet buttons     
+            gridComplete: function () {
+                $t = $(this);
+                $t.find('span.fact-sheet').button().click(function () {
+                    window.open("/apex/PMProjectFactSheet?id=" + $(this).parent().parent().attr('id'), "FactSheet",
+                        'location=no,dependent=no,resizable=yes,toolbar=no,status=no,directories=no,menubar=no,scrollbars=yes',false);
+                });
+                if (sorting) {
+                    sorting = false;
+                    var data = $t.data('projectIssuesNotes');
+                    if (data != null) {
+                        addIssuesAndNotes($t, data.notes);
+                        markInProgress($t, data.notes);
+                    }
+                }
+            },
+            //when sorting set flag to add back notes and issues
+            onSortCol: function (index, iCol, sortorder) {
+                sorting = true;
+            }
+        })
+
+        //header groupings
+        allGrids.jqGrid('setGroupHeaders', {
+            useColSpanStyle: true, 
+            groupHeaders: [
+                <!-- TODO: populate this based on the config -->
+                {startColumnName: 'Name', numberOfColumns: projectInfoCols.length+1, titleText: '<span class="ui-icon ui-icon-triangle-1-e grid-section-icon" data-group="projectInfoCols"></span>Project Information'},
+                {startColumnName: 'Kickoff__c', numberOfColumns: {!ROUND(kickoffCount,0)}, titleText: '<span class="ui-icon ui-icon-triangle-1-s grid-section-icon" data-group="preApprovalCols"></span>Pre-Approval'},
+                {startColumnName: 'Approval_Date__c', numberOfColumns: {!ROUND(ApprovalCount,0)}, titleText: '<span class="ui-icon ui-icon-triangle-1-s grid-section-icon" data-group="preInstallCols"></span>Pre-Installation'},
+                {startColumnName: 'Install__c', numberOfColumns: {!ROUND(installCount,0)}, titleText: '<span class="ui-icon ui-icon-triangle-1-s grid-section-icon" data-group="postInstallCols"></span>Post-Installation'},
+                {startColumnName: 'Inspection__c', numberOfColumns: {!ROUND(inspectCount,0)}, titleText: '<span class="ui-icon ui-icon-triangle-1-s grid-section-icon" data-group="postInspectCols"></span>Post-Inspection'}
+            ]
+        });
+        
+        //freeze columns
+        //$("#activeProjects,#newProjects,#onHoldProjects,#cancelledProjects,#plCompleteProjects").jqGrid('setFrozenColumns');
+        
+        //load the map of column names to column id's
+        var colNames = $('#newProjects').jqGrid('getGridParam', 'colNames');
+        var colModel = $('#newProjects').jqGrid('getGridParam', 'colModel');
+        for (var i = 0; i < colNames.length; i++) {
+            nameToColIdMap[colNames[i]] = colModel[i].name;
+            nameToColIndexMap[colNames[i]] = i; 
+        }
+        
+        //define the bin collection dialog
+        $('#binDialog').dialog({
+            autoOpen: false,
+            modal: true,
+            stack: false,
+            width: 950,
+            height: 600,
+            open: function(event, ui) {
+                window.setTimeout(function() {
+                    jQuery(document).unbind('mousedown.dialog-overlay')
+                        .unbind('mouseup.dialog-overlay');
+                }, 100);
+            },
+            create: function () {
+            $(window).resize(function () {
+                $("#binDialog").parent().position({
+                    my: "center",
+                    at: "center",
+                    of: window
+                });
+            });
+            $(window).scroll(function () {
+                $("#binDialog").parent().position({
+                    my: "center",
+                    at: "center",
+                    of: window
+                });
+            });
+        },
+            
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    $('#binFrame')[0].contentWindow.isValid(function() {
+                        $(that).dialog("close"); 
+                    });
+                    return false;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }
+        })
+        .css('overflow', 'hidden').css('padding', '0')
+        .bind('dialogclose', dialogClose);
+
+        //define the customer action notes dialog
+        $('#customer-action-dialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 'auto',
+            height: 'auto',
+            resizable: false,
+            create: function () {
+            $(window).resize(function () {
+                $("#customer-action-dialog").parent().position({
+                    my: "center",
+                    at: "center",
+                    of: window
+                });
+            });
+            $(window).scroll(function () {
+                $("#customer-action-dialog").parent().position({
+                    my: "center",
+                    at: "center",
+                    of: window
+                });
+            });
+        },
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    var data = $("#customer-action-dialog").data('customerAction');
+                    var notes = $('#customer-action-notes').val();
+                    var resolved = Boolean($('#customer-action-resolved').attr('checked'));
+                    MyProjects2Controller.updateCustomerAction(data.rowId, notes, resolved, function (result, event) {
+                        if (event.status) {
+                            var row = data.jqGrid.jqGrid('getLocalRow', data.rowId);
+                            row.Customer_Action_Notes__c = notes;
+                            row.Customer_Action_Resolved__c = resolved;
+                            data.jqGrid.jqGrid('setRowData', data.rowId, row);
+                        } else {
+                            alert(event.message);
+                        }
+                        $(that).dialog("close");
+                        $(document).disableSelection(); 
+                    });
+                    return false;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                    $(document).disableSelection(); 
+                }
+            }
+        })
+        .css('overflow', 'hidden').css('padding', '0')
+        .bind('dialogclose', function() { $(document).disableSelection(); });
+
+
+      //define the handoff to customer care dialog
+        $('#handoffDialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 950,
+            height: 600,
+            title: 'Handoff to Customer Care',
+            resizable: false,
+            create: function () {
+            $(window).resize(function () {
+                $("#handoffDialog").parent().position({
+                    my: "center",
+                    at: "center",
+                    of: window
+                });
+            });
+            $(window).scroll(function () {
+                $("#handoffDialog").parent().position({
+                    my: "center",
+                    at: "center",
+                    of: window
+                });
+            });
+        },
+            buttons: { 
+                "Save": function() {
+                    $('#handoffFrame')[0].contentWindow.doSubmit();
+                     $(this).dialog("close");      
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }            
+        })
+        .css('overflow', 'hidden').css('padding', '0')
+        .bind('dialogclose', function() { $(document).disableSelection(); });
+
+        
+        $(document).disableSelection();
+        
+        //reloadGrid();
+        setDefaultFilters();
+        
+        $(window).resize(function() {
+            $("#binDialog").dialog("option", "position", "center");
+        });
+        
+        //filter buttons
+        $('.filter-button').button({
+            icons: { secondary: "ui-icon-triangle-1-s" }
+        })
+        .removeClass('ui-corner-all')
+        
+        .click(function (e) {
+            var dialogId = $(this).attr('data-dialog-id');
+            var pos = $(this).position();
+            var height = $(this).outerHeight();
+            //alert(dialogId + $(".option-selection-box[id!='" + dialogId + "']").size());
+            $("div.option-selection-box[id!='" + dialogId + "']").hide();
+            //show the menu directly over the placeholder
+            $('#' + dialogId).css({
+                position: "absolute",
+                top: (pos.top + height - 1) + "px",
+                left: pos.left + "px"
+            }).toggle();
+            e.preventDefault();
+            return false;
+        });        
+        
+        $('.filter-block').show();
+        
+        //hide filter selection on click
+        $("body").click(function(e) {
+            if ($(e.target).hasClass('option-selection-box') || $(e.target).closest('.option-selection-box').size() > 0) {
+                //do nothing
+            } else {
+                $('div.option-selection-box').hide()
+            }
+            //if ($(e.target).hasClass('edit-cell') || $(e.target).closest('td.').size() > 0) {
+            //if ($('table.ui-jqgrid-btable td.edit-cell'))
+        });
+
+        //FILTERS
+        //status checkboxes
+        $('div#statusOptions input.status-option').click(function (e) {
+            if ($('div#statusOptions input.status-option:checked').size() == 0) {
+                $('div#statusOptions input.status-option-all').attr('checked', 'checked');
+            } else {
+                $('div#statusOptions input.status-option-all').removeAttr('checked');
+            }
+            updateFilter('status');
+        });
+        $('div#statusOptions input.status-option-all').click(function (e) {
+            $('div#statusOptions input.status-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('status');
+        });
+        
+        //state checkboxes
+        $('div#stateOptions input.state-option').click(function (e) {
+            if ($('div#stateOptions input.state-option:checked').size() == 0) {
+                $('div#stateOptions input.state-option-all').attr('checked', 'checked');
+            } else {
+                $('div#stateOptions input.state-option-all').removeAttr('checked');
+            }
+            updateFilter('state');
+        });
+        $('div#stateOptions input.state-option-all').click(function (e) {
+            $('div#stateOptions input.state-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('state');
+        });
+
+        //office checkboxes
+        $('div#officeOptions input.office-option').click(function (e) {
+            if ($('div#officeOptions input.office-option:checked').size() == 0) {
+                $('div#officeOptions input.office-option-all').attr('checked', 'checked');
+            } else {
+                $('div#officeOptions input.office-option-all').removeAttr('checked');
+            }
+            updateFilter('office');
+        });
+        $('div#officeOptions input.office-option-all').click(function (e) {
+            $('div#officeOptions input.office-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('office');
+        });
+
+        //project lead checkboxes
+        $('div#projLeadOptions input.lead-option').click(function (e) {
+            if ($('div#projLeadOptions input.lead-option:checked').size() == 0) {
+                $('div#projLeadOptions input.lead-option-all').attr('checked', 'checked');
+            } else {
+                $('div#projLeadOptions input.lead-option-all').removeAttr('checked');
+            }
+            updateFilter('lead');
+        });
+        $('div#projLeadOptions input.lead-option-all').click(function (e) {
+            $('div#projLeadOptions input.lead-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('lead');
+        });
+
+        //operations surveyor checkboxes
+        $('div#projSurveyorOptions input.surveyor-option').click(function (e) {
+            if ($('div#projSurveyorOptions input.surveyor-option:checked').size() == 0) {
+                $('div#projSurveyorOptions input.surveyor-option-all').attr('checked', 'checked');
+            } else {
+                $('div#projSurveyorOptions input.surveyor-option-all').removeAttr('checked');
+            }
+            updateFilter('surveyor');
+        });
+        $('div#projSurveyorOptions input.surveyor-option-all').click(function (e) {
+            $('div#projSurveyorOptions input.surveyor-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('surveyor');
+        });
+
+        //elec designer checkboxes
+        $('div#designerOptions input.designer-option').click(function (e) {
+            if ($('div#designerOptions input.designer-option:checked').size() == 0) {
+                $('div#designerOptions input.designer-option-all').attr('checked', 'checked');
+            } else {
+                $('div#designerOptions input.designer-option-all').removeAttr('checked');
+            }
+            updateFilter('designer');
+        });
+        $('div#designerOptions input.designer-option-all').click(function (e) {
+            $('div#designerOptions input.designer-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('designer');
+        });
+
+        //solar enginner checkboxes
+        $('div#engineerOptions input.engineer-option').click(function (e) {
+            if ($('div#engineerOptions input.engineer-option:checked').size() == 0) {
+                $('div#engineerOptions input.engineer-option-all').attr('checked', 'checked');
+            } else {
+                $('div#engineerOptions input.engineer-option-all').removeAttr('checked');
+            }
+            updateFilter('engineer');
+        });
+        $('div#engineerOptions input.engineer-option-all').click(function (e) {
+            $('div#engineerOptions input.engineer-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('engineer');
+        });
+
+        //install checkboxes
+        $('div#installOptions input.install-option').click(function (e) {
+            if ($('div#installOptions input.install-option:checked').size() == 0) {
+                $('div#installOptions input.install-option-all').attr('checked', 'checked');
+            } else {
+                $('div#installOptions input.install-option-all').removeAttr('checked');
+            }
+            updateFilter('install');
+        });
+        $('div#installOptions input.install-option-all').click(function (e) {
+            $('div#installOptions input.install-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('install');
+        });
+
+        //salesorder status checkboxes
+        $('div#sostatusOptions input.sostatus-option').click(function (e) {
+            if ($('div#sostatusOptions input.sostatus-option:checked').size() == 0) {
+                $('div#sostatusOptions input.sostatus-option-all').attr('checked', 'checked');
+            } else {
+                $('div#sostatusOptions input.sostatus-option-all').removeAttr('checked');
+            }
+            updateFilter('sostatus');
+        });
+        $('div#sostatusOptions input.sostatus-option-all').click(function (e) {
+            $('div#sostatusOptions input.sostatus-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            updateFilter('sostatus');
+        });
+
+        //filter handlers       
+        $('button.filter-apply').click(applyFilters);
+        $('button.filter-clear').click(clearFilters);
+        $('button.filter-default').click(saveDefaultFilters);
+        
+        //handle ready for install clicks
+        allGrids.on('change', '.grid-checkbox input:checkbox', function (e) {
+            var projectId = $(this).closest('tr').attr('id');
+            var ready = Boolean($(this).attr('checked'));
+            MyProjects2Controller.setReadyForInstall(projectId, ready, function (result, event) {
+                if (event.status) {
+                    //do nothing...
+                } else {
+                    alert(event.message);
+                }
+            });
+        });
+
+    });
+    
+    function updateFilter(prefix) {
+        var labels = $('.' + prefix + '-option-all:checked, .' + prefix + '-option:checked').next();
+        var size = labels.size();
+        var selection = $('.' + prefix + '-selections'); 
+        if (size > 1) {
+            selection.text(size + ' selected');
+        } else {
+            selection.text(labels.text());
+        }
+    }
+    
+    function applyFilters() {
+        var prefixes = ["status", "state", "office", "lead", "surveyor", "sostatus", "designer", "engineer", "install"];
+        var result = [];
+        for (var i = 0; i < prefixes.length; i++) {
+            var prefix = prefixes[i];
+            $('input.' + prefix + '-option-all:checked, input.' + prefix + '-option:checked').each(function (index, cb) {
+                result.push(prefix + ':' + $(this).next().text());
+            });
+        }
+        projectFilters = result;console.log('******************************' + result);
+        reloadGrid();   
+    }
+    
+    function clearFilters() {
+        var prefixes = ["status", "state", "office", "lead", "surveyor", "sostatus", "designer", "engineer", "install"];
+        for (var i = 0; i < prefixes.length; i++) {
+            var prefix = prefixes[i];
+            $('input.' + prefix + '-option').removeAttr('checked');
+            $('input.' + prefix + '-option-all').attr('checked', 'checked');
+            $('span.' + prefix + '-selections').text('All'); 
+        }
+        projectFilters = [];
+        reloadGrid();   
+    }
+    
+    function setDefaultFilters() {
+        var filters = [
+            <apex:repeat value="{!defaultFilter}" var="d">'{!JSENCODE(d)}',</apex:repeat>
+        ];
+        for (var i = 0; i < filters.length; i++) {
+            var filter = filters[i].split(':');
+            var prefix = filter[0];
+            var values = filter[1].split(';');
+            $('input.' + prefix + '-option').each(function (index, cb) {
+                var $t = $(this);
+                var value = $t.next().text();
+                for (var j = 0; j < values.length; j++) {
+                    if (value == values[j]) {
+                        $t.attr('checked', 'checked');
+                        $('input.' + prefix + '-option-all').removeAttr('checked'); 
+                        return;
+                    }
+                }
+            });
+            updateFilter(prefix)
+        }
+        applyFilters();
+    }
+    
+    function saveDefaultFilters() {
+        var prefixes = ["status", "state", "office", "lead", "surveyor", "sostatus", "designer", "engineer", "install"];
+        for (var i = 0; i < prefixes.length; i++) {
+            var result = [];
+            var prefix = prefixes[i];
+            $('.' + prefix + '-option-all:checked, .' + prefix + '-option:checked').each(function (index, cb) {
+                result.push($(this).next().text());
+            });
+            var setting = null;
+            if (result.length >= 1 && result[0] != 'All') {
+                setting = result.join(';');
+            }
+            MyProjects2Controller.setDefaultFilter(prefix, setting, function (result, event) {
+                if (event.status) {
+                } else {
+                    alert(event.message);
+                }
+            });
+        }
+    }
+    
+    function reloadGrid() {
+        $('#ajaxLoading').css('visibility', 'visible');
+        hasNJ = false;
+        hasMD = false;
+        $('table.ui-jqgrid-htable tr.jqg-second-row-header span.grid-section-icon').unbind('click');
+        $('#calendar').fullCalendar('removeEvents');
+        //load the data via remoteaction calls      
+        populateGrid("New", "#newProjects");
+        populateGrid("Active", "#activeProjects");
+        populateGrid("PL Complete", "#plCompleteProjects");
+        populateGrid("Final Complete", "#finalCompleteProjects");
+        populateGrid("On-Hold", "#onHoldProjects");
+        populateGrid("Cancelled", "#cancelledProjects");
+    }
+    
+    function reloadGridComplete() {
+        $allGrids = $("#activeProjects,#newProjects,#onHoldProjects,#cancelledProjects,#plCompleteProjects,#finalCompleteProjects"); 
+        // $allGrids.jqGrid(hasNJ? 'showCol' : 'hideCol', 'NJ_SREC_Docs__c');
+        $allGrids.jqGrid(hasMD? 'showCol' : 'hideCol', 'Property_Tax_Approved__c');
+        //rebind after show/hide columns
+        $('table.ui-jqgrid-htable tr.jqg-second-row-header span.grid-section-icon').bind('click', collapseSection);
+        $('#ajaxLoading').css('visibility', 'hidden');
+        setTimeout(function () {
+    $('#gview_newProjects .ui-jqgrid-hbox').scrollToFixed( {
+        limit: function() {
+            return $('.gridSectionActiveProjects').offset().top - $('#gview_newProjects .ui-jqgrid-hbox').height();
+        }
+    });
+    $('#gview_activeProjects .ui-jqgrid-hbox').scrollToFixed( {
+        limit: function() {
+            return $('.gridSectionOnHoldProjects').offset().top - $('#gview_activeProjects .ui-jqgrid-hbox').height();
+        }
+    });
+    $('#gview_onHoldProjects .ui-jqgrid-hbox').scrollToFixed( {
+        limit: function() {
+            return $('.gridSectionCancelledProjects').offset().top - $('#gview_onHoldProjects .ui-jqgrid-hbox').height();
+        }
+    });
+    $('#gview_cancelledProjects .ui-jqgrid-hbox').scrollToFixed( {
+        limit: function() {
+            return $('.gridSectionPLCompleteProjects').offset().top - $('#gview_cancelledProjects .ui-jqgrid-hbox').height();
+        }
+    });
+    $('#gview_plCompleteProjects .ui-jqgrid-hbox').scrollToFixed( {
+        limit: function() {
+            return $('.gridSectionFinalCompleteProjects').offset().top - $('#gview_plCompleteProjects .ui-jqgrid-hbox').height();
+        }
+    });
+    $('#gview_finalCompleteProjects .ui-jqgrid-hbox').scrollToFixed( { 
+        limit: function() {
+            return $('.bPageFooter').offset().top - $('#gview_finalCompleteProjects .ui-jqgrid-hbox').height();
+        }
+    });
+    $('.hideListButton').on('click', function() {
+        $(window).resize();
+    });
+    $('.showListButton').on('click', function() {
+        $(window).resize();
+    }); 
+    }, 200);
+    }
+
+
+    
+    function reloadGoogleCalendar(time) {
+        setTimeout(function () {
+            $('iframe#gCalEmbed').attr('src', $('iframe#gCalEmbed').attr('src'));
+        }, time || 3000);
+    }
+    
+     //keeps dialog box fixed when scrolling
+    $(function () {
+         $(".ui-dialog").css('position', 'fixed');
+    });
+    
+     
+     
+ 
+
+</script>
+
+
+<body scroll="yes">
+
+<div id="scrollWindow">
+
+    <apex:pageMessages id="messages"/>
+
+    <table>
+    <tr>
+        <td class="page-title"><apex:sectionHeader title="My Projects"/></td>
+        <td class="filter-block">
+            <span class="filter-label">Filters:</span>
+            <span class="filter-button" data-dialog-id="statusOptions">PM Status<br/><span class="selections status-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="sostatusOptions">SO Status<br/><span class="selections sostatus-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="stateOptions">State<br/><span class="selections state-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="officeOptions">Office<br/><span class="selections office-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="projLeadOptions">Project Lead<br/><span class="selections lead-selections">All</span></span>            
+            <span class="filter-button" data-dialog-id="projSurveyorOptions">Surveyor<br/><span class="selections surveyor-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="designerOptions">Designer<br/><span class="selections designer-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="engineerOptions">Engineer<br/><span class="selections engineer-selections">All</span></span>
+            <span class="filter-button" data-dialog-id="installOptions">Install<br/><span class="selections install-selections">All</span></span>
+            <span style="display:inline-block">
+                <button class="filter-apply" type="button">Apply Filters</button><br />
+                <button class="filter-clear" type="button">Clear Filters</button>
+            </span>
+            <span style="display:inline-block">
+                <button class="filter-default" type="button">Set as Default</button><br />
+                <button class="filter-hidden" type="button">hidden</button>
+            </span>
+        </td>
+        <td class="ajax-loader">
+            <span id="ajaxLoading" style="text-align: center; display:inline-block;vertical-align:top;padding-left:50px;padding-right:10px;zoom:1.3">
+                <img src="{!URLFOR($Resource.AjaxLoader)}"/>&nbsp;&nbsp;Loading...
+            </span>
+        </td>
+    </tr>
+    </table>
+    
+    <apex:pageBlock mode="maindetail">
+        <apex:pageBlockSection title="Google Calendar">
+            <iframe id="gCalEmbed" src="{!gCalURL}" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Calendar" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel layout="block">
+                    <apex:form rendered="{!googleCalendarEnabled}">
+                    <apex:actionRegion >
+                        <apex:commandLink action="{!requestGoogleAccess}" styleClass="access-link" rendered="{!showAccessLink}" immediate="true" style="color: white; background-color: red; padding: 3px;">
+                            <div class="link-button">
+                                <div>Connect your</div>
+                                <apex:image value="{!URLFOR($Resource.DocumentBinResources,'images/gc_button3.gif')}"/>
+                            </div> 
+                        </apex:commandLink>
+                        <apex:commandLink action="{!revokeAccess}" styleClass="revoke-link" rendered="{!showAccessLink=false}" immediate="true">
+                            <div class="link-button">
+                                <div>Disconnect your</div>
+                                <apex:image value="{!URLFOR($Resource.DocumentBinResources,'images/gc_button3.gif')}"/> 
+                            </div> 
+                        </apex:commandLink>
+                    </apex:actionRegion>
+                    <apex:actionRegion >
+                        <apex:outputPanel id="syncCalendar" layout="block" >
+                            <apex:outputPanel styleClass="google-sync" rendered="{!showAccessLink=false}" onclick="googleSync()" style="text-decoration:underline;cursor:pointer;">
+                                <apex:outputPanel styleClass="link-button">
+                                    Synchronize your
+                                    <apex:outputPanel layout="block"><apex:image value="{!URLFOR($Resource.DocumentBinResources,'images/gc_button3.gif')}"/></apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!hasSync}">
+                                <script type="text/javascript">
+                                    googleSync();
+                                </script>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        <apex:actionFunction name="googleSync" action="{!synchronizeEvents}" immediate="true" rerender="syncCalendar,messages" status="syncStatus"/>
+                        <apex:actionStatus id="syncStatus" onstop="reloadGrid();reloadGoogleCalendar(100);">
+                            <apex:facet name="start">
+                                <apex:outputPanel styleClass="google-sync" style="position:relative;top:-20px;margin-right: 5px;">
+                                    <apex:image value="{!URLFOR($Resource.DocumentBinResources,'images/ajax-calendar.gif')}" style="vertical-align:middle;"/>Synchronizing...
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:actionRegion>
+                    </apex:form>
+                    <div id="calendar" class="project-grid"></div>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>            
+        </apex:pageBlockSection>
+<div class="gridSectionNewProjects">
+        <apex:pageBlockSection title="New Projects" columns="1">
+            <table id="newProjects" class="project-grid" disabled="true"></table>
+        </apex:pageBlockSection>
+</div>
+<div class="gridSectionActiveProjects">
+        <apex:pageBlockSection title="Active Projects" columns="1">
+            <table id="activeProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+</div>
+<div class="gridSectionOnHoldProjects">
+        <apex:pageBlockSection title="On-Hold Projects" columns="1">
+            <table id="onHoldProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+</div>
+<div class="gridSectionCancelledProjects">
+        <apex:pageBlockSection title="Cancelled Projects" columns="1">
+            <table id="cancelledProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+</div>
+<div class="gridSectionPLCompleteProjects">
+        <apex:pageBlockSection title="PL Complete Projects" columns="1">
+            <table id="plCompleteProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+</div>
+<div class="gridSectionFinalCompleteProjects">
+        <apex:pageBlockSection title="Final Complete Projects" columns="1">
+            <table id="finalCompleteProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+</div>
+    </apex:pageBlock>
+    
+</div>
+
+<div id="binWrapper" style="display:none">
+<div id="binDialog">
+    <div id="binFrameLoading" style="text-align: center; display:none;width:100%;height:100%;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+    <iframe id="binFrame" width="100%" height="100%" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+</div>
+</div>
+
+<div id="customer-action-dialog">
+    <input id="customer-action-resolved" type="checkbox"/><label for="customer-action-resolved">Resolved</label> 
+    <div>
+        <textarea id="customer-action-notes" placeholder="Enter Customer Action Notes" maxLength="32000"></textarea>
+    </div>
+</div>
+
+<div id="handoffDialog">
+    <div id="handoffLoading" style="display:none;text-align:center;width:100%;height:100%;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+    <iframe id="handoffFrame" width="100%" height="100%" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups" frameborder="0" seemless="seemless"></iframe>
+</div>
+
+<div id="statusOptions" style="display:none" class="ui-widget-content option-selection-box">
+    <div><input id="statusall" class="status-option-all" type="checkbox" checked="checked"/><label>All</label></div>
+    <hr/>
+    <apex:variable var="num" value="{!0}"/>
+    <apex:repeat value="{!statuses}" var="s">
+        <div><input id="projstatus{!num}" class="status-option" type="checkbox"/><label for="projstatus{!num}">{!s}</label></div>
+        <apex:variable var="num" value="{!num + 1}"/>
+    </apex:repeat>
+    <hr/>
+    <div><input id="status1" class="status-option" type="checkbox"/><label for="status1">Kickoff Complete</label></div>
+    <div><input id="status2" class="status-option" type="checkbox"/><label for="status2">Kickoff Not Done</label></div>
+    <div><input id="status3" class="status-option" type="checkbox"/><label for="status3">Install Complete</label></div>
+    <div><input id="status4" class="status-option" type="checkbox"/><label for="status4">Install Not Done</label></div>
+    <div><input id="status5" class="status-option" type="checkbox"/><label for="status5">Inspection Complete</label></div>
+    <div><input id="status6" class="status-option" type="checkbox"/><label for="status6">Inspection Not Done</label></div>
+    <div><input id="status7" class="status-option" type="checkbox"/><label for="status7">Handoff Complete</label></div>
+    <div><input id="status8" class="status-option" type="checkbox"/><label for="status8">Handoff Not Done</label></div>
+</div>
+
+<div id="stateOptions" style="display:none" class="ui-widget-content option-selection-box">
+    <div><input id="stateall" class="state-option-all" type="checkbox" checked="checked"/><label for="stateall">All</label></div>
+    <apex:repeat value="{!states}" var="s">
+        <div><input id="state{!s}" class="state-option" type="checkbox"/><label for="state{!s}">{!s}</label></div>
+    </apex:repeat>
+</div>
+
+<div id="officeOptions" style="display:none" class="ui-widget-content option-selection-box">
+    <div><input id="officeall" class="office-option-all" type="checkbox" checked="checked"/><label for="officeall">All</label></div>
+    <apex:variable var="num" value="{!0}"/>
+    <apex:repeat value="{!offices}" var="o">
+        <div><input id="office{!num}" class="office-option" type="checkbox"/><label for="office{!num}">{!o}</label></div>
+        <apex:variable var="num" value="{!num + 1}"/>
+    </apex:repeat>
+</div>
+
+<div id="projLeadOptions" style="display:none;" class="ui-widget-content option-selection-box">
+    <div><input id="plall" class="lead-option-all" type="checkbox" checked="checked"/><label for="plall">All</label></div>
+    <apex:repeat value="{!projectLeads}" var="pl">
+        <div><input id="pl{!pl.value}" class="lead-option" type="checkbox"/><label for="pl{!pl.value}">{!pl.label}</label></div>
+    </apex:repeat>
+</div>
+
+<div id="projSurveyorOptions" style="display:none;" class="ui-widget-content option-selection-box">
+    <div><input id="surall" class="surveyor-option-all" type="checkbox" checked="checked"/><label for="surall">All</label></div>
+    <apex:repeat value="{!operationsSurveyors}" var="sur">
+        <div><input id="sur{!sur.value}" class="surveyor-option" type="checkbox"/><label for="sur{!sur.value}">{!sur.label}</label></div>
+    </apex:repeat>
+</div>
+
+<div id="designerOptions" style="display:none;" class="ui-widget-content option-selection-box">
+    <div><input id="designerall" class="designer-option-all" type="checkbox" checked="checked"/><label for="designerall">All</label></div>
+    <apex:repeat value="{!elecDesigners}" var="d">
+        <div><input id="d{!d.value}" class="designer-option" type="checkbox"/><label for="d{!d.value}">{!d.label}</label></div>
+    </apex:repeat>
+</div>
+
+<div id="engineerOptions" style="display:none;" class="ui-widget-content option-selection-box">
+    <div><input id="engineerall" class="engineer-option-all" type="checkbox" checked="checked"/><label for="engineerall">All</label></div>
+    <apex:repeat value="{!engineers}" var="e">
+        <div><input id="e{!e.value}" class="engineer-option" type="checkbox"/><label for="e{!e.value}">{!e.label}</label></div>
+    </apex:repeat>
+</div>
+
+<div id="installOptions" style="display:none;" class="ui-widget-content option-selection-box">
+    <div><input id="installall" class="install-option-all" type="checkbox" checked="checked"/><label for="installall">All</label></div>
+    <apex:repeat value="{!readyForInstall}" var="r">
+        <div><input id="r{!r.value}" class="install-option" type="checkbox"/><label for="r{!r.value}">{!r.label}</label></div>
+    </apex:repeat>
+</div>
+
+<div id="sostatusOptions" style="display:none" class="ui-widget-content option-selection-box">
+    <div><input id="sostatusall" class="sostatus-option-all" type="checkbox" checked="checked"/><label>All</label></div>
+    <apex:variable var="num" value="{!0}"/>
+    <apex:repeat value="{!sostatuses}" var="s">
+        <div><input id="sostatus{!num}" class="sostatus-option" type="checkbox"/><label for="sostatus{!num}">{!s}</label></div>
+        <apex:variable var="num" value="{!num + 1}"/>
+    </apex:repeat>    
+</div>
+
+
+</body>
+</apex:page>

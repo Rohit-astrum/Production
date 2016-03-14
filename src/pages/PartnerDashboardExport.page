@@ -1,0 +1,44 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" controller="PartnerDashboardController" contenttype="application/x-excel#PartnerDashboardExport.xls" readOnly="true">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+    
+    <apex:outputpanel rendered="{!$Profile.Name == 'Strategic Partner Portal - Full User'}" >
+        <apex:dataTable value="{!referrals}" var="r">
+            <apex:column headerValue="Date" styleClass="referral-center">
+                <apex:outputText value="{0,date,M/d/yy}">
+                    <apex:param value="{!r.Lead_Created_Date__c}"/>
+                </apex:outputText>
+            </apex:column>
+            <apex:column value="{!r.Full_Name__c}" headerValue="Referral"/>
+            <apex:column value="{!r.Street__c}" headerValue="Address"/>
+            <apex:column value="{!r.City__c}" headerValue="City"/>
+            <apex:column value="{!r.State__c}" headerValue="State"/>
+            <apex:column value="{!r.Zip__c}" headerValue="Zip Code"/>  
+            
+            <apex:column value="{!r.Email__c}" headerValue="Email"/>    
+            <apex:column value="{!r.Phone__c}" headerValue="Phone"/>   
+               
+            <apex:column value="{!r.Status__c}" headerValue="Status"/>
+            <apex:column value="{!r.Detail__c}" headerValue="Details"/>
+        </apex:dataTable>
+    </apex:outputpanel>
+    
+    <apex:outputpanel rendered="{!$Profile.Name != 'Strategic Partner Portal - Full User'}" >
+        <apex:dataTable value="{!referrals}" var="r">
+            <apex:column headerValue="Date" styleClass="referral-center">
+                <apex:outputText value="{0,date,M/d/yy}">
+                    <apex:param value="{!r.Lead_Created_Date__c}"/>
+                </apex:outputText>
+            </apex:column>
+            <apex:column value="{!r.Full_Name__c}" headerValue="Referral"/>
+            <apex:column value="{!r.Street__c}" headerValue="Address"/>
+            <apex:column value="{!r.City__c}" headerValue="City"/>
+            <apex:column value="{!r.State__c}" headerValue="State"/>
+            <apex:column value="{!r.Zip__c}" headerValue="Zip Code"/> 
+            <apex:column value="{!r.Status__c}" headerValue="Status"/>
+            <apex:column value="{!r.Detail__c}" headerValue="Details"/>
+        </apex:dataTable>
+    </apex:outputpanel>
+
+</apex:page>

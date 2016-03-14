@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Solar Webinars LI Feb 2016.Webinar LI 030216, Send 1: Reserve your spot for our</name>
+    <style>none</style>
+    <subject>Reserve your spot for our solar webinar!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Is Solar Right for You? Find Out Tuning into our Webinar Series.
+
+RSVP Today!
+&lt;[[http://directenergysolar.omnovia.com/register/89471456426909]]&gt;
+
+Mark your calendar! We’re hosting a webinar series for Long Island residents. Learn why so many of your neighbors have gone solar and how Direct Energy Solar can help you go solar to dramatically shave your utility bill!
+
+Go Solar on Long Island &lt;[[http://directenergysolar.omnovia.com/register/89471456426909]]&gt;
+March 2, 11:00 AM
+Meet your local solar team at Direct Energy Solar and learn the latest on solar in our market.
+
+WHAT YOU’LL LEARN:
+• How solar saves you money on your energy costs
+• What drives your cost of solar, and how much you may save
+• Local incentives that help you save even more
+ • Why you need to decide soon, before the incentives disappear
+• No money down financing, purchase, and lease options—which are right for you?
+
+RSVP to Reserve Your Spot!
+&lt;[[http://directenergysolar.omnovia.com/register/89471456426909]]&gt;
+
+Can’t make it on March 2? Don’t worry, we have another date!
+
+March 10, 12:00 PM
+Go Solar on Long Island &lt;[[http://directenergysolar.omnovia.com/register/44411456426921]]&gt;
+Meet your local solar team at Direct Energy Solar and learn the latest on solar in our market.
+
+
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+Nassau H24096700, Suffolk 54817-H
+
+Direct Energy Solar
+ 28 Colt Court
+ Ronkonkoma, NY 06457
+ P: 800-903-6130
+ F: 631-389-2535
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

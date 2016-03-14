@@ -1,0 +1,4 @@
+<apex:page standardController="JournalBatch__c"
+ extensions="ffirule.IntegrationRuleEngine" action="{!convert}" recordSetVar="records">
+<ffirule:IntegrationRule engine="{!engine}"/>
+</apex:page>

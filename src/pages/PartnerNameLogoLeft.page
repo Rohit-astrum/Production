@@ -1,0 +1,16 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+
+<apex:composition template="PartnerLandingBase">
+
+    <apex:define name="name-logo">                                
+        <!--Partner's Name & Logo Left-->
+        <div class="logo-spot">
+            <h3><apex:insert name="partnername"/>&rsquo;s</h3>
+            <p>Trusted Home Solar Partner</p>
+        </div>
+        <!--END Partner's Name & Logo Left-->
+    </apex:define>
+    
+</apex:composition>
+
+</apex:page>

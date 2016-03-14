@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Change Request Rejection Notice</name>
+    <style>none</style>
+    <subject>Change Request {!Change_Request__c.Name} has been Rejected</subject>
+    <textOnly>A Change Request with the following details has been rejected.
+
+    Type 1 : {!Change_Request__c.Type_1__c}
+    Type 1 Detail : {!Change_Request__c.Type_2_Detail__c}
+    Change Reason 1 : {!Change_Request__c.Change_Reason_1__c}
+    Type 2 : {!Change_Request__c.Type_2__c}
+    Type 2 Detail : {!Change_Request__c.Type_2_Detail__c}
+    Change Reason 2 : {!Change_Request__c.Change_Reason_2__c}
+    Change From : {!Change_Request__c.Change_From__c}
+    Change To : {!Change_Request__c.Change_To__c}
+
+To review this Change Request, please visit:  
+https://na8.salesforce.com/{!Change_Request__c.Id}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,10 @@
+<!-- 
+   FILE: AstrumSQReCall
+ * AUTHOR: Rohit Jain
+ * DATE: Feb 24, 2014
+ * PURPOSE: Astrum Site Quality Called from Button on System Design Item
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="System_Design_Item__c" extensions="AstrumSQReCallExtension" action="{!reCallAstrumSQ}">  
+
+</apex:page>

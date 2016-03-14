@@ -1,0 +1,75 @@
+<apex:component >
+    <apex:attribute name="oncomplete" type="string" description="Javascript executed on unzip of file entry"/>
+    <apex:attribute name="name" type="string" description="Name of the Javascript function generated to unzip files"/>
+    <apex:attribute name="state" type="string" description="Some initial state to pass into the execution chain as files are unzipped"/> 
+    <apex:attribute name="locations" type="Install_Location__c[]" description="Some initial state to pass into the execution chain as files are unzipped"/>
+    <apex:includeScript value="{!URLFOR($Resource.jszip, '/jszip.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jszip, '/jszip-load.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jszip, '/jszip-deflate.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jszip, '/jszip-inflate.js')}"/>
+    <script>
+        // Unzip component client side state 
+        // TODO: Need to scope these global var's by component name
+        var zipData = '<apex:componentBody />';
+        var zip = null;
+        var zipFileName = null; 
+        var zipFileNames = null;
+
+        // Start unzipping based on given data?    
+        if(zipData.lenght>0)
+            {!name}Start('', zipData);
+
+        // Function to be called to start unzipping the process
+        function {!name}Start(filename, data)
+        {
+                             
+            // Unzip and push zip entries onto list for processing
+            zip = new JSZip(data, {base64:true});
+            zipFileName = filename;
+            zipFileNames = [];
+            for(var zipfileName in zip.files)
+            {
+                zipFileNames.push(zipfileName); 
+               
+
+            }    
+            // Start sending the files
+            {!name}Next('{!locations}');
+        }
+
+        // Function to be called to unzip the next file and call back via the 'oncomplete' handler      
+        function {!name}Next(locations)
+        {                 
+            var fileName = null;
+            var file = null;            
+            while(true)
+            {
+                // Pop the next file
+                file = null;
+                fileName = zipFileNames.pop();                
+                if(fileName == null)
+                    break;
+                file = zip.files[fileName];
+                
+                // Only break for files, skip over folder entries
+                if(file.data!=null && file.data.length>0 && fileName.search('DailySolarAccess') > 0 && fileName.search('Windowed') < 0)               
+                {
+                    
+                    break;                    
+                 
+                 }   
+                 if( file ==null)
+                 {
+                    break;
+                 }                
+                    
+            }            
+            // File to send or done?
+            var more = file!=null ? true : false;
+            var path = more ? fileName : null;
+            var data = more ? JSZipBase64.encode(file.data) : null;
+            var filename = zipFileName;
+            eval('{!oncomplete}');
+        }           
+    </script>
+</apex:component>

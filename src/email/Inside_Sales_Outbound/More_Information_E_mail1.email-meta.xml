@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <attachedDocuments>Direct_Energy_Solar_brand/Direct_Energy_Solar_Brochure.pdf</attachedDocuments>
+    <available>true</available>
+    <description>Use this e-mail to send more information about Astrum (includes attachment &apos;3-fold&apos;)</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>More Information E-mail</name>
+    <style>formalLetter</style>
+    <subject>The Direct Energy Solar Difference</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+It was great to talk with you today. I would like to take this opportunity to provide you with more information about Direct Energy Solar.
+
+You only get to choose a solar installer once for your home, and it is important to choose an installer who will be there to educate you prior to your installation, make the installation process easy, and provide support after your installation.
+
+What Makes Direct Energy Solar Different?
+
+Going solar is a big and exciting decision that will change your home forever. Our consultative approach helps us learn everything we can about your goals and priorities so we can design a system that works for your home.
+
+At Direct Energy Solar, we like to say we do solar “the right way.” And here’s why:
+
+Custom-Designed System—Designed Specifically for Your Home
+Payment Choices—You Decide What’s Best for You
+Fast Installation—We Handle All the Paperwork
+Guaranteed System Performance—Or We Pay You
+A Lifetime of Support—We’ve Got You Covered
+
+Our solar professionals invest the time and apply their skill at the very beginning to design and install a solar system that is tailored to each customer’s specific needs and the realities of each roof. Many installers use “cookie cutter” generic system designs that are all the same size and configuration. While this approach makes it easier for our competitors to install, this does not maximize your solar financial benefit and often lowers your maximum production. Our custom designs maximize your rate of return.
+
+We want our customers to enjoy the entire experience of going solar and not just the end results. So, we work hard to make sure the experience is turnkey, effortless and worry-free. Our professionals take care of everything, from precise measurements of your roof to post-installation paperwork for grants and rebates, and everything in between.
+
+Attached to this e-mail you&apos;ll find a detailed overview of what our company has to offer.
+
+Best,
+{!User.FirstName}
+
+7101 Riverwood Drive 
+Columbia, MD 21046
+P: 800-903-6130
+F: 800-949-1408
+directenergysolar.com
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

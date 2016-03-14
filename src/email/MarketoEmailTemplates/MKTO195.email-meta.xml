@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Mass Solar Connect 6/12/15.Mass Solar Connect 6/16/15</name>
+    <style>none</style>
+    <subject>100 contracts signed with Mass Solar Connect, will you be next?</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://go.directenergysolar.com/mass-solar-connect&gt;
+
+Mass Solar Connect
+ &lt;http://www.masssolarconnect.org/&gt;
+
+Your Neighbors Are Going Solar. You Can Join Them.
+
+Dear {{lead.First Name:default=Friend}},
+
+Join the most popular and quickest-selling community solar program in Massachusetts history!
+
+The Mass Solar Connect team is working hard to spread the word about solar, and the program has been very successful so far. In the past 3 months, over 900 homeowners have requested a free solar consultation with Direct Energy Solar, and 100 homeowners have signed contracts to go solar through the program. That’s over 600 kW of new solar power!
+
+Massachusetts Clean Energy Center
+&lt;http://www.masscec.com/&gt;
+
+Mass Energy Consumers Alliance
+ &lt;http://www.massenergy.org/&gt;
+
+Mass Solar Connect is a partnership between Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumers Alliance (Mass Energy) and Direct Energy Solar.
+
+
+Many thanks to our program leaders!
+
+Our thanks to our Mass Solar Connect program leaders who collectively will install over half a megawatt in new clean solar power this year, reducing carbon emissions by 500,000 pounds each year. According to the Greenhouse Gas Equivalencies Calculator &lt;http://www.epa.gov/cleanenergy/energy-resources/calculator.html&gt; from the EPA, this is equivalent to planting 10,000 leafy green trees.
+
+
+The program is half over, but there’s still time to act.
+
+Make your choice to go solar now so that you can relax on the beach while your Direct Energy Solar team handles the entire going solar process for you so you can start saving in no time. In addition, Direct Energy Solar guarantees your installation and your system’s production.
+
+Contact your Solar Consultant today to discuss your system and move forward with signing your contract!
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Mass Solar Connect.
+
+The Mass Solar Connect program is open to Mass Energy members and members of affiliated nonprofits. The enrollment period begins March 2, 2015 and lasts through August 31, 2015.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumer Alliance (Mass Energy) or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+MA HIC 168228/ELC 21555A
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

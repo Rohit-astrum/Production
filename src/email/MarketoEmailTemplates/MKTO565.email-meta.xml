@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.What Is the Average Solar Payback - TK.Subject Line</name>
+    <style>none</style>
+    <subject>How much of a return will you see from solar?</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=solarpayback&amp;utm_campaign=nurture-tk&amp;utm_content=solarpayback-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+What’s the Average Solar Payback?
+
+Dear {{lead.First Name:default=Friend}},
+
+One of the most common questions we hear is “What is the payback on my solar installation?” For most of us, when we ask a question, we hate the answer “It depends,” but especially in the case of solar, this is the right answer.
+
+Why? Because solar has many variables that can influence how much of a return you see from your system. Let’s take a look.
+
+Understand the Factors That Influence Your Payback Period:
+&lt;[[http://www.directenergysolar.com/blog/post/what-is-the-average-payback-period-of-a-solar-installation?utm_medium=email&amp;utm_source=solarpayback&amp;utm_campaign=nurture-tk&amp;utm_content=solarpayback-button-understand]]&gt;
+
+“People think solar is expensive but they don’t make the right calculation—where else can you put your money into something that gets this kind of return?” - Ted and Luella
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=solarpayback&amp;utm_campaign=nurture-tk&amp;utm_content=solarpayback-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=solarpayback&amp;utm_campaign=nurture-tk&amp;utm_content=solarpayback-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=solarpayback&amp;utm_campaign=nurture-tk&amp;utm_content=solarpayback-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

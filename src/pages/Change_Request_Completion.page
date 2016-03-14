@@ -1,0 +1,16 @@
+<apex:page standardController="Change_Request__c"   extensions="Change_Request_Completion_Controller">
+  <apex:form >
+  <apex:pageBlock title="Change Request Completed" id="thePageBlock" mode="edit">
+      <apex:pageMessages />
+     
+      <apex:pageBlockSection title="Completion Comments" columns="1" >     
+          <apex:inputTextarea value="{!comments}" rendered="{!NOT(CompletionDone)}" Style="Width:350px;Height:100px;" />   
+           <apex:outputpanel >
+               <apex:commandButton value="Change Complete" action="{!submitCompletion}" rendered="{!NOT(CompletionDone)}"/>  
+               <apex:commandButton value="Cancel"  action="{!cancel}"/>     
+           </apex:outputpanel> 
+      </apex:pageBlockSection>
+  <apex:outputText value="Change Request should be in status of Approve/Pending or Completion Approval Rejected for marking it complete" rendered="{!CompletionDone}"  />
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

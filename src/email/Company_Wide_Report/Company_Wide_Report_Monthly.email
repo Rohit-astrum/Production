@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Monthly Company Wide Report" recipientType="User" relatedToType="Company_Wide_Report__c">
+<messaging:htmlEmailBody >
+   <c:CompanyWideReportComponent providedReportType="Monthly" providedManagementFlag="false" providedEndDate="{!relatedTo.End_Date__c}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

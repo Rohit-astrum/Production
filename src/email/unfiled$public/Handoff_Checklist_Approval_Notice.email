@@ -1,0 +1,28 @@
+<html>
+<body>
+<p>A Handoff Checklist for <strong><a href="https://na28.salesforce.com/{!PM_Project__c.Id}">PM Project</a></strong> with the following details has been submitted for your approval.</p>
+
+<ul style="list-style:none">
+<li><u>System Location</u> : {!PM_Project__c.Handoff_System_Location__c}</li>
+<li><u>If not on Main House, what is the estimated Distance to main supply (ft.):</u> : {!PM_Project__c.Handoff_Distance_to_Mail_Supply_ft__c}</li>
+<li><u>Does Customer have internet ?</u> : {!PM_Project__c.Handoff_Is_Internet_Access__c}</li>
+<li><u>Type of Internet</u> : {!PM_Project__c.Handoff_Type_of_Internet_Access__c}</li>
+<li><u>Other Internet Type</u> : {!PM_Project__c.Handoff_Other_Internet_Access_Type__c}</li>
+<li><u>Is Bridge Installed ?</u> : {!PM_Project__c.Handoff_Bridge_Installed__c}</li>
+<li><u>Type of bridge</u> : {!PM_Project__c.Handoff_Bridge_Type__c}</li>
+<li><u>Envoy Location Relative to Electrical Panel</u> : {!PM_Project__c.Handoff_Envoy_Location__c}</li>
+<li><u>Envoy Location Explanation</u> : {!PM_Project__c.Handoff_Envoy_Location_Explanation__c}</li>
+<li><u>Dedicated outlet breaker location</u> : {!PM_Project__c.Handoff_Dedicate_Outlet_Breaker_Location__c}</li>
+<li><u>Other Dedicated outlet breaker location</u> : {!PM_Project__c.Handoff_Other_Outlet_Breaker_Location__c}</li>
+<li><u>Dedicated outlet for Envoy ?</u> : {!PM_Project__c.Handoff_Dedicated_Outlet_for_Envoy__c}</li>
+<li><u>Is Dedicated outlet is GFCI</u> : {!PM_Project__c.Handoff_Dedicated_Outlet_is_GFCI__c}</li>
+<li><u>Is Revenue Grade Meter Installed ?</u> : {!PM_Project__c.Handoff_Revenue_Grade_Meter_Installed__c}</li>
+<li><u>Type of Revenue Grade Meter Installed </u> : {!PM_Project__c.Handoff_Revenue_Grade_Meter_Type__c}</li>
+<li><u> Does Customer have any large electrical appliances ? </u> : {!PM_Project__c.Handoff_Big_Ticket_Electrical_Item__c}</li>
+<li><u> Handoff Large Electrical Appliance Present </u> : {!PM_Project__c.Handoff_Big_Ticket_Electrical_Type__c}</li>
+<li><u> Is Enlighten fully activated, with no current alerts or issues ?</u> : {!PM_Project__c.Handoff_Enlighten_Activated__c}</li>
+<li><u> Enphase ID Number  </u> : {!PM_Project__c.Handoff_Enphase_ID__c}</li>
+<li><u> Enphase Verification Date  </u> : {!PM_Project__c.Handoff_Enlighten_Verification_Date__c}</li>
+<li><u> Checklist Comments  </u> : {!PM_Project__c.Handoff_Checklist_Comments__c}</li>
+</ul>
+<p>To Approve This Checklist, please <strong><a href="https://na28.salesforce.com/{!PM_Project__c.Id}">Review Here</a></strong></p>

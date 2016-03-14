@@ -1,0 +1,3 @@
+<apex:page standardController="QB_Vendor_Credits__c" extensions="ffirule.IntegrationRuleEngine" action="{!convert}">
+<ffirule:IntegrationRule engine="{!engine}"/>
+</apex:page>

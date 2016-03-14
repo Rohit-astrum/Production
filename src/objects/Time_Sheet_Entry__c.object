@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumTIME - A Single Entry For An Astrum Solar Time Sheet</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Time_Sheet_Entries</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Approved by Manager ?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approved by Manager ?</inlineHelpText>
+        <label>Approved ?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Bonus_Type__c</fullName>
+        <description>Type of Employee Used for Bonus Calculations</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of Employee Used for Bonus Calculations</inlineHelpText>
+        <label>Bonus Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CheckIn_Location__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>CheckIn Location</label>
+        <required>false</required>
+        <scale>4</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Checkout_Location__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Checkout Location</label>
+        <required>false</required>
+        <scale>4</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>End_Time__c</fullName>
+        <description>End Time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>End Time</inlineHelpText>
+        <label>End Time</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Entry_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATEVALUE(Start_Time__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Entry Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Half_Hour_Lunch_Break__c</fullName>
+        <description>Half Hour Lunch Break</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Did you take a half hour lunch break during this time?</inlineHelpText>
+        <label>Half Hour Lunch Break</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Hotel_Cost__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>How Much Did The Hotel Cost If You Checked &quot;Stayed Overnight&quot;?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How Much Did The Hotel Cost If You Checked &quot;Stayed Overnight&quot;?</inlineHelpText>
+        <label>Hotel Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Job_Id__c</fullName>
+        <description>AstrumPM Project Job Id</description>
+        <externalId>false</externalId>
+        <formula>Project_Client_Job__r.AstrumPM_Project_Job_Id__c</formula>
+        <inlineHelpText>AstrumPM Project Job Id</inlineHelpText>
+        <label>Job Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Labor_Processed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Labor Processed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Maintenance_Type__c</fullName>
+        <description>If This Entry is MAINTENANCE, when did this Maintenance Occur?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If This Entry is MAINTENANCE, when did this Maintenance Occur?</inlineHelpText>
+        <label>Maintenance Type</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Posted_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Posted By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Time_Sheet_Entries1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Posted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Posted to Payroll Entry</description>
+        <externalId>false</externalId>
+        <label>Posted ?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Project_Client_Job__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Which Project Are You Working On?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Which Project Are You Working On?</inlineHelpText>
+        <label>Project/Client/Job</label>
+        <referenceTo>Install_Project__c</referenceTo>
+        <relationshipLabel>Time Sheet Entries</relationshipLabel>
+        <relationshipName>Time_Sheet_Entries</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Purpose__c</fullName>
+        <description>Purpose</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Purpose</inlineHelpText>
+        <label>Purpose</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Install</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Install-Electrical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maintenance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Warranty Maintenance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Bonus Maintenance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Bonus Warranty Maintenance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Paid Time Off</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Holiday</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sick Time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Vacation Time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>First 2 Weeks of Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Start_Time_Off_Site__c</fullName>
+        <description>Start Time Off Site</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Start Time Off Site</inlineHelpText>
+        <label>Start Time Off Site</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Start_Time_On_Site__c</fullName>
+        <description>Start Time On Site</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Start Time On Site</inlineHelpText>
+        <label>Start Time On Site</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Start_Time__c</fullName>
+        <description>Start Time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Start Time</inlineHelpText>
+        <label>Start Time</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Stayed_Overnight__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Did you stay overnight after this shift?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Did you stay overnight after this shift?</inlineHelpText>
+        <label>Stayed Overnight</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Time_Sheet__c</fullName>
+        <description>The Astrum Solar Time Sheet Containing this Entry</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Astrum Solar Time Sheet Containing this Entry</inlineHelpText>
+        <label>Time Sheet</label>
+        <referenceTo>Time_Sheet__c</referenceTo>
+        <relationshipLabel>Time Sheet Entries</relationshipLabel>
+        <relationshipName>Time_Sheet_Entries</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Timesheet_Purpose__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Timesheet Purpose</label>
+        <referenceTo>Timesheet_Purpose__c</referenceTo>
+        <relationshipLabel>Time Sheet Entries</relationshipLabel>
+        <relationshipName>Time_Sheet_Entries</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_Hours__c</fullName>
+        <description>Total Hours For This Entry</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Hours For This Entry</inlineHelpText>
+        <label>Total Hours</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Time Sheet Entry</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Entry-{0000000}</displayFormat>
+        <label>Time Sheet Entry</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Time Sheet Entries</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Half_Hour_Lunch_Break_Selected</fullName>
+        <active>true</active>
+        <description>Half Hour Lunch Break Must be &quot;Yes&quot; or &quot;No&quot;</description>
+        <errorConditionFormula>NOT(ISPICKVAL( Half_Hour_Lunch_Break__c, &apos;Yes&apos;)||ISPICKVAL( Half_Hour_Lunch_Break__c, &apos;No&apos;))</errorConditionFormula>
+        <errorDisplayField>Half_Hour_Lunch_Break__c</errorDisplayField>
+        <errorMessage>Please Select &quot;Yes&quot; or &quot;No&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Hotel_Cost_Minimum10_For_Overnight</fullName>
+        <active>true</active>
+        <description>Hotel Cost Must Be Minimum $10 if Stayed Overnight is Checked</description>
+        <errorConditionFormula>AND(Stayed_Overnight__c,Hotel_Cost__c &lt;=10)</errorConditionFormula>
+        <errorDisplayField>Hotel_Cost__c</errorDisplayField>
+        <errorMessage>&quot;Stayed Overnight&quot; is checked, Please Enter How Much It Cost (min. $10)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Posted_Records_Cannot_be_Edited</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(OR(ISCHANGED(  LastModifiedDate   ),ISCHANGED(   Start_Time__c ),ISCHANGED(   End_Time__c ),ISCHANGED(   Total_Hours__c )) , Posted__c)</errorConditionFormula>
+        <errorMessage>You can not modify the Timesheet Entries after they are Posted.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Purpose_Requires_Project</fullName>
+        <active>true</active>
+        <description>If the Timesheet Purpose field is Install or Install-Electric, the Project/Client/Job field must have a value.</description>
+        <errorConditionFormula>(
+   Timesheet_Purpose__r.Name == &quot;Install&quot; ||
+   Timesheet_Purpose__r.Name == &quot;Install-Electric&quot;
+)
+&amp;&amp;
+ISBLANK(Project_Client_Job__c)</errorConditionFormula>
+        <errorMessage>If the Timesheet Purpose field is Install or Install-Electric, the Project/Client/Job field must have a value.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Purpose_Selected</fullName>
+        <active>false</active>
+        <description>Purpose is required.</description>
+        <errorConditionFormula>ISBLANK(TEXT(Purpose__c))</errorConditionFormula>
+        <errorDisplayField>Purpose__c</errorDisplayField>
+        <errorMessage>Purpose is required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Purpose_Selected_Needs_Job</fullName>
+        <active>false</active>
+        <description>Need a Job if Purpose is &quot;Install&quot;, &quot;Install-Electrical&quot;, &quot;Maintenance&quot;, &quot;First 2 Weeks of Training&quot;, or &quot;Warranty Maintenance&quot;</description>
+        <errorConditionFormula>AND(OR(ISNULL( Project_Client_Job__c ),ISBLANK(Project_Client_Job__c)) , OR(ISPICKVAL( Purpose__c , &apos;Install&apos;),ISPICKVAL( Purpose__c , &apos;Install-Electrical&apos;),ISPICKVAL( Purpose__c , &apos;Maintenance&apos;),ISPICKVAL( Purpose__c , &apos;First 2 Weeks of Training&apos;),ISPICKVAL( Purpose__c , &apos;Warranty Maintenance&apos;)))</errorConditionFormula>
+        <errorDisplayField>Project_Client_Job__c</errorDisplayField>
+        <errorMessage>Purpose &quot;Install&quot;,&quot;Install-Electrical&quot;, &quot;Maintenance&quot;, &quot;Warranty Maintenance&quot;, &quot;First 2 Weeks of Training&quot; Require A Job To Be Chosen. Please Select a Job.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Require_Entry_In_Time_Sheet_Date_Range</fullName>
+        <active>false</active>
+        <description>Require the Start Date and End Date values to lay within the related Time Sheet.</description>
+        <errorConditionFormula>OR( 
+( DATEVALUE( Start_Time__c ) &lt; Time_Sheet__r.For_The_Week_Starting__c ), 
+( DATEVALUE( End_Time__c ) &gt; (Time_Sheet__r.For_The_Week_Starting__c + 7 )))</errorConditionFormula>
+        <errorDisplayField>End_Time__c</errorDisplayField>
+        <errorMessage>Either your Start Time or End Time are out of bounds for the Week Ending period.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Same_Date_Required_Start_and_End_Times</fullName>
+        <active>true</active>
+        <description>The datevalue of fields Start Time and End Time must be equal.</description>
+        <errorConditionFormula>DATEVALUE( Start_Time__c ) &lt;&gt; DATEVALUE( End_Time__c )</errorConditionFormula>
+        <errorDisplayField>Start_Time__c</errorDisplayField>
+        <errorMessage>You must enter the same Date in the Start Time and End Time Fields.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Before_End</fullName>
+        <active>true</active>
+        <description>Start Time Must Be Before End Time</description>
+        <errorConditionFormula>Start_Time__c &gt;= End_Time__c</errorConditionFormula>
+        <errorDisplayField>Start_Time__c</errorDisplayField>
+        <errorMessage>Start Time Must Come Before End Time</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Offsite_Between_Start_and_End</fullName>
+        <active>false</active>
+        <description>Start Time Off Site Must Occur Between Start and End Time</description>
+        <errorConditionFormula>(Start_Time_Off_Site__c  &lt; Start_Time__c )||( Start_Time_Off_Site__c &gt; End_Time__c )</errorConditionFormula>
+        <errorDisplayField>Start_Time_Off_Site__c</errorDisplayField>
+        <errorMessage>Start Time Off Site Must Be During This Shift</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Onsite_Between_Start_and_End</fullName>
+        <active>false</active>
+        <description>Start Time On Site Must Occur Between Start and End Time</description>
+        <errorConditionFormula>( Start_Time_On_Site__c &lt; Start_Time__c )||( Start_Time_On_Site__c &gt; End_Time__c )</errorConditionFormula>
+        <errorDisplayField>Start_Time_On_Site__c</errorDisplayField>
+        <errorMessage>Start Time On Site Must Be During This Shift</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Time_On_Site_Before_Off_Site</fullName>
+        <active>false</active>
+        <description>Start Time On SIte Must Be Before Start Time Off Site</description>
+        <errorConditionFormula>Start_Time_On_Site__c &gt;= Start_Time_Off_Site__c</errorConditionFormula>
+        <errorDisplayField>Start_Time_On_Site__c</errorDisplayField>
+        <errorMessage>Start Time On Site Must Occur Before Start Time Off Site</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_and_End_Same_Day</fullName>
+        <active>false</active>
+        <description>The Start and End Times Must Both Occur On the Same Day</description>
+        <errorConditionFormula>DATEVALUE( Start_Time__c )  &lt;&gt; DATEVALUE( End_Time__c )</errorConditionFormula>
+        <errorDisplayField>End_Time__c</errorDisplayField>
+        <errorMessage>The Start and End Times Must Both Occur On the Same Day</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Add_Edit_Entries</fullName>
+        <availability>online</availability>
+        <description>Launch Add/Edit Page</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Add/Edit Entries</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Add_Edit_Time_Sheet_Entries?id={!Time_Sheet__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Approve_Entries</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Approve Entries</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/TimesheetEntryApproval?id={!Time_Sheet__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Post_Entries</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Post Entries</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/TimesheetEntryPost?id={!Time_Sheet__c.Id}</url>
+    </webLinks>
+</CustomObject>

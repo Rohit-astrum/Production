@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CreatePdf</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailQuote</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewQuote</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SyncQuote</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AccountId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AdditionalName</fullName>
+    </fields>
+    <fields>
+        <fullName>BillingName</fullName>
+    </fields>
+    <fields>
+        <fullName>ContactId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContractId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+    </fields>
+    <fields>
+        <fullName>Discount</fullName>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+    </fields>
+    <fields>
+        <fullName>ExpirationDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Fax</fullName>
+    </fields>
+    <fields>
+        <fullName>GrandTotal</fullName>
+    </fields>
+    <fields>
+        <fullName>IsSyncing</fullName>
+    </fields>
+    <fields>
+        <fullName>LineItemCount</fullName>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+    </fields>
+    <fields>
+        <fullName>OpportunityId</fullName>
+        <type>MasterDetail</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+    </fields>
+    <fields>
+        <fullName>QuoteToName</fullName>
+    </fields>
+    <fields>
+        <fullName>ShippingHandling</fullName>
+    </fields>
+    <fields>
+        <fullName>ShippingName</fullName>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Draft</fullName>
+                <allowEmail>true</allowEmail>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Review</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Review</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Presented</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Accepted</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Denied</fullName>
+                <allowEmail>true</allowEmail>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Subtotal</fullName>
+    </fields>
+    <fields>
+        <fullName>Tax</fullName>
+    </fields>
+    <fields>
+        <fullName>TotalPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>rstk__Quote_csoproduct__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Configured Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>CSO Product Quotes</relationshipLabel>
+        <relationshipName>csoproductQuotes</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Quote_price__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Price</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__Quote_rsjob__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Quote is for a Rootstock Job</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Quote_salesdiv__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Division</label>
+        <referenceTo>rstk__sydiv__c</referenceTo>
+        <relationshipLabel>Sydiv Quotes</relationshipLabel>
+        <relationshipName>salesdivQuotes</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Quote_sohdr__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Order Header</label>
+        <referenceTo>rstk__sohdr__c</referenceTo>
+        <relationshipLabel>SO HDR Quotes</relationshipLabel>
+        <relationshipName>sohdrQuotes</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Quote_soline__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Order Line</label>
+        <referenceTo>rstk__soline__c</referenceTo>
+        <relationshipLabel>SO Line Quotes</relationshipLabel>
+        <relationshipName>solineQuotes</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__triggeroptions__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>triggeroptions</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>QUOTE.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>OPPORTUNITY.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTACT.FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Discount</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>GrandTotal</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OPPORTUNITY.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Discount</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>GrandTotal</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.PHONE</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>QUOTE.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Discount</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GrandTotal</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>rstk__Convert_to_Sales_Order</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Convert to Sales Order</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ConvertQuoteToSO?quoteid={!Quote.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>rstk__Create_Rootstock_Sales_Order</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Rootstock Sales Order</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>//This script is used in a custom button on the Salesforce Quote page
+//Label: Create Rootstock Sales Order
+//Display Type: Detail Page Button
+//Behavior: Execute Javascript
+//Content Source: OnClick JavaScript
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+var result = sforce.connection.describeGlobal(); 
+var sobjects = result.getArray(&quot;sobjects&quot;); 
+if (sobjects.length == 0) { sobjects = result.getArray(&quot;types&quot;); }
+var re = /([A-Za-z0-9]+)?(__)?(icixr__c)/;
+var prefix = &apos;&apos;;
+for (var i=0; i&lt;sobjects.length; i++)  {
+  var mData = re.exec(sobjects[i]);
+  if (mData ==null) continue;
+  if (mData[3] == &apos;icixr__c&apos;) {
+    prefix = mData[1]==null?&apos;&apos;:(mData[1]+mData[2]);
+    break;
+  }
+}
+parent.location.href=&quot;/apex/&quot;+prefix+&quot;createsalesorderfrom?fromid={!Quote.Id}&quot;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>rstk__rs_job</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Rootstock Job</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>//This script is used in a custom button on the Salesforce Quote page 
+//Label: Create Rootstock Sales Order 
+//Display Type: Detail Page Button 
+//Behavior: Execute Javascript 
+//Content Source: OnClick JavaScript 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+var result = sforce.connection.describeGlobal(); 
+var sobjects = result.getArray(&quot;sobjects&quot;); 
+if (sobjects.length == 0) { sobjects = result.getArray(&quot;types&quot;); }
+var re = /([A-Za-z0-9]+)?(__)?(icixr__c)/; 
+var prefix = &apos;&apos;; 
+for (var i=0; i&lt;sobjects.length; i++) { 
+var mData = re.exec(sobjects[i]); 
+if (mData ==null) continue; 
+if (mData[3] == &apos;icixr__c&apos;) { 
+prefix = mData[1]==null?&apos;&apos;:(mData[1]+mData[2]); 
+break; 
+} 
+} 
+parent.location.href=&quot;/apex/&quot;+prefix+&quot;QuoteRSJob?qid={!Quote.Id}&quot;</url>
+    </webLinks>
+</CustomObject>

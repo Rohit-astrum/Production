@@ -1,0 +1,388 @@
+<apex:page doctype="html-5.0" controller="EmployeeLandingPageController" showHeader="false" sidebar="false" standardStyleSheets="false">
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+        <title>Frederick MD Home Solar Panels Lower Your Utility Bill</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--<meta name="google-site-verification" content="vzNX2Vizola_A88N5vjQ-RSIrMiUp7RwHup00Y9wdNA" />-->
+        <meta name="description" content="Turn your Frederick roof into a clean utility plant. All PV installations are done through Astrum Solar, Frederick County's sole source Solarize installer." />
+        <meta name="keywords" content="Astrum Solar, Frederick Solar, Solarize Frederick, Frederick MD, Frederick solar program, Frederick solar company, Solarize, Myersville solar, Urbana solar" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0" /> -->
+    </meta>
+    
+    <link rel="Shortcut Icon" href="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/favicon.ico')}" />
+    
+    <apex:insert name="head-top"/>
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'fonts/avenir1stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'fonts/avenir2stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'fonts/avenir3stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'fonts/avenir4stylesheet.css')}" media="screen, projection" type="text/css" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'styles/screen.css')}" media="screen, projection" type="text/css" /> 
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <style type="text/css">
+         .gradient {
+            filter: none;
+     }
+    </style>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'javascript/plugins.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'javascript/scripts.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'javascript/jquery.maskedinput.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'javascript/jquery.validate.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'javascript/jquery.cookie-new.js')}"></script>
+    
+    <script type="text/javascript">
+    
+        function getURLParam(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
+            );
+        }
+        
+        var a_gclid = getURLParam('gclid');
+        var a_utmSource = getURLParam('utm_source');
+        var a_utmMedium = getURLParam('utm_medium');
+        var a_utmTerm = getURLParam('utm_term');
+        var a_utmCampaign = getURLParam('utm_campaign');
+        var a_utmContent = getURLParam('utm_content');
+        
+        if (a_gclid!=''){
+        $.cookie('apex__gclid', a_gclid, { expires: 30, path: '/' });
+        }
+        if (a_utmSource!=''){
+        $.cookie('apex__astrum_utm_source', a_utmSource, { expires: 30, path: '/' });
+        }
+        if (a_utmMedium!=''){
+        $.cookie('apex__astrum_utm_medium', a_utmMedium, { expires: 30, path: '/' });
+        }
+        if (a_utmTerm!=''){
+        $.cookie('apex__astrum_utm_term', a_utmTerm, { expires: 30, path: '/' });
+        }
+        if (a_utmCampaign!=''){
+        $.cookie('apex__astrum_utm_campaign', a_utmCampaign, { expires: 30, path: '/' });
+        }
+        if (a_utmContent!=''){
+        $.cookie('apex__astrum_utm_content', a_utmContent, { expires: 30, path: '/' });
+        }
+    
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        $.cookie();
+        }
+    </script>
+
+
+    <apex:insert name="head-bottom"/>
+
+</head>
+
+<body>
+
+    <div id="main-container">
+    <div id="body-container">
+    
+        <div id="header">
+            <p class="acc"><a href="#content" title="Skip to content">Skip to content</a></p>
+            <header role="banner" class="wrapper group">
+                <hgroup>
+                    <h1 id="logo"><a href="http://www.astrumsolar.com" title="Astrum Solar"><span>Astrum Solar</span></a></h1>
+                    <h2 id="logo2"><a href="http://www.frederickcountymd.gov/index.aspx?NID=5350" title="Solarize Frederick County"><span>Solarize Frederick County</span></a></h2>
+                </hgroup>
+                <div id="UpperRightNav">
+                     <h2><span>Call Us: 800-903-6130</span></h2>
+                     <h3><span>See a Sunny Day in a Whole New Way</span></h3>
+                     
+                </div>
+            </header>
+        </div>
+    
+        <div id="content" role="main">
+            <div class="wrapper group"> 
+                <article>
+                    <section id="main" class="group MainBackground">
+                        <div class="content-container">
+                            <h2 class="first">It is never too late to go solar!</h2>
+                            <div id="tab-content">
+        
+                                <!--BEGIN TAB ONE-->
+                                <div id="home">
+        
+                                    <!--Logo Left-->
+                                    <!--<div class="logo-spot logo no-border">
+                                        <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/SolarEnergyServices_logo.gif')}" title="Solar Energy Services, Inc." />
+                                        <p>Solarize discounts on solar hot water systems are available through <a href="http://www.solarsaves.net" target="_blank">Solar Energy Services</a>.</p>                        
+                                   </div>-->
+                                    <!--END Logo Left-->
+                                    
+                                            
+                                    <apex:insert name="home-image">
+                                        <p class="annotation left">Dave and Jan, Myersville, MD &mdash; ELECTRICITY SAVINGS: $2,760/year</p>
+                       
+                                    </apex:insert>
+                                </div>
+                                <!--END TAB ONE-->
+                                
+                                <!--BEGIN TAB TWO-->
+                                <div id="about">
+                                    <h3>About Solarize Frederick County</h3>
+                                    <h4>Now is the Time to Switch to Solar Power</h4>
+                                     <p>Solarize Frederick County is a special pilot project of the Renewable Star Challenge to encourage the adoption of home solar power by deploying a coordinated community outreach effort, combined with a tiered pricing structure. The more residents who sign up to install solar, the more the price decreases for everyone who participates in the community. And because the installer, the technology and the exact prices are provided upfront, it is much easier for residents to make the decision to go solar. Astrum Solar is the selected installer for solar electric (PV).</p>
+                                      <p>FOR EVENTS AND MORE INFORMATION VISIT:<br /><a href="http://www.frederickcountymd.gov/index.aspx?NID=5350" target="_blank">http://www.frederickcountymd.gov/index.aspx?NID=5350</a></p>
+                                     <p>You must register with the <a href="http://www.frederickcountymd.gov/index.aspx?NID=3531" target="_blank">Green Homes Challenge</a> to participate in the Solarize Frederick County program. A limited number of local incentive grants ($2,000 &ndash; 2,500) are available to offset the costs of a purchased solar PV system. Residents certified as <a href="http://www.frederickcountymd.gov/documents/6616/6617/6628/oes_pshb_FINAL%20Spring%202012_201206221228345763.pdf" target="_blank">Power Savers</a> in the Green Homes Challenge earn the higher grant amount. The Solarize incentive grant is in addition to the Federal tax credit and other generous state solar incentives available in Maryland. Residents opting to lease solar PV can take advantage of the program volume discounts, but are not eligible for the Solarize incentive grants.</p>  
+
+                                </div>
+                                <!--END TAB TWO-->
+                                        
+                                <!--BEGIN TAB THREE-->
+                                <div id="customers" class="group">
+                                <h3>Meet Our PV Customers</h3>
+                                    <ul id="slideshow" class="group">
+                                        <li>
+                                            <h3>The Barrow Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $2,760</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/barrow.jpg')}" class="one" title="Barrow" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">I am very picky. I wanted it the way I wanted it and Astrum met every criteria I had.&rdquo;</p>
+                                                    <p class="author">&mdash; David and Jan</p>
+                                                    <p class="author small">Myersville</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Check Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $766</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/check.jpg')}" class="one" title="Check" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Astrum Solar offered a more efficient system than the other companies, because they use microinverters.&rdquo;</p>
+                                                    <p class="author">&mdash; Bill and Lisa</p>
+                                                    <p class="author small">Frederick</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Gottuck Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,247</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/gottuck.jpg')}" class="one" title="Gottuck" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote-smaller">Everything was explained very well. There was nothing I needed to do. It was almost too easy! And their work crew were the nicest, most polite crew I&rsquo;ve ever had.&rdquo;</p>
+                                                    <p class="author">&mdash; Dan and Ruth</p>
+                                                    <p class="author small">Ellicott City</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Kaye Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,202</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/kaye.jpg')}" class="one" title="Kaye" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">It started out with, &lsquo;Wouldn&rsquo;t it be cool to do this&rsquo;, but then I saw how quickly this would pay out.&rdquo;</p>
+                                                    <p class="author">&mdash; Dale and Janice</p>
+                                                    <p class="author small">Derwood</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                         <li>
+                                            <h3>The Goldberg Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $683</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/goldberg.jpg')}" class="one" title="Goldberg" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Our solar panels were cash-flow positive from day one. It&rsquo;s like we&rsquo;re getting our electricity for free!&rdquo;</p>
+                                                    <p class="author">&mdash; Avrum and Shelia</p>
+                                                    <p class="author small">Baltimore</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--END TAB THREE-->
+                                    
+                            </div>
+                        </div>
+        
+                        <div class="form-container">
+                            <div class="referredBy"><p><apex:insert name="referred-by"/></p></div>
+                            <!--BEGIN TAB NAV-->
+                            <ul id="tabs" class="group">
+                                <li class="home"><a href="javaScript:void(0);" title="Home" id="home-btn"><img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, 'images/home-btn.png')}" title="Home" /></a></li>
+                                <li><a href="javaScript:void(0);" title="About Solarize Bridgeport" id="about-btn">About Solarize<br/>Frederick County</a></li>
+                                <li><a href="javaScript:void(0);" title="Meet Our Customers" id="customers-btn">Meet Our<br />PV Customers</a></li>
+                            </ul>
+                            <!--END TAB NAV-->
+        
+                            <!--BEGIN FORM-->
+                            <div id="form">
+                                <apex:form styleClass="save-form">
+        
+        <apex:actionRegion >
+    
+        <apex:outputPanel id="formArea" layout="block">
+        
+            <apex:outputPanel rendered="{!NOT(submitted=true)}">
+    
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <legend>Find Out How Much You Can Save</legend>
+            <ul>
+                <li class="fname">
+                    <label for="fname" class="acc">First Name</label>
+                    <input type="text" id="fname" name="fname" value="First Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="lname">
+                    <label for="lname" class="acc">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="Last Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="email">
+                    <label for="email" class="acc">Email Address</label>
+                    <input type="text" id="email" name="email" value="Email Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="phone">
+                    <label for="phone" class="acc">Phone</label>
+                    <input type="text" id="phone" name="phone" value="Phone" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="street">
+                    <label for="street" class="acc">Street Address</label>
+                    <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="city">
+                    <label for="city" class="acc">City</label>
+                    <input type="text" id="city" name="city" maxlength="100" value="City" placeholder="" class=""/>
+                </li>
+                <li class="state">
+                    <label for="state" class="acc">State</label>
+                    <select id="state" name="state" class="noPlaceholder required" >
+                      <apex:repeat value="{!mdstates}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>                      
+                    </select>
+                </li>
+                <li class="zip">
+                    <label for="zip" class="acc">Zip</label>
+                    <input type="text" id="zip" name="zip" value="Zip" placeholder="" class="noPlaceholder" />
+                </li>
+                
+               
+                
+                
+                <li class="heard">
+                    <label for="heard" class="acc">How Did You Hear About Us? </label>
+                    <apex:outputPanel layout="block" id="abourUsSelect">
+                        <select id="heard" name="heard" class="noPlaceholder notSelected">
+                            <option value="">How Did You Hear About Us? </option>
+                            <apex:repeat value="{!ctleadSources}" var="u"><option value="{!u.value}">{!u.label}</option></apex:repeat>
+                        </select>
+                    </apex:outputPanel>
+                </li>
+                
+                <li id="more-info" class="heard_detail" style="display: none;">
+                    <label class="acc" for="heard_detail">More Details</label>
+                        <input type="text" class="noPlaceholderMoreDetails" placeholder="" value="" name="heard_detail" id="heard_detail" />
+                    </li>
+                <li class="errorMessage">
+                    <p>Please complete all required fields.</p>
+                </li>
+                 
+                
+                <li class="submit">
+                    <input type="submit" value=""  class="button" id="submit-btn" />
+                </li>
+                <li class="updates group">
+                    <label for="updates" class="acc">I want to receive alerts &amp; Solarize program updates from Astrum Solar.</label>
+                    <input type="checkbox" id="updates" name="updates" value="yes" checked="yes" />
+                    <p>I want to receive alerts &amp; Solarize program updates from Astrum Solar.</p>
+                </li>
+            </ul>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!OR(submitted==true)}">
+                <h2>Find Out How Much You Can Save</h2>
+                <h3>Thank You</h3>
+                <p class="thanks">Thank you for requesting a solar consultation. One of our solar experts will <span>contact you within the next 48 hours</span> to 
+                follow up on your request for a no obligation home solar site assessment.</p>
+
+                <p class="thanks icon"><img src="{!URLFOR($Resource.SolarizeFrederickLandingPage_Resources, '/images/Form_KnowledgeIcon.png')}" alt="Lightbulb"/>To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.</p>
+    
+                <p class="thanks"><span>We hope to have the opportunity to help you go solar.</span></p>
+    
+            </apex:outputPanel>
+        
+        </apex:outputPanel>
+
+        <apex:actionFunction name="doSubmit" action="{!submit}" rerender="formArea"/>
+        
+        </apex:actionRegion>
+            <input type="hidden" id="communityprogram" name="communityprogram" value="Solarize Frederick"/>
+
+        </apex:form>
+                            </div>
+        <div class="call-to-action">
+                        <p class="promo-text">66 Systems sold for over 500 kW of clean electricity!</p>
+                     </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section id="landing-content" class="group">
+                       <div class="landing-detail">
+                            <p class="marketing-content">Although the enrollment period for Solarize Frederick County has officially ended, you can still switch to solar and save as much as ever! Astrum Solar makes it so easy and rewarding that you have nothing to lose&mdash;and a lifetime of carefree energy savings to gain. <span>Request your no obligation home solar PV site assessment today.</span></p>
+                        </div>
+                        <div class="landing-cta">
+                            <p>Astrum Solar is the Solarize Frederick County sole source PV installer.</p>
+                            <p class="pic"><img src="{!URLFOR($Resource.SolarizeNeedhamLandingPage_Resources, 'images/Inc500No2_2012.gif')}" title="" /></p>
+                            <p class="pic"><a id="bbblink" class="ruvtbus" href="http://www.bbb.org/greater-maryland/business-reviews/solar-energy-system-design-and-installation/astrum-solar-in-annapolis-junction-md-90168289#bbbseal" title="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" style="display: block;position: relative;overflow: hidden; width: 40px; height: 72px; margin: 0px; padding: 0px;"><img style="padding: 0px; border: none;" id="bbblinkimg" src="http://seal-greatermd.bbb.org/logo/ruvtbus/astrum-solar-90168289.png" width="80" height="72" alt="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" /></a><script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-greatermd.bbb.org' + unescape('%2Flogo%2Fastrum-solar-90168289.js') + "' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                        </div>
+                    </section>
+                        
+                </article>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <footer role="contentinfo" class="container group">
+                <div id="copyright">
+                    <p>Copyright &copy; {!YEAR(TODAY())} Astrum Solar, Inc.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/" title="Astrum Solar website">AstrumSolar.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/terms-and-conditions" title="Terms and Conditions">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/contact-us" title="Contact Us">Contact Us</a></p>
+                </div>
+                <p class="promoDisclaimer">* You must be a Frederick county resident and register with the <a href="http://www.frederickcountymd.gov/index.aspx?NID=3531" target="_blank">Green Homes Challenge</a> to participate in the Solarize Frederick County program. A limited number of local incentive grants ($2,000 &ndash; 2,500) are available to offset the costs of a purchased solar PV system. Residents certified as <a href="http://www.frederickcountymd.gov/documents/6616/6617/6628/oes_pshb_FINAL%20Spring%202012_201206221228345763.pdf" target="_blank">Power Savers</a> in the Green Homes Challenge earn the higher grant amount. The Solarize incentive grant is in addition to the Federal tax credit and other generous state solar incentives available in Maryland. Residents opting to lease solar PV can take advantage of the program volume discounts, but are not eligible for the Solarize incentive grants.</p>
+                
+               <p class="companyDisclaimer">A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. Brand names and product names are trademarks or services marks of their respective holders. No obligation of the Frederick County&rsquo;s Office of Sustainability and Environmental Resources (OSER), Solar Energy Services or any affiliate thereof, should be deemed to arise through the use of such names and marks. MD HIC 126447</p>
+               
+                
+            </footer>
+
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
+</apex:page>

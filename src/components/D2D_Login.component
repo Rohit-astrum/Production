@@ -1,0 +1,40 @@
+<apex:component controller="D2D_LoginController">
+
+<apex:form forceSSL="true">
+
+    <apex:pageMessages id="error" escape="false"/>
+
+    <div class="LoginContainer">
+
+        <div class="LoginPanel">
+            <apex:outputPanel layout="block" rendered="{!showLogout}">
+                <a href="{!$Site.Prefix}/secur/logout.jsp" data-ajax="false">Log out</a>
+            </apex:outputPanel>
+            <div class="LoginPanelForm">
+                <h1>LOG IN</h1>
+                <div class="LoginPanelFormRow">
+                    <label>User Name</label>
+                    <apex:inputText styleClass="username" value="{!username}" onkeydown="if(event.keyCode==13){this.blur();doLogin();return false;}"/>
+                </div>
+                <div class="LoginPanelFormRow">
+                    <label>Password</label>
+                    <apex:inputSecret styleClass="password" id="password" value="{!password}" onkeydown="if(event.keyCode==13){this.blur();doLogin();return false;}"/>
+                </div>
+                <div class="LoginPanelFormRow">
+                    <label><apex:inputCheckbox id="rememberMe" value="{!rememberMe}"/>Remember User Name</label>
+                </div>
+                <div class="LoginPanelSubmitButton">
+                    <input type="button" value="Submit" data-inline="true" data-wrapper-class="ui-btn-green ui-btn-large" onclick="doLogin();return false;" />
+                    <apex:actionFunction name="doLogin" action="{!login}"/>
+                </div>
+                <div>
+                    <a href="D2D_ForgotPassword" data-ajax="false">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+    
+</apex:form>
+
+</apex:component>

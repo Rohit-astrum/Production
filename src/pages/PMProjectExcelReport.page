@@ -1,0 +1,78 @@
+<apex:page controller="PMProjectReport" readOnly="true" contentType="application/vnd.ms-excel#ProjectReport.xls" cache="true">
+	
+	<apex:pageBlock rendered="{!reportListHelper != null}">
+		
+	<table class="report">
+			<tr>
+				<!--<th>Created Date </th>-->
+			    <th>Project ID </th>
+			    <th>Sales Order </th>
+			    
+			    <th>Proj Creation Date</th>
+			    <th>SO Status Code</th>
+			    <th>SO Financing Option</th>
+			    <th>Opportunity Close Date</th>
+			    <th>Install Date</th>
+			    <th>Work Complete</th>
+			    <th>Proof of Inspection</th>
+			    <th>Inspection Verified</th>
+			    
+			    <th>System makeup</th>
+			    <th>System Size</th>
+			    <th>Office Location</th>
+			    <th>Sales Order Amount</th>
+			    <th>Property Type</th>
+			    <th>Purchase or Lease </th>
+			    
+			    <th>Sum of Sales Invoices</th>
+			    
+			    <th>Actual Labor</th>
+			    <th>Estimated Labor</th>
+			    <th>Actual Material</th>
+			    <th>Estimated Material</th>
+			    
+			    <th>Actual Other</th>
+			    <th>Estimated Other</th>
+			    <th>Percent Complete</th>
+		  	</tr>
+			<apex:repeat value="{!reportListHelper}" var="record">
+				<apex:repeat value="{!record}" var="rec">
+					<tr>
+						<!--<td>{!rec.salesorder.CreatedDate}</td>-->
+					    <td>{!rec.salesorder.Job_Id__c}</td>
+					    <td>{!rec.salesorder.Name}</td>
+					    
+					    <td>{!rec.projCreationDate}</td>
+					    
+					    <td>{!rec.salesorder.StatusCode__c}</td>
+					    <td>{!rec.salesorder.Financing_Option__c}</td>
+					    
+					    <td>{!rec.opportunityCloseDate}</td>
+					    <td>{!rec.installDate}</td>
+					    <td>{!rec.workComplete}</td>
+					    <td>{!rec.proofOfInspection}</td>
+					    <td>{!rec.inspectionVerified}</td>
+					    
+					    <td>{!rec.salesorder.System_Makeup__c}</td>
+					    <td>{!rec.salesorder.System_Size_kW__c}</td>
+					    <td>{!rec.salesorder.Property__r.Astrum_Office_New__r.Name}</td>
+					    <td>{!rec.salesorder.Amount__c}</td>
+					    <td>{!rec.salesorder.Property__r.RecordType.Name}</td>
+					    <td>{!rec.salesorder.Financing_Type__c}</td>
+					    
+					    <td>{!rec.salesInvoiceTotal}</td>
+					    
+					    <td>{!rec.actualLabor}</td>
+					    <td>{!rec.estimatedLabor}</td>
+					    <td>{!rec.actualMaterial}</td>
+					    <td>{!rec.estimatedMaterial}</td>
+					    
+					    <td>{!rec.actualOther}</td>
+					    <td>{!rec.estOther}</td>
+					    <td>{!rec.percCompl}</td>
+				  	</tr>
+				</apex:repeat>
+		    </apex:repeat>
+		</table>
+	</apex:pageBlock>
+</apex:page>

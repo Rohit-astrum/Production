@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Utility Interconnect Part 2 Approval Changes Status</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Utility Interconnect Part 2 Approval</name>
+    <style>none</style>
+    <subject>{!PM_Project__c.Name} Utility Interconnect Part 2 Approved Changed</subject>
+    <type>text</type>
+</EmailTemplate>

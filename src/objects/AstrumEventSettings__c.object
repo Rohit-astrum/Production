@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <description>Holds settings for the scheduling rules of Events</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Astrum_Event_Status_Field_Form_ID__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the ID of the html form element for the Status field after the &quot;Book It&quot; button is clicked.</inlineHelpText>
+        <label>Astrum Event Status Field Form ID</label>
+        <length>18</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Onsite_Sales_Visit_Subject__c</fullName>
+        <externalId>false</externalId>
+        <label>Default Onsite Sales Visit Subject</label>
+        <length>80</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_day_options_to_return__c</fullName>
+        <externalId>false</externalId>
+        <label>Number day options to return</label>
+        <precision>2</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_days_to_schedule_new_visits_out__c</fullName>
+        <externalId>false</externalId>
+        <label>Number days to schedule new visits out</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_Blocks_SOQL_Limit__c</fullName>
+        <externalId>false</externalId>
+        <label>Open Blocks SOQL Limit</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_Blocks_SOQL__c</fullName>
+        <description>Code will default to 100 rows, unless specified differently here.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Code will default to 100 rows, unless specified differently here.</inlineHelpText>
+        <label>Open Blocks SOQL Limit</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>AstrumEventSettings</label>
+</CustomObject>

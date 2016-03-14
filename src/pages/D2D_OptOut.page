@@ -1,0 +1,169 @@
+<apex:page doctype="html-5.0" showHeader="false" standardStyleSheets="false" controller="D2D_OptOutController" applyHtmlTag="false" applyBodyTag="false">
+
+    <apex:composition template="D2D_SiteTemplate">
+        <apex:define name="head-top"> 
+
+            <meta name='description' content='D2D - Opt Out' />
+            <title>D2D - Opt Out</title>
+
+        </apex:define>
+        <apex:define name="head-bottom"> 
+        
+    		<script type="text/javascript">
+			
+				//Avoid conflicts between jQuery and apex
+      			$j = jQuery.noConflict();
+
+      			
+				$j(document).on('pageshow', function(){
+					var ood = "{!referral.D2D_Opt_Out_Detail__c}";
+					$j('input:radio[value=\'' + ood +'\']').prop('checked', true);
+					$j('input:radio').checkboxradio("refresh");
+
+					$j('input:radio').change(function() {  
+						$j('input:radio').checkboxradio("refresh");
+						$j('#optOutSubmitBtn').removeClass("ui-state-disabled"); 
+					});
+				});
+			</script>
+		</apex:define>
+
+        <apex:define name="navigation">
+
+            <c:D2D_AccountInfo />
+ 
+        </apex:define>
+			
+		<apex:define name="header-btns">
+		    <div class="headerBtns">
+				<!--<h1><span class="unbold">Lead: </span><span class="leadName">{!referral.Full_Name__c}</span>  <a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-orangebg"></i></a></h1>
+	    		<div>
+	    			<div class="headerBtnsLeft">
+	    				<h2><i class="fa fa-thumbs-down fa-1x fa-pageicon"></i> Opt Out</h2>
+	   				</div><div class="headerBtnsRight">
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-th fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+					</div>
+					<div class="ClearAll"></div>
+				</div> -->
+				<div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-thumbs-down fa-1x fa-pageicon"></i> Opt Out</h1>
+		 			</div><div class="headerBtnsRight">
+		 				<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+	                </div>
+					<div class="ClearAll"></div>
+				</div>
+    		</div>
+		</apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		    <div class="footerBtns">
+	    		<!-- <div class="footerBtnsLeft">
+		    		<a class="ui-btn ui-btn-inline ui-icon-btn"  onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a>
+	    		</div> -->
+	    		<div class="footerBtnsRight">
+			    	<a href="#" id="optOutSubmitBtn" class="ui-btn ui-btn-large ui-btn-inline ui-state-disabled ui-btn-green ui-corner-all" onclick="displayLoader('Saving Opt Out Responses...');optOutSubmit();"><i class="fa fa-check fa-lg fa-left"></i>Submit</a>
+			    </div>
+				<div class="ClearAll"></div>
+		    </div> 
+	    </apex:define>
+
+		<apex:define name="content">
+			<apex:form >
+			<div id="Content">
+				<div class="container greycontainer">
+					<!--<table class="optOutReason">
+						<tr>
+							<td>
+								<div class="optOutReasonLabel">Opt out <span class="required" style="{!IF(referral.D2D_Lead_Status__c='Customer Opt-Out', 'display:none;', '')}">*</span></div>
+							</td>
+							<td>
+								<div class="optOutReasonRadioBtns">
+				                    <input type="radio" name="optOutReason" id="optOutReason1" value="NI" />
+			                        <label for="optOutReason1">Not interested</label>
+				                    <input type="radio" name="optOutReason" id="optOutReason2" value="NN" />
+			                        <label for="optOutReason2">Not now</label>
+				                    <input type="radio" name="optOutReason" id="optOutReason3" value="NP" />
+			                        <label for="optOutReason3">Not this product</label>
+				                    <input type="radio" name="optOutReason" id="optOutReason4" value="NS" />
+			                        <label for="optOutReason4">Do not solicit</label>
+				                    <input type="radio" name="optOutReason" id="optOutReason5" value="GO" />
+			                        <label for="optOutReason5">Global opt out</label>
+		                        </div>
+		                    </td>
+						</tr>
+				        <apex:outputPanel layout="none" rendered="{!referral.D2D_Lead_Status__c='Customer Opt-Out'}">
+						<tr>
+							<td>
+								<div class="optOutReasonLabel">Opt in <span class="required"></span></div>
+							</td>
+							<td>
+								<div class="optOutReasonRadioBtns">
+				                    <input type="radio" name="optOutReason" id="optOutReason6" value="IN" /> 
+			                        <label for="optOutReason6">Nevermind, opt back in!</label>
+		                        </div>
+		                    </td>
+						</tr>
+						</apex:outputPanel>
+						<tr>
+							<td>
+		                    	<div class="optOutReasonLabel">Notes</div>
+		                    </td>
+							<td>
+								<apex:inputTextArea value="{!referral.Opt_Out_Notes__c}"/>
+							</td>
+						</tr>
+					</table> -->
+					<div class="optOutColLeft">
+						<div class="optOutBtnGroup">
+							<div class="optOutReasonLabel">Opt out <span class="required" style="{!IF(referral.D2D_Lead_Status__c='Customer Opt-Out', 'display:none;', '')}">*</span></div>
+							<div class="optOutReasonRadioBtns">
+			                    <input type="radio" name="optOutReason" id="optOutReason1" value="NI" />
+		                        <label for="optOutReason1">Not interested</label>
+			                    <input type="radio" name="optOutReason" id="optOutReason2" value="NN" />
+		                        <label for="optOutReason2">Not now</label>
+			                    <input type="radio" name="optOutReason" id="optOutReason3" value="NP" />
+		                        <label for="optOutReason3">Not this product</label>
+			                    <input type="radio" name="optOutReason" id="optOutReason4" value="NS" />
+		                        <label for="optOutReason4">Do not solicit</label>
+			                    <input type="radio" name="optOutReason" id="optOutReason5" value="GO" />
+		                        <label for="optOutReason5">Global opt out</label>
+	                        </div>
+							<div class="ClearAll"></div>
+						</div>
+						<apex:outputPanel layout="none" rendered="{!referral.D2D_Lead_Status__c='Customer Opt-Out'}">
+						<div class="optOutBtnGroup">
+							<div class="optOutReasonLabel">Opt in <span class="required"></span></div>
+							<div class="optOutReasonRadioBtns">
+	                    		<input type="radio" name="optOutReason" id="optOutReason6" value="IN" /> 
+                        		<label for="optOutReason6">Nevermind, opt back in!</label>
+                       		</div>
+							<div class="ClearAll"></div>
+						</div>
+						</apex:outputPanel>
+	            	</div>
+		            <div class="optOutColRight">
+		            	<div class="optOutReasonLabel">Notes <span class="required">*</span></div>
+		            	<div class="optOutNotes">
+		            		<apex:inputTextArea value="{!referral.Opt_Out_Notes__c}"/>
+		            	</div>
+		            	<div class="ClearAll"></div>
+		            </div>
+					<div class="ClearAll"></div>
+	            </div>
+	            </div>
+	            <div>
+			</div>
+        	<apex:actionFunction name="optOutSubmit" action="{!optOutSubmit}" rerender="assignErrors" oncomplete="stopLoader();">
+            </apex:actionFunction>
+			</apex:form>
+		</apex:define>
+	
+    </apex:composition>
+</apex:page>

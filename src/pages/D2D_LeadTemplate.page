@@ -1,0 +1,264 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" applyHtmlTag="false" applyBodyTag="false">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+    
+        <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8"/>
+    <title>Direct Energy Solar D2D Portal</title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    
+    
+<!-- Favicons
+    ================================================== -->
+    <link rel="Shortcut Icon" href="{!URLFOR($Resource.D2D_Resources, 'images/favicon.ico')}" />
+
+    <apex:insert name="head-top"/>
+    
+    <!-- CSS
+  ================================================== -->
+  
+    <link rel="stylesheet" href="{!URLFOR($Resource.D2D_Resources, 'css/font-awesome.css')}" />
+
+    <!--<link rel="stylesheet" href="{!URLFOR($Resource.D2D_Resources, 'css/styles.css')}" media="screen, projection" type="text/css" /> --> 
+    
+    <c:D2D_SiteTemplateStyles />
+
+    <!-- Javascript
+  ================================================== -->
+
+    <!--Google JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
+    <!--jQuery Mobile--> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.D2D_Resources, 'javascript/jQueryMobile/custom-icons/jqm-icon-pack-fa.css')}" media="screen, projection" type="text/css" />
+    <script src="{!URLFOR($Resource.D2D_Resources, 'javascript/jQueryMobile/jquery.mobile-1.4.5.min.js')}" type="text/javascript"></script>
+    
+
+<script type="text/javascript">
+        
+        /*var MTIProjectId='9c3549c2-9a44-4507-93c4-3d5acd9e8136';
+         (function() {
+                var mtiTracking = document.createElement('script');
+                mtiTracking.type='text/javascript';
+                mtiTracking.async='true';
+                mtiTracking.src=('https:'==document.location.protocol?'https:':'http:')+'//fast.fonts.net/t/trackingCode.js';
+                (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+       })();*/
+        
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload() 
+            }
+        };
+    
+        function displayLoader(loaderText) {
+            $j('body').append("<div class='ui-loader-background'> </div>");
+            $j.mobile.loading( 'show', {
+                text: loaderText,
+                textVisible: true
+            });
+        }
+
+        function stopLoader(){
+            $j( ".ui-loader-background" ).remove();
+            $j.mobile.loading( 'hide' );
+        }
+        
+        function goToPrevious() {
+            
+            //SP - I tried both of these lines of code for the back button. 
+            //However, Visualforce re-render and jQuery tab navigation both cause issues with the back function.
+            //If we add the back button back in, we need to come up with a different solution for this.
+            window.history.back();
+            /*window.location.href = document.referrer;*/
+        }
+
+</script>
+
+<apex:insert name="head-bottom"/>
+    <script type="text/javascript">
+
+        </script>
+
+</head>
+
+<body>
+	<apex:form id="mainForm"> 
+    <apex:insert name="popup"/>
+    <div data-role="page" id="page1">
+            <div data-role="header" data-position="fixed" data-id="header" data-tap-toggle="false" data-theme="a">
+                <div id="Header">
+                        <div class="container">
+                            <div class="sixteen columns">
+                                <div id="HeaderLeft">
+                                    <img src="{!URLFOR($Resource.D2D_Resources, 'images/DirectEnergySolar_logo.jpg')}" />
+                                </div>
+                                <div id="HeaderRight">
+                                    <h1><span class="blue">D</span><span class="orange">2</span><span class="blue">D</span></h1>
+                                    <apex:insert name="navigation"/>
+                                </div>
+                                <div class="ClearAll"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="headerBtns">
+                        <apex:insert name="header-btns"/>
+                    </div>
+                    <!-- <div data-role="navbar" id="nav">
+                        <ul>
+                            <li><a href="#page1" data-prefetch="true" data-transition="slide" class="ui-btn-active ui-state-persist">Property Info</a></li>
+                            <li><a href="#page2" data-prefetch="true" data-transition="slide">Map</a></li>
+                            <li><a href="#page3" data-prefetch="true" data-transition="slide">Customer Info</a></li> 
+                        </ul>
+                    </div> -->
+                </div>
+                <div data-role="content">
+                    <apex:insert name="content-page1"/>
+                    <apex:insert name="body"/>
+                    <div class="ClearAll"></div>
+                </div>
+                
+                <div data-role="footer" data-position="fixed" data-id="footer" data-tap-toggle="false" data-theme="a">
+                	<apex:insert name="footer-btns"/>
+                    <div id="Copyright">
+                        <div class="container">
+                            <div class="sixteen columns">
+                                <div id="CopyrightLeft">
+                                    <img src="{!URLFOR($Resource.D2D_Resources, 'images/Tagline.gif')}" />
+                                </div>
+                                <div id="CopyrightRight">
+                                    <p>
+                                        &copy; {!YEAR(TODAY())} Clockwork IP, LLC.
+                                    </p>
+                                </div>
+                                <div class="ClearAll"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ClearAll"></div>
+                </div>
+        </div>
+        <!-- <div data-role="page" id="page2">
+            <div data-role="header" data-position="fixed"  data-id="header" data-tap-toggle="false" data-theme="a">
+                <div id="Header">
+                        <div class="container">
+                            <div class="sixteen columns">
+                                <div id="HeaderLeft">
+                                    <img src="{!URLFOR($Resource.D2D_Resources, 'images/DirectEnergySolar_logo.jpg')}" />
+                                </div>
+                                <div id="HeaderRight">
+                                    <h1><span class="blue">D</span><span class="orange">2</span><span class="blue">D</span></h1>
+                                    <apex:insert name="navigation"/>
+                                </div>
+                                <div class="ClearAll"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="headerBtns">
+                        <apex:insert name="header-btns"/>
+                    </div>
+                    <div data-role="navbar" id="nav">
+                        <ul>
+                            <li><a href="#page1" data-prefetch="true"  data-direction="reverse" data-transition="slide">Property Info</a></li>
+                            <li><a href="#page2" data-prefetch="true" data-transition="slide" class="ui-btn-active ui-state-persist">Map</a></li>
+                            <li><a href="#page3" data-prefetch="true" data-transition="slide">Customer Info</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-role="content">
+                    <apex:insert name="content-page2"/>
+                    <apex:insert name="body"/> 
+                    <div class="ClearAll"></div>
+                </div>
+                
+                <div data-role="footer" data-position="fixed" data-id="footer" data-tap-toggle="false" data-theme="a">
+                	<apex:insert name="footer-btns"/>
+                    <div id="Copyright">
+                        <div class="container">
+                            <div class="sixteen columns">
+                                <div id="CopyrightLeft">
+                                    <img src="{!URLFOR($Resource.D2D_Resources, 'images/Tagline.gif')}" />
+                                </div>
+                                <div id="CopyrightRight">
+                                    <p>
+                                        &copy; {!YEAR(TODAY())} Clockwork IP, LLC.
+                                    </p>
+                                </div>
+                                <div class="ClearAll"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ClearAll"></div>
+                </div>
+            </div> 
+            -->
+            <!-- <div data-role="page" id="page3">
+                <div data-role="header" data-position="fixed"  data-id="header" data-tap-toggle="false" data-theme="a">
+                    <div id="Header">
+                            <div class="container">
+                                <div class="sixteen columns">
+                                    <div id="HeaderLeft">
+                                        <img src="{!URLFOR($Resource.D2D_Resources, 'images/DirectEnergySolar_logo.jpg')}" />
+                                    </div>
+                                    <div id="HeaderRight">
+                                        <h1><span class="blue">D</span><span class="orange">2</span><span class="blue">D</span></h1>
+                                        <apex:insert name="navigation"/>
+                                    </div>
+                                    <div class="ClearAll"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="headerBtns">
+                            <apex:insert name="header-btns"/>
+                        </div>
+                        <div data-role="navbar" id="nav">
+                            <ul>
+                                <li><a href="#page1" data-prefetch="true"  data-direction="reverse" data-transition="slide">Property Info</a></li>
+                                <li><a href="#page2" data-prefetch="true"  data-direction="reverse" data-transition="slide">Map</a></li>
+                                <li><a href="#page3" data-prefetch="true" data-transition="slide" class="ui-btn-active ui-state-persist">Customer Info</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div data-role="content">
+                        <apex:insert name="content-page3"/>
+                        <apex:insert name="body"/> 
+                        <div class="ClearAll"></div>
+                    </div>
+                    
+                    <div data-role="footer" data-position="fixed" data-id="footer" data-tap-toggle="false" data-theme="a">
+                		<apex:insert name="footer-btns"/>
+                        <div id="Copyright">
+                            <div class="container">
+                                <div class="sixteen columns">
+                                    <div id="CopyrightLeft">
+                                    <img src="{!URLFOR($Resource.D2D_Resources, 'images/Tagline.gif')}" />
+                                    </div>
+                                    <div id="CopyrightRight">
+                                        <p>
+                                            &copy; {!YEAR(TODAY())} Clockwork IP, LLC.
+                                        </p>
+                                    </div>
+                                    <div class="ClearAll"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ClearAll"></div>
+                    </div>
+                </div> 
+                -->
+    
+    </apex:form>
+    <site:googleAnalyticsTracking />
+    <site:previewAsAdmin />
+</body>
+</html>
+</apex:page>

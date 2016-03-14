@@ -1,0 +1,18 @@
+<p>Dear {!Lead.FirstName},</p>
+<p>It was good to talk with you today. I would like to take this opportunity to introduce Astrum Solar further to you.</p>
+<h3>THE ASTRUM SOLAR DIFFERENCE</h3>
+<p>Astrum Solar makes sure you get the most out of your solar panels: the most energy generated, the most electricity savings, the most beneficial environmental impact and the most joy and pride each time you see a sunny day.</p>
+<p>Astrum Solar, the leading full-service residential solar provider headquartered in the Eastern U.S., provides a premier customer experience. We offer cutting edge technology, nothing out-of-pocket lease and purchasing options and superior client service at every stage of your transition to solar electricity.</p><h3>FREE SOLAR INSTALLATION</h3><p>
+Think solar is beyond your budget? Think again. Pay nothing to start and watch your solar energy savings pile up over the lifetime of your system.</p>
+<p>Attached to this e-mail you'll find a detailed overview of what our company has to offer.</p>
+<p>Of course you can always find us on the web at <a href='www.astrumsolar.com'>www.astrumsolar.com</a></p>
+<p>Best regards,  </p>
+<p>{!User.FirstName}</p>
+<p>
+<img src="https://c.na8.content.force.com/servlet/servlet.ImageServer?id=015800000017MZ3&oid=00D80000000dNiA&lastMod=1274981283000" /><br />
+8955 Henkels Lane Suite 508<br />
+Annapolis Junction, MD 20701<br />
+P: 800-903-6130<br />
+F: 443-267-0036<br />
+{!User.Email}<br />
+<a href="http://www.astrumsolar.com">www.astrumsolar.com</a></p>

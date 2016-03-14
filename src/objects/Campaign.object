@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AdvancedSetup</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>Astrum_Create_Campaign</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>Astrum_Create_Campaign</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ActualCost</fullName>
+    </fields>
+    <fields>
+        <fullName>AmountAllOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>AmountWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>BudgetedCost</fullName>
+    </fields>
+    <fields>
+        <fullName>CampaignMemberRecordTypeId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Canvass_Area_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Canvass Area Name</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Canvass_Zip_Codes__c</fullName>
+        <description>Information to help Inside Sales attribute lead source</description>
+        <externalId>false</externalId>
+        <label>Canvass Zip Codes</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Competition__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if Other Solar Companies Present</inlineHelpText>
+        <label>Competition</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Host_NA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Customer Host NA</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Host__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Customer Host</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Campaigns</relationshipLabel>
+        <relationshipName>Campaigns</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+    </fields>
+    <fields>
+        <fullName>Dimension_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Dimension 4</label>
+        <referenceTo>c2g__codaDimension4__c</referenceTo>
+        <relationshipLabel>Campaigns</relationshipLabel>
+        <relationshipName>Campaigns</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>EndDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Estimated_Event_Fees_Expenses__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Event Fees/Expenses ($)</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Event_Staffing__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Number of Astrum Solar Employees Working</inlineHelpText>
+        <label>Estimated Event Staffing</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1 Employee</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2 Employees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3 Employees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4-5 Employees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>&gt;5 Employees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Event_Time_Frame__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Approximate Time Spent Tabling</inlineHelpText>
+        <label>Estimated Event Time Frame</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1 Day Tabling Events Only</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>An Hour</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A Few Hours</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>½ Day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Full Day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Event_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>First 8 letters will be used in the Campaign Name</inlineHelpText>
+        <label>Event Name</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Official_Name__c</fullName>
+        <description>Name as it appears in Event Promotional Materials</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name as it appears in Event Promotional Materials</inlineHelpText>
+        <label>Event Official Name</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Event_Type_Detail_Addl_Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Type Add&apos;l Detail</label>
+        <picklist>
+            <controllingField>Event_Type_Detail__c</controllingField>
+            <picklistValues>
+                <fullName>Customer Invited All/Most</fullName>
+                <controllingFieldValues>During Project Install</controllingFieldValues>
+                <controllingFieldValues>Post Install</controllingFieldValues>
+                <controllingFieldValues>Pre-Install</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Astrum Invited All/Most</fullName>
+                <controllingFieldValues>During Project Install</controllingFieldValues>
+                <controllingFieldValues>Post Install</controllingFieldValues>
+                <controllingFieldValues>Pre-Install</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer/Astrum Invited Mix</fullName>
+                <controllingFieldValues>During Project Install</controllingFieldValues>
+                <controllingFieldValues>Post Install</controllingFieldValues>
+                <controllingFieldValues>Pre-Install</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Event_Type_Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Type Detail</label>
+        <picklist>
+            <controllingField>Type</controllingField>
+            <picklistValues>
+                <fullName>Home</fullName>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Flower</fullName>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Green</fullName>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Industry</fullName>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Local Festival/Fair</fullName>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Local Solar/Green Event</fullName>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Meeting</fullName>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Event/Activity</fullName>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Location</fullName>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invited Participant (Panel)</fullName>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invited Speaker (Own Session)</fullName>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Scheduled Self (Own Session)</fullName>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Sponsored</fullName>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Sponsored</fullName>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Install</fullName>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>During Project Install</fullName>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post Install</fullName>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tied to Project Install</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tied to Solar Open House</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Current Customers in Vicinity</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No Current Customers in Vicinity</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Sure – Was Just In the Area</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Event_Venue__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Venue</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ExpectedResponse</fullName>
+    </fields>
+    <fields>
+        <fullName>ExpectedRevenue</fullName>
+    </fields>
+    <fields>
+        <fullName>Expected_Attendance__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Attendance/Distribution</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Extended_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (One_Day_Event__c = TRUE, 
+    StartDate + 7,
+    EndDate + 7
+)</formula>
+        <label>Extended End Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HierarchyActualCost</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyAmountAllOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyAmountWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyBudgetedCost</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyExpectedRevenue</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfContacts</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfConvertedLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfResponses</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberSent</fullName>
+    </fields>
+    <fields>
+        <fullName>IsActive</fullName>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfContacts</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfConvertedLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfResponses</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberSent</fullName>
+    </fields>
+    <fields>
+        <fullName>One_Day_Event__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>One Day Event</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PR_Event__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if Media Coverage of Event</inlineHelpText>
+        <label>PR Event</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ParentId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Referal_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Referal Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Campaigns (Referal Account)</relationshipLabel>
+        <relationshipName>Campaigns1</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Retailer_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Retailer Name</label>
+        <length>150</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Region_s__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Region(s)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>MA Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NYC Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WNY Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CA Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CT Region</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>MultiselectPicklist</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>StartDate</fullName>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>CA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Tabling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Seminar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Open House</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canvassing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retail Tabling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE Outbound Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>CAMPAIGN.NAME</columns>
+        <columns>CAMPAIGN.START_DATE</columns>
+        <columns>CAMPAIGN.END_DATE</columns>
+        <columns>CAMPAIGN.BUDGETED_COST</columns>
+        <columns>CAMPAIGN.ACTUAL_COST</columns>
+        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>CAMPAIGN.STATUS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllActiveCampaigns</fullName>
+        <columns>CAMPAIGN.NAME</columns>
+        <columns>State__c</columns>
+        <columns>CAMPAIGN.START_DATE</columns>
+        <columns>CAMPAIGN.END_DATE</columns>
+        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>CAMPAIGN.STATUS</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CAMPAIGN.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Active Campaigns</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MyActiveCampaigns</fullName>
+        <columns>CAMPAIGN.NAME</columns>
+        <columns>CAMPAIGN.START_DATE</columns>
+        <columns>CAMPAIGN.END_DATE</columns>
+        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>CAMPAIGN.STATUS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CAMPAIGN.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Active Campaigns</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__AllActiveCampaigns</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CAMPAIGN.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>All Active Campaigns</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__MyActiveCampaigns</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CAMPAIGN.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Active Campaigns</label>
+    </listViews>
+    <recordTypes>
+        <fullName>DER_Outbound_Referral</fullName>
+        <active>true</active>
+        <label>DER Outbound Referral</label>
+        <picklistValues>
+            <picklist>Estimated_Event_Staffing__c</picklist>
+            <values>
+                <fullName>%3E5 Employees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1 Employee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 Employees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Employees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4-5 Employees</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Estimated_Event_Time_Frame__c</picklist>
+            <values>
+                <fullName>%C2%BD Day</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1 Day Tabling Events Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Few Hours</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>An Hour</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full Day</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Type_Detail_Addl_Detail__c</picklist>
+            <values>
+                <fullName>Astrum Invited All%2FMost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Invited All%2FMost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer%2FAstrum Invited Mix</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Type_Detail__c</picklist>
+            <values>
+                <fullName>Community Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Current Customers in Vicinity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Sponsored</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>During Project Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flower</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invited Participant %28Panel%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invited Speaker %28Own Session%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Festival%2FFair</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Solar%2FGreen Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Current Customers in Vicinity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Sure %E2%80%93 Was Just In the Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Industry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Event%2FActivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Sponsored</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled Self %28Own Session%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tied to Project Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tied to Solar Open House</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Region_s__c</picklist>
+            <values>
+                <fullName>CA Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CT Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NYC Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WNY Region</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>State__c</picklist>
+            <values>
+                <fullName>CA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>DE Outbound Referral</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Standard</fullName>
+        <active>true</active>
+        <label>Standard</label>
+        <picklistValues>
+            <picklist>Estimated_Event_Staffing__c</picklist>
+            <values>
+                <fullName>%3E5 Employees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1 Employee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2 Employees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3 Employees</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4-5 Employees</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Estimated_Event_Time_Frame__c</picklist>
+            <values>
+                <fullName>%C2%BD Day</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1 Day Tabling Events Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Few Hours</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>An Hour</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full Day</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Type_Detail_Addl_Detail__c</picklist>
+            <values>
+                <fullName>Astrum Invited All%2FMost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Invited All%2FMost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer%2FAstrum Invited Mix</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Type_Detail__c</picklist>
+            <values>
+                <fullName>Community Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Current Customers in Vicinity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Sponsored</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>During Project Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flower</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Green</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invited Participant %28Panel%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invited Speaker %28Own Session%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Festival%2FFair</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Solar%2FGreen Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Current Customers in Vicinity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Sure %E2%80%93 Was Just In the Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Industry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Event%2FActivity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Sponsored</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled Self %28Own Session%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tied to Project Install</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tied to Solar Open House</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Region_s__c</picklist>
+            <values>
+                <fullName>CA Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CT Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NYC Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WNY Region</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>State__c</picklist>
+            <values>
+                <fullName>CA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Canvassing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Community Seminar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Community Tabling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail Tabling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solar Open House</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>CAMPAIGN.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAMPAIGN.STATUS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAMPAIGN.START_DATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CAMPAIGN.NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CAMPAIGN.NAME</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PARENT_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.CAMPAIGN_TYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.START_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.END_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.NUM_RESPONSES</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>FullAccess</sharingModel>
+    <validationRules>
+        <fullName>Check_Updation_of_Name_Related_Fields</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( TODAY() &gt;= PRIORVALUE(StartDate),   OR (ISCHANGED(Type), ISCHANGED(StartDate) , ISCHANGED(City__c), ISCHANGED(State__c)
+, ISCHANGED(Event_Name__c), ISCHANGED(Retailer_Name__c), ISCHANGED(Customer_Host__c), ISCHANGED(Canvass_Area_Name__c)   ))</errorConditionFormula>
+        <errorMessage>You are not allowed to change the fields tied to Campaign Name once the Campaign is Started.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>ViewAllCampaignMembers</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>500</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View All Campaign Members</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/camp/rptcmpgncalldown.jsp?scope=1&amp;scopeid={!Campaign_Name}</url>
+        <width>500</width>
+    </webLinks>
+    <webLinks>
+        <fullName>ViewCampaignInfluenceReport</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>500</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Campaign Influence Report</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/00O?rt=117&amp;break0=CAN&amp;scope=1&amp;scopeid_lkid={!Campaign.Id}&amp;scopeid={!Campaign_Name}&amp;c=CAN&amp;c=MR&amp;c=PCS&amp;c=CFN&amp;c=RN&amp;c=ON&amp;c=OA&amp;c=OS&amp;c=OCD&amp;c=AN&amp;s=OA&amp;duel0=CAN%2CMR%2CCFN%2CRN%2CAN%2CON%2CPCS%2COS%2COCD%2COA&amp;details=yes&amp;format=t</url>
+        <width>500</width>
+    </webLinks>
+    <webLinks>
+        <fullName>rstk__ViewCampaignInfluenceReport</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>500</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Campaign Influence Report</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/00O?rt=117&amp;break0=CAN&amp;scope=1&amp;scopeid_lkid={!Campaign.Id}&amp;scopeid={!Campaign.Name}&amp;c=CAN&amp;c=MR&amp;c=PCS&amp;c=CFN&amp;c=RN&amp;c=ON&amp;c=OA&amp;c=OS&amp;c=OCD&amp;c=AN&amp;s=OA&amp;duel0=CAN%2CMR%2CCFN%2CRN%2CAN%2CON%2CPCS%2COS%2COCD%2COA&amp;details=yes&amp;format=t</url>
+        <width>500</width>
+    </webLinks>
+</CustomObject>

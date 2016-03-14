@@ -1,0 +1,376 @@
+<apex:page sidebar="false" controller="SalesDashboardController" readonly="true">
+
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/redmond/jquery-ui.css" rel="stylesheet" />
+<style>
+    button.zoom-button {
+        float: right;
+        /* position: relative;
+        top: -30px; */
+    }
+    button.zoom-button .ui-button-text {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    #salestabs { height: 650px; }
+    .tabs-bottom { position: relative; color: white; } 
+    .tabs-bottom .ui-tabs-panel { height: 600px; overflow: auto; } 
+    .tabs-bottom .ui-tabs-nav { position: absolute !important; left: 0; bottom: 0; right:0; padding: 0 0.2em 0.2em 0; } 
+    .tabs-bottom .ui-tabs-nav li { margin-top: -2px !important; margin-bottom: 1px !important; border-top: none; border-bottom-width: 1px; }
+    .ui-tabs-selected { margin-top: -3px !important; }
+    div.content img.pageTitleIcon {
+        background-image: url(/img/sprites/master.png);
+        background-position: 0px -1094px;
+    }
+    div.tab-inline { display: inline-block; }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+<apex:includeScript value="https://www.google.com/jsapi"/>
+<script type="text/javascript">
+    
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawCharts);
+    
+    function drawCharts() {
+        getSalesVsCloseRate();
+        getRegionalCloseRate();
+        getCloseRatePerOpp();
+
+        $('#salestabs').tabs();
+        $('.tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *')
+            .removeClass('ui-corner-all ui-corner-top')
+            .addClass('ui-corner-bottom');
+
+        $('button.zoom-button').button({
+            icons:{ primary: 'ui-icon-circle-zoomin'},
+        });
+    }
+    
+    function getSalesVsCloseRate() {
+        SalesDashboardController.getSalesVsClose(function(result, event) {
+            if (event.status) {
+                var rows = [];
+                for (var i = 0; i < result.length; i++) {
+                    var row = [];
+                    row.push(new Date(result[i].week));
+                    row.push(result[i].sales);
+                    row.push(result[i].closeRate);
+                    rows.push(row);
+                }
+                drawSalesVsCloseRate('salesvclose', 'Sales and Rolling Close Rate - Overall', 11, rows);
+            } else {
+                alert(event.message);
+            }
+        });
+    }
+    
+    function drawSalesVsCloseRate(ctlid, title, fontSize, rows) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Week');
+        data.addColumn('number', 'Sales');
+        data.addColumn('number', '12-Week Rolling Close Rate');
+        data.addRows(rows);
+    
+        var dateFormat = new google.visualization.DateFormat({pattern: 'M/d/yyyy'});
+        var percentFormat = new google.visualization.NumberFormat({pattern: '0.0%'});
+        dateFormat.format(data, 0);
+        percentFormat.format(data, 2);
+
+        var options = {
+            title: title,
+            colors: ['#4f82bd', '#bf504e'],
+            focusTarget: 'category',
+            lineWidth: 3,
+            legend: {
+                position: 'bottom'
+            },
+            'backgroundColor.stroke': 2,
+            series: [
+                {}, 
+                {
+                    targetAxisIndex: 1
+                }
+            ],
+            vAxes: [
+                {
+                    title: 'Sales',
+                    baselineColor: 'black',
+/* gridlines: {
+                        count: 7
+} */
+                },
+                {
+                    title: '12-Week Rolling Close Rate',
+                    baselineColor: 'black',
+                    format: '0%',
+/* gridlines: {
+                        count: 7
+}, */
+                    minValue: 0,
+                }
+            ],
+            hAxis: {
+                //textStyle: { fontSize: fontSize },
+                //maxAlternation: 1,
+                slantedText: false,
+            },
+            chartArea: {
+                left: 60,
+                top: 50,
+                width: '85%',
+                height: '75%'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+    }
+
+    function getRegionalCloseRate() {
+        SalesDashboardController.getRegionalCloseRate(function(result, event) {
+            if (event.status) {
+                var rows = [];
+                for (var i = 0; i < result.regionData.length; i++) {
+                    var row = [];
+                    row.push(new Date(result.regionData[i].week));
+                    row = row.concat(result.regionData[i].closeRate, false, false);
+                    rows.push(row);
+                }      
+                
+                drawRegionalCloseRate('regclose', 'Rolling Close Rate - By Region', 11, result.regions, rows);
+            } else {
+                alert(event.message);
+            }
+        });
+    }
+    
+    function drawRegionalCloseRate(ctlid, title, fontSize, regions, rows) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Week');
+        for (var i = 0; i < regions.length; i++) {
+            if (regions[i] != 'Unknown') {
+                data.addColumn('number', regions[i]);
+            }
+        }
+        data.addColumn('number', 'All Regions');
+        data.addColumn({type:'boolean', role:'certainty'});
+        data.addColumn({type:'boolean', role:'emphasis'});
+        //TODO: for some reason these rows are not the right length since CA Region was added.
+        data.addRows(rows);
+        var dateFormat = new google.visualization.DateFormat({pattern: 'M/d/yyyy'});
+        var percentFormat = new google.visualization.NumberFormat({pattern: '0.0%'});
+        dateFormat.format(data, 0);
+        for (var i=1; i < regions.length; i++) {
+            percentFormat.format(data, i);
+        }
+            
+        var options = {
+            title: title,
+            width: 1024,
+            height: 600,
+            colors: ['#7030A0', '#00B050', '#FFFF00', '#FFC000', '#0070c0', '#FF0000','#344A18' ,'#000000'],
+            focusTarget: 'category',
+            lineWidth: 3,
+            legend: {
+                position: 'right',
+            },
+            'backgroundColor.stroke': 2,
+            vAxis: {
+                //textStyle: { fontSize: fontSize },
+                baselineColor: 'black',
+                format: '0%',
+                gridlines: {
+                    count: 10
+                }
+            },
+            hAxis: {
+                //textStyle: { fontSize: fontSize },
+                //maxAlternation: 1,
+                slantedText: false,
+            },
+            chartArea: {
+                left: 60,
+                top: 50,
+                width: '80%',
+                height: '85%'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+    }
+    
+    function getCloseRatePerOpp() {
+        SalesDashboardController.getOpptyCloseRate(function(result, event) {
+            if (event.status) {
+                var rows = [];
+                for (var i = 0; i < result.regionData.length; i++) {
+                    var row = [];
+                    row.push(new Date(result.regionData[i].week));
+                    row.push(result.regionData[i].oppCloseRate);
+                    row.push(false);
+                    row.push(result.regionData[i].oppLeadRatio);
+                    row.push(false);
+                    row = row.concat(result.regionData[i].closeRate);
+                    rows.push(row);
+                }
+                drawCloseRatePerOpp('closeperopp', 'Close Rate Per Opp - By Region', 11, result.regions, rows);
+            } else {
+                alert(event.message);
+            }
+        });
+    }
+    
+    
+    function drawCloseRatePerOpp(ctlid, title, fontSize, regions, rows) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Week');
+        data.addColumn('number', 'Total Per Opp');
+        data.addColumn({type:'boolean', role:'certainty'});
+        data.addColumn('number', 'Close Rate Opp:Lead');
+        data.addColumn({type:'boolean', role:'certainty'});
+        for (var i = 0; i < regions.length; i++) {
+            if (regions[i] != 'Unknown') {
+                data.addColumn('number', regions[i]);
+            }
+        }
+        //TODO: For some reason these rows are not the right length since CA Region was added.
+        data.addRows(rows);
+        var dateFormat = new google.visualization.DateFormat({pattern: 'M/d/yyyy'});
+        var percentFormat = new google.visualization.NumberFormat({pattern: '0.0%'});
+        var decimalFormat = new google.visualization.NumberFormat({pattern: '0.0'});
+        dateFormat.format(data, 0);
+        percentFormat.format(data, 1);
+        decimalFormat.format(data, 3);
+        percentFormat.format(data, 5);
+        percentFormat.format(data, 6);
+        percentFormat.format(data, 7);
+        percentFormat.format(data, 8);
+        percentFormat.format(data, 9);
+        percentFormat.format(data, 10);
+        percentFormat.format(data, 11);
+        var options = {
+            title: title,
+            width: 874,
+            height: 600,
+            colors: ['#000000', '#bf504e', '#7030A0', '#00B050', '#FFFF00', '#FFC000', '#0070c0', '#FF0000', '#344A18'],
+            focusTarget: 'category',
+            lineWidth: 3,
+            legend: {
+                position: 'left',
+            },
+            'backgroundColor.stroke': 2,
+            series: {
+                0: { targetAxisIndex: 1 },
+                2: { targetAxisIndex: 1 },
+                3: { targetAxisIndex: 1 },
+                4: { targetAxisIndex: 1 },
+                5: { targetAxisIndex: 1 },
+                6: { targetAxisIndex: 1 },
+                7: { targetAxisIndex: 1 }                
+            },
+            vAxes: [
+                {
+                    title: 'Ratio Close Rate per Opp vs. Lead',
+                    baselineColor: 'black',
+                    gridlines: {
+                        count: 7
+                    },
+                    minValue: 0,
+                }, 
+                {
+                    title: 'Close Rate Per Opportunity',
+                    baselineColor: 'black',
+                    format: '0%',
+                    gridlines: {
+                        count: 7
+                    },
+                } 
+            ],
+            hAxis: {
+                //textStyle: { fontSize: fontSize },
+                //maxAlternation: 1,
+                slantedText: false,
+            },
+            chartArea: {
+                left: 75,
+                top: 50,
+                width: '83%',
+                height: '85%'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+
+        var lOptions = {
+            width: 200,
+            height: 600,
+            legend: {
+                position: 'right',
+                textStyle: {
+                    fontSize: 14
+                }
+            },
+            colors: ['#000000', '#bf504e', '#7030A0', '#00B050', '#FFFF00', '#FFC000', '#0070c0', '#FF0000', '#000000'],
+            hAxis: {
+                textPosition: 'none'
+            },
+            chartArea: {
+                left: 1,
+                top: 50,
+                width: 0,
+                height: '85%'
+            }
+        }
+
+        var legend = new google.visualization.LineChart(document.getElementById(ctlid + 'legend'));
+        legend.draw(data, lOptions);
+    }
+
+    function popupChart(title, drawFunction) {
+        $('#pop1').dialog({
+            modal: true,
+            width: 725,
+            height: 450,
+            resizable: false,
+            title: title
+        });
+        drawFunction('graph1', null, 12);
+    }
+
+</script>
+
+<apex:sectionHeader title="Dashboards" subtitle="Sales Dashboards"/>
+
+<apex:pageBlock >
+
+    <div id="salestabs" class="tabs-bottom">
+        <ul>
+            <li><a href="#tab-salesvclose">Sales and Rolling Close Rate</a></li>
+            <li><a href="#tab-regclose">Rolling Close Rate</a></li>
+            <li><a href="#tab-closeperopp">Close Rate Per Opp</a></li>
+        </ul>
+        <div id="tab-salesvclose">
+            <div id="salesvclose" style="width: 1024px; height: 600px;"/>
+        </div>
+        <div id="tab-regclose">
+            <div id="regclose" style="width: 1024px; height: 600px;"/>
+        </div>
+        <div id="tab-closeperopp">
+            <div class="tab-inline">
+                <div id="closeperopp" style="width: 874px; height: 600px;"/>
+            </div>
+            <div class="tab-inline">
+                <div id="closeperopplegend" style="width: 200px; height: 600px;"/>
+            </div>
+        </div>
+    </div>
+    
+</apex:pageBlock>
+
+<div id="pop1" style="display:none;">
+    <div id="graph1" style="width:700px;height:400px;"/>
+</div>
+
+</apex:page>

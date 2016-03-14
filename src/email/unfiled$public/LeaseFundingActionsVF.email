@@ -1,0 +1,37 @@
+<messaging:emailTemplate subject="{!relatedTo.Lease_Funding_Status__c} - {!relatedTo.Name}" recipientType="User" relatedToType="PM_Project__c">
+<messaging:HtmlEmailBody >
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="Template" content="Response"/>
+</head>
+<body>
+<apex:outputPanel rendered="{!relatedTo.Lease_Funding_Status__c == 'Change Pending'}">
+<p><strong>Please be advised that the following project is being transferred into a new lease fund. After this message, Customer Care and Sales will be engaging the customer to confirm the switch. You will be alerted twice more, once after we have confirmed that the customer has re-signed contracts, and once after the lease fund has formally accepted the project and construction can begin. </strong></p>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Lease_Funding_Status__c == 'Ready to Prepare'}">
+<p><strong>Please be advised that the following project has signed new lease paperwork and is ready for any pre-installation work that may be necessary, such as permits and interconnection agreements.  PLEASE NOTE, this project is not yet ready for install.  You will receive a final notification when the project has been accepted by the fund and is ready for install.</strong></p>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Lease_Funding_Status__c == 'Ready to Install'}">
+<p><strong>Please be advised that the following project has been formally accepted by the lease fund below and is ready to be installed. </strong></p>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Lease_Funding_Status__c == 'Cancelled'}">
+<p><strong>Please be advised that the following project has cancelled, and will not be installed. </strong></p>
+</apex:outputPanel>
+
+<ul style="list-style:none">
+    <li>Account Name  : {!relatedTo.Name}</li>   
+    <li>Sales ORder Number   : {!relatedTo.Sales_Order__r.Name}</li> 
+    <li>City, State of Property  : {!relatedTo.Sales_Order__r.Installation_City__c}, {!relatedTo.Sales_Order__r.Installation_State__c}</li>
+    <li>Total System Size       : {!relatedTo.Sales_Order__r.System_Size_kW__c}</li>     
+    <li>Type and Quantity      : {!relatedTo.Sales_Order__r.System_Makeup__c}</li>   
+    <li>Lease Fund  : {!relatedTo.Sales_Order__r.Lease_Fund__c}</li> 
+</ul>
+
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

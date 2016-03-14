@@ -1,0 +1,17 @@
+<table height="400" width="550" cellpadding="5" border="0" cellspacing="5" >
+<tr height="400" valign="top" >
+<td style=" color:#000000; font-size:12pt; background-color:#FFFFFF; font-family:arial; bLabel:main; bEditID:r3st1;" tEditID="c1r1" locked="0" aEditID="c1r1" >
+<![CDATA[<font size="3" style="color: rgb(0, 0, 0); font-size: 12pt;" face="Arial, sans-serif">Dear&nbsp;{!Contact.FirstName},</font><div style="color: rgb(0, 0, 0); font-size: 12pt;"><font face="Arial, sans-serif"><br></font></div><div><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif">Are you <b><i>still </i></b>paying too much for your
+electricity??&nbsp;&nbsp;</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif">If so, I’ve got good
+news:&nbsp; DIRECT ENERGY SOLAR is here to help.&nbsp; You see, while electricity rates have
+continued to rise since you first contacted us about going solar, the costs
+associated with installing solar panels have come down significantly.</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif">Not only is our pricing lower, but we now also
+have several attractive loan and lease options that in many cases allow you to
+install solar with <u>no money out of pocket</u> so you’ll start saving right
+away!<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif"><br></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt; text-align: left;"><font face="Arial, sans-serif">If you’re interested in having us prepare a new,
+no-obligation solar quote for you please call or email me right away – before
+your rates go up again!<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt;"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt;"><font face="Arial, sans-serif">Best regards,</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt;"><font face="Arial, sans-serif"><br></font></p><p class="MsoNormal"><font face="Arial, sans-serif" style="font-size: 12pt;"><b><font color="#cc6600">{!User.FirstName}&nbsp;{!User.LastName}</font><br></b></font><b style="color: rgb(51, 51, 51); font-family: Arial, sans-serif;"><font size="2">{!User.Title}</font></b></p><p class="MsoNormal" style="font-size: 12pt;"><font size="1" style="font-family: Arial, sans-serif;"><b><font color="#cc6600">P</font>&nbsp;(844) 473-4274</b></font><font size="1" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif;"><br></font><font size="1" style="font-family: Arial, sans-serif;"><b><font color="#cc6600">E</font>&nbsp;</b></font><font size="1" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif;">{!User.Email}</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-size: 12pt;"><br></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><b style="color: rgb(51, 51, 51); font-size: small; font-family: Arial, sans-serif;">www.directenergysolar.com</b></p></div>]]></td>
+</tr>
+</table>

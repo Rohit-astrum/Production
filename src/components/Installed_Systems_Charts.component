@@ -1,0 +1,212 @@
+<apex:component controller="InstalledSystemsChartsController" selfClosing="true">
+
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/redmond/jquery-ui.css" rel="stylesheet" />
+<style>
+    button.zoom-button {
+        float: right;
+        /* position: relative;
+        top: -30px; */
+    }
+    button.zoom-button .ui-button-text {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+<apex:includeScript value="https://www.google.com/jsapi"/>
+<script type="text/javascript">
+
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawCharts);
+    
+    function drawCharts() {
+        drawGuarVsActual('guarVsActual', 'Guaranteed vs Actual Production (kWh)', 9);
+        drawOverview('overview', 'Production Overview', 9);
+        drawSRECS('srecs', 'Expected vs Generated SRECs', 9);
+        drawStateProduction('stateProd', 'Guaranteed vs Actual Production by State', 9);
+        $('button.zoom-button').button({
+            icons:{ primary: 'ui-icon-circle-zoomin'},
+            //text: false
+        });
+    }
+    
+    function drawGuarVsActual(ctlid, title, fontSize) {
+        var data = google.visualization.arrayToDataTable([
+              ['Month', 'Guaranteed Production', 'Actual Production'],
+              <apex:repeat value="{!guarVsActual}" var="d">
+              ['{!d.month}', {!ROUND(d.guarantee, 0)}, {!ROUND(d.actual, 0)}],
+              </apex:repeat>
+        ]);
+    
+        var options = {
+            title: title,
+            colors: ['#009DDC', '#61AF3F'],
+            focusTarget: 'category',
+            legend: {
+                position: 'bottom'
+            },
+            'backgroundColor.stroke': 2,
+            vAxis: {
+                textStyle: { fontSize: fontSize },
+                baselineColor: 'black',
+                gridlines: {
+                    color: '#fff',
+                    count: 10,
+                }
+            },
+            hAxis: {
+                textStyle: { fontSize: fontSize },
+                maxAlternation: 1,
+                slantedText: false
+            },
+            chartArea: {
+                left: 50,
+                top: 35,
+                width: '85%',
+                height: '65%'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+    }
+    
+    function drawOverview(ctlid, title, fontSize) {
+       <apex:variable var="so" value="{!systemOverview}"/>
+        var data = google.visualization.arrayToDataTable([
+            ['Production', 'Number of Systems'],
+            ['Over Producing > 5%', {!so.overProducing}],
+            ['Under Producing < 5%', {!so.underProducing}],
+            ['On Target +/- 5%',  {!so.onTarget}]
+        ]);
+
+        var options = {
+            title: title,
+            colors: ['#61AF3F', '#707274', '#009DDC'],
+            is3D: true,
+            chartArea: {
+                left: 50,
+                top: 35,
+                width: '85%',
+                height: '85%'
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+    }
+
+    function drawSRECS(ctlid, title, fontSize) {
+        var data = google.visualization.arrayToDataTable([
+              ['Month', 'Expected SRECs', 'Generated SRECs'],
+              <apex:repeat value="{!guarVsActual}" var="d">
+              ['{!d.month}', {!d.projSREC}, {!d.genSREC}],
+              </apex:repeat>
+        ]);
+
+        var options = {
+            title: title,
+            colors: ['#009DDC', '#61AF3F'],
+            focusTarget: 'category',
+            legend: {
+                position: 'bottom'
+            },
+            'backgroundColor.stroke': 2,
+            vAxis: {
+                textStyle: { fontSize: fontSize },
+                baselineColor: 'black',
+                gridlines: {
+                    color: '#fff',
+                    count: 10,
+                }
+            },
+            hAxis: {
+                textStyle: { fontSize: fontSize },
+                maxAlternation: 1,
+                slantedText: false
+            },
+            chartArea: {
+                left: 50,
+                top: 35,
+                width: '85%',
+                height: '65%'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+    }
+
+    function drawStateProduction(ctlid, title, fontSize) {
+        var data = google.visualization.arrayToDataTable([
+              ['Month', 'Guaranteed Production', 'Actual Production'],
+              <apex:repeat value="{!stateProd}" var="d">
+              ['{!d.state}', {!ROUND(d.guarantee, 0)}, {!ROUND(d.actual, 0)}],
+              </apex:repeat>
+        ]);
+
+        var options = {
+            title: title,
+            colors: ['#009DDC', '#61AF3F'],
+            focusTarget: 'category',
+            legend: {
+                position: 'bottom'
+            },
+            'backgroundColor.stroke': 2,
+            vAxis: {
+                textStyle: { fontSize: fontSize },
+                baselineColor: 'black',
+                gridlines: {
+                    color: '#fff',
+                    count: 10,
+                }
+            },
+            hAxis: {
+                textStyle: { fontSize: fontSize },
+                maxAlternation: 1,
+                slantedText: false
+            },
+            chartArea: {
+                left: 50,
+                top: 35,
+                width: '85%',
+                height: '65%'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById(ctlid));
+        chart.draw(data, options);
+    }
+
+    function popupChart(title, drawFunction) {
+        $('#pop1').dialog({
+            modal: true,
+            width: 725,
+            height: 450,
+            resizable: false,
+            title: title
+        });
+        drawFunction('graph1', null, 12);
+    }
+
+</script>
+
+<apex:pageBlock >
+
+    <table>
+        <tr>
+            <td><div id="guarVsActual" style="width: 400px; height: 300px;" ></div><button class="zoom-button" onclick="popupChart('Guaranteed vs Actual Production (kWh)',drawGuarVsActual)">Zoom In</button></td>
+            <td><div id="overview" style="width: 400px; height: 300px;"></div><button class="zoom-button" onclick="popupChart('Production Overview',drawOverview)">Zoom In</button></td>
+            <td><div id="srecs" style="width: 400px; height: 300px;"></div><button class="zoom-button" onclick="popupChart('Expected vs Generated SRECs',drawSRECS)">Zoom In</button></td>
+            <td><div id="stateProd" style="width: 400px; height: 300px;"></div><button class="zoom-button" onclick="popupChart('Guaranteed vs Actual Production by State',drawStateProduction)">Zoom In</button></td>
+        </tr>
+    </table>
+    
+</apex:pageBlock>
+
+<div id="pop1" style="display:none;">
+    <div id="graph1" style="width:700px;height:400px;"/>
+</div>
+
+</apex:component>

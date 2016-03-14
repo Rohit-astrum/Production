@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Contact Credit Status Update" recipientType="User" relatedToType="Sighten_Credit_Approval__c">
+<messaging:htmlEmailBody >
+	<c:Sighten_EmailComponent providedEmailTemplateType="CREDIT" providedRecordId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

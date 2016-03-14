@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores Monthly Production data from Enphase, production guarantees, and GATS/GIS reported production</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Astrum_Estimated__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Monthly Production based on Astrum estimates</inlineHelpText>
+        <label>Astrum Estimated (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enphase_kWh__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enphase Production</inlineHelpText>
+        <label>Enphase (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Estimated__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Externall Estimated Production</inlineHelpText>
+        <label>External Estimated (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System__c</fullName>
+        <externalId>false</externalId>
+        <label>Installed System</label>
+        <referenceTo>Installed_System__c</referenceTo>
+        <relationshipLabel>Monthly Production</relationshipLabel>
+        <relationshipName>Monthly_Production</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Month__c</fullName>
+        <externalId>false</externalId>
+        <formula>MONTH(Start_of_Month__c)</formula>
+        <label>Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Performance_Factor__c</fullName>
+        <description>Production Performance Factor</description>
+        <externalId>false</externalId>
+        <formula>IF( OR(Astrum_Estimated__c != NULL, Astrum_Estimated__c &gt; 0) , Enphase_kWh__c / Astrum_Estimated__c, null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Production Performance Factor</inlineHelpText>
+        <label>Performance Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Production_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>Production Guarantee (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reported__c</fullName>
+        <description>Production reported for SREC</description>
+        <externalId>false</externalId>
+        <label>Reported (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_of_Month__c</fullName>
+        <externalId>false</externalId>
+        <label>Start of Month</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR(Start_of_Month__c))</formula>
+        <label>Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Monthly Production</label>
+    <nameField>
+        <displayFormat>MP-{0000000}</displayFormat>
+        <label>Monthly Production ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Monthly Production</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Year__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Month__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Astrum_Estimated__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Enphase_kWh__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>External_Estimated__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Year__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Month__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Enphase_kWh__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

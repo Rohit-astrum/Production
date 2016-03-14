@@ -1,0 +1,13 @@
+<apex:component controller="Trailing12WeekOppClosedRegionController">
+    <apex:attribute name="height" description="Chart height" type="Integer" default="500"/>
+    <apex:attribute name="width" description="Chart width" type="Integer" default="1000"/>
+    <apex:outputText value="12 Week Close Rate by Region" style="font-size:125%; font-weight:bold"/>
+    <br/><br/>
+    <apex:chart height="{!height}" width="{!width}" data="{!revenueData}">
+        <apex:axis type="Numeric" position="left" fields="closedRate" grid="true" title="Opportunities Closed (%)" minimum="0" maximum="100"/>
+        <apex:axis type="Category" position="bottom" fields="oppOwner"/>
+        <apex:barSeries orientation="vertical" axis="left" xField="oppOwner" yField="closedRate" colorSet="#4000FF">
+            <apex:chartTips height="20" width="120"/>
+        </apex:barSeries>
+    </apex:chart>
+</apex:component>

@@ -1,0 +1,416 @@
+<apex:page standardController="PM_Project__c"  extensions="ProjectHandoffExtension"  action="{!updateProject}" doctype="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false">
+
+<link rel="stylesheet" type='text/css' href="{!URLFOR($Resource.DocumentBinResources, 'styles/styles.css')}" /> 
+<style type="text/css">
+    body { background-color: #ffffff; padding: 5px; margin: 0px; font-family: arial; font-size: 11pt;}
+    </style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--<script type="text/javascript" src="{!URLFOR($Resource.DocumentBinResources, 'js/HandoffToCustomerCareForm_scripts.js')}"></script>-->
+
+
+<script type="text/javascript">
+    
+    function doSubmit() {
+        $(':submit').click();
+    }   
+        
+</script>
+     
+         
+     <div id="handoff-to-customer-care-dialog">
+         <div id="handoff-to-customer-care-form-container">             
+             
+             <apex:form styleClass="handoff-to-customer-care-form" >
+                <apex:pageBlock >
+                <apex:pageBlockButtons >     
+                    <apex:commandButton value="Add" action="{!savePage}" style="display:none;"/>                        
+                    <apex:commandButton value="Submit for Verification" action="{!checklistCompleted}" rendered="{!AND(NOT(PM_Project__c.Handoff_Check_list_Completed__c), $Profile.Name != 'Customer Care')}" /> 
+                    <apex:commandButton value="Verify Checklist" action="{!verifyChecklist}" rendered="{! AND(PM_Project__c.Handoff_Checklist_Status__c == 'Completed', $Profile.Name == 'Customer Care')  }" /> 
+                    <apex:commandButton value="Request Additional Details" action="{!rejectChecklist}" rendered="{! AND(PM_Project__c.Handoff_Checklist_Status__c == 'Completed', $Profile.Name == 'Customer Care' ) }" /> 
+                   
+                    <apex:commandButton value="Send Handoff Email" rendered="{!PM_Project__c.Handoff_Checklist_Status__c == 'Verified'}" action="/_ui/core/email/author/EmailAuthor?template_id={!TemplateId}&rtype=003&isdtp=vw&p3_lkid={!PM_Project__c.Sales_Order__r.AccountId__c}&p2_lkid={!ContactId}&p5={!CcEmail}&cancelURL=/apex/ProjectHandoff?id={!PM_Project__c.Id}&retURL=/apex/ProjectHandoff?id={!PM_Project__c.Id}" />                                                    
+                  
+                    
+                    
+                    <apex:outputlink value="/_ui/core/email/author/EmailAuthor?template_id=00XL0000000HybC&isdtp=vw&p3_lkid={!PM_Project__c.Sales_Order__r.AccountId__c}&p2_lkid={!ContactId}" rendered="false" > Send Handoff Email </apex:Outputlink>
+
+                </apex:pageBlockButtons> 
+                
+              
+                <apex:outputPanel id="mainOutputPanel" >                                    
+                   
+                    <apex:outputPanel layout="none" rendered="{!errorFields != ''}">
+                        <table>
+                            <tr>
+                                <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                <td style="vertical-align: middle;"><span class="user-error">Please make sure that all Questions in the Checklist are answered.</span></td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!PM_Project__c.Handoff_Check_list_Completed__c}" >
+                     <div class="customer_has_internet">  
+                        <label>Date Checklist Completed :</label> 
+                        <apex:outputField value="{!PM_Project__c.Handoff_Checklist_Completion_Date__c}" />
+                     </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!OR(PM_Project__c.Handoff_Checklist_Status__c == 'Verified',PM_Project__c.Handoff_Checklist_Status__c == 'Handoff Email Sent')}" >
+                     <div class="customer_has_internet">  
+                        <label>Date Checklist Verified :</label> 
+                        <apex:outputField value="{!PM_Project__c.Handoff_Checklist_Verification_Date__c}" />
+                     </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!PM_Project__c.Handoff_Checklist_Status__c == 'Handoff Email Sent' }" >
+                     <div class="customer_has_internet">  
+                        <label>Date Handoff Email Sent to Customer :</label> 
+                        <apex:outputField value="{!PM_Project__c.Handoff_Email_Sent_Date__c}" />
+                     </div>
+                    </apex:outputPanel>
+                    <div class="system_location">                
+                        <apex:outputPanel >
+                            <label for="system_location">System Location:</label>
+                            <apex:actionRegion >
+                                 <apex:inputField id="system_location" value="{!PM_Project__c.Handoff_System_Location__c}" styleclass="{!IF(CONTAINS(errorFields,'[sysloc]'),'invalid','')}" >
+                                     <apex:actionSupport event="onchange" rerender="sysLocationOther,sysLocationSupply"/>
+                                 </apex:inputField> 
+                            </apex:actionRegion>
+                        </apex:outputPanel> 
+                    </div>
+                    
+                    <!--if Other, show-->
+                    
+                   <apex:outputPanel id="sysLocationOther"> 
+                        <apex:outputPanel id="sysLocationOther1" rendered="{!(PM_Project__c.Handoff_System_Location__c=='Other')}"  > 
+                            <div class="system_location_other">                        
+                                <apex:outputLabel for="system_location_other" >Please describe location:</apex:outputLabel>
+                                <apex:inputField id="system_location_other" value="{!PM_Project__c.Handoff_Other_System_Location__c}" styleclass="{!IF(CONTAINS(errorFields,'[sysotherloc]'),'invalid','')}" />  
+                            </div>                 
+                        </apex:outputPanel>
+                   </apex:outputPanel>
+                      
+                    
+                    
+                    <!--if Garge, Barn, Ground Mount, or Other, show--> 
+                   
+                    <apex:outputPanel id="sysLocationSupply">
+                        <apex:outputPanel id="sysLocationSupply1" rendered="{!(PM_Project__c.Handoff_System_Location__c=='Other' || PM_Project__c.Handoff_System_Location__c=='Garage' || PM_Project__c.Handoff_System_Location__c=='Barn' || PM_Project__c.Handoff_System_Location__c=='Ground Mount')}">
+                            <div class="system_location_supply_distance">
+                                <label for="system_location_supply_distance">If not on Main House, what is the estimated Distance to main supply (ft.):</label>
+                                <apex:inputField id="system_location_supply_distance" value="{!PM_Project__c.Handoff_Distance_to_Mail_Supply_ft__c}" styleclass="{!IF(CONTAINS(errorFields,'[syssupploc]'),'invalid','')}" />   
+                            </div> 
+                        </apex:outputPanel>
+                    </apex:outputPanel>  
+                    
+                   <div class="customer_has_internet">
+                        <label for="customer_has_internet">Does Customer have internet ? :</label>
+                        <apex:actionRegion >
+                             <apex:inputfield value="{!PM_Project__c.Handoff_Is_Internet_Access__c}" styleclass="{!IF(CONTAINS(errorFields,'[intertacc]'),'invalid','')}" >
+                                   <apex:actionSupport event="onchange" rerender="CustInternet,internetTypeOther"/>
+                             </apex:inputfield>
+                        </apex:actionRegion>
+                    </div>
+                                    
+                    <!--if Yes, show--> 
+                    <apex:outputPanel layout="block" id="CustInternet">                  
+                        <apex:outputPanel layout="block" id="CustInternet1" rendered="{!PM_Project__c.Handoff_Is_Internet_Access__c == 'Yes'}">  
+                            <div class="customer_has_internet_type">                      
+                                <apex:actionRegion >
+                                     <label for="customer_has_internet_type">Type of Internet:</label>
+                                     <apex:inputField id="customer_has_internet_type" value="{!PM_Project__c.Handoff_Type_of_Internet_Access__c}" styleclass="{!IF(CONTAINS(errorFields,'[intertype]'),'invalid','')}" >
+                                         <apex:actionSupport event="onchange" rerender="internetTypeOther"/>
+                                     </apex:inputField> 
+                                </apex:actionRegion>
+                            </div>
+                        </apex:outputPanel>               
+                    </apex:outputPanel>        
+                    
+                    <!--if Other, show-->                 
+                    <apex:outputPanel id="internetTypeOther"> 
+                        <apex:outputPanel id="internetTypeOther1" rendered="{!AND(PM_Project__c.Handoff_Type_of_Internet_Access__c=='Other' ,PM_Project__c.Handoff_Is_Internet_Access__c == 'Yes' )}" >                        
+                            <div class="customer_has_internet_type_other">
+                                <label for="customer_has_internet_type_other">Please describe Other Internet Type:</label>
+                                <apex:inputField id="customer_has_internet_type_other" value="{!PM_Project__c.Handoff_Other_Internet_Access_Type__c}" styleclass="{!IF(CONTAINS(errorFields,'[intertypeother]'),'invalid','')}" />               
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>    
+                    
+                    <div class="bridge_installed">
+                        <label for="bridge_installed">Is Bridge Installed ? :</label>
+                         <apex:actionRegion >
+                             <apex:inputfield value="{!PM_Project__c.Handoff_Bridge_Installed__c}" >
+                                   <apex:actionSupport event="onchange" rerender="bridgeInstall"/>
+                             </apex:inputField>
+                        </apex:actionRegion>
+                    </div>
+                    
+                    <apex:outputPanel layout="block" id="bridgeInstall">  
+                        <apex:outputPanel layout="block" id="bridgeInstall1" rendered="{!PM_Project__c.Handoff_Bridge_Installed__c == 'Yes'}">                        
+                        <div class="bridge_installed_type">
+                            <apex:actionRegion >
+                                 <label for="bridge_installed_type">Type of bridge:</label>
+                                 <apex:inputField id="bridge_installed_type" value="{!PM_Project__c.Handoff_Bridge_Type__c}" styleclass="{!IF(CONTAINS(errorFields,'[bridgetype]'),'invalid','')}" >
+                                     <apex:actionSupport event="onchange" rerender="bridgeInstallOther,bridgeInstallOtherAntenna,bridgeInstallOtherType"/>
+                                 </apex:inputField> 
+                            </apex:actionRegion>
+                        </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel> 
+                                                    
+                    <!--if Powerline or Wireless, show-->                 
+                    <apex:outputPanel id="bridgeInstallOther"> 
+                        <apex:outputPanel id="bridgeInstallOther1" rendered="{!AND(PM_Project__c.Handoff_Bridge_Installed__c == 'Yes' , OR(PM_Project__c.Handoff_Bridge_Type__c=='Powerline' ,PM_Project__c.Handoff_Bridge_Type__c=='Wireless' ))}" >                        
+                            <div class="bridge_installed_type_powerline_wireless">
+                                <label for="bridge_installed_type_powerline_wireless">If other than Enphase, please list make and model:</label>
+                                <apex:inputField id="bridge_installed_type_powerline_wireless" value="{!PM_Project__c.Handoff_Other_Bridge_Install_Type__c}"/>  
+                                <apex:inputField id="bridge_installed_type_powerline_wireless_model" value="{!PM_Project__c.Handoff_Bridge_Model_Number__c}"/>              
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    
+                    <!--if One Antenna, Two Antenna, or Tenda, show-->
+                     <apex:outputPanel id="bridgeInstallOtherAntenna"> 
+                        <apex:outputPanel id="bridgeInstallOtherAntenna1" rendered="{!OR(PM_Project__c.Handoff_Bridge_Type__c=='One Antenna Ubiquiti', PM_Project__c.Handoff_Bridge_Type__c=='Two Antenna Ubiquiti', PM_Project__c.Handoff_Bridge_Type__c=='Tenda')}" >                        
+                            <div class="bridge_installed_type_one_two_antenna">
+                                <label for="bridge_installed_type_one_two_antenna">Model #:</label>                             
+                                <apex:inputField id="bridge_installed_type_powerline_wireless_model1" value="{!PM_Project__c.Handoff_Bridge_Model_Number__c}"/>              
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>     
+                    
+                
+                    <!--if Other, show-->                
+                    <apex:outputPanel id="bridgeInstallOtherType"> 
+                        <apex:outputPanel id="bridgeInstallOtherType1" rendered="{!PM_Project__c.Handoff_Bridge_Type__c=='Other' }" >                        
+                            <div class="bridge_installed_type_other">
+                                 <label for="bridge_installed_type_other">Please list make and model:</label>
+                                <apex:inputField id="bridge_installed_type_powerline_wireless2" value="{!PM_Project__c.Handoff_Other_Bridge_Install_Type__c}"/>  
+                                <apex:inputField id="bridge_installed_type_powerline_wireless_model3" value="{!PM_Project__c.Handoff_Bridge_Model_Number__c}" styleclass="{!IF(CONTAINS(errorFields,'[bridgetypeother]'),'invalid','')}"/>              
+                             </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>                
+                    
+                    
+                    <!--question 5: Inverter Type-->
+                    <div id="inverterType" style="margin-top:0">
+                        <label for="inverterType">Inverter Type:</label>
+                        <apex:actionRegion >
+                             <apex:inputfield value="{!PM_Project__c.Inverter_Type__c}">
+                                 <apex:actionSupport event="onchange" rerender="inverterTypeCentral"/>
+                             </apex:inputField>
+                        </apex:actionRegion>
+                    </div>
+                    
+                    <apex:outputPanel id="inverterTypeCentral"> 
+                        <apex:outputPanel id="inverterTypeCentral1" rendered="{!PM_Project__c.Inverter_Type__c == 'Central'}" >                        
+                            <div class="dedicated_outlet_breaker_location_other">
+                                <label for="bridge_installed_type_other">Please list make and model:</label>
+                                <apex:inputField id="inverterTypeCetnralMake" value="{!PM_Project__c.Central_Inverter_Type__c}"/>  
+                                <apex:inputField id="inverterTypeCentralModel" value="{!PM_Project__c.Central_Inverter_Model__c}" />              
+                             </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    
+                    <div style="margin-bottom:3px"></div>
+                    
+                    <!--question 6-->
+                    <div class="envoy_location">
+                        <apex:outputPanel >
+                            <label for="envoy_location">Envoy Location Relative to Electrical Panel:</label>
+                            <apex:actionRegion >
+                                 <apex:inputField id="envoy_location" value="{!PM_Project__c.Handoff_Envoy_Location__c}" styleclass="{!IF(CONTAINS(errorFields,'[envloc]'),'invalid','')}" >
+                                     <apex:actionSupport event="onchange" rerender="envoyLocationOther,dedicatedOutletBreaker,outletLocationOther"/>
+                                 </apex:inputField> 
+                            </apex:actionRegion>
+                        </apex:outputPanel>                                 
+                    </div>
+                                            
+                    <!--if Not Immediately Next to Panel, show-->                                    
+                    <apex:outputPanel id="envoyLocationOther"> 
+                        <apex:outputPanel id="envoyLocationOther1" rendered="{!PM_Project__c.Handoff_Envoy_Location__c=='Not immediately next to panel' }" >                        
+                            <div class="envoy_location_not_immediately_next_to_panel"> 
+                                <label for="envoy_location_not_immediately_next_to_panel">Please explain (e.g. in barn where system is located):</label>
+                                 <apex:inputField id="envoy_location_not_immediately_next_to_panel" value="{!PM_Project__c.Handoff_Envoy_Location_Explanation__c}" styleclass="{!IF(CONTAINS(errorFields,'[envoyother]'),'invalid','')}"/>               
+                             </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>                    
+                    
+                    <!--if Dedicated Outlet Breaker location, show-->                                    
+                    <apex:outputPanel id="dedicatedOutletBreaker"> 
+                        <apex:outputPanel id="dedicatedOutletBreaker1">                        
+                            <div class="dedicated_outlet_breaker_location"> 
+                               <label for="dedicated_outlet_breaker_location">Dedicated outlet breaker location:</label>
+                               <apex:actionRegion >
+                                 <apex:inputField id="dedicated_outlet_breaker_location" value="{!PM_Project__c.Handoff_Dedicate_Outlet_Breaker_Location__c}"  styleclass="{!IF(CONTAINS(errorFields,'[outletbr]'),'invalid','')}">
+                                     <apex:actionSupport event="onchange" rerender="outletLocationOther"/>
+                                 </apex:inputField> 
+                                </apex:actionRegion>              
+                             </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                                      
+                                
+                     <!--if Other, show-->                  
+                     <apex:outputPanel id="outletLocationOther">                          
+                        <apex:outputPanel id="outletLocationOther1" rendered="{!PM_Project__c.Handoff_Dedicate_Outlet_Breaker_Location__c=='Other'}" >                        
+                             <div class="dedicated_outlet_breaker_location_other">
+                                 <label for="dedicated_outlet_breaker_location_other">Please describe location:</label>
+                                 <apex:inputField id="dedicated_outlet_breaker_location_other" value="{!PM_Project__c.Handoff_Other_Outlet_Breaker_Location__c}" styleclass="{!IF(CONTAINS(errorFields,'[outletother]'),'invalid','')}"/>             
+                             </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel> 
+                                        
+                    <!--question 7-->
+                    <div class="dedicated_outlet_for_envoy">
+                         <label for="dedicated_outlet_for_envoy">Dedicated outlet for Envoy ?</label>
+                         <apex:actionRegion >
+                             <apex:inputfield value="{!PM_Project__c.Handoff_Dedicated_Outlet_for_Envoy__c}"  styleclass="{!IF(CONTAINS(errorFields,'[envoy]'),'invalid','')}">
+                                   <apex:actionSupport event="onchange" rerender="dedicateOutlet"/>
+                             </apex:inputField>
+                        </apex:actionRegion>                    
+                    </div>                
+                        
+                    <!--if yes, show-->                
+                     <apex:outputPanel id="dedicateOutlet"> 
+                        <apex:outputPanel id="dedicateOutlet1" rendered="{!PM_Project__c.Handoff_Dedicated_Outlet_for_Envoy__c == 'Yes'}"  >  
+                            <div class="dedicated_outlet_for_envoy_is_GFCI">
+                                <label for="dedicated_outlet_for_envoy_is_GFCI">Is Dedicated outlet is GFCI:</label>                    
+                                <apex:inputfield value="{!PM_Project__c.Handoff_Dedicated_Outlet_is_GFCI__c}" styleclass="{!IF(CONTAINS(errorFields,'[envoygfci]'),'invalid','')}"/>                    
+                            </div> 
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                                            
+                   <!--question 8-->
+                   <div class="revenue_grade_meter_installed">
+                        <label for="revenue_grade_meter_installed">Is Revenue Grade Meter Installed ? :</label>
+                        <apex:actionRegion >
+                             <apex:inputfield value="{!PM_Project__c.Handoff_Revenue_Grade_Meter_Installed__c}" styleclass="{!IF(CONTAINS(errorFields,'[grademeterins]'),'invalid','')}" >
+                                   <apex:actionSupport event="onchange" rerender="gradeMeterType,revenueTypeOther"/>
+                             </apex:inputField>
+                        </apex:actionRegion>
+                    </div>
+                    
+                    <!--if yes, show-->                
+                     <apex:outputPanel id="gradeMeterType"> 
+                        <apex:outputPanel id="gradeMeterType1" rendered="{!PM_Project__c.Handoff_Revenue_Grade_Meter_Installed__c == 'Yes'}" >  
+                            <div class="revenue_grade_meter_installed_type">
+                                <label for="revenue_grade_meter_installed_type">Type:</label>   
+                                <apex:actionRegion >                 
+                                    <apex:inputField id="revenue_grade_meter_installed_type" value="{!PM_Project__c.Handoff_Revenue_Grade_Meter_Type__c}" styleclass="{!IF(CONTAINS(errorFields,'[grademeter]'),'invalid','')}">                    
+                                        <apex:actionSupport event="onchange" rerender="revenueTypeEnphase, revenueTypeLocus, revenueTypeOther"/>
+                                    </apex:inputField> 
+                                </apex:actionRegion>
+                            </div> 
+                        </apex:outputPanel>
+                    </apex:outputPanel>      
+                    
+                    <!-- if Enphase, show -->
+                    <apex:outputPanel id="revenueTypeEnphase"> 
+                        <apex:outputPanel id="revenueTypeEnphase1" rendered="{!AND(PM_Project__c.Handoff_Revenue_Grade_Meter_Type__c == 'Enphase', PM_Project__c.Handoff_Revenue_Grade_Meter_Installed__c == 'Yes')}" >                        
+                            <div class="revenue_grade_meter_installed_type_other">
+                                <label for="revenue_grade_meter_installed_type_enphase_eui64">EUI64 Code (16 characters):</label>
+                                <apex:inputField id="revenue_grade_meter_installed_type_enphase_eui64" value="{!PM_Project__c.Enphase_EUI64_Code__c}" html-data-maxlength="16"/>
+                                <br/>
+                                <label for="revenue_grade_meter_installed_type_enphase_code">Install Code (20 characters):</label>
+                                <apex:inputField id="revenue_grade_meter_installed_type_enphase_code" value="{!PM_Project__c.Enphase_Install_Code__c}" html-data-maxlength="20"/>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    
+                    <!-- if Locus, show -->
+                    <apex:outputPanel id="revenueTypeLocus"> 
+                        <apex:outputPanel id="revenueTypeLocus1" rendered="{!AND(PM_Project__c.Handoff_Revenue_Grade_Meter_Type__c == 'Locus', PM_Project__c.Handoff_Revenue_Grade_Meter_Installed__c == 'Yes')}" >                        
+                            <div class="revenue_grade_meter_installed_type_other">
+                                <label for="revenue_grade_meter_installed_type_locus_model">Model:</label>
+                                <apex:inputField id="revenue_grade_meter_installed_type_locus_model" value="{!PM_Project__c.Locus_Model__c}" style="margin-bottom:3px"/>
+                                <br/>
+                                <label for="revenue_grade_meter_installed_type_locus_mac">Mac ID:</label>
+                                <apex:inputField id="revenue_grade_meter_installed_type_locus_mac" value="{!PM_Project__c.Locus_Mac_ID__c}"/>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    
+                    <!--if Yes and Other, show-->                
+                    <apex:outputPanel id="revenueTypeOther"> 
+                        <apex:outputPanel id="revenueTypeOther1" rendered="{!AND(PM_Project__c.Handoff_Revenue_Grade_Meter_Type__c=='Other' ,PM_Project__c.Handoff_Revenue_Grade_Meter_Installed__c =='Yes' )}" >                        
+                            <div class="revenue_grade_meter_installed_type_other">
+                                <label for="revenue_grade_meter_installed_type_other">Please list make and model:</label>
+                                <apex:inputField id="revenue_grade_meter_installed_type_other" value="{!PM_Project__c.Handoff_Other_Revenue_Grade_Meter_Make__c}" styleclass="{!IF(CONTAINS(errorFields,'[grademeterother]'),'invalid','')}"/>
+                                <apex:inputField id="revenue_grade_meter_installed_type_other_Model" value="{!PM_Project__c.Handoff_Other_Revenue_Grade_Meter_Model__c}"/>               
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                                            
+                    <!--question 9-->
+                    <div class="revenue_grade_meter_installed">
+                        <label for="Handoff_Big_Ticket_Electrical_Item">Does Customer have any large electrical appliances ? :</label>
+                        <apex:actionRegion >
+                             <apex:inputfield value="{!PM_Project__c.Handoff_Big_Ticket_Electrical_Item__c}" styleclass="{!IF(CONTAINS(errorFields,'[electric]'),'invalid','')}" >
+                                   <apex:actionSupport event="onchange" rerender="largeElectrical,OtherBigTicketElectrical"/>
+                             </apex:inputField>
+                        </apex:actionRegion>
+                    </div>
+                    
+                    <apex:outputPanel id="largeElectrical"> 
+                        <apex:outputPanel id="BigTicketElectrical" rendered="{!PM_Project__c.Handoff_Big_Ticket_Electrical_Item__c == 'Yes'}" > 
+                            <div class="big_ticket_electrical">
+                                <label for="big_ticket_electrical">Handoff Large Electrical Appliance Present :</label>
+                                <apex:actionRegion > 
+                                    <apex:inputField id="Handoff_Big_Ticket_Electrical_Item" value="{!PM_Project__c.Handoff_Big_Ticket_Electrical_Type__c}" styleclass="{!IF(CONTAINS(errorFields,'[electrictype]'),'invalid','')}">    
+                                        <apex:actionSupport action="{!bigTicketElectricalChanged}" event="onchange" rerender="OtherBigTicketElectrical"/>                        
+                                    </apex:inputField>
+                                </apex:actionRegion> 
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <!--if Other, show-->
+                    <apex:outputPanel id="OtherBigTicketElectrical"> 
+                        <apex:outputPanel id="OtherBigTicketElectrical1" rendered="{!showOtherElectric }" >                        
+                            <div class="big_ticket_electrical_other">
+                                <label for="big_ticket_electrical_other">If Other, please describe equipment:</label>
+                                <apex:inputField id="big_ticket_electrical_other" value="{!PM_Project__c.Handoff_Other_Big_Ticket_Electrical__c}"/>                                        
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>  
+                                            
+                   <!--question 10-->
+                    <div class="enlighten_activated">
+                        <label for="enlighten_activated">Is Enlighten/SolarEdge fully activated, with no current alerts or issues ? :</label>
+                        <apex:inputfield value="{!PM_Project__c.Handoff_Enlighten_Activated__c}" styleclass="{!IF(CONTAINS(errorFields,'[enlighten]'),'invalid','')}" />
+                    </div>  
+                    
+                    <!--question 11-->
+                    <div class="enphase_id_number">
+                        <label for="enphase_id_number">Enphase ID Number :</label>
+                         <apex:inputField id="enphase_id_number" value="{!PM_Project__c.Handoff_Enphase_ID__c}" styleclass="{!IF(CONTAINS(errorFields,'[enphaseid]'),'invalid','')}" />                     
+                    </div>
+                    
+                    <!--question 12-->
+                    <div class="enphase_verification_date">
+                        <label for="enphase_verification_date">Enphase/SolarEdge Verification Date :</label>
+                         <apex:inputField id="enphase_verification_date" value="{!PM_Project__c.Handoff_Enlighten_Verification_Date__c}" styleclass="{!IF(CONTAINS(errorFields,'[everify]'),'invalid','')}" />                     
+                    </div>
+                    
+                    <div class="enphase_id_number">
+                        <label for="enphase_verification_date">Checklist Comments :</label>
+                         <apex:inputField id="comments" value="{!PM_Project__c.Handoff_Checklist_Comments__c}"/>                     
+                    </div>
+                    
+                    <div class="enphase_id_number">
+                        <label for="enphase_verification_date">Customer Care Comments :</label>
+                         <apex:inputField id="cccomments" value="{!PM_Project__c.Handoff_Customer_Care_Comments__c}" styleclass="{!IF(CONTAINS(errorFields,'[cccomm]'),'invalid','')}"/>                     
+                    </div>
+                    
+                </apex:outputPanel> 
+                
+                </apex:pageBlock>                            
+                           
+             </apex:form>
+                 
+        </div>
+    </div>
+    
+   
+
+
+</apex:page>

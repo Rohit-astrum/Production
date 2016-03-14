@@ -1,0 +1,60 @@
+<!-- 
+01/25/2013 TCM - zen-38 portrait images split - use landscape portrait settings
+-->
+<apex:page controller="DocumentPrintController" sidebar="false" showHeader="false" standardStylesheets="false" renderAs="PDF">
+<html>
+<head>
+<style>
+body {font-family: Arial Unicode MS;}
+@page {
+	size: 8.5in 11in; 
+	margin: 0.5in 0.85in;
+	@top-left { content: "  {!JSENCODE(project.Name)}"; }
+	@bottom-center { content:"Page " counter(page); }
+}
+div.image-name {
+	font-weight: bold;
+}
+img.landscape {
+	width: 6.49in;
+	height: auto;
+}
+img.portrait {
+	height: 8.24in;
+	width: auto;
+}
+p.text-body {
+	margin-top: .14in;
+	margin-bottom: .28in;
+}
+
+</style>
+</head>
+<body>
+
+	<apex:repeat value="{!notes}" var="n">
+		<apex:repeat value="{!n.Notes}" var="a">
+			<span class="image-name">{!n.CreatedBy.Name}&nbsp;<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!n.CreatedDate}"/></apex:outputText></span>
+			<div class="image-bin" style="page-break-before:avoid">{!n.Bin__c}</div>
+			<div class="image-cat" style="page-break-before:avoid">{!n.Category__c}</div>
+			<p class="text-body" style="page-break-before:avoid">{!a.Body}</p>
+		</apex:repeat>
+	</apex:repeat>
+
+	<apex:variable var="count" value="{!notes.size}"/>
+	<apex:repeat value="{!documents}" var="d">
+		<apex:repeat value="{!d.attachments}" var="a">
+			<div style="page-break-before: {!IF(count==0, 'avoid', 'always')};" class="image-name">{!a.Name}</div>
+			<div class="image-bin">{!d.Bin__c}</div>
+			<div class="image-cat">{!d.Category__c}</div>
+			<div class="scale-width" style="width: 6.5in;height: 8.25in;text-align:center;">
+				<img class="{!IF(a.Description='L', 'landscape', 'portrait')}" src="/servlet/servlet.FileDownload?file={!a.Id}"/>
+			</div>
+			<apex:variable var="count" value="{!count+1}"/>
+		</apex:repeat>
+	</apex:repeat>
+	
+</body>
+</html>
+
+</apex:page>

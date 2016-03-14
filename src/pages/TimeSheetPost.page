@@ -1,0 +1,16 @@
+<apex:page standardController="Time_Sheet__c" extensions="TimesheetPostController" recordSetVar="timesheets" showHeader="true" sidebar="false" action="{!confirm}">
+	<apex:form >
+       <apex:pageBlock title="Post Selected Timesheets">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!post}" value="Post"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="timesheet">
+                <apex:column value="{!timesheet.Name}"/>
+                <apex:column value="{!timesheet.Employee__r.Name}"/>
+                <apex:column value="{!timesheet.Employee__r.Employee_Number__c}"/>
+                <apex:column value="{!timesheet.Employee_Type__c}"/>
+                <apex:column value="{!timesheet.For_The_Week_Starting__c}"/>
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

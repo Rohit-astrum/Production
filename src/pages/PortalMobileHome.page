@@ -1,0 +1,63 @@
+<apex:page doctype="html-5.0" controller="PortalHomeController" sidebar="false" showHeader="false" standardStylesheets="false">
+
+<meta name='description' content='Astrum Solar Professional Referral Network' />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astrum Solar Professional Referral Network</title>
+<link rel="Shortcut Icon" href="{!URLFOR($Resource.PortalResources, 'images/favicon.ico')}" />
+<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" type="text/css"/> 
+<link rel="stylesheet" href="{!URLFOR($Resource.PortalMobileTheme,'themes/AstrumPortalMobile.min.css')}" type="text/css"/>
+<style type="text/css">
+	.messageText h4 { display: none; }
+	.messageText { color: red; }
+</style>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script>
+	$(document).bind('pageinit', function() {
+		$.mobile.ajaxEnabled = false;
+    });
+</script>
+
+<div data-role="page" data-theme="a" data-title="Astrum Solar Professional Referral Network">
+
+	<div data-role="header" style="padding:4px;">
+		<img src="{!URLFOR($Resource.PortalResources,'images/connect-logo.png')}"/>
+		<!-- 
+		<h1>Astrum Solar Connect</h1>
+		 -->
+	</div>
+	
+	<div data-role="content" data-theme="c">
+	
+		<apex:form forceSSL="true">
+			
+			<apex:pageMessages />
+
+			<apex:outputLabel value="User Name" for="username"/>
+	        <apex:inputText styleClass="username" id="username" style="background-color:white;" value="{!controller.username}"
+	        	onkeydown="if(event.keyCode==13){this.blur();doLogin();}"/>
+	        
+	        <apex:outputLabel styleClass="vSpaceLabel" value="{!$Label.site.password}" for="password"/>
+	        <apex:inputSecret styleClass="password" id="password" style="background-color:white;" value="{!controller.password}"
+	        	onkeydown="if(event.keyCode==13){this.blur();doLogin();}"/>
+	        
+        	<apex:inputCheckbox id="rememberMe" value="{!controller.rememberMe}"/>
+        	<apex:outputLabel value="Remember User Name" for="rememberMe"/>
+	        
+       		<button data-role="button" data-theme="a" data-ajax="false" onclick="$.mobile.showPageLoadingMsg();doLogin()">Login</button>
+       		
+       		<apex:actionFunction name="doLogin" action="{!login}"/>
+       		
+			<apex:outputLink styleClass="forgotPW" value="{!$Page.ForgotPassword}"> {!$Label.site.forgot_your_password_q}</apex:outputLink>
+			
+        </apex:form>
+        		
+	</div>
+
+</div>
+	
+<site:googleAnalyticsTracking />
+<site:previewAsAdmin />
+ 	
+</apex:page>

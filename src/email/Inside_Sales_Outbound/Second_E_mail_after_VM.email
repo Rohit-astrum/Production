@@ -1,0 +1,16 @@
+<p>Dear {!Lead.FirstName},</p>
+<p>I am reaching out to you to see if you are still interested in creating a solar project for your home, or if you have any questions regarding solar. You may qualify for a free installation, and you’ll certainly find lower utility costs from your first day. We work exclusively in residential solar, and our home solar experts know your local needs and put the extra time in upfront to design and install a system that lets you get more energy and more electricity savings from your solar home.</p>
+<p>Our conversation with you will only take a few minutes, and then we can get you in touch with your local home solar expert to schedule a site survey of your home.</p>
+<p>Please call us back at 800-903-6130 and select the option for sales,  or reply to this email to let us know a good time to contact you by phone.</p>
+<p>Even if you’re not sure if solar is right for you, we’d like to tell you more about our free installation, our customized approach to your home and get you started on the road to lower electricity bills and utility independence.</p>
+<p>We can’t wait to hear from you!</p>
+<p>Sincerely,</p>
+<p>{!User.FirstName}</p>
+<p>
+<img src="https://c.na8.content.force.com/servlet/servlet.ImageServer?id=015800000017MZ3&oid=00D80000000dNiA&lastMod=1274981283000" /><br />
+8955 Henkels Lane Suite 508<br />
+Annapolis Junction, MD 20701<br />
+P: 800-903-6130<br />
+F: 443-267-0036<br />
+{!User.Email}<br />
+<a href="http://www.astrumsolar.com">www.astrumsolar.com</a></p>

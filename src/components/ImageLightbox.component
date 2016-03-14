@@ -1,0 +1,83 @@
+<!--
+06/27/2012 TCM - zen-10 create image thumbnails when uploading 
+-->
+
+<apex:component controller="ImageLightboxController">
+
+<apex:attribute name="projectId"
+				description="Id of project to show documents for"
+				type="String"
+				required="true"
+				assignTo="{!projectId}"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.TN3Gallery, 'skins/tn3/tn3.css')}"/>
+				
+<style type="text/css">
+</style>
+		
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"/>
+<apex:includeScript value="{!URLFOR($Resource.TN3Gallery, 'js/jquery.tn3lite.min.js')}"/>
+
+<script type="text/javascript">
+
+	$(function () {
+	
+		$('.gallery').tn3({}); //.show();
+		
+		//$('a.photo-thumn').prepend(function(index) {
+		//	return '<img src="' + $(this).attr('src') + '"/>';
+		//});
+		
+		//TODO: persist sections that are closed	
+		//close the calendar --
+		//$("img[name='Image Viewer']").each(function() {
+		//	twistSection(this);
+		//});
+		
+		//fix gallery pre-loader image [bug]
+		$('div.tn3-preloader img').attr('src', '{!URLFOR($Resource.TN3Gallery, 'skins/tn3/preload.gif')}');
+	
+	});
+	
+</script>
+
+<apex:pageBlock mode="maindetail">
+
+	<apex:outputPanel layout="block" styleClass="gallery">
+		<div class="tn3 album">
+			<h4>Photo Collection</h4>
+			<div class="tn3 description">Images in for project</div>
+			<ul>
+
+			<apex:repeat value="{!documents}" var="d">
+				<apex:variable var="firstAttId" value="{!''}"/>
+				<apex:variable var="secondAttId" value="{!''}"/>
+				<apex:variable var="fileName" value="{!''}"/>
+				<!-- smallest first could be thumbnail -->
+				<apex:repeat value="{!d.Attachments}" var="a" first="0" rows="1">
+					<apex:variable var="firstAttId" value="{!a.Id}"/>
+					<apex:variable var="fileName" value="{!a.Name + ' ' + TEXT(a.BodyLength)}"/>
+				</apex:repeat>
+				<!-- larger second -->
+				<apex:repeat value="{!d.Attachments}" var="a" first="1" rows="1">
+					<apex:variable var="secondAttId" value="{!a.Id}"/>
+					<apex:variable var="fileName" value="{!a.Name + ' ' + TEXT(a.BodyLength)}"/>
+				</apex:repeat>
+				<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(firstAttId))}">
+					<li>
+						<h4>{!d.Bin__c} : {!d.Category__c}</h4>
+						<div class="tn3 description">{!fileName}</div>
+						<a class="photo-thumb" href="/servlet/servlet.FileDownload?file={!BLANKVALUE(secondAttId,firstAttId)}">
+							<img src="/servlet/servlet.FileDownload?file={!firstAttId}" height="100" width="100"/>
+						</a>
+					</li>
+				</apex:outputPanel>
+			</apex:repeat>
+			</ul>
+		</div>
+	</apex:outputPanel>
+	
+</apex:pageBlock>
+				
+</apex:component>

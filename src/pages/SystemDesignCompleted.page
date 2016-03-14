@@ -1,0 +1,10 @@
+<!-- 
+   FILE: SystemDesignASTRUMReCall
+ * AUTHOR: Rohit Jain
+ * DATE: Oct 14, 2014
+ * PURPOSE: System Design Complete Action
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="System_Design__c" extensions="SystemDesignCompletedExtension" action="{!designCompleted}">  
+
+</apex:page>

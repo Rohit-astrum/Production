@@ -1,0 +1,232 @@
+<!--
+01/21/2013 TCM - Add select all / deselect all - zen-25
+01/25/2013 TCM - zen-38 portrait images split - use landscape portrait settings 
+01/28/2013 TCM - zen-24 print project notes with images
+-->
+<apex:page controller="DocumentPrintEmailController" doctype="html-5.0" sidebar="false" showHeader="false">
+
+<apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/redmond/jquery-ui.css" />
+
+<style type="text/css">
+
+@media screen 
+{
+	div.image-block,
+	div.note-block {
+		display: inline-block;
+		background-color: #F0F0F0;
+		margin: 10px 5px;
+		vertical-align: top;
+		padding: 3px 3px 10px 6px;
+		border: 1px dotted gray;
+	}
+	div.image-block-selected,
+	div.note-block-selected {
+		background-color: lightyellow;
+		border: 1px solid black;
+	}
+	span.image-text {
+		width: 200px;
+	}
+	.image-name,
+	.author {
+		display: inline-block;
+		width: 180px;
+		word-break: break-all; 
+		font-weight: bold;
+		margin-left: 3px;
+		vertical-align: top;
+		position: relative;
+		top: 2px;
+	}
+	.image-bin,
+	.image-cat,
+	.note-bin,
+	.note-cat {
+		width: 200px;
+		height: auto;
+		word-break: break-all;
+	}
+	img {
+		display: block;
+		width: 200px;
+		height: auto;
+		vertical-align: top;
+		margin-top: 3px;
+	}
+	span.note-ind {
+		font-weight: bold;
+	}
+	p.notes {
+		width: 200px;
+		height: auto;
+		vertical-align: top;
+		margin-top: 10px;
+	}
+	input.image-checkbox,
+	input.note-checkbox {
+		vertical-align: top;
+	}
+	div.button-bar {
+		width: 99%;
+		height: 30px;
+		margin-left: 5px;
+		margin-bottom: 10px;
+	}
+	span#image-print-info {
+		margin-left: 5px;
+		font-weight: bold;
+	}
+	#select-all-button, 
+	#deselect-all-button {
+		float: right;
+		margin-right: 10px;
+	}
+	#deselect-all-button {
+		margin-right: 20px;
+	}
+}
+
+</style>
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"/>
+
+<script type="text/javascript">
+
+	$(function () {
+	
+		$('div.image-block,div.note-block').bind('click', function(evt) {
+			var $box =  $(this);
+			var isNote = $box.is('div.note-block')
+			var $cb = $(isNote? 'input.note-checkbox' : 'input.image-checkbox', $box);
+			var checked = $cb.attr('checked');
+			if (evt.target.tagName == 'INPUT') {
+				checked = !Boolean(checked); // checkbox will change the state first
+			}
+			if (checked) {
+				$cb.removeAttr('checked');
+				$box.removeClass(isNote ? 'note-block-selected' : 'image-block-selected');
+			} else {
+				$cb.attr('checked','checked');
+				$box.addClass(isNote ? 'note-block-selected' : 'image-block-selected');
+			}
+		});
+
+		$('#image-print-button').button({
+			icons: { primary: 'ui-icon-print' }
+		}).click(function() {
+			$checked = $('input.image-checkbox:checked'); 
+			$notes = $('input.note-checkbox:checked'); 
+			if ($checked.size() == 0 && $notes.size() == 0) {
+				alert('No notes or images are selected');
+				return false;
+			}
+			if ($checked.size() > 50) {
+				alert('No more than 50 images at a time can be selected');
+				return false;
+			}
+			var selectedIds = $checked.map(function() { return this.value; } ).get().join('+');
+			var orientations = $.map($checked.parent().next(), function(val, i) {
+				$v = $(val)
+				return $v.width() * 1.3 > $v.height() ? 'L' : 'P'; 
+			} ).join('+');
+			var noteIds = $notes.map(function() { return this.value; } ).get().join('+');
+			var url = 'https://' + location.hostname + '/apex/DocumentPrint?id={!$CurrentPage.parameters.id}&ids=' 
+				+ selectedIds + '&orients=' + orientations + '&noteIds=' + noteIds;
+			if (window.top.showPrint) {
+				window.top.showPrint(url);
+			}
+			return false;
+		});
+
+		$('#select-all-button').button({
+			icons: { primary: 'ui-icon-bullet' }
+		}).click(function() {
+			$('input.image-checkbox:checked').removeAttr('checked');
+			$('div.image-block').removeClass('image-block-selected');
+			$('input.note-checkbox').attr('checked','checked')
+				.closest('div.note-block').addClass('note-block-selected');
+			//select first 50
+			$('input.image-checkbox').slice(0,50).attr('checked','checked')
+				.closest('div.image-block').addClass('image-block-selected');
+			return false;
+		});
+		
+		$('#deselect-all-button').button({
+			icons: { primary: 'ui-icon-radio-off' }
+		}).click(function() {
+			$('input.note-checkbox:checked,input.image-checkbox:checked').removeAttr('checked');
+			$('div.note-block,div.image-block').removeClass('note-block-selected image-block-selected');
+			return false;
+		});
+
+		//equalize the heights of the document sections in each bin
+		$(window).load(function() {
+		    var rowMap = { };
+		    $('div.note-block,div.image-block').each(function (index) {
+		    	var $t = $(this);
+		    	var top = $t.position().top;
+		    	if (rowMap[top]) {
+		    		rowMap[top].push($t);
+		    	} else {
+		    		rowMap[top] = [$t];
+		    	}
+		    });
+		    $.each(rowMap, function(index, blocks) {
+		    	var maxHeight = 200;
+		    	for (var i = 0; i < blocks.length; i++) {
+		    		if (blocks[i].height() > maxHeight) {
+		    			maxHeight = blocks[i].height();
+		    		}
+			    }
+		    	for (var i = 0; i < blocks.length; i++) {
+		    		blocks[i].height(maxHeight);
+		    	}
+		    });
+	    });
+	    
+	    $(document).disableSelection();
+	
+	});
+	
+</script>
+
+	<apex:form >
+
+		<div class="button-bar">
+			<button id="image-print-button">Print Selected Notes &amp; Images</button>
+			<span id="image-print-info">[Maximum 50 at a time]</span>
+			<button id="deselect-all-button">Deselect All</button>
+			<button id="select-all-button">Select All</button>
+		</div>
+		
+		<apex:repeat value="{!notes}" var="n">
+			<apex:repeat value="{!n.Notes}" var="a">
+				<div class="note-block">
+					<span class="note-text">
+						<input type="checkbox" class="note-checkbox" name="cb{!a.Id}" value="{!a.Id}"/><span class="author">{!n.CreatedBy.Name}&nbsp;<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!n.CreatedDate}"/></apex:outputText></span>
+						<div class="note-bin">{!n.Bin__c}</div>
+						<div class="note-cat">{!n.Category__c}</div>
+					</span>
+					<p class="notes"><span class="note-ind">NOTE:&nbsp;</span>{!a.Body}</p>
+				</div>
+			</apex:repeat>
+		</apex:repeat>
+
+		<apex:repeat value="{!documents}" var="d">
+			<apex:repeat value="{!d.Attachments}" var="a">
+				<div class="image-block">
+					<span class="image-text">
+						<input type="checkbox" class="image-checkbox" name="cb{!a.Id}" value="{!a.Id}"/><span class="image-name">{!a.Name}</span>
+						<div class="image-bin">{!d.Bin__c}</div>
+						<div class="image-cat">{!d.Category__c}</div>
+					</span>
+					<img src="/servlet/servlet.FileDownload?file={!a.Id}"/>
+				</div>
+			</apex:repeat>
+		</apex:repeat>
+	
+	</apex:form>
+
+</apex:page>

@@ -1,0 +1,32 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<span style="color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 12pt; background-color: rgb(255, 255, 255);">Dear&nbsp;</span><span style="color: rgb(102, 102, 102); font-family: Arial, sans-serif; background-color: rgb(255, 255, 255);">{!Portal_Referral__c.First_Name__c}</span><span style="color: rgb(102, 102, 102); font-family: Arial, sans-serif; font-size: 12pt; background-color: rgb(255, 255, 255);">,</span>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p class="MsoNormal" style="margin-bottom: 10pt; line-height: 115%;"><span lang="EN-CA"><font face="Arial, sans-serif" color="#666666">Thanks for your interest in Direct Energy
+Solar.<o:p></o:p></font></span></p>
+
+<p class="MsoNormal" style="margin-bottom: 10pt; line-height: 115%;"><span lang="EN-CA"><font face="Arial, sans-serif" color="#666666">Upon review of your utility bill and system
+design for your home we have determined&nbsp;
+that the savings from going Solar are insufficient to meet a minimum
+level of savings.<o:p></o:p></font></span></p>
+
+<p class="MsoNormal" style="margin-bottom: 10pt; line-height: 115%;"><span lang="EN-CA"><font face="Arial, sans-serif" color="#666666">If you would like to still have us review
+the solar financing agreement with you, or if have any questions, please feel
+free to contact us Monday to Friday 9 am to 5 pm EST at <a href="tel:1-844-473-4274" target="_blank">1-844-473-4274</a> or <a href="" target="_blank">sales.support@directenergysolar.com</a>. <o:p></o:p></font></span></p>
+
+<p class="MsoNormal" style="margin-bottom: 10pt; line-height: 115%;"><span lang="EN-CA"><font face="Arial, sans-serif" color="#666666">We appreciate your time and your interest in
+Direct Energy Solar!</font><font face="arial" style="color: rgb(0, 0, 0);"><o:p></o:p></font></span></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<span style="color: rgb(102, 102, 102); font-family: Arial, sans-serif; background-color: rgb(255, 255, 255);">Best Regards<br><br></span><font face="Arial,Sans-Serif" color="#666666" size="2"><font size="1">AZ
+ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 
+2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 
+21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, 
+PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk
+ 54817-H, Putnam PC66168, Rockland H-11532<br><br>© 2016 Direct Energy. All Rights Reserved.</font></font><br>]]></td>
+</tr>
+</table>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Solar Payback Factors Series: How You Pay for Your Installation</name>
+    <style>none</style>
+    <subject>Special series on solar payback—payback factor #5 is all about choice.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors5&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors5-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Special Series: Solar Payback Factors
+
+Solar Payback Factor #5: How You Pay for Your Installation
+
+Dear {{lead.First Name:default=Friend}},
+
+Solar has many variables that can influence how much of a return you see from your system. In this special series focusing on solar payback factors, we’ll be taking a look at how you choose to pay for your installation &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors5&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors5-link-howtopay]]&gt;.
+
+There are many options that exist for financing and terms and conditions vary, so it is important to compare installer estimates of internal rates of return or payback periods to determine what the most cost-effective option is for you:
+
+#1: Leasing Your Solar System:
+Leasing lets you go solar for little to no money down, but typically offers you less savings from your system since you do not own it. Since another party puts forward the capital for you, they retain the benefits that come from incentives for system owners.
+
+#2: Financing Your Solar System:
+Financing allow you to own the system, but may require larger down payments than a lease offering. If you have some available money to put down, the fact that you will own the incentives can have a significant impact on your return.
+
+#3: Purchasing Your Solar System:
+Purchasing the system outright eliminates financing costs and also confers ownership rights to the homeowner. This route provides the highest rates of return if you have the capital to purchase the system.
+
+Wanna Know All of the Factors? Download Our Free Guide:
+ &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors5&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors5-button-guide]]&gt;
+
+“People think solar is expensive but they don’t make the right calculation—where else can you put your money into something that gets this kind of return?” - Ted and Luella
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=pbfactors5&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors5-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=pbfactors5&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors5-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors5&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors5-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

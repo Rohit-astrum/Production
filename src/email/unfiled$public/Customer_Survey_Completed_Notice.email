@@ -1,0 +1,10 @@
+<html>
+<body>
+<p>A <strong><a href="https://cs8.salesforce.com/{!Customer_Survey__c.Id}">Customer Satisfaction Survey</a></strong> with the following details has been received :</p>
+
+<ul style="list-style:none">
+<li>Survey Completed By : {!Customer_Survey__c.Survey_Completed_By__c}</li>
+<li>Survey Completed By Email : {!Customer_Survey__c.Survey_Completed_by_Email__c}</li>
+<li>PM Project : <strong><a href="https://cs8.salesforce.com/{!Customer_Survey__c.PM_ProjectId__c}">{!Customer_Survey__c.Account_Name__c}</a></strong></li>
+</ul>
+<p>To Review this Survey, please <strong><a href="https://cs8.salesforce.com/{!Customer_Survey__c.Id}">Review Here</a></strong></p>

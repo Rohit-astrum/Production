@@ -1,0 +1,51 @@
+<apex:page standardController="Property__c" extensions="PropertyMapExtension">
+
+
+<table border='0' cellpadding='15'>
+    <tr>
+        <td >
+            <div>
+              <apex:image url="http://dev.virtualearth.net/REST/v1/Imagery/Map/AerialWithLabels/{!Latitude},{!Longitude}/19?pp={!Latitude},{!Longitude};34&mapSize=500,500&mapVersion=v1&key=AmNusenC9lFa9mEzNcPkA20qId_7uSQjr13KIPqpc2dCcl7VovwdcBi-G9tQIxa5"
+                          width="500" height="500" alt="{!Property__c.Name}" 
+          />
+            </div>
+            
+            <a href="http://www.bing.com/maps/?v=2&cp={!Property__c.Latitude__c}~{!Property__c.Longitude__c}&lvl=19&dir=0&sty=b&where1={!Property__c.Name}%2C{!Property__c.Property_ZIP__c}&form=LMLTCC" target="_blank" >           
+            View on Bing
+            </a>
+        </td>
+        
+        <td>
+             <div id='mapDiv' style="position:relative; width:500px; height:500px;"></div>
+             
+            <a href="http://www.bing.com/maps/?v=2&cp={!Property__c.Latitude__c}~{!Property__c.Longitude__c}&lvl=19&dir=0&sty=b&where1={!Property__c.Name}%2C{!Property__c.Property_ZIP__c}&form=LMLTCC" target="_blank" >           
+            View on Bing
+            </a>
+        </td>
+    </tr>
+    
+</table>
+
+     <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+      <script type="text/javascript">
+      function GetMap()
+      {
+
+         var map = new Microsoft.Maps.Map(document.getElementById("mapDiv"),
+                           {credentials: "AmNusenC9lFa9mEzNcPkA20qId_7uSQjr13KIPqpc2dCcl7VovwdcBi-G9tQIxa5",
+                            center: new Microsoft.Maps.Location({!Property__c.Latitude__c},{!Property__c.Longitude__c}),
+                            mapTypeId: Microsoft.Maps.MapTypeId.birdseye,
+                            showCopyright: false,
+                            zoom: 25});
+
+        var pushpin= new Microsoft.Maps.Pushpin(map.getCenter(), null);
+        map.entities.push(pushpin);
+
+        pushpin.setLocation(new Microsoft.Maps.Location({!Property__c.Latitude__c},{!Property__c.Longitude__c}));
+      }
+      
+      GetMap();
+      </script>
+      
+</apex:page>

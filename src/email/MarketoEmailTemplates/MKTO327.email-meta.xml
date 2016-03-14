@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Roofing Installers 081015.Differentiate your business 3</name>
+    <style>none</style>
+    <subject>Differentiate your business with solar</subject>
+    <textOnly>&lt;http://www.directenergysolar.com&gt;
+
+ 
+Dear {{lead.First Name:default=Friend}},
+Direct Energy Solar would like to have you on board as a partner. You are probably aware of research indicating homeowner&apos;s value contracotrs who take the time to expose them to new, money saviing products.  Differentiate yourself in the marketplace and increase your value to your customers --and your profits -just by letting them know about the benefits of going solar.
+You don’t have to be a solar expert to make this program a success, but it helps to understand the basics. I will help you understand the nuts and bolts about how solar works and what the value of solar is to the homeowner. 
+It’s easy and risk-free to sign up to become a partner.
+• We will do all the marketing and selling
+• You get an easy-to-use online portal to input your leads and to track payouts
+
+I look forward to speaking to you more about this great opportunity for both our businesses.
+Suzanne
+Senior Manager, Field Marketing
+ 240-278-8616
+roofingpartner@directenergysolar.com &lt;mailto:suzanne.borneman@directenergysolar.com&gt;
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+© 2015 Clockwork IP, LLC. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

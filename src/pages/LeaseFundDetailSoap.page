@@ -1,0 +1,28 @@
+<!--
+FILE: LeaseFundDetailSoap.page
+AUTHOR:Rohit Jain
+DATE: Jul 14, 2013
+PURPOSE: Displays Lease Fund Detail after Successfull Sent
+MODIFICATION HISTORY:
+
+-->
+<apex:page standardController="NRG_Lead__c">
+    <apex:sectionHeader subtitle="Following NRG Lead has been Sent Successfully" rendered="{!$CurrentPage.parameters.leadsent='Y'}" />
+    <apex:sectionHeader subtitle="CPF Customer Not Found. Please first create a System Design Quote to create a CPF Proposal and Customer." rendered="{!$CurrentPage.parameters.leadsent='CCN'}" />
+    <apex:sectionHeader subtitle="Following NRG Lead along with Credit Request has been Sent Successfully" rendered="{!$CurrentPage.parameters.leadsent='CY'}" />
+    <apex:sectionHeader subtitle="Please associate Utility Company to Property" rendered="{!$CurrentPage.parameters.leadsent='NPU'}" />
+    <apex:sectionHeader subtitle="Please create at least one Contact Role on the Opportunity – Set the role of the contact to “Contract Signer” in order to request the Credit Application email." rendered="{!$CurrentPage.parameters.leadsent='NOC'}" />
+    
+    <apex:sectionHeader subtitle="Error received from NRG" rendered="{!$CurrentPage.parameters.leadsent='FS'}" />
+    <apex:sectionHeader subtitle="Opportunity Should be linked to System Design Quote in order to send to NRG." rendered="{!$CurrentPage.parameters.leadsent='NSDQ'}" />
+    <apex:sectionHeader subtitle="Opportunity Should be linked to System Design Quote in order to initiate CPF Customer Eliigibility." rendered="{!$CurrentPage.parameters.leadsent='CSDQ'}" />
+    <apex:sectionHeader subtitle="Credit Request is already being sent for this Lead. To Re-send first uncheck the flag at System Design Quote." rendered="{!$CurrentPage.parameters.leadsent='ALPC'}" />
+    <apex:sectionHeader subtitle="MIssing required fields - Please check Property Address or Contact's Email or Phone." rendered="{!$CurrentPage.parameters.leadsent='LFS'}" />
+    <apex:sectionHeader subtitle="Error while sending NRG Lead. Please verify below that all the required fields are populated." rendered="{!$CurrentPage.parameters.leadsent='E'}" />
+    <apex:sectionHeader subtitle="Following NRG Lead has already being sent." rendered="{!$CurrentPage.parameters.leadsent='N'}" />
+    <apex:sectionHeader subtitle="Error in creating NRG Lead. Please check if Property'Account is associated with Contact." rendered="{!$CurrentPage.parameters.leadsent='F'}" />
+    <apex:sectionHeader subtitle="Missing Required fields in Array creation - Azimuth or Shading or Tilt." rendered="{!$CurrentPage.parameters.leadsent='AF'}" />
+    <apex:sectionHeader subtitle="Missing Module Information. Please check the NRG Product Mappings." rendered="{!$CurrentPage.parameters.leadsent='MF'}" />
+    <apex:detail subject="{!NRG_Lead__c.Id}" inlineEdit="false" title="false" />
+
+</apex:page>

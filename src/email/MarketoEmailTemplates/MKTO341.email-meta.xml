@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SolarizePAB 11/2/15.Solarize PAB 11/2/15</name>
+    <style>none</style>
+    <subject>Last chance to be part of the Solarize PAB program!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://go.directenergysolar.com/solarizePAB&gt;
+
+Solarize Mass - Plainfield, Ashfield, Buckland
+ &lt;http://go.directenergysolar.com/solarizePAB&gt;
+
+Your Neighbors Are Going Solar. You Can Join Them.
+
+Dear {{lead.First Name:default=Friend}},
+
+Hurry! Your last day to sign a contract to be a part of the Solarize Plainfield, Ashfield and Buckland program is November 30th!
+
+Join 98 of your neighbors who have already chosen to go solar for more than 700kW in new clean power from the sun. Help us break the 100 mark and then some!
+
+This is your LAST CHANCE. This program will not be extended past November 30th, 2015. Sign up now and enjoy the Thanksgiving holiday knowing you are going solar at Solarize PAB’s incredibly low group price!
+
+Don’t miss out on an incredible opportunity many of your neighbors have already jumped on. 
+
+If you are already working with a Solar Consultant, then please contact him or her. To request a free site evaluation, call Direct Energy Solar at 800-903-6130.
+
+Many thanks to the PAB Solar Coaches for their enthusiasm, guidance and support during this program. If you have any questions, please contact the appropriate Solar Coach for your community:
+
+Tim Walter, Plainfield Solar Coach, 634-8098, timpaulwalter@hotmail.com
+
+Jim Cutler, Ashfield Solar Coach, 625-2097, snowalkerjim@gmail.com
+
+Ellen Kaufman, Buckland Solar Coach, 625-9708, ellenruthk@gmail.com
+
+
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Solarize Mass - Plainfield, Ashfield, Buckland.
+You must be a resident of Plainfield, Ashfield, or Buckland, MA to participate in this program. Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Solarize Mass, Massachusetts Clean Energy Center, Massachusetts Department of Energy Resources or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+MA HIC 168228/ELC 21555A
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,40 @@
+<apex:page standardController="Account" extensions="PortalReferralImportExtension" action="{!checkValid}">
+
+	<apex:sectionHeader title="Import Historical Leads" subtitle="{!Account.Name}" />
+	
+	<apex:pageMessages />
+	
+	<apex:form >
+	
+	<apex:pageBlock >
+	
+		<apex:pageBlockButtons location="top">
+			<apex:commandButton value="Import" action="{!doImport}" rendered="{!valid}"/>
+			<apex:commandButton value="Cancel" action="{!cancel}"/>
+		</apex:pageBlockButtons>
+		
+		<apex:pageBlockSection title="Leads" collapsible="false" columns="1" rendered="{!valid}">
+		
+			<apex:pageBlockTable value="{!leads}" var="l">
+				<apex:column value="{!l.Name}"/>
+				<apex:column value="{!l.Lead_Date__c}"/>
+			</apex:pageBlockTable>
+		
+		</apex:pageBlockSection>
+
+		<apex:pageBlockSection title="Opportunities" collapsible="false" columns="1" rendered="{!valid}" >
+		
+			<apex:pageBlockTable value="{!opportunities}" var="o">
+				<apex:column value="{!o.Name}"/>
+				<apex:column value="{!o.AccountId}"/>
+				<apex:column value="{!o.StageName}"/>
+				<apex:column value="{!o.CloseDate}"/>
+			</apex:pageBlockTable>
+		
+		</apex:pageBlockSection>
+	
+	</apex:pageBlock>
+	
+	</apex:form>
+
+</apex:page>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner: General, Thank You for Your Referral</name>
+    <style>none</style>
+    <subject>Thank you for your Referral</subject>
+    <textOnly>Dear {{lead.Referring Account Name:default=Astrum Solar Partner}},
+
+Thank you for your participation in the Astrum Solar Partner’s Program. We have received your referrals submitted last month and are in the process of contacting them to discuss their options. Check your portal dashboard at http://partners.astrumsolar.com for status updates and should any of your referrals proceed to the next steps in the sales cycle we will let you know.
+
+Again, thank you for referring one of your contacts to Astrum Solar and please do not hesitate to contact with any questions. Best Regards,
+
+Astrum Solar
+partners@astrumsolar.com &lt;mailto:partners@astrumsolar.com&gt;
+You are receiving this email because you are an active participant in the Astrum Solar Partner Program.
+A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. CT 0628993, DC 42021-20000078, DE 2010602230, MD 126447, MA 168228, NJ 13VH05618900, NYSERDA Certified Installer, OH 201021101310, PA 023535, VA 2705 130161, WV 2243-5702
+Astrum Solar, Inc.
+
+8955 Henkels Lane, Suite 508
+
+Annapolis Junction, MD 20701
+
+P: 800-903-6130
+
+F: 443-267-0036</textOnly>
+    <type>custom</type>
+</EmailTemplate>

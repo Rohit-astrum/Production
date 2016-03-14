@@ -1,0 +1,648 @@
+<apex:page title="AstrumMAPS Viewer" controller="AstrumMapViewerController" sidebar="false">
+
+<apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/redmond/jquery-ui.css"/>
+
+<style type="text/css">
+	#map_canvas {
+		width: 500px;
+		height: 500px;
+	}
+	table.outerNoSidebar td.noSidebarCell {
+		padding: 0px;
+	}
+	#selection {
+		float: right;
+		color: white;
+	}
+	#leadLegend,
+	#opportunityLegend,
+	#salesOrderLegend,
+	#projectLegend {
+		background-color: white;
+		padding: 5px;
+		border: 1px solid black;
+		display: none;
+	}
+	#salesOrderLegend {
+		display: block;
+	}
+	.legend-title {
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	.pipeline-only tr.hide-for-pipeline {
+		/* display: none; */
+	}
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+	var geocoder;
+	var markers = [];
+	var bounds;
+	var map;
+	var count = 0;
+	var infoWindow;
+	
+	var icons = [
+		'http://labs.google.com/ridefinder/images/mm_20_red.png',
+		'http://labs.google.com/ridefinder/images/mm_20_white.png',
+		'http://labs.google.com/ridefinder/images/mm_20_yellow.png',
+		'http://labs.google.com/ridefinder/images/mm_20_black.png',
+		'http://labs.google.com/ridefinder/images/mm_20_blue.png',
+		'http://labs.google.com/ridefinder/images/mm_20_brown.png',
+		'http://labs.google.com/ridefinder/images/mm_20_gray.png',
+		'http://labs.google.com/ridefinder/images/mm_20_orange.png',
+		'http://labs.google.com/ridefinder/images/mm_20_purple.png',
+		'http://labs.google.com/ridefinder/images/mm_20_green.png',
+		'https://maps.google.com/mapfiles/ms/micons/yellow.png',
+		'https://maps.google.com/mapfiles/ms/micons/blue.png',
+		'https://maps.google.com/mapfiles/ms/micons/green.png',
+		'https://maps.google.com/mapfiles/ms/micons/lightblue.png',
+		'https://maps.google.com/mapfiles/ms/micons/orange.png',
+		'https://maps.google.com/mapfiles/ms/micons/pink.png',
+		'https://maps.google.com/mapfiles/ms/micons/purple.png',
+		'https://maps.google.com/mapfiles/ms/micons/red.png'
+	];
+
+    var redMarker = new google.maps.MarkerImage(icons[0]);
+    var whiteMarker = new google.maps.MarkerImage(icons[1]);
+    var yellowMarker = new google.maps.MarkerImage(icons[2]);
+    var blackMarker = new google.maps.MarkerImage(icons[3]);
+    var blueMarker = new google.maps.MarkerImage(icons[4]);
+    var brownMarker = new google.maps.MarkerImage(icons[5]);
+    var grayMarker = new google.maps.MarkerImage(icons[6]);
+    var orangeMarker = new google.maps.MarkerImage(icons[7]);
+    var purpleMarker = new google.maps.MarkerImage(icons[8]);
+    var greenMarker = new google.maps.MarkerImage(icons[9]);
+    
+	var shadowMarker = new google.maps.MarkerImage('http://labs.google.com/ridefinder/images/mm_20_shadow.png');
+
+	var leadMap = {
+		'Open – New': whiteMarker,  
+		'Contacted by Us': grayMarker,
+		'Contacted Us Back': blueMarker,
+		'Unqualified': orangeMarker,
+		'On Hold': yellowMarker,
+		'Qualified': greenMarker,
+		'Unqualified': blackMarker,
+		'Unresponsive': brownMarker,
+		'Marketing – Influencer': purpleMarker,
+		'Lost – Competition': redMarker
+	};
+	
+	var opportunityMap = {
+		'Qualified': whiteMarker,  
+		'Assigned to Field Sales': grayMarker,
+		'Sales Visit Scheduled': blueMarker,
+		'Sales Process Ongoing': orangeMarker,
+		'On Hold': yellowMarker,
+		'Closed - Won': greenMarker,
+		'Contract Cancelled': redMarker,
+		'Closed - Lost': redMarker,
+		'Unresponsive': brownMarker
+	};
+
+	var salesOrderMap = {
+		'Submit Pending': whiteMarker,  
+		'Submitted': grayMarker,
+		'Sales Coordinator Approved': blueMarker,
+		'Sales Manager Approved': greenMarker,
+		'Canceled': redMarker,
+		'On Hold': yellowMarker
+	};
+
+	var projectMap = {
+		'Inactive': whiteMarker,  
+		'Active': blueMarker,
+		'On Hold': yellowMarker,
+		'Completed': greenMarker,
+		'Cancelled': redMarker,
+	};
+	
+	$(function() {
+		$('#map_canvas').width($('div.bodyDiv').width() - 10);
+		$('#map_canvas').height($(window).height() - $('div.bodyDiv').position().top - 30);
+		
+		$(window).resize(function() {
+			$('#map_canvas').width($('div.bodyDiv').width() - 10);
+			$('#map_canvas').height($(window).height() - $('div.bodyDiv').position().top - 30);
+		})
+	});
+
+	function initialize() {
+	
+		geocoder = new google.maps.Geocoder();
+		bounds = new google.maps.LatLngBounds();
+		infoWindow = new google.maps.InfoWindow({ maxWidth: 300 });
+		
+		var offices = [
+			'8955 Henkels Lane, Suite 508, Anapolis Junction, MD 20701',
+			'15 Avenue E, Hopkinton, MA 01748',
+			'395 Summit Point Drive, Suite 4, Henrietta, NY 14467',
+			'28 Industrial Drive, Middletown, NY 10941',
+			'1104 N. Meridian Road, Youngstown, OH  44509',
+			'705 General Washington Avenue, Suite 650, Norristown, PA 19403'
+		];
+	
+	    map = new google.maps.Map(document.getElementById("map_canvas"), {
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false,
+			streetViewControl: false,
+			zoom: 4,
+			styles: [
+				{	featureType: "poi", //points of interest
+					stylers: [ { visibility: "off" } ]
+				},
+				{ 
+					featureType: "road",
+					elementType: "labels",
+	    			stylers: [ { visibility: "off" } ]
+				},
+				{
+					featureType: "administrative.province",
+					elementType: "geometry",
+					stylers: [ { lightness: -75 } ]
+    			},
+				{ 
+					featureType: "road",
+					elementType: "geometry",
+	    			stylers: [ { lightness: 50 } ]
+				},
+				{ 
+					featureType: "water",
+					elementType: "geometry",
+	    			stylers: [ { lightness: 50 } ]
+				},
+				{
+					featureType: "transit",
+    				stylers: [ { visibility: "off" } ]
+    			}
+	      	]
+	    });
+
+		//load the offices	    
+	    var astrumLogo = new google.maps.MarkerImage('{!URLFOR($Resource.AstrumMapLogoTiny)}');
+	    astrumLogo.anchor = new google.maps.Point(20, 20); 
+	    astrumLogo.scaledSize = new google.maps.Size(40, 40);
+	    
+		for (var i = 0; i < offices.length; i++) {
+			count++;
+			geocoder.geocode({address: offices[i]}, function(results, status) {
+				count--;
+				if (i == 0) {
+					map.setCenter(results[0].geometry.location);
+				}
+				if (status == google.maps.GeocoderStatus.OK) {
+					var marker = new google.maps.Marker({
+						map: map, 
+						icon: astrumLogo,
+						position: results[0].geometry.location,
+						title: results[0].formatted_address
+					});
+					bounds.extend(results[0].geometry.location);
+				} else {
+					alert("Geocode was not successful for the following reason: " + status);
+				}
+				if (count <= 0) {
+					map.fitBounds(bounds);
+				}
+			});
+		}
+
+		//load the data		
+		loadSalesOrders(true);
+		
+		var selection = $('#selection');
+		$('#selection').buttonset();
+		$('#selection input:radio[name=viewSelect]').change(function (changeEvent) {
+			resetMap();
+			switch (changeEvent.target.value) {
+				case 'leads':
+					loadLeads(true); 
+					break; 
+				case 'pipeline':
+					//$('#opportunityLegend').css('display', 'block'); 
+					//$('#opportunityLegend').addClass('pipeline-only'); 
+					loadOpportunities(true, true); 
+					break;
+				case 'opps': 
+					loadOpportunities(true, false); 
+					break; 
+				case 'orders': 
+					loadSalesOrders(true);
+					break;
+				case 'projects': 
+					loadProjects(true);
+					break;
+				case 'installed': 
+					loadInstalled(true);
+					break;
+			}
+		});
+		
+		var leadLegend = $('#leadLegend');
+		map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(leadLegend[0]);
+		
+		var opportunityLegend = $('#opportunityLegend');
+		map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(opportunityLegend[0]);
+		
+		var salesOrderLegend = $('#salesOrderLegend');
+		map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(salesOrderLegend[0]);
+
+		var projectLegend = $('#projectLegend');
+		map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(projectLegend[0]);
+		
+		//hide or show 
+		$('table.legend-table input:checkbox').bind('click', function (evt) {
+			var $t = $(evt.target);
+			var status = $t.parent().next().next().first().text();
+			var isChecked = Boolean($t.attr('checked'));
+			for (var i = 0; i < markers.length; i++) {
+				if (markers[i].data.status == status) {
+					markers[i].setVisible(isChecked);
+				}
+			}
+		});
+		
+	}
+  
+	google.maps.event.addDomListenerOnce(window, 'load', initialize);
+	
+	function resetMap() {
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(null);
+			google.maps.event.clearListeners(markers[i], 'click');
+		}
+		markers.length = 0;
+		bounds = new google.maps.LatLngBounds();
+		$('#opportunityLegend').removeClass('pipeline-only'); 
+		$('#opportunityLegend,#leadLegend,#salesOrderLegend,#projectLegend').css('display', 'none');
+		$('table.legend-table input:checkbox').attr('checked', 'checked'); 
+	}
+	
+	function showPopup(marker) {
+		var content = '<a href="/' + marker.data.id + '" target="_blank">' + marker.data.name + '</a><br/>(' + marker.data.status + ')<br/><span style="white-space:pre;">' + marker.data.address + '</span>';
+		infoWindow.setContent(content)
+		infoWindow.open(map, marker);
+	}
+	
+	function loadSalesOrders(fit) {
+		//load the data		
+		count++;
+		AstrumMapViewerController.getSalesOrders(function (result, event) {
+			count--;
+			if (event.status) {
+				for (var i = 0; i < result.length; i++) {
+					var loc = new google.maps.LatLng(result[i].lat, result[i].lon);
+					var icon = salesOrderMap[result[i].status];
+					if (!icon) { icon = redMarker; } 
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: icon,
+						shadow: shadowMarker,
+						position: loc,
+						title: result[i].address
+					});
+					marker.data = result[i];
+					bounds.extend(loc);
+					markers.push(marker);
+					google.maps.event.addListener(marker, 'click', function() {
+						showPopup(this);
+					});
+				}
+			} else {
+				alert(event.message);
+			}
+			if (fit && count <= 0) {
+				map.fitBounds(bounds);
+				//map.panToBounds(bounds);
+			}
+			$('#salesOrderLegend').css('display', 'block');
+		});
+	}
+
+	function loadOpportunities(fit, pipeline) {
+		//load the data		
+		count++;
+		AstrumMapViewerController.getOpportunities(false, function (result, event) {
+			count--;
+			if (event.status) {
+				bounds = new google.maps.LatLngBounds();
+				for (var i = 0; i < result.length; i++) {
+					var loc = new google.maps.LatLng(result[i].lat, result[i].lon);
+					var icon = opportunityMap[result[i].status];
+					if (!icon) { icon = redMarker; } 
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: icon, 
+						position: loc,
+						title: result[i].address
+					});
+					marker.data = result[i];
+					/*
+					if (marker.data.status == 'On Hold' || marker.data.status == 'Closed - Won' || marker.data.status == 'Contract Cancelled' 
+					|| marker.data.status == 'Closed - Lost' || marker.data.status == 'Unresponsive') {
+						marker.setVisible(false);
+					}*/
+					bounds.extend(loc);
+					markers.push(marker);
+					google.maps.event.addListener(marker, 'click', function() {
+						showPopup(this);
+					});
+				}
+			} else {
+				alert(event.message);
+			}
+			if (fit && count <= 0) {
+				map.fitBounds(bounds);
+			}
+			$('#opportunityLegend').css('display', 'block');
+		});
+	}
+	
+	function loadLeads(fit) {
+		count++;
+		AstrumMapViewerController.getLeads(false, function (result, event) {
+			count--;
+			if (event.status) {
+				bounds = new google.maps.LatLngBounds();
+				for (var i = 0; i < result.length; i++) {
+					var loc = new google.maps.LatLng(result[i].lat, result[i].lon);
+					var icon = leadMap[result[i].status];
+					if (!icon) { icon = redMarker; } 
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: icon, 
+						position: loc,
+						title: result[i].name
+					});
+					marker.data = result[i];
+					bounds.extend(loc);
+					markers.push(marker);
+					google.maps.event.addListener(marker, 'click', function() {
+						showPopup(this);
+					});
+				}
+			} else {
+				alert(event.message);
+			}
+			if (fit && count <= 0) {
+				map.fitBounds(bounds);
+			}
+			$('#leadLegend').css('display', 'block'); 
+		});
+	}
+
+	function loadProjects(fit) {
+		count++;
+		AstrumMapViewerController.getProjects(function (result, event) {
+			count--;
+			if (event.status) {
+				for (var i = 0; i < result.length; i++) {
+					var loc = new google.maps.LatLng(result[i].lat, result[i].lon);
+					var icon = projectMap[result[i].status];
+					if (!icon) { icon = redMarker; } 
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: icon, 
+						position: loc,
+						title: result[i].name
+					});
+					marker.data = result[i];
+					bounds.extend(loc);
+					markers.push(marker);
+					google.maps.event.addListener(marker, 'click', function() {
+						showPopup(this);
+					});
+				}
+			} else {
+				alert(event.message);
+			}
+			if (fit && count <= 0) {
+				map.fitBounds(bounds);
+			}
+			$('#projectLegend').css('display', 'block');
+		});
+	}
+	
+	function loadInstalled(fit) {
+		count++;
+		AstrumMapViewerController.getInstalled(function (result, event) {
+			count--;
+			if (event.status) {
+				for (var i = 0; i < result.length; i++) {
+					var loc = new google.maps.LatLng(result[i].lat, result[i].lon);
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: yellowMarker, 
+						position: loc,
+						title: result[i].name
+					});
+					marker.data = result[i];
+					bounds.extend(loc);
+					markers.push(marker);
+					google.maps.event.addListener(marker, 'click', function() {
+						showPopup(this);
+					});
+				}
+			} else {
+				alert(event.message);
+			}
+			if (fit && count <= 0) {
+				map.fitBounds(bounds);
+			}
+		});
+	}
+	
+	
+</script>
+
+	<div id="selection">
+		<input type="radio" id="leads" name="viewSelect" value="leads"/><label for="leads">Lead Pipeline</label>
+		<input type="radio" id="pipeline" name="viewSelect" value="pipeline"/><label for="pipeline">Opportunity Pipeline</label>
+		<!-- 
+		<input type="radio" id="opps" name="viewSelect" value="opps"/><label for="opps">All Opportunities</label>
+		 -->
+		<input type="radio" id="orders" name="viewSelect" value="orders" checked="checked"/><label for="orders">Sales Orders</label>
+		<input type="radio" id="projects" name="viewSelect" value="projects"/><label for="projects">Installation Projects</label>
+		<input type="radio" id="installed" name="viewSelect" value="installed"/><label for="installed">Installed Systems</label>
+	</div>
+
+	<div id="map_canvas"></div>
+	
+	<div id="leadLegend">
+		<span class="legend-title">Leads:</span>
+		<table id="leadGrid" class="legend-table">
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_white.png"/></td>
+				<td>Open – New</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_gray.png"/></td>
+				<td>Contacted by Us</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_blue.png"/></td>
+				<td>Contacted Us Back</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_yellow.png"/></td>
+				<td>On Hold</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_green.png"/></td>
+				<td>Qualified</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_black.png"/></td>
+				<td>Unqualified</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_brown.png"/></td>
+				<td>Unresponsive</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_purple.png"/></td>
+				<td>Marketing – Influencer</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_red.png"/></td>
+				<td>Lost – Competition</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<div id="opportunityLegend">
+		<span class="legend-title">Opportunities:</span>
+		<table id="oppGrid" class="legend-table">
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_white.png"/></td>
+				<td>Qualified</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_gray.png"/></td>
+				<td>Assigned to Field Sales</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_blue.png"/></td>
+				<td>Sales Visit Scheduled</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_orange.png"/></td>
+				<td>Sales Process Ongoing</td>
+			</tr>
+			<tr class="hide-for-pipeline">
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_yellow.png"/></td>
+				<td>On Hold</td>
+			</tr>
+			<tr class="hide-for-pipeline">
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_green.png"/></td>
+				<td>Closed - Won</td>
+			</tr>
+			<tr class="hide-for-pipeline">
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_red.png"/></td>
+				<td>Contract Cancelled</td>
+			</tr>
+			<tr class="hide-for-pipeline">
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_red.png"/></td>
+				<td>Closed - Lost</td>
+			</tr>
+			<tr class="hide-for-pipeline">
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_brown.png"/></td>
+				<td>Unresponsive</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="salesOrderLegend">
+		<span class="legend-title">Sales Orders:</span>
+		<table id="orderGrid" class="legend-table">
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_white.png"/></td>
+				<td>Submit Pending</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_gray.png"/></td>
+				<td>Submitted</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_blue.png"/></td>
+				<td>Sales Coordinator Approved</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_green.png"/></td>
+				<td>Sales Manager Approved</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_red.png"/></td>
+				<td>Canceled</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_yellow.png"/></td>
+				<td>On Hold</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="projectLegend">
+		<span class="legend-title">Installation Projects:</span>
+		<table id="projectGrid" class="legend-table">
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_white.png"/></td>
+				<td>Inactive</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_blue.png"/></td>
+				<td>Active</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_yellow.png"/></td>
+				<td>On Hold</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_green.png"/></td>
+				<td>Completed</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked="checked"/></td>
+				<td><img src="http://labs.google.com/ridefinder/images/mm_20_red.png"/></td>
+				<td>Cancelled</td>
+			</tr>
+		</table>
+	</div>
+
+	
+
+</apex:page>

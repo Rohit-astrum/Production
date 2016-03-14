@@ -1,0 +1,28 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+
+<apex:composition template="PartnerLandingBase">
+
+    <apex:define name="name-logo">                                
+        <!--Partner's Name / Logo / Headshot Left-->
+        <div class="logo-spot-long group">
+            <apex:insert name="partner-logo">
+                <img src="{!URLFOR($Resource.LandingPagePackage2_Resources, 'images/partner-image.jpg')}" title="Partner Image" />
+            </apex:insert>
+            <div class="partner-info local-solar-expert">
+                <p>Local Solar Expert</p>
+                <h3><apex:insert name="contact-name">Joe Doe</apex:insert></h3>
+                <p><apex:insert name="contact-phone">(888) 555-5555</apex:insert></p>
+                <p><a href="#"><apex:insert name="contact-email">email@address.com</apex:insert></a></p>
+            </div>
+        </div>
+       <!--END Partner's Name / Logo / Headshot Left-->
+       
+    </apex:define>
+    
+    <apex:insert name="leadform">
+        <apex:define name="leadform"/>
+    </apex:insert>
+
+</apex:composition>
+
+</apex:page>

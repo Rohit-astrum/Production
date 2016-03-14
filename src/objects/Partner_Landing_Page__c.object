@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>PartnerLandingConfig</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>PartnerLandingConfig</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>PartnerLandingConfigView</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Complete_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Complete URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Contact whose information should be displayed on the landing page (based on template selected)</inlineHelpText>
+        <label>Partner / Employee Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Landing Pages</relationshipLabel>
+        <relationshipName>Landing_Pages</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Numbers__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Numbers</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Disclaimer_Content__c</fullName>
+        <externalId>false</externalId>
+        <label>Disclaimer Content</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Link__c</fullName>
+        <description>View landing page</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Portal_Url__c &amp; Site_Url__c, Site_Url__c, &apos;_blank&apos;)</formula>
+        <label>Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Logo_Tagline__c</fullName>
+        <externalId>false</externalId>
+        <label>Logo Tagline</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Marketing_Content__c</fullName>
+        <externalId>false</externalId>
+        <label>Marketing Content</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Page_Content__c</fullName>
+        <description>Additional content to appear on the landing page.</description>
+        <externalId>false</externalId>
+        <label>Page Content</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Page_Headline__c</fullName>
+        <externalId>false</externalId>
+        <label>Page Headline</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Page_Template__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Page Template</label>
+        <referenceTo>Partner_Page_Template__c</referenceTo>
+        <relationshipName>Partner_Landing_Pages</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Partner / Employee Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Landing Pages</relationshipLabel>
+        <relationshipName>Partner_Landing_Pages</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Display_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How the partner or employee&apos;s name should appear on the landing page</inlineHelpText>
+        <label>Partner / Employee Display Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Portal_Site__c</fullName>
+        <externalId>false</externalId>
+        <label>Portal Site</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Landing Page Site (go.astrumsolar.com)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Portal Site (partners.astrumsolar.com)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Portal_Url__c</fullName>
+        <description>Base URL for portal pages based on portal, production vs. sandbox</description>
+        <externalId>false</externalId>
+        <formula>CASE (LEFT(TEXT(Portal_Site__c), 7),
+    &apos;Partner&apos;,
+        IF ($Organization.Id == &apos;00D80000000dNiA&apos;, 
+           &apos;http://partners.astrumsolar.com/&apos;, /* production */ 
+           &apos;http://astrumsolar.&apos; &amp; MID($User.Username,FIND(&apos;@astrumsolar.com.&apos;,LOWER($User.Username))+17,100) &amp; &apos;.cs14.force.com/partner/&apos;),
+        IF ($Organization.Id == &apos;00D80000000dNiA&apos;, 
+            &apos;http://go.astrumsolar.com/&apos;, /* production */ 
+            &apos;http://astrumsolar.&apos; &amp; MID($User.Username,FIND(&apos;@astrumsolar.com.&apos;,LOWER($User.Username))+17,100) &amp; &apos;.cs14.force.com/go/&apos;)
+)</formula>
+        <label>Portal Url</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Program_Disclaimer__c</fullName>
+        <externalId>false</externalId>
+        <label>Program Disclaimer</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Promo_Disclaimer__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Disclaimer</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Promo_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Text</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Show_Referred_By__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Show Referred By</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Site_Url__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>The URL to display in the portal (e.g., http://partners.astrumsolar.com/partner-xyz)</description>
+        <externalId>true</externalId>
+        <label>Site Url</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Landing Page</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Partner_Account__c</columns>
+        <columns>Active__c</columns>
+        <columns>Link__c</columns>
+        <columns>Page_Template__c</columns>
+        <columns>Promo_Text__c</columns>
+        <columns>Marketing_Content__c</columns>
+        <columns>Program_Disclaimer__c</columns>
+        <columns>Promo_Disclaimer__c</columns>
+        <columns>Disclaimer_Content__c</columns>
+        <columns>Contract_Numbers__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>PAGE-{00000}</displayFormat>
+        <label>Page ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Landing Pages</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Partner_Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Link__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Page_Template__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Partner_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Link__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Partner_Landing_Page_Site_Url_Valid</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(REGEX(Site_Url__c, &apos;^([a-zA-Z0-9]|\\-|\\_|\\.)+$&apos;))</errorConditionFormula>
+        <errorDisplayField>Site_Url__c</errorDisplayField>
+        <errorMessage>Site Url can only contain letters, numbers, hyphens, underscores, and periods.</errorMessage>
+    </validationRules>
+</CustomObject>

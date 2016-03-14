@@ -1,0 +1,21 @@
+<apex:page standardcontroller="Opportunity">
+
+<apex:pageBlock Title="Contacts" >
+        <apex:pageblockSection Columns="2" >
+            <apex:pageBlockTable value="{!Opportunity.OpportunityContactRoles}" var="cts">           
+                <apex:column headerValue="Contact Name">
+                    <apex:outputText value="{!cts.Contact.Name}">
+                    </apex:outputText>
+                 </apex:column>
+                 <apex:column headerValue="Contact Role">
+                    <apex:outputText value="{!cts.Role}">
+                    </apex:outputText>
+                 </apex:column>    
+                 <apex:column headerValue="Contact Email">
+                    <apex:outputText value="{!cts.Contact.Email}">
+                    </apex:outputText>
+                 </apex:column>                
+            </apex:pageBlockTable>                                           
+        </apex:pageblockSection>                                                           
+    </apex:pageBlock> 
+ </apex:page>

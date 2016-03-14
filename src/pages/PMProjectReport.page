@@ -1,0 +1,217 @@
+<apex:page controller="PMProjectReport" doctype="html-5.0" readOnly="true">
+<style type="text/css">
+	.report table {
+	    border-collapse: collapse;
+	    width: 100%;
+	}
+
+	.report th, td {
+	    text-align: left;
+	}
+
+	.report tr:nth-child(even){background-color: #f2f2f2}
+
+	.report th {
+	    background-color: #707070 ;
+	    color: white;
+	}
+
+	span.filter-header {
+        background-image: none;
+        text-align: center;
+        margin-right: 30px
+    }
+    #filtertbl {
+    	margin-bottom: 40px
+        
+    }
+    .filter-block {    	
+        text-align: center;
+        margin-right: 40px;
+    }
+    .filter-button {    	
+        margin-right: 10px;
+    }
+    #reporttext{
+    	background-color: #F0F0F0  ;
+    	padding: 20px;
+    }
+    #reportresult{
+    	padding: 20px;
+    }
+</style>
+<script>
+    function setHidden()
+    {
+        var hiddenStartRange = document.getElementById('{!$Component.frm.hdnStartRange}');
+        hiddenStartRange.value = document.getElementById('startRange').value;
+        var hiddenEndRange = document.getElementById('{!$Component.frm.hdnEndRange}');
+        hiddenEndRange.value = document.getElementById('endRange').value;
+    }
+</script>
+
+	<apex:form id="frm">
+		<apex:inputHidden id="hdnStartRange" value="{!startRange}"/>
+		<apex:inputHidden id="hdnEndRange" value="{!endRange}"/>
+		<table id="filtertbl">
+			<tr>
+				<td class="page-title"><apex:sectionHeader title="Project Report"/></td>
+			</tr>
+		    <tr>		        
+		        <td class="filter-block">
+		            <span class="filter-header"><b>Sales Order Creation Date</b><br/>
+		            	<span class="filter-selections"><apex:input id="startDate"  value="{!startDate}" type="date" /></span>
+		            	<span class="filter-selections">to</span>
+		            	<span class="filter-selections"><apex:input id="endDate" value="{!endDate}" type="date" /></span>
+	            	</span>	            	
+            	</td>
+            	<td class="filter-block">
+		            <span class="filter-header"><b>Percent Complete</b><br/>
+		            	<span class="filter-selections">
+		            	<input id="startRange" type="number" min="0" max="99" value="{!startRange}"/></span>
+		            	<span class="filter-selections">to</span>
+		            	<span class="filter-selections"><input id="endRange" type="number" min="0" max="100" value="{!endRange}"/></span>
+	            	</span>	            	
+            	</td>
+            	<td class="filter-block">
+		            <span class="filter-header"><b>Property Type</b><br/>
+		            	<span class="filter-selections">
+			            	<apex:selectList label="Property Type" value="{!propertyType}" multiselect="false" size="1">
+								<apex:selectOptions value="{!propertyTypes}"/>
+							</apex:selectList>
+						</span>		            	
+	            	</span>	            	
+            	</td>
+            	<td class="filter-block">
+		            <span class="filter-header"><b>Proof Of Inspection</b><br/>
+		            	<span class="filter-selections">
+			            	<apex:selectList label="Proof Of Inspection" value="{!proofOfInspection}" multiselect="false" size="1">
+								<apex:selectOption itemValue="No" itemLabel="No"/>
+								<apex:selectOption itemValue="Yes" itemLabel="Yes"/>
+							</apex:selectList>
+						</span>		            	
+	            	</span>	            	
+            	</td>
+            	<td class="filter-block">
+	            	<span class="filter-header"><br/>		            
+		            	<span class="filter-button"><apex:commandButton value="Generate Report" onclick="setHidden();" action="{!generateReport}" ></apex:commandButton></span>
+		            	<span class="filter-button"><apex:commandButton value="Export to Excel" action="{!exportToExcel}" ></apex:commandButton></span>
+	            	</span>
+            	</td>
+        	</tr>
+    	</table>    	
+	
+	<apex:pageBlock rendered="{!reportListHelper != null}">
+		<div id="reportresult"><b>Your search returned {!reportListHelper.size} records</b></div>
+		<table class="report">
+			<tr>
+				<th>SO Created Date </th>
+			    <th>Project ID </th>
+			    <th>Sales Order </th>
+			    
+			    <th>Proj Creation Date</th>
+			    <th>SO Status Code</th>
+			    <th>SO Financing Option</th>
+			    <th>Opportunity Close Date</th>
+			    <th>Install Date</th>
+			    <th>Work Complete</th>
+			    <th>Proof of Inspection</th>
+			    <th>Inspection Verified</th>
+			    
+			    <th>System makeup</th>
+			    <th>System Size</th>
+			    <th>Office Location</th>
+			    <th>Sales Order Amount</th>
+			    <th>Property Type</th>
+			    <th>Purchase or Lease </th>
+			    
+			    <th>Sum of Sales Invoices</th>
+			    
+			    <th>Actual Labor</th>
+			    <th>Estimated Labor</th>
+			    <th>Actual Material</th>
+			    <th>Estimated Material</th>
+			    
+			    <th>Actual Other</th>
+			    <th>Estimated Other</th>
+			    <th>Percent Complete</th>
+		  	</tr>
+			<apex:repeat value="{!reportListHelper}" var="record">
+				<apex:repeat value="{!record}" var="rec">
+					<tr>
+						<td>{!rec.salesorder.CreatedDate}</td>
+					    <td>{!rec.salesorder.Job_Id__c}</td>
+					    <td>{!rec.salesorder.Name}</td>
+					    
+					    <td>{!rec.projCreationDate}</td>
+					    
+					    <td>{!rec.salesorder.StatusCode__c}</td>
+					    <td>{!rec.salesorder.Financing_Option__c}</td>
+					    
+					    <td>{!rec.opportunityCloseDate}</td>
+					    <td>{!rec.installDate}</td>
+					    <td>{!rec.workComplete}</td>
+					    <td>{!rec.proofOfInspection}</td>
+					    <td>{!rec.inspectionVerified}</td>
+					    
+					    <td>{!rec.salesorder.System_Makeup__c}</td>
+					    <td>{!rec.salesorder.System_Size_kW__c}</td>
+					    <td>{!rec.salesorder.Property__r.Astrum_Office_New__r.Name}</td>
+
+					    <td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.salesorder.Amount__c}" />
+							</apex:outputText>
+						</td>
+					    
+					    <td>{!rec.salesorder.Property__r.RecordType.Name}</td>
+					    <td>{!rec.salesorder.Financing_Type__c}</td>
+					    
+					    <td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.salesInvoiceTotal}" />
+							</apex:outputText>
+						</td>
+
+						<td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.actualLabor}" />
+							</apex:outputText>
+						</td>
+						<td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.estimatedLabor}" />
+							</apex:outputText>
+						</td>
+						<td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.actualMaterial}" />
+							</apex:outputText>
+						</td>
+						<td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.estimatedMaterial}" />
+							</apex:outputText>
+						</td>
+						<td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.actualOther}" />
+							</apex:outputText>
+						</td>
+						<td>
+						    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+					       		<apex:param value="{!rec.estOther}" />
+							</apex:outputText>
+						</td>
+					    <td>{!rec.percCompl}</td>
+				  	</tr>
+				</apex:repeat>
+		    </apex:repeat>
+		</table>
+	</apex:pageBlock>
+
+	<apex:outputPanel rendered="{!reportListHelper == null}">		
+		<div id="reporttext"><b>Select filter and generate report.....</b></div>	
+	</apex:outputPanel>
+</apex:form>
+</apex:page>

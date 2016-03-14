@@ -1,0 +1,27 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+
+<apex:composition template="PartnerLandingBase">
+
+    <apex:define name="name-logo">                                
+        
+       <!--Partner's Business Card / Headshot Left-->
+       <div class="logo-spot group">
+           <apex:insert name="partner-logo">
+               <img src="{!URLFOR($Resource.LandingPagePackage2_Resources, 'images/partner-image.jpg')}" title="Partner Image" />
+           </apex:insert>
+           <div class="partner-info">
+               <h3><apex:insert name="contact-name">[Partner Name]&rsquo;s</apex:insert></h3>
+               <p><apex:insert name="partnername">Business Name</apex:insert></p>
+           </div>
+       </div>
+       <!--END Partner's Business Card / Headshot Left-->
+       
+    </apex:define>
+    
+    <apex:insert name="leadform">
+        <apex:define name="leadform"/>
+    </apex:insert>
+
+</apex:composition>
+
+</apex:page>

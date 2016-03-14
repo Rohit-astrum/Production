@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Use this e-mail after the 2nd or 3rd dial attempt.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Second E-mail after VM</name>
+    <style>none</style>
+    <subject>Astrum Solar: Free consultation, free installation</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+I am reaching out to you to see if you are still interested in creating a solar project for your home, or if you have any questions regarding solar. You may qualify for a free installation, and you’ll certainly find lower utility costs from your first day. We work exclusively in residential solar, and our home solar experts know your local needs and put the extra time in upfront to design and install a system that lets you get more energy and more electricity savings from your solar home.
+
+Our conversation with you will only take a few minutes, and then we can get you in touch with your local home solar expert to schedule a site survey of your home.
+
+Please call us back at 800-903-6130 and select the option for sales, or reply to this email to let us know a good time to contact you by phone.
+
+Even if you’re not sure if solar is right for you, we’d like to tell you more about our free installation, our customized approach to your home and get you started on the road to lower electricity bills and utility independence.
+
+We can’t wait to hear from you!
+
+Sincerely,
+
+
+{!User.FirstName}
+
+Astrum Solar
+8955 Henkels Lane Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+{!User.Email}
+www.astrumsolar.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,10 @@
+<!-- 
+   FILE: NRGReCall
+ * AUTHOR: Rohit Jain
+ * DATE: July 24, 2013
+ * PURPOSE: NRG Web Service Callout for Site Quality Called from Button on System Design Item
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="System_Design_Item__c" extensions="NRGReCallExtension" action="{!reCallNRG}">  
+
+</apex:page>

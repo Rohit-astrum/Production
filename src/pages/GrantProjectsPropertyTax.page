@@ -1,0 +1,75 @@
+<!--
+06/26/2012 TCM - zen-13 Sorting only shows 20 rows.  Set limit per grid to 500. 
+-->
+<apex:page doctype="html-5.0" sidebar="false" title="Property Tax" tabStyle="Property_Tax__tab">
+
+<!-- forces Google Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+
+	<c:GrantProjectsBase tabName="Property Tax">
+
+			datatype: 'local',
+			colNames: [
+				'Project', 
+
+				'Property Tax',
+				'Building Permit',
+				'Electrical Permit',
+				"Installation Photos",
+				'Proof of Inspection',
+				
+				'State',
+				'Financing Type', 
+				'Installation Address',
+				'City',
+				'County',
+
+				'Install',
+				'Inspection',
+				'Paid In Full',
+				
+			],
+			cmTemplate: {
+				width: 80,
+				classes: "pcell",
+				resizable: false
+			},
+	   		colModel: [  
+	         	{name: 'Name', width: 150, formatter: projectLinkFormatter },
+
+	         	{name: 'Property_Tax_Approved__c', formatter: remoteDateFormatter, align: 'center' },
+	         	{name: 'Building_Permit__c', formatter: remoteDateFormatter, align: 'center' },
+	         	{name: 'Electrical_Permit__c', formatter: remoteDateFormatter, align: 'center' },
+	         	{name: 'Installation_Photos__c', formatter: remoteDateFormatter, align: 'center', width: 70 },
+	         	{name: 'Proof_of_Inspection__c', formatter: remoteDateFormatter, align: 'center' },
+	         	
+				{name: 'Property__r.Property_State__c', align: "center" },
+				{name: 'Sales_Order__r.Financing_Type__c', align: "center" },
+				{name: 'Property__r.Name', width: 200 },
+				{name: 'Property__r.Property_City__c', width: 100 },
+				{name: 'Property__r.Property_County__c' },
+
+				{name: 'Install__c', formatter: remoteDateFormatter, align: 'center' },
+				{name: 'Inspection__c', formatter: remoteDateFormatter, align: 'center' },
+				{name: 'Paid_In_Full__c', formatter: remoteDateFormatter, align: 'center' },
+	    	],
+			height: 'auto',
+			rowNum: 500,
+	    	cellEdit: true,
+	    	cellsubmit: 'clientArray',
+	    	altRows: true,
+	    	altclass: 'gridAltRows',
+	    	onCellSelect: cellClick,
+	    	prmNames: {
+	    		id: "Id"
+	    	},
+	    	gridComplete: GrantProjects.gridComplete,
+	    	//when sorting set flag to add back notes and issues
+			onSortCol: function (index, iCol, sortorder) {
+				GrantProjects.sorting = true;
+			}
+	    	
+	</c:GrantProjectsBase>
+	    	
+
+</apex:page>

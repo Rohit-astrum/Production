@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>July Promo.Summer Sizzle</name>
+    <style>none</style>
+    <subject>Learn how you can receive a Nest Learning Thermostat</subject>
+    <textOnly>&lt;http://www.directenergysolar.com&gt;
+Dear {{lead.First Name:default=Friend}},
+Direct Energy Solar is offering a special promotion for you. Starting July 16 let’s join in the summer fun. Submit five qualified leads* by August 15 and you will receive a $249 Nest Learning ThermostatTM at no cost**.
+
+ 
+Direct Energy Solar likes to help homeowners save and now we want you to experience the same savings.  
+Learn &lt;http://www.directenergysolar.com/nest&gt; more about our current monthly promotion for homeowners.
+ &lt;http://partners.directenergysolar.com/&gt;
+Questions? 
+ Email partners@directenergysolar.com
+ Call 240-278-8616
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+*A qualified lead is a prospect that agrees to a roof evaluation by Direct Energy Solar and has not been disqualified in Direct Energy Solar’s qualification process.
+**Submit 5 qualified leads by between July 16, 2015–August 15, 2015 and Direct Energy Solar will send you a Nest Learning Thermostat™. No extensions will be granted. Your Nest Thermostat will be mailed 30 days after the month of activity. Direct Energy Solar is not responsible for installing your Nest Thermostat. Only one offer per household. Nest®, Nest Learning Thermostat™, Nest Leaf™, Airwave™, Auto-Away™ and the Nest logo are trademarks or servicemarks of Nest Labs, Inc.
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+Direct Energy Solar
+
+8955 Henkels Lane, Suite 508
+
+Annapolis Junction, MD 20701
+
+P: 800-903-6130
+
+F: 443-267-0036
+© 2015 Astrum Solar, Inc. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

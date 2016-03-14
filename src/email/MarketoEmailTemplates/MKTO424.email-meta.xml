@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Should You Go Solar Now Or Wait - EVAL</name>
+    <style>none</style>
+    <subject>Should you go solar now...or wait?</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=goorwait&amp;utm_campaign=nurtur&amp;utm_content=goorwait-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+Should You Go Solar Now...Or Wait?
+
+Dear {{lead.First Name:default=Friend}},
+
+At Direct Energy Solar, this is one of the most common questions we run across:
+
+Does it make more sense to install solar panels today, or are you better off delaying your purchase for a bit?
+
+By delaying your decision to install PV panels, you often end up paying more—quite a lot more. Let’s discover why that is.
+
+Discover why waiting to go solar does not pay:
+&lt;[[http://www.directenergysolar.com/blog/post/should-i-go-solar-now-or-wait?utm_medium=email&amp;utm_source=goorwait&amp;utm_campaign=nurtur&amp;utm_content=goorwait-button-discover]]&gt;
+
+“We tell people that if they’re going to make the decision to go solar, they should do it now. Now’s the time to do it, and to start reaping the savings.” - David and Mary
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=goorwait&amp;utm_campaign=nurtur&amp;utm_content=goorwait-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=goorwait&amp;utm_campaign=nurtur&amp;utm_content=goorwait-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=goorwait&amp;utm_campaign=nurtur&amp;utm_content=goorwait-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

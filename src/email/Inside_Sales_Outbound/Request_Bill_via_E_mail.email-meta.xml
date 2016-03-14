@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Use this e-mail to request an electric bill via e-mail</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Request Bill via E-mail</name>
+    <style>none</style>
+    <subject>Astrum Solar: what’s next!</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+It was great talking to you today about Astrum Solar and how you might qualify for our free installation to take control of unpredictable electricity bills. Thanks for taking the time to learn about us and how you can become your own energy provider.
+
+Please use this e-mail address to send me a copy of your latest electric bill. Below are some options for sending a copy of your bill in:
+
+ - If you have on-line access to your account, you can save a copy of your bill on your computer, usually as an Adobe pdf. You can then e-mail this copy attached to the reply to me.
+ - If you don’t have on-line access, you can scan a paper copy of your bill and attach the scanned image or pdf to the reply to me.
+ - Should neither of these options work for you then you can fax a copy to (443) 267-0036. Please make sure you write my name on the first page of the fax, so I may identify it.
+
+As our next step, I’ve contacted the Astrum Solar coordinator in your area, who will schedule a survey of your roof and home site by our home solar professionals so we can start designing your Astrum Solar system. You do not have to be home for this survey. The surveyor will take care of everything and will inform you before they come to visit, just to remind you.
+
+We are exclusively a home solar provider, so you can trust we’ll handle your solar installation and service the right way. 
+
+Congratulations on taking this first step toward becoming energy independent! 
+
+Again, thanks for your time and your interest in Astrum Solar!
+
+Best regards,    
+
+
+
+{!User.FirstName}
+
+Astrum Solar
+8955 Henkels Lane Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+{!User.Email}
+www.astrumsolar.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

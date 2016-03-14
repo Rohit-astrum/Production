@@ -1,0 +1,286 @@
+<apex:page contentType="text/javascript" cache="false" expires="0" >
+/* FILE: CPQpreview_services.js
+ * AUTHOR: Larry Hovind
+ * DATE: Jan 16, 2015
+ * PURPOSE: AngularJS logic for CPQ Proposal Preview visualforce page
+ * MODIFICATION HISTORY
+ */
+//<script>
+'use strict';
+
+
+var SFConnector = angular.module('SFRM', []);
+
+SFConnector.factory("CPQ", function($q, $rootScope, $sce){
+
+	var obj = function(){
+	
+		this.related = [];
+		this.onload = [];
+		this.onsave = [];
+		this.fields = [];
+		this.financingTypes = [];
+		this.stdAdjustmentTypes = [];
+		
+		this.acct = new SObjectModel["Account"]();
+		
+		this.contact = new SObjectModel["Contact"]();
+		this.contacts = [];
+		
+		//this.property = new SObjectModel["Property__c"]();
+		this.properties = [];
+		
+		this.proposal = new SObjectModel["Proposal__c"]();
+		this.proposals = [];
+		this.proposalList = [];
+		
+		//this.sd = new SObjectModel["System_Design__c"]();
+		this.sds = [];
+		
+		//this.sda = new SObjectModel["System_Design_Array__c"]();
+		this.sdas = [];
+		
+		//this.sdp = new SObjectModel["System_Design_Product__c"]();
+		this.sdps = [];
+		
+		this.sdis = [];	// System_Design_Items__c
+		
+		this.sdq = new SObjectModel["System_Design_Quote__c"]();
+		this.sdqs = [];
+		
+		
+		this.related['sd'] = { property : 'Property__c' };
+		this.related['property'] = { acct : 'Property_Owner__c'};
+
+
+		
+		this.onload['sd'] = function(tobj) {
+
+			 // get System Design Arrays
+			 tobj.getAll( 'sdas', { where: { System_Design__c : { eq : tobj.sd._props.Id}}}, tobj.sda);
+			 
+			 // get Special Parts
+			 CPQController.getSpcParts( tobj.sd._props.Id, function(result, event){
+			 	tobj.sdis = result;
+			 	$rootScope.$apply();
+			 });
+			 
+			 // get Utility Service(s)
+			 CPQController.getUtilityService( tobj.sd._props.Id, function(result, event){
+				for( var i=0; i<result.length; i++ ){
+					tobj.uss[i] = result[i];
+				}
+				console.log(tobj.uss);
+				tobj.get('us', tobj.uss[0]);
+			 });
+			 
+			 // get System Design Quotes
+			 CPQController.getSDQsList( tobj.sd._props.Id, function(result, event){
+			 	tobj.sdqList = result;
+			 	// TODO - make sure sdq is one of the listed ones.
+			 	for( var i=0; i<tobj.sdqList.length; i++ ) {
+			 		if( tobj.sdqList[i].Current__c ) {
+			 			// TODO - make the current sdq the displayed sdq
+			 			
+			 			tobj.get('sdq', tobj.sdqList[i].Id);
+			 			break;
+			 		}
+			 	}
+			 	$rootScope.$apply();
+			 });
+			 
+		};
+		
+		this.onload['acct'] = function(tobj) {
+			tobj.getAll( 'contacts', { where: { AccountId: { eq: tobj.acct._props.Id}}}, tobj.contact);
+		};
+		
+		this.onload['property'] = function(tobj) {
+		};
+		
+		this.onload['sdq'] = function(tobj) {
+		
+			//console.log(tobj.sdq);
+			//console.log(JSON.stringify(tobj.sdq));
+
+			
+			// get Available Incentive Offers
+			tobj.getAll( 'aios', { where: { System_Design_Quote__c : { eq : tobj.sdq._props.Id}}}, tobj.aio);
+			
+			// get Price Adjustments
+			tobj.getAll( 'pas', { where: { System_Design_Quote__c : { eq : tobj.sdq._props.Id}}}, tobj.pa);
+		};
+		
+		this.onload['proposal'] = function(tobj) {
+			//tobj.proposal._props.Id = $sce.trustAsResourceUrl(tobj.proposal._props.Id);
+			
+			// get list of proposals for this System Design Quote
+            CPQpreviewController.getProposalsList( tobj.proposal._props.System_Design_Quote__c, function(result, event){
+                tobj.proposalList = result;
+                $rootScope.$apply();
+            });
+		};
+		
+		
+	};
+	
+	obj.prototype.get = function( prop, id, getRelated ) {
+
+		var tobj = this;
+		var sfobj = tobj[prop];
+
+		// TODO - check that 'id' is not undefined
+		
+		sfobj.retrieve( { where : { Id : { eq: id} } }, function(err, records, evt){
+			if( err ) {
+				// handle error
+				console.log('Retrieve Error for ' + prop + ' for Id: ' + id);
+				console.log(err.message);
+				console.log(JSON.stringify(evt));
+			} else {
+				// handle result
+				if( records.length > 0 ) {
+					tobj[prop] = records[0];
+					//console.log(tobj[prop]);
+					if( tobj.related[prop] !== undefined) {
+						tobj.getRelated(prop);
+					};
+					if( tobj.onload[prop] !== undefined) {
+						tobj.onload[prop](tobj, prop);
+					};
+					//console.log("Calling $apply() after getting " + prop + " with Id: " + tobj[prop]._props.Id);
+					$rootScope.$apply();
+				}
+			}
+		});
+	
+	};
+	
+	obj.prototype.getRelated = function(prop) {
+		var arry = this.related[prop];
+		//console.log(arry);
+		for( var obj in arry ){
+			if( arry.hasOwnProperty(obj) ) {
+				var tmpId = this[prop]._props[arry[obj]];
+				if( tmpId !== undefined ) {
+					this.get(obj, tmpId);
+				}
+			}
+		};
+	};
+	
+	obj.prototype.getAll = function( prop, where, objectModel, thenFunc ) {
+		var tobj = this;
+		var sfobj = tobj[prop];
+
+		objectModel.retrieve( where, function(err, records, evt){
+			if( err ) {
+				// handle error
+				console.log(err.message);
+				console.log(JSON.stringify(evt));
+			} else {
+				// handle result
+				if( records.length > 0 ) {
+					tobj[prop] = records;
+					
+					// TODO - should we get related?
+					//if( getRelated !== undefined) {
+					//	tobj.getRelated(prop);
+					//}
+					
+					if( thenFunc !== undefined ) {
+					//if( thenFunc === "function" ) {
+						//console.log("Calling: " + thenFunc.name);
+						thenFunc(records);
+					};
+					
+					$rootScope.$apply();
+				}
+			}
+		});
+	};
+	
+	obj.prototype.getListFromFld = function(target, objArray, fldname, where, thenFunc ) {
+		var tobj = this;
+		
+		// where = { 'where' : cond }
+		
+		tobj[target] = [];
+		for( var i=0; i<objArray.length; i++ ) {
+			if( objArray[i] !== undefined ) {
+				// add fldname.value to 
+				tobj[target].push(objArray[i]._props[fldname]);
+			}
+		}
+		
+		thenFunc(tobj[target]);
+	};
+	
+	obj.prototype.saveObj = function(obj, callback) {
+		var tobj = this;
+	
+		// create new SObjectModel, populate ONLY with specified fields, pushback newly created and populated SObjectModel
+		
+		// create new SObjectModel
+		var newObj = new SObjectModel[obj._name]();
+		
+		// forEach field in fields list, populate newObj
+		var i = tobj.fields[obj._name].length;
+		while( i-- ) {
+			var fldnm = tobj.fields[obj._name][i];
+			if(obj._props[fldnm] !== undefined) {
+				console.log( "Set " + fldnm + " to " + obj._props[fldnm]);
+				newObj.set( fldnm, obj._props[fldnm]);
+			}
+		}
+		
+		//pushback sObject
+		newObj.update( function(err, records, evt){
+			if( err ) {
+				// handle error
+				console.log(err.message);
+				console.log(JSON.stringify(evt));
+			} else {
+				// execute callback if any
+				if( callback !== undefined ) {
+					callback(records);
+				}
+			};
+		});
+
+	};
+	
+	obj.prototype.save = function(prop, callback) {
+		var tobj = this;
+		var sfobj = tobj[prop];
+
+		var id = tobj[prop]._props.Id;
+		
+		tobj.saveObj(sfobj, function(){
+			tobj.get(prop, id);
+			// execute callback if any
+			if( callback !== undefined ) {
+				callback();
+			}
+		});
+		
+	};
+	
+	obj.prototype.saveAll = function(prop) {
+		var tobj = this;
+		// check for array of objects
+		if( Array.isArray(tobj[prop]) ) {
+			// loop through array
+			for( i=0; i<tobj[prop].length; i++ ) {
+				// save each object
+				tobj[prop][i].saveObj();
+			}
+		}
+	};
+	
+	
+	return new obj();
+});
+
+//</script>
+</apex:page>

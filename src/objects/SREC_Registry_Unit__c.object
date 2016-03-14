@@ -1,0 +1,1617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Each SREC Registry Unit Record corresponds to a single Unit ID in an SREC Registry (GATS, GIS, etc.)</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>The Account of the Owner/Representative of the SREC Registry Unit</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Account of the Owner/Representative of the SREC Registry Unit</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>SREC Registry Units</relationshipLabel>
+        <relationshipName>SREC_Registry_Units</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Astrum_Estimated_Annual_Production_kWh__c</fullName>
+        <description>Roll-up summary of estimated annual production from related Installed Systems</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Roll-up summary of estimated annual production from related Installed Systems</inlineHelpText>
+        <label>Astrum Estimated Annual Production (kWh)</label>
+        <summarizedField>Registry_Unit_Installed_System_Junction__c.Astrum_Est_Annual_Prod_Roll_up__c</summarizedField>
+        <summaryForeignKey>Registry_Unit_Installed_System_Junction__c.SREC_Registry_Unit__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Astrum_Estimated_Annual_SRECs__c</fullName>
+        <description>Roll-up summary of estimated annual SRECs from related Installed Systems</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Roll-up summary of estimated annual SRECs from related Installed Systems</inlineHelpText>
+        <label>Astrum Estimated Annual SRECs</label>
+        <summarizedField>Registry_Unit_Installed_System_Junction__c.Astrum_Est_Annual_SRECs_Roll_up__c</summarizedField>
+        <summaryForeignKey>Registry_Unit_Installed_System_Junction__c.SREC_Registry_Unit__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_DC__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the DC RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the DC RPS Program</inlineHelpText>
+        <label>Certification Number - DC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_DE__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the DE RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the DE RPS Program</inlineHelpText>
+        <label>Certification Number - DE</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_IL__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the IL RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the IL RPS Program</inlineHelpText>
+        <label>Certification Number - IL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_MD__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the MD RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the MD RPS Program</inlineHelpText>
+        <label>Certification Number - MD</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_NJ__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the NJ RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the NJ RPS Program</inlineHelpText>
+        <label>Certification Number - NJ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_OH__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the OH RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the OH RPS Program</inlineHelpText>
+        <label>Certification Number - OH</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_PA__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the PA RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the PA RPS Program</inlineHelpText>
+        <label>Certification Number - PA</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_WV__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the WV RPS Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the WV RPS Program</inlineHelpText>
+        <label>Certification Number - WV</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fuel_Type__c</fullName>
+        <description>This is the type Primary Fuel used by the Unit. Typically either photovoltaic (SUN/Solar Photovoltaic) or solar thermal (STH)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the type Primary Fuel used by the Unit. Typically either photovoltaic (SUN/Solar Photovoltaic) or solar thermal (STH)</inlineHelpText>
+        <label>Fuel Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar Photovoltaic</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>STH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SUN</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>GATS_System_Name_1__c</fullName>
+        <description>This is the first name of the SREC Registry Unit&apos;s name in the GATS Registry two name convention</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the first name of the SREC Registry Unit&apos;s name in the GATS Registry two name convention</inlineHelpText>
+        <label>GATS System Name 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GATS_System_Name_2__c</fullName>
+        <description>This is the second name of the SREC Registry Unit&apos;s name in the GATS Registry two name convention</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the second name of the SREC Registry Unit&apos;s name in the GATS Registry two name convention</inlineHelpText>
+        <label>GATS System Name 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GIS_Plant_Unit__c</fullName>
+        <description>This is the name of the SREC Registry Unit in the GIS Registry</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the name of the SREC Registry Unit in the GIS Registry</inlineHelpText>
+        <label>GIS Plant - Unit</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GIS_Registration_Date__c</fullName>
+        <description>Date SREC Registry Unit was registered in NEPOOL GIS system</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date SREC Registry Unit was registered in NEPOOL GIS system</inlineHelpText>
+        <label>GIS Registration Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Generation_Entry_Type__c</fullName>
+        <description>This is the method used to calculate monthly production. Those systems on Production Estimates (Prod Est) follow established production schedule. Those on Actual report actual production once per month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the method used to calculate monthly production. Those systems on Production Estimates (Prod Est) follow established production schedule. Those on Actual report actual production once per month.</inlineHelpText>
+        <label>Generation Entry Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Prod Est</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Actual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meter</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Generator_Status__c</fullName>
+        <description>This is the registration status of the SREC Registry Unit in the PJM-GATS system (ACT=Active, INA=Inactive, NIN=Need Info, REJ=Rejected)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the registration status of the SREC Registry Unit in the PJM-GATS system (ACT=Active, INA=Inactive, NIN=Need Info, REJ=Rejected)</inlineHelpText>
+        <label>Generator Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>ACT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>INA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NIN</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>REJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Green_Registration_Number__c</fullName>
+        <description>SREC Registry Unit certification number for participation in the Green-e Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit certification number for participation in the Green-e Program</inlineHelpText>
+        <label>Green Registration Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Green_e_Eligible__c</fullName>
+        <description>Certifies that renewable attributes associated with SREC Registry Unit are eligible to be traded as Green-e compliant</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Certifies that renewable attributes associated with SREC Registry Unit are eligible to be traded as Green-e compliant</inlineHelpText>
+        <label>Green-e Eligible</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Management_Status__c</fullName>
+        <description>Management Status of SREC Registry Unit. Those in &quot;Transferred&quot; status are not longer managed by Astrum.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Management Status of SREC Registry Unit. Those in &quot;Transferred&quot; status are not longer managed by Astrum.</inlineHelpText>
+        <label>Management Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Nameplate_Capacity__c</fullName>
+        <description>This is the recorded nameplate capacity for the SREC Registry Unit within the registry system (GATS/GIS)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the recorded nameplate capacity for the SREC Registry Unit within the registry system (GATS/GIS)</inlineHelpText>
+        <label>Nameplate Capacity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>5</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Owner Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Generator Broker/Aggregator</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Offtaker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Owner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_DC_RPS__c</fullName>
+        <description>Washington, DC RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Washington, DC RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - DC RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_DE_RPS__c</fullName>
+        <description>Delaware RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Delaware RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - DE RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_IL_RPS__c</fullName>
+        <description>Illinois RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Illinois RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - IL RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_MA_RPS_Class_I__c</fullName>
+        <description>Denotes whether or not SREC Registry Unit is qualified for MA RPS Class I compliance</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes whether or not SREC Registry Unit is qualified for MA RPS Class I compliance</inlineHelpText>
+        <label>Program - MA RPS Class I</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_MA_Solar_Carve_Out_II__c</fullName>
+        <description>Denotes whether or not SREC Registry Unit is qualified for MA Solar Carve-Out II compliance</description>
+        <externalId>false</externalId>
+        <label>Program - MA Solar Carve-Out II</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_MA_Solar_Carve_Out__c</fullName>
+        <description>Denotes whether or not SREC Registry Unit is qualified for MA Solar Carve-Out compliance</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes whether or not SREC Registry Unit is qualified for MA Solar Carve-Out compliance</inlineHelpText>
+        <label>Program - MA Solar Carve-Out</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_MD_RPS__c</fullName>
+        <description>Maryland RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Maryland RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - MD RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_NJ_RPS__c</fullName>
+        <description>New Jersey RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>New Jersey RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - NJ RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_OH_RPS__c</fullName>
+        <description>Ohio RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Ohio RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - OH RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_PA_RPS__c</fullName>
+        <description>Pennsylvania RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Pennsylvania RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - PA RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_WV_RPS__c</fullName>
+        <description>West Virginia RPS program for which SREC Registry Unit is qualified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>West Virginia RPS program for which SREC Registry Unit is qualified</inlineHelpText>
+        <label>Program - WV RPS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>None</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>RTO__c</fullName>
+        <description>This is the name of the Regional Transmission Operator territory in which the SREC Registry Unit is located</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the name of the Regional Transmission Operator territory in which the SREC Registry Unit is located</inlineHelpText>
+        <label>RTO</label>
+        <picklist>
+            <picklistValues>
+                <fullName>PJM Control Area</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New England (ISO New England Control Area)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Registry_Account_Holder__c</fullName>
+        <description>Name of the NEPOOL GIS or PJM GATS Account Holder responsible for the account under which SREC Registry Unit is registered</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the NEPOOL GIS or PJM GATS Account Holder responsible for the account under which SREC Registry Unit is registered</inlineHelpText>
+        <label>Registry Account Holder</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Astrum Solar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Constellation-Astrum</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Residential Solar II, LLC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>River Falls REIT Corp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Registry_Generation_Start_Date__c</fullName>
+        <description>First day of month that production from system is qualified for the production of SRECs as recorded in Registry.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>First day of month that production from system is qualified for the production of SRECs as recorded in Registry.</inlineHelpText>
+        <label>Registry Generation Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Registry_Interconnection_Date__c</fullName>
+        <description>Date of Final Interconnection Approval as recorded in Registry, if applicable</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of Final Interconnection Approval as recorded in Registry, if applicable</inlineHelpText>
+        <label>Registry Interconnection Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Registry_Online_Date__c</fullName>
+        <description>First day of month that system was online and producing electricty as recorded in Registry, if applicable. Corresponds to Vintage in NEPOOL GIS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>First day of month that system was online and producing electricty as recorded in Registry, if applicable. Corresponds to Vintage in NEPOOL GIS</inlineHelpText>
+        <label>Registry Online Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Under_Contract_Until__c</fullName>
+        <description>The max end date for all Customer SREC Contracts related to this Registry Unit</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The max end date for all Customer SREC Contracts related to this Registry Unit</inlineHelpText>
+        <label>Under Contract Until</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Unit_City__c</fullName>
+        <description>City</description>
+        <externalId>false</externalId>
+        <inlineHelpText>City</inlineHelpText>
+        <label>Unit City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_County__c</fullName>
+        <description>The County in which the SREC Registry Unit is located.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The County in which the SREC Registry Unit is located.</inlineHelpText>
+        <label>Unit County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_ID__c</fullName>
+        <description>SREC Registry Unit ID in SREC registry</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Registry Unit ID in SREC registry</inlineHelpText>
+        <label>Unit ID</label>
+        <length>10</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Owner_Name__c</fullName>
+        <description>Name of Owner of SREC Registry Unit in GATS registry, if provided.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Owner of SREC Registry Unit in GATS registry, if provided.</inlineHelpText>
+        <label>Unit Owner Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_State__c</fullName>
+        <description>State</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State</inlineHelpText>
+        <label>Unit State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Unit_Street_Address_1__c</fullName>
+        <description>Street Address 1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street Address 1</inlineHelpText>
+        <label>Unit Street Address 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Street_Address_2__c</fullName>
+        <description>Street Address 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street Address 2</inlineHelpText>
+        <label>Unit Street Address 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit_Zip_Code__c</fullName>
+        <description>Zip Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Zip Code</inlineHelpText>
+        <label>Unit Zip Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>SREC Registry Unit</label>
+    <nameField>
+        <displayFormat>Unit-{0000000000}</displayFormat>
+        <label>SREC Registry Unit</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>SREC Registry Units</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Default</fullName>
+        <active>true</active>
+        <label>Default</label>
+        <picklistValues>
+            <picklist>Fuel_Type__c</picklist>
+            <values>
+                <fullName>STH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solar Photovoltaic</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Generation_Entry_Type__c</picklist>
+            <values>
+                <fullName>Actual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prod Est</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Generator_Status__c</picklist>
+            <values>
+                <fullName>ACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REJ</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Management_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Owner_Type__c</picklist>
+            <values>
+                <fullName>Generator Broker%2FAggregator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offtaker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_DC_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_DE_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_IL_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_RPS_Class_I__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_Solar_Carve_Out_II__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_Solar_Carve_Out__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MD_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_NJ_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_OH_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_PA_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_WV_RPS__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>RTO__c</picklist>
+            <values>
+                <fullName>New England %28ISO New England Control Area%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PJM Control Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Registry_Account_Holder__c</picklist>
+            <values>
+                <fullName>Astrum Solar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Constellation-Astrum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Solar II%2C LLC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>River Falls REIT Corp</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit_State__c</picklist>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>GATS_Unit</fullName>
+        <active>true</active>
+        <label>GATS Unit</label>
+        <picklistValues>
+            <picklist>Fuel_Type__c</picklist>
+            <values>
+                <fullName>STH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solar Photovoltaic</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Generation_Entry_Type__c</picklist>
+            <values>
+                <fullName>Actual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prod Est</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Generator_Status__c</picklist>
+            <values>
+                <fullName>ACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REJ</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Management_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Owner_Type__c</picklist>
+            <values>
+                <fullName>Generator Broker%2FAggregator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offtaker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_DC_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_DE_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_IL_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_RPS_Class_I__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_Solar_Carve_Out_II__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_Solar_Carve_Out__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MD_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_NJ_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_OH_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_PA_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_WV_RPS__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>RTO__c</picklist>
+            <values>
+                <fullName>New England %28ISO New England Control Area%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PJM Control Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Registry_Account_Holder__c</picklist>
+            <values>
+                <fullName>Astrum Solar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Constellation-Astrum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Solar II%2C LLC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>River Falls REIT Corp</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit_State__c</picklist>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>GIS_Unit</fullName>
+        <active>true</active>
+        <label>GIS Unit</label>
+        <picklistValues>
+            <picklist>Fuel_Type__c</picklist>
+            <values>
+                <fullName>STH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solar Photovoltaic</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Generation_Entry_Type__c</picklist>
+            <values>
+                <fullName>Actual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prod Est</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Generator_Status__c</picklist>
+            <values>
+                <fullName>ACT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REJ</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Management_Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Owner_Type__c</picklist>
+            <values>
+                <fullName>Generator Broker%2FAggregator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offtaker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Owner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_DC_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_DE_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_IL_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_RPS_Class_I__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_Solar_Carve_Out_II__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MA_Solar_Carve_Out__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_MD_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_NJ_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_OH_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_PA_RPS__c</picklist>
+            <values>
+                <fullName>Solar</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Program_WV_RPS__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>RTO__c</picklist>
+            <values>
+                <fullName>New England %28ISO New England Control Area%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PJM Control Area</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Registry_Account_Holder__c</picklist>
+            <values>
+                <fullName>Astrum Solar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Constellation-Astrum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Solar II%2C LLC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>River Falls REIT Corp</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit_State__c</picklist>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Unit_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Number_DC__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Number_DE__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Number_MD__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Number_NJ__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Number_OH__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Certification_Number_PA__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Program_MA_Solar_Carve_Out__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Unit_ID__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Unit_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Newtown Open House 110515.Newtown OpenHouse 110515</name>
+    <style>none</style>
+    <subject>You are invited to a Solar Open House</subject>
+    <textOnly>directenergysolar.com
+
+
+Newtown Energy Challenge
+You are invited to a Solar Open House.
+
+The Newtown Energy Challenge is a community program sponsored by the Town of Newtown Clean Energy Commission to help homeowners save both energy and money. Generous Federal and State incentives along with group discount pricing from one of Newtown’s Solar Energy Challenge Partners, Direct Energy Solar, make NOW the right time to take action! 
+This limited opportunity is available to homeowners within the Town of Newtown through December 5th.
+
+See an active solar system and meet the installer:
+
+Open House
+Saturday, November 14
+10:30 AM - 12:30 PM Home of David Stout
+9 Grand Place, Newtown, CT 06470
+RSVP
+
+Open House
+Saturday, November 21
+11:00 AM - 1:00 PM Home of Ron &amp; Jodi French
+16 Dinglebrook Lane, Newtown, CT 06470
+RSVP
+
+BENEFITS OF GOING SOLAR WITH DIRECT ENERGY SOLAR:
+
+• First 20 signed will receive additional $500 off
+• Go solar with Direct Energy Solar and receive a $249 Nest Learning ThermostatTM at no cost1.
+• Just for Meeting with Us, Get a Free2 6-month Heating &amp; Cooling Repair Essentials Plan from 
+  Direct Energy!
+
+
+You must be a Newtown, CT resident to participate in this program.
+1Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar within the valid dates of your community solar program. No extensions will be granted. Your Nest Thermostat will be mailed 30 days after your contract signing. Offer not valid with any other promotions or discounts. Only one offer per household. Nest®, Nest Learning Thermostat™, Nest Leaf™, Airwave™, Auto-Away™ and the Nest logo are trademarks or servicemarks of Nest Labs, Inc.
+
+2Meet with a Direct Energy Solar consultant for an in-home consultation during the valid dates of your community solar program and receive a free 6-month trial of our Heating &amp; Cooling Repair Essentials Plan. No extensions will be granted. An in-home consultation is contingent on your home passing a qualifying process for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the “Plan”) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited. Offer not valid with any other promotions or discounts. Only one offer per household.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of The Newtown Clean Energy Commission or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+CT HIC 06289933/ELC 0200988
+Direct Energy Solar
+
+54 Tuttle Place
+
+Middletown, CT 06457
+
+P: 800-903-6130
+
+F: 203-886-1140
+© 2015 Clockwork IP, LLC. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Sales Order {!relatedTo.name} has been Cancelled" recipientType="Contact" relatedToType="SCRB_SalesOrder__c">
+<messaging:htmlEmailBody >
+    <c:SalesOrderCancellationEmail salesorder="{!relatedTo.Id}"></c:SalesOrderCancellationEmail>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

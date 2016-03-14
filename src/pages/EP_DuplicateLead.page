@@ -1,0 +1,40 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false">
+<apex:composition template="EP_SiteTemplate">
+
+<apex:define name="head-top">
+
+    <meta name='description' content='Direct Energy Solar Employee Portal - Duplicate Submission' />
+    <title>Direct Energy Solar Employee Portal - Submit New Leads</title>
+
+</apex:define>
+
+<apex:define name="head-bottom">
+
+    <style type="text/css">
+    	#Content div {
+    		font-size: 18px;
+    		line-height: 20px;
+    	}
+        .ErrorTitle {
+            color: #ff0000;
+			font-family: 'Conduit ITC W01 Bold',Helvetica,Arial,sans-serif;
+        }
+    </style>
+
+</apex:define>
+
+<apex:define name="content">
+<div id="Content">
+	<div class="container">
+		<div class="sixteen columns">
+			<span class="ErrorTitle">Error:</span> Your submission was a duplicate.<br/><br/>
+			<div>
+				<a href="{!$Site.Prefix}/EP_SubmitLeads">Return to form</a>
+			</div>
+		</div>
+	</div>
+</div>
+</apex:define>
+
+</apex:composition>
+</apex:page>

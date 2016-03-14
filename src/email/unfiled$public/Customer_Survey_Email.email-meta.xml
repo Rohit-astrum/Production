@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Customer Survey Email</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Customer Survey Email</name>
+    <style>freeForm</style>
+    <subject>Direct Energy Solar Invites Your Feedback</subject>
+    <textOnly>Dear {!Customer_Survey__c.Survey_Sent_To__c}:
+
+Thank you for choosing to switch to solar power with Direct Energy Solar. We appreciate the trust you have placed in us and are inviting you to participate in a survey to help us improve our services. Our goal is to provide an experience that exceeds our customers’ expectations and your feedback about your Direct Energy Solar experience is very important to us.
+
+When you have a few moments, please follow the link below to complete the survey.
+
+Direct Energy Solar Customer Satisfaction Survey
+https://directenergysolar.secure.force.com/survey?Id={!Customer_Survey__c.MD5Code__c}
+
+We truly appreciate your time and will send you a $25 Amazon gift certificate when you complete the survey.
+
+If you need help accessing or completing the questionnaire, or if you would prefer a paper survey be sent to you, please contact us at customercare@directenergysolar.com
+
+We look forward to hearing from you.
+
+Thank you.
+
+Sincere regards,
+
+Diane Benedetti
+Senior Manager
+Customer Care
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

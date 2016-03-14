@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Allow_Lead_Creation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Allow Lead Creation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Credit_Approval_Required__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Credit Approval Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Credit_Check_Url__c</fullName>
+        <description>Url of the site used for credit checks</description>
+        <externalId>false</externalId>
+        <label>Credit Check Url</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Site_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D Site Url</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>DocuSign_Account_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>DocuSign Account Id</label>
+        <length>36</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DocuSign_Host__c</fullName>
+        <externalId>false</externalId>
+        <label>DocuSign Host</label>
+        <length>75</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DocuSign_Integrators_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>DocuSign Integrators Key</label>
+        <length>42</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DocuSign_Password__c</fullName>
+        <externalId>false</externalId>
+        <label>DocuSign Password</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DocuSign_Service_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>DocuSign Service Url</label>
+        <length>75</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DocuSign_User_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>DocuSign User Id</label>
+        <length>36</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Coordinator__c</fullName>
+        <description>The email address of the sales coordinator who receives notification of newly uploaded leads and can assign them to D2D managers.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The email address of the sales coordinator who receives notification of newly uploaded leads and can assign them to D2D managers.</inlineHelpText>
+        <label>Sales Coordinator</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Owner__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Order Owner</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <label>D2DSettings</label>
+</CustomObject>

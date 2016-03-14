@@ -1,0 +1,7 @@
+<apex:component >
+
+    <div id="AccountInfo">
+        <span>Logged in as {!$User.FirstName}&nbsp;{!$User.LastName}</span> <span>|</span> <span><a href="{!$Site.Prefix}/secur/logout.jsp">Log out</a></span>
+    </div>
+
+</apex:component>

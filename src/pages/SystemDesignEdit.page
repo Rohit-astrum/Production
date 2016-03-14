@@ -1,0 +1,527 @@
+<!-- FILE: SystemDesignEdit.page
+ * AUTHOR: Michael Katulka
+ * DATE: 2014-04-21
+ * PURPOSE: Page for creating and editing a system design.
+ * MODIFICATION HISTORY:  
+ *     RJ  09/08/14  Commented the Trench
+ *     DK  12/08/14  Added Javascript to implement image uploads
+ -->
+
+<apex:page id="pg" StandardController="System_Design__c" extensions="SystemDesignEditControllerExtension" showHeader="true" sidebar="true" action="{!initSDEditMode}">
+
+<style>
+.notesBox {
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+.surfaceHeader {
+    color:#000;
+    font-size:1.3em; 
+}
+
+#blockbckanim
+{
+    background-color:rgba(0, 14, 44, 0.7);
+    width:100%;
+    height:100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    rgba(0, 0, 0, 0.71);
+    cursor: wait;
+}
+#apimgld
+{
+    width: 20px;
+    height: 20px;
+    top:49%;
+    left:45%;
+    position:fixed;
+    border-radius: 2px;
+    -webkit-border-radius: 2px ;
+    -moz-border-radius: 2px ;
+}
+
+/* File Upload Styles */
+        canvas {
+            /*border: 1px solid #f0f0f0;*/
+            /*width: 600px;
+            height: 400px;*/
+            background-color: #fff;
+            position: relative;
+        }
+
+        input {
+            border: 1px solid #c0c0c0;
+        }
+
+        input[id$=img_file] {
+            border: 3px solid #00ff00;
+        }
+
+        .ib {
+            display: inline-block;
+        }
+
+        .cframe {
+            width: 500;
+            height: 400;
+            overflow: hidden;
+            background-color: #e0e0e0;
+            border: 1px solid #a0a0FF;
+        }
+
+        .imgeditor {
+            display: inline-block;
+            margin: 25px;
+            border: 2px solid #404040;
+            padding: 10px;
+        }
+</style> 
+
+<script type="text/javascript" language="javascript">   
+    function ShowLoading() {
+        document.getElementById('blockbckanim').style.display="block";
+    }
+    function HideLoading() {
+        document.getElementById('blockbckanim').style.display="none";
+    }
+    
+    //-- Image Upload Controls --//
+    /**
+     * TODO - insert copyright notice
+     * Created: Lawrence L Hovind
+     * Date: May 12, 2014 1155 ET
+     */
+
+    function resize( elemId, wd, ht ) {
+        elem = document.getElementById(elemId);
+        if( elem != undefined ) {
+            elem.style.width = wd;
+            elem.style.height = ht;
+        }
+    }
+
+    function cntr( elemId, direction ) {
+        elem = document.getElementById(elemId);
+        
+        elem.style.position = "absolute";
+        elem.style.top = Math.round((window.innerHeight - elem.offsetHeight) / 2) + 'px';
+        elem.style.left = Math.round((window.innerWidth - elem.offsetWidth) / 2) + 'px';
+        //elem.style.marginTop = '-' + Math.round(elem.offsetHeight / 2) + 'px';
+        //elem.style.marginLeft = '-' + Math.round(elem.offsetWidth / 2) + 'px';
+    }
+
+    function RequestViaJSONP( request ) {
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        script.setAttribute("src", request);
+        document.body.appendChild(script);
+    }
+    // TODO - insert copyright notice
+    // Created: Lawrence L Hovind
+    // Date: May 8, 2014 1432 ET
+
+    function readFile(evt) {
+        file = evt.target.files[0];
+        fr = new FileReader();
+        fr.onload = loadImage;
+        fr.readAsDataURL(file);
+    }
+
+    function loadImage() {
+        panel = document.getElementById("canvas1");
+        context = panel.getContext('2d');
+        
+        img = new Image();
+        img.src = fr.result;
+        img.onload = function(){
+            panel.width = img.width;
+            panel.height = img.height;
+            document.getElementById("wd").innerHTML = img.width;
+            document.getElementById("ht").innerHTML = img.height;
+            context.drawImage(img, 0, 0);
+            };
+        
+    }
+
+    function ie_scaleImage(req) {
+        panel = document.getElementById("canvas1");
+        context = panel.getContext('2d');
+        
+        zoom = req / 100;
+        panel.width = img.width * zoom;
+        panel.height = img.height *zoom;
+        context.drawImage(img, 0, 0, panel.width, panel.height);
+        // reposition image, if necessary
+        if( Math.abs(parseInt(panel.style.left)) > (panel.width - 10) ) {
+            panel.style.left = "0";
+        }
+        if( Math.abs(parseInt(panel.style.top)) > (panel.height - 10) ) {
+            panel.style.top = "0";
+        }
+    }
+
+    function snapToWidth() {
+        panel = document.getElementById("canvas1");
+        context = panel.getContext('2d');
+        
+        frm = document.getElementById("cframe");
+        if( frm != undefined ) {
+                wd = frm.offsetWidth;
+                ht = frm.offsetHeight;
+            }
+        
+    }
+
+    function checkVisibilty() {
+        
+    }
+
+    var dragObj;
+    var top0=0, left0=0, x=0, y=0;
+    var cframe;
+
+    function dragStart(event) {
+        dragObj = event.target;
+        top0 = parseInt(dragObj.style.top + 0);
+        left0 = parseInt(dragObj.style.left + 0);
+        x = event.clientX;
+        y = event.clientY;
+        document.addEventListener("mousemove", dragMove, true);
+        document.addEventListener("mouseup", dragStop, true);
+        //console.log("drag start");
+    }
+
+    function dragMove(event) {
+        
+        dx = left0 + event.clientX - x;
+        
+        // check for right most bound
+        if( dx < (cframe.clientWidth - dragObj.width) ) {
+            dx = (cframe.clientWidth - dragObj.width);
+        }
+        // check for left most bound
+        if( dx > 0 ) {
+            dx = 0;
+        }
+        dragObj.style.left = dx + "px";
+
+        
+        dy = top0 + event.clientY - y;
+        
+        // check for lower bound
+        if( dy < (cframe.clientHeight - dragObj.height)  ) {
+            dy = (cframe.clientHeight - dragObj.height);
+        }
+        // check for upper bound
+        if( dy > 0 ) {
+            dy = 0;
+        }
+        dragObj.style.top = dy + "px";
+        
+        //document.getElementById("objx").innerHTML = dx;
+        //document.getElementById("objy").innerHTML = dy;
+        //console.log("drag move: " + dx);
+    }
+
+    function dragStop() {
+        document.removeEventListener("mousemove", dragMove, true);
+        document.removeEventListener("mouseup", dragStop, true);
+        dragObj = undefined;
+        //console.log("drag stop");
+    }
+
+    function zoomchg(event) {
+        zoom = event.target.value;
+        cntrl = event.target.id;
+        if( cntrl == "zoomspin" ) {
+            other = document.getElementById("zoomsldr");
+        }
+        if( cntrl == "zoomsldr" ) {
+            other = document.getElementById("zoomspin");
+        }
+        other.value = zoom;
+        
+        ie_scaleImage(zoom);
+    }
+
+    function cropCanvas(canvas, x, y, wd, ht) {
+        //var panel = document.getElementById("canvas1");
+        context = canvas.getContext('2d');
+        
+        // check that the current canvas isn't smaller than the frame
+        // check ht is too large
+        if( (canvas.height - y) < ht ) {
+            ht = canvas.height - y;
+        }
+        // check wd is too large
+        if( (canvas.width - x) < wd ) {
+            wd = canvas.width - x;
+        }
+        
+        imgData = context.getImageData(x, y, wd, ht);
+        canvas.width = wd;
+        canvas.height = ht;
+        canvas.style.left = "0";
+        canvas.style.top = "0";
+        context.putImageData(imgData, 0, 0);
+        
+    }
+
+    function saveImage(event, isInsert) {
+        var panel = document.getElementById("canvas1");
+        //context = panel.getContext('2d');
+        
+        var imgDataURL = panel.toDataURL('image/jpeg', 1.0);
+        //var imgDataURL = panel.toDataURL('image/jpeg', 1.0).replace('image/jpeg', 'image/octet-stream');
+        
+        //imgwin = document.getElementById("newimg");
+        //imgwin.src = imgDataURL;
+        
+        input_img = document.querySelector('input[id$=img_url]');
+        if( input_img != undefined ) {
+            input_img.value = imgDataURL;
+            console.log("ImgFile <input> would be filled with: " + imgDataURL.length + " bytes");
+        } else {
+            console.log("ImgFile <input> was not found");
+        }
+        if (!isInsert)    //Do not upload the image if the System Design has not yet been inserted into the database
+            uploadImg();
+    }
+
+    function cropSaveImage( cframe, event, isInsert ) {
+        frm = document.getElementById(cframe);
+        if( frm != undefined ) {
+            cnvs = frm.getElementsByTagName("canvas")[0];
+            if( cnvs != undefined ) {
+                x = Math.abs(parseInt(cnvs.style.left) || 0);
+                y = Math.abs(parseInt(cnvs.style.top) || 0);
+                wd = frm.offsetWidth;
+                ht = frm.offsetHeight;
+                cropCanvas( cnvs, x, y, wd, ht);
+                saveImage(event, isInsert);
+            }
+        }
+    }
+</script>
+<apex:pageMessages id="messages" /><!-- Keep messages here because sometimes we have to hide the entire form and show a message -->
+<apex:form id="frm" rendered="{!NOT(hideForm)}">
+
+    <apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+    <div id="blockbckanim" style="display:none">
+    <img id="apimgld" style="" src="/img/loading32.gif" />
+    </div>
+
+    <!-- Hidden fields for controller extension access -->
+    <apex:inputField rendered="false" value="{!System_Design__c.Survey__c}" />
+
+    <apex:sectionHeader title="System Design Edit" subtitle="{!if(isSDInsert, 'New System Design', System_Design__c.Name)}" />
+    <apex:pageBlock title="System Design Edit">     
+
+        <apex:pageBlockButtons >            
+            <!-- Sandbox test: https://c.cs14.visual.force.com/apex/SystemDesignEdit?id=a0Uc0000001gwm6 -->
+            <apex:commandButton action="{!save}" value="Save" onclick="ShowLoading();"/><!-- prevent double-click, and can't rerender whole frm because using richtext -->
+            <apex:commandButton action="{!saveAndNext}" value="Save & Assign Panels" onclick="ShowLoading();"/>         
+            <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
+        </apex:pageBlockButtons>
+
+        <apex:pageBlockSection title="Customer Information" columns="2">            
+            <apex:outputField label="Name" value="{!prop.Property_Owner__c}" /> 
+                <!-- right column -->
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Survey" for="surveys" />
+                    <apex:outputPanel >
+                        <div class="requiredInput">
+                        <div class="requiredBlock"></div>
+                        <apex:selectList id="surveys" value="{!selectedSurveyID}" size="1" title="Main Survey">
+                            <apex:selectOptions value="{!surveys}"></apex:selectOptions>
+                        </apex:selectList>
+                        </div>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            <apex:outputField label="Street Address" value="{!System_Design__c.Property__c}" /> 
+                <apex:pageBlockSectionItem />
+            <apex:outputField label="City" value="{!prop.Property_City__c}" /> 
+                <apex:pageBlockSectionItem />
+            <apex:outputField label="State" value="{!prop.Property_State__c}" /> 
+                <apex:outputField label="Design Last Edited" value="{!System_Design__c.LastModifiedDate}" rendered="{!System_Design__c.id != null}"/>       
+                <apex:pageBlockSectionItem rendered="{!System_Design__c.id == null}"/>
+            <apex:outputField label="Zip" value="{!prop.Property_ZIP__c}" /> 
+                <apex:outputField label="Design Last Edited By" value="{!System_Design__c.LastModifiedByID}" rendered="{!System_Design__c.id != null}"/>        
+                <apex:pageBlockSectionItem rendered="{!System_Design__c.id == null}"/>
+            <apex:pageBlockSectionItem /><apex:pageBlockSectionItem />
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="SketchUp File Upload" columns="1">
+            <apex:actionFunction name="uploadImg" action="{!uploadImg}" />
+            <div>
+                <label>Upload SketchUp file:</label>&emsp;<input type="file" value="" onchange="readFile(event)" />&emsp;
+            </div>
+            <apex:outputPanel >
+                <div id="iedit" class="imgeditor">
+                    <div id="cframe" class="cframe" style="width: 700px; height: 335px;">
+                        <canvas id="canvas1">
+                        </canvas>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        
+                        <span>Original image size: </span><span id="wd" class="ib">0</span>&nbsp;x&nbsp;<span id="ht" class="ib">0</span>
+                    </div>
+                    <div>
+                        <div style="display: inline-block;">
+                            Zoom: <input id="zoomspin" type="number" min="0" max="100" step=".1" value="100" style="width: 6em;" onchange="zoomchg(event)" />%<br />
+                            <input id="zoomsldr" type="range" min="0" max="100" step=".1" value="100" onchange="zoomchg(event)" />
+                        </div>
+                        <div style="display:inline-block; float:right">
+                            <button type="button" onclick="cropSaveImage('cframe', event, {!isSdInsert})">
+                                {!IF(isSdInsert, 'Crop & Attach (Save the System Design to Finish)', 'Crop & Save')}
+                             </button>
+                        </div>
+                    </div>
+                    
+                    <div id="imagePreviewPanel" style="border:2px solid #404040; width:450px; float:right; display:{!IF(imageAttachments == null, 'none', 'block')}">
+                        <table style="display:table; width:100%">
+                            <thead>
+                                <tr style="width:100%; display:table; text-align:left;">
+                                    <th style="width:33%">Thumbnail</th>
+                                    <th style="width:33%">File Name</th>
+                                    <th style="width:33%">Created Date</th>
+                                </tr>
+                            </thead>
+                            <tbody style="float:left; overflow:auto; height:150px; width:100%">
+                                <apex:repeat value="{!imageAttachments}" var="att">
+                                    <tr style="width:100%; display:table; text-align:left;">
+                                        <td style="width:33%">
+                                            <a href="/servlet/servlet.FileDownload?file={!att.ID}" target="_blank">
+                                                <img src="/servlet/servlet.FileDownload?file={!att.ID}" height="100" width="100" />
+                                            </a>
+                                        </td>
+                                        <td style="width:33%"><apex:outputText value="{!att.Name}" /></td>
+                                        <td style="width:33%"><apex:outputText value="{!att.CreatedDate}" /></td>
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </apex:outputPanel>
+            <apex:inputText value="{!imgURL}" id="img_url" maxlength="512000" style="visibility: hidden;" />
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Design Information" columns="1" id="sysDesignPB">         
+            <apex:outputField label="System Design" value="{!System_Design__c.Name}" rendered="{!System_Design__c.id != null}"/>
+            <!-- Commented below for Sales Order Approval Process Changes- PB 10/05/2015
+            <apex:inputField value="{!System_Design__c.Current_Design__c}" />
+            -->
+            <apex:inputField value="{!System_Design__c.Calculated_System_Price__c}" rendered="{!NOT(isSdInsert)}"/>
+            <apex:inputField value="{!System_Design__c.Avoided_Utility_Rate__c}"/>
+            <apex:inputField value="{!System_Design__c.NRG_Avoided_Utility_Rate__c}"/>
+            <apex:inputField value="{!System_Design__c.Sunnova_Avoided_Utility_Rate__c}"/>
+            <apex:inputField label="Snow DeRate" value="{!prop.Snow_De_Rate_kWh_y_kW__c}" />                            
+            <!--<apex:inputField value="{!System_Design__c.Trenching_Required__c}" >                            
+                <apex:actionSupport event="onchange" rerender="sysDesignPB, messages" status="processingStatus" />                                                  
+            </apex:inputField>
+            <apex:inputField value="{!System_Design__c.Trench_Length__c}" rendered="{!System_Design__c.Trenching_Required__c}"/>    -->     
+            <apex:inputField label="Remote Meter" value="{!System_Design__c.Includes_Remote_Meter__c}" />
+            <apex:inputField value="{!System_Design__c.Includes_Outbuilding_Installation__c}" />
+            <apex:inputField value="{!System_Design__c.Vent_Stack_Movement_Required__c}" />
+            <apex:inputField value="{!System_Design__c.Inside_Only_Conduit__c}" />
+
+            <!-- CB Panel default selector -->
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Default CB Panel" for="cbPanels" />
+                 <apex:outputPanel >                    
+                    <apex:selectList id="cbPanels" value="{!System_Design__c.Default_CB_Panel__c}" size="1">
+                        <apex:selectOptions value="{!cbPanels}"></apex:selectOptions>                       
+                        <apex:actionSupport event="onchange" rerender="sysDesignPB, messages" status="processingStatus" />                                              
+                    </apex:selectList>                  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>        
+
+            <!-- Bus Bar Rating -->
+            <apex:pageBlockSectionItem rendered="{!System_Design__c.Default_CB_Panel__c == null}" >
+                <apex:outputLabel value="Bus Bar Rating" for="busRating" />
+                <apex:selectList id="busRating" value="{!busRatingAmps}" size="1">
+                        <apex:selectOption itemLabel="- none -"/>
+                        <apex:selectOption itemValue="100" itemLabel="100"/>
+                        <apex:selectOption itemValue="125" itemLabel="125"/>
+                        <apex:selectOption itemValue="150" itemLabel="150"/>
+                        <apex:selectOption itemValue="175" itemLabel="175"/>
+                        <apex:selectOption itemValue="200" itemLabel="200"/>
+                        <apex:selectOption itemValue="225" itemLabel="225"/>
+                        <apex:selectOption itemValue="250" itemLabel="250"/>
+                        <apex:selectOption itemValue="400" itemLabel="400"/>                        
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+            
+            <!-- Main Breaker Rating -->
+            <apex:pageBlockSectionItem rendered="{!System_Design__c.Default_CB_Panel__c == null}" >
+                <apex:outputLabel value="Main Breaker Rating" for="mainBreakerRatingAmps" />
+                <apex:selectList id="mainBreakerRatingAmps" value="{!mainBreakerRatingAmps}" size="1">
+                        <apex:selectOption itemLabel="- none -"/>
+                        <apex:selectOption itemValue="100" itemLabel="100"/>
+                        <apex:selectOption itemValue="125" itemLabel="125"/>
+                        <apex:selectOption itemValue="150" itemLabel="150"/>
+                        <apex:selectOption itemValue="175" itemLabel="175"/>
+                        <apex:selectOption itemValue="200" itemLabel="200"/>
+                        <apex:selectOption itemValue="225" itemLabel="225"/>
+                        <apex:selectOption itemValue="250" itemLabel="250"/>
+                        <apex:selectOption itemValue="400" itemLabel="400"/>                    
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+
+            <apex:inputText label="Open Circuits in CB Panel" value="{!countofOpenCircuits}" rendered="{!System_Design__c.Default_CB_Panel__c == null}"/>
+
+
+            <!-- Utility Service default selector -->
+            <apex:pageBlockSectionItem rendered="{!System_Design__c.Default_CB_Panel__c == null}">
+                <apex:outputLabel value="Utility Service" for="utilityServices" />
+                 <apex:outputPanel >                    
+                    <apex:selectList id="utilityServices" value="{!utilityService}" size="1">
+                        <apex:selectOptions value="{!utilityServices}"></apex:selectOptions>                        
+                        <apex:actionSupport event="onchange" rerender="sysDesignPB, messages" status="processingStatus" />                                              
+                    </apex:selectList>                  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+            <!-- Utility Rate Code -->
+            <apex:selectList label="Utility Rate Code" id="utilRateCodeSelect" value="{!utilRateCode}" size="1" rendered="{!System_Design__c.Default_CB_Panel__c == null && utilityService == null}">
+                <apex:selectOptions value="{!utilRateCodeOptions}" />
+            </apex:selectList>
+            
+            <apex:inputText label="Meter ID" value="{!meterid}" rendered="{!System_Design__c.Default_CB_Panel__c == null && utilityService == null}"/>
+            
+            <!-- Service Entry Type -->
+            <apex:pageBlockSectionItem rendered="{!System_Design__c.Default_CB_Panel__c == null && utilityService == null}" >
+                <apex:outputLabel value="Service Entry Type" for="serviceEntryType" />
+                <apex:selectList id="serviceEntryType" value="{!serviceEntryType}" size="1">
+                        <apex:selectOption itemLabel="- none -"/>
+                        <apex:selectOption itemValue="Overhead" itemLabel="Overhead"/>
+                        <apex:selectOption itemValue="Underground" itemLabel="Underground"/>
+                        <apex:selectOption itemValue="TBD" itemLabel="TBD"/>
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+        
+
+<!--
+            <apex:inputField label="Service Amperage" value="{!prop.Ut}" /> <apex:inputField label="" value="{!System_Design__c.}" />
+                <apex:inputField label="Trenching Required" value="{!System_Design__c.Trenching_Required__c}" /> <apex:inputField label="" value="{!System_Design__c.}" />
+    -->
+
+
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection title="Notes" columns="1">
+            <apex:inputTextarea rows="5" richText="true" value="{!System_Design__c.Notes__c}"/>
+            <apex:inputTextarea rows="5" value="{!System_Design__c.For_Customer_Notes__c}"  styleClass="notesBox"/>
+        </apex:pageBlockSection>
+
+
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

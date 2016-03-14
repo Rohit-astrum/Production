@@ -1,0 +1,72 @@
+<apex:page standardController="Time_Sheet__c" extensions="TimesheetEntryApprovalController" showHeader="true" sidebar="false">
+
+ <script type="text/javascript">
+        function checkAll(obj){
+            var inputCheckBox = document.getElementsByTagName("input");                  
+            for(var i=0; i<inputCheckBox.length; i++){          
+                if(inputCheckBox[i].id.indexOf('checkedone')!=-1){                                     
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+ </script>
+  
+<apex:form >
+    <apex:pageBlock title="Time Sheet Entries" mode="edit" id="block">
+        <apex:pageBlockButtons location="both">
+              	<apex:commandButton value="Approve Selected" action="{!approveEntries}"/>
+              	<apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        <apex:pageMessages />
+        <apex:pageBlockTable value="{!wrappers}" var="wrapper" >
+
+        <apex:column >
+                    <apex:facet name="header">
+                        <apex:inputCheckbox onclick="checkAll(this)"/>
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!wrapper.selected}" id="checkedone"/>
+        </apex:column>
+
+        <apex:column >
+            <apex:facet name="header">Entry</apex:facet>
+            <apex:outputText value="{!wrapper.tse.name}"/>
+        </apex:column>
+        
+        <apex:column >
+            <apex:facet name="header">Project/Client/Job</apex:facet>
+            <apex:outputText value="{!wrapper.tse.Project_Client_Job__r.Name}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Timesheet Purpose</apex:facet>
+            <apex:outputText value="{!wrapper.tse.Timesheet_Purpose__r.Name}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Start Time</apex:facet>
+            <apex:outputText value="{!wrapper.tse.Start_Time__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">End Time</apex:facet>
+            <apex:outputText value="{!wrapper.tse.End_Time__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Stayed Overnight</apex:facet>
+            <apex:outputText value="{!wrapper.tse.Stayed_Overnight__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Hotel Costs</apex:facet>
+            <apex:outputText value="{!wrapper.tse.Hotel_Cost__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Half-Hour Lunch Break?</apex:facet>
+            <apex:outputText value="{!wrapper.tse.Half_Hour_Lunch_Break__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Total Hours</apex:facet>
+            <apex:outputText value="{0,number,##.00}"><apex:param value="{!wrapper.tse.Total_Hours__c}" /></apex:outputText>
+        </apex:column>
+        
+
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

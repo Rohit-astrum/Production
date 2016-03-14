@@ -1,0 +1,77 @@
+<apex:page id="pg" controller="CompanyWideReportInputController" showHeader="true" sidebar="true">
+<apex:form id="frm">
+	<apex:actionRegion >
+		<apex:selectList value="{!selectedYear}" size="1">
+			<apex:selectOptions value="{!years}"/>
+		</apex:selectList>
+		<apex:selectList value="{!selectedPeriod}" size="1">
+			<apex:selectOptions value="{!periods}"/>
+		</apex:selectList>
+		<apex:commandButton value="Load Company Wide Report" action="{!load}" reRender="preview,rmvList"/>
+	</apex:actionRegion>
+	<br/><br/>
+	<apex:outputPanel id="explanation">
+		<span>After loading a report, please take note on the functionality of the buttons below:</span>
+		<ul>
+			<li>New Reported Metric Value: this button adds a row to the list for manual selection of a metric.  Avoid duplicate metric selections in the drop down lists.</li>
+			<li>Preview Existing Values: this button shows the report based on the values previously entered and calculated.</li>
+			<li>Save Manual Values: this button saves the values entered and previews the report WITHOUT processing the calculated metrics.  Calculated metrics should be processed sparingly due to the amount of records that must be queried.</li>
+			<li>Save and Preview: this button saves the values entered and processes the calculated metrics as well.  Since some results are delayed, not all metrics will be displayed intially.  You can reload the report after a short period to preview the results.</li>
+			<li>Save and Send: this button saves the values entered, processes the calculated metrics, and initiates the email sending process.  There is a one-hour window to cancel this action if necessary.  To cancel this action, alert an Admin.</li>
+		</ul>
+	</apex:outputPanel>
+	<apex:pageBlock id="rmvList">
+		<apex:variable value="{!0}" var="rowCount"/>
+		<apex:pageMessages />
+		<apex:pageBlockButtons location="Bottom">
+			<apex:commandButton value="New Reported Metric Value" action="{!newRMV}" rendered="{!NOT(ISNULL(companyWideReport))}" reRender="preview,rmvList"/>
+			<apex:commandButton value="Preview Existing Values" action="{!preview}" rendered="{!IF(ISNULL(companyWideReport), false, true)}" reRender="preview,rmvList"/>
+			<apex:commandButton value="Save Manual Values" action="{!save}" rendered="{!IF(ISNULL(companyWideReport), false, true)}" reRender="preview,rmvList"/>
+			<apex:commandButton value="Save and Preview" action="{!saveAndPreview}" rendered="{!IF(ISNULL(companyWideReport), false, true)}" reRender="preview,rmvList"/>
+			<apex:commandButton value="Save and Send" action="{!send}" rendered="{!IF(ISNULL(companyWidereport), false, true)}" reRender="preview,rmvList"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection title="Monthly Company Wide Report" columns="1">
+			<apex:outputField value="{!companyWideReport.Reporting_Frequency__c}"/>
+			<apex:outputField value="{!companyWideReport.End_Date__c}"/>
+		</apex:pageBlockSection>
+		<apex:pageBlockSection id="pbs" title="Reported Metric Values" columns="1">
+			<apex:pageBlockTable id="pbt" value="{!reportedMetricValues}" var="rmv">
+				<!-- Metric__c -->
+				<apex:column headerValue="Metric">
+					<apex:outputPanel layout="block" styleClass="requiredInput">
+						<apex:outputPanel layout="block" styleClass="requiredBlock"/>
+						<apex:selectList id="Metric" value="{!rmv.selectedValue}" size="1" required="true">
+							<apex:selectOptions value="{!rmv.metricOptions}"/>
+						</apex:selectList>
+					</apex:outputPanel>
+				</apex:column>
+				<!-- Reported_Value__c -->
+				<apex:column headerValue="Reported Value">
+					<apex:inputField value="{!rmv.reportedMetricValue.Reported_Value__c}"/>
+				</apex:column>
+				<!-- Week_To_Date__c -->
+				<apex:column headerValue="Week to Date" rendered="false">
+					<apex:inputField value="{!rmv.reportedMetricValue.Week_To_Date__c}"/>
+				</apex:column>
+				<!-- Month_To_Date__c -->
+				<apex:column headerValue="Month to Date">
+					<apex:inputField value="{!rmv.reportedMetricValue.Month_To_Date__c}"/>
+				</apex:column>
+				<!-- Year_To_Date__c -->
+				<apex:column headerValue="Year to Date">
+					<apex:inputField value="{!rmv.reportedMetricValue.Year_To_Date__c}"/>
+				</apex:column>
+				<apex:column headerValue="Actions">
+					<apex:commandLink value="Delete" action="{!deleteRow}" immediate="true" reRender="preview,rmvList" rendered="{!ISNULL(rmv.reportedMetricValue.Id)}">
+						<apex:param value="{!rowCount}" name="rowToDelete" assignTo="{!rowToDelete}"/>
+					</apex:commandLink>
+					<apex:variable var="rowCount" value="{!rowCount+1}"/>
+				</apex:column>
+			</apex:pageBlockTable>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	<apex:outputPanel id="preview">
+		<c:CompanyWideReportComponent providedReportType="Monthly" providedEndDate="{!companyWideReport.End_Date__c}" providedManagementFlag="true" rendered="{!previewReport}"/>
+	</apex:outputPanel>
+</apex:form>
+</apex:page>

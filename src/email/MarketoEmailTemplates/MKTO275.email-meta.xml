@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Autoresponses.DE Solar: Events Lead Autoresponse</name>
+    <style>none</style>
+    <subject>Thank you for requesting your free solar consultation</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+
+Thousands of Customers Have Switched to Solar!
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for visiting Direct Energy Solar at our booth during today’s event.
+
+One of our solar experts will contact you within the next 48 hours to follow up on your request for a no obligation home solar site assessment. To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.
+
+There has never been a better time to go solar. Direct Energy Solar offers cash purchase, monthly payment, and purchase financing options—we have an option to meet your specific needs. We hope to have the opportunity to help you go solar.
+
+
+Let Direct Energy Solar help you understand your solar options. Download your free guide!
+
+We’re pleased to offer you our downloadable guide which will help you better understand the benefits of going solar, financing options available, and the factors that influence the amount of your financial return. Plus, much more!
+Download your free copy of “Your Guide to Understanding Solar Power.” &lt;http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf&gt;
+
+
+Hear from our satisfied customers.
+
+“It started out with,‘Wouldn’t it be cool to do this,’ but then I saw how quickly this would pay out.”
+
+Dale and Janice, Derwood, MD
+ELECTRICITY SAVINGS: $1,202/yr
+
+Thousands of Direct Energy Solar customers are harnessing the sun’s full potential for their homes and saving money on electricity. Read their stories. &lt;http://www.directenergysolar.com/customer-stories/&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

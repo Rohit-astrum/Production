@@ -1,0 +1,320 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_SalesRepDashboardController"  applyHtmlTag="false" applyBodyTag="false" readOnly="false">
+	<apex:composition template="D2D_SiteTemplate"> 
+	
+		<apex:define name="head-top"> 
+		    <meta name='description' content='D2D - Dashboard' />
+		    <title>D2D - Dashboard</title>
+		    <script>
+		       $j = jQuery.noConflict(); 
+				
+				$j(document).ready(function() {
+		        	var pageScrollPosition = jQuery('[id$=scrollPosition]').val();
+		        	$j('#Content.dashboardContent').scrollTop(pageScrollPosition);
+		       
+		       		$j('#Content.dashboardContent').on("scrollstop",function(){
+		        		var pageScrollPosition = $j('#Content.dashboardContent').scrollTop();
+				    	jQuery('[id$=scrollPosition]').val(pageScrollPosition);
+				    	saveFilters();
+					});
+				});
+		       
+		       function resetFilters() {
+		            //$j('#DateFilter select')[0].selectedIndex = "0";
+		            //$j('#StateFilter select')[0].selectedIndex = "0";
+		            //$j('#SegmentFilter select')[0].selectedIndex = "0";
+		            //$j('#StatusFilter select')[0].selectedIndex = "0";
+		            //$j('#SystemSizeFilter select')[0].selectedIndex = "0";
+		            $j('.filterddl').prop('selectedIndex', '0')
+		            $j('input.filterddl').val('');
+		            $j('#scheduledFilter input[type=\'checkbox\']').attr('checked',false).checkboxradio('refresh');
+		            $j('select').selectmenu('refresh', true);
+		        }
+		       
+		       function resetScroll() {
+		       $j('#Content.dashboardContent').scrollTop(0);
+		            jQuery('[id$=scrollPosition]').val(0);
+		        }
+		
+		        function refreshCarrierRouteFilter() {
+		             $j('.CarrierRoute').trigger("create");
+		        }
+				
+				
+		    </script>
+		</apex:define>
+	
+	<apex:define name="head-bottom">
+	</apex:define>
+	
+	<apex:define name="navigation">
+            <c:D2D_AccountInfo />
+	</apex:define>
+	
+	<apex:define name="panel">
+	    <h2>Filters</h2>
+      		<apex:form id="filtersForm" >
+			<div class="dashboardFiltersForm">
+				<div class="filtersColLeft">
+					<div id="scheduledFilter">
+						<div class="formLabel">Only Scheduled Visits</div>
+						<label><apex:inputCheckbox value="{!onlyScheduledVisits}"/>Show Scheduled Visits</label>
+					</div>
+	                <div id="DateFilter">
+	                    <div class="formLabel">Date</div>
+	                    <apex:selectList size="1" value="{!dateFilterOption}" id="dateFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!dateFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="StreetFilter">
+	                    <div class="formLabel">Street</div>
+	                    <apex:inputText size="1" value="{!streetArg}" id="streetFilterText" styleClass="filterddl" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);$j('#sidepanel').panel('close');return false;}"/>
+	                </div>
+	                <div id="CityFilter">
+	                    <div class="formLabel">City</div>
+	                    <apex:inputText size="1" value="{!cityArg}" id="cityFilterText" styleClass="filterddl" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);$j('#sidepanel').panel('close');return false;}"/>
+	                </div>
+	                <div id="StateFilter">
+	                    <div class="formLabel">State</div>
+	                    <apex:selectList size="1" value="{!stateFilterOption}" id="stateFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!stateFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="ZipFilter">
+	                    <div class="formLabel">Zip</div>
+	                    <apex:inputText size="1" value="{!zipArg}" id="zipFilterText" styleClass="filterddl" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);$j('#sidepanel').panel('close');return false;}"/>
+	                </div>
+                </div>
+                <div class="filtersColRight">
+	                <apex:outputPanel layout="block" id="carrierRouteFilterPanel">
+	                <div id="CarrierRouteFilter">
+	                	<div class="CarrierRoute">
+		                    <div class="formLabel">Carrier Route</div>
+		                	<apex:selectList size="1" value="{!carrierRouteFilterOption}" id="carrierRouteFilterSelect" styleClass="filterddl">
+			                    <apex:selectOptions value="{!carrierRoutes}"/>
+			                </apex:selectList>
+		                </div>
+	                </div>
+	                </apex:outputPanel>
+	                <div id="SegmentFilter" style="display:none;">
+	                    <div class="formLabel">Segment</div>
+	                    <apex:selectList size="1" value="{!segmentFilterOption}" id="segmentFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!segmentFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="StatusFilter">
+	                    <div class="formLabel">Lead Status</div>
+	                    <apex:selectList size="1" value="{!statusFilterOption}" id="statusFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!statusFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="SystemSizeFilter">
+	                    <div class="formLabel">System Size</div>
+	                    <apex:selectList size="1" value="{!systemSizeFilterOption}" id="systemSizeFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!systemSizeFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+                </div>
+				<div class="ClearAll"></div>
+                <apex:actionFunction name="setFilter" action="{!refresh}" rerender="myRefPanel,contactPanel,pagePanel,carrierRouteFilterPanel" status="pageStatus,pageStatus2" oncomplete="refreshCarrierRouteFilter();">
+                
+                    <apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+                    
+                </apex:actionFunction> 
+                <div class="filtersFormBtns">
+                    <input type="button" value="Apply"  data-inline="true" data-wrapper-class="ui-btn-green" onclick="setFilter(1); resetScroll(); saveFiltersOnApply(); $j('#sidepanel').panel('close'); return false;"/>
+                    <input type="button" value="Reset All"  data-inline="true" data-wrapper-class="ui-btn-grey" onclick="resetFilters();"/>
+                </div>
+                <apex:actionFunction name="saveFiltersOnApply" action="{!saveUserFilters}" rerender="none"/>
+            </div>
+        	</apex:form>
+		</apex:define>
+
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		</apex:define>
+			
+		<apex:define name="header-btns">
+		    <div class="headerBtns salesRepHeaderBtns">
+            	<h1><i class="fa fa-navicon fa-1x fa-pageicon"></i> Dashboard</h1>
+        		<apex:form >
+		            <div class="DashboardOptions">
+		                <div class="DashboardBtnRow">
+		                	<!-- 
+		                	<div class="DashboardContentSummary">
+			                    <span>Total Leads:</span> <span class="SummaryNumber">
+			                        <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalReferrals}"/></apex:outputText>
+			                    </span> <span class="SummaryDivider">|</span> <span>Total Qualified:</span> <span class="SummaryNumber">
+			                        <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalQualified}"/></apex:outputText>
+			                    </span> <span class="SummaryDivider">|</span> <span>Total Sold:</span> <span class="SummaryNumber">
+			                        <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalSold}"/></apex:outputText>
+			                    </span> 
+			                </div>
+			            	-->
+			                <div class="CreatLead" style="{!IF(allowLeadCreation, '', 'display:block;')}"> 
+			               		<a href="/d2d/D2D_LeadInformation" target="_self"  data-ajax="false" class="ui-btn ui-btn-large ui-btn-inline ui-btn-green ui-corner-all"><i class="fa fa-plus-circle fa-lg fa-left" onclick="displayLoader('Creating new lead...');"></i>Create Lead</a>
+			                </div>
+							<div class="ClearAll"></div>
+		                </div>
+		                <div class="DashboardBtnRow">
+			                <div class="PrintExport">
+			                    <!-- <div class="Export">
+			                        <a href="{!URLFOR($Page.D2D_SalesRepDashboardExport,null)}" target="_blank" class="ui-btn ui-btn-inline ui-icon-btn ui-corner-all"><i class="fa fa-share-square-o fa-lg fa-inverse fa-greenbg"></i>Export</a>
+			                    </div> -->
+			                    <div class="Print">
+			                        <a href="{!URLFOR($Page.D2D_SalesRepDashboardPrint,null)}" target="_blank" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-print fa-lg fa-inverse fa-greenbg"></i>Print</a>
+			                    </div>
+			                </div> <div class="FilterSearch">
+			                    <div class="filterBtn">
+			                        <a href="#sidepanel" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-filter fa-lg fa-inverse fa-greenbg"></i>Filters</a>
+			                    </div>
+			                    <div class="SearchForm">
+			                        <apex:inputText id="dashboardSearch" html-placeholder="Search by name" value="{!searchArg}" onkeydown="if(event.keyCode==13){this.blur();setSearch(1);return false;}"/>
+			                        <a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="setSearch(1); resetScroll(); saveFiltersOnSearch(); return false;"><i class="fa fa-search fa-lg fa-inverse fa-greenbg fa-right"></i></a>
+			                    </div>
+			                </div>  
+							<div class="ClearAll"></div>
+						</div>
+		                
+		               <apex:actionFunction name="setSearch" action="{!refresh}" rerender="myRefPanel,contactPanel,pagePanel" status="pageStatus,pageStatus2">
+		                    <apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+		                </apex:actionFunction>
+		                <apex:actionFunction name="saveFiltersOnSearch" action="{!saveUserFilters}" rerender="none"/>
+					</div>
+				</apex:form>
+    		</div>
+		</apex:define>
+		
+		<apex:define name="content">
+			<div id="Content" class="dashboardContent">
+                <div class="sixteen columns">
+          			<apex:form >
+					    <div id="FullColumn">
+					        <div class="MyDashboard">
+					           <div class="DashboardContent">
+					                <apex:outputPanel layout="block" id="myRefPanel" styleClass="DashboardTable">
+					                    <apex:dataTable value="{!referrals}" var="r" id="dashboardDataTable">
+					                    
+					                        <apex:column headerClass="DashboardColFirst" styleClass="DashboardColFirst">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Date" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Lead_Created_Date__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Lead_Created_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <apex:outputText value="{0,date,M/d/yy}">
+					                                <apex:param value="{!r.Lead_Created_Date__c}"/>
+					                            </apex:outputText>
+					                        </apex:column>
+				                        
+					                        <apex:column rendered="{!onlyScheduledVisits}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Visit Date" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='D2D_Scheduled_Visit_Datetime__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="D2D_Scheduled_Visit_Datetime__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <apex:outputText value="{0,date,M/d/yy}">
+					                                <apex:param value="{!r.D2D_Scheduled_Visit_Datetime__c}"/>
+					                            </apex:outputText>
+					                        </apex:column>
+					                        
+					                        <apex:column >
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Name" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Full_Name__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Full_Name__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <a href="D2D_LeadMenu?id={!r.Id}" onclick="displayLoader('Opening lead...');" data-ajax="false">{!r.Full_Name__c}</a>
+					                        </apex:column> 
+					
+					                        <apex:column value="{!r.Street__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Street" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Street__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Street__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        
+					                        <apex:column value="{!r.City__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="City" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='City__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="City__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.State__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="State" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='State__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="State__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.Zip__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Zip" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Zip__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Zip__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.Carrier_Route__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Carrier Route" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Carrier_Route__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Carrier_Route__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.Walk_Sequence__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Walk Seq" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Walk_Sequence__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Walk_Sequence__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <!--
+					                        <apex:column value="{!r.Segment_Priority__c}" headerClass="SegmentPriorityCol" styleClass="SegmentPriorityCol">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Segment Priority" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Segment_Priority__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="Segment_Priority__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        -->
+					                        <apex:column value="{!r.D2D_System_Size__c}" headerClass="SystemSizePriorityCol" styleClass="SystemSizePriorityCol">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="System Size" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='D2D_System_Size__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="D2D_System_Size__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.D2D_Lead_Status__c}" headerClass="DashboardColLast" styleClass="DashboardColLast">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Lead Status" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='D2D_Lead_Status__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}" oncomplete="saveFilters();">
+					                                    <apex:param value="D2D_Lead_Status__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                    </apex:dataTable>
+										<apex:inputHidden value="{!scrollYPos}" id="scrollPosition"/>
+										<apex:actionFunction name="saveFilters" action="{!saveUserFilters}" rerender="scrollPosition"/>
+					                </apex:outputPanel>
+					           </div>
+					        </div>
+					    </div>
+          			</apex:form>
+				</div>
+			</div>
+		</apex:define>
+	
+	</apex:composition>
+</apex:page>

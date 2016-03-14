@@ -1,0 +1,144 @@
+<apex:page standardController="Partner_Application__c" extensions="PartnerVerificationExtension">
+
+<style type="text/css">
+    .action-column {
+        text-align: center;
+        width: 50px;
+    }
+    
+</style>
+
+    <apex:sectionHeader title="Partner Applications" subtitle="Verify Partner Application"/>
+    
+    <apex:pageMessages id="messages"/>
+
+    <apex:form >
+    
+    <apex:outputPanel id="appForm">
+    <apex:pageBlock mode="edit">
+
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Approve" action="{!approve}"/>
+            <apex:commandButton value="Decline" action="{!decline}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection title="Partner Application" collapsible="false">
+        
+            <apex:outputField value="{!Partner_Application__c.Partner_Type__c}"/>    
+            <apex:outputField value="{!Partner_Application__c.Company_Name__c}"/>
+            <apex:outputField value="{!Partner_Application__c.First_Name__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Website__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Last_Name__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Address__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Title__c}"/>
+            <apex:outputField value="{!Partner_Application__c.City__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Email__c}"/>
+            <apex:outputField value="{!Partner_Application__c.State__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Phone__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Zip_Code__c}"/> 
+            <apex:outputField value="{!Partner_Application__c.Fax__c}"/>           
+            <apex:outputText value=""/>
+            <apex:outputField value="{!Partner_Application__c.Industry__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Refer_By_Employee__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Other_Industry__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Employees__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Number_of_Members__c}"/>            
+            <apex:outputField value="{!Partner_Application__c.Comments__c}"/>
+            <apex:outputField value="{!Partner_Application__c.Source__c}"/>
+            <apex:inputField value="{!paymentPlanAccount.Portal_Payment_Plan__c}" required="true"/>
+            
+<!--            <apex:pageBlockSectionItem > -->
+<!--                <apex:outputLabel value="{!$ObjectType.Account.Fields.Portal_Payment_Plan__c.Label}" for="plan"/> -->
+<!--                <apex:outputPanel layout="block" styleClass="requiredInput"> -->
+<!--                    <apex:outputPanel layout="block" styleClass="requiredBlock"/> -->
+<!--                    <apex:selectList id="plan" value="{!paymentPlan}" size="1" title="{!$ObjectType.Account.Fields.Portal_Payment_Plan__c.Label}"> -->
+<!--                        <apex:selectOptions value="{!paymentPlans}"/> -->
+<!--                    </apex:selectList> -->
+<!--                </apex:outputPanel>                  -->
+<!--            </apex:pageBlockSectionItem> -->
+        
+        </apex:pageBlockSection>
+    
+    </apex:pageBlock>
+    </apex:outputPanel>
+    
+    <apex:outputPanel layout="block" id="accountSearch">
+    <apex:pageBlock mode="edit" tabStyle="Account">
+    
+        <apex:pageBlockSection title="Matching Accounts" collapsible="false" columns="1">
+        </apex:pageBlockSection>
+
+        <apex:outputLabel value="Account Name" styleClass="labelCol"/>
+        <apex:inputText value="{!accountNameSearch}" onkeydown="if(event.keyCode==13){this.blur();searchAccounts();}"/>
+        <apex:commandButton value="Search" action="{!searchAccounts}" rerender="accountSearch,messages" status="acctStatus"/>
+        <apex:actionStatus id="acctStatus">
+            <apex:facet name="start">
+                <apex:image url="/img/loading.gif"/>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:actionFunction name="searchAccounts" action="{!searchAccounts}" rerender="accountSearch,messages" status="acctStatus"/>
+
+        <div>&nbsp;</div>
+
+        <apex:pageBlockTable value="{!accounts}" var="a">
+            <apex:column headerValue="Action" styleClass="action-column" headerClass="action-column">
+                <apex:commandButton value="{!IF(a.Id=selectedAccountId,'Unselect','Select')}" action="{!selectAccount}" rerender="accountSearch,messages,appForm" immediate="true">
+                    <apex:param name="selectedAccountId" value="{!IF(a.Id=selectedAccountId,'',a.Id)}" assignTo="{!selectedAccountId}"/>
+                </apex:commandButton>
+            </apex:column>
+            <apex:column value="{!a.Name}" headerValue="{!$ObjectType.Account.Fields.Name.Label}"/> 
+            <apex:column value="{!a.Type}" headerValue="{!$ObjectType.Account.Fields.Type.Label}"/> 
+            <apex:column value="{!a.BillingStreet}" headerValue="{!$ObjectType.Account.Fields.BillingStreet.Label}"/>   
+            <apex:column value="{!a.BillingCity}" headerValue="{!$ObjectType.Account.Fields.BillingCity.Label}"/>   
+            <apex:column value="{!a.BillingState}" headerValue="{!$ObjectType.Account.Fields.BillingState.Label}"/> 
+            <apex:column value="{!a.Website}" headerValue="{!$ObjectType.Account.Fields.Website.Label}"/>   
+        </apex:pageBlockTable>
+        
+        <apex:outputLabel value="No Matches Found" rendered="{!accounts.size=0}"/>
+    
+    </apex:pageBlock>
+    </apex:outputPanel>
+
+    <apex:outputPanel layout="block" id="contactSearch">
+    <apex:pageBlock mode="edit" tabStyle="Contact">
+
+        <apex:pageBlockSection title="Matching Contacts" collapsible="false">
+        </apex:pageBlockSection>
+
+        <apex:outputLabel value="First Name" styleClass="labelCol"/>
+        <apex:inputText value="{!firstNameSearch}" onkeydown="if(event.keyCode==13){this.blur();searchContacts();}"/>
+        <apex:outputLabel value="Last Name" styleClass="labelCol"/>
+        <apex:inputText value="{!lastNameSearch}" onkeydown="if(event.keyCode==13){this.blur();searchContacts();}"/>
+        <apex:outputLabel value="Company Name" styleClass="labelCol"/>
+        <apex:inputText value="{!contactCompanyNameSearch}" onkeydown="if(event.keyCode==13){this.blur();searchContacts();}"/>
+        <apex:commandButton value="Search" action="{!searchContacts}" rerender="contactSearch,messages" status="contactStatus"/>
+        <apex:actionStatus id="contactStatus">
+            <apex:facet name="start">
+                <apex:image url="/img/loading.gif"/>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:actionFunction name="searchContacts" action="{!searchContacts}" rerender="contactSearch,messages" status="contactStatus"/>
+
+        <div>&nbsp;</div>
+
+        <apex:pageBlockTable value="{!contacts}" var="c">
+            <apex:column headerValue="Action" styleClass="action-column" headerClass="action-column">
+                <apex:commandButton value="Duplicate" action="{!duplicate}">
+                    <apex:param name="duplicateId" value="{!c.Id}" assignTo="{!duplicateId}"/>
+                </apex:commandButton>
+            </apex:column>
+            <apex:column value="{!c.Name}" headerValue="{!$ObjectType.Contact.Fields.Name.Label}"/> 
+            <apex:column value="{!c.Account.Name}" headerValue="{!$ObjectType.Contact.Fields.AccountId.Label}"/>    
+            <apex:column value="{!c.Title}" headerValue="{!$ObjectType.Contact.Fields.Title.Label}"/>   
+            <apex:column value="{!c.Email}" headerValue="{!$ObjectType.Contact.Fields.Email.Label}"/>   
+            <apex:column value="{!c.Phone}" headerValue="{!$ObjectType.Contact.Fields.Phone.Label}"/>   
+            <apex:column value="{!c.Fax}" headerValue="{!$ObjectType.Contact.Fields.Fax.Label}"/>   
+        </apex:pageBlockTable>
+    
+    </apex:pageBlock>
+    </apex:outputPanel>
+    
+    </apex:form>
+    
+</apex:page>

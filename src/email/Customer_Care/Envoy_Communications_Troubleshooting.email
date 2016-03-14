@@ -1,0 +1,64 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<font face="Arial, sans-serif" size="2">Dear&nbsp;{!Contact.FirstName},</font>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p class="MsoNormalCxSpFirst" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><span style="color: rgb(34, 34, 34);">We are monitoring your system for alerts and noticed that
+your Enphase Envoy is not reporting. There is usually a simple solution for this alert, and b</span><span style="color: rgb(34, 34, 34);">elow are a few
+troubleshooting steps that may help you get your Envoy reporting again. If you try these steps and are still
+experiencing issues, or if you need assistance along the way, please feel free
+to give the Customer Care team a call at 1-888-603-6085.<o:p></o:p></span></font></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="color: rgb(34, 34, 34);"><font face="Arial, sans-serif" size="2">&nbsp;<o:p></o:p></font></span></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><b><span style="color: rgb(34, 34, 34);">Step 1. Confirm Envoy Location.</span></b><span style="color: rgb(34, 34, 34);">&nbsp;Your Envoy (image attached) should be
+plugged into a standard outlet and should display information on the screen in
+the center. The Envoy should not be plugged into a surge protector, extension
+cord, or any other outlet type. The Envoy should also be located as close to
+your main circuit breaker panel as possible.<o:p></o:p></span></font></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="color: rgb(34, 34, 34);"><font face="Arial, sans-serif" size="2">&nbsp;<o:p></o:p></font></span></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><b><span style="color: rgb(34, 34, 34);">Step 2. Confirm Bridge Configuration.</span></b><span style="color: rgb(34, 34, 34);">&nbsp;If the location of your Envoy is not
+near your router, you may have powerline “bridges.” These bridges are two
+identical wall units that may be dark grey or white, and look similar to a cell
+phone charger (images of two models are also attached). One bridge should be
+located at the Envoy, plugged into the same outlet, and connected to the Envoy
+via a cable attached to the bridge. The second should be located near your
+router, plugged into an outlet, and also connected to your router via a cable.
+Neither bridge should be plugged into a surge protector, extension cord, or any
+other outlet type.<o:p></o:p></span></font></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="color: rgb(34, 34, 34);"><font face="Arial, sans-serif" size="2">&nbsp;<o:p></o:p></font></span></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><b><span style="color: rgb(34, 34, 34);">Step 3. Get New IP Address.&nbsp;</span></b><span style="color: rgb(34, 34, 34);">If your internet has been disconnected briefly
+or if you have a new router, press and hold the menu button located on the
+right side of your Envoy until the display reads "Get New IP
+Address." When the “Get New IP Address” screen appears release the button.<o:p></o:p></span></font></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="color: rgb(34, 34, 34);"><font face="Arial, sans-serif" size="2">&nbsp;<o:p></o:p></font></span></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><b><span style="color: rgb(34, 34, 34);">Step 4. Power Cycle.&nbsp;</span></b><span style="color: rgb(34, 34, 34);">Unplug your Envoy, powerline bridges (if
+applicable), router, and cable/DSL modem. Once all of these items are off,
+apply power again in the following order: cable/DSL modem, router, bridges, and
+lastly your Envoy.<o:p></o:p></span></font></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><b><span style="color: rgb(34, 34, 34);">&nbsp;</span></b><span style="color: rgb(34, 34, 34);"><o:p></o:p></span></font></p>
+
+<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><span style="color: rgb(34, 34, 34);">I have also attached a short troubleshooting guide
+from Enphase that may be helpful in restoring your system communications. Again,
+if you have any questions or need additional assistance, please do not hesitate
+to contact Customer Care at <b>1-888-603-6085</b> or </span></font><span style="color: rgb(34, 34, 34);"><font face="Arial, sans-serif"><font size="2"><b>customercare@directenergysolar.com.</b><o:p></o:p></font></font></span></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><font face="Arial, sans-serif" size="2"><span style="color: rgb(34, 34, 34);">Thank you,<br><br>Customer Care Team<br>Direct Energy Solar<br>1-888-603-6085<br>customercare@directenergysolar.com <br></span></font></p><p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><br></p><p class="MsoNormalCxSpMiddle" style="background-image: initial; background-attachment: initial; background-color: white; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;"><span style="font-size: small; font-family: Arial,sans-serif;"><font size="1">AZ
+ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 
+2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 
+21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, 
+PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk
+ 54817-H, Putnam PC66168, Rockland H-11532<br><br>© 2016 Direct Energy. All Rights Reserved.</font></span><br><font face="Arial, sans-serif" size="2"><span style="color: rgb(34, 34, 34);"></span></font><span style="color: rgb(34, 34, 34);"><font face="Arial, sans-serif"><font size="2"></font></font></span></p>]]></td>
+</tr>
+</table>

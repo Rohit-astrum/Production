@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use this email for Solarize leads when emailing the lead after leaving a voicemail.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Solarize Voicemail Email</name>
+    <style>formalLetter</style>
+    <subject>Start saving with Direct Energy Solar</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+We know you’re eager to find out if your home is right for solar and we’re ready to answer any questions you might have about the program and our process.
+
+{!Lead.Community_Program__c} is a limited-time opportunity for your community. It’s important we chat with you soon to get the process started.
+
+I will make another attempt to call you and speak with you personally. However, if you prefer, please give us a call back at 800-903-6130 and select the option for sales. One of our Solar Advisors can answer your questions right away and talk to you about our free solar installation and personalized system designs.
+
+We look forward to hearing from you soon!
+
+Best Regards,
+
+{!User.FirstName}
+
+7101 Riverwood Drive
+Columbia, MD 21046
+P: 800-903-6130
+F: 800-949-1408
+directenergysolar.com
+
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

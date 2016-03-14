@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Payable Invoice Header - Data is created upon upload to QB Bill Header Details Extract</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>IR2_Vendor_Invoice_Num__c</fullName>
+        <externalId>false</externalId>
+        <formula>BlankValue(Ref_Number__c, TrxID__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IR2 Vendor Invoice Num</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IR2_Vendor__c</fullName>
+        <externalId>false</externalId>
+        <formula>If (Left(Vendor__c,6) = &apos;CSTMR*&apos;,
+Right(Vendor__c,LEN(Vendor__c)-9),
+If (Left(Vendor__c,5) = &apos;CSTMR&apos;,
+Right(Vendor__c,LEN(Vendor__c)-8),
+If (Left(Vendor__c,3) = &apos;EMP&apos;,
+Right(Vendor__c,LEN(Vendor__c)-4),
+Vendor__c)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IR2 Vendor</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NumberofLines__c</fullName>
+        <description>Number of Lines on Invoice</description>
+        <externalId>false</externalId>
+        <label>NumberofLines</label>
+        <summaryForeignKey>QB_Bill_Header_Details_Extract__c.QB_Invoice_Header__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Processed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Processed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ref_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Ref Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TrnDate__c</fullName>
+        <externalId>false</externalId>
+        <label>TrnDate</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>TrxID__c</fullName>
+        <externalId>false</externalId>
+        <label>TrxID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vendor__c</fullName>
+        <externalId>false</externalId>
+        <label>Vendor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>QB Payable Invoice Header</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>NumberofLines__c</columns>
+        <columns>Vendor__c</columns>
+        <columns>Ref_Number__c</columns>
+        <columns>TrnDate__c</columns>
+        <columns>TrxID__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Unprocessed_Payable_Invoices</fullName>
+        <columns>NAME</columns>
+        <columns>Processed__c</columns>
+        <columns>Ref_Number__c</columns>
+        <columns>NumberofLines__c</columns>
+        <columns>TrnDate__c</columns>
+        <columns>TrxID__c</columns>
+        <columns>Vendor__c</columns>
+        <columns>IR2_Vendor__c</columns>
+        <columns>IR2_Vendor_Invoice_Num__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Processed__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>Unprocessed Payable Invoices</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>IH-{000000000}</displayFormat>
+        <label>QB Invoice Header Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>QB Payable Invoice Header</pluralLabel>
+    <searchLayouts>
+        <listViewButtons>Create_FFA_Payables</listViewButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Create_FFA_Payable</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create FFA Payable</masterLabel>
+        <openType>noSidebar</openType>
+        <page>QBPaytoPayINV</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_FFA_Payables</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create FFA Payables</masterLabel>
+        <openType>noSidebar</openType>
+        <page>QBPaytoPayINVL</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,19 @@
+<apex:page showHeader="false" title="{!$Label.site.authorization_required}" id="Unauthorized" cache="false">
+
+<apex:composition template="{!$Site.template}">
+
+    <apex:define name="content">
+    <div id="ContentLogin">
+            <div class="container">
+                <div class="sixteen columns">
+        <apex:pageMessage summary="Authorization Required" severity="warning" strength="3" />
+    
+        <c:EP_Login />
+        </div>
+        </div>
+        </div>
+    </apex:define>
+    
+</apex:composition>
+    
+</apex:page>

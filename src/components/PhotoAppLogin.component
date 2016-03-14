@@ -1,0 +1,38 @@
+<apex:component controller="PhotoAppLoginController">
+
+<apex:form forceSSL="true">
+
+    <apex:pageMessages id="error"/>
+    
+    <div class="LoginContainer">
+
+        <div class="LoginPanel">
+            <h3>Login</h3>
+            <div class="LoginPanelForm">
+                <div class="LoginPanelFormRow">
+                    <label>User Name</label>
+                    <apex:inputText styleClass="username" value="{!username}"/>
+                </div>
+                <div class="LoginPanelFormRow">
+                    <label>Password</label>
+                    <apex:inputSecret styleClass="password" id="password" value="{!password}"/>
+                </div>
+                <div class="LoginPanelFormRow">
+                    <apex:inputCheckbox id="rememberMe" value="{!rememberMe}"/>
+                    <label class="LabelInline">Remember User Name</label>
+                </div>
+                <div class="LoginPanelSubmitButton">
+                	<apex:outputLink onclick="doLogin();return false;" styleClass="standardButton">Login <img src="{!URLFOR($Resource.PhotoAppResources, 'images/Arrow_Right.png')}"/></apex:outputLink>
+                    <apex:actionFunction name="doLogin" action="{!login}"/>
+                </div>
+                <div>
+                    <apex:outputLink styleClass="forgotPW" value="{!$Page.PhotoAppForgotPassword}">Forgot Password?</apex:outputLink>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+    
+</apex:form>
+
+</apex:component>

@@ -1,0 +1,242 @@
+<apex:page controller="InstalledSystemCertificationController">
+
+	<script>
+function setId(id)
+{
+    var obj = getElementByName('hiddenId');
+    obj.value = id;
+    return true;
+}
+
+function getElementByName(name)
+{
+    var inputList = document.getElementsByTagName('input');
+    var ele;
+        
+    for(var i=0; i < inputList.length; i++)
+    {
+        if(inputList[i].id.indexOf(name) != -1)
+        {    
+            ele = inputList[i];
+            break;
+        }
+    }    
+        
+    return(ele);
+}
+</script>
+	<apex:form >
+
+		<apex:inputhidden id="hiddenId" value="{!CertifyId}" />
+
+		<apex:actionStatus id="refreshstatus" startstyle="color:green;"
+			startText="Refreshing...."></apex:actionStatus>
+
+		<apex:outputpanel id="tableBlock">
+
+			<apex:pageBlock title="Systems Summary">
+				<table width="100%" border="0">
+					<tr valign="top">
+						<td width="500px" style="font-weight: bold">Systems in Fund</td>
+						<td width="500px" style="font-weight: bold">Systems to be
+							Certified</td>
+					</tr>
+					<tr valign="top">
+						<td width="500px"><apex:pageBlockTable columns="6"
+								value="{!SystemList}" var="item" id="RecordList"
+								title="Installed Systems" footerClass="Summary">
+
+								<apex:column style="width:200px">
+									<a href="/{!item.objSystem.Account__r.id}">{!item.objSystem.Account__r.Name}</a>
+									<apex:facet name="header">
+										<apex:commandLink action="{!viewData}"
+											value="Account{!IF(sortExpression=='Account__r.Name',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="tableBlock">
+											<apex:param value="Account__r.Name"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="outer" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="Total"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column style="width:100px">
+									<a href="/{!item.objSystem.id}">{!item.objSystem.name}</a>
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Installed System{!IF(sortExpression=='Name',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="RecordList">
+											<apex:param value="Name" assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="outer" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column value="{!item.Annl_Prod_Grnt_To_Date} kWh"
+									style="text-align:right;">
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Guarantee To Date{!IF(sortExpression=='Annual_Production_Guarantee_To_Date_kWh__c',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="RecordList">
+											<apex:param value="Annual_Production_Guarantee_To_Date_kWh__c"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="inner" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="{!summaryWrapper.Annl_Prod_Grnt_To_Date} kWh"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column value="{!item.Annl_Prod_To_Date} kWh"
+									style="text-align:right; width:80px">
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Production To Date{!IF(sortExpression == 'Annual_Production_To_Date_kWh__c',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="RecordList">
+											<apex:param value="Annual_Production_To_Date_kWh__c"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="inner" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="{!summaryWrapper.Annl_Prod_To_Date} kWh"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+
+								<apex:column value="{!ROUND(item.Grnt_vs_Actl_Prod,1)} %"
+									style="background:{!IF(item.Grnt_vs_Actl_Prod < 100.0,'#EF4839','')};text-align:right;">
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Guarantee vs Actual To Date{!IF(sortExpression == 'Annual_Guarantee_vs_Actual_Prod_To_Date__c',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="RecordList">
+											<apex:param value="Annual_Guarantee_vs_Actual_Prod_To_Date__c"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="inner" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="{!ROUND(summaryWrapper.Grnt_vs_Actl_Prod,1)} %"
+											style="background:{!IF(summaryWrapper.Grnt_vs_Actl_Prod < 100.0,'#EF4839','')};"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column style="width:80px">
+									<apex:commandButton value="De-Certify"
+										onclick="javascript:setId('{!item.objSystem.Id}')"
+										action="{!clearCertify}" rerender="tableBlock"
+										status="refreshstatus">
+									</apex:commandButton>
+
+								</apex:column>
+
+							</apex:pageBlockTable></td>
+
+						<td width="500px"><apex:pageBlockTable columns="6"
+								value="{!SystemListU}" var="item" id="URecordList"
+								title="UnCertified Systems" footerClass="Summary">
+
+								<apex:column style="width:200px">
+									<a href="/{!item.objSystem.Account__r.id}">{!item.objSystem.Account__r.Name}</a>
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Account{!IF(sortExpression=='Account__r.Name',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="URecordList">
+											<apex:param value="Account__r.Name"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="outer" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="Total"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column style="width:100px">
+									<a href="/{!item.objSystem.id}">{!item.objSystem.name}</a>
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Installed System{!IF(sortExpression=='Name',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="URecordList">
+											<apex:param value="Name" assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="outer" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column value="{!item.Annl_Prod_Grnt_To_Date} kWh"
+									style="text-align:right;">
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Guarantee To Date{!IF(sortExpression=='Annual_Production_Guarantee_To_Date_kWh__c',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="RecordList">
+											<apex:param value="Annual_Production_Guarantee_To_Date_kWh__c"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="inner" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+									<apex:facet name="footer">
+										<apex:outputLabel value="{!summaryWrapper.Annl_Prod_Grnt_To_Date} kWh"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column value="{!item.Annl_Prod_To_Date} kWh"
+									style="text-align:right; width:80px">
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Production To Date{!IF(sortExpression == 'Annual_Production_To_Date_kWh__c',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="URecordList">
+											<apex:param value="Annual_Production_To_Date_kWh__c"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="inner" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="{!summaryWrapper.Annl_Prod_To_Date} kWh"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+
+								<apex:column value="{!ROUND(item.Grnt_vs_Actl_Prod,1)} %"
+									style="background:{!IF(item.Grnt_vs_Actl_Prod < 100.0,'#EF4839','')};text-align:right;">
+									<apex:facet name="header">
+										<apex:commandLink action="{!ViewData}"
+											value="Guarantee vs Actual To Date{!IF(sortExpression == 'Annual_Guarantee_vs_Actual_Prod_To_Date__c',IF(sortDirection='ASC','▼','▲'),'')}"
+											rerender="URecordList">
+											<apex:param value="Annual_Guarantee_vs_Actual_Prod_To_Date__c"
+												assignTo="{!sortExpression}"></apex:param>
+											<apex:param value="inner" assignTo="{!queryType}"></apex:param>
+										</apex:commandLink>
+									</apex:facet>
+
+									<apex:facet name="footer">
+										<apex:outputLabel value="{!ROUND(summaryWrapper.Grnt_vs_Actl_Prod,1)} %"
+											style="background:{!IF(summaryWrapper.Grnt_vs_Actl_Prod < 100.0,'#EF4839','')};text-align:right"></apex:outputLabel>
+									</apex:facet>
+								</apex:column>
+
+								<apex:column style="width:80px">
+									<apex:commandButton value="Certify"
+										onclick="javascript:setId('{!item.objSystem.Id}')"
+										action="{!doCertify}" rerender="tableBlock"
+										status="refreshstatus">
+									</apex:commandButton>
+								</apex:column>
+
+							</apex:pageBlockTable></td>
+
+					</tr>
+				</table>
+			</apex:pageBlock>
+		</apex:outputpanel>
+	</apex:form>
+</apex:page>

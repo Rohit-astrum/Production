@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Contains the custom settings for Closing Contracts with Commissions</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Cash_Rebate_Disclosure__c</fullName>
+        <externalId>false</externalId>
+        <label>Cash Rebate Disclosure</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manager_Override_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Manager Override Rate</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Commission_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Commission Rate</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Promotion__c</fullName>
+        <defaultValue>0.500</defaultValue>
+        <externalId>false</externalId>
+        <label>Maximum Promotion ($/watt)</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Minimum_Commission_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Commission Rate</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Minimum_Promotion__c</fullName>
+        <defaultValue>0.000</defaultValue>
+        <externalId>false</externalId>
+        <label>Minimum Promotion ($/watt)</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Referral_Commission_Bonus__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral Commission Bonus</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Regional_Sales_Manager_Commission_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Regional Sales Manager Commission Rate</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Solarize_Commission_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Solarize Commission Rate</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <label>ContractSettings</label>
+</CustomObject>

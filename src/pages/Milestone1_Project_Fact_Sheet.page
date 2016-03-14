@@ -1,0 +1,12 @@
+<apex:page standardController="Milestone1_Project__c" showHeader="false" renderAs="pdf" >
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c}" title="true"/>
+             <apex:relatedList subject="{!Milestone1_Project__c}" list="Project_Milestones__r" />
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__r.AccountId__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.AccountId__c}" list="OpenActivities" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.AccountId__c}" list="ActivityHistories" />
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__r.OpportunityId__r.Property__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.OpportunityId__r.Property__c}" list="Utility_Services__r" />
+             
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__c}" list="Sales_Order_Items__r" />
+</apex:page>

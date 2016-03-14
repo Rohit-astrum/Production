@@ -1,0 +1,402 @@
+<apex:page controller="InstalledSystemController" readOnly="true">
+ 
+<style type="text/css">
+         .Summary{
+         text-align:right;
+         border: 0px solid #D4DADC;
+         padding-right: 0px; 
+         border-spacing: 0px;
+         margin-right: 0px; 
+         }
+         
+        body .pbBody table.list tr th
+         {
+            border: 0px ;                       
+         }
+
+	a.nowrap {
+		white-space: nowrap;
+	}
+	.header-right {
+		text-align: right;
+	}
+	.header-bottom {
+		vertical-align: bottom;
+	}
+	.footer-left {
+		text-align: left;
+	}
+	.page-number-block {
+		display: inline-block;
+		padding: 2px 5px;
+		background-color: #e0e0e0;  /* stone 20% */
+		border: 1px solid #898b8c;  /* stone 80% */
+		cursor: pointer;
+		margin: 0px 3px;
+	}
+	.page-number-block:hover {
+		background-color: #dcebd5;  /* leaf 20% */
+		border: 1px solid #bddbaf;  /* leaf 40% */
+	}
+	.page-number-block-active {
+		display: inline-block;
+		padding: 2px 5px;
+		background-color: #62ad3e;  /* leaf 100% */
+		border: 1px solid #62ad3e;  /* leaf 100% */
+		cursor: pointer;
+		color: white;
+		margin: 0px 3px;
+	}
+</style>
+
+<style>
+   .headerRow .headerStyle{background-color:#638658;color:#FFFFFF}
+</style>
+ 
+<!-- 07/05/2012 TCM commented out 
+<apex:pageBlock title="Installed Systems Summary By State">
+	<table>
+		<tr>
+			<td width="600px">
+				<apex:outputLabel value="Systems In Fund" style="font-weight:bold"/>
+			</td>
+			<td width="600px">
+				<apex:outputLabel value="Systems to be Certified" style="font-weight:bold"/>
+			</td>
+		</tr>
+		<tr>
+			<td width="600px">
+				<apex:pageBlockTable columns="6" value="{!systemsCertified}" var="item" id="summaryInstalled" title="Certified Systems" footerClass="Summary">
+					<apex:column value="{!item.State}" headerValue="State"/>
+					
+					<apex:column value="{!item.NumberInstalled}" style="text-align:right">
+					<apex:facet name="header">
+						<apex:outputText style="text-align:right" value="# Installed"/>
+					</apex:facet>
+					</apex:column>
+					
+					<apex:column value="{!item.kW}" headerValue="kW" style="text-align:right;"/>
+					<apex:column value="{!item.GuaranteeToDateFomatted} kWh" headerValue="Guarantee to Date kWh" style="text-align:right"/>				
+					<apex:column value="{!item.ActualToDateFormatted} kWh" headerValue="Production to Date kWh" style="text-align:right"/>									
+					<apex:column value="{!item.GuaranteeVsActualFormatted}" headerValue="Guarantee Vs Actual" style="text-align:right"/>
+						
+				</apex:pageBlockTable>
+			</td>
+			<td width="500px">
+				<apex:pageBlockTable columns="6" value="{!systemsNotCertified}" var="item" id="summaryNotInstalled" title="Uncertified Systems" footerClass="Summary">
+					<apex:column value="{!item.State}" headerValue="State"/>
+					<apex:column value="{!item.NumberInstalled}" headerValue="# Installed" style="text-align:right"/>
+					<apex:column value="{!item.kW}" headerValue="kW" style="text-align:right;"/>
+					<apex:column value="{!item.GuaranteeToDateFomatted} kWh" headerValue="Guarantee to Date kWh" style="text-align:right" />				
+					<apex:column value="{!item.ActualToDateFormatted} kWh" headerValue="Production to Date kWh" style="text-align:right"/>									
+					<apex:column value="{!item.GuaranteeVsActualFormatted}" headerValue="Guarantee Vs Actual" style="text-align:right"/>
+				</apex:pageBlockTable>
+			</td>			
+		</tr>
+	</table>
+</apex:pageBlock>
+--> 
+
+<c:Installed_Systems_Charts />
+              
+<apex:form >
+
+<apex:outputPanel id="RecordList">
+<apex:pageBlock title="Installed Systems">
+
+	<apex:pageBlockTable id="sysTbl" columns="18" value="{!SystemList}" var="item" title="Installed Systems" headerClass="header-bottom" footerClass="Summary">
+ 
+		<apex:column footerClass="footer-left">
+			<a href="/{!item.objSystem.Account__r.id}" >{!item.objSystem.Account__r.Name}</a> 
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" value="Account{!IF(sortExpression=='Account__r.Name',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList">
+					<apex:param value="Account__r.Name"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>
+			<apex:facet name="footer">
+				<apex:outputLabel value="Portfolio Total"/> 
+			</apex:facet>   
+		</apex:column>    
+ 
+		<apex:column >
+			<a href="/{!item.objSystem.Property__r.id}">{!item.objSystem.Property__r.Name}</a>
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" value="Property{!IF(sortExpression=='Property__r.Name',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList">
+					<apex:param value="Property__r.Name"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>
+		</apex:column>
+ 
+		<apex:column value="{!item.objSystem.State__c}">
+			<apex:facet name="header"> 
+				<apex:commandLink action="{!ViewData}" value="State {!IF(sortExpression=='State__c',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList" style="width:100px; margin-right:5px;">
+					<apex:param value="State__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet> 
+		</apex:column>
+ 
+		<apex:column > 
+			<a href="/{!item.objSystem.Quoted_System_Design__r.System_Design__r.Id}" class="nowrap">{!item.objSystem.Quoted_System_Design__r.System_Design__r.Name}</a>
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" rerender="RecordList">
+					<apex:outputText escape="false" value="Quoted<br/>System<br/>Design{!IF(sortExpression=='Quoted_System_Design__r.Name',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<apex:param value="Quoted_System_Design__r.Name"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>
+		</apex:column>
+	 
+		<apex:column >
+			<a href="/{!item.objSystem.Sales_Order__r.id}" class="nowrap" title="{!HTMLENCODE(item.objSystem.Sales_Order__r.Name)}" style="display:block;width:90px;overflow:hidden;text-overflow:ellipsis;">{!item.objSystem.Sales_Order__r.Name}</a> 
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" rerender="RecordList">
+					<apex:outputText escape="false" value="Sales<br/>Order{!IF(sortExpression=='Sales_Order__r.Name',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<apex:param value="Sales_Order__r.Name"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>
+		</apex:column>
+ 
+	 	<apex:column > 
+			<a href="/{!item.objSystem.id}" class="nowrap">{!item.objSystem.name}</a>
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" rerender="RecordList">
+					<apex:outputText escape="false" value="Installed<br/>System{!IF(sortExpression=='Name',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+	                <apex:param value="Name"  assignTo="{!sortExpression}" ></apex:param>
+	                <apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+	            </apex:commandLink>
+			</apex:facet>  
+		</apex:column>
+ 
+		<!-- <apex:column value="{!item.objSystem.Installation_Date__c}">
+			<apex:facet name="header"> 
+				<apex:commandLink action="{!ViewData}" value="Installation Date {!IF(sortExpression=='Installation_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList">
+					<apex:param value="Installation_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet> 
+		</apex:column> 
+  
+		<apex:column value="{!item.objSystem.Interconnection_Date__c}">
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" value="Interconnection Date{!IF(sortExpression=='Interconnection_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList">
+					<apex:param value="Interconnection_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>  
+		</apex:column> -->
+   
+		<apex:column value="{!item.objSystem.Generation_Start_Date__c}">
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" value="Start Date{!IF(sortExpression=='Generation_Start_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList">
+					<apex:param value="Generation_Start_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>  
+		</apex:column> 
+   
+		<apex:column >
+			<apex:outputPanel layout="block" style="width:150px;">
+				<apex:outputText value="{!item.objSystem.System_Makeup__c}"/>
+			</apex:outputPanel> 
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" value="System Makeup{!IF(sortExpression=='System_Makeup__c',IF(sortDirection='ASC','▼','▲'),'')}" rerender="RecordList">
+					<apex:param value="System_Makeup__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet> 
+		</apex:column> 
+    
+		<apex:column value="{!item.objSystem.Number_of_Panels__c}" style="text-align:right; padding-right:10px;" headerClass="header-right"> 
+			<apex:facet name="header" >
+				<apex:outputPanel layout="block" style="padding-right:10px;">
+					<apex:commandLink action="{!ViewData}" rerender="RecordList">
+						<apex:outputText escape="false" value="Number<br/>of<br/>Panels{!IF(sortExpression=='Number_of_Panels__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+						<apex:param value="Number_of_Panels__c"  assignTo="{!sortExpression}" ></apex:param>
+						<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+					</apex:commandLink>
+				</apex:outputPanel>
+			</apex:facet> 
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,000}" style="padding-right:7px;">
+					<apex:param value="{!totalpanels}"/>
+				</apex:outputText> 
+			</apex:facet>     
+		</apex:column> 
+   
+		<apex:column value="{!item.objSystem.Lease_Purchase__c}" > 
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" rerender="RecordList">
+					<apex:outputText escape="false" value="Lease /<br/>Purchase{!IF(sortExpression=='Lease_Purchase__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<apex:param value="Lease_Purchase__c" assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>  
+		</apex:column> 
+
+		<apex:column > 
+			<apex:outputPanel layout="block" style="width:110px;">
+				<apex:outputText value="{!item.objSystem.Lease_Financing_Type__c}"/>
+			</apex:outputPanel> 
+			<apex:facet name="header">
+				<apex:commandLink action="{!ViewData}" rerender="RecordList">
+					<apex:outputText escape="false" value="Lease /<br/>Financing Type{!IF(sortExpression=='Lease_Financing_Type__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<apex:param value="Lease_Financing_Type__c" assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="outer" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink>
+			</apex:facet>  
+		</apex:column> 
+  
+		<apex:column style="text-align:right;" headerClass="header-right">
+			<apex:outputText value="{0,number,#,##0} kWh/yr">
+				<apex:param value="{!item.Annl_Prod_Grnt}"/>
+			</apex:outputText> 
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList"> -->
+					<apex:outputText value="Guarantee{!IF(sortExpression=='Annual_Production_Guarantee__c',IF(sortDirection='ASC','▼','▲'),'')}"/>
+					<!-- <apex:param value="Annual_Production_Guarantee__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet> 
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,##0} kWh/yr">
+					<apex:param value="{!summaryWrapper.Annl_Prod_Grnt}"/>
+				</apex:outputText> 
+			</apex:facet> 
+		</apex:column> 
+   
+		<apex:column style="text-align:right;" headerClass="header-right">
+			<apex:outputText value="{0,number,#,##0} kWh">
+				<apex:param value="{!item.Annl_Prod_Grnt_To_Date}"/>
+			</apex:outputText> 
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList" > -->
+					<apex:outputText escape="false" value="Guarantee<br/>To Date{!IF(sortExpression=='Annual_Production_Guarantee_To_Date_kWh__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<!-- <apex:param value="Annual_Production_Guarantee_To_Date_kWh__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet>
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,##0} kWh">
+					<apex:param value="{!summaryWrapper.Annl_Prod_Grnt_To_Date}"/>
+				</apex:outputText> 
+			</apex:facet>    
+		</apex:column> 
+  
+		<apex:column style="text-align:right;" headerClass="header-right">
+			<apex:outputText value="{0,number,#,##0} kWh">
+				<apex:param value="{!item.Annl_Prod_To_Date}"/>
+			</apex:outputText> 
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList"> -->
+					<apex:outputText escape="false" value="Production<br/>To Date{!IF(sortExpression=='Annual_Production_To_Date_kWh__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<!-- <apex:param value="Annual_Production_To_Date_kWh__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet>  
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,##0} kWh">
+					<apex:param value="{!summaryWrapper.Annl_Prod_To_Date}"/>
+				</apex:outputText> 
+			</apex:facet>  
+		</apex:column> 
+   
+		<apex:column value="{!ROUND(item.Grnt_vs_Actl_Prod,1)} %" style="background:{!IF(item.Grnt_vs_Actl_Prod < 100.0,'#EF4839','')};text-align:right;" headerClass="header-right">
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList"> -->
+					<apex:outputText escape="false" value="Guarantee<br/>vs Actual<br/>To Date{!IF(sortExpression=='Annual_Guarantee_vs_Actual_Prod_To_Date__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<!-- <apex:param value="Annual_Guarantee_vs_Actual_Prod_To_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet>
+			<!-- 
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,##0.0} %" style="background:{!IF(summaryWrapper.Grnt_vs_Actl_Prod < 100.0,'#EF4839','')};">
+					<apex:param value="{!summaryWrapper.Grnt_vs_Actl_Prod}"/>
+				</apex:outputText> 
+			</apex:facet>
+			-->     
+		</apex:column> 
+   
+		<apex:column value="{!item.exp_srec_to_date}" style="text-align:right;" headerClass="header-right">
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList" > -->
+					<apex:outputText escape="false" value="SRECs<br/>Expected{!IF(sortExpression=='Expected_SRECs_To_Date__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<!-- <apex:param value="Expected_SRECs_To_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet>  
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,##0}">
+					<apex:param value="{!summaryWrapper.exp_srec_to_date}"/>
+				</apex:outputText> 
+			</apex:facet> 
+		</apex:column> 
+    
+		<apex:column value="{!item.annl_srec_to_date}" style="text-align:right;" headerClass="header-right">
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList"> -->
+					<apex:outputText escape="false" value="SRECs<br/>Produced{!IF(sortExpression=='Annual_SRECs_To_Date__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<!-- <apex:param value="Annual_SRECs_To_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet> 
+			<apex:facet name="footer">
+				<apex:outputText value="{0,number,#,##0}">
+					<apex:param value="{!summaryWrapper.annl_srec_to_date}"/>
+				</apex:outputText> 
+			</apex:facet> 
+		</apex:column> 
+   
+		<apex:column value="{!item.proj_vs_actl_srec}" style="background:{!IF(item.proj_vs_actl_srec < 0.0,'#EF4839','')};text-align:right;" headerClass="header-right">
+			<apex:facet name="header">
+				<!-- <apex:commandLink action="{!ViewData}" rerender="RecordList"> -->
+					<apex:outputText escape="false" value="Expected<br/>vs Actual<br/>SRECs{!IF(sortExpression=='Projected_vs_Actual_SRECs_To_Date__c',IF(sortDirection='ASC','&#x25BC;','&#x25B2'),'')}"/>
+					<!-- <apex:param value="Projected_vs_Actual_SRECs_To_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					<apex:param value="inner" assignTo="{!queryType}" ></apex:param> 
+				</apex:commandLink> -->
+			</apex:facet>
+			<!--  
+			<apex:facet name="footer" >
+				<apex:outputText value="{0,number,#,##0}" style="background:{!IF(summaryWrapper.proj_vs_actl_srec < 0.0,'#EF4839','')};">
+					<apex:param value="{!summaryWrapper.proj_vs_actl_srec}"/>
+				</apex:outputText> 
+			</apex:facet>
+			-->  
+		</apex:column> 
+   
+		<!-- footer for summary row--> 
+		<apex:facet name="header">
+			<apex:outputPanel id="pagingBlock" layout="block" style="text-align: left;">
+				<apex:outputText value="Total Records: {0,number,#,##0}" style="margin-right: 10px;font-weight:normal;">
+					<apex:param value="{!setCon.resultSize}"/>
+				</apex:outputText>
+				<apex:outputLabel value="Page: "/>
+				<apex:repeat value="{!pageList}" var="pageNum" rendered="{!totalPages>1}">
+					<apex:outputPanel styleClass="{!IF(pageNum=setCon.pageNumber,'page-number-block-active','page-number-block')}" onclick="setPage({!pageNum},'outer')">
+						<apex:outputText value="{!TEXT(pageNum)}"/>
+					</apex:outputPanel>
+				</apex:repeat>
+				<apex:actionStatus id="pageStatus">
+					<apex:facet name="start">
+						<apex:image value="{!URLFOR($Resource.AjaxLoader)}" style="margin-left: 10px;"/>
+					</apex:facet>
+				</apex:actionStatus> 
+			</apex:outputPanel>
+		</apex:facet>
+  
+	</apex:pageBlockTable>
+
+<apex:actionFunction name="setPage" action="{!changePage}" rerender="RecordList" status="sysTbl:pageStatus">
+	<apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+	<apex:param name="queryType" value="" assignTo="{!queryType}"></apex:param>
+</apex:actionFunction>  
+
+</apex:pageBlock>
+</apex:outputPanel>
+
+</apex:form>
+</apex:page>

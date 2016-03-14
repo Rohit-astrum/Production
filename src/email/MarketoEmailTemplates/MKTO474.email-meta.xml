@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Taxes 2015.Taxes 2015 NY Lease</name>
+    <style>none</style>
+    <subject>Important Tax Information</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com]]&gt;
+
+A Special Message for our Valued Customers
+
+IMPORTANT TAX INFORMATION
+
+Dear {{lead.First Name:default=Friend}},
+
+We hope you are enjoying the benefits of your new solar system. Be sure to take advantage of New York state incentives to maximize the return on your investment.
+
+New York residents may claim a state personal income tax credit equal to 25% of the full cost of installing a solar system, up to $5,000. The New York personal income tax credit is also available to customers who are leasing their systems from a third party owner. Lease customers may claim a tax credit up to the total amount of payments they make during the taxable year for up to 15 years.
+
+To claim the New York personal income tax credit, you must submit Form IT-255 with your state tax return which can be found here &lt;[[https://www.tax.ny.gov/pdf/current_forms/it/it255_fill_in.pdf]]&gt;.
+
+If you have additional questions about your personal tax situation, we recommend that you contact a tax professional. If you have any other inquiries about your system, please do not hesitate to contact the Customer Relationship Team directly, at 1-888-603-6085 or customeradvisors@directenergysolar.com &lt;[[mailto:customeradvisors@directenergysolar.com]]&gt;.
+
+Thank you once more for choosing to go solar with Direct Energy Solar.
+
+Best Regards,
+
+Diane Benedetti
+ Senior Manager, Customer Relationships
+
+Customer Care:
+Contact Us: 888-603-6085
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you are a Direct Energy Solar customer.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;[[http://www.directenergysolar.com/privacy-policy]]&gt;
+
+Terms &amp; Conditions
+&lt;[[http://www.directenergysolar.com/terms-and-conditions]]&gt;
+
+DirectEnergySolar.com
+&lt;[[http://www.directenergysolar.com]]&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

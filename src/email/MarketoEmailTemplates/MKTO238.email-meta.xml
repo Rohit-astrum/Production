@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>New Partners 070815.How to market your solar business (3)</name>
+    <style>none</style>
+    <subject>How to market your solar business</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+A Special Message from Our Partner Program
+Dear {{lead.First Name:default=Friend}},
+
+Direct Energy Solar is excited to have you on board as a partner – welcome to our program! As a new Direct Energy Referral Partner, here are some helpful tips to make your referral program a success.
+
+Engage your team
+
+You don’t have to be a solar expert to make this program a success, but it helps to ensure your team understands the basics. Help them understand the nuts and bolts about how solar works and what the value of solar is to the homeowner. Also share how they can get paid simply for providing referrals! Set a goal for each team member or offer a contest for a certain number of referrals.
+
+Reach your customers
+
+Reach out to your current customer base and let them know you have recently joined Direct Energy Solar as a Referral Partner and can help them go solar with one of the largest and reputable companies in the industry. As a part of the Direct Energy family, you can help them take advantage of our great monthly promotions &lt;http://www.directenergysolar.com&gt;. What a great way to open up a conversation about solar with an additional offer to motivate your customers.
+
+Make your solar offer visible
+
+Add &lt;http://partners.directenergysolar.com/&gt; the Direct Energy Solar logo to your website and let your customers know your company is an official solar partner for Direct Energy Solar. If you have a physical location that customers visit, ask us how we can help you add signage to ensure customers are aware of the program when they stop by. If you visit customer homes, we can also provide you with materials to leave behind so they can review them. When you refer someone to Direct Energy Solar, you can do so with pride, knowing that we will treat your customers with the same level of care that you would.
+
+Share information
+
+Another way to expand your reach and build awareness for your business is with social media. Do you have Facebook account? Like Us! We shed light on the power of solar by engaging, informing and entertaining our online community and we encourage you to do the same. Share your online presence details with us and we can help amplify your business presence in your community.
+
+Our relationship with you extends beyond referrals and we’ll actively contribute to your social and digital presence by sharing content, participating in conversations and promoting your company throughout our social channels. Some of the ways we can do this include:
+
+
+ - Adding your business to our Direct Energy Solar Partners Pinterest Board &lt;https://www.pinterest.com/DESolar/direct-energy-solar-partners/&gt;
+ 
+- Including your business in our Direct Energy Solar Partners Twitter List &lt;https://twitter.com/DE_Solar_/lists/desolar-partners&gt;
+ 
+- Tagging your business on Instagram
+ 
+- Sharing and engaging with your business on Facebook
+ 
+- Highlighting your business in a blog post
+
+
+I look forward to working with you and willing to discuss any collaborative campaign ideas you may have.
+
+Suzanne
+Senior Manager, Field Marketing
+ 240-278-8616
+ suzanne.borneman@directenergysolar.com &lt;mailto:suzanne.borneman@directenergysolar.com&gt;
+
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

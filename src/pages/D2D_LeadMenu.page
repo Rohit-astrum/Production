@@ -1,0 +1,143 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_LeadMenuController" applyHtmlTag="false" applyBodyTag="false">
+<apex:composition template="D2D_SiteTemplate">  
+
+    <apex:define name="head-top"> 
+        <meta name='description' content='D2D - Lead Menu' />
+        <title>D2D - Lead Menu</title>
+        <script>
+           $j = jQuery.noConflict();
+
+            function refresh() {
+                $j('textarea').textinput().trigger("create");
+            }
+        </script>
+    </apex:define>
+    
+    <apex:define name="head-bottom">
+    </apex:define>
+    
+    <apex:define name="navigation">
+            <c:D2D_AccountInfo />
+    </apex:define>
+    
+    <apex:define name="header-btns">
+        <!-- <div class="headerBtns leadMenuHeaderBtns">
+            <div class="headerBtnsLeft">
+            <h1><span class="unbold">Lead: </span><span class="leadName">{!referral.Full_Name__c}</span></h1>
+            </div>
+            <div class="headerBtnsRight">
+                <a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-th fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+            </div>
+            <div class="ClearAll"></div>
+        </div>-->
+        <div class="headerBtns leadMenuHeaderBtns">
+        <div class="referralHeader">
+                <div class="headerBtnsLead">
+                    <h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+                </div>
+                <div class="headerBtnsLeft">
+                    <h1><i class="fa fa-th fa-1x fa-pageicon"></i> Lead Menu</h1>
+                </div><div class="headerBtnsRight">
+                    <a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+                </div>
+                <div class="ClearAll"></div>
+            </div>
+            </div>
+    </apex:define>
+        
+    <apex:define name="content">
+        <!-- Referral Id: <apex:outputText value="{!referralId}"/> -->
+        <div id="Content">
+            <div class="container">
+                <apex:form >
+                	<div class="LeadMenuButtons">
+	                    <div class="LeadMenuLeft">
+	                        <div class="LeadMenuBtnRow">
+	                            <div class="LeadMenuLabel">Lead Profile</div>
+	                            <div class="LeadBtn LeadBtn-{!leadInformationState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_LeadInformation?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(leadInformationState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-green ui-corner-all"><i class="fa fa-user fa-lg"></i>Lead Information</a>
+	                            </div><div class="LeadBtn LeadBtn-{!propertyPhotosState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_PropertyPhotos?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(propertyPhotosState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-green ui-corner-all"><i class="fa fa-user fa-lg"></i>Property Photos</a>
+	                            </div><div class="LeadBtn LeadBtn-{!creditCheckState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_CreditCheck?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(creditCheckState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-green ui-corner-all"><i class="fa fa-user fa-lg"></i>Credit Check</a>
+	                            </div>
+	                        </div>
+	                        <div class="LeadMenuBtnRow">
+	                            <div class="LeadMenuLabel">Documents</div>
+	                            <div class="LeadBtn LeadBtn-{!ssgState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_SolarSavingsGuidePreview?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(ssgState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-orange ui-corner-all"><i class="fa fa-file fa-lg"></i>Solar Savings Guide</a>
+	                            </div><div class="LeadBtn LeadBtn-{!proposalState}">
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div> 
+	                                <a href="D2D_ProposalPreview?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(proposalState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-orange ui-corner-all"><i class="fa fa-file fa-lg"></i>Proposal</a>
+	                            </div><div class="LeadBtn LeadBtn-{!contractState}">
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div> 
+	                                <a href="D2D_ContractPreview?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(contractState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-orange ui-corner-all"><i class="fa fa-file fa-lg"></i>Contract</a>
+	                            </div><div class="LeadBtn LeadBtn-enabled" style="{!IF(referral.D2D_Lead_Status__c='Signing In Process', '', 'display:none;')}">
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div> 
+	                                <a href="D2D_ContractUpload?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-orange ui-corner-all"><i class="fa fa-file fa-lg"></i>Upload Contract</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="LeadMenuRight">
+	                        <div class="LeadMenuBtnRow">
+	                            <div class="LeadMenuLabel">Visit History &amp; Scheduling</div>
+	                            <div class="LeadBtn LeadBtn-{!recordVisitState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_RecordVisit?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(recordVisitState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-blue ui-corner-all"><i class="fa fa-calendar fa-lg"></i>Record a Visit</a>
+	                            </div><div class="LeadBtn LeadBtn-{!scheduledVisitsState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_LeadScheduledVisits?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(scheduledVisitsState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-blue ui-corner-all"><i class="fa fa-calendar fa-lg"></i>Schedule Follow-Up Visit</a>
+	                            </div>
+	                        </div>
+	                        <div class="LeadMenuBtnRow">
+	                            <div class="LeadMenuLabel">Not Interested</div>
+	                            <div class="LeadBtn LeadBtn-{!optOutState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_OptOut?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(optOutState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-grey ui-corner-all"><i class="fa fa-thumbs-down fa-lg"></i>Opt Out</a>
+	                            </div>
+	                            <div class="LeadBtn LeadBtn-{!declineContractState}"> 
+	                                <div class="leadBtnCheck"><i class="fa fa-check-circle"></i></div>
+	                                <a href="D2D_ContractDecline?id={!referral.Id}"  target="_self"  data-ajax="false" onclick="displayLoader('Opening...');" class="{!IF(declineContractState == 'disabled', 'ui-state-disabled', '')} ui-btn ui-btn-leadmenu ui-btn-inline ui-btn-grey ui-corner-all"><i class="fa fa-thumbs-down fa-lg"></i>Decline Contract</a>
+	                            </div>
+	                        </div>
+	                    </div>
+                		<div class="ClearAll"></div>
+                    </div>
+                    <div class="LeadMenuNotes">
+	                    <div class="LeadMenuLeft">
+	                        <div class="LeadMenuBtnRow">
+	                            <div class="LeadMenuLabel">General Visit Notes</div>
+	                            <apex:outputPanel layout="block" id="notes">
+	                                <apex:inputTextarea value="{!newNotes}"/>
+	                                <!--<a href="#" style="float:right;" class="ui-btn ui-btn-inline ui-icon-btn ui-corner-all" onclick="displayLoader('Saving notes...');saveNotes();return false;"><i class="fa fa-save fa-lg fa-inverse fa-greenbg"></i>Save</a> -->
+	                                <a href="#" class="ui-btn ui-btn-large ui-btn-inline ui-btn-green ui-corner-all" onclick="displayLoader('Saving notes...');saveNotes();return false;"><i class="fa fa-save fa-lg fa-left"></i>Save</a>
+	                            </apex:outputPanel>
+	                            <apex:actionFunction name="saveNotes" action="{!saveNotes}" status="" reRender="notes,prevnotes" oncomplete="refresh();stopLoader();"/> 
+	                        </div>
+	                    </div>
+	                    <div class="LeadMenuRight">
+	                        <div class="LeadMenuBtnRow">
+	                            <div class="LeadMenuLabel">Previous Notes</div>
+	                            <apex:outputPanel layout="block" id="prevnotes">
+		                            <apex:outputPanel rendered="{!(previousNotes != '')}" >
+								    <div class="LeadMenuPrevNotes">
+		                                <apex:outputText value="{!previousNotes}" escape="false"/>
+		                           	</div>
+		                           	</apex:outputPanel>
+		                            <apex:outputPanel rendered="{!(previousNotes == '')}" >
+								    <div class="LeadMenuNoPrevNotes">No previous notes have been entered.</div>
+									</apex:outputPanel>
+	                            </apex:outputPanel>
+	                        </div>
+	                    </div>
+                    </div>
+                </apex:form> 
+            </div>
+        </div>
+    </apex:define>
+</apex:composition>
+</apex:page>

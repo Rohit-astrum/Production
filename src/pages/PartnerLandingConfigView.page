@@ -1,0 +1,73 @@
+<apex:page standardController="Partner_Landing_Page__c" extensions="PartnerLandingConfigExtension" title="{!$ObjectType.Partner_Landing_Page__c.Label}: {Partner_Landing_Page__c.Name}">
+
+    <style type="text/css">
+        .preview {
+            width:1024px;
+            height:1100px;
+            -webkit-transform:scale(0.5);
+            -webkit-transform-origin:0 0;
+            -ms-transform: scale(0.5);
+            -ms-transform-origin-x: 0%;
+            -ms-transform-origin-y: 0%;
+            -moz-transform:scale(0.5);
+            -moz-transform-origin:0 0;
+        }
+    </style>
+    
+    <apex:sectionHeader title="{!$ObjectType.Partner_Landing_Page__c.Label}" subtitle="{!Partner_Landing_Page__c.Name}"/>
+    
+    <apex:pageBlock title="{!$ObjectType.Partner_Landing_Page__c.Label} Detail" mode="mainDetail">
+    
+        <apex:pageBlockButtons >
+            <apex:form >
+                <apex:commandButton value="Edit" action="{!edit}"/>
+                <apex:commandButton value="Delete" action="{!delete}"/>
+            </apex:form>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection collapsible="false">
+            <apex:outputField value="{!Partner_Landing_Page__c.Name}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Portal_Site__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Partner_Account__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Active__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Contact__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Link__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Partner_Display_Name__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Show_Referred_By__c}"/>
+            <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(logoAttachment))}">
+                <apex:outputLabel value="Partner Logo"/>
+                <apex:image value="{!URLFOR($Action.Attachment.Download, logoAttachment.Id, [ts=Partner_Landing_Page__c.LastModifiedDate.time])}" style="max-width:275px;max-height:275px;"/>
+            </apex:pageBlockSectionItem>
+            <apex:outputText value=" " rendered="{!ISNULL(logoAttachment)}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Logo_Tagline__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Page_Headline__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Page_Template__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Site_Url__c}"/>
+        </apex:pageBlockSection>
+        
+         <apex:pageBlockSection collapsible="false" columns="2" title="Page Configurations">
+            <apex:outputField value="{!Partner_Landing_Page__c.Promo_Text__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Marketing_Content__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Program_Disclaimer__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Promo_Disclaimer__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Disclaimer_Content__c}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.Contract_Numbers__c}"/>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection collapsible="false">
+            <apex:outputField value="{!Partner_Landing_Page__c.CreatedById}"/>
+            <apex:outputField value="{!Partner_Landing_Page__c.LastModifiedById}"/>
+        </apex:pageBlockSection>
+    
+    </apex:pageBlock>
+    
+    <apex:pageBlock title="Preview">
+        <div style="text-align:center;display:inline-block;margin-right:20px;padding:5px;width:512px;height:550px;overflow:hidden;position:relative;">
+            <iframe class="preview" src="{!Partner_Landing_Page__c.Portal_Url__c}{!Partner_Landing_Page__c.Site_Url__c}?ts={!Partner_Landing_Page__c.LastModifiedDate.time}" scrolling="no" seamless="seamless" frameborder="0"></iframe>
+            <div style="position:absolute; top:0px; left:0px; width:512px; height:550px;background-color:transparent;" onclick="return false;">&nbsp;</div>
+        </div>
+    </apex:pageBlock>
+    
+    <apex:outputText value="{!timestamp}" style="display:none;"/>
+
+</apex:page>

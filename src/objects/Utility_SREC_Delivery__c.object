@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Delivery of SRECs on a Utility SREC Contract</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Compliance_Year__c</fullName>
+        <description>Compliance Year</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Compliance Year</inlineHelpText>
+        <label>Compliance Year</label>
+        <length>4</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Price_per_SREC__c</fullName>
+        <description>Contract Price per SREC in $/SREC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract Price per SREC in $/SREC</inlineHelpText>
+        <label>Contract Price per SREC ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Date_Paid__c</fullName>
+        <description>Date Astrum Solar was paid for SREC Delivery</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Astrum Solar was paid for SREC Delivery</inlineHelpText>
+        <label>Date Paid</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Delivered__c</fullName>
+        <description>Has the Transfer Been Initiated?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Transfer_Initiation_Date__c ),&apos;NO&apos;,&apos;YES&apos;)</formula>
+        <inlineHelpText>Has the Transfer Been Initiated?</inlineHelpText>
+        <label>Delivered</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gross_Revenue__c</fullName>
+        <description>Gross Revenue from SREC Delivery</description>
+        <externalId>false</externalId>
+        <formula>Quantity_of_SRECs__c * Contract_Price_per_SREC__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Gross Revenue from SREC Delivery</inlineHelpText>
+        <label>Gross Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Net_Revenue__c</fullName>
+        <description>Revenue Net of Broker&apos;s Commission</description>
+        <externalId>false</externalId>
+        <formula>Gross_Revenue__c -( Quantity_of_SRECs__c * Utility_SREC_Contract__r.Brokerage_Commission__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Revenue Net of Broker&apos;s Commission</inlineHelpText>
+        <label>Net Revenue ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Profit_Loss__c</fullName>
+        <description>Profit or Loss From SREC Delivery</description>
+        <externalId>false</externalId>
+        <formula>Net_Revenue__c - Total_Cost__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Profit or Loss From SREC Delivery</inlineHelpText>
+        <label>Profit/Loss</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quantity_of_SRECs__c</fullName>
+        <description>Number of SRECs in Delivery</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of SRECs in Delivery</inlineHelpText>
+        <label>Quantity of SRECs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Required_Delivery_Date__c</fullName>
+        <description>Date by which SREC Delivery Must Be Delivered</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date by which SREC Delivery Must Be Delivered</inlineHelpText>
+        <label>Required Delivery Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Total_Cost__c</fullName>
+        <description>Total Cost of SRECs in Delivery</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Cost of SRECs in Delivery</inlineHelpText>
+        <label>Total Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Transfer_Confirmation_Date__c</fullName>
+        <description>SREC Delivery Transfer Confirmation Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Delivery Transfer Confirmation Date</inlineHelpText>
+        <label>Transfer Confirmation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Transfer_Initiation_Date__c</fullName>
+        <description>Date SREC Transfer is Initiated</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date SREC Transfer is Initiated</inlineHelpText>
+        <label>Transfer Initiation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Transferee__c</fullName>
+        <description>Name of Entity in PJM to which SREC transferred</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Entity in PJM to which SREC transferred</inlineHelpText>
+        <label>Transferee</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_SREC_Contract__c</fullName>
+        <description>Utility SREC Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Utility SREC Contract</inlineHelpText>
+        <label>Utility SREC Contract</label>
+        <referenceTo>Utility_SREC_Contract__c</referenceTo>
+        <relationshipLabel>Utility SREC Delieveries</relationshipLabel>
+        <relationshipName>Utility_SREC_Delieveries</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Utility SREC Delivery</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Delivered__c</columns>
+        <columns>Compliance_Year__c</columns>
+        <columns>Transferee__c</columns>
+        <columns>Utility_SREC_Contract__c</columns>
+        <columns>Transfer_Initiation_Date__c</columns>
+        <columns>Transfer_Confirmation_Date__c</columns>
+        <columns>Quantity_of_SRECs__c</columns>
+        <columns>Required_Delivery_Date__c</columns>
+        <columns>Date_Paid__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>SREC-DELIVERY-{0000000000}</displayFormat>
+        <label>Delivery Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Utility SREC Deliveries</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

@@ -1,0 +1,89 @@
+<apex:page contentType="application/javascript" cache="false" expires="0" >
+/* FILE: CPQpreview_app.js
+ * AUTHOR: Larry Hovind
+ * DATE: Jan 16, 2015
+ * PURPOSE: AngularJS logic for CPQ Proposal Preview visualforce page
+ * MODIFICATION HISTORY
+ */
+//<script>
+'use strict';
+
+
+var cpqApp = angular.module('cpqApp', ['SFRM']);
+
+cpqApp.config(function($locationProvider){
+	$locationProvider.html5Mode(true);
+});
+
+cpqApp.run(function(CPQ, $location){
+
+	// set Visualforce timeout value
+	Visualforce.remoting.timeout = 120000;
+	
+	// parse the URL for entry point
+	if( $location.search().id !== undefined) {
+		CPQ.get('proposal',$location.search().id, true);
+	}
+	
+});
+
+cpqApp.controller('ProposalsCtrl', ['$scope', 'CPQ', function($scope, CPQ){
+
+	$scope.modalShown = false;
+	$scope.CPQ = CPQ;
+	
+	
+	$scope.onClose = function() {
+		//alert("The Close button was pressed.");
+		$scope.modalShown = false;
+		$scope.CPQ.get('sd', $scope.CPQ.sd._props.Id);
+	};
+	
+	$scope.ProposalChng = function() {
+		//alert("System Design Edit has been clicked.");
+		$scope.modalShown = !$scope.modalShown;
+	};
+
+	$scope.loadProposal = function(id) {
+		// pop up dialog to confirm switching current
+		$scope.modalShown = true;
+
+		// call remote action to make current
+		//var res = CPQcontroller.makeSDQcurrent(id);
+		//if( res === 'OK' ) {
+		//		get SD, which should trigger new SDQ load
+		//} else {
+		//		display error message
+		//}
+
+		//$scope.CPQ.get('sdq', id);
+	};
+	
+}]);
+
+cpqApp.controller('ProposalChng', ['$scope', function($scope) {
+
+	$scope.onClose = function() {
+		console.log("Close clicked");
+		$scope.modalShown = false;
+	};
+	
+}]);
+
+cpqApp.controller('ProposalCtrl', ['$scope', '$window', '$sce', 'CPQ', function($scope, $window, $sce, CPQ){
+
+	$scope.modalShown = false;
+	$scope.CPQ = CPQ;
+	
+	$scope.proposalURL = function() {
+		if( CPQ.proposal._props.Id ) {
+			return $sce.trustAsResourceUrl("/apex/CPQProposal?id=" + CPQ.proposal._props.Id);
+		} else {
+			return '';
+		}
+	};
+	
+}]);
+
+//</script>
+</apex:page>

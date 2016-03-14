@@ -1,0 +1,10 @@
+<!-- 
+   FILE: CPFCreditRequest
+ * AUTHOR: Rohit Jain
+ * DATE: May 08, 2014
+ * PURPOSE: Initiate Credit Request on CPF
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="Opportunity" extensions="CPFRequestCreditController" action="{!initiateCreditCheck}">
+	
+</apex:page>

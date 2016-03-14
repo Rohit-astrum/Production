@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Astrum_Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Astrum Contract</label>
+        <referenceTo>Astrum_Contract__c</referenceTo>
+        <relationshipLabel>Applied SREC Contract Offers</relationshipLabel>
+        <relationshipName>Applied_SREC_Contract_Offers</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Length_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Length (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Offer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Default Offer</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>SREC_Contract_Offer__r.End_Date__c</formula>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Offer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SREC Contract Offer</label>
+        <referenceTo>SREC_Contract_Offer__c</referenceTo>
+        <relationshipLabel>Applied SREC Contract Offers</relationshipLabel>
+        <relationshipName>Applied_SREC_Contract_Offers</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Market__c</fullName>
+        <externalId>false</externalId>
+        <formula>SREC_Contract_Offer__r.SREC_Market__r.Name</formula>
+        <label>SREC Market</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Applied SREC Contract Offers</relationshipLabel>
+        <relationshipName>Applied_SREC_Contract_Offers</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>SREC_Contract_Offer__r.Start_Date__c</formula>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Upfront_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Upfront Amount ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Upfront_Effective_Dollar_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Upfront Effective Dollar Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Yearly_Amount_SREC__c</fullName>
+        <externalId>false</externalId>
+        <label>Yearly Amount ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Yearly_Amount_of_ACP__c</fullName>
+        <externalId>false</externalId>
+        <label>Yearly Amount (% of ACP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>Applied SREC Contract Offer</label>
+    <nameField>
+        <label>Applied SREC Contract Offer Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Applied SREC Contract Offers</pluralLabel>
+    <recordTypes>
+        <fullName>Brokerage</fullName>
+        <active>true</active>
+        <label>Brokerage</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Monthly</fullName>
+        <active>true</active>
+        <label>Monthly</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Upfront</fullName>
+        <active>true</active>
+        <label>Upfront</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Upfront_Cash_Back</fullName>
+        <active>true</active>
+        <label>Upfront Cash Back</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Yearly</fullName>
+        <active>true</active>
+        <label>Yearly</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

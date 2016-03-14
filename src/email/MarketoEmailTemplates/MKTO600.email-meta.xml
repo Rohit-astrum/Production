@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lunch and Learn 2/16/16.Lunch and Learn 500 Discount 3/11/16: Lunch is on us. Re</name>
+    <style>none</style>
+    <subject>Lunch is on us. Reserve your solar seminar today.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Who Says There’s No Such Thing as a Free Lunch?
+
+Dear {{lead.First Name:default=Friend}},
+
+We’re Direct Energy Solar, one of the largest solar energy companies in the nation. We’re offering to visit your location and conduct a FREE Lunch-and-Learn Solar Seminar to your employees to show them how they can use solar energy’s potential to save money on their annual home energy expenses.
+
+Here’s what we’ll cover:
+ • Determining if a home is good for solar
+• Evaluating installers
+• Selecting system design options
+• Choosing between purchase, lease or financing
+• Tapping into federal, state and local purchase incentives 
+• Calculating annual energy cost savings
+• Making a positive impact on the environment
+
+Special lunch-and-learn incentive package when ten or more employees attend!
+• Complimentary lunch for each employee who attends
+• $500 discount(1) on a solar system for each employee who attends
+• Break room flyer to promote the lunch and learn
+• Email template to invite your employees 
+• Easy-to-use RSVP web page customized for your business
+
+Reserve Your Company’s Lunch-and-Learn Date Today!
+&lt;[[http://pages.directenergysolar.com/solar-lunch-and-learn-reservation?utm_medium=email&amp;utm_source=llemail&amp;utm_campaign=lunchandlearn&amp;utm_content=llemailv3]]&gt;
+
+QUESTIONS? Contact Lindsey Williams:
+Phone: 443-239-9809
+Email: lindsey.williams@directenergysolar.com  &lt;[[mailto:lindsey.williams@directenergysolar.com]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you may be interested in using solar to save money on your annual home energy expenses.
+
+(1)Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar after attending a Lunch-and-Learn Seminar. No extensions will be granted. For customers who purchase their system, they will receive a $500 discount off the contract price at the time of their purchase. For lease customers, $500 discount can be applied as a down payment to reduce their monthly solar fees. Minimum system size is 4 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household. 
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Direct Energy. All Rights Reserved.
+
+Privacy Policy
+&lt;[[http://www.directenergysolar.com/privacy-policy]]&gt;
+
+Terms &amp; Conditions
+&lt;[[http://www.directenergysolar.com/terms-and-conditions]]&gt;
+
+DirectEnergySolar.com
+&lt;[[http://www.directenergysolar.com]]&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

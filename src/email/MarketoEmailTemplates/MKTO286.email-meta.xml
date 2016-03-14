@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>GoshenWarwick 090815.Solarize Goshen Warwick 090815</name>
+    <style>none</style>
+    <subject>Solarize Goshen-Warwick is half over. Sign today!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Solarize Goshen-Warwick
+ &lt;http://nysun.force.com/Goshen-Warwick&gt;
+Dear {{lead.First Name:default=Friend}},
+
+Solarize Goshen-Warwick is already half over. 
+
+Don&apos;t miss your opportunity to qualify for free installation and exclusive pricing. Sign today!
+
+Time is running out to take advantage of Solarize Goshen-Warwick, a special solar initiative run by volunteers in Orange County. Through the program, Direct Energy Solar—a pre-qualified installer—is offering a discounted price when you sign by November 16.
+
+Join your neighbors who have already turned their sunny roofs into electricity savings. Contact your Solar Consultant to schedule a time to sign or call us at 800-903-6130 to learn if solar is right for your home.
+
+The more homeowners who sign up, the more everyone will save with a pre-negotiated discount for the whole community. 
+
+Going solar is easy and rewarding.The only thing you have to lose is your electricity bill. Direct Energy Solar provides customers with a turnkey, worry-free experience. You can sit back and relax while we handle the entire process. We guarantee our production estimates and our installation times, so you will be on your way to electricity savings in no time. Plus, you get a lifetime of support for your system.
+
+But these savings won&apos;t last. Make sure you reach out to us today so you don&apos;t miss out on this limited time offer!
+
+Want to learn more before signing up?
+Join us Sunday 9/13 for an educational workshop in Warwick.
+When: Sunday, September 13
+Time: 1:00pm - 3:00pmLocation: Albert Wisner Public Library, 1 McFarland Dr., Warwick, NY
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+28 Industrial Drive
+Middletown, NY 10941
+ P: 800-903-6130
+ F: 845-853-1620
+
+©2015 Clockwork IP, LLC. All Rights Reserved. 
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

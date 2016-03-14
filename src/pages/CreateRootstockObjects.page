@@ -1,0 +1,206 @@
+<apex:page standardController="PM_Project__c" extensions="CreateRootstockExtension" action="{!checkRootstockObjects}" showHeader="false" sidebar="false">
+	
+	<!-- <apex:stylesheet value="{!$Resource.AjaxStatusStyle}" /> -->
+<style>
+#blockbckanim
+{
+	background-color:rgba(64, 64, 64, 0.25);
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	/*rgba(0, 0, 0, 0.71);*/
+	cursor: wait;
+	text-align: center;
+}
+#ovrlybox {
+	display: inline-block;
+	position: relative;
+	top: 33%;
+	background-color: #fff;
+	border: solid 2px #0097C9;
+	border-radius: 12px;
+	padding: 2em;
+}
+#stdbtns {
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: -10px;
+}
+#apimgld
+{
+	width: 20px;
+	height: 20px;
+	/*top:49%;
+	left:49%;
+	position:relative;*/
+	/*border-radius: 2px;
+	-webkit-border-radius: 2px ;
+	-moz-border-radius: 2px ;*/
+	vertical-align: middle;
+	margin-right: 20px;
+}
+</style>
+
+<script type="text/javascript" language="javascript">	
+	function ShowLoading(msg, btns) {
+		// msg - message string to display
+		// btns - array of buttons to display - btn object { label:, func: }
+		elem = document.getElementById("ovrlymsg");
+		if( (msg !== undefined) && (msg.length > 0) ) {
+			elem.innerHTML = msg;
+		} else {
+			elem.innerHTML = '';
+		}
+		if( (btns !== undefined) && Array.isArray(btns) && (btns.length > 0) ) {
+			var stdbtns = '';
+			for ( btn in btns) {
+				stdbtns += '<button type="button" value="' + btns[btn].value + '"';
+				if( btns[btn].func !== undefined ) {
+					stdbtns += ' onclick="' + btns[btn].func + '"';
+				}
+				stdbtns += '>' + btns[btn].label + '</button>';
+			};
+			document.getElementById("stdbtns").innerHTML = stdbtns;
+			document.getElementById("stdbtns").style.display = "block";
+			document.getElementById("apimgld").style.display = "none";
+		} else {
+			document.getElementById("stdbtns").style.display = "none";
+			document.getElementById("apimgld").style.display = "inline";
+		}
+		document.getElementById('blockbckanim').style.display="block";
+	}
+	function HideLoading() {
+		document.getElementById('blockbckanim').style.display="none";
+	}
+</script>
+	<apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+	<div id="blockbckanim" style="display:none">
+		<div id="ovrlybox">
+			<img id="apimgld" style="" src="/img/loading32.gif" /><span id="ovrlymsg"></span>
+			<div id="stdbtns"></div>
+		</div>
+	</div>
+
+	<apex:pageMessages />
+	<apex:form >
+		<apex:outputField value="{!PM_Project__c.Sales_Order__r.AccountId__r.Accounting_ID__c}" rendered="false" />
+		<apex:pageBlock title="Rootstock Objects Information">
+	        <apex:pageBlockButtons location="top">
+	            <apex:commandButton action="{!createRootstockObjects}" value="(Re)Create Rootstock Objects" disabled="{! NOT reCreateActive}" onclick="ShowLoading('Re-Creating Rootstock Objects ...');" />
+	            <apex:commandButton action="{!connectLostRootstockObjects}" value="Connect Lost Rootstock Objects" disabled="{! NOT reconnectActive }" />
+	            <apex:commandButton action="{!checkRootstockObjects}" value="Checking..." id="recheck" style="display: none" />
+	        </apex:pageBlockButtons>
+	        <apex:pageBlockSection >
+			    <apex:outputField value="{!PM_Project__c.Name}" />   
+			    <apex:outputField value="{!PM_Project__c.Sales_Order__c}" />   
+			    <apex:outputField value="{!PM_Project__c.Sales_Order__r.AccountId__c}" />   
+	        </apex:pageBlockSection>
+		    <apex:pageBlockSection title="Current Rootstock Objects" collapsible="false">
+			    <apex:outputField value="{!PM_Project__c.Sales_Order__r.Rootstock_Sales_Order__r.rstk__sohdr_custno__c}" />
+			    <apex:pageBlockSectionItem >
+			    	<apex:outputLabel >Customer Master (soql)</apex:outputLabel>
+			    	<apex:outputLink value="/{!raobjs.socust['Id']}">{!raobjs.socust['Name']}</apex:outputLink>
+			    </apex:pageBlockSectionItem>
+			    <apex:outputField value="{!PM_Project__c.Sales_Order__r.Rootstock_Sales_Order__c}" />
+			    <apex:pageBlockSectionItem >
+			    	<apex:outputLabel >Sales Order (soql)</apex:outputLabel>
+			    	<apex:outputPanel >
+				    	<apex:outputLink value="/{!raobjs.sohdr['Id']}">{!raobjs.sohdr['Name']}</apex:outputLink>
+				    	<apex:outputLink value="/{!raobjs.oldsohdr['Id']}" rendered="{! raobjs.oldsohdr != null }" style="color: orange;"><br />{!raobjs.oldsohdr['Name']}</apex:outputLink>
+			    	</apex:outputPanel>
+			    </apex:pageBlockSectionItem>
+			    <!-- <apex:pageBlockSectionItem>
+			    </apex:pageBlockSectionItem>
+			    <apex:pageBlockSectionItem>
+			    	<apex:outputLabel>Sales Order Extension Exists</apex:outputLabel>
+			    	<apex:outputText value="{!raobjs.sohdr_extn_exists}"></apex:outputText>
+			    </apex:pageBlockSectionItem> -->
+			    <apex:pageBlockSectionItem >
+			    </apex:pageBlockSectionItem>
+			    <apex:pageBlockSectionItem >
+			    	<apex:outputLabel >Sales Order Line (from SOHdr)</apex:outputLabel>
+			    	<apex:outputPanel >
+			    		<apex:outputLink value="/{!raobjs.soline['Id']}">{!raobjs.soline['Name']}</apex:outputLink>
+			    		<apex:outputLink value="/{!raobjs.oldsoline['Id']}" rendered="{! raobjs.oldsoline != null }" style="color: orange;"><br />{!raobjs.oldsoline['Name']}</apex:outputLink>
+			    	</apex:outputPanel>
+			    </apex:pageBlockSectionItem>
+			    <apex:outputField value="{!PM_Project__c.Sales_Order__r.Rootstock_Sales_Order__r.rstk__sohdr_proj__c}" />
+			    <apex:pageBlockSectionItem >
+			    	<apex:outputLabel >Project Master (soql)</apex:outputLabel>
+			    	<apex:outputPanel >
+			    		<apex:outputLink value="/{!raobjs.pjproj['Id']}">{!raobjs.pjproj['Name']}</apex:outputLink>
+			    		<apex:outputLink value="/{!raobjs.oldpjproj['Id']}" rendered="{! raobjs.oldpjproj != null }" style="color: orange;"><br />{!raobjs.oldpjproj['Name']}</apex:outputLink>
+			    	</apex:outputPanel>
+			    </apex:pageBlockSectionItem>
+			    <apex:outputField value="{!PM_Project__c.Work_Order__c}" />
+			    <apex:pageBlockSectionItem >
+			    	<apex:outputLabel >Work Order (from SO line)</apex:outputLabel>
+			    	<apex:outputPanel >
+				    	<!-- <apex:outputLink value="/{!raobjs.workorder['Id']}">{!raobjs.workorder['Name']}</apex:outputLink> -->
+				    	<apex:outputLink value="/{!raobjs.soline.rstk__soline_wocstordno__c}" rendered="{! raobjs.soline != null}">{!raobjs.soline.rstk__soline_wocstordno__r.Name}</apex:outputLink>
+				    	<apex:outputLink value="/{!raobjs.oldsoline.rstk__soline_wocstordno__c}" rendered="{! raobjs.oldsoline != null}" style="color: orange;"><br />{!raobjs.oldsoline.rstk__soline_wocstordno__r.Name}</apex:outputLink>
+			    	</apex:outputPanel>
+			    </apex:pageBlockSectionItem>
+			    <apex:pageBlockSectionItem >
+			    	<apex:outputLabel >Install Project ({!raobjs.ipBy})</apex:outputLabel>
+			    	<apex:outputLink value="/{!raobjs.installproj['Id']}">{!raobjs.installproj['Name']}</apex:outputLink>
+			    </apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+
+		    <apex:pageBlockSection >
+				<apex:outputLink value="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=Detail" styleClass="error-link">Return to Astrum PM 2.0 Project Detail</apex:outputLink>
+			</apex:pageBlockSection>
+	    </apex:pageBlock>
+	</apex:form>
+	<script type="text/javascript">
+
+		// convert the controller's requested buttons from JSON string to object array
+		// or set to undefined if the string is invalid JSON
+		var btnsJSON;
+		try {
+			btnsobj = JSON.parse('{!btnsJSON}');
+		}
+		catch ( err ) {
+			btnsobj = undefined;
+		}
+
+		// if we are an autoprocess, display the page and push the hidden button
+		if( {! autoprocess} ) {
+			
+			recheckTmr = setTimeout( function(){
+				clearTimeout(recheckTmr);
+				btn = document.querySelector('[id$=":recheck"]');
+				btn.click();
+			}, 2000);
+			
+			ShowLoading("{!ovrlyMsg}", btnsobj);
+		}
+
+		// display any message from the controller
+		if( "{!ovrlyMsg}".length !== 0 ) {
+			ShowLoading("{!ovrlyMsg}", btnsobj);
+		}
+
+		// resize the page every .5 seconds
+        window.addEventListener("load", (function() {
+            var lastHt = 0;
+            var curHt;
+            (function resizeTimer(){
+            	if ( window.location !== window.parent.location ) {
+	                curHt = document.body.offsetHeight + 5;	// add six (5) as fudge factor to remove useless scrollbar
+	                if( lastHt != curHt ) {
+	                    window.parent.postMessage('tab:Detail;height:' + curHt + ';', '*');
+	                    // TODO - someday convert the above line to lookup the id of the iFrame
+	                    lastHt = curHt;
+	                }
+	                window.setTimeout( resizeTimer, 500);
+	            }
+            }());
+        }())
+        , false);
+
+	</script>
+</apex:page>

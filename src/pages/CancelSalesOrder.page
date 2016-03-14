@@ -1,0 +1,29 @@
+<apex:page controller="CancelSalesOrderController" tabstyle="opportunity">
+<apex:stylesheet value="/sCSS/Theme2/en/common.css"/>
+    <apex:form >
+        <apex:pageBlock mode="edit" >
+                          <STYLE type="text/css">
+               .msg {text-align: center;width: 100%}
+               
+              </STYLE>
+            <table style="width: 100%;" >
+                <tr>
+                    <td class="bSubBlock secondaryPalette" colspan="3" >
+                    <h2>Cancel Sales Order</h2>                    
+                    </td>                   
+                </tr>
+                <tr height="40"><td></td></tr>                
+                <tr><td width="28%"></td><td><h3>Are You Sure?</h3></td></tr>
+                <tr height="40"><td></td></tr> 
+                </table>                       
+        
+                    <apex:pageMessages />
+   
+    
+        <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="OK" action="{!OK}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    </apex:page>

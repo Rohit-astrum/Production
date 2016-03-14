@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.What Is a Solar Production Guarantee - TK</name>
+    <style>none</style>
+    <subject>Why is a production guarantee so important?</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=prodguarant&amp;utm_campaign=nurture-tk&amp;utm_content=prodguarant-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+What’s a Solar Production Guarantee?
+
+Dear {{lead.First Name:default=Friend}},
+
+Why is a solar production guarantee so important? In short, it provides peace of mind that your solar system will generate the amount of energy that you were promised.
+
+Many solar installers overpromise what your installation will generate by showing you exaggerated energy output.
+
+Let’s discover how a proper roof evaluation and a solar production guarantee protect you and your investment.
+
+Learn Why You Should Insist on a Production Guarantee:
+ &lt;[[http://www.directenergysolar.com/blog/post/what-is-a-solar-production-guarantee-and-why-do-you-need-one?utm_medium=email&amp;utm_source=prodguarant&amp;utm_campaign=nurture-tk&amp;utm_content=prodguarant-button-whatis]]&gt;
+
+“Direct Energy Solar’s evaluation of our roof was more thorough and logical than anyone else’s, but their flexibility when it came to meeting our specific needs was the tipping point for us.” - Rochelle
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=prodguarant&amp;utm_campaign=nurture-tk&amp;utm_content=prodguarant-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=prodguarant&amp;utm_campaign=nurture-tk&amp;utm_content=prodguarant-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=prodguarant&amp;utm_campaign=nurture-tk&amp;utm_content=prodguarant-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

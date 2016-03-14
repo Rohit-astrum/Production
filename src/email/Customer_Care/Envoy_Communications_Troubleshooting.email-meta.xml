@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Envoy troubleshooting steps</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Envoy Communications Troubleshooting</name>
+    <style>formalLetter</style>
+    <subject>Direct Energy Solar - Restoring Your Enphase Communications</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+We are monitoring your system for alerts and noticed that your Enphase Envoy is not reporting. There is usually a simple solution for this alert, and below are a few troubleshooting steps that may help you get your Envoy reporting again. If you try these steps and are still experiencing issues, or if you need assistance along the way, please feel free to give the Customer Care team a call at 1-888-603-6085.
+
+
+Step 1. Confirm Envoy Location. Your Envoy (image attached) should be plugged into a standard outlet and should display information on the screen in the center. The Envoy should not be plugged into a surge protector, extension cord, or any other outlet type. The Envoy should also be located as close to your main circuit breaker panel as possible.
+
+
+Step 2. Confirm Bridge Configuration. If the location of your Envoy is not near your router, you may have powerline “bridges.” These bridges are two identical wall units that may be dark grey or white, and look similar to a cell phone charger (images of two models are also attached). One bridge should be located at the Envoy, plugged into the same outlet, and connected to the Envoy via a cable attached to the bridge. The second should be located near your router, plugged into an outlet, and also connected to your router via a cable. Neither bridge should be plugged into a surge protector, extension cord, or any other outlet type.
+
+
+Step 3. Get New IP Address. If your internet has been disconnected briefly or if you have a new router, press and hold the menu button located on the right side of your Envoy until the display reads &quot;Get New IP Address.&quot; When the “Get New IP Address” screen appears release the button.
+
+
+Step 4. Power Cycle. Unplug your Envoy, powerline bridges (if applicable), router, and cable/DSL modem. Once all of these items are off, apply power again in the following order: cable/DSL modem, router, bridges, and lastly your Envoy.
+
+
+I have also attached a short troubleshooting guide from Enphase that may be helpful in restoring your system communications. Again, if you have any questions or need additional assistance, please do not hesitate to contact Customer Care at 1-888-603-6085 or customercare@directenergysolar.com.
+Thank you,
+
+Customer Care Team
+Direct Energy Solar
+1-888-603-6085
+customercare@directenergysolar.com
+
+
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

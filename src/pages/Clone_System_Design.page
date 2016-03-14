@@ -1,0 +1,16 @@
+<apex:page standardController="System_Design__c"
+           extensions="System_Design_Clone_Controller">
+	<apex:messages id="CloneSystemDesign" />
+    <apex:form >
+        <apex:pageBlock title="System Design Clone">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Clone"
+                                    action="{!createClone}"/>
+                <apex:commandButton value="Cancel"
+                                    action="{!cancel}"/>
+            </apex:pageBlockButtons>
+           
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

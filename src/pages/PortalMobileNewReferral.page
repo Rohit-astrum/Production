@@ -1,0 +1,142 @@
+<apex:page doctype="html-5.0" standardController="Portal_Referral__c" extensions="PortalNewReferralExtension" sidebar="false" showHeader="false" standardStylesheets="false">
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<meta name='description' content='Astrum Solar Referral Network – Submit Referrals' />
+<title>Astrum Solar Referral Network – Submit Referrals</title>
+<link rel="Shortcut Icon" href="{!URLFOR($Resource.PortalResources, 'images/favicon.ico')}" />
+<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" type="text/css"/>
+<link rel="stylesheet" href="{!URLFOR($Resource.PortalMobileTheme,'themes/AstrumPortalMobile.min.css')}" type="text/css"/>
+<style type="text/css">
+    .messageText h4 { display: none; }
+    .messageText { color: red; }
+    input { background-color: white; }
+    textarea { resize: none; }
+    .user-error {
+        color: red;
+        font-size: 1.1em;
+    }
+    .blue-title {
+        font-weight:bold;
+        font-size:1.2em;
+        color:#2995ce;
+    }
+    input[type="text"].ui-body-c {
+        background-color: white;
+    }
+    input[type="text"].invalid {
+        background-color: #FBD8E2;
+    }
+</style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script>
+    $(document).bind('pageinit', function() {
+        $.mobile.ajaxEnabled = false;
+        $('#{!SUBSTITUTE($Component.referralForm.firstName,':','\\\\:')}').attr('placeholder','First Name *');
+        $('#{!SUBSTITUTE($Component.referralForm.lastName,':','\\\\:')}').attr('placeholder','Last Name *');
+        $('#{!SUBSTITUTE($Component.referralForm.address,':','\\\\:')}').attr('placeholder','Address *');
+        $('#{!SUBSTITUTE($Component.referralForm.city,':','\\\\:')}').attr('placeholder','City *');
+        $('#{!SUBSTITUTE($Component.referralForm.state,':','\\\\:')}').attr('placeholder','State *');
+        $('#{!SUBSTITUTE($Component.referralForm.zip,':','\\\\:')}').attr('placeholder','Zip Code *');
+        $('#{!SUBSTITUTE($Component.referralForm.phone,':','\\\\:')}').attr('placeholder','Phone *');
+        $('#{!SUBSTITUTE($Component.referralForm.email,':','\\\\:')}').attr('placeholder','Email *');
+        $('#{!SUBSTITUTE($Component.referralForm.notes,':','\\\\:')}').attr('placeholder','Notes');
+        
+        $('#{!SUBSTITUTE($Component.referralForm.state,':','\\\\:')}.select-invalid').closest('div').toggleClass('ui-btn-c ui-btn-up-c ui-btn-d ui-btn-up-d').attr('data-theme','a');
+        $('.button-another').closest('div').toggleClass('ui-btn-c ui-btn-up-c ui-btn-a ui-btn-up-a').attr('data-theme','a');
+    });
+    
+    function logoutOfMobile() {
+        $.mobile.loadPage('{!$Site.Prefix}/secur/logout.jsp', { reloadPage: true });
+        $(document).bind('pageload', function(o) {
+            window.location.href="{!URLFOR($Page.PortalMobileHome,null)}";
+        });
+    }
+</script>
+
+<div data-role="page" data-theme="a">
+
+    <div data-role="header" style="padding:5px;">
+        <img src="{!URLFOR($Resource.PortalResources,'images/connect-logo.png')}"/>
+    </div>
+
+    <div data-role="content" data-theme="c">
+        
+        <apex:form id="referralForm">
+        
+        <span class="blue-title">Submit Referrals</span>
+        
+        <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+            <table>
+                <tr>
+                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                    <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                </tr>
+            </table>
+        </apex:outputPanel>
+
+        <apex:outputPanel layout="none" rendered="{!duplicate=true}">
+            <table>
+                <tr>
+                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                    <td style="vertical-align: middle;"><span class="user-error">We're sorry.  This referral is already in our system.</span></td>
+                </tr>
+            </table>
+        </apex:outputPanel>
+        
+        <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[1]'))}">
+            <table>
+                <tr>
+                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                </tr>
+            </table>
+        </apex:outputPanel>
+        
+        <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.submitted=='1'}">
+            <div>Your referral has been submitted.  Please enter the next referral.</div>
+        </apex:outputPanel>
+
+<!-- TODO remove this -->           
+<apex:pageMessages />
+
+        <apex:inputText id="firstName" value="{!Portal_Referral__c.First_Name__c}" maxLength="20" styleClass="input-field {!IF(CONTAINS(errorFields,'[fname]'),'invalid','')}" disabled="{!duplicate=true}" />
+            
+        <apex:inputText id="lastName" value="{!Portal_Referral__c.Last_Name__c}" maxLength="40" styleClass="{!IF(CONTAINS(errorFields,'[lname]'),'invalid','')}" disabled="{!duplicate=true}" />
+
+        <apex:inputText id="address" value="{!Portal_Referral__c.Street__c}" maxLength="80" styleClass="{!IF(CONTAINS(errorFields,'[street]'),'invalid','')}" disabled="{!duplicate=true}"/>
+
+        <apex:inputText id="city" value="{!Portal_Referral__c.City__c}" maxLength="40" styleClass="{!IF(CONTAINS(errorFields,'[city]'),'invalid','')}" disabled="{!duplicate=true}"/>
+
+        <apex:selectList id="state" value="{!Portal_Referral__c.State__c}" size="1" disabled="{!duplicate=true}" styleClass="{!IF(CONTAINS(errorFields,'[state]'),'select-invalid','')}">
+            <apex:selectOptions value="{!states}"/>
+        </apex:selectList>
+
+        <apex:inputText id="zip" value="{!Portal_Referral__c.Zip__c}" maxLength="10" styleClass="{!IF(CONTAINS(errorFields,'[zip]'),'invalid','')}" disabled="{!duplicate=true}"/>
+
+        <apex:inputText id="phone" value="{!Portal_Referral__c.Phone__c}" maxLength="40" styleClass="{!IF(CONTAINS(errorFields,'[phone]'),'invalid','')}" disabled="{!duplicate=true}"/>
+
+        <apex:inputText id="email" value="{!Portal_Referral__c.Email__c}" maxLength="100" styleClass="{!IF(CONTAINS(errorFields,'[email]'),'invalid','')}" disabled="{!duplicate=true}"/>
+        
+        <apex:inputTextArea value="{!Portal_Referral__c.Notes__c}" id="notes" rows="4" disabled="{!duplicate=true}" style="background-color:white;"/>
+        
+        <span>* Required</span>
+
+        <apex:outputPanel layout="none" rendered="{!NOT(duplicate=true)}">              
+            <button data-role="button" data-theme="b" data-ajax="false" onclick="$.mobile.showPageLoadingMsg();doSubmit();return false;" rel="external">Submit Referral</button>
+            <apex:actionFunction name="doSubmit" action="{!submit}"/>
+        </apex:outputPanel>
+        
+        <apex:commandButton styleClass="button-submit button-another" action="{!submitAnother}" value="{!'Submit another Lead'}" immediate="true" rendered="{!duplicate=true}"/>
+        
+        </apex:form>
+    </div>
+    
+    <div data-role="footer" class="ui-bar" style="height: 28px;margin-bottom: 10em;">
+        <a onclick="logoutOfMobile();return false;" href="{!$Site.Prefix}/secur/logout.jsp" data-role="button" data-icon="delete" class="ui-btn-right" data-inline="true" data-mini="true" rel="external">Log Out</a>
+    </div>
+    
+</div>
+    
+</apex:page>

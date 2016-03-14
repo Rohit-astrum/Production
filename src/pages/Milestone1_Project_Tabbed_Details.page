@@ -1,0 +1,137 @@
+<apex:page standardController="Milestone1_Project__c" 
+           extensions="Milestone1_Project_Controller_Extension,Fact_Sheet_Controller_Extension"
+           showHeader="true" >
+           
+       <apex:tabPanel switchType="client" selectedTab="tabdetails" id="ProjectTabPanel">
+
+         <apex:tab label="Task List" name="taskList" id="tabTaskList">
+         
+         <apex:pageBlock id="pageBlock" title="Task List"> 
+
+         <b>Legend:</b>
+
+        <table border="0" width="200px">
+            <tr>
+                <td style="background : {!lateBlockedColor}" width="25px"></td>
+                <td style="text-indent: 1em;">Late or Blocked</td>
+            </tr>
+            <tr>
+                <td style="background : {!openColor}"></td>
+                <td style="text-indent: 1em;">Open</td>
+            </tr>
+            <tr>
+                <td style="background : {!completeColor}"></td>
+                <td style="text-indent: 1em;">Complete</td>
+            </tr>
+        </table>
+            
+            <br></br>
+            <br></br>
+                        
+             <apex:pageBlockTable value="{!taskDetailHolders}" var="tempTaskDetailHolder">
+
+                     <apex:column headerValue="Milestone" style="background: {!IF(ISBLANK(tempTaskDetailHolder.milestoneName), 'white', tempTaskDetailHolder.milestoneColor)}" >
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.Project_Milestone__c}"><apex:outputText value="{!tempTaskDetailHolder.milestoneName}"/></apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Task Name" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}"><apex:outputText value="{!tempTaskDetailHolder.task.name}"/></apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Assigned To" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}"><apex:outputText value="{!tempTaskDetailHolder.task.Assigned_To__r.name}"/></apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Task Due Date" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}">
+                            <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                <apex:param value="{!tempTaskDetailHolder.task.Due_Date__c}" /> 
+                            </apex:outputText>                     
+                        </apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Task Completed" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}"><apex:outputText value="{!tempTaskDetailHolder.complete}"/></apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Task Complete Date" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}">
+                            <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                <apex:param value="{!tempTaskDetailHolder.task.Complete_Date__c}" /> 
+                            </apex:outputText>                     
+                        </apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Task Blocked" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}"><apex:outputText value="{!tempTaskDetailHolder.blocked}"/></apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Milestone Deadline" style="background: {!tempTaskDetailHolder.milestoneColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.Project_Milestone__c}">
+                            <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                <apex:param value="{!tempTaskDetailHolder.task.Project_Milestone__r.Deadline__c}" /> 
+                            </apex:outputText>                     
+                        </apex:outputLink>
+                     </apex:column>
+
+                     <apex:column headerValue="Docs Required" style="background: {!tempTaskDetailHolder.taskColor}">
+                        <apex:outputLink value="/{!tempTaskDetailHolder.task.id}"><apex:outputText value="{!tempTaskDetailHolder.requiresDocumentation}"/></apex:outputLink>
+                     </apex:column>
+    
+            </apex:pageBlockTable>
+
+            <br></br>
+            <br></br>
+
+         <b>Legend:</b>
+
+        <table border="0" width="200px">
+            <tr>
+                <td style="background : {!lateBlockedColor}" width="25px"></td>
+                <td style="text-indent: 1em;">Late or Blocked</td>
+            </tr>
+            <tr>
+                <td style="background : {!openColor}"></td>
+                <td style="text-indent: 1em;">Open</td>
+            </tr>
+            <tr>
+                <td style="background : {!completeColor}"></td>
+                <td style="text-indent: 1em;">Complete</td>
+            </tr>
+        </table>
+            
+            
+        </apex:pageBlock>
+            
+          </apex:tab>
+
+            
+          <apex:tab label="Details" name="ProjDetails" id="tabdetails">
+          	 <apex:outputText value="{!leasedInverters}" rendered="{!salesOrder.Financing_Type__c = 'Lease'}" style="font-size:20px;margin-top:5px;margin-bottom:10px;padding:5px;border:1px solid black;background-color:white;display:block;"/>
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c}" title="true"/>
+             <apex:relatedList subject="{!Milestone1_Project__c}" list="Project_Milestones__r" />
+          </apex:tab>
+          <apex:tab label="Account" name="Account" id="tabAccount">
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__r.AccountId__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.AccountId__c}" list="OpenActivities" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.AccountId__c}" list="ActivityHistories" />
+          </apex:tab>
+          <apex:tab label="Property" name="Property" id="tabProperty">
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" list="Surveys__r" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" list="Utility_Services__r" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" list="Install_Locations__r" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" list="System_Designs__r" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" list="OpenActivities" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.Property__c}" list="ActivityHistories" />
+          </apex:tab>
+          <apex:tab label="Sales Order" name="SalesOrder" id="tabSalesOrder">
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__c}" list="Sales_Order_Items__r" />
+          </apex:tab> 
+          <apex:tab label="System Design" name="SystemDesign" id="tabSystemDesign">
+             <apex:detail relatedList="false" subject="{!Milestone1_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}" title="false" />
+             <apex:relatedList subject="{!Milestone1_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}" list="System_Design_Arrays__r" />
+          </apex:tab> 
+       </apex:tabPanel>
+</apex:page>

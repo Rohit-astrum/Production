@@ -1,0 +1,29 @@
+<p>A new Lead <strong><a href="https://na28.salesforce.com/{!Lead.Id}">{!Lead.Name}</a></strong> has been created in Prism on {!Lead.CreatedDate} </p>
+<p><u>Lead Detail</u>:</p>
+<ul style="list-style:none">
+    <li><u>First Name</u>  : {!Lead.FirstName}</li>     
+    <li><u>Last Name</u>       : {!Lead.LastName}</li>
+    <li><u>Street</u>      : {!Lead.Street}</li>
+    <li><u>City</u>      : {!Lead.City}</li>
+    <li><u>State</u>      : {!Lead.State}</li>
+    <li><u>Zip</u>  : {!Lead.PostalCode}</li> 
+    <li><u>Lead Date</u>  : {!Lead.Lead_Date__c}</li>       
+</ul>
+<p><u>Lead Source Information</u>:</p>
+<ul style="list-style:none">
+    <li><u>Method of Contact</u>  : {!Lead.Method_of_Contact__c}</li>     
+    <li><u>Lead Source</u>       : {!Lead.LeadSource}</li>
+    <li><u>Lead Source Detail</u>      : {!Lead.Lead_Source_Detail__c}</li>
+    <li><u>Referring Account</u>      : {!Lead.Referring_Account_Name__c}</li>
+    <li><u>Primary Source Campaign</u>      : {!Lead.Primary_Source_Campaign_Name__c}</li>
+    <li><u>Second Lead Source</u>  : {!Lead.Second_Lead_Source__c}</li>   
+    <li><u>Second Lead Source Detail</u>       : {!Lead.Second_Lead_Source_Detail__c}</li>
+    <li><u>Secondary Referring Account</u>      : {!Lead.Secondary_Referring_Account_Name__c}</li>
+    <li><u>Secondary Source Campaign</u>      : {!Lead.Secondary_Source_Campaign_Name__c}</li>
+    <li><u>Lead Source Notes</u>      : {!Lead.Lead_Source_Notes__c}</li>
+    <li><u>Contact Detail</u>  : {!Lead.Contact_Detail__c}</li> 
+    <li><u>Lead Form URL</u>  : {!Lead.Lead_Form_URL__c}</li> 
+    <li><u>Self Generated ?</u>  : {!Lead.Self_Generated_Text__c}</li>
+</ul>
+
+<p>To Review this Lead, Please <strong><a href="https://na28.salesforce.com/{!Lead.Id}">Click Here</a></strong></p>

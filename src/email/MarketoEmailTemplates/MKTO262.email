@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<title>Thank you for requesting a solar consultation.</title>
+
+<style type="text/css">
+.appleLinksGray a {
+        color: #666666;
+        text-decoration: none;
+}
+.appleLinksWhite a {
+        color: #ffffff;
+        text-decoration: none;
+}
+.appleLinksBlue a {
+        color: #1cef94;
+        text-decoration: none;
+}
+.appleLinksGreen a {
+        color: #61af3f;
+        text-decoration: none;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ><table style="width:100%; background-color:#e8e8e8; padding-bottom:30px; " ><tr ><td ><table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><div class="mktEditable" id="Header" style="margin-left:33px; margin-right:33px; margin-top:15px; margin-bottom:15px; font-size:0px; " ><table style="border-bottom-color: #cccccc; border-bottom-style: solid; border-bottom-width: 1px;" border="0" cellspacing="0" cellpadding="0" width="634" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="vertical-align: top;" width="302" height="105">
+<div style="margin-top: 10px;"><a href="http://go.directenergysolar.com/mass-solar-connect"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_logo.jpg" border="0" alt="Direct Energy Solar" width="295" height="64" /></a></div>
+</td>
+<td style="vertical-align: top;" width="472" height="105" align="left">
+<div style="margin-top: 0px; margin-left: 30px;"><a href="http://www.masssolarconnect.org/"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/MassSolarConnect-Logo.jpg" border="0" alt="Mass Solar Connect" width="136" height="74" /></a></div>
+</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+<tr ><td width="634" style="padding-left:33px; padding-right:33px; " ><div class="mktEditable" id="BodyCopy" ><div style="margin-top: 0px; margin-bottom: 10px; color: #666666; font-family: Arial, Helvetica, sans-serif;"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/MassSolarConnect_Animated.gif" alt="Your neighbors are going solar. You can join them." width="634" height="371" border="0" /></div>
+<div style="margin-top: 20px; margin-bottom: 30px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 26px; margin-bottom: 5px; margin-top: 35px; color: #1c3f94;">Dear {{lead.First Name:default=Friend}},</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 30px; margin-bottom: 15px; margin-top: 15px; color: #1c3f94;">Join the most popular and quickest-selling community solar program in Massachusetts history!</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px;"><strong>Only 4 weeks left to sign a contract to get low Mass Solar Connect pricing.</strong> The Mass Solar Connect price is 30% lower than the price paid by MA residents who went solar in 2014. <span style="color: #61af3f; font-weight: bold;">The program ends on August 31st.</span></p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px;"><strong>150 people have already signed up for solar, making this program one of the most successful in the history of Solarize Mass programs.</strong>&nbsp;</p>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px;">We are pleased to announce that we are now offering the all-black LG 300-watt panel in place of the Suniva 275-watt panel for the same additional price per watt as the Suniva. This will help increase your power production with fewer panels required to cover your electric bill. If you already have a proposal for Suniva panels from your Solar Consultant, you can choose to continue with these panels or upgrade to the LG. Both panels are warrantied for 25 years and will provide reliable power for years to come.</p>
+<div style="margin-top: 0px; margin-bottom: 40px;">
+<table border="0" width="634" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="vertical-align: top;" width="224">
+<div style="margin-top: 0px; margin-bottom: 0px;"><a href="http://www.masscec.com/"><img style="margin-right: 30px;" src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/MassCEC_logo.jpg" alt="Massachusetts Clean Energy Center" width="168" height="51" align="left" border="0" /></a></div>
+</td>
+<td style="vertical-align: top;" width="410">
+<div style="margin-top: 0px; margin-bottom: 0px;"><a href="http://www.massenergy.org/"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/MassEnergy_logo.jpg" alt="Mass Energy Consumers Alliance" width="150" height="62" align="left" border="0" /></a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 12px; line-height: 18px; margin-bottom: 10px; margin-top: 15px;">Mass Solar Connect is a partnership between Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumers Alliance (Mass Energy) and Direct Energy Solar.</p>
+</div>
+</div>
+<div style="margin-top: 0px; margin-bottom: 40px; border-top-color: #cccccc; border-top-style: solid; border-top-width: 1px;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 28px; margin-bottom: 5px; margin-top: 30px; color: #1c3f94;">Many thanks to our program leaders!</p>
+<table border="0" width="634" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="vertical-align: top;" width="234">
+<div style="margin-top: 15px; margin-bottom: 10px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/SunnyField.jpg" alt="Many thanks to our program leaders!" width="200" height="150" border="0" /></div>
+</td>
+<td style="vertical-align: top;" width="400">
+<div style="margin-top: 15px; margin-bottom: 10px;">
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 10px; margin-top: 0px;">Our thanks to our Mass Solar Connect program leaders who collectively will install over 1 Megawatt in new clean solar power this year, reducing carbon emissions by 1,000,000 pounds each year. According to the <a style="color: #61af3f; font-weight: bold; text-decoration: none;" href="http://www.epa.gov/cleanenergy/energy-resources/calculator.html">Greenhouse Gas Equivalencies Calculator</a> from the EPA, this is equivalent to planting 20,000 leafy green trees.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin-top: 0px; margin-bottom: 40px; border-top-color: #cccccc; border-top-style: solid; border-top-width: 1px;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 28px; margin-bottom: 5px; margin-top: 30px; color: #1c3f94;">Hurry, there is not much time left to go solar at Mass Solar Connect's incredibly low group price!</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 10px; margin-top: 0px;">If you are already working with a Solar Consultant, then please contact him or her. To request a free site evaluation, access <a style="color: #61af3f; font-weight: bold; text-decoration: none;" href="http://www.masssolarconnect.org">www.masssolarconnect.org</a> or call Direct Energy Solar at 800-903-6130.</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 10px; margin-top: 0px;">If you have any questions, please contact Meredith Geraghty at <a style="text-decoration: none; font-weight: bold; color: #61af3f;" href="mailto:meredith@massenergy.org">meredith@massenergy.org</a> or 617-524-3950 ext. 128.</p>
+</div></div>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><table width="634" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; " ><tr ><td width="634" style="vertical-align:top; text-align:center; " ><div style="margin-top:25px; margin-bottom:25px; " class="mktEditable" id="PhoneTagline" ><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/PhoneTagline.jpg" alt="Your Sun. Your Power. Your Way. Call Us: 800-903-6130" border="0" height="40" width="273"></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td style="padding-top:20px; padding-bottom:33px; padding-left:33px; padding-right:33px; " ><div style="color:#666666; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; " ><div class="mktEditable" id="disclaimerCopyWhy" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">You&rsquo;re receiving this email because you&rsquo;ve expressed interest in Mass Solar Connect.</p></div>
+<div class="mktEditable" id="disclaimerCopyTerms" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">The Mass Solar Connect program is open to Mass Energy members and members of affiliated nonprofits. The enrollment period begins March 2, 2015 and lasts through August 31, 2015.</span></p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumer Alliance (Mass Energy) or any affiliate thereof, should be deemed to arise through the use of such names and marks.</span></p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">MA HIC 168228/ELC 21555A</span></p></div>
+<div class="mktEditable" id="OfficeDetails" ><p style="margin-bottom: 10px;"><span class="appleLinksGray">Direct Energy Solar</span><br /> <span class="appleLinksGray">8955 Henkels Lane, Suite 508</span><br /> <span class="appleLinksGray">Annapolis Junction, MD 20701</span><br /> <span class="appleLinksGray">P: 800-903-6130</span><br /> <span class="appleLinksGray">F: 443-267-0036</span></p></div>
+<div class="mktEditable" id="TermsConditions" ><p style="font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px;">&copy; <span class="appleLinksGray">2015 Astrum Solar, Inc.</span> All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com/privacy-policy">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com/terms-and-conditions">Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com">DirectEnergySolar.com</a></p></div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>SV+5 2nd follow to reserve funding with Work Order</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>CT After SV FU2</name>
+    <style>none</style>
+    <subject>Checking In</subject>
+    <type>text</type>
+</EmailTemplate>

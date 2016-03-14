@@ -1,0 +1,18 @@
+<html>
+<body>
+<p>A <strong><a href="https://na28.salesforce.com/{!SCRB_SalesOrder__c.Id}">Sales Order</a></strong> with the following details has been re-submitted for your approval.</p>
+
+<ul style="list-style:none">
+<li><u>Customer Name</u>: {!SCRB_SalesOrder__c.AccountId__c}</li>
+<li><u>City, State of Property</u>: {!SCRB_SalesOrder__c.Installation_City__c}, {!SCRB_SalesOrder__c.Installation_State__c}</li>
+<li><u>Total System Size</u>: {!SCRB_SalesOrder__c.System_Size_kW__c}</li>
+<li><u>Final System Price</u>: {!SCRB_SalesOrder__c.Amount__c}</li>
+<li><u>Total Panel Count</u>: {!SCRB_SalesOrder__c.Total_Panel_Count__c}</li>
+<li><u>Type & Quantity</u>:<br />
+{!SCRB_SalesOrder__c.System_Makeup__c}</li>
+<li><u>Hand Off Notes</u>:<br />
+{!SCRB_SalesOrder__c.Hand_Off_Notes__c}</li>
+<li><u>Field Surveys Complete? :</u>{!SCRB_SalesOrder__c.Has_Field_Survey_Been__c}</li>
+</ul>
+
+<p>To Approve This Sales Order, please <strong><a href="https://na28.salesforce.com/{!SCRB_SalesOrder__c.Id}">Review Here</a></strong></p>

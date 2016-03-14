@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Autoresponses.AMEX Auto Response</name>
+    <style>none</style>
+    <subject>Thank you for requesting your free solar consultation</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com/axp&gt;
+
+Call Us: 800-903-6130
+See a Sunny In a Whole New Way
+
+Thank you for Requesting Your FREE Solar Consultation
+
+Dear {{lead.First Name:default=Friend}},
+
+One of our solar experts will contact you within the next 48 hours to follow up on your request for a no obligation home solar site assessment. To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.
+
+There has never been a better time to go solar. Save $1,500 off the contract price when you sign up for solar energy with Astrum Solar and pay with any eligible American Express® Card between 12/22/14 and 2/28/15. We hope to have the opportunity to help you go solar.
+Hear from our satisfied customers.
+
+“It started out with,‘Wouldn’t it be cool to do this,’ but then I saw how quickly this would pay out.”
+Dale and Janice, Derwood, MD
+ELECTRICITY SAVINGS: $1,202/yr
+
+Thousands of Astrum Solar customers are harnessing the sun’s full potential for their homes and saving money on electricity. Read their stories. &lt;http://www.astrumsolar.com/customer-stories/&gt;
+
+Call Us: 800-903-6130
+See a Sunny In a Whole New Way
+
+You’re receiving this email because you’ve expressed interest in an Astrum Solar system installation.
+
+Offer valid when you pay with any American Express Credit or Charge Card. Fulfillment of the offer is the sole responsibility of the participating American Express merchant. Offer of $1500 off the contract price is valid for qualifying homeowners that sign a new solar system contract with Astrum Solar between 12/22/14 and 2/28/15. Offer valid online or by phone using Promotion Code: Astrum AXP. To redeem your offer or for questions visit www.astrumsolar.com/axp or call 800-903-6130. Minimum system size is 5 kW. Offer not valid with any other promotions or discounts. A solar power system is customized for your home, so pricing, savings and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. Contractor licenses include CA 957994, CT 0628993, DC 42021-20000078, MD 126447, MA 168228, NJ 13VH05618900, NYSERDA Certified Installer, OH 201021101310, PA 023535, and VA 2705143744. Offer qualifies only for a system purchase or prepaid lease. Monthly leases not included. No other promotion codes, coupon codes or corporate discounts may be applied to the order. Offer isn’t redeemable for cash and is non-transferable. Limit one (1) discount per Card Member per transaction. American Express Corporate Cards and all prepaid card products are not eligible for Card Member offer. POID: BI8B:0001.
+
+If you prefer not to receive offers, please call the customer service number on the back of your Card.
+
+©2014 American Express Travel Related Services Company, Inc. All rights reserved.
+
+Astrum Solar, Inc.
+8955 Henkels Lane, Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+
+Copyright © 2014 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.astrumsolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com
+&lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

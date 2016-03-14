@@ -1,0 +1,2377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>InstalledSystemsDetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Installed_Systems</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>April_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>April Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>April_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>April Guarantee</label>
+        <summarizedField>Annual_Production__c.April_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>April_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>April_Daily_Peak_Sun_Hours__c * 30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>April Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>April_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>April_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>April Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>April_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>April Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>August_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>August Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>August_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>August_Daily_Peak_Sun_Hours__c * 31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>August Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>August_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>August_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>August Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>August_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>August Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CEG_expected_IRR__c</fullName>
+        <description>LEASE ONLY - CEG expected IRR (%)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG expected IRR (%)</inlineHelpText>
+        <label>CEG expected IRR (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_DC__c</fullName>
+        <description>PJM Certification Number - DC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - DC</inlineHelpText>
+        <label>Certification Number - DC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_DE__c</fullName>
+        <description>PJM Certification Number - DE</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - DE</inlineHelpText>
+        <label>Certification Number - DE</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_IL__c</fullName>
+        <description>PJM Certification Number - IL</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - IL</inlineHelpText>
+        <label>Certification Number - IL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_MA__c</fullName>
+        <description>PJM Certification Number - MA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - MA</inlineHelpText>
+        <label>Certification Number - MA</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_MD__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>PJM Certification Number - MD</description>
+        <externalId>true</externalId>
+        <inlineHelpText>PJM Certification Number - MD</inlineHelpText>
+        <label>Certification Number - MD</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_NJ__c</fullName>
+        <description>PJM Certification Number - NJ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - NJ</inlineHelpText>
+        <label>Certification Number - NJ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_OH__c</fullName>
+        <description>PJM Certification Number - OH</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - OH</inlineHelpText>
+        <label>Certification Number - OH</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Certification_Number_PA__c</fullName>
+        <description>PJM Certification Number - PA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PJM Certification Number - PA</inlineHelpText>
+        <label>Certification Number - PA</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Count__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Down_Payment__c</fullName>
+        <description>LEASE ONLY - Customer Down Payment ($)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Customer Down Payment ($)</inlineHelpText>
+        <label>Customer Down Payment ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Monthly_Payment__c</fullName>
+        <description>LEASE ONLY - Customer Monthly Payment ($)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Customer Monthly Payment ($)</inlineHelpText>
+        <label>Customer Monthly Payment ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Monthy_Payment_Escalator__c</fullName>
+        <description>LEASE ONLY - Customer Monthy Payment Escalator (%)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Customer Monthy Payment Escalator (%)</inlineHelpText>
+        <label>Customer Monthy Payment Escalator (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Date_Online__c</fullName>
+        <description>Month in which the system is authorized to produce electricity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Month in which the system is authorized to produce electricity</inlineHelpText>
+        <label>Date Online</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>December_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>December Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>December_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>December_Daily_Peak_Sun_Hours__c *31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>December Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>December_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>December_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>December Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>December_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>December Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Dont_Use_Enphase__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Don&apos;t Use Enphase Production Data</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enphase_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Enphase ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Annual_SRECs_Generated__c</fullName>
+        <externalId>false</externalId>
+        <formula>FLOOR (Sales_Order__r.System_Design_Quote__r.System_Design__r.Total_Projected_Annual_Output_kWh_y__c / 1000)</formula>
+        <label>Estimated Annual SRECs Generated</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FMV_System_Total__c</fullName>
+        <description>LEASE ONLY - Total System FMV ($)</description>
+        <externalId>false</externalId>
+        <formula>FMV_W__c * System_Size_kW__c *1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>LEASE ONLY - Total System FMV ($)</inlineHelpText>
+        <label>FMV System Total ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>FMV_W__c</fullName>
+        <description>LEASE ONLY - Fair Market Value Per Watt</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Fair Market Value Per Watt</inlineHelpText>
+        <label>Fair Market Value (FMV) ($/W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>February_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>February Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>February_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>February Guarantee</label>
+        <summarizedField>Annual_Production__c.February_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>February_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>(IF( MOD( YEAR(TODAY()), 4) = 0, 29, 28)) *  February_Daily_Peak_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>February Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>February_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>(February_Daily_Peak_Sun_Hours__c  / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>February Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>February_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>February Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>GATS_GIS_Facility_Name_1__c</fullName>
+        <description>Facility Name 1 in GATS/GIS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Facility Name 1 in GATS/GIS</inlineHelpText>
+        <label>GATS/GIS Facility Name 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GATS_GIS_Facility_Name_2__c</fullName>
+        <description>Facility Name 2 in GATS/GIS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Facility Name 2 in GATS/GIS</inlineHelpText>
+        <label>GATS/GIS Facility Name 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GATS_GIS_Owner_Name__c</fullName>
+        <description>GATS/GIS Owner Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>GATS/GIS Owner Name</inlineHelpText>
+        <label>GATS/GIS Owner Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GIS_Id__c</fullName>
+        <description>GIS System ID</description>
+        <externalId>false</externalId>
+        <inlineHelpText>GIS System ID</inlineHelpText>
+        <label>GIS Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Generation_Entry_Type__c</fullName>
+        <description>Generation Entry Type (Actual, Meter Reading, Production Estimate)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Generation Entry Type (Actual, Meter Reading, Production Estimate)</inlineHelpText>
+        <label>Generation Entry Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Actual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meter</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prod Est</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Generation_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Generation Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Generator_Status__c</fullName>
+        <description>Generator Status (Active, Need Info, Pending, Rejected)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Generator Status (Active, Need Info, Pending, Rejected)</inlineHelpText>
+        <label>Generator Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>ACT</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NIN</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PEN</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>REJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Installation_Address_1__c</fullName>
+        <description>Property Address 1</description>
+        <externalId>false</externalId>
+        <formula>Property__r.Name</formula>
+        <inlineHelpText>Property Address 1</inlineHelpText>
+        <label>Installation Address 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Address_2__c</fullName>
+        <description>Property Address 2</description>
+        <externalId>false</externalId>
+        <formula>Property__r.Property_Address_2__c</formula>
+        <inlineHelpText>Property Address 2</inlineHelpText>
+        <label>Installation Address 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_City__c</fullName>
+        <description>Property City</description>
+        <externalId>false</externalId>
+        <formula>Property__r.Property_City__c</formula>
+        <inlineHelpText>Property City</inlineHelpText>
+        <label>Installation City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_County__c</fullName>
+        <description>Property County</description>
+        <externalId>false</externalId>
+        <formula>Property__r.QAS_Property_County__c</formula>
+        <inlineHelpText>Property County</inlineHelpText>
+        <label>Installation County</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project__r.Installation_Completion_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Installation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Installation_State__c</fullName>
+        <description>Property State</description>
+        <externalId>false</externalId>
+        <formula>TEXT(Property__r.Property_State__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Property State</inlineHelpText>
+        <label>Installation State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>YEAR( Generation_Start_Date__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Installation Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Zip_Code__c</fullName>
+        <description>Property Zip Code</description>
+        <externalId>false</externalId>
+        <formula>Property__r.Property_ZIP__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Property Zip Code</inlineHelpText>
+        <label>Installation Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interconnection_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Interconnection Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>January_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>January Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>January_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>January_Daily_Peak_Sun_Hours__c  * 31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>January Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>January_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>(January_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>January Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>January_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>January Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>July_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>July Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>July_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>July Guarantee</label>
+        <summarizedField>Annual_Production__c.July_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>July_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>July_Daily_Peak_Sun_Hours__c *31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>July Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>July_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>July_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>July Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>July_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>July Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>June_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>June Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>June_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>June Guarantee</label>
+        <summarizedField>Annual_Production__c.June_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>June_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>June_Daily_Peak_Sun_Hours__c * 30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>June Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>June_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>June_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>June Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>June_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>June Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Financing_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(Sales_Order__r.Financing_Type__c , &quot;Lease&quot;, Sales_Order__r.Leasing_Option__c , 
+&quot;Purchase&quot;,  Sales_Order__r.Financing_Option__c , &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lease/Financing Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_Fund__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Sales_Order__r.Lease_Fund__c)</formula>
+        <label>Lease Fund</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_Purchase__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Financing_Type__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lease/Purchase</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_Type__c</fullName>
+        <description>LEASE ONLY - Upfront or Monthly</description>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Leasing_Option__c</formula>
+        <inlineHelpText>LEASE ONLY - Upfront or Monthly</inlineHelpText>
+        <label>Lease Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>March_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>March Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>March_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>March Guarantee</label>
+        <summarizedField>Annual_Production__c.March_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>March_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>March_Daily_Peak_Sun_Hours__c * 31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>March Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>March_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>( March_Daily_Peak_Sun_Hours__c  / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>March Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>March_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>March Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>May_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>May Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>May_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>May Guarantee</label>
+        <summarizedField>Annual_Production__c.May_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>May_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>May_Daily_Peak_Sun_Hours__c * 31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>May Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>May_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>May_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>May Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>May_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>May Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Apr__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Apr</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Aug__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Aug</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Dec__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Dec</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Feb__c</fullName>
+        <description>Monthly Production Factor Feb</description>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Feb</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Jan__c</fullName>
+        <description>Monthly Production Factor Jan</description>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Jan</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Jul__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Jul</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Jun__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Jun</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Mar__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Mar</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_May__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor May</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Nov__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Nov</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Oct__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Oct</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Production_Factor_Sep__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Production Factor Sep</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Nameplate_Capacity_MW__c</fullName>
+        <description>System Size in MW</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System Size in MW</inlineHelpText>
+        <label>Nameplate Capacity (MW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>5</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>November_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>November Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>November_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>November_Daily_Peak_Sun_Hours__c * 30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>November Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>November_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>November_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>November Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>November_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>November Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Panels__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Total_Panel_Count__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Panels</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>October_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>October Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>October_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>October Guarantee</label>
+        <summarizedField>Annual_Production__c.October_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>October_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>October_Daily_Peak_Sun_Hours__c * 31</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>October Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>October_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>October_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>October Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>October_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>October Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Operation_Start_Date__c</fullName>
+        <description>Operation Start Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Operation Start Date</inlineHelpText>
+        <label>Operation Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Optimal_Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <formula>Property__r.Optimal_Site_Quality_kWh_y_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Optimal Site Quality</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Type__c</fullName>
+        <description>Owner Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Owner Type</inlineHelpText>
+        <label>Owner Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Generator Broker/Aggregator</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Owner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PJM_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>PJM Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PM_Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Astrum PM 2.0 Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Astrum PM 2.0 Project</inlineHelpText>
+        <label>PM 2.0 Project</label>
+        <referenceTo>PM_Project__c</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Installed_Systems</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Production_Estimate_Started__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Production Estimate Started</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Production_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Production Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Production_Year_Starting_Month__c</fullName>
+        <externalId>false</externalId>
+        <formula>MONTH(Generation_Start_Date__c)</formula>
+        <label>Production Year Starting Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Milestone1_Project__c</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Installed_Systems</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Projected_Annual_Production_kWh_yr__c</fullName>
+        <externalId>false</externalId>
+        <formula>Quoted_System_Design__r.System_Design__r.Total_Projected_Annual_Output_kWh_y__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected Annual Production (kWh/yr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_April_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *April_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected April Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_August_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *August_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected August Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_December_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *December_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected December Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_February_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *February_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected February Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_January_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *January_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected January Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_July_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *July_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected July Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_June_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *June_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected June Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_March_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *March_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected March Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_May_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *May_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected May Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_November_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *November_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected November Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_October_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *October_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected October Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_September_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Projected_Annual_Production_kWh_yr__c *September_Percent_Yearly_Sun_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Projected September Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Property</label>
+        <referenceTo>Property__c</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Installed_Systems</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quoted_System_Design__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Quoted System Design</label>
+        <referenceTo>System_Design_Quote__c</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Installed_Systems</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Recorded_System_Size_kW__c</fullName>
+        <description>Total System Size (kW)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total System Size (kW)</inlineHelpText>
+        <label>Recorded System Size (kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Date__c</fullName>
+        <description>Date SREC Contract was signed by Customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date SREC Contract was signed by Customer</inlineHelpText>
+        <label>SREC Contract Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_End_Date__c</fullName>
+        <description>SREC Contract End Date (calculated from start date and contract length)</description>
+        <externalId>false</externalId>
+        <formula>SREC_Contract_Start_Date__c +  ((SREC_Contract_Length_months__c /12)*365)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>SREC Contract End Date (calculated from start date and contract length)</inlineHelpText>
+        <label>SREC Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Length_months__c</fullName>
+        <description>Length of the SREC Contract with Customer in MONTHS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Length of the SREC Contract with Customer in MONTHS</inlineHelpText>
+        <label>SREC Contract Length (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Payment_Terms__c</fullName>
+        <description>Payment Terms of SREC Contract with Customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Payment Terms of SREC Contract with Customer</inlineHelpText>
+        <label>SREC Contract Payment Terms</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Start_Date__c</fullName>
+        <description>Start Date of SREC Contract with Customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Start Date of SREC Contract with Customer</inlineHelpText>
+        <label>SREC Contract Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Type__c</fullName>
+        <description>Type of SREC Contract establiched with Customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of SREC Contract establiched with Customer</inlineHelpText>
+        <label>SREC Contract Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Curve__c</fullName>
+        <description>This System&apos;s SREC Curve</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This System&apos;s SREC Curve</inlineHelpText>
+        <label>SREC Curve</label>
+        <picklist>
+            <picklistValues>
+                <fullName>DC SREC Curve 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DC SREC Curve 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA SREC Curve 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA SREC Curve 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD SREC Curve 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD SREC Curve 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ SREC Curve 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ SREC Curve 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH SREC Curve 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH SREC Curve 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA SREC Curve 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA SREC Curve 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Opt_in_Term_Length__c</fullName>
+        <description>SREC Opt-in Term Length in QUARTER(S)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Opt-in Term Length in QUARTER(S)</inlineHelpText>
+        <label>SREC Opt-in Term Length</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Opt_in_Term_Start_Quarter__c</fullName>
+        <description>DOER Start Quarter for SRECs eligible to be placed into the SREC clearinghouse auction</description>
+        <externalId>false</externalId>
+        <inlineHelpText>DOER Start Quarter for SRECs eligible to be placed into the SREC clearinghouse auction</inlineHelpText>
+        <label>SREC Opt-in Term Start Quarter</label>
+        <picklist>
+            <picklistValues>
+                <fullName>2011 Q1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2011 Q2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2011 Q3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2011 Q4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2012 Q1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2012 Q2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2012 Q3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2012 Q4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2013 Q1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2013 Q2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2013 Q3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2013 Q4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2014 Q1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2014 Q2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2014 Q3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2014 Q4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Installed_Systems</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>September_Daily_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>September Daily Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>September_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>September Guarantee</label>
+        <summarizedField>Annual_Production__c.September_Production_Guarantee_kWh__c</summarizedField>
+        <summaryForeignKey>Annual_Production__c.Installed_System__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>September_Monthly_Peak_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>September_Daily_Peak_Sun_Hours__c * 30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>September Monthly Peak Sun Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>September_Percent_Yearly_Sun_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>September_Daily_Peak_Sun_Hours__c / ( January_Daily_Peak_Sun_Hours__c + February_Daily_Peak_Sun_Hours__c +  March_Daily_Peak_Sun_Hours__c +  April_Daily_Peak_Sun_Hours__c +  May_Daily_Peak_Sun_Hours__c +  June_Daily_Peak_Sun_Hours__c +  July_Daily_Peak_Sun_Hours__c +  August_Daily_Peak_Sun_Hours__c +  September_Daily_Peak_Sun_Hours__c +  October_Daily_Peak_Sun_Hours__c +  November_Daily_Peak_Sun_Hours__c  +  December_Daily_Peak_Sun_Hours__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>September Percent Yearly Sun Hours (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>September_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>September Solar Access (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <formula>Quoted_System_Design__r.System_Design__r.Overall_Site_Quality__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Site Quality</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Grant_Date_Received__c</fullName>
+        <description>Date State Grant was Received</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date State Grant was Received</inlineHelpText>
+        <label>State Grant Date Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>State_Grant_Expected_vs_Received__c</fullName>
+        <description>State Grant  Expected vs Received ($)</description>
+        <externalId>false</externalId>
+        <formula>State_Grant_Total_Received__c -  State_Grant_Total__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>State Grant Expected vs Received ($)</inlineHelpText>
+        <label>State Grant Expected vs Received ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State_Grant_Total_Received__c</fullName>
+        <description>Total State Grant Received ($)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total State Grant Received ($)</inlineHelpText>
+        <label>State Grant Total Received ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State_Grant_Total__c</fullName>
+        <description>Total State Grant Amount</description>
+        <externalId>false</externalId>
+        <formula>State_Grant_W__c * System_Size_kW__c *1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total State Grant Amount</inlineHelpText>
+        <label>State Grant Total ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State_Grant_W__c</fullName>
+        <description>State Grant ($/W)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State Grant ($/W)</inlineHelpText>
+        <label>State Grant ($/W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Property__r.Property_State__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification__c</fullName>
+        <defaultValue>&apos;Not Yet Certified&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>System Certification</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>System_Makeup__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.System_Makeup__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>System Makeup</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Size_kW__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.System_Size_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>System Size (kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_State__c</fullName>
+        <description>State Where System is Located</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State Where System is Located</inlineHelpText>
+        <label>System State</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tranche_Number__c</fullName>
+        <description>Astrum Tranche Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Astrum Tranche Number</inlineHelpText>
+        <label>Tranche Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Treasury_Grant_Approval_Date__c</fullName>
+        <description>LEASE ONLY - Treasury Grant Approval Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Treasury Grant Approval Date</inlineHelpText>
+        <label>Treasury Grant Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Treasury_Grant_Filing_Date__c</fullName>
+        <description>LEASE ONLY - Treasury Grant Filing Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Treasury Grant Filing Date</inlineHelpText>
+        <label>Treasury Grant Filing Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Treasury_Grant_Received_Amount__c</fullName>
+        <description>LEASE ONLY - Treasury Grant Received Amount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Treasury Grant Received Amount</inlineHelpText>
+        <label>Treasury Grant Received Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Treasury_Grant_Requested_Amount__c</fullName>
+        <description>LEASE ONLY - Amount of Treasury Grant Requested</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Amount of Treasury Grant Requested</inlineHelpText>
+        <label>Treasury Grant Requested Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Treasury_Grant_Requested_vs_Received__c</fullName>
+        <description>LEASE ONLY  - Treasury Grant Requested vs Received</description>
+        <externalId>false</externalId>
+        <formula>Treasury_Grant_Received_Amount__c - Treasury_Grant_Requested_Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>LEASE ONLY  - Treasury Grant Requested vs Received</inlineHelpText>
+        <label>Treasury Grant Requested vs Received</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>X10_Payment_Documents_Submitted__c</fullName>
+        <defaultValue>&apos;Not Yet Submitted&apos;</defaultValue>
+        <description>10% Payment - Invoice Documents - Submitted by Astrum Solar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>10% Payment - Invoice Documents - Submitted by Astrum Solar</inlineHelpText>
+        <label>10% Payment - Documents Submitted</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X10_Payment_Invoice_Authorized__c</fullName>
+        <defaultValue>&apos;Not Yet Authorized&apos;</defaultValue>
+        <description>10% Payment - Invoice Authorized by Constellation Energy</description>
+        <externalId>false</externalId>
+        <inlineHelpText>10% Payment - Invoice Authorized by Constellation Energy</inlineHelpText>
+        <label>10% Payment - Invoice Authorized</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X1603_Compliant__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is This System 1603 Compliant?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is This System 1603 Compliant?</inlineHelpText>
+        <label>1603 Compliant?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>X30_Payment_Documents_Submitted__c</fullName>
+        <defaultValue>&apos;Not Yet Submitted&apos;</defaultValue>
+        <description>30% Payment - Invoice Documents - Submitted by Astrum Solar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>30% Payment - Invoice Documents - Submitted by Astrum Solar</inlineHelpText>
+        <label>30% Payment - Documents - Submitted</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X30_Payment_Invoice_Authorized__c</fullName>
+        <defaultValue>&apos;Not Yet Authorized&apos;</defaultValue>
+        <description>30% Payment - Invoice Authorized by Constellation Energy</description>
+        <externalId>false</externalId>
+        <inlineHelpText>30% Payment - Invoice Authorized by Constellation Energy</inlineHelpText>
+        <label>30% Payment - Invoice Authorized</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X60_Payment_Documents_Submitted__c</fullName>
+        <defaultValue>&apos;Not Yet Submitted&apos;</defaultValue>
+        <description>60% Payment - Invoice Documents - Submitted by Astrum Solar</description>
+        <externalId>false</externalId>
+        <inlineHelpText>60% Payment - Invoice Documents - Submitted by Astrum Solar</inlineHelpText>
+        <label>60% Payment - Documents - Submitted</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X60_Payment_Invoice_Authorized__c</fullName>
+        <defaultValue>&apos;Not Yet Authorized&apos;</defaultValue>
+        <description>60% Payment - Invoice Authorized by Constellation Energy</description>
+        <externalId>false</externalId>
+        <inlineHelpText>60% Payment - Invoice Authorized by Constellation Energy</inlineHelpText>
+        <label>60% Payment - Invoice Authorized</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Year_of_Installation__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR( Generation_Start_Date__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Year of Installation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Installed System</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Property__c</columns>
+        <columns>Sales_Order__c</columns>
+        <columns>Quoted_System_Design__c</columns>
+        <columns>PJM_Id__c</columns>
+        <columns>Enphase_ID__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>equals</operation>
+            <value>SYS-002627</value>
+        </filters>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>SYS-{000000}</displayFormat>
+        <label>Installed System Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Installed Systems</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

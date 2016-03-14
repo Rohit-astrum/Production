@@ -1,0 +1,34 @@
+<apex:component id="headerComponent">
+	
+  <!-- 
+  <apex:panelGrid cellpadding="0" cellspacing="0" width="98%" border="0" columns="2" style="text-align: left;" id="theHeader">
+    <apex:image url="{!$Site.Prefix}/img/sites/force_logo.gif" style="align: left;" alt="Salesforce" width="233" height="55" title="Salesforce"/>
+    <apex:panelGrid cellpadding="0" cellspacing="0" width="100%" border="0" columns="1" style="text-align: right;" id="Links">
+	  <apex:panelGroup rendered="{!AND(ISPICKVAL($User.UserType,'Guest'), $Site.LoginEnabled)}">
+		<apex:outputLink value="/site/SiteLogin.apexp">{!$Label.site.login_button}</apex:outputLink>
+		<apex:outputText value=" | "/>
+		<apex:outputLink value="/site/ForgotPassword.apexp">{!$Label.site.forgot_your_password_q}</apex:outputLink>
+		<apex:outputText value=" | " rendered="{!$Site.RegistrationEnabled}"/>
+		<apex:outputLink value="/site/SiteRegister.apexp" rendered="{!$Site.RegistrationEnabled}">{!$Label.site.new_user_q}</apex:outputLink>
+	  </apex:panelGroup>
+	  <apex:outputLink value="{!$Site.Prefix}/secur/logout.jsp" rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}">{!$Label.site.logout}</apex:outputLink>
+    </apex:panelGrid>
+  </apex:panelGrid>
+  -->
+  
+  	<div id="Header">
+		<h1 id="Logo"><a href="http://www.astrumsolar.com">Astrum Solar</a></h1>
+		<!-- 
+		<div id="HeaderRightProgress">
+			<ul id="calculator-nav">
+				<li id="nav_provideinformation_1"></li>
+				<li id="nav_reviewquote_1"></li>
+				<li id="nav_submitquote_1"></li>
+			</ul>
+  		</div>
+  		-->
+  
+  		<h3 id="TaglineBar">See a Sunny Day in a Whole New Way</h3>
+	</div>
+  
+</apex:component>

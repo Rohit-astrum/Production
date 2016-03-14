@@ -1,0 +1,305 @@
+<apex:page controller="SalesOrderController" tabstyle="opportunity">
+    <apex:stylesheet value="/sCSS/Theme2/en/common.css" />
+    <apex:stylesheet value="/sCSS/Theme2/en/custom.css" />
+    <apex:stylesheet value="/css/assistive.css" />
+    <apex:stylesheet value="{!$Resource.AjaxStatusStyle}"/> <!-- MK - 2014-06-23 Preventing double-click and duplicate job ID -->
+
+    <!-- MK - 2014-06-23 Preventing double-click and duplicate job ID. CODE BEGIN -->
+    <script type="text/javascript" language="javascript"> 
+        function ShowLoading() {
+        document.getElementById('blockbckanim').style.display="block";
+        }
+        function HideLoading() {
+        document.getElementById('blockbckanim').style.display="none";
+        }
+    </script>
+    <!-- MK - 2014-06-23 Preventing double-click and duplicate job ID. CODE END -->
+
+    <apex:form >
+        
+        <!-- MK - 2014-06-23 Preventing double-click and duplicate job ID. CODE BEGIN -->
+        <apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+        <div id="blockbckanim" style="display:none">
+        <img id="apimgld" style="" src="/img/loading32.gif" />
+        </div>
+        <!-- MK - 2014-06-23 Preventing double-click and duplicate job ID. CODE END -->
+        
+        <apex:pageBlock mode="edit">
+            <apex:pageMessages />
+
+            <STYLE type="text/css">
+                .col {
+                    text-align: right
+                }
+
+                .col2 {
+                    text-align: center
+                }
+            </STYLE>
+
+            <div class="bPageTitle">
+                <div class="ptBody secondaryPalette">
+                    <div class="content">
+                        <img src="/s.gif" alt="Opportunity" class="pageTitleIcon"></img>
+                        <h1 class="pageType">
+                            Create Sales Order<span class="titleSeparatingColon">:</span>
+                        </h1>
+                        <h2 class="pageDescription">{!Opportunity.Name}</h2>
+                        <div class="blank"></div>
+                    </div>
+                    <div class="links">
+                        <a href='\apex\createsalesorderhelp'
+                            title="Help for this Page (New Window)" target="_blank"><span
+                            class="helpLink">Help for this Page</span> <img src="/s.gif"
+                            alt="" class="helpIcon"></img></a>
+                    </div>
+                </div>
+            </div>
+                  Please provide the additional required information before submitting this order
+            <p></p>
+            <div class='pbSubheader first tertiaryPalette'>
+                <span class='pbSubExtra'> <span class='requiredLegend'>
+                        <span class='requiredExampleOuter'> <span
+                            class='requiredExample'>&nbsp;</span>
+                    </span> <span class='requiredText'> = Required Information</span>
+                </span>
+                </span>
+                <h3>
+                    Order Information<span class='titleSeparatingColon'>:</span>
+                </h3>
+            </div>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.name}" />
+                <apex:inputField value="{!order.RequestedShipmentOn__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Owner" />
+                    <apex:outputLabel value="{!$User.FirstName} {!$User.LastName}" />
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!order.Has_Field_Survey_Been__c}" />
+                
+                <!-- MK - 2014-05-16 added this field instead of asking user to select  -->
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Requires Tree Removal" />
+                    <apex:outputField value="{!opportunity.System_Design_Quote__r.System_Design__r.Tree_Removal__c}" />
+                </apex:pageBlockSectionItem>
+
+                <!-- MK - 2014-05-16 - This field is not used any more, we are going to reference with formula field to the system design
+                <apex:inputField value="{!order.Requires_Tree_Removal__c}" />
+                -->
+                <apex:inputField value="{!order.Down_Payment__c}" required="true" />
+            </apex:pageBlockSection>
+            <div class='pbSubheader tertiaryPalette'>
+                <h3>
+                    Hand Off Notes<span class='titleSeparatingColon'>:</span>
+                </h3>
+            </div>
+            <apex:inputField style="width: 100%;"
+                value="{!order.Hand_Off_Notes__c}" />
+
+            <div class='pbSubheader tertiaryPalette'>
+                <h3>
+                    Address Information<span class='titleSeparatingColon'>:</span>
+                </h3>
+            </div>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.Name}" />
+                <apex:outputField value="{!order.Installation_Address_1__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.AccountNumber}" />
+                <apex:outputField value="{!order.Installation_Address_2__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.BillingStreet}" />
+                <apex:outputField value="{!order.Installation_City__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.BillingCity}" />
+                <apex:outputField value="{!order.Installation_State__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.BillingState}" />
+                <apex:outputField value="{!order.Installation_Zip_PostalCode__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.BillingPostalCode}" />
+                <apex:outputField value="{!order.Installation_Permit_Jurisdiction__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:outputField value="{!Account.BillingCountry}" />
+
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing Phone" for="account.Phone" />
+                    <apex:outputField value="{!Account.Phone}" />
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing Fax" for="account.Fax" />
+                    <apex:outputField value="{!Account.Fax}" />
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+            <div class='pbSubheader tertiaryPalette'>
+                <h3>
+                    Line Items<span class='titleSeparatingColon'>:</span>
+                </h3>
+            </div>
+
+            <apex:dataTable style="width: 100%;" value="{!salesOrderLineItems}"
+                var="litem" id="theTable" rowClasses="odd,even"
+                styleClass="tableClass">
+                <apex:facet name="caption"></apex:facet>
+                <apex:facet name="header"></apex:facet>
+                <apex:facet name="footer"></apex:facet>
+                <apex:column >
+                    <apex:facet name="header">Product</apex:facet>
+                    <apex:facet name="footer"></apex:facet>
+                    <apex:outputField value="{!litem.Name}" />
+                </apex:column>
+                <apex:column styleclass="col" headerClass="col">
+                    <apex:facet name="header">Quantity</apex:facet>
+                    <apex:facet name="footer"></apex:facet>
+                    <apex:outputField value="{!litem.Quantity__c}" />
+                </apex:column>
+                <apex:column styleclass="col" headerClass="col">
+                    <apex:facet name="header">Sales Price</apex:facet>
+                    <apex:facet name="footer"></apex:facet>
+                    <apex:outputField value="{!litem.SalesPrice__c}" />
+                </apex:column>
+                <apex:column styleclass="col" headerClass="col">
+                    <apex:facet name="header">Total Price</apex:facet>
+                    <apex:facet name="footer"></apex:facet>
+                    <apex:outputField value="{!litem.TotalPrice__c}" />
+                </apex:column>
+                <apex:column styleclass="col" headerClass="col">
+                    <apex:facet name="header">&nbsp;</apex:facet>
+                    <apex:facet name="footer"></apex:facet>
+                </apex:column>
+                <!-- 
+                <apex:column >
+                        <apex:facet name="header">Requested Installation On</apex:facet>
+                        <apex:facet name="footer"></apex:facet>
+                        <apex:inputField value="{!litem.RequestedShipmentOn__c}"/>
+                </apex:column>
+ -->
+            </apex:dataTable>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!save}" onclick="ShowLoading();" /> <!-- MK - 2014-06-23 Preventing double-click and duplicate job ID. -->
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <div id="divHelp" style="display: none">
+        <h1 class="helpHead1">
+            <a name="N1000C"> <!-- -->
+            </a>Create and Submit Sales Order
+            <!-- -->
+        </h1>
+        <div>
+            <br></br>
+            <div>
+                <table class="editionTable" id="Table2" cellspacing="0"
+                    cellpadding="0" width="100%"
+                    summary="Salesforce editions needed for the documented functionality"
+                    border="0" frame="border">
+                    <tbody>
+                        <tr>
+                            <td class="subHead">Available in: <strong>Force.com</strong>
+                                Edition
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br></br>
+            </div>
+            <div>
+                <table class="permTable" id="Table4" cellspacing="0" cellpadding="0"
+                    width="100%"
+                    summary="Permissions needed for the documented functionality"
+                    border="0" frame="border">
+                    <thead align="left">
+                        <tr>
+                            <th class="permTableHeader" id="N10090" colspan="2">User
+                                Permissions Needed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="permRowLeft" headers="N10090 ">To submit a Sales
+                                Order</td>
+                            <td class="permRowRight" headers="N10090 ">'Create and
+                                Update' on custom Sales Order objects</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>This form is a custom VisualForce Page from Scribe Software
+                for use in integrating Salesforce with ERP applications.</p>
+            <div class="p">
+                <ul>
+                    <li id="OppView"><a name="OppView"> </a>This form is accessed
+                        by clicking a custom link on an opportunity.</li>
+                    <!--li id="OppHotList"><a name="OppHotList"/-->
+                    <li>The initial values on this form are driven by the
+                        originating opportunity, or in the case of the address information
+                        by the account associated with the opportunity.</li>
+                    <li>The billing information used in the generated Sales Order
+                        must match the account. To update or change this information it
+                        must be changed on the account.&nbsp;</li>
+                    <li>Once submitted, a new Sales Order will be created in
+                        Salesforce. This&nbsp;new Sales Order will be read-only.</li>
+                    <li>An integration process will pick up this new sales order
+                        and submit it to the ERP application for processing.</li>
+                    <li>Soon after submission an integration process
+                        will&nbsp;update the new Sales Order with the status and pricing
+                        generated by the ERP system. &nbsp;&nbsp;</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="relinfo">
+                See Also:<br></br>
+                <div>
+                    <div>
+                        <a title="" href="/help/doc/en/opp_add.htm"></a>
+                    </div>
+                    <u><font color="#0000ff"></font></u><a title=""
+                        href="/help/doc/en/opp_add.htm">Creating Opportunities</a>
+                </div>
+                <div>
+                    <div>
+                        <a title="" href="customviews.htm"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script language='javascript'>
+     function showHelpPage() {
+
+var helpWindow;
+
+helpWindow = window.open(null,null,resizable,status,scrollbars,width=400,height=500);
+helpWindow.document.open();
+
+helpWindow.document.write("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
+helpWindow.document.write("<html><head><title>Sales Order Help Page - ERP Integration for Salesforce.com by Scribe Software</title>");
+helpWindow.document.write("<link href='/sCSS/Theme2/default/help.css' type='text/css' rel='stylesheet' >");
+helpWindow.document.write("</head><body>");
+helpWindow.document.write(document.getElementById("divHelp").innerHTML);
+helpWindow.document.write("</body></html>");
+
+helpWindow.document.close();
+
+
+}
+</script>
+</apex:page>

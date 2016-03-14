@@ -1,0 +1,22 @@
+<html>
+<body>
+<p>A <strong><a href="https://na28.salesforce.com/{!SCRB_SalesOrder__c.Id}">Sales Order</a></strong> with the following details has been escalated for VP of Sales approval.</p>
+
+<p><u>Issues Requiring VP Sales Approval :</u></p>
+ <b>{!SCRB_SalesOrder__c.Escalation_Comments__c}</b>
+
+<ul style="list-style:none">
+<li>Customer Name: {!SCRB_SalesOrder__c.AccountId__c}</li>
+<li>City, State of Property: {!SCRB_SalesOrder__c.Installation_City__c}, {!SCRB_SalesOrder__c.Installation_State__c}</li>
+<li>Total System Size: {!SCRB_SalesOrder__c.System_Size_kW__c}</li>
+<li>Final System Price: {!SCRB_SalesOrder__c.Amount__c}</li>
+<li>Total Panel Count: {!SCRB_SalesOrder__c.Total_Panel_Count__c}</li>
+<li>Type & Quantity:<br />
+{!SCRB_SalesOrder__c.System_Makeup__c}</li>
+<li>Field Surveys Complete? {!SCRB_SalesOrder__c.Has_Field_Survey_Been__c}</li>
+<li>Hand Off Notes:<br />
+{!SCRB_SalesOrder__c.Hand_Off_Notes__c}</li>
+</ul>
+
+
+<p>To Review This Sales Order, please <strong><a href="https://na28.salesforce.com/{!SCRB_SalesOrder__c.Id}">Review Here</a></strong></p>

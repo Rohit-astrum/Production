@@ -1,0 +1,219 @@
+<apex:page standardController="Opportunity"        
+           extensions="EventSalesVisitCompletedExtension" showHeader="false" sidebar="false" standardStylesheets="false" >
+    <head>
+     <style type="text/css">
+          
+           #SendSurvey .SendSurveyRow .invalid {
+                background-color: #FFF0F0;
+            }
+            
+            #SendSurvey {              
+                background-color: #ffffff;
+                border: 2px solid #cccccc;  
+                padding: 20px;               
+                width: 310px;
+                height: 290px;
+                }
+                
+           #SendSurvey .SendSurveyRow {
+                display: block;
+                float: left;
+                padding: 5px 0;
+                width: 100%;
+            }
+
+            #SendSurvey .SendSurveyRow label {
+                color: #666666;
+                font-weight: bold;
+                display: block;
+                font-size: 14px;
+                line-height: 14px;
+                margin: 0 0 5px 0;
+                padding: 0;
+            }
+            
+           
+            
+            #SendSurvey .SendSurveyRow select {
+                background-color: #ffffff;
+                border: 1px solid #cccccc;
+                color: #666666;
+                font-size: 14px;
+                padding: 3px;
+                width: 100%;
+                border-radius: 0px;
+                -webkit-appearance: none;
+            }  
+            
+            #SendSurvey .SendSurveyRow button.SendSurveyButtonSend {
+                color: #ffffff;
+                cursor: pointer;
+                background-color: #666666;
+                background-image: none;
+                border: 0;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: block;
+                float: left;
+                font-size:  12px;
+                margin-top: 5px;
+                margin-right: 5px;
+                padding: 5px;
+                width: 60px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            
+            #SendSurvey .SendSurveyRow button.SendSurveyButtonClose {
+                color: #ffffff;
+                cursor: pointer;
+                background-color: #666666;
+                background-image: none;
+                border: 0;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: block;
+                float: left;
+                font-size:  12px;
+                margin-top: 5px;
+                margin-right: 5px;
+                padding: 5px;
+                width: 60px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+  
+  
+           
+        </style>
+        
+        <apex:includeScript value="{!URLFOR($Resource.jQueryForPopup, '/jQuery/jquery-1.8.2.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jQueryForPopup, '/jQuery/postmessage/jquery.ba-postmessage.js')}"/>
+ 
+        <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+     
+            var parent_domain = '{!parentDomain}';           
+     
+            j$(document).ready(function() {
+               /*j$('input[id$=btnCloseModalDialog]').click(function(event) {               
+                                   
+                    closeModalDialog();                    
+                });
+                j$('button[id$=SendSurveyButtonSend]').click(function(event) {                                          
+                    sleep(800);            
+                                    
+                    var statusFilter = document.getElementById('{!$Component.survey.SendSurveySelect}');
+                    var statusValue = statusFilter.options[statusFilter.selectedIndex].value;                   
+                    if(statusValue != '')
+                    {
+                        closeModalDialog();     
+                    }
+                });*/
+                
+                window.onload = function()
+                {
+                   
+                  var updateStatus = '{!updateStatus}';   
+                  if(updateStatus)
+                  {
+                     
+                       sleep(800); 
+                       closeModalDialog('close_modal_dialog_redirect');   
+                  } 
+                   
+                   return false; 
+                                
+                }  
+            });
+            
+            
+            
+            function sleep(milliseconds) {
+              var start = new Date().getTime();
+              for (var i = 0; i < 1e7; i++) {
+                if ((new Date().getTime() - start) > milliseconds){
+                  break;
+                }
+              }
+            }
+            
+            
+             
+            function closeModalDialog(action) {
+                var cross_result = new Object();
+                cross_result.action = action;       
+                                 
+                j$.postMessage(
+                    cross_result,
+                    parent_domain,
+                    parent
+                );
+               
+            }
+        </script>
+         </head>
+     <apex:form id="survey">  
+        
+         <div id="SendSurvey">
+          <div class="SendSurveyRow">
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'ERROR -'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td><span>{!errorFields}</span></td>
+                    </tr>
+                </table>
+                
+                <br/>
+            </apex:outputPanel>  
+            <apex:actionRegion >
+                <label>Opportunity Stage:</label>
+                <apex:inputField value="{!Opportunity.StageName}" id="SendSurveySelect" styleClass="SendSurveySelect {!IF(CONTAINS(errorFields,'[reason]'),'invalid','')}">                           
+                    <apex:actionSupport event="onchange" action="{!changeStageName}" 
+                             rerender="probpanel" />
+                </apex:inputField>
+            </apex:actionRegion>
+          
+          </div>
+          <apex:outputPanel id="probpanel">
+              <div class="SendSurveyRow">
+                <label>Probability:</label>
+                 <apex:inputField value="{!Opportunity.Probability}" id="probability" styleClass="SendSurveySelect {!IF(CONTAINS(errorFields,'[reason]'),'invalid','')}"/>                           
+              </div>
+              <apex:outputPanel id="closepanel" rendered="{!Opportunity.StageName == 'Closed - Lost'}">
+                  <div class="SendSurveyRow">                  
+                    <label>Closed Type:</label>
+                    <apex:inputField value="{!Opportunity.Closed_Type__c}" id="closetype" styleClass="SendSurveySelect {!IF(CONTAINS(errorFields,'[reason]'),'invalid','')}"/>                           
+                  </div>
+                  <div class="SendSurveyRow">                  
+                    <label>Closed Reason:</label>
+                    <apex:inputField value="{!Opportunity.Closed_Reason__c}" id="closereason" styleClass="SendSurveySelect {!IF(CONTAINS(errorFields,'[reason]'),'invalid','')}"/>                           
+                  </div>
+              </apex:outputPanel>
+              <apex:outputPanel id="onholdpanel" rendered="{!Opportunity.StageName == 'On Hold'}">
+                  <div class="SendSurveyRow">
+                    <label>On Hold Untill:</label>
+                    <apex:inputField value="{!Opportunity.On_Hold_Until__c}" id="onhold" styleClass="SendSurveySelect {!IF(CONTAINS(errorFields,'[reason]'),'invalid','')}"/>                           
+                  </div>
+              </apex:outputPanel>
+          </apex:outputPanel>
+          
+          <div class="SendSurveyRow">
+            <label>Opportunity Close Date:</label>
+             <apex:inputField value="{!Opportunity.CloseDate}" id="CloseDate" styleClass="SendSurveySelect {!IF(CONTAINS(errorFields,'[reason]'),'invalid','')}"/>                           
+          </div>
+          <div class="SendSurveyRow"> 
+                  <button id="SendSurveyButtonSend" class="SendSurveyButtonSend" type="submit" onClick= "doSubmit(); return false;">Save</button>                   
+                  <button class="SendSurveyButtonClose" type="button" onclick="closeModalDialog('close_modal_dialog');" >Cancel</button> 
+                  <apex:actionFunction name="doSubmit" action="{!updateEventCompleted}" /> 
+                 
+          </div>
+        </div>
+         
+    </apex:form>
+     
+               
+</apex:page>

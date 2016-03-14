@@ -1,0 +1,25 @@
+<apex:page showHeader="false" title="{!$Label.site.site_under_construction}" id="StdExceptionTemplate" cache="false">
+
+<link rel="stylesheet" type="text/css" href="http://www.astrumsolar.com/calculator/css/71/jqModal,jquery.ui.custom,jquery.selectBox,style,calculator.css" media="screen" />
+<link href="https://fast.fonts.com/cssapi/38e70b35-5e3b-4be9-984d-510d3f12e42a.css" rel="stylesheet" type="text/css" />
+
+<div id="Frame">
+
+	<apex:panelGrid width="758" cellpadding="0" cellspacing="0" bgcolor="white" columns="1" styleClass="topPanelContainer">
+		<apex:outputPanel layout="block" styleClass="topPanel" style="font-size: 1.6em;">
+		    <br/>
+		    <br/>
+	        <apex:panelGrid width="758" cellpadding="0" cellspacing="0" bgcolor="white" columns="3">
+				<apex:insert name="icon"/>
+				<apex:insert name="error"/>
+	        </apex:panelGrid>
+		    <br/>
+		    <br/>
+      	</apex:outputPanel>
+	</apex:panelGrid>
+    
+</div>
+    
+<site:previewAsAdmin />
+    
+</apex:page>

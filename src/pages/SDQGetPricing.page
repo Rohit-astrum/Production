@@ -1,0 +1,3 @@
+<apex:page standardController="System_Design_Quote__c"
+           extensions="SDQGetPricingController" showHeader="true" sidebar="true" action="{!getPricing}"   >
+</apex:page>

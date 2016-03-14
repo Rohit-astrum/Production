@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Customer Survey Completed  Notice</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Customer Survey Completed  Notice</name>
+    <style>none</style>
+    <subject>Customer Satisfaction Survey Received from {!Customer_Survey__c.Survey_Completed_By__c}</subject>
+    <textOnly>A Change Request with the following details has been submitted for your approval.
+
+    Type 1 : {!Change_Request__c.Type_1__c}
+    Type 1 Detail : {!Change_Request__c.Type_2_Detail__c}
+    Change Reason 1 : {!Change_Request__c.Reason_for_Change_1__c}
+    Type 2 : {!Change_Request__c.Type_2__c}
+    Type 2 Detail : {!Change_Request__c.Type_2_Detail__c}
+    Change Reason 2 : {!Change_Request__c.Reason_for_Change_2__c}
+    Change From : {!Change_Request__c.Change_From__c}
+    Change To : {!Change_Request__c.Change_To__c}
+
+To Approve this Change Request, please visit:  
+https://na8.salesforce.com/{!Change_Request__c.Id}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

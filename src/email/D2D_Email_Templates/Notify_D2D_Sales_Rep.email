@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="D2D: Leads Assigned" recipientType="User">
+<messaging:htmlEmailBody >
+   <c:D2DEmailComponent providedEmailTemplateType="SalesRep"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

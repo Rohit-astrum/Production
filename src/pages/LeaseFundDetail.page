@@ -1,0 +1,27 @@
+<!--
+FILE: LeaseFundDetail.page
+AUTHOR:Rohit Jain
+DATE: Jul 14, 2013
+PURPOSE: Displays Lease Fund Detail after Successfull Sent
+MODIFICATION HISTORY:
+
+-->
+<apex:page standardController="System_Design_Quote__c">
+    <apex:sectionHeader subtitle="NRG Quote Accepted" rendered="{!$CurrentPage.parameters.leadsent='Y'}" />
+    <apex:sectionHeader subtitle="Unexpected Error in NRG System. Please see the message in Quote Accept Message field." rendered="{!$CurrentPage.parameters.leadsent='EY'}" />
+    <apex:sectionHeader subtitle="NRG Quote not found. Please check if the System Design Quote is being pushed to NRG System." rendered="{!$CurrentPage.parameters.leadsent='NR'}" />
+    <apex:sectionHeader subtitle="Sales Order not associated with SDQ." rendered="{!$CurrentPage.parameters.leadsent='NSDQ'}" />
+    <apex:sectionHeader subtitle="Documents are not yet generated for CPF Quote." rendered="{!$CurrentPage.parameters.leadsent='NDOC'}" />
+    <apex:sectionHeader subtitle="Customer Elligibility is not yet completed for CPF Quote." rendered="{!$CurrentPage.parameters.leadsent='NCRE'}" />
+    <apex:sectionHeader subtitle="Leasing Option is not defined for this deal." rendered="{!$CurrentPage.parameters.leadsent='LO'}" />
+    <apex:sectionHeader subtitle="Invalid Leasing Option for NRG Deal." rendered="{!$CurrentPage.parameters.leadsent='ILO'}" />
+    
+    <apex:sectionHeader subtitle="Error while sending NRG Lead. Please verify below that all the required fields are populated." rendered="{!$CurrentPage.parameters.leadsent='E'}" />
+    <apex:sectionHeader subtitle="Following NRG Lead has already being sent." rendered="{!$CurrentPage.parameters.leadsent='N'}" />
+    <apex:sectionHeader subtitle="Error in creating NRG Lead. Please check if Property'Account is associated with Contact." rendered="{!$CurrentPage.parameters.leadsent='F'}" />
+    <apex:sectionHeader subtitle="Error in creating NRG Lead. Please check one of the required fields - Last Name, First Name, Street, City, County, State, Zip. Phone, Email ." rendered="{!$CurrentPage.parameters.leadsent='LF'}" />
+    <apex:sectionHeader subtitle="Missing Required fields in Array creation - Azimuth or Shading or Tilt." rendered="{!$CurrentPage.parameters.leadsent='AF'}" />
+    <apex:sectionHeader subtitle="Missing Module Information. Please check the NRG Product Mappings." rendered="{!$CurrentPage.parameters.leadsent='MF'}" />
+    <apex:detail subject="{!System_Design_Quote__c.Id}" inlineEdit="false" title="false" />
+
+</apex:page>

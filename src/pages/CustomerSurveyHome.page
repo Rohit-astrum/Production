@@ -1,0 +1,868 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="CustomerSurveyController">
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+        <link rel="stylesheet" href="{!URLFOR($Resource.CustomerSurveyResources, 'css/styles.css')}" type="text/css" />  
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- <link href="https://fast.fonts.com/cssapi/38e70b35-5e3b-4be9-984d-510d3f12e42a.css" rel="stylesheet" type="text/css"/> -->
+        
+         <!--Google JQuery-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        
+        <script src="{!URLFOR($Resource.CustomerSurveyResources, 'javascript/scripts.js')}"></script>
+        
+    </head>
+    
+    <style>
+    
+	    /*Web Fonts*/
+    
+    
+	    @font-face{
+			font-family:"ConduitITCW01-ExtraLigh_731268";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/6d9d0397-2f59-4797-9d05-fc3dea90773e.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2edcd10-e47c-46ce-a26e-abc326913231.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2ca7ac3e-e9ad-4469-ad0f-7ca39807abb6.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/97620ad5-a20b-4d15-846e-062fa737d4c2.svg#97620ad5-a20b-4d15-846e-062fa737d4c2')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-ExtraLigh_731271";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2e1ec13f-ffb9-4785-8366-29fa78edab7d.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/cc4ea450-48c9-45ae-9905-49e4becb52cd.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e475c09-527f-4b4c-92d7-6f4bc0d2b863.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/c6005481-1bb3-4e65-9f23-3bf8f317d9e9.svg#c6005481-1bb3-4e65-9f23-3bf8f317d9e9')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Light";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/cf39e66c-fff7-43d5-b865-0a45543d590a.svg#cf39e66c-fff7-43d5-b865-0a45543d590a')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-LightItal";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a4b3a81c-1256-49cb-a816-5d8931d352cb.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/cb1d6e54-081d-429a-a0e2-e09f003b52f6.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/4e4ba5dd-4e46-4afe-804b-624ab0b31d9e.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/64bf7dd4-f691-4801-b042-b720c1c115bd.svg#64bf7dd4-f691-4801-b042-b720c1c115bd')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Regular";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8846bd5f-2288-474a-9e36-1f6a456687e8.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e328f17d-e8e5-424f-92e8-31af32b2ebac.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/97556a76-3d0b-4ad7-ae17-02b5d97e928b.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/407529ad-dcaa-4637-ac62-6cf9265d4f52.svg#407529ad-dcaa-4637-ac62-6cf9265d4f52')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Italic";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8f5aa48d-d6a8-44d6-8f8b-05a27be61180.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/0d4b4097-9f7f-486f-b108-07f6ab48ca1d.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8e21264d-f678-4005-b90c-8d8288a0d179.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a084d860-2279-4910-b924-82b72dcc36e0.svg#a084d860-2279-4910-b924-82b72dcc36e0')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Medium";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/62fbb38e-9226-47f8-90d8-3c37328ab6c9.svg#62fbb38e-9226-47f8-90d8-3c37328ab6c9')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-MediumIta";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8eff5488-0bde-4d4c-8f56-058189978841.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ebda6846-73f6-43d3-9197-a9577947f6c6.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/3df60eaf-797e-4c19-aa7c-b7f071f0cb44.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/29fffbbc-8876-445e-9ec0-1895f243a630.svg#29fffbbc-8876-445e-9ec0-1895f243a630')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Bold";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/4680ad80-371f-497c-8926-35654adc2249.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/fdaf48d4-c023-4a03-b948-53535ee4d571.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ca6dc25e-d400-4735-9fb9-ee2d025ebb5c.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/aa206b9b-b888-4ce6-8039-669469e9b429.svg#aa206b9b-b888-4ce6-8039-669469e9b429')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-BoldItali";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d7196b2-01b1-40b5-96e0-fc359188ba6f.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/12c62c8a-5fa0-42e5-9dbe-d81e2cd53756.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ec4d359c-2645-4fe6-81c9-a6926f0faefa.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/92dde6c0-7bec-4165-81cd-6565fa13067c.svg#92dde6c0-7bec-4165-81cd-6565fa13067c')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-ExtraBold_731262";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/7002aae3-e27a-49d5-b79b-44bcc8364444.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a0afe27e-7751-4c93-8499-b73d4801ce53.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2960bd08-c8ab-4549-8aab-dfc6245541f7.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e9d182a6-38a1-4923-9d37-756b5cc46682.svg#e9d182a6-38a1-4923-9d37-756b5cc46682')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-ExtraBold_731265";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d8515268-a189-493a-a1d4-5061408b4c84.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2fbf317-cd76-4a7a-bc66-4108d3ce5a94.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d96fd761-8451-4d01-8443-fcb4d10fb3ce.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/7e039442-211a-4159-b641-e456210be8e3.svg#7e039442-211a-4159-b641-e456210be8e3')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Black";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2a06e006-d37c-4d8f-a4bc-c9eec5d41e24.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e560b829-e02c-4a01-bbe1-ddc574c1f8e8.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d3baf0dc-04c7-4f98-a85b-6eb2d44be02a.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/9372a370-abb4-4516-836c-d7ca85e7f06a.svg#9372a370-abb4-4516-836c-d7ca85e7f06a')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-BlackItal";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f76f551-2973-4ff9-bcb8-d440bdbe93fa.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/1ce906cc-1f63-4410-ad83-e2251b2a9ed9.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/376e972f-a10d-46fa-8042-362f94ef52ec.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d35847aa-1943-4214-bc22-81eba2f6a3af.svg#d35847aa-1943-4214-bc22-81eba2f6a3af')}') format("svg");
+		}
+		
+		
+	    
+    
+    </style>
+
+    <body>
+        <apex:form id="csurvey">               
+            <div id="Frame">
+                <div id="Header">
+                    <h1 id="Logo"><a href="http://www.directenergysolar.com">Direct Energy Solar</a></h1>
+                    <div id="UpperRightNav">
+                        <a href="http://www.directenergysolar.com/get-started-free-solar-quote"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Phone.gif')}" ALT="Call Us: 800-903-6130" /></a>
+                        <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Tagline.gif')}" ALT="See a Sunny Day in a Whole New Way" />
+                    </div>
+                </div>
+                <div id="Content">
+                    <div id="BodyText">
+                        <div id="FullColSecondary">
+                            <h2>Customer Survey</h2>
+                        </div>
+                        <apex:outputPanel layout="none" rendered="{!surveyCompleted}">
+                        <!--Welcome-->
+                        <div id="Page_Welcome">
+                            <div id="MainColSecondary">
+                                <h3>Thank you for choosing Direct Energy Solar.</h3>
+                                <p>Our records indicate that you have already submitted this survey.</p>
+                                <p>Please contact us at customercare@directenergysolar.com for any questions.</p>
+                               </div>
+                            
+                        </div>
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel layout="none" rendered="{!NOT(surveyCompleted)}">
+                        <!--Welcome-->
+                        <div id="Page_Welcome">
+                            <div id="MainColSecondary">
+                                <h3>Thank you for choosing Direct Energy Solar.</h3>
+                                <p>Please complete our Customer Survey. We believe the perspective of our customers is the most important measurement of our success. The feedback that our customers have provided in the past has led to new offerings and improvements to our processes, from our 3-D system design to our Welcome Visit Materials.</p>
+                                <p>Your input will help ensure that we can deliver truly outstanding service now and in the future. Thank you for giving us your time and insights.</p>
+                                <p class="beginSurveyButton"><a href="javaScript:void(0);" id="Button_BeginSurvey" class="standardButton">Begin Survey <img class="buttonIconRight" src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Right.png')}"/></a></p>
+                            </div>
+                            <div id="SubColSecondary"> <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/CustomerPhoto.jpg')}"/></div>
+                        </div>
+                        </apex:outputPanel>
+                        <!--End Welcome-->                          
+                        <!--Step 1-->
+                        <div id="Page_Step1">
+                            <div id="MainColSecondaryFull"> 
+                                <div class="surveyNavigationSteps"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/NavStep1.gif')}"/></div>
+                                <h3>Your Overall Experience</h3>
+                                <div class="surveySection">
+                                    <h4>Please rate your overall experience with Direct Energy Solar:</h4>
+                                    <input type="radio" name="Question1" value="Poor" id="Poor"/>
+                                    <span>Poor</span>
+                                    <input type="radio" name="Question1" value="Fair" id="Fair" />
+                                    <span>Fair</span>
+                                    <input type="radio" name="Question1" value="Good" id="Good"/>
+                                    <span>Good</span>
+                                    <input type="radio" name="Question1" value="Very Good" id="Very Good"/>
+                                    <span>Very Good</span>
+                                    <input type="radio" name="Question1" value="Truly Outstanding" id="Truly Outstanding"/>
+                                    <span>Truly Outstanding</span> 
+                                 </div>
+                                 
+                                 <div class="surveySection">
+                                    <h4>Based on this experience, how likely are you to recommend Direct Energy Solar to a friend or colleague?</h4>
+                                     <div class="surveyTableVersion1">
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th class="column1">Not At All</th>
+                                            <th class="column2">Neutral</th>
+                                            <th class="column3">Extremely Likely</th>
+                                          </tr>
+                                        </thead>
+                                        <tfoot>
+                                          <tr>
+                                            <td class="fullColumn" colspan="3">
+                                              <input type="radio" name="Question2" value="1" id="1"/>
+                                              <span>1</span>
+                                              <input type="radio" name="Question2" value="2" id="2"/>
+                                              <span>2</span>
+                                              <input type="radio" name="Question2" value="3" id="3"/>
+                                              <span>3</span>
+                                              <input type="radio" name="Question2" value="4" id="4"/>
+                                              <span>4</span>
+                                              <input type="radio" name="Question2" value="5" id="5"/>
+                                              <span>5</span>
+                                              <input type="radio" name="Question2" value="6" id="6"/>
+                                              <span>6</span>
+                                              <input type="radio" name="Question2" value="7" id="7"/>
+                                              <span>7</span>
+                                              <input type="radio" name="Question2" value="8" id="8"/>
+                                              <span>8</span>
+                                              <input type="radio" name="Question2" value="9" id="9"/>
+                                              <span>9</span>
+                                              <input type="radio" name="Question2" value="10" id="10"/>
+                                              <span class="last">10</span>
+                                             </td>                                             
+                                          </tr>                                         
+                                        </tfoot>
+                                      </table>
+                                    </div>
+                                 </div>
+                                 <div class="surveySection">
+                                 <h4>Why do you say that?</h4>
+                                    <textarea name="Question3" id="Question3" rows="4"></textarea>
+                                 </div>
+                                 <div class="surveySection">
+                                 <div class="backNextButtons"><a href="javaScript:void(0);" id="Button_Step1_Back"  class="standardButton"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Left.png')}"/> Back</a> <a href="javaScript:void(0);" id="Button_Step1_Next" class="standardButton">Next <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Right.png')}"/></a></div>
+                              </div>
+                            </div>
+                        </div>
+                        <!--End Step 1--> 
+      
+      <!--Step 2-->
+      <div id="Page_Step2">
+        <div id="MainColSecondaryFull">
+          <div class="surveyNavigationSteps"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/NavStep2.gif')}"/></div>
+          <h3>Your Sales Experience</h3>
+          <div class="surveySection">
+            <h4>Quality of Sales Proposal</h4>
+            <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp;</th>
+                    <th class="column2">No Opinion</th>
+                    <th class="column3">Poor</th>
+                    <th class="column4">Fair</th>
+                    <th class="column5">Good</th>
+                    <th class="column6">Very Good</th>
+                    <th class="column7">Outstanding</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1">Design of solar panel system</td>
+                    <td class="column2"><input type="radio" name="Question4" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question4" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question4" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question4" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question4" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question4" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1">Accuracy of sales proposal</td>
+                    <td class="column2"><input type="radio" name="Question5" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question5" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question5" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question5" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question5" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question5" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Completeness of sales proposal</td>
+                    <td class="column2"><input type="radio" name="Question6" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question6" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question6" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question6" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question6" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question6" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1">Timeliness of sales proposal</td>
+                    <td class="column2"><input type="radio" name="Question7" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question7" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question7" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question7" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question7" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question7" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <h4>Quality of Consultant Staff</h4>
+            <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp;</th>
+                    <th class="column2">No Opinion</th>
+                    <th class="column3">Poor</th>
+                    <th class="column4">Fair</th>
+                    <th class="column5">Good</th>
+                    <th class="column6">Very Good</th>
+                    <th class="column7">Outstanding</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1">Responsiveness to your needs</td>
+                    <td class="column2"><input type="radio" name="Question8" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question8" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question8" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question8" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question8" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question8" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1">Knowledge</td>
+                    <td class="column2"><input type="radio" name="Question9" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question9" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question9" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question9" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question9" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question9" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Professional appearance</td>
+                    <td class="column2"><input type="radio" name="Question10" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question10" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question10" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question10" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question10" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question10" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1">Honesty and Integrity</td>
+                    <td class="column2"><input type="radio" name="Question11" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question11" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question11" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question11" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question11" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question11" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Clarity in explaining</td>
+                    <td class="column2"><input type="radio" name="Question12" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question12" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question12" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question12" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question12" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question12" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1">Follow-through after contract was signed</td>
+                    <td class="column2"><input type="radio" name="Question13" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question13" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question13" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question13" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question13" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question13" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <div class="backNextButtons"> <a href="javaScript:void(0);" id="Button_Step2_Back" class="standardButton"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Left.png')}"/> Back</a> <a href="javaScript:void(0);" id="Button_Step2_Next" class="standardButton">Next <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Right.png')}"/></a> </div>
+          </div>
+        </div>
+      </div>
+      <!--end Step 2--> 
+      
+      <!--Step 3-->
+      <div id="Page_Step3">
+        <div id="MainColSecondaryFull">
+          <div class="surveyNavigationSteps"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/NavStep3.gif')}"/></div>
+          <h3>Your Project Experience</h3>
+          <div class="surveySection">
+            <h4>Quality of Project Process</h4>
+            <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp;</th>
+                    <th class="column2">No Opinion</th>
+                    <th class="column3">Poor</th>
+                    <th class="column4">Fair</th>
+                    <th class="column5">Good</th>
+                    <th class="column6">Very Good</th>
+                    <th class="column7">Outstanding</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1">Usefulness of information provided</td>
+                    <td class="column2"><input type="radio" name="Question14" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question14" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question14" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question14" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question14" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question14" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1">Ease of experience with paperwork</td>
+                    <td class="column2"><input type="radio" name="Question15" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question15" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question15" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question15" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question15" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question15" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Ease of experience with your utility</td>
+                    <td class="column2"><input type="radio" name="Question16" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question16" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question16" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question16" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question16" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question16" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Timeliness in keeping you informed </td>
+                    <td class="column2"><input type="radio" name="Question17" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question17" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question17" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question17" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question17" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question17" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Effectiveness in addressing questions and requests </td>
+                    <td class="column2"><input type="radio" name="Question18" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question18" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question18" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question18" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question18" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question18" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Speed of project completion once install started </td>
+                    <td class="column2"><input type="radio" name="Question19" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question19" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question19" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question19" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question19" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question19" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <h4>Project Lead Staff</h4>
+            <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp; </th>
+                    <th class="column2"> No Opinion </th>
+                    <th class="column3"> Poor </th>
+                    <th class="column4"> Fair </th>
+                    <th class="column5"> Good </th>
+                    <th class="column6"> Very Good </th>
+                    <th class="column7"> Outstanding </th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1"> Concern for your needs </td>
+                    <td class="column2"><input type="radio" name="Question20" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question20" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question20" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question20" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question20" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question20" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Knowledge </td>
+                    <td class="column2"><input type="radio" name="Question21" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question21" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question21" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question21" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question21" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question21" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Professional appearance </td>
+                    <td class="column2"><input type="radio" name="Question22" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question22" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question22" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question22" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question22" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question22" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Courtesy </td>
+                    <td class="column2"><input type="radio" name="Question23" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question23" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question23" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question23" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question23" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question23" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Clarity in explaining </td>
+                    <td class="column2"><input type="radio" name="Question24" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question24" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question24" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question24" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question24" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question24" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Fulfillment of commitments </td>
+                    <td class="column2"><input type="radio" name="Question25" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question25" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question25" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question25" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question25" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question25" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <h4>Panel Installation Staff</h4>
+            <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp; </th>
+                    <th class="column2"> No Opinion </th>
+                    <th class="column3"> Poor </th>
+                    <th class="column4"> Fair </th>
+                    <th class="column5"> Good </th>
+                    <th class="column6"> Very Good </th>
+                    <th class="column7"> Outstanding </th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1"> Promptness of install crew </td>
+                    <td class="column2"><input type="radio" name="Question26" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question26" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question26" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question26" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question26" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question26" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Professional appearance and dress </td>
+                    <td class="column2"><input type="radio" name="Question27" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question27" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question27" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question27" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question27" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question27" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Clarity in explaining work planned </td>
+                    <td class="column2"><input type="radio" name="Question28" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question28" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question28" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question28" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question28" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question28" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Courtesy and patience with questions </td>
+                    <td class="column2"><input type="radio" name="Question29" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question29" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question29" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question29" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question29" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question29" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Quality of workmanship </td>
+                    <td class="column2"><input type="radio" name="Question30" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question30" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question30" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question30" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question30" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question30" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Cleanliness of site at completion </td>
+                    <td class="column2"><input type="radio" name="Question31" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question31" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question31" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question31" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question31" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question31" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <h4>Electrician Staff</h4>
+            <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp; </th>
+                    <th class="column2"> No Opinion </th>
+                    <th class="column3"> Poor </th>
+                    <th class="column4"> Fair </th>
+                    <th class="column5"> Good </th>
+                    <th class="column6"> Very Good </th>
+                    <th class="column7"> Outstanding </th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1"> Promptness of electricians </td>
+                    <td class="column2"><input type="radio" name="Question32" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question32" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question32" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question32" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question32" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question32" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Professional appearance and dress </td>
+                    <td class="column2"><input type="radio" name="Question33" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question33" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question33" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question33" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question33" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question33" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Clarity in explaining work planned </td>
+                    <td class="column2"><input type="radio" name="Question34" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question34" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question34" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question34" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question34" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question34" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Courtesy and patience with questions </td>
+                    <td class="column2"><input type="radio" name="Question35" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question35" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question35" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question35" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question35" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question35" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Quality of workmanship </td>
+                    <td class="column2"><input type="radio" name="Question36" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question36" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question36" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question36" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question36" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question36" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Cleanliness of site at completion </td>
+                    <td class="column2"><input type="radio" name="Question37" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question37" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question37" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question37" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question37" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question37" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <div class="backNextButtons"> <a href="javaScript:void(0);" id="Button_Step3_Back" class="standardButton"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Left.png')}"/> Back</a> <a href="javaScript:void(0);" id="Button_Step3_Next" class="standardButton">Next <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Right.png')}"/></a> </div>
+          </div>
+        </div>
+      </div>
+      <!--end Step 3--> 
+      
+      <!--Step 4-->
+      <div id="Page_Step4">
+        <div id="MainColSecondaryFull">
+          <div class="surveyNavigationSteps"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/NavStep4.gif')}"/></div>
+          <h3>Other Helpful Information</h3>
+          <div class="surveySection">
+            <h4>Other topics</h4>
+           <div class="surveyTableVersion2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column1">&nbsp; </th>
+                    <th class="column2"> No Opinion </th>
+                    <th class="column3"> Poor </th>
+                    <th class="column4"> Fair </th>
+                    <th class="column5"> Good </th>
+                    <th class="column6"> Very Good </th>
+                    <th class="column7"> Outstanding </th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td class="column1"> Final appearance of solar system </td>
+                    <td class="column2"><input type="radio" name="Question38" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question38" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question38" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question38" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question38" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question38" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Ease of payment process </td>
+                    <td class="column2"><input type="radio" name="Question39" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question39" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question39" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question39" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question39" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question39" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Helpfulness of billing staff </td>
+                    <td class="column2"><input type="radio" name="Question40" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question40" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question40" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question40" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question40" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question40" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr class="alternateRow">
+                    <td class="column1"> Coordination with financing parties (if applicable) </td>
+                    <td class="column2"><input type="radio" name="Question41" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question41" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question41" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question41" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question41" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question41" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                  <tr>
+                    <td class="column1"> Coordination with home owner association review (if applicable) </td>
+                    <td class="column2"><input type="radio" name="Question42" value="No Opinion" id="No Opinion"/></td>
+                    <td class="column3"><input type="radio" name="Question42" value="Poor" id="Poor"/></td>
+                    <td class="column4"><input type="radio" name="Question42" value="Fair" id="Fair"/></td>
+                    <td class="column5"><input type="radio" name="Question42" value="Good" id="Good"/></td>
+                    <td class="column6"><input type="radio" name="Question42" value="Very Good" id="Very Good"/></td>
+                    <td class="column7"><input type="radio" name="Question42" value="Outstanding" id="Outstanding"/></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="surveySection">
+            <h4>We value and reward employees who make your experience more enjoyable &mdash; did any employees exceed your expectations?</h4>
+            <textarea name="Question43" id="Question43" rows="4"></textarea>
+          </div>
+          <div class="surveySection">
+            <h4>What was your favorite part of the going solar experience?</h4>
+            <textarea name="Question44" id="Question44" rows="4"></textarea>
+          </div>
+          <div class="surveySection">
+            <h4>What was your least favorite part of the going solar experience?</h4>
+            <textarea name="Question45" id="Question45" rows="4"></textarea>
+          </div>
+          <div class="surveySection">
+            <h4>How could Direct Energy Solar have improved your going solar experience?</h4>
+            <textarea name="Question46" id="Question46" rows="4"></textarea>
+          </div>
+          <div class="surveySection">
+            <div class="backNextButtons"> <a href="javaScript:void(0);" id="Button_Step4_Back" class="standardButton"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Left.png')}"/> Back</a> <a href="javaScript:void(0);" id="Button_Step4_Next" class="standardButton">Next <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Right.png')}"/></a> </div>
+          </div>
+        </div>
+      </div>
+      <!--end Step 4--> 
+      
+      <!--Step 5-->
+      <div id="Page_Step5">
+        <div id="MainColSecondaryFull">
+          <div class="surveyNavigationSteps"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/NavStep5-6.gif')}"/></div>
+          <h3>Amazon Gift Card</h3>
+          <div class="surveySection">
+            <p>We&rsquo;d like to send you an AMAZON GIFT CARD as a thank you for completing this survey! Please provide your contact information below.</p>
+            <p class="noBottomPadding">We will email your gift card to the address given below within 10 days.</p>
+          </div>
+          <div class="surveySection">
+            <div class="leftColumn">
+              <h4>Name <span class="required">*</span></h4>             
+              <apex:inputText value="{!ReceipientName}" required="true"></apex:inputText>
+            </div>
+            <div class="rightColumn">
+              <h4>Email Address <span class="required">*</span></h4>             
+              <apex:inputText value="{!ReceipientEmail}" required="true"></apex:inputText>
+            </div>
+            <div class="ClearAll"></div>
+            <p class="requiredBlock"><span class="required">*</span> Required</p>
+          </div>
+          <div class="surveySection">
+            <h4>May we contact you about serving as reference for prospective customers?</h4>
+            <input type="radio" name="Question49" value="Yes" id="Yes"/>
+            <span>Yes</span>
+            <input type="radio" name="Question49" value="No" id="No"/>
+            <span>No</span> </div>
+          <div class="surveySection">
+            <div class="backNextButtons"> <a href="javaScript:void(0);" id="Button_Step5_Back" class="standardButton"><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Left.png')}"/> Back</a>  
+			<apex:outputLink onclick="doSubmit();return false;" styleClass="standardButton">Submit <img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Arrow_Right.png')}"/></apex:outputLink>
+            <apex:actionFunction name="doSubmit" action="{!submit}"/> 
+          </div>
+          </div>
+        </div>
+      </div>
+      <!--end Step 5-->       
+      
+      
+    </div>
+  </div>
+  <div class="ClearAll"></div>
+  <div id="Copyright">
+    <div id="CopyrightLeft">
+      <p><img src="{!URLFOR($Resource.CustomerSurveyResources, 'images/Tagline.gif')}"/>  </p>
+    </div>
+    <div id="CopyrightRight">
+      <ul>
+        <li>&copy; {!YEAR(TODAY())} Clockwork IP, LLC.</li>
+        <li>|</li>
+        <li><a href="http://www.directenergysolar.com/privacy-policy">Privacy Policy</a></li>
+        <li>|</li>
+        <li><a href="http://www.directenergysolar.com/terms-and-conditions">Terms &amp; Conditions</a></li>
+        <li>|</li>
+        <li><a href="http://www.directenergysolar.com" target="_blank">www.directenergysolar.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ClearAll"></div>
+  <!-- /Frame --> 
+</div>
+ </apex:form>
+</body>
+</apex:page>

@@ -1,0 +1,60 @@
+<apex:page contentType="text/javascript" cache="false" expires="0" >
+/* FILE: CPQpreview_directives.js
+ * AUTHOR: Larry Hovind
+ * DATE: Jan 16, 2015
+ * PURPOSE: AngularJS logic for CPQ Proposal Preview visualforce page
+ * MODIFICATION HISTORY
+ */
+//<script>
+'use strict';
+
+
+// TODO - fix this directive to drill down object properties
+cpqApp.directive('currency', ['$filter', function ($filter) {
+    return {
+        require: 'ngModel',
+        link: function (elem, $scope, attrs, ngModel) {
+            ngModel.$formatters.push(function (val) {
+                return $filter('currency')(val)
+            });
+            ngModel.$parsers.push(function (val) {
+                return val.replace(/[\$,]/, '')
+            });
+        }
+    }
+}]);
+
+
+cpqApp.directive('modalDlg', function() {
+
+	return {
+		restrict: 'E',
+		scope: {
+			show: '=',
+			close: '&onClose'
+		},
+		replace: true,
+		transclude: true,
+		link: function(scope, elem, attrs) {
+			scope.dlgStyle = {};
+			if( attrs.width ) {
+				scope.dlgStyle.width = attrs.width;
+			};
+			if( attrs.height ) {
+				scope.dlgStyle.height = attrs.height;
+			};
+			scope.hideDlg = function() {
+				scope.show = false;
+			};
+			scope.showDlg = function() {
+				scope.show = true;
+				// TODO - calc position within viewport and place
+			};
+		},
+		template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-ovrly'></div><div class='ng-modal-dlg' ng-style='dlgStyle'><div class='ng-modal-close' ng-click='close()'>X</div><div class='ng-modal-content' ng-transclude></div></div></div>"
+	};
+	
+});
+
+//</script>
+</apex:page>

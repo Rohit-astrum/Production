@@ -1,0 +1,25 @@
+<apex:page showHeader="false" id="SiteTemplate" standardStyleSheets="false">
+
+<link rel="stylesheet" type="text/css" href="http://www.astrumsolar.com/calculator/css/71/jqModal,jquery.ui.custom,jquery.selectBox,style,calculator.css" media="screen" />
+<link href="https://fast.fonts.com/cssapi/38e70b35-5e3b-4be9-984d-510d3f12e42a.css" rel="stylesheet" type="text/css" />
+
+<link rel="Shortcut Icon" href="http://www.astrumsolar.com/favicon.ico" />
+
+<script type="text/javascript" src="http://fast.fonts.com/jsapi/38e70b35-5e3b-4be9-984d-510d3f12e42a.js"></script>
+
+<div id="Frame">
+  
+  <apex:insert name="header">
+    <c:SiteHeader />
+  </apex:insert>
+  <apex:insert name="body"/>
+  <apex:insert name="footer">
+    <c:SiteFooter />
+    <site:googleAnalyticsTracking />
+  </apex:insert>
+  
+  </div>
+  
+  <site:previewAsAdmin />
+  
+</apex:page>

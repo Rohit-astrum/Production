@@ -1,0 +1,70 @@
+<apex:page controller="ProjectIssueController" doctype="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false">
+
+<style type="text/css">
+    body { background-color: #e3e3e3; padding: 5px; margin: 0px; font-family: arial; font-size: 11pt;}
+    
+    .newNoteFrame { border-top: 2px inset white; border-bottom: 2px inset white; }
+    .newNoteText { vertical-align: top; width: 485px; }
+    
+    table.issue-table { width: 100%; border-collapse: collapse; }
+    table.issue-table td { background-color: #f9f9f9; padding: 5px; border: 1px solid black; vertical-align: top; }
+    
+    .issue-status { float: right; }
+    
+    .issue-description-input { width: 350px; }
+    .issue-description-output { font-weight: bold; }
+    
+    .issue-comment-date { font-size: 8pt; white-space: nowrap;}
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+		
+		$('.newNoteText').attr('placeholder', 'Add Issue Comment').focus();
+		
+	});
+	
+	function doSubmit() {
+		$(':submit').click();
+	}
+	
+</script>
+
+	<apex:form >
+
+		<apex:repeat value="{!issues}" var="i">
+		
+			Description:&nbsp;<apex:inputField value="{!i.issue.Description__c}" rendered="{!i.issue.Description__c = null}" styleClass="issue-description-input"/>
+				<apex:outputField value="{!i.issue.Description__c}" rendered="{!i.issue.Description__c != null}" styleClass="issue-description-output"/>
+		
+			<span class="issue-status">Status: <apex:inputField value="{!i.issue.Status__c}"/></span>
+			
+			<apex:outputPanel layout="block" styleClass="issue-comment-date" rendered="{!i.issue.Id != null}">
+				Created By:&nbsp;<apex:outputField value="{!i.issue.CreatedBy.Name}"/>&nbsp;<apex:outputField value="{!i.issue.CreatedDate}"/>
+				&nbsp;&nbsp;&nbsp;To:&nbsp;<apex:outputField value="{!i.issue.To__c}"/>
+			</apex:outputPanel>  
+			
+			<apex:outputPanel layout="block" styleClass="newNoteFrame" rendered="{!i.issue.Id != null}">
+				<apex:inputField id="newNote" value="{!i.newNote.Body}" styleClass="newNoteText"/>
+			</apex:outputPanel>
+			
+			<apex:dataTable value="{!i.issue.Notes}" var="n" styleClass="issue-table">
+				<apex:column styleClass="issue-comment-date">
+					<apex:outputField value="{!n.LastModifiedBy.Name}"/>&nbsp;<apex:outputField value="{!n.LastModifiedDate}"/>
+				</apex:column>
+				<apex:column style="width:100%;">
+					<apex:outputField value="{!n.Body}"/>
+				</apex:column>
+
+			</apex:dataTable>
+		
+		</apex:repeat>
+		
+		<apex:commandButton value="Add" action="{!newNote}" style="display:none;"/>
+	
+	</apex:form>
+
+</apex:page>

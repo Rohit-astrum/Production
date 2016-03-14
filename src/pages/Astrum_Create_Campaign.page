@@ -1,0 +1,239 @@
+<apex:page id="campaignPage" standardController="Campaign" sidebar="false">
+    <script type="text/javascript">
+            function ToggleInput(theId)
+            {
+               
+                var e = document.getElementById(theId);               
+                if(e != null)
+                {
+                    e.disabled = (e.disabled ? false : "disabled");
+                    if(e.disabled)
+                      e.value = '';                   
+                }
+            }          
+
+    </script>
+
+    <apex:sectionHeader title="New Campaign"/>
+    <apex:form >
+        <apex:pageBlock title="New Campaign" id="thePageBlock" mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>                
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="Event Information" columns="2">                
+             
+                  <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Event Owner"/>
+                        <apex:outputPanel >
+                                <apex:OutputText value="{!$User.FirstName} {!$User.LastName} "> </apex:OutputText>
+                        </apex:outputPanel>
+                  </apex:pageBlockSectionItem> 
+                        
+                 <apex:inputField id="city" value="{!campaign.City__c}" required="true"  />                        
+                        
+                 <apex:pageBlockSectionItem >
+                        
+                     <apex:outputLabel value="Event Type" for="eventType" />
+                     <apex:outputPanel >
+                         <apex:actionRegion >
+                             <apex:inputField id="eventType" value="{!campaign.Type}" required="true">
+                                 <apex:actionSupport event="onchange" rerender="thePageBlock,RefAccnt,TypeD" status="status"/>
+                             </apex:inputField>
+                                
+                             <apex:actionStatus startText="applying value..." id="status"/>
+                         </apex:actionRegion>
+                     </apex:outputPanel>
+                            
+                 </apex:pageBlockSectionItem>
+                        
+                 <apex:inputField id="state" value="{!campaign.State__c}" required="true"  />                        
+                 
+                  <apex:pageBlockSectionItem >
+                        
+                     <apex:outputLabel value="Event Type Detail" for="eventTypeD" />
+                     <apex:outputPanel id="TypeD" >
+                         <apex:actionRegion >
+                             <apex:inputField id="eventTypeD" value="{!campaign.Event_Type_Detail__c}" required="{!IF(campaign.Type == 'Retail Tabling' || campaign.Type == 'Other' ,false,true )}">
+                                 <apex:actionSupport event="onchange" rerender="RefAccnt" status="status"/>
+                             </apex:inputField>                                
+                            
+                         </apex:actionRegion>
+                     </apex:outputPanel>
+                            
+                 </apex:pageBlockSectionItem>
+                 
+                 
+                        
+                 <apex:inputField value="{!campaign.StartDate}" required="true"/>
+                 <apex:inputField value="{!campaign.isActive}" />                 
+                 
+                 
+                 <apex:pageBlockSectionItem >    
+                         <apex:outputLabel value="One Day Event"/>
+                         <apex:actionRegion >
+                         <apex:inputCheckbox value="{!campaign.One_Day_Event__c}" >
+                               <apex:actionSupport event="onchange" rerender="EDate1,EDate2,tframe1,tframe2"  
+                                                status="status5"/>
+                         </apex:inputCheckbox>
+                         </apex:actionRegion>
+                 </apex:pageBlockSectionItem>   
+                 
+                   
+                 <apex:outputLabel ></apex:outputLabel>  
+                      
+                 <apex:pageBlockSectionItem >
+                    <apex:outputPanel id="EDate1" > 
+                        <apex:outputLabel value="End Date" rendered="{!IF(campaign.One_Day_Event__c = true ,false,true )}" />
+                    </apex:outputPanel> 
+                    <apex:outputPanel id="EDate2" >  
+                        <apex:inputField id="endDate" value="{!campaign.Enddate}" rendered="{!IF(campaign.One_Day_Event__c = true ,false,true )}"    required="{!IF(campaign.One_Day_Event__c = true ,false,true )}"  />                 
+                    </apex:outputPanel>                      
+                 </apex:pageBlockSectionItem>
+                 
+            </apex:pageBlockSection>
+                        
+                        
+            <apex:pageBlockSection title="Trade Show Or Community Event Details" columns="1" 
+                       rendered="{!IF(campaign.Type == 'Trade Show' || campaign.Type == 'Community Tabling' || campaign.Type == 'Community Seminar' , true, false)}">                            
+                 <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!campaign.Event_Name__c}"  required="true"/>
+                <apex:inputField value="{!campaign.Event_Venue__c}" required="true"/>
+                <apex:inputField value="{!campaign.Event_Official_Name__c}" required="true" />
+                <apex:inputField value="{!campaign.Competition__c}"/>
+                <apex:inputField value="{!campaign.PR_Event__c}"/>                  
+               </apex:pageBlockSection>
+                <apex:outputPanel id="RefAccnt" > 
+                   <apex:pageBlockSection columns="1"> 
+                     <apex:inputField id="RefA" value="{!campaign.Referal_Account__c}"    
+                          rendered="{!IF(campaign.Event_Type_Detail__c == 'Partner Event/Activity', true, IF(campaign.Event_Type_Detail__c == 'Partner Location',true, false))}" />
+                       <apex:inputField id="RefA2" value="{!campaign.Referal_Account__c}"    
+                          rendered="{!IF(campaign.Event_Type_Detail__c == 'Partner Sponsored', true, IF(campaign.Event_Type_Detail__c == 'Customer Sponsored',true, false))}" />
+                   </apex:pageBlockSection>    
+                </apex:outputPanel>  
+             
+                  
+            </apex:pageBlockSection>
+            
+            
+                        
+            <apex:pageBlockSection title="Retail Tabling Event Details" columns="2" rendered="{!campaign.Type == 'Retail Tabling'}">
+                <apex:inputField value="{!campaign.Retailer_Name__c}"  required="true"  />
+            </apex:pageBlockSection>
+                        
+            <apex:pageBlockSection title="Open House or Canvassing Event Details" columns="1" rendered="{!IF(campaign.Type == 'Solar Open House' ||campaign.Type == 'Canvassing', true, false)}">
+                 
+                  <apex:pageBlockSection >                
+                    
+                     <apex:inputField value="{!campaign.Event_Type_Detail_Addl_Detail__c}" rendered="{!campaign.Type == 'Solar Open House'}" required="true" />                  
+                 
+                   </apex:pageBlockSection>    
+                 
+                 
+                 <apex:outputPanel id="custHostP" > 
+                   <apex:pageBlockSection >                
+                    
+                     <apex:inputField id="custHost" value="{!campaign.Customer_Host__c}" rendered="{!IF(campaign.Customer_Host_NA__c = true ,false,true )}" required="{!IF(campaign.Customer_Host_NA__c = true ,false,true )}"  />                  
+                 
+                   </apex:pageBlockSection>    
+                 </apex:outputPanel>
+                 
+                 
+                 
+                 <apex:pageBlockSection columns="1">                   
+                     <apex:pageBlockSectionItem >    
+                         <apex:outputLabel value="Customer Host N/A"/>
+                         <apex:actionRegion >
+                         <apex:inputCheckbox value="{!campaign.Customer_Host_NA__c}">
+                               <apex:actionSupport event="onchange" rerender="canArea,custHostP"
+                                                status="status1"/>
+                         </apex:inputCheckbox>
+                         </apex:actionRegion>
+                     </apex:pageBlockSectionItem>   
+                 </apex:pageBlockSection>
+                 
+                 <apex:outputPanel id="canArea" > 
+                   <apex:pageBlockSection columns="1">                
+                    
+                     <apex:inputField id="canA" value="{!campaign.Canvass_Area_Name__c}"  rendered="{!campaign.Customer_Host_NA__c}" required="{!campaign.Customer_Host_NA__c}"/>    
+                     <apex:inputField id="zipCodes" value="{!campaign.Canvass_Zip_Codes__c}" rendered="{!IF(campaign.Customer_Host_NA__c = true && campaign.Type == 'Canvassing', true, false)}"  /> 
+                     
+                     <apex:pageBlockSectionItem rendered="{!IF(campaign.Customer_Host_NA__c = true && campaign.Type == 'Solar Open House', true, false)}" >
+                     <apex:outputLabel value="Canvass Zip Code"/>
+                     <apex:inputText id="zipCodes1" value="{!campaign.Canvass_Zip_Codes__c}"   maxlength="10"/>                 
+                     </apex:pageBlockSectionItem>
+                   </apex:pageBlockSection>    
+                 </apex:outputPanel>               
+                  
+                 
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Event Details" columns="1" 
+                       rendered="{!IF(campaign.Type == 'Other', true, false)}">  
+                <apex:inputField value="{!campaign.Event_Name__c}"  required="true"/>
+                <apex:inputField value="{!campaign.Event_Venue__c}"/>
+                <apex:inputField value="{!campaign.Event_Official_Name__c}" />                  
+            </apex:pageBlockSection>
+                        
+            <apex:pageBlockSection title="Additional Event Details" columns="2">
+                   
+                    <apex:inputField id="salesRegion" value="{!campaign.Sales_Region_s__c}"  required="true" />
+                    <apex:pageBlockSectionItem >                    
+                         <apex:outputLabel value="Event Description"/>                         
+                         <apex:inputTextarea value="{!campaign.Description}" Style="Width:250px;Height:100px;" /> 
+                    </apex:pageBlockSectionItem>
+                     
+                     <apex:inputField value="{!campaign.Estimated_Event_Fees_Expenses__c}"  required="true"/>
+                     <!--
+                     <apex:inputField value="{!campaign.Estimated_Event_Fees_Expenses__c}"  rendered="{!IF(campaign.Type == 'Trade Show' ||campaign.Type == 'Retail Tabling'||campaign.Type == 'Other', true, false)}" required="true"/>
+                     
+                     <apex:selectList id="fee" value="{!campaign.Estimated_Event_Fees_Expenses__c}" size="1" rendered="{!campaign.Type == 'Community Tabling'}" required="true">
+                        <apex:selectOption itemValue="Free" itemLabel="Free"/>
+                        <apex:selectOption itemValue="< $50" itemLabel="< $50"/>
+                        <apex:selectOption itemValue="$50-100" itemLabel="$50-100"/>
+                        <apex:selectOption itemValue="$101-249" itemLabel="$101-249"/>
+                        <apex:selectOption itemValue="$250-499" itemLabel="$250-499"/>
+                        <apex:selectOption itemValue="$500+" itemLabel="$500+"/>  
+                    </apex:selectList> 
+                    
+                    <apex:selectList id="fee2" value="{!campaign.Estimated_Event_Fees_Expenses__c}" size="1" rendered="{!campaign.Type == 'Community Seminar'}" >
+                        <apex:selectOption itemValue="Free" itemLabel="Free"/>
+                        <apex:selectOption itemValue="< $50" itemLabel="< $50"/>
+                        <apex:selectOption itemValue="$50-100" itemLabel="$50-100"/>
+                        <apex:selectOption itemValue="$101-200" itemLabel="$101-199"/>   
+                         <apex:selectOption itemValue="$200+" itemLabel="$200+"/>                       
+                    </apex:selectList> 
+                    
+                    <apex:selectList id="fee3" value="{!campaign.Estimated_Event_Fees_Expenses__c}" size="1" rendered="{!campaign.Type == 'Solar Open House'}" required="true">
+                        <apex:selectOption itemValue="Free" itemLabel="Free"/>
+                        <apex:selectOption itemValue="< $50" itemLabel="< $50"/>
+                        <apex:selectOption itemValue="$50-100" itemLabel="$50-100"/>
+                        <apex:selectOption itemValue="$101-200" itemLabel="$101-199"/>
+                         <apex:selectOption itemValue="$200+" itemLabel="$200+"/>      
+                    </apex:selectList>  
+                    -->
+                    <apex:inputField id="estimatedSize" value="{!campaign.Expected_Attendance__c}"  />
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel id="tframe1" > 
+                            <apex:outputLabel value="Estimated Event Time Frame" rendered="{!IF(campaign.One_Day_Event__c = true ,true,false)}" />
+                        </apex:outputPanel> 
+                        <apex:outputPanel id="tframe2" >  
+                            <apex:inputField id="endDate" value="{!campaign.Estimated_Event_Time_Frame__c}" rendered="{!IF(campaign.One_Day_Event__c = true ,true,false)}"    />                 
+                        </apex:outputPanel>                      
+                   </apex:pageBlockSectionItem>
+                    
+                    
+                    <apex:inputField id="estimatedEmp" value="{!campaign.Estimated_Event_Staffing__c}"  />
+                    <apex:inputField value="{!campaign.PR_Event__c}" rendered="{!campaign.Type == 'Solar Open House'}"/>
+                    
+                </apex:pageBlockSection>
+           
+         
+            
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

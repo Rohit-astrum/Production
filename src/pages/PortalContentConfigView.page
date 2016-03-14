@@ -1,0 +1,54 @@
+<apex:page standardController="Portal_Content__c" extensions="PortalContentConfigExtension" title="{!$ObjectType.Portal_Content__c.Label}: {Portal_Content__c.Name}">
+
+    <style type="text/css">
+        .preview {
+            width:1024px;
+            height:1100px;
+            -webkit-transform:scale(0.5);
+            -webkit-transform-origin:0 0;
+            -ms-transform: scale(0.5);
+            -ms-transform-origin-x: 0%;
+            -ms-transform-origin-y: 0%;
+            -moz-transform:scale(0.5);
+            -moz-transform-origin:0 0;
+        }
+    </style>
+    
+    <apex:sectionHeader title="{!$ObjectType.Portal_Content__c.Label}" subtitle="{!Portal_Content__c.Name}"/>
+    
+    <apex:pageBlock title="{!$ObjectType.Portal_Content__c.Label} Detail" mode="mainDetail">
+    
+        <apex:pageBlockButtons >
+            <apex:form >
+                <apex:commandButton value="Edit" action="{!edit}"/>
+                <apex:commandButton value="Delete" action="{!delete}"/>
+            </apex:form>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection collapsible="false">
+            <apex:outputField value="{!Portal_Content__c.Name}"/>           
+            <apex:outputField value="{!Portal_Content__c.Portal_Account__c}"/>
+            <apex:outputField value="{!Portal_Content__c.Active__c}"/>           
+            <apex:pageBlockSectionItem rendered="{!NOT(ISNULL(logoAttachment))}">
+                <apex:outputLabel value="Partner Logo"/>
+                <apex:image value="{!URLFOR($Action.Attachment.Download, logoAttachment.Id, [ts=Portal_Content__c.LastModifiedDate.time])}" style="max-width:275px;max-height:275px;"/>
+            </apex:pageBlockSectionItem>
+                  
+        </apex:pageBlockSection>       
+        
+        <apex:pageBlockSection collapsible="false" title="Page Configurations" columns="2">
+             <apex:outputField value="{!Portal_Content__c.Promo_Text__c}"  style="width:450px;height:200px;" />           
+           
+        </apex:pageBlockSection>
+        
+        
+        <apex:pageBlockSection collapsible="false">
+            <apex:outputField value="{!Portal_Content__c.CreatedById}"/>
+            <apex:outputField value="{!Portal_Content__c.LastModifiedById}"/>
+        </apex:pageBlockSection>
+    
+    </apex:pageBlock> 
+    
+    <apex:outputText value="{!timestamp}" style="display:none;"/>
+
+</apex:page>

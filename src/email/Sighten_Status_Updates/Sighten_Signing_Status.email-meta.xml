@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>36.0</apiVersion>
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Sighten Signing Status</name>
+    <style>none</style>
+    <type>visualforce</type>
+</EmailTemplate>

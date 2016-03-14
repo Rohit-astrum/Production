@@ -1,0 +1,52 @@
+<apex:page standardController="Credit_Report_Log__c" title="{!$ObjectType.Credit_Report_Log__c.Label} Edit: {!Credit_Report_Log__c.Name}"
+    extensions="CreditReportLogExtension">
+    
+    <apex:sectionHeader title="{!$ObjectType.Credit_Report_Log__c.Label} Edit" subtitle="{!Credit_Report_Log__c.Name}"/>
+        
+    <apex:pageMessages />
+    
+    <apex:form >
+    
+    <apex:pageBlock title="{!$ObjectType.Credit_Report_Log__c.Label} Edit" mode="edit">
+
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!savePage}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection title="Information" collapsible="false">
+            <apex:outputField value="{!Credit_Report_Log__c.Name}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.Applicant_Name__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.Account__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.Applicant_Score__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.Credit_Pull_Date__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.Co_Applicant_Name__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.CEG_Approved__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.Co_Applicant_Score__c}"/>
+            <apex:inputField value="{!Credit_Report_Log__c.FCRA_Letter_Sent__c}"/>
+            <apex:outputText value=" "/>
+            <apex:inputField value="{!Credit_Report_Log__c.Application_Number__c}"/>
+            <apex:outputText value=" "/>
+            <apex:inputField value="{!Credit_Report_Log__c.Astrum_Rep_Name__c}"/>
+            <apex:outputText value=" "/>
+            <apex:inputField value="{!Credit_Report_Log__c.Credit_Rep__c}"/>
+            <apex:outputText value=" "/>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="{!$ObjectType.Credit_Report_Log__c.Fields.Related_Opportunity__c.Label}"/>
+                <apex:selectList value="{!opportunityId}" size="1" style="width:392px;">
+                    <apex:selectOptions value="{!opportunities}"/>
+                </apex:selectList>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockSection collapsible="false" columns="1">
+            <apex:inputField value="{!Credit_Report_Log__c.Comments__c}" style="width:392px;height:90px;"/>
+        </apex:pageBlockSection>
+
+        <span style="display:none;">{!Credit_Report_Log__c.Related_Opportunity__c}</span>
+        
+    </apex:pageBlock>
+    
+    </apex:form>
+
+</apex:page>

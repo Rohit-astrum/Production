@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>CreatedBy</field>
+        <field>rstk__pohdr_buyusrno__c</field>
+        <field>rstk__pohdr_ordno__c</field>
+        <field>rstk__pohdr_ordsts__c</field>
+        <field>rstk__pohdr_approvalsts__c</field>
+        <field>rstk__formula_daysinqueue__c</field>
+        <field>rstk__pohdr_cmpno__c</field>
+        <field>rstk__pohdr_div__c</field>
+        <field>rstk__pohdr_site__c</field>
+        <field>rstk__pohdr_dfltorgid__c</field>
+        <field>rstk__pohdr_purorg__c</field>
+        <field>rstk__pohdr_requestorg__c</field>
+        <field>rstk__pohdr_proj__c</field>
+        <field>rstk__pohdr_vendno__c</field>
+        <field>rstk__pohdr_terms__c</field>
+        <field>rstk__pohdr_notes__c</field>
+        <field>rstk__pohdr_amtunapprv__c</field>
+        <field>rstk__pohdr_totamt__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <label>Manager Approval</label>
+        <name>Manager_Approval</name>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>User.Username</field>
+            <operation>equals</operation>
+            <value>thomas.reeves@directenergysolar.com</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Purchase Order Approval</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

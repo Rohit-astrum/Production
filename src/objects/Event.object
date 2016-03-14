@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Decline</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteSeries</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewEvent</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>Mobile_Event</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Mobile_Event</fullName>
+        <fields>Subject</fields>
+        <fields>WhoId</fields>
+        <fields>Related_Property__c</fields>
+        <fields>StartDateTime</fields>
+        <label>Mobile Event</label>
+    </compactLayouts>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ActivityDate</fullName>
+    </fields>
+    <fields>
+        <fullName>ActivityDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+    </fields>
+    <fields>
+        <fullName>DurationInMinutes</fullName>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+    </fields>
+    <fields>
+        <fullName>EndDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>EventSubtype</fullName>
+    </fields>
+    <fields>
+        <fullName>IsAllDayEvent</fullName>
+    </fields>
+    <fields>
+        <fullName>IsPrivate</fullName>
+    </fields>
+    <fields>
+        <fullName>IsVisibleInSelfService</fullName>
+    </fields>
+    <fields>
+        <fullName>Location</fullName>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+    </fields>
+    <fields>
+        <fullName>ShowAs</fullName>
+    </fields>
+    <fields>
+        <fullName>StartDateTime</fullName>
+    </fields>
+    <fields>
+        <fullName>Subject</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meeting</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>WhatId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>WhoId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <recordTypes>
+        <fullName>Availability_Block</fullName>
+        <active>false</active>
+        <description>A block of time where the rep/surveyor is available/unavailable for scheduling.</description>
+        <label>Availability Block</label>
+        <picklistValues>
+            <picklist>Call_Answered__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Status__c</picklist>
+            <values>
+                <fullName>Canceled by Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer No-Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disqualified-Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rescheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Site_Survey_Type__c</picklist>
+            <values>
+                <fullName>Drawing only %28long%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Measurement %2B Draw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Measurement Only %28long%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Re-Measure %28short%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Redraw %28short%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Field Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Remote Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>isdc_dialer_call_type__c</picklist>
+            <values>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Sales_Visit_Onsite</fullName>
+        <active>true</active>
+        <description>Sales Visit Onsite - in person</description>
+        <label>Sales Visit Onsite</label>
+        <picklistValues>
+            <picklist>Call_Answered__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Status__c</picklist>
+            <values>
+                <fullName>Canceled by Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer No-Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disqualified-Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rescheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Site_Survey_Type__c</picklist>
+            <values>
+                <fullName>Residential Field Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Remote Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>isdc_dialer_call_type__c</picklist>
+            <values>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Sales_Visit_Remote</fullName>
+        <active>true</active>
+        <description>Sales Visit Remote - via a sales phone call</description>
+        <label>Sales Visit Remote</label>
+        <picklistValues>
+            <picklist>Call_Answered__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Event_Status__c</picklist>
+            <values>
+                <fullName>Canceled by Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer No-Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disqualified-Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rescheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Site_Survey_Type__c</picklist>
+            <values>
+                <fullName>Residential Field Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Remote Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>isdc_dialer_call_type__c</picklist>
+            <values>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Site_Survey_Onsite</fullName>
+        <active>true</active>
+        <description>Site Survey Onsite</description>
+        <label>Site Survey Onsite</label>
+        <picklistValues>
+            <picklist>Call_Answered__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Site_Survey_Type__c</picklist>
+            <values>
+                <fullName>Channel Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Measurement %2B Draw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Measurement Only %28long%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Re-Measure %28short%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Field Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Remote Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>isdc_dialer_call_type__c</picklist>
+            <values>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Site_Survey_Remote</fullName>
+        <active>true</active>
+        <description>Site Survey Remote using Aerial Photos</description>
+        <label>Site Survey Remote</label>
+        <picklistValues>
+            <picklist>Call_Answered__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Site_Survey_Type__c</picklist>
+            <values>
+                <fullName>Channel Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drawing only %28long%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Redraw %28short%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Field Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Remote Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>isdc_dialer_call_type__c</picklist>
+            <values>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Standard</fullName>
+        <active>true</active>
+        <description>Standard Calendar Event</description>
+        <label>Standard</label>
+        <picklistValues>
+            <picklist>Call_Answered__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Site_Survey_Type__c</picklist>
+            <values>
+                <fullName>Residential Field Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Residential Remote Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post-Sale Re-Survey</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Site Survey</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>isdc_dialer_call_type__c</picklist>
+            <values>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Complete_Site_Survey</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Site Survey Complete</masterLabel>
+        <openType>sidebar</openType>
+        <page>Site_Survey_Complete</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Completed</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Completed</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/jquery-1.8.2.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/ui/jquery-ui-1.9.1.custom.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/postmessage/jquery.ba-postmessage.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/bbq/jquery.ba-bbq.min.js&apos;)} 
+requireCssFile(&apos;/resource/jQueryForPopup/jQuery/ui/css/ui-lightness/jquery-ui-1.9.1.custom.min.css&apos;); 
+function requireCssFile(filename) 
+{ 
+var fileref = document.createElement(&apos;link&apos;); 
+fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;); 
+fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;); 
+fileref.setAttribute(&apos;href&apos;, filename); 
+document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref); 
+} 
+var j$ = jQuery.noConflict(); 
+var iframe_url = &apos;{!URLFOR(&quot;/apex/EventSalesVisitCompleted&quot;)}&apos;; 
+iframe_url = iframe_url + &apos;?id={!Event.What}&apos;+&apos;&amp;eventid={!Event.Id}&apos;; 
+var child_domain = iframe_url.substring(0, iframe_url.indexOf(&apos;/&apos;, 9)); 
+
+j$.receiveMessage( 
+function(e){ 
+var cross_result = j$.deparam(e.data); 
+if (cross_result.action == &apos;close_modal_dialog&apos;) { 
+j$modalDialog.dialog(&apos;close&apos;); 
+} else if (cross_result.action == &apos;close_modal_dialog_redirect&apos;) { 
+j$modalDialog.dialog(&apos;close&apos;); 
+j$(location).attr(&apos;href&apos;, window.location.href);
+} 
+}, 
+child_domain 
+); 
+var j$modalDialog = j$(&apos;&lt;div id=&quot;opppopup&quot;&gt;&lt;/div&gt;&apos;) 
+.html(&apos;&lt;iframe id=&quot;iframeContentId&quot; src=&quot;&apos; + iframe_url + &apos;&quot; frameborder=&quot;0&quot; height=&quot;100%&quot; width=&quot;100%&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; seemless=&quot;seemless&quot; /&gt;&apos;) 
+.dialog({ 
+autoOpen: false, 
+title: &apos;Event Completed&apos; , 
+resizable: true, 
+width: 370, 
+height: 390, 
+autoResize: true, 
+modal: true, 
+draggable: true 
+}); 
+
+j$modalDialog.dialog(&apos;open&apos;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>D2D_Disqualified</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Disqualified</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/jquery-1.8.2.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/ui/jquery-ui-1.9.1.custom.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/postmessage/jquery.ba-postmessage.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/bbq/jquery.ba-bbq.min.js&apos;)} 
+requireCssFile(&apos;/resource/jQueryForPopup/jQuery/ui/css/ui-lightness/jquery-ui-1.9.1.custom.min.css&apos;); 
+
+if(&apos;{!Event.D2D_Survey_Request__c}&apos; == &apos;0&apos;){
+alert(&apos;Disqualification is only applicable to D2D events.&apos;);
+} else if(&apos;{!Event.Completed__c}&apos; == &apos;1&apos;){
+alert(&apos;This event is completed and cannot be disqualified.&apos;);
+} else {
+function requireCssFile(filename) 
+{ 
+var fileref = document.createElement(&apos;link&apos;); 
+fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;); 
+fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;); 
+fileref.setAttribute(&apos;href&apos;, filename); 
+document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref); 
+} 
+var j$ = jQuery.noConflict(); 
+var iframe_url = &apos;{!URLFOR(&quot;/apex/Site_Survey_Disqualified&quot;)}&apos;; 
+iframe_url = iframe_url + &apos;?id={!Event.Id}&apos;; 
+var child_domain = iframe_url.substring(0, iframe_url.indexOf(&apos;/&apos;, 9)); 
+
+j$.receiveMessage( 
+function(e){ 
+var cross_result = j$.deparam(e.data); 
+if (cross_result.action == &apos;close_modal_dialog&apos;) { 
+j$modalDialog.dialog(&apos;close&apos;); 
+} else if (cross_result.action == &apos;close_modal_dialog_redirect&apos;) { 
+j$modalDialog.dialog(&apos;close&apos;); 
+j$(location).attr(&apos;href&apos;, window.location.href); 
+} 
+}, 
+child_domain 
+); 
+var j$modalDialog = j$(&apos;&lt;div id=&quot;opppopup&quot;&gt;&lt;/div&gt;&apos;) 
+.html(&apos;&lt;iframe id=&quot;iframeContentId&quot; src=&quot;&apos; + iframe_url + &apos;&quot; frameborder=&quot;0&quot; height=&quot;100%&quot; width=&quot;100%&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; seemless=&quot;seemless&quot; /&gt;&apos;) 
+.dialog({ 
+autoOpen: false, 
+title: &apos;Manage Disqualification&apos; , 
+resizable: false, 
+width: 370, 
+height: &apos;auto&apos;, 
+autoResize: false, 
+modal: true, 
+draggable: true 
+}); 
+
+j$modalDialog.dialog(&apos;open&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Manage_Disqualification</fullName>
+        <availability>online</availability>
+        <description>Manage Disqualification - Approve or Reject</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Manage Disqualification</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/jquery-1.8.2.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/ui/jquery-ui-1.9.1.custom.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/postmessage/jquery.ba-postmessage.js&apos;)} 
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/bbq/jquery.ba-bbq.min.js&apos;)} 
+requireCssFile(&apos;/resource/jQueryForPopup/jQuery/ui/css/ui-lightness/jquery-ui-1.9.1.custom.min.css&apos;); 
+function requireCssFile(filename) 
+{ 
+var fileref = document.createElement(&apos;link&apos;); 
+fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;); 
+fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;); 
+fileref.setAttribute(&apos;href&apos;, filename); 
+document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref); 
+} 
+var j$ = jQuery.noConflict(); 
+var iframe_url = &apos;{!URLFOR(&quot;/apex/EventSalesVisitManageDisq&quot;)}&apos;; 
+iframe_url = iframe_url + &apos;?id={!Event.Id}&apos;; 
+var child_domain = iframe_url.substring(0, iframe_url.indexOf(&apos;/&apos;, 9)); 
+
+j$.receiveMessage( 
+function(e){ 
+var cross_result = j$.deparam(e.data); 
+if (cross_result.action == &apos;close_modal_dialog&apos;) { 
+j$modalDialog.dialog(&apos;close&apos;); 
+} else if (cross_result.action == &apos;close_modal_dialog_redirect&apos;) { 
+j$modalDialog.dialog(&apos;close&apos;); 
+j$(location).attr(&apos;href&apos;, window.location.href); 
+} 
+}, 
+child_domain 
+); 
+var j$modalDialog = j$(&apos;&lt;div id=&quot;opppopup&quot;&gt;&lt;/div&gt;&apos;) 
+.html(&apos;&lt;iframe id=&quot;iframeContentId&quot; src=&quot;&apos; + iframe_url + &apos;&quot; frameborder=&quot;0&quot; height=&quot;100%&quot; width=&quot;100%&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; seemless=&quot;seemless&quot; /&gt;&apos;) 
+.dialog({ 
+autoOpen: false, 
+title: &apos;Manage Disqualification&apos; , 
+resizable: false, 
+width: 370, 
+height: &apos;auto&apos;, 
+autoResize: false, 
+modal: true, 
+draggable: true 
+}); 
+
+j$modalDialog.dialog(&apos;open&apos;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Not_Completed</fullName>
+        <availability>online</availability>
+        <description>Event Not Completed</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Not Completed</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/jquery-1.8.2.min.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/ui/jquery-ui-1.9.1.custom.min.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/postmessage/jquery.ba-postmessage.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/jQueryForPopup/jQuery/bbq/jquery.ba-bbq.min.js&apos;)}
+requireCssFile(&apos;/resource/jQueryForPopup/jQuery/ui/css/ui-lightness/jquery-ui-1.9.1.custom.min.css&apos;);
+function requireCssFile(filename)
+{
+var fileref = document.createElement(&apos;link&apos;);
+fileref.setAttribute(&apos;rel&apos;, &apos;stylesheet&apos;);
+fileref.setAttribute(&apos;type&apos;, &apos;text/css&apos;);
+fileref.setAttribute(&apos;href&apos;, filename);
+document.getElementsByTagName(&apos;head&apos;)[0].appendChild(fileref);
+}
+var j$ = jQuery.noConflict();
+var iframe_url = &apos;{!URLFOR(&quot;/apex/EventSalesVisitNotComplete&quot;)}&apos;;
+iframe_url = iframe_url + &apos;?id={!Event.Id}&apos;;
+var child_domain = iframe_url.substring(0, iframe_url.indexOf(&apos;/&apos;, 9));
+
+j$.receiveMessage(
+        function(e){
+            var cross_result = j$.deparam(e.data);
+            if (cross_result.action == &apos;close_modal_dialog&apos;) {
+                j$modalDialog.dialog(&apos;close&apos;);   
+                j$(location).attr(&apos;href&apos;, &apos;/home/home.jsp&apos;);            
+            } else if (cross_result.action == &apos;close_modal_dialog_redirect&apos;) {
+                j$modalDialog.dialog(&apos;close&apos;);
+                j$(location).attr(&apos;href&apos;, window.location.href);
+            }
+        },
+        child_domain
+    );
+var j$modalDialog = j$(&apos;&lt;div id=&quot;opppopup&quot;&gt;&lt;/div&gt;&apos;)
+.html(&apos;&lt;iframe id=&quot;iframeContentId&quot; src=&quot;&apos; + iframe_url + &apos;&quot; frameborder=&quot;0&quot; height=&quot;100%&quot; width=&quot;100%&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; seemless=&quot;seemless&quot; /&gt;&apos;)
+.dialog({
+autoOpen: false,
+title: &apos;Event Not Completed&apos; ,
+resizable: false,
+width: 370,
+height: &apos;auto&apos;,
+autoResize: false,
+modal: true,
+draggable: true
+});
+
+j$modalDialog.dialog(&apos;open&apos;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Reschedule</fullName>
+        <availability>online</availability>
+        <description>Reschedule the Sales Visit</description>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Reschedule</masterLabel>
+        <openType>replace</openType>
+        <page>EventSalesVisitReschedule</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Sales_Visit_Complete</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Sales Visit Complete</masterLabel>
+        <openType>sidebar</openType>
+        <page>Sales_Visit_Complete</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

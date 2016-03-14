@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Thank you for choosing Astrum Solar (1423628986.0)</name>
+    <style>none</style>
+    <subject>Thank you for choosing Astrum Solar (1423628986.0)</subject>
+    <textOnly>- 
+	-     
+	- 
+	-   Clean Clean false     false false false  EN-US ZH-TW AR-SA                                                                                                                                                                                                                                                                                                                                                                                                                    Paul &amp; Emily- I just wanted to send a quick note to thank you for choosing Astrum Solar for your home solar installation.  We know that solar is a competitive business and that you have many choices for an installer, so we are honored that you selected us.  We are excited to welcome you as our newest customers in New Jersey! Samuel will take good care of you as the process unfolds, but if I can be of any assistance to you, please do not hesitate to reach out. Thanks again and have a great rest of the week. Jose                        &lt;http://www.astrumsolar.com/&gt;
+Jose RamosChief Marketing OfficerP  707.495.8049 &lt;tel:707.495.8049&gt;F  855.850.3351 &lt;tel:855.850.3351&gt;E  jose.ramos@astrumsolar.com &lt;mailto:jose.ramos@astrumsolar.com&gt;6200 Stoneridge Mall Road, Suite 300Pleasanton, CA 94588www.astrumsolar.com &lt;http://www.astrumsolar.com/&gt;  </textOnly>
+    <type>custom</type>
+</EmailTemplate>

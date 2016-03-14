@@ -1,0 +1,214 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_PropertyPhotosController"  applyHtmlTag="false" applyBodyTag="false">
+
+	<apex:composition template="D2D_SiteTemplate">
+	
+		<apex:define name="head-top">
+
+		    <meta name='description' content='D2D - Property Photos' />
+		    <title>D2D - Property Photos</title>
+			
+		</apex:define>
+	
+		<apex:define name="navigation">
+            <c:D2D_AccountInfo />
+		</apex:define>
+			
+		<apex:define name="header-btns">
+		    <div class="headerBtns">
+				<!--<h1><span class="unbold">Lead: </span><span class="leadName">{!referral.Full_Name__c}</span>  <a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-orangebg"></i></a></h1>
+	    		<div>
+	    			<div class="headerBtnsLeft">
+	    				<h2><i class="fa fa-user fa-1x fa-pageicon"></i> Property Photos</h2>
+	   				</div><div class="headerBtnsRight">
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-th fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+					</div>
+					<div class="ClearAll"></div>
+				</div> 
+				-->
+				<div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-user fa-1x fa-pageicon"></i> Property Photos</h1>
+		 			</div><div class="headerBtnsRight">
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+					</div>
+					<div class="ClearAll"></div>
+				</div>
+    		</div>
+		</apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		    <div class="footerBtns">
+	    		<!--<div class="footerBtnsLeft">
+		    		<a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a>
+	    		</div> -->
+		    	<apex:outputPanel rendered="{!propertyPhotosState!='completed'}">
+	    		<div class="footerBtnsRight">
+		    		<a href="#PropertyPhotoPopup" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-icon-btn">Continue<i class="fa fa-chevron-right fa-lg fa-nobgRight"></i></a>
+			    </div>
+			    </apex:outputPanel>
+				<div class="ClearAll"></div>
+		    </div> 
+	    </apex:define>
+		
+		<apex:define name="content">
+			<apex:form id="mainForm" styleClass="mainForm"> 
+			<div id="Content">
+				<div class="container greycontainer">
+					<apex:outputPanel id="leadForm" layout="block">
+					
+						<div class="PropertyPhotosLeftCol">
+							<h3>House Photos</h3>
+							<div class="housePhotosLeftCol">
+								<div class="PropertyPhotosFormRow">
+									<div class="PropertyPhotosLabel">Front</div>
+				                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(soldStatus, 'ui-state-disabled', '')}" onclick="captureFile('fp');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>	
+				                		<apex:repeat value="{!fpAttachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+				                    </div>
+			                	</div>
+								<div class="PropertyPhotosFormRow">
+									<div class="PropertyPhotosLabel">Back</div>
+				                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(soldStatus, 'ui-state-disabled', '')}" onclick="captureFile('rp');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>		
+				                		<apex:repeat value="{!rpAttachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+				                    </div>
+			                	</div>
+		                	</div>
+		                	<div class="housePhotosRightCol">
+								<div class="PropertyPhotosFormRow">
+									<div class="PropertyPhotosLabel">Side 1</div>
+				                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(soldStatus, 'ui-state-disabled', '')}" onclick="captureFile('s1');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>	
+				                		<apex:repeat value="{!s1Attachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+				                    </div>
+			                	</div>
+								<div class="PropertyPhotosFormRow">
+									<div class="PropertyPhotosLabel">Side 2</div>
+				                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(soldStatus, 'ui-state-disabled', '')}" onclick="captureFile('s2');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>	
+				                		<apex:repeat value="{!s2Attachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+				                    </div>
+			                	</div>
+		                	</div>
+	                	</div><div class="PropertyPhotosRightCol">
+	                		<h3>Additional Photos</h3>
+							<div class="PropertyPhotosFormRow">
+								<div class="PropertyPhotosLabel">Utility Bill</div>
+			                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(soldStatus, 'ui-state-disabled', '')}" onclick="captureFile('ub');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>	
+				                		<apex:repeat value="{!ubAttachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+			                    </div>
+		                	</div>
+							<div class="PropertyPhotosFormRow">
+								<div class="PropertyPhotosLabel">Electric Meter</div>
+			                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(soldStatus, 'ui-state-disabled', '')}" onclick="captureFile('em');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>	
+				                		<apex:repeat value="{!emAttachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+			                    </div>
+		                	</div> 
+							<div class="PropertyPhotosFormRow">
+								<div class="PropertyPhotosLabel">Voided Check</div>
+			                	<div class="PhotoBtn">
+					                	<div class="addPhoto">
+											<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(OR(NOT(soldStatus),NOT(hasSalesOrder)), 'ui-state-disabled', '')}" onclick="captureFile('vc');"><i class="fa fa-plus-circle fa-lg fa-left"></i>Add Photo</a>
+										</div>	
+				                		<apex:repeat value="{!vcAttachments}" var="attachment">
+					                	<div class="photoThumb">
+					                		<a href="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" target="_blank">
+					                			<img src="/d2d/servlet/servlet.FileDownload?file={!attachment.Id}" title="{!attachment.Name}" style="max-height: 100px; max-width:134px;" />
+				                			</a>
+					                	</div>
+				                		</apex:repeat>
+			                    </div>
+		                	</div> 
+	                	</div>
+						<div class="ClearAll"></div>
+	                	<apex:inputHidden id="photo-type" value="{!photoType}"/>
+						<apex:inputFile value="{!uploadFile.Body}" contentType="{!uploadFile.ContentType}" fileName="{!uploadFile.Name}" fileSize="{!uploadFile.BodyLength}" 
+							accept="image/*;capture=camera" id="take-picture-btn" style="display:none;" onchange="displayLoader('Uploading file...');doSubmit();return false;" />
+						<apex:actionFunction name="doSubmit" action="{!upload}" />
+			            
+		            </apex:outputPanel>
+	            </div>
+            </div>
+		    <div data-role="popup" data-dismissible="false"  data-overlay-theme="a" id="PropertyPhotoPopup"  class="ui-content">
+			    <h2>Update</h2>
+			    <p>A solar system design and contract are being generated. You will receive an email when these documents are available for your follow-up visit.</p>
+			    <div class="propertyPhotoPopupBtns"> 
+			    	<a href="#" onclick="displayLoader('Opening dashboard...'); save(); return false;" class="ui-btn ui-btn-green ui-corner-all ui-btn-inline">OK</a>
+	                <apex:actionFunction name="save" action="{!submit}">
+	                </apex:actionFunction> 
+			    </div>
+		    </div>
+            </apex:form>
+        </apex:define>
+
+    </apex:composition>
+
+	<script type="text/javascript">
+
+		//Avoid conflicts between jQuery and apex
+		$j = jQuery.noConflict();
+
+	    function captureFile(photoType) {
+	    	$j('input[id$="take-picture-btn"]').click();
+	    	$j('input[id$="photo-type"]').val(photoType);
+	    	return false;
+	    }
+	   
+	</script>
+</apex:page>

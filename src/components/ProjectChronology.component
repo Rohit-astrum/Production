@@ -1,0 +1,285 @@
+<apex:component controller="ProjectChronologyController">
+
+<apex:attribute name="projectId"
+                description="Id of project to show documents for"
+                type="String"
+                required="true"
+                assignTo="{!projectId}"/>
+                
+<apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/redmond/jquery-ui.css" />
+                
+<style type="text/css">
+
+    .ui-widget-overlay { background-color: #404040; opacity: .65; background-image: none; }
+
+    td.chron-popup {
+        cursor: pointer;
+    }
+
+    body .pbBody table.list tr.dataRow.highlight td.chron-popup {
+        background-color: #65d4e6;
+        font-weight: bold;
+    }
+
+    .chron-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        margin-right: 5px;
+        position: relative;
+        top: 2px;
+    }
+
+    .chron-doc {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/GenericFile.gif')});
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    
+    .chron-note {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/pencil.png')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-done {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/checkbox.png')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-state {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/calendar.png')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-issue {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/feedback.16.gif')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-alert {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    
+    .chron-fixed{
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/icon_fixed.gif')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    
+    .chron-new {
+        background-image: url('https://c.cs7.visual.force.com/img/icon/wrench16.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-check {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/checked.png')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-uncheck {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/unchecked.png')}');
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+
+    .chron-kickoff {
+        background-color: #F4A460;
+    }
+
+    .chron-install {
+        background-color: #36C;
+    }
+
+    .chron-inspect {
+        background-color: #282; 
+    }
+
+    .chron-handoff {
+        background-color: mediumpurple; 
+    }
+    
+    a.chron-doc-link {
+        color: #08C;
+        text-decoration: none;
+    }
+
+    a.chron-doc-link:hover {
+        color: #005580;
+        text-decoration: underline;
+    }
+    
+    img.cat-file {
+        opacity: 0.8;
+        vertical-align: middle;
+        margin-right: 3px;
+    }
+    
+</style>
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"/>
+                
+<script type="text/javascript">
+    
+    $(function() {
+    
+        $('#issueDialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 'auto',
+            height: 'auto',
+            resizable: false,
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    $('#issueFrame').load(function() {
+                        $(this).unbind('load');
+                        $(that).dialog("close"); 
+                    });
+                    $('#issueFrame')[0].contentWindow.doSubmit();
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            },
+            close: function (e, ui) {
+                var data = $(this).data('issueDialog');
+            }
+        })
+        .css('overflow', 'hidden').css('padding', '0');
+
+        //click on the document issue button        
+        $('.chron-issue, .chron-alert').parents('td.chron-activity').addClass('chron-popup').click(function () {
+            var cell = $('.chron-issue, .chron-alert', this); 
+            var docId = cell.attr('data-docid');
+            var binName = cell.attr('data-bin');
+            var categoryName = cell.attr('data-category');
+            var binUrl = "/apex/ProjectIssue?projectId={!projectId}&bin=" + encodeURIComponent(binName) + "&appName=GRANTS&astrumDocId=" 
+                + docId + "&category=" + encodeURIComponent(categoryName);
+            var documentName = cell.attr('data-docname');
+            $("#issueDialog").dialog("option", "title", "ISSUES: " + documentName);
+            $("#issueFrame").hide();
+            $("#issueFrameLoading").show();
+            $("#issueFrame").load(function () {
+                $(this).unbind('load');
+                $("#issueFrameLoading").hide();
+                $("#issueFrame").show();
+            });
+            $('#issueDialog').dialog("open");
+            $("#issueFrame").attr("src", binUrl);
+            return false;   
+        });
+        
+        $('#binDialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 950,
+            height: 600,
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    $(that).dialog("close"); 
+                    return false;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }
+        })
+        .css('overflow', 'hidden').css('padding', '0');
+        //.bind('dialogclose', dialogClose);
+        
+        $('span.chron-done, span.chron-state, span.chron-note, span.chron-doc, span.chron-check').parents('td.chron-activity').addClass('chron-popup').click(function () {
+            var cell = $('span.chron-done, span.chron-state, span.chron-note, span.chron-doc, span.chron-check', this); 
+            var binName = cell.attr('data-bin');
+            var binUrl = "/apex/DocumentBinDialog?id={!projectid}&binName=" + encodeURIComponent(binName) + "&appName=GRANTS";
+            $("#binDialog").dialog("option", "title", binName);
+            $("#binFrame").hide();
+            $("#binFrameLoading").show();
+            $("#binFrame").load(function () {
+                $(this).unbind('load');
+                $("#binFrameLoading").hide();
+                $("#binFrame").show();
+            });
+            $('#binDialog').dialog("open");
+            $("#binFrame").attr("src", binUrl);
+            return false;   
+        });
+        
+    });
+
+</script>
+
+<apex:pageBlock mode="maindetail">
+
+    <apex:pageBlockSection title="Project Chronology" columns="1">
+
+        <apex:pageBlockTable value="{!items}" var="i" rowClasses="chron-row">
+    
+            <apex:column headerValue="Date">
+                <apex:outputText value="{!i.dateFormatted}" title="{!i.dateTimeFormatted}"/>
+            </apex:column>
+            <apex:column headerValue="User">
+                <apex:outputText value="{!i.eventUser}"/>
+            </apex:column>
+            <apex:column headerValue="Activity" styleClass="chron-activity">
+                <span class="chron-icon chron-{!BLANKVALUE(i.icon,'empty')}" data-docid="{!i.linkId}" data-docname="{!HTMLENCODE(i.documentName)}" data-bin="{!HTMLENCODE(i.eventBin)}"></span><apex:outputText value="{!i.eventType}"/> 
+            </apex:column>
+            <apex:column headerValue="Collection" value="{!i.eventBin}"/>
+            <apex:column headerValue="Document">
+                <apex:outputPanel layout="none" rendered="{!OR(i.attachId = null, i.documentName = 'Note')}"> 
+                    <span>{!i.documentName}</span>
+                </apex:outputPanel>
+                <apex:outputPanel layout="none" rendered="{!AND(i.attachId != null, i.documentName != 'Note')}"> 
+                    <a class="chron-doc-link" href="/servlet/servlet.FileDownload?file={!i.attachId}" title="{!HTMLENCODE(i.documentName)}" download="{!HTMLENCODE(i.documentName)}" target="_blank">
+                        <apex:outputPanel layout="none" rendered="{!OR(i.attachType = 'application/vnd.ms-excel', i.attachType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')}"> 
+                            <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon-ms-excel.png')}"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!OR(i.attachType = 'application/msword', i.attachType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}"> 
+                            <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/ms_word_icon.png')}"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!i.attachType = 'application/pdf'}"> 
+                            <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/pdf-icon.png')}"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!OR(i.attachType = 'image/gif', i.attachType = 'image/jpeg', i.attachType = 'image/png')}"> 
+                            <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/photo.gif')}"/>
+                        </apex:outputPanel>
+                        <!-- TODO: if not one of the types
+                            <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/GenericFile.gif')}"/>
+                        {% } %}
+                         -->
+                        <span>{!i.documentName}</span>
+                    </a>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column value="{!i.Description}" headerValue="Description"/>
+        
+        </apex:pageBlockTable>
+    
+    </apex:pageBlockSection>
+
+</apex:pageBlock>
+
+<div style="display:none">
+    <div id="issueDialog">
+        <div id="issueFrameLoading" style="display:none;text-align:center;width:600px;height:304px;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+        <iframe id="issueFrame" width="600" height="300" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+    </div>
+</div>
+
+<div id="binWrapper" style="display:none">
+<div id="binDialog">
+    <div id="binFrameLoading" style="display:none;text-align:center;width:100%;height:100%;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+    <iframe id="binFrame" width="100%" height="100%" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+</div>
+</div>
+
+</apex:component>

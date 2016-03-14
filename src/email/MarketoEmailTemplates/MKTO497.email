@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title></title>
+
+<style type="text/css">
+.appleLinksGray a {
+        color: #666666;
+        text-decoration: none;
+}
+.appleLinksWhite a {
+        color: #ffffff;
+        text-decoration: none;
+}
+.appleLinksBlue a {
+        color: #1cef94;
+        text-decoration: none;
+}
+.appleLinksGreen a {
+        color: #61af3f;
+        text-decoration: none;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ><table style="width:100%; background-color:#e8e8e8; padding-bottom:30px; " ><tr ><td ><table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><div class="mktEditable" id="Header" style="margin-left:33px; margin-right:33px; margin-top:15px; margin-bottom:0px; font-size:0px; " ><table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td style="vertical-align: top;" height="105" width="302">
+<div style="margin-top: 10px;"><a href="http://www.directenergysolar.com"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_logo.jpg" alt="Direct Energy Solar" height="64" border="0" width="295" /></a></div>
+</td>
+<td style="vertical-align: top;" height="105" align="right" width="472">
+<div style="margin-top: 10px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/Header_MessageForCustomers.jpg" alt="A special message for our valued customers" height="64" border="0" width="304" /></div>
+</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+<tr ><td width="634" style="padding-left:33px; padding-right:33px; " ><div class="mktEditable" id="BodyCopy" ><div style="margin-top: 0px; margin-bottom: 0px;">
+<div style="margin-top: 0px; margin-bottom: 10px;"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/2015TaxEmail_Banner.jpg" alt="Important Tax Information" height="153" width="634" /></div>
+<p style="color: #1c3f94; font-family: Arial, Helvetica, sans-serif; font-size: 20px; line-height: 26px; margin-bottom: 15px; margin-top: 30px; padding-bottom: 0px; text-align: left;">Dear {{lead.First Name:default=Friend}},</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">We hope you are enjoying the benefits of your new solar system. According to our records your solar system was installed in 2015, and you may be eligible to take advantage of federal government incentives to maximize the return on your investment.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">In December of 2015, the federal tax credit was extended through 2019, and purchasers of qualifying solar electric systems may be eligible for a federal tax credit up to 30% of the full cost of installing a system. The credit will remain available after 2019, but it will gradually decrease to 10% in 2022. The credit has no dollar limit to how large it can be, but other restrictions and qualifications may apply.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">To take advantage of the federal tax incentive, simply fill out IRS Form 5695 as part of your federal tax return. This form can be found on the IRS website <a style="font-weight: bold; color: #61af3f; text-decoration: none;" href="https://www.irs.gov/pub/irs-pdf/f5695.pdf">here</a>.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">Massachusetts residents may also claim a state personal income tax credit equal to 15% of the full cost of installing a solar system, up to $1,000. To claim the Massachusetts personal income tax credit, you must submit the Schedule EC form with your state tax return which can be found <a style="font-weight: bold; color: #61af3f; text-decoration: none;" href="http://www.mass.gov/dor/docs/dor/forms/inctax15/addl/sched-ec.pdf">here</a>.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">If you completed payment for your solar installation in 2015 and have not yet received a paid in full statement from us, please expect to receive your final statement via email from our accounting department by the end of January.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">If you have additional questions about your personal tax situation, we recommend that you contact a tax professional. If you have any other inquiries about your system, please do not hesitate to contact the Customer Relationship Team directly, at 1-888-603-6085 or <a style="text-decoration: none; font-weight: bold; font-size: 15px; line-height: 22px; color: #61af3f;" href="mailto:customeradvisors@directenergysolar.com">customeradvisors@directenergysolar.com</a>.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 25px; margin-top: 20px; padding-bottom: 0px; text-align: left;">Thank you once more for choosing to go solar with Direct Energy Solar.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 20px; padding-bottom: 0px; text-align: left;">Best Regards,</p>
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td style="vertical-align: top; text-align: left;" height="70" width="634">
+<div style="margin-top: 0px; margin-bottom: 0px;"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/2015TaxEmail_DianeSignature.jpg" alt="Diane Benedetti" height="70" border="0" width="294" /></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 10px; padding-bottom: 20px; text-align: left;">Diane Benedetti<br /> Senior Manager, Customer Relationships</p>
+</div></div>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><table width="634" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; " ><tr ><td width="634" style="vertical-align:top; text-align:center; " ><div style="margin-top:25px; margin-bottom:25px; " class="mktEditable" id="PhoneTagline" ><p><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/PhoneTagline_CustomerCare.jpg" alt="Your Sun. Your Power. Your Way. Call Us: 888-603-6085" height="60" border="0" width="273" /></p></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td style="padding-top:20px; padding-bottom:33px; padding-left:33px; padding-right:33px; " ><div style="color:#666666; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; " ><div class="mktEditable" id="disclaimerCopyWhy" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">You&rsquo;re receiving this email because you are a Direct Energy Solar customer.</p></div>
+<div class="mktEditable" id="disclaimerCopyTerms" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532</span></p></div>
+<div class="mktEditable" id="OfficeDetails" ><p style="margin-bottom: 10px;"><span class="appleLinksGray">Direct Energy Solar</span><br /> <span class="appleLinksGray">7101 Riverwood Drive</span><br /> <span class="appleLinksGray">Columbia, MD 21046</span><br /> <span class="appleLinksGray">P: 800-903-6130</span><br /> <span class="appleLinksGray">F: 443-267-0036</span></p></div>
+<div class="mktEditable" id="TermsConditions" ><p style="font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px;">&copy; <span class="appleLinksGray">2016 Clockwork IP, LLC.</span> All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com/privacy-policy" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com/terms-and-conditions" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">DirectEnergySolar.com</a></p></div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<apex:component controller="SiteLoginController" id="loginComponent">
+
+<apex:attribute name="showRegistration" description="Whether to display registration" default="true" type="Boolean" required="false"/>
+  
+<apex:form id="loginForm" forceSSL="true">
+    
+<apex:outputPanel layout="block">
+      
+    <apex:pageMessages id="error"/>
+      
+    <apex:panelGrid columns="1" style="margin-top:1em;" styleClass="loginGrid">
+
+        <apex:outputLabel value="User Name" for="username"/>
+        <apex:inputText styleClass="username" id="username" value="{!username}"/>
+        
+        <apex:outputLabel styleClass="vSpaceLabel" value="{!$Label.site.password}" for="password"/>
+        <apex:inputSecret styleClass="password" id="password" value="{!password}"/>
+        
+        <apex:panelGroup layout="block" styleClass="remember">
+            <apex:inputCheckbox id="rememberMe" value="{!rememberMe}"/>
+            <apex:outputLabel value="Remember User Name" for="rememberMe"/>
+        </apex:panelGroup>
+        
+        <apex:panelGroup id="theLinks">
+            <div class="loginPanelLoginButton">
+                    <input type="button" value="Login " class="standardButton"
+                        onclick="doLogin();return false;" />
+                    <apex:actionFunction name="doLogin" action="{!login}"/>
+                </div>
+                <div>
+                 <p>Don&rsquo;t have an account?&nbsp; <apex:outputLink value="/apply" >Apply Now!</apex:outputLink></p>
+                    </div>  
+              <div class="loginPanelForgotPassword">
+            <apex:outputLink styleClass="forgotPW" value="{!$Page.ForgotPassword}"> {!$Label.site.forgot_your_password_q}</apex:outputLink>
+            </div>
+        </apex:panelGroup>
+
+       
+       
+    </apex:panelGrid>
+     
+</apex:outputPanel>
+        
+</apex:form>
+
+</apex:component>

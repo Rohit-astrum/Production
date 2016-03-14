@@ -1,0 +1,4 @@
+<apex:page standardController="QB_Credit_Note_Header__c"
+ extensions="ffirule.IntegrationRuleEngine" action="{!convert}" recordSetVar="records">
+<ffirule:IntegrationRule engine="{!engine}"/>
+</apex:page>

@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddToCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableCustomerPortal</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnablePartnerPortalUser</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableSelfService</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ListClean</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Merge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewContact</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewCustomerPortal</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewPartnerPortalUser</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewSelfService</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>QuickStartLayout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>QuickStartLayout</fullName>
+        <fields>Name</fields>
+        <fields>MailingAddress</fields>
+        <fields>Phone</fields>
+        <fields>MobilePhone</fields>
+        <fields>Email</fields>
+        <fields>AccountId</fields>
+        <fields>OwnerId</fields>
+        <label>Quick Start Layout</label>
+    </compactLayouts>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AssistantName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>AssistantPhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Birthdate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>CanAllowPortalSelfReg</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Date_of_Most_Recent_Activity__c</fullName>
+        <description>Formula showing the Date of Most Recent Event or Date of Most Recent Task that is closest to today</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Date_of_Most_Recent_Event__c) &amp;&amp; ISBLANK(Date_of_Most_Recent_Task__c),
+   NULL,
+
+/*ELSE*/
+   TODAY() -
+      MIN(
+         BLANKVALUE(TODAY() - Date_of_Most_Recent_Event__c,365242199), /* 1-million years is placeholder if date is blank so that MIN function... */
+         BLANKVALUE(TODAY() - Date_of_Most_Recent_Task__c,365242199) /* ... can still calculate the minimum of the populated date fields */
+      )
+)</formula>
+        <inlineHelpText>Formula showing the Date of Most Recent Event or Date of Most Recent Task that is closest to today</inlineHelpText>
+        <label>Date of Most Recent Activity</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Most_Recent_Event__c</fullName>
+        <description>Rollup showing the Max date (before today) of event records related to this record. This field is populated by the &quot;Con Date of Most Recent Event&quot; Lookup Rollup Summary.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rollup showing the Max date (before today) of event records related to this record</inlineHelpText>
+        <label>Date of Most Recent Event</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Most_Recent_Task__c</fullName>
+        <description>Rollup showing the Max date (before today) of task records related to this record. This field is populated by the &quot;Con Date of Most Recent Task&quot; Lookup Rollup Summary.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rollup showing the Max date (before today) of task records related to this record</inlineHelpText>
+        <label>Date of Most Recent Task</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Next_Activity__c</fullName>
+        <description>Formula showing the Date of Next Event or Date of Next Task that is closest to today</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Date_of_Next_Event__c) &amp;&amp; ISBLANK(Date_of_Next_Task__c),
+   NULL,
+
+/*ELSE*/
+   TODAY() +
+      MIN(
+         BLANKVALUE(Date_of_Next_Event__c - TODAY(),365242199), /* 1-million years is placeholder if date is blank so that MIN function... */
+         BLANKVALUE(Date_of_Next_Task__c - TODAY(),365242199) /* ... can still calculate the minimum of the populated date fields */
+      )
+)</formula>
+        <inlineHelpText>Formula showing the Date of Next Event or Date of Next Task that is closest to today</inlineHelpText>
+        <label>Date of Next Activity</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Next_Event__c</fullName>
+        <description>Rollup showing the Min date (after today) of event records related to this record. This field is populated by the &quot;Con Date of Next Event&quot; Lookup Rollup Summary.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rollup showing the Min date (after today) of event records related to this record</inlineHelpText>
+        <label>Date of Next Event</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Next_Task__c</fullName>
+        <description>Rollup showing the Min date (after today) of task records related to this record. This field is populated by the &quot;Con Date of Next Task&quot; Lookup Rollup Summary.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rollup showing the Min date (after today) of task records related to this record</inlineHelpText>
+        <label>Date of Next Task</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Department</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>DoNotCall</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Do_Not_Mail__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Do NOT solicit through the mail services.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Do NOT solicit through the mail services.</inlineHelpText>
+        <label>Do Not Mail</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_Not_Solicit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Do NOT solicit at the door.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Do NOT solicit at the door.</inlineHelpText>
+        <label>Do Not Solicit</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_Not_Text__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Do NOT solicit through text messaging.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Do NOT solicit through text messaging.</inlineHelpText>
+        <label>Do Not Text</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Facebook__c</fullName>
+        <description>The Facebook profile for this person</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Facebook profile for this person</inlineHelpText>
+        <label>Facebook</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Fax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>First_Name_Email_Mail__c</fullName>
+        <description>Title Case First Name for Email and Mail Salutations</description>
+        <externalId>false</externalId>
+        <formula>LEFT(First_Name_Standard__c , 1) + LOWER(RIGHT(First_Name_Standard__c , LEN(First_Name_Standard__c )-1))</formula>
+        <inlineHelpText>Title Case First Name for Email and Mail Salutations</inlineHelpText>
+        <label>First Name - Email/Mail</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Name_Standard__c</fullName>
+        <description>Standardized First Name</description>
+        <externalId>false</externalId>
+        <formula>IF(FIND(&quot; &quot;,FirstName)&gt;0,UPPER( LEFT(FirstName,FIND(&quot; &quot;,FirstName))),UPPER(FirstName))</formula>
+        <inlineHelpText>Standardized First Name</inlineHelpText>
+        <label>First Name - Standard</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Female</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Male</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Global_Opt_Out__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Do NOT solicit by any fashion.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Do NOT solicit by any fashion.</inlineHelpText>
+        <label>Global Opt Out</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfEmail</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfFax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>HomePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Jigsaw</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>LastCURequestDate</fullName>
+    </fields>
+    <fields>
+        <fullName>LastCUUpdateDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Last_Name_Standard__c</fullName>
+        <description>Standardized Last Name</description>
+        <externalId>false</externalId>
+        <formula>IF(FIND(&quot; &quot;,LastName)&gt;0,UPPER( RIGHT(LastName,LEN(LastName)-FIND(&quot; &quot;,LastName))),UPPER(LastName))</formula>
+        <inlineHelpText>Standardized Last Name</inlineHelpText>
+        <label>Last Name - Standard</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>3rd Party Lead Gen</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canvassing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct Mail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Individual Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Newspaper Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Offline Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Online Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OOH - Billboard</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Source</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Print Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retail Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Search Engine</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Transit Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <default>true</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>LinkedIn__c</fullName>
+        <description>The LinkedIn profile for this person</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The LinkedIn profile for this person</inlineHelpText>
+        <label>LinkedIn</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>MailingAddress</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>MobilePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Occupation__c</fullName>
+        <description>What is the customer&apos;s occupation?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the customer&apos;s occupation?</inlineHelpText>
+        <label>Occupation</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherAddress</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>OtherPhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Phonetic_Pronunciation__c</fullName>
+        <description>How is this contact&apos;s name pronounced?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How is this contact&apos;s name pronounced?</inlineHelpText>
+        <label>Phonetic/Pronunciation</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Please_Update_Email_Address__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The Email Address on this contact needs to be updated on next customer contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Email Address on this contact needs to be updated on next customer contact.</inlineHelpText>
+        <label>Please Update Email Address</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Political_Affiliation__c</fullName>
+        <description>The Political Affiliation of this contact</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Political Affiliation of this contact</inlineHelpText>
+        <label>Political Affiliation</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Democratic</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Libertarian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Republican</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Phone__c</fullName>
+        <description>What is this contact&apos;s primary contact number?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What is this contact&apos;s primary contact number?</inlineHelpText>
+        <label>Primary Phone</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Phone</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Home Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Work Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>QAS_Mailing_Address_County__c</fullName>
+        <description>QAS Mailing Address County</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QAS Mailing Address County</inlineHelpText>
+        <label>QAS Mailing Address County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QAS_Other_Address_County__c</fullName>
+        <description>QAS Other Address County</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QAS Other Address County</inlineHelpText>
+        <label>QAS Other Address County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rating__c</fullName>
+        <description>Heat index for Community Program Contacts - the likelihood that this contact will lead to a Community Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Heat index for Community Program Contacts - the likelihood that this contact will lead to a Community Program</inlineHelpText>
+        <label>Rating</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Super Hot</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hot</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Warm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>ReportsToId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Salutation__c</fullName>
+        <description>What Name Should Be Included in Mailing Salutations &quot;Dear ....&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What Name Should Be Included in Mailing Salutations &quot;Dear ....&quot;</inlineHelpText>
+        <label>Email/Mail Name</label>
+        <length>60</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Contact_uuid__c</fullName>
+        <description>Contains the uuid for the contact in the Sighten system</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Contains the uuid for the contact in the Sighten system</inlineHelpText>
+        <label>Sighten Contact uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Suffix__c</fullName>
+        <description>Suffix on Contact Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Suffix on Contact Name</inlineHelpText>
+        <label>Suffix</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Jr.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sr.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>II</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>III</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IV</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Esq.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PhD.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>M.D.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CPA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Twitter__c</fullName>
+        <description>The Twitter profile for this person</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Twitter profile for this person</inlineHelpText>
+        <label>Twitter</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>UseSalesforce</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>ValidationStatus_MailingAddress__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Validation Status Mailing Address</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ValidationStatus_OtherAddress__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Validation Status Other Address</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ValidationTimestamp_MailingAddress__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Mailing Address Validation Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ValidationTimestamp_OtherAddress__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Other Address Validation Timestamp</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Work_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>mkto2__Acquisition_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Acquisition Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>mkto2__Acquisition_Program_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Acquisition Program Id</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Acquisition_Program__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Acquisition Program</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_City__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_Company__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred Company</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_Country__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_Metropolitan_Area__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred Metropolitan Area</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_Phone_Area_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred Phone Area Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_Postal_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Inferred_State_Region__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inferred State Region</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Lead_Score__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Lead Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Original_Referrer__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Original Referrer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Original_Search_Engine__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Original Search Engine</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Original_Search_Phrase__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Original Search Phrase</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>mkto2__Original_Source_Info__c</fullName>
+        <defaultValue>&quot;Contact&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Original Source Info</label>
+        <length>2000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>mkto2__Original_Source_Type__c</fullName>
+        <defaultValue>&quot;salesforce.com&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Original Source Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__CloseDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field stores when the InsideSales.com NeuralView Close Score was last updated</description>
+        <externalId>false</externalId>
+        <label>NeuralView: Close Score Last Updated</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__CloseScore__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field stores the InsideSales.com NeuralView Close Score</description>
+        <externalId>false</externalId>
+        <label>NeuralView: Close Score</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>5</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__ContactDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field stores when the InsideSales.com NeuralView Contactability Score was last updated</description>
+        <externalId>false</externalId>
+        <label>NeuralView: Contactability Last Updated</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__ContactScoreId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The InsideSales.com NeuralView Hourly Contactability Score Object Lookup</description>
+        <externalId>false</externalId>
+        <label>NeuralView: Hourly Contactability ID</label>
+        <referenceTo>qbdialer__ContactScore__c</referenceTo>
+        <relationshipLabel>Contact Score Items_C</relationshipLabel>
+        <relationshipName>Contact_Score_Items_C</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__ContactScore__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field stores the InsideSales.com NeuralView Contactability Score</description>
+        <externalId>false</externalId>
+        <label>NeuralView: Contactability Score</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>5</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Dials__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Dials</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__LastCallTime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The field should not be modified by users, it is intended for use in the filters of the Seek Initiatives.</description>
+        <externalId>false</externalId>
+        <label>Last Call Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__ResponseTime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field will store the number of seconds between record creation time and first call time (via the PowerDialer).</description>
+        <externalId>false</externalId>
+        <label>Response Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__TimeZoneSidKey__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field will store the TimeZoneSidKey for the Contact.</description>
+        <externalId>false</externalId>
+        <label>TimeZone Sid Key</label>
+        <length>24</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__Languages__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Languages</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__Level__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>rstk__triggeroptions__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>triggeroptions</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>AllContacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Contacts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>BirthdaysThisMonth</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CONTACT.BIRTHDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.BIRTHDATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <label>Birthdays This Month</label>
+    </listViews>
+    <listViews>
+        <fullName>NewThisWeek</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <label>New This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__AllContacts</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Contacts</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__BirthdaysThisMonth</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.BIRTHDATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <label>Birthdays This Month</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__MyContacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.PHONE3</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Rating__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Contacts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>rstk__NewLastWeek</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>LAST_WEEK</value>
+        </filters>
+        <label>New Last Week</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__NewThisWeek</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <label>New This Week</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>FULL_NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CONTACT.PHONE1</customTabListAdditionalFields>
+        <listViewButtons>qbdialer__Create_List</listViewButtons>
+        <listViewButtons>qbdialer__Launch_Click_to_Call</listViewButtons>
+        <listViewButtons>qbdialer__Manage_Lists</listViewButtons>
+        <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
+        <lookupFilterFields>FULL_NAME</lookupFilterFields>
+        <lookupFilterFields>ACCOUNT.NAME</lookupFilterFields>
+        <lookupFilterFields>ACCOUNT.SITE</lookupFilterFields>
+        <lookupPhoneDialogsAdditionalFields>FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE1</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE3</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE4</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE5</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE6</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>00N80000004TSVx</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.SITE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.PHONE1</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.EMAIL</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>APXTConga4__Conga_Mail_Merge</fullName>
+        <availability>online</availability>
+        <description>*** This is an example of a simple Conga Composer button. *** 
+
+Copy the URL from this button and paste it into your own custom button or link. Then add optional parameters to finely tune the button&apos;s behavior. See the Conga Configuration Guide for details.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>false</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>450</height>
+        <isResizable>false</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Conga Composer</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.appextremes.com/apps/Conga/Composer.aspx
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_80}
+&amp;id={!Contact.Id}</url>
+        <width>625</width>
+    </webLinks>
+    <webLinks>
+        <fullName>Convert_to_CP_Opportunity</fullName>
+        <availability>online</availability>
+        <description>A streamlined way to convert a Community Program Lead (Contact record) into a Community Program Opportunity</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Convert to CP Opportunity</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/flow/New_CP_Opportunity?ContactID={!Contact.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://maps.google.com/maps?f=q&amp;hl=en&amp;q={!Contact_MailingStreet}+{!Contact_MailingCity}+{!Contact_MailingState}&amp;om=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleSearch</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Search</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://www.google.com/search?q={!Contact_FirstName} {!Contact_LastName}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>SendGmail</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Send Gmail</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://mail.google.com/mail?view=cm&amp;tf=0&amp;to={!Contact_Email}&lt;{!Contact_LastName}, {!Contact_FirstName}&gt;&amp;tf=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>YahooMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Yahoo! Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://maps.yahoo.com/py/maps.py?cn={!Contact_MailingCountry}&amp;csz={!Contact_MailingCity}+{!Contact_MailingState}+{!Contact_MailingPostalCode}+&amp;addr={!Contact_MailingAddress}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>YahooWeather</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Yahoo! Weather</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://weather.yahoo.com/search/weather2?p={!Contact_MailingPostalCode}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Create_List</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create List</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;https://sforce.insidesales.com/js/json.js&apos;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/11.1/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jsonp.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/persist.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/ISConference.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c/ISClickToCall.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2csf.js&quot;)}
+
+var getTabClass = function() {
+    var bodytags = document.getElementsByTagName(&quot;body&quot;);
+    var classes  = bodytags[0].className.split(&apos; &apos;);
+    var hostname = window.location.hostname;
+    try {
+        try {
+            sforce.connection.sessionId=&quot;{!$Api.Session_ID}&quot;;
+        } catch (e) {
+            //
+        }
+        user  = sforce.connection.getUserInfo();
+        var theme = user.userUiSkin;
+        return {
+            &quot;css_base&quot;  : &quot;https://&quot;+window.location.hostname,
+            &quot;css_theme&quot; : theme,
+            &quot;css_class&quot; : classes[0]};
+    } catch (e) {
+        return {
+            &quot;css_base&quot; : &quot;https://&quot;+window.location.hostname,
+            &quot;css_class&quot; : classes[0],
+            &quot;css_theme&quot; : false
+        };
+    }
+};
+var getTabClassString = function() {
+    var css_info = getTabClass();
+    var tmp_url = &quot;&quot;;
+    tmp_url += &apos;&amp;css_base=&apos;+encodeURIComponent(css_info.css_base);
+    if (css_info.css_theme) {
+        tmp_url += &apos;&amp;css_theme=&apos;+encodeURIComponent(css_info.css_theme);
+    }
+    tmp_url += &apos;&amp;css_class=&apos;+encodeURIComponent(css_info.css_class);
+    return tmp_url;
+};
+
+var openPopup = function() {
+    pd.setSalesforceInstance(true);
+    pd.makeRequest(&apos;getAuthToken&apos;,
+        function (result) {
+            var jwt = typeof result == &apos;object&apos; &amp;&amp; &apos;token&apos; in result ? result.token : &apos;&apos;;
+            var use_jwt = jwt != &apos;&apos;;
+            var html = &quot;&lt;form name=&apos;createList&apos; method=&apos;post&apos; action=&apos;https://{!$User.qbdialer__is_subdomain__c}.insidesales.com/noauth/create_sf_list?&quot;;
+            html += &quot;&amp;salesforce_package_version=6.21.3&quot;;
+            html += &quot;&amp;type=Account&quot;;
+            if (!use_jwt) {
+                html += &quot;&amp;organization_id={!$Organization.Id}&quot;;
+                html += &quot;&amp;token={!User.qbdialer__is_token__c}&quot;;
+            }
+            html += &quot;&amp;agent_phone={!User.Phone}&quot;;
+            html += getTabClassString();
+            html += &quot;&apos;&gt;&lt;input type=&apos;submit&apos; style=&apos;visibility:hidden&apos;&gt;&quot;; 
+            if (use_jwt) {
+                html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;Authorization&apos; value=&apos;&quot;+jwt+&quot;&apos;&gt;&quot;;
+            }
+            var data = &quot;&quot;;
+            for (var i=0; i &lt; idArray.length; i++) {
+                data = {Id:idArray[i]};
+                data = JSON.stringify(data);
+                html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;leads[]&apos; value=&apos;&quot;+data+&quot;&apos;&gt;&quot;;
+            }
+            html += &quot;&lt;&quot;+&quot;/form&gt;&quot;;
+            html += &quot;&lt;script&gt;document.createList.submit();&lt;&quot;+&quot;/script&gt;&quot;;
+            var host = document.location.protocol+&quot;//&quot;+
+            document.location.hostname;
+            var w = window.open(host, &quot;_blank&quot;, &quot;height=700,width=800,menubar=0,resizable=1,scrollbars=1,status=0,titlebar=0,toolbar=0,location=0&quot;);
+            w.document.write(html);
+        }
+    );
+}
+
+var user_oauth_token = &apos;{!JSENCODE($User.qbdialer__is_token__c)}&apos;;
+if (!user_oauth_token) {
+    window.location.href=&quot;/apex/qbdialer__InsideSales_OAuth_Setup&quot;;
+} else {
+    var idArray = {!GETRECORDIDS($ObjectType.Contact)};
+    if (idArray.length == 0) {
+        alert(&quot;Please select at least one row&quot;);
+    } else {
+        openPopup();
+    }
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Launch_Click_to_Call</fullName>
+        <availability>online</availability>
+        <description>For Beta</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Launch Click-to-Call</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var th = window.top.document.body;
+			var s = window.top.document.createElement(&apos;script&apos;);
+			s.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);
+			s.setAttribute(&apos;src&apos;,&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c_console.js&quot;);
+			th.appendChild(s);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>qbdialer__Manage_Lists</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Manage Lists</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/js/functions.js&apos;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/11.1/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jquery.min.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/jsonp.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/lib/persist.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/ISConference.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c/ISClickToCall.js&quot;)}
+{!REQUIRESCRIPT(&quot;/resource/qbdialer__c2c_resources/20160122025855/c2csf.js&quot;)}
+
+var openPopup = function() { 
+    pd.setSalesforceInstance(true);
+    pd.makeRequest(&apos;getAuthToken&apos;,
+        function (result) {
+            var jwt = typeof result == &apos;object&apos; &amp;&amp; &apos;token&apos; in result ? result.token : &apos;&apos;;
+            var use_jwt = jwt != &apos;&apos;;
+            var html = &quot;&lt;html&gt;&lt;body&gt;&lt;form id=&apos;createList&apos; name=&apos;createList&apos; method=&apos;post&apos; action=&apos;https://{!$User.qbdialer__is_subdomain__c}.insidesales.com/noauth/manage_sf_lists?&quot;;
+            html += &quot;salesforce_package_version=6.21.3&quot;;
+            if (!use_jwt) {
+                html += &quot;&amp;organization_id={!$Organization.Id}&quot;;
+                html += &quot;&amp;token={!User.qbdialer__is_token__c}&quot;;
+            }
+            html += &quot;&amp;agent_phone={!User.Phone}&apos;&gt;&quot;; 
+            if (use_jwt) {
+                html += &quot;&lt;input type=&apos;hidden&apos; name=&apos;Authorization&apos; value=&apos;&quot;+jwt+&quot;&apos;&gt;&quot;;
+            }
+            html += &quot;&lt;input type=&apos;submit&apos; style=&apos;visibility:hidden&apos;&gt;&lt;&quot;+&quot;/form&gt;&quot;; 
+            html += &quot;&lt;script&gt;document.createList.submit();&lt;&quot;+&quot;/script&gt;&lt;/body&gt;&lt;/html&gt;&quot;; 
+            var host = document.location.protocol+&quot;//&quot;+ 
+            document.location.hostname; 
+            var w = window.open(host, &quot;&quot;, &quot;height=200,width=600,menubar=0,resizable=1,scrollbars=1,status=0,titlebar=0,toolbar=0,location=0&quot;); 
+            w.document.write(html); 
+        }
+    );
+} 
+
+var user_oauth_token = &apos;{!JSENCODE($User.qbdialer__is_token__c)}&apos;;
+if (!user_oauth_token) {
+    window.location.href=&quot;/apex/qbdialer__InsideSales_OAuth_Setup&quot;;
+} else {
+    openPopup();
+}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,3 @@
+Your case, {!Case.CaseNumber} for {!Case.Account}, has received a New Email.  To review this case, and read the email:
+
+{!Case.Link}

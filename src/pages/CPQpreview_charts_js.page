@@ -1,0 +1,211 @@
+<apex:page contentType="text/javascript" cache="false" expires="0" >
+/* FILE: CPQpreview_charts.js
+ * AUTHOR: Stephanie Pratt
+ * DATE: Feb 8, 2015
+ * PURPOSE: Logic for CPQ Proposal Charts
+ * MODIFICATION HISTORY
+ */
+ 
+//<script>
+	'use strict';
+
+	window.onload = function(){
+	     
+	    Chart.defaults.global.animation = false;
+	    Chart.defaults.global.responsive = false;
+	    Chart.defaults.global.scaleFontFamily = "'Helvetica', 'sans-serif'";
+	    Chart.defaults.global.scaleFontColor = "#7e7d7e";
+	    Chart.defaults.global.showTooltips = false;
+	    
+	    var currTierFourData = [200,210,215,280,320,360,380,450,500,520,580,600,630,700,750,800,860,1000,1250,1360,1400,1350,1280,1210,1150,1090,870,710,540,400,430,510,490,450,430,440];
+	    var currTierThreeData = [120,125,130,140,142,148,150,145,135,130,150,170,180,160,155,150,130,160,150,135,140,130,150,160,170,175,160,150,140,130,120,125,120,135,140,130];
+	    var currTierTwoData = [100,105,110,120,122,128,120,115,125,100,100,100,110,120,115,120,110,105,100,110,100,110,120,110,110,105,120,110,110,115,100,105,100,105,100,110];
+	    var currTierOneData = [80,95,110,75,79,86,82,71,75,89,84,80,75,76,70,83,90,88,84,78,80,70,72,76,86,82,84,72,70,75,77,82,80,76,70,72];
+	    var currFixedChargesData = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10];
+	    var currNetChargeData = [200,210,215,280,320,360,380,450,500,520,580,600,630,700,750,800,860,1000,1250,1360,1400,1350,1280,1210,1150,1090,870,710,540,400,430,510,490,450,430,440];
+	
+	    generateUtilBillChart("currUtilBill", currTierFourData, currTierThreeData, currTierTwoData, currTierOneData, currFixedChargesData, currNetChargeData);
+	    
+	    var newTierFourData = [80,50,20,10,0,0,10,50,80,100,120,150,160,170,200,250,300,400,350,300,250,300,350,400,450,500,490,510,400,300,200,100,10,80,180,200];
+	    var newTierThreeData = [80,50,20,10,0,0,10,50,80,100,120,150,160,170,180,190,210,210,210,210,210,210,210,210,200,195,190,180,150,120,100,50,10,80,120,140];
+	    var newTierTwoData = [80,50,20,10,0,0,10,20,50,70,90,100,110,100,110,120,130,120,130,130,130,125,120,120,110,90,80,70,60,50,40,30,10,20,40,50];
+	    var newTierOneData = [80,50,20,10,0,0,10,15,20,25,30,40,40,45,45,45,50,50,40,40,40,50,50,50,50,50,50,48,43,40,35,25,10,15,20,25];
+	    var newFixedChargesData = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10];
+	    var newNetChargeData = [80,50,20,10,0,0,10,50,80,100,120,150,160,170,200,250,300,400,350,300,250,300,350,400,450,500,490,510,400,300,200,100,10,80,180,200];
+	
+	    generateUtilBillChart("newUtilBill", newTierFourData, newTierThreeData, newTierTwoData, newTierOneData, newFixedChargesData, newNetChargeData);
+	    
+	    var energyConsumptionData = [1300,1350,1800,2100,3000,4200,3900,4500,3800,1500,1500,1500];
+	    var solarProductionData = [600,4000,1800,1600,2500,2600,2500,2400,1800,1600,1000,900];
+	    
+	    generateProductionVsUsageChart("productionVsUsage", energyConsumptionData, solarProductionData);
+	}
+	
+	function generateProductionVsUsageChart(chartName, energyConsumption, solarProduction) {
+	    var chartSettings =  {
+	        chartType:"overlay",
+	        chartWidth:400,
+	        chartHeight:250,
+	        chartOptions: { 
+	            bezierCurve : false,
+	            scaleShowGridLines : false,
+	            scaleLabel : "<%= Number(value).toFixed(0) +' kWh' %>"
+	        },
+	        chartData:{
+	            labels: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+	            datasets: [
+	            {
+	                label: "Home Energy Consumption",
+	                //new option, barline will default to bar as that what is used to create the scale
+	                type: "line",
+	                fillColor: "#cccccc",
+	                strokeColor: "#cccccc",
+	                pointColor: "rgba(255,255,2555,0)",
+	                pointStrokeColor: "rgba(255,255,2555,0)",
+	                pointHighlightFill: "rgba(255,255,2555,0)",
+	                pointHighlightStroke: "rgba(255,255,2555,0)"
+	            },
+	            {
+	                label: "Solar Production",
+	                //new option, barline will default to bar as that what is used to create the scale
+	                type: "bar",
+	                fillColor: "#61af3f",
+	                strokeColor: "rgba(255,255,2555,0)",
+	                pointColor: "rgba(255,255,2555,0)",
+	                pointStrokeColor: "#fff",
+	                pointHighlightFill: "#fff",
+	                pointHighlightStroke: "rgba(220,220,220,1)"
+	            }]
+	        }
+	    };
+	    
+	    chartSettings.chartName = chartName;
+	    chartSettings.chartData.datasets[0].data = energyConsumption;
+	    chartSettings.chartData.datasets[1].data = solarProduction;
+	    
+	    var imgDataUrl = createChart(chartSettings);
+	        
+	    CPQpreviewController.insertAttachment(imgDataUrl, chartSettings.chartName+".png", "aB81900000000d8", function(result, event){
+	        console.log("Insert attachment result is " + result);
+	    });
+	}
+	
+	function generateUtilBillChart(chartName, tierFour, tierThree, tierTwo, tierOne, fixedCharges, netCharge) {
+	    var chartSettings =  {
+	        chartType:"line",
+	        chartWidth:400,
+	        chartHeight:250,
+	        chartOptions: {
+	             scaleShowGridLines : false,
+	             bezierCurve : false,
+	             scaleLabel : "<%= '$' + Number(value).toFixed(0)%>"
+	         },
+	        chartData:{
+	        labels : ["JAN","","","FEB","","","MAR","","","APR","","","MAY","","","JUN","","","JUL","","","AUG","","","SEP","","","OCT","","","NOV","","","DEC","",""],
+	        datasets : [
+	            {
+	                label: "Tier 4 - $0.312/Kwh",
+	                fillColor : "#61af3f",
+	                strokeColor : "rgba(255,255,2555,0)",
+	                pointColor : "rgba(255,255,2555,0)",
+	                pointStrokeColor : "rgba(255,255,2555,0)",
+	                pointHighlightFill : "#fff",
+	                pointHighlightStroke : "rgba(220,220,220,1)"
+	            },
+	            {
+	                label: "Tier 3 - $0.272/Kwh",
+	                fillColor : "#bed63a",
+	                strokeColor : "#bed63a",
+	                pointColor : "rgba(255,255,2555,0)",
+	                pointStrokeColor : "rgba(255,255,2555,0)",
+	                pointHighlightFill : "#fff",
+	                pointHighlightStroke : "rgba(151,187,205,1)"
+	            },
+	            {
+	                label: "Tier 2 - $0.16/Kwh",
+	                fillColor : "#fedf00",
+	                strokeColor : "#fedf00",
+	                pointColor : "rgba(255,255,2555,0)",
+	                pointStrokeColor : "rgba(255,255,2555,0)",
+	                pointHighlightFill : "#fff",
+	                pointHighlightStroke : "rgba(151,187,205,1)"
+	            },
+	            {
+	                label: "Tier 1 - $0.128/Kwh",
+	                fillColor : "#707274",
+	                strokeColor : "#707274",
+	                pointColor : "rgba(255,255,2555,0)",
+	                pointStrokeColor : "rgba(255,255,2555,0)",
+	                pointHighlightFill : "#fff",
+	                pointHighlightStroke : "rgba(151,187,205,1)"
+	            },
+	            {
+	                label: "Fixed Charges",
+	                fillColor : "#231f20",
+	                strokeColor : "#231f20",
+	                pointColor : "rgba(255,255,2555,0)",
+	                pointStrokeColor : "rgba(255,255,2555,0)",
+	                pointHighlightFill : "#fff",
+	                pointHighlightStroke : "rgba(151,187,205,1)"
+	            },
+	            {
+	                label: "Net Charge/Credit - Before",
+	                fillColor : "rgba(255,255,2555,0)",
+	                strokeColor : "#009ddc",
+	                pointColor : "#009ddc",
+	                pointStrokeColor : "#009ddc",
+	                pointHighlightFill : "#fff",
+	                pointHighlightStroke : "rgba(220,220,220,1)"
+	            }]
+	        }
+	    };
+	    
+	    chartSettings.chartName = chartName;
+	    chartSettings.chartData.datasets[0].data = tierFour;
+	    chartSettings.chartData.datasets[1].data = tierThree;
+	    chartSettings.chartData.datasets[2].data = tierTwo;
+	    chartSettings.chartData.datasets[3].data = tierOne;
+	    chartSettings.chartData.datasets[4].data = fixedCharges;
+	    chartSettings.chartData.datasets[5].data = netCharge;
+	
+	    var imgDataUrl = createChart(chartSettings);
+	        
+	    CPQpreviewController.insertAttachment(imgDataUrl, chartSettings.chartName+".png", "aB81900000000d8", function(result, event){
+	        console.log("Insert attachment result is " + result);
+	    });
+	}
+	
+	
+	
+	
+	function createChart(chartObj) {
+	
+	    var newChart;
+	    var chartType = chartObj.chartType;
+	    var chartData = chartObj.chartData;
+	    var chartOptions = chartObj.chartOptions;
+	    var chartName= chartObj.chartName;
+	    
+	    var canvasContainer = document.getElementById("canvasContainer");
+	    var newCanvas = document.createElement("canvas");
+	    newCanvas.id = chartName+"Canvas";
+	    newCanvas.width  = chartObj.chartWidth;
+	    newCanvas.height = chartObj.chartHeight;
+	    canvasContainer.appendChild(newCanvas);
+	    
+	    var newChartCtx = document.getElementById(newCanvas.id).getContext("2d");
+	    
+	    if(chartType=="line"){
+	        newChart = new Chart(newChartCtx).Line(chartData, chartOptions);
+	    } 
+	    else if(chartType=="overlay"){
+	        newChart = new Chart(newChartCtx).Overlay(chartData, chartOptions);
+	    }
+	    
+	    var imgDataURL = newChart.toBase64Image();
+	    
+	    return imgDataURL;
+	}
+
+//</script>
+</apex:page>

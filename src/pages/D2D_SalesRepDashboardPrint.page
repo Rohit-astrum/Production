@@ -1,0 +1,203 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" 
+    controller="D2D_SalesRepDashboardController" renderAs="pdf">
+<html>
+<head>
+<style type="text/css">
+body {
+    font-family: Arial, Helvetica,sans-serif; 
+    font-size: 12pt; 
+    color: #666;
+}
+
+#clearFix {
+   clear: both;
+}
+
+#Header {
+    height: 65pt;
+    border-bottom: 4px solid #e45206;
+    float:left;
+    vertical-align: middle;
+    padding-left: 10pt;
+    padding-top: 10pt;
+    margin-bottom: 30px;
+    width:100%;
+}
+#NameInfo {
+    color: #666;
+    float:right;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 7px 20px 0px 0px;
+}
+#Summary {
+    background: #666;
+    color: #ffffff;
+    float: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    }
+#Referrals, 
+#Payments {
+    margin-top: 10px;
+    border: 1px solid #cccccc;
+    float: left;
+    width: 100%;
+}
+#Referrals table {
+    /* border-spacing: 3pt; */
+    width: 100%;
+}
+#Referrals th,
+#Payments th {
+    background-color: #f7cbb4;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    text-align: left;
+}
+#Referrals td,
+#Payments td {
+    vertical-align: top;
+    padding: 10px;
+    font-size: 0.7em;
+    text-align: left;
+}
+/* #Referrals table tbody tr:nth-child(even) {
+    background-color: green;
+} */
+
+.caps {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sectionHeader {
+float:left;
+width: 100%;
+}
+
+.summary1, 
+.summary2, 
+.summary3 {
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    float: left;
+    padding: 15px 15px;
+    
+}
+
+.summaryDivider {
+    float:left;
+    padding: 15px 0px;
+}
+
+.referral-center,
+.payment-center {
+    text-align: center;
+}
+.referral-right,
+.payment-right {
+    text-align: right;
+}
+.referral-title {
+    padding-left: 3pt;
+    margin-bottom: 5pt;
+}
+.referral-table {
+    table-layout: fixed;
+    overflow: hidden;
+}
+
+@page {
+    size: 8.5in 11in; 
+    margin: 0.5in 0.5in;
+    /*
+    @top-left { 
+        font-family: Arial, Helvetica,sans-serif; 
+        font-size: 12pt;
+        font-weight: bold; 
+        content: "Direct Energy Solar Connect Dashboard Summary"; 
+    } */
+    @bottom-left { 
+        font-family: Arial, Helvetica,sans-serif; 
+        font-size: 10pt; 
+        content: "{!TEXT(MONTH(TODAY()))+'/'+TEXT(DAY(TODAY()))+'/'+TEXT(YEAR(TODAY()))}"; 
+    }
+    @bottom-right {
+        font-family: Arial, Helvetica,sans-serif; 
+        font-size: 10pt; 
+        content:"Page " counter(page); 
+    }
+}
+</style>
+</head>
+<body>
+
+    <div id="Header">
+        <apex:image value="{!URLFOR($Resource.D2D_Resources, 'images/DirectEnergySolar_logo.jpg')}" />
+        <div id="NameInfo">
+            <span><c:PortalAccountName /></span>
+        </div>
+    </div>
+
+   
+
+ <div class="caps sectionHeader">SUMMARY</div>
+ 
+    <div id="Summary">
+       
+
+        <apex:outputPanel layout="block" styleClass="summary3">
+            <span>Total Number of Leads:</span>
+            <span><apex:outputText value="{0,number,#,##0}">
+                <apex:param value="{!totalReferrals}"/>
+            </apex:outputText></span>
+          
+        </apex:outputPanel>
+          <div class="summaryDivider">|</div>
+        <apex:outputPanel layout="block" styleClass="summary1">
+            <span>Total Number Qualified:</span>
+            <span><apex:outputText value="{0,number,#,##0}">
+                <apex:param value="{!totalQualified}"/>
+            </apex:outputText></span>
+          
+        </apex:outputPanel>
+         <div class="summaryDivider">|</div>
+        <apex:outputPanel layout="block" styleClass="summary1">
+            <span>Total Number Sold:</span>
+            <span><apex:outputText value="{0,number,#,##0}">
+                <apex:param value="{!totalSold}"/>
+            </apex:outputText></span>
+        </apex:outputPanel>
+
+    </div>
+    
+   
+    
+     <div class="caps sectionHeader">REFERRALS</div>
+    <div id="Referrals">
+        
+        <apex:dataTable value="{!referrals}" var="r" styleClass="referral-table">
+            <apex:column headerValue="Date" styleClass="referral-center">
+                <apex:outputText value="{0,date,M/d/yy}">
+                    <apex:param value="{!r.Lead_Created_Date__c}"/>
+                </apex:outputText>
+            </apex:column>
+            <apex:column value="{!r.Full_Name__c}" headerValue="Referral"/>
+            <apex:column value="{!r.Street__c}" headerValue="Street" style="width:1.5in;overflow:hidden;"/>
+            <apex:column value="{!r.City__c}" headerValue="City"/>
+            <apex:column value="{!r.State__c}" headerValue="State"/>
+            <apex:column value="{!r.Zip__c}" headerValue="Zip"/>
+            <apex:column value="{!r.D2D_System_Size__c}" headerValue="Segment Priority"/>
+            <apex:column value="{!r.D2D_Lead_Status__c}" headerValue="Lead Status"/>
+        </apex:dataTable>
+    </div>
+
+</body>
+</html>
+</apex:page>

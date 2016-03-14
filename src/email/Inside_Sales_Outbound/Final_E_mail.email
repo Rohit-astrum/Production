@@ -1,0 +1,15 @@
+<p>Dear {!Lead.FirstName},</p>
+<p>We’ve been trying to reach you and we haven’t heard back from you. We’re wondering if you have any questions or concerns about switching to solar.<br>At Astrum, we concentrate exclusively on home solar power. We can tell you about our free installation and customized system design services — it won’t take much time and may answer a lot of your questions. </p>
+<p>Don’t lose out on this chance to go solar for nothing out-of-pocket and start saving right away! This is the last time we’ll be reaching out to you, so if you’re still interested, please call us back at
+<b>800-903-6130</b> and select the option for Sales.</p>
+<p>We can’t wait to hear from you!</p>
+<p>Best,</p>
+<p>{!User.FirstName}</p>
+<p>
+<img src="https://c.na8.content.force.com/servlet/servlet.ImageServer?id=015800000017MZ3&oid=00D80000000dNiA&lastMod=1274981283000" /><br />
+8955 Henkels Lane Suite 508<br />
+Annapolis Junction, MD 20701<br />
+P: 800-903-6130<br />
+F: 443-267-0036<br />
+{!User.Email}<br />
+<a href="http://www.astrumsolar.com">www.astrumsolar.com</a></p>

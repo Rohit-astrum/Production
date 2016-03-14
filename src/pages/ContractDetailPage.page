@@ -1,0 +1,10 @@
+<!--
+FILE: ContractDetailPage.page
+AUTHOR: Rohit Jain
+DATE: Jun 18, 2015
+-->
+<apex:page standardController="Astrum_Contract__c" sidebar="true" tabStyle="Astrum_Contract__c" showHeader="true">
+       
+    <apex:detail subject="{!Astrum_Contract__c.Id}" inlineEdit="false" title="false" />
+    
+</apex:page>

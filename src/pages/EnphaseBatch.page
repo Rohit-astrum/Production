@@ -1,0 +1,70 @@
+<apex:page controller="EnphaseBatchController" tabStyle="Installed_System__c">
+
+	<apex:sectionHeader title="Enphase Production Pull"/>
+
+	<apex:form >
+	
+	<apex:outputPanel id="updateBlock" layout="block">
+	
+		<apex:pageMessages />
+		
+		<apex:pageMessage summary="Do Not Close this Page" severity="Warning" strength="2" rendered="{!!completed}"/>
+		<apex:pageMessage summary="Processing Completed" severity="Info" strength="2" rendered="{!completed}"/>
+		
+		<br/>
+		
+		<apex:pageBlock title="Processing Status" mode="edit">
+		
+			<apex:pageBlockButtons location="top">
+				<apex:commandButton value="Pause" action="{!pause}" rendered="{!!paused&&!completed}" rerender="updateBlock"/>
+				<apex:commandButton value="Resume" action="{!resume}" rendered="{!paused&&!completed}" rerender="updateBlock"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection collapsible="false">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Total"/>
+					<apex:outputText value="{0,number,#,##0}">
+						<apex:param value="{!total}"/>
+					</apex:outputText>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Started"/>
+					<apex:outputText value="{!startTime}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Processed"/>
+					<apex:outputText value="{0,number,#,##0}">
+						<apex:param value="{!processed}"/>
+					</apex:outputText>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Finished"/>
+					<apex:outputText value="{!completeTime}"/>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Errors"/>
+					<apex:outputText value="{0,number,#,##0}">
+						<apex:param value="{!errors}"/>
+					</apex:outputText>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+		
+		<apex:PageBlock title="Systems to Process">
+			<apex:pageBlocktable value="{!statuses}" var="s">
+				<apex:column value="{!s.sys.Enphase_ID__c}" width="70"/>
+				<apex:column headerValue="Completed" width="80">
+					<apex:inputCheckbox value="{!s.processed}" disabled="true"/>
+				</apex:column>
+				<apex:column value="{!s.processDateTime}" headerValue="Time Processed" width="100"/>
+				<apex:column value="{!s.status}" headerValue="Status"/>
+			</apex:pageBlocktable>
+		</apex:PageBlock>
+		
+		<apex:actionPoller action="{!updateState}" enabled="{!!completed&&!paused}"
+			rerender="updateBlock" interval="5"/>
+
+	</apex:outputPanel>
+	
+	</apex:form> 
+	
+</apex:page>

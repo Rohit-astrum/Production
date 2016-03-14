@@ -1,0 +1,406 @@
+<apex:page id="pg" showHeader="true" sidebar="true" standardController="Survey__c" extensions="SurveyCreationPageExtension" standardStylesheets="true">
+	<style>		
+		.highlight
+		{
+			background: #fbd821;
+			font-weight: bold;			
+		}
+		.footerCl
+		{
+			color: #fbd821;					
+		}
+		#blockbckanim
+		{
+			background-color:rgba(0, 14, 44, 0.7);
+			width:100%;
+			height:100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1000;
+			rgba(0, 0, 0, 0.71);
+			cursor: wait;
+		}
+		#apimgld
+		{
+			width: 20px;
+			height: 20px;
+			top:49%;
+			left:45%;
+			position:fixed;
+			border-radius: 2px;
+			-webkit-border-radius: 2px ;
+			-moz-border-radius: 2px ;
+		}
+	</style>
+
+	<script type="text/javascript" language="javascript">	
+	function ShowLoading() {
+	document.getElementById('blockbckanim').style.display="block";
+	}
+	function HideLoading() {
+	document.getElementById('blockbckanim').style.display="none";
+	}
+	</script>
+
+	<apex:sectionHeader title="Survey Edit" subtitle="New Survey" />
+	<apex:form id="form">
+
+		<apex:actionStatus id="processingStatus" onStart="ShowLoading();" onstop="HideLoading();" />
+		<div id="blockbckanim" style="display:none">
+		<img id="apimgld" style="" src="/img/loading32.gif" />
+		</div>
+
+		<apex:actionFunction name="unzipped" action="{!unzipped}" rerender="form">
+            <apex:param name="locations" assignTo="{!unzippedState}" value=""/>
+        </apex:actionFunction>
+        
+        <span id="ajaxLoading" style="text-align: center; display:inline-block;vertical-align:top;padding-left:50px;padding-right:10px;zoom:1.3;visibility:hidden">
+            <img src="{!URLFOR($Resource.AjaxLoader)}"/>&nbsp;&nbsp;UnZipping...
+        </span>
+
+
+        
+       
+		<apex:pageBlock title="Survey Edit" mode="edit">
+			<apex:pageMessages />		
+			
+
+            <apex:pageBlockButtons >
+            	<!-- prevent double-click -->
+                <apex:commandButton value="Save" action="{!save}" status="processingStatus" rendered="{!AND(Confirm,SunEye)}" rerender="form"/>
+                <apex:commandButton value="Continue" action="{!Confirm}" status="processingStatus" rendered="{!AND(NOT(Confirm),SunEye)}" reRender="form"/> 
+                <apex:commandButton value="Go Back" action="{!Reassign}" status="processingStatus" rendered="{!AND(Confirm,SunEye)}" reRender="form"/>               
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>                
+            </apex:pageBlockButtons>
+			
+			<apex:pageBlockSection title="Lookup a Property" rendered="{!NOT(sunEye)}" columns="1">
+				<apex:pageBlockSection >
+				<apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Property Lookup" />
+                    <apex:inputField id="property" value="{!Survey__c.Property__c}" required="true"/>	
+
+                </apex:pageBlockSectionItem>
+                 </apex:pageBlockSection>
+			</apex:pageBlockSection>
+
+			<apex:pageBlockSection title="Upload a SunEye Zip File" rendered="{!NOT(sunEye)}" columns="1">				
+				
+				 <c:Unzipfile name="zipfile" oncomplete="unzipped(JSON.stringify(locations));"
+                    onreceive="{!$RemoteAction.SurveyCreationPageExtension.receiveZipFileEntry}"  locations="{!locations}" />
+
+			</apex:pageBlockSection>	
+			<!--
+			<apex:actionRegion >
+            <apex:commandLink action="{!requestBoxAccess}" rendered="{!showAccessLink}"  styleClass="access-link" immediate="true" style="color: white; background-color: red; padding: 3px;">
+                Request Box Access
+            </apex:commandLink>            
+        	</apex:actionRegion>	
+        	
+
+			<apex:pageBlockSection title="Validation Errors" rendered="{!ValidationError}">				
+				Please make sure a Phyical Surface have same Tilt and Azimuth assigned to all locations.
+			</apex:pageBlockSection>
+			-->	
+			<apex:pageBlockSection title="Survey Information" columns="2" rendered="{!sunEye}"  >    
+				<apex:pageBlockSectionItem > 
+					<apex:outputLabel value="Survey Type" />
+					<apex:outputField value="{!Survey__c.RecordTypeId}"/>     
+				</apex:pageBlockSectionItem>
+
+			    <apex:inputField value="{!Survey__c.Aerial_Photo_Vendor__c}" rendered="{!recType == 'Aerial Photo Survey' }"/>  
+
+			    <apex:inputField value="{!Survey__c.Tree_Removal__c}"/>  <apex:pageBlockSectionItem />
+
+			    <apex:inputField value="{!Survey__c.Surveyor__c}" required="true"/>  
+
+			    <apex:inputField value="{!Survey__c.Date_Completed__c}" required="true"/>   
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="Create/Edit Physical Surfaces" columns="1" rendered="{!AND(Confirm,SunEye)}"  >        
+
+            	<apex:pageBlockTable value="{!unzipsurfaces}" var="ps" footerClass="footerCl"> 
+	                <apex:column >
+	                    <apex:outputField value="{!ps.Name}" /> 
+	                    <apex:facet name="header">Name</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:outputField value="{!ps.Physical_Surface_Assigned_Letter__c}" /> 
+	                    <apex:facet name="header">Surface</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Description__c}"/> 
+	                    <apex:facet name="header">Description</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Surface_Type__c}"/> 
+	                    <apex:facet name="header">Surface Type</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:outputText value="{!ps.Surface_Tilt__c}" styleClass="{!IF(ps.Id != null,'highlight','')}"/> 
+	                    <apex:facet name="header">Tilt</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:outputText value="{!ps.Surface_Azimuth__c}" styleClass="{!IF(ps.Id != null,'highlight','')}"/> 
+	                    <apex:facet name="header">Azimuth</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Number_of_Stories__c}" /> 
+	                    <apex:facet name="header">Number of<br/>Stories</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Mounting_Plane_is_Not_Parallel__c}" /> 
+	                    <apex:facet name="header">Mounting Plane<br/>Not Parallel</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Mounting_Plane_Tilt__c}" /> 
+	                    <apex:facet name="header">Mounting Plane Tilt</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Mounting_Plane_Azimuth__c}" /> 
+	                    <apex:facet name="header">Mounting Plane Azimuth</apex:facet>
+	                </apex:column> 
+	                <apex:column >
+	                    <apex:inputField value="{!ps.Trenching_Dist_to_Intercon_Pt_ft__c}" /> 
+	                    <apex:facet name="header">Minimum Trenching Distance to Interconnection Point</apex:facet>
+	                </apex:column> 
+	                <apex:facet name="footer" >
+	                	<apex:outputText rendered="{!surfacesExistedFlag}">** If you have chosen an existing Physical Surface, the highlighted values will override the existing values upon Save. Click “Go Back” to reassign Physical Surfaces if you don’t want to override these values.
+	                	</apex:outputText>
+	                </apex:facet>
+            	</apex:pageBlockTable>
+
+            </apex:pageBlockSection>
+
+            <apex:outputPanel id="temp">
+            	<apex:variable var="rowNum" value="{!0}"  />
+            </apex:outputPanel>
+
+			<apex:pageBlockSection title="SunEye Data" columns="1" rendered="{!AND(!Confirm,SunEye)}"  >  
+				
+				<apex:outputPanel id="sunEyePanel">
+					<apex:pageBlockTable value="{!unziplocations}" var="pl" id="unlocations"> 
+
+						<apex:facet name="footer">
+		                    <apex:commandLink value="Add Row" action="{!AddNewLocation}" reRender="sunEyePanel,temp" rendered="{!recType != 'Field Survey'}" immediate="true"/>
+		                </apex:facet>
+
+		                <apex:column headerValue="Delete" rendered="{!recType != 'Field Survey'}">
+		                    <apex:commandLink style="font-size:15px; font-weight:bold; text-align:center;color:red;" value="X" action="{!deleteLocation}" reRender="sunEyePanel,temp"  immediate="true">
+		                        <apex:param value="{!rowNum}" name="index" />
+		                    </apex:commandLink>
+		                    <apex:variable var="rowNum" value="{!rowNum+1}"/>
+		                </apex:column>  
+		                
+		                <apex:column rendered="{!recType == 'Field Survey'}">
+		                    <apex:outputField value="{!pl.Location__c}" /> 
+		                    <apex:facet name="header">Location</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}" title="{!$ObjectType.Install_Location__c.Fields.Location__c.inlineHelpText}">
+		                    <apex:inputField value="{!pl.Location__c}" style="width:80px" /> 
+		                    <apex:facet name="header">Location</apex:facet>
+		                </apex:column> 
+
+		                <apex:column >
+		                    <apex:inputField value="{!pl.Physical_Surface_Letter__c}" required="true" /> 
+		                    <apex:facet name="header">Surface</apex:facet>
+		                </apex:column> 
+
+		                <!--
+
+		                <apex:column >
+		                    <apex:inputField value="{!pl.Tree_Removal__c}" /> 
+		                    <apex:facet name="header">Tree Removal</apex:facet>
+		                </apex:column> 
+						-->
+
+		                <apex:column >
+		                    <apex:inputField value="{!pl.TSRF__c}" style="width:75px"/> 
+		                    <apex:facet name="header">TSRF</apex:facet>
+		                </apex:column> 	 
+		                
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Pitch__c}"/> 
+		                    <apex:facet name="header">Tilt</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                    <apex:inputField value="{!pl.Pitch__c}" style="width:75px"/> 
+		                    <apex:facet name="header">Tilt</apex:facet>
+		                </apex:column> 
+
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Azimuth__c}"/> 
+		                    <apex:facet name="header">Azimuth</apex:facet>
+		                </apex:column> 	   
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                    <apex:inputField value="{!pl.Azimuth__c}" style="width:75px"/> 
+		                    <apex:facet name="header">Azimuth</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Annual_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Annual Solar<br/>Access</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Annual_Solar_Access__c}" required="true" style="width:75px" /> 
+		                    <apex:facet name="header">Annual Solar<br/>Access</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Jan_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Jan</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}" >
+		                     <apex:inputField value="{!pl.Jan_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Jan</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Feb_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Feb</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Feb_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Feb</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Mar_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Mar</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Mar_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Mar</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Apr_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Apr</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Apr_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Apr</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.May_Solar_Access__c}" /> 
+		                    <apex:facet name="header">May</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}"  >
+		                     <apex:inputField value="{!pl.May_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">May</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Jun_Solar_Access__c}" /> 
+		                    <apex:facet name="header">Jun</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}"  >
+		                     <apex:inputField value="{!pl.Jun_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Jun</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Jul_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Jul</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}"  >
+		                     <apex:inputField value="{!pl.Jul_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Jul</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Aug_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Aug</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Aug_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Aug</apex:facet>
+		                </apex:column> 
+
+		                 <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Sep_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Sep</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Sep_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Sep</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Oct_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Oct</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Oct_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Oct</apex:facet>
+		                </apex:column> 
+
+		                <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Nov_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Nov</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Nov_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Nov</apex:facet>
+		                </apex:column> 
+
+		                 <apex:column rendered="{!recType == 'Field Survey'}" >
+		                    <apex:outputField value="{!pl.Dec_Solar_Access__c}"/> 
+		                    <apex:facet name="header">Dec</apex:facet>
+		                </apex:column> 
+		                <apex:column rendered="{!recType != 'Field Survey'}">
+		                     <apex:inputField value="{!pl.Dec_Solar_Access__c}" style="width:50px"/> 
+		                    <apex:facet name="header">Dec</apex:facet>
+		                </apex:column> 
+
+	            	</apex:pageBlockTable>
+	            	     
+            	</apex:outputPanel>
+
+            </apex:pageBlockSection>
+
+             <apex:pageBlockSection title="Existing Physical Surfaces" columns="1" rendered="{!AND(surfacesExistedFlag,sunEye)}">
+		        <apex:pageBlockTable value="{!existingSurfaces}" var="surfaces">
+		            <apex:column value="{!surfaces.Name}"/>
+		            <apex:column headerValue="Surface" value="{!surfaces.Physical_Surface_Assigned_Letter__c}"/>
+		            <apex:column value="{!surfaces.Description__c}"/>
+		            <apex:column value="{!surfaces.Surface_Type__c}"/>
+		            <apex:column value="{!surfaces.Surface_Tilt__c}"/>
+		            <apex:column value="{!surfaces.Surface_Azimuth__c}"/>
+		            <apex:column value="{!surfaces.Number_of_Stories__c}">		            
+		            	<apex:facet name="header">Number<br/>of Stories</apex:facet>
+		            </apex:column>
+		            <apex:column value="{!surfaces.Mounting_Plane_is_Not_Parallel__c}">
+		            	<apex:facet name="header">Mounting Plane<br/>Not Parallel</apex:facet>
+		            </apex:column>
+		            <apex:column value="{!surfaces.Mounting_Plane_Tilt__c}">
+		            	<apex:facet name="header">Mounting<br/>Plane Tilt</apex:facet>
+		            </apex:column>
+		            <apex:column value="{!surfaces.Mounting_Plane_Azimuth__c}">
+		            	<apex:facet name="header">Mounting<br/>Plane Azimuth</apex:facet>
+		            </apex:column>
+		            <apex:column value="{!surfaces.Trenching_Dist_to_Intercon_Pt_ft__c}">
+		            	<apex:facet name="header">Minimum Trenching Distance to Interconnection Point</apex:facet>
+		            </apex:column>
+		        </apex:pageBlockTable> 
+		     </apex:pageBlockSection> 
+
+
+            <apex:pageBlockSection title="SunEye Data" columns="1" rendered="{!AND(Confirm,SunEye)}">
+		        <apex:pageBlockTable value="{!unziplocations}" var="pl">
+		            <apex:column value="{!pl.Name}" headerValue="Name"/>
+		            <apex:column value="{!pl.Location__c}" headerValue="Location"/>
+		            <apex:column value="{!pl.Physical_Surface_Letter__c}" headerValue="Surface"/>
+		            <apex:column value="{!pl.Annual_Solar_Access__c}" headerValue="Annual Solar Access"/>
+		            <apex:column value="{!pl.Pitch__c}" headerValue="Tilt"/>
+		            <apex:column value="{!pl.Azimuth__c}" headerValue="Azimuth"/>
+		            <apex:column value="{!pl.TSRF__c}" headerValue="TSRF"/>		            	            
+		        </apex:pageBlockTable> 
+		     </apex:pageBlockSection> 
+
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

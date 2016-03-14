@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Southern Tier 081115.Southern Tier 081115</name>
+    <style>none</style>
+    <subject>Limited-Time Offer for Southern Tier Residents</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Southern Tier Solar Works
+ &lt;http://www.southerntiersolarworks.org/&gt;
+Unite and Save
+
+Dear {{lead.First Name:default=Friend}},
+
+Limited-Time Offer for Southern Tier Residents
+
+Take control of your electricity bill and gain independence from uncontrollable utility rates. Go solar through Southern Tier Solar Works, a community solar initiative spreading the message about why it&apos;s important to grow our community&apos;s solar energy footprint.
+
+The program will help you maximize government and state benefits so that solar becomes very affordable. Enjoy deep discounts and one simple price. Plus, get an extra $500 off if you&apos;re one of the first to sign a contract!* 
+
+What are you waiting for?
+
+Why Choose Direct Energy Solar?
+
+All sunshine is created equal. Solar installers are not. You only go solar once, so it’s important to choose the right solar installer for you. After all, your installer will be working with you to design your system, install your system, and provide support after your system installation. Find out why Direct Energy Solar is the clear choice.
+
+• A custom-designed system
+
+• Fast, guaranteed installation
+
+• Guaranteed system production
+
+• Warranties on panels and inverters
+
+• A lifetime of worry-free support
+
+
+Your neighbors in Southern Tier are going solar. You can too!
+
+More than 300 of your neighbors in Southern Tier have already signed up to find out if their home is right for solar. Don’t miss out—see how much you can save by requesting your free solar consultation. It&apos;s quick and easy! 
+
+Visit http://southerntiersolarworks.org &lt;http://southerntiersolarworks.org&gt; and choose Direct Energy Solar as your installer partner.
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+*The first twenty (20) community members to sign a solar contract with Direct Energy Solar under the program will receive an additional $500 for leading the way.
+
+You must be a resident of Broome, Tioga, Chenango, Otsego, or Delaware County, NY to participate in this program. Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved. 
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

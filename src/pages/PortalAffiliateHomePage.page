@@ -1,0 +1,132 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false"
+    Controller="PortalAffiliateHomeController">
+<apex:composition template="PortalSiteTemplate">
+
+<apex:define name="head-top">
+
+    <meta name='description' content='Direct Energy Solar Referral Partner Network - Home' />
+    <title>Direct Energy Solar Referral Partner Network - Home</title>
+
+</apex:define>
+
+<apex:define name="head-bottom">
+    
+    
+</apex:define>
+
+<apex:define name="navigation">
+
+    <c:EP_AccountInfo />
+    
+    <c:PortalAffiliateTopNav current="affiliate"/>
+
+</apex:define>
+
+<apex:define name="content"> 
+
+<!-- test only
+<apex:pageMessages id="messages"/>
+-->   
+    
+       <div id="FullColumn">
+                        <h2>Welcome Referral Partners</h2>
+                      <div class="AffiliateAffinityHome">
+                         <div class="SummarySection">
+                            <h3>Summary</h3>
+                            <ul>
+                                <li><span class="listTitle">Total Referrals:</span> <span class="listResult"> <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalReferrals}"/></apex:outputText></span></li>
+                                <li><span class="listTitle">Total Sales:</span> <span class="listResult"> <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalSold}"/></apex:outputText>    </span></li>
+                                <li><span class="listTitle">Partner Since:</span> <span class="listResult"> <apex:outputText value="{!partnerSince}"/></span></li>
+                            </ul>
+                         </div> 
+                         <div class="SummarySectionOutReachTools">
+                        
+                            <h3>Outreach: Flyers</h3>
+                            <div id="scroll-pane"> 
+                            <ul>
+
+                            <apex:variable var="count" value="{!0}"/>
+                            <apex:variable var="thumbId" value=""/>
+                
+                            <apex:repeat var="t" value="{!tools}">
+                    
+                                <apex:variable var="count" value="{!count+1}"/>
+                                
+                                <apex:repeat var="a" value="{!t.Attachments}">
+                                    <apex:variable var="thumbId" value="{!IF(a.Description='Thumbnail',a.Id,thumbId)}"/>
+                                </apex:repeat>
+                                
+                                                
+                                <apex:repeat var="a" value="{!t.Attachments}">
+                                    <apex:outputPanel layout="block" styleClass="OutReachToolsContainer {!IF(MOD(count,5)=0,'NoRightMargin','')}" rendered="{!a.Description='Document'}">
+                                        <li><span class="OutReachToolTitle">{!t.Name}</span><span class="OutReachToolDescription">{!t.Description__c}</span>
+                                            <span><a rel="shadowbox;height=500;width=386;" href="{!$Site.Prefix}/servlet/servlet.FileDownload?file={!thumbId}">Preview</a> &nbsp;|&nbsp;&nbsp;  
+                                            <apex:outputLink value="{!URLFOR($Action.Attachment.Download, a.Id)}" target="_blank" title="{!JSENCODE(t.Name)}">Download</apex:outputLink>                                   
+                                            </span>
+                                        </li>                               
+                                    </apex:outputPanel>
+                                </apex:repeat>
+                                
+                            </apex:repeat>
+                            </ul>
+                        </div><!-- end scroll pane -->
+    
+                       
+                        <div class="PDFInstructions">
+                                                <p>You need the latest version of Adobe Reader in order to customize the Flyers.</p>
+                                                <p><a target="_blank" href="http://get.adobe.com/reader/">Latest Version of Adobe Reader</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="{!URLFOR($Resource.PartnerPortal2_Resources, 'PDFs/PDF_CustomizationInstructions.pdf')}" target="_blank">Customization Instructions</a></p>
+                        </div>
+                     </div>  
+                     
+                     <div class="SummarySectionOutReachTools noBottomMargin">
+                        
+                            <h3>Outreach: Web Ads</h3>
+                           
+                                    <ul>
+                    <apex:variable var="count" value="{!0}"/>
+                    <apex:variable var="thumbId" value=""/>
+        
+                    <apex:repeat var="t" value="{!webtools}">                         
+                        <apex:variable var="count" value="{!count+1}"/>
+                        
+                        <apex:repeat var="a" value="{!t.Attachments}">
+                            <apex:variable var="thumbId" value="{!IF(a.Description='Thumbnail',a.Id,thumbId)}"/>
+                        </apex:repeat>                        
+                                        
+                        <apex:repeat var="a" value="{!t.Attachments}">                          
+                            <apex:outputPanel layout="block" styleClass="OutReachToolsContainer {!IF(MOD(count,5)=0,'NoRightMargin','')}" rendered="{!a.Description='Document'}">
+                                <li><span class="OutReachToolTitle">{!t.Name}</span><span class="OutReachToolDescription">{!t.Description__c}</span>
+                                    <span>
+                                    <apex:outputPanel layout="none" rendered="{!t.Name=='Leaderboard'}">
+                                        <a rel="shadowbox;height=90;width=728;" href="{!$Site.Prefix}/servlet/servlet.FileDownload?file={!thumbId}">Preview</a> &nbsp;|&nbsp;&nbsp; 
+                                    </apex:outputPanel>
+                                    <apex:outputPanel layout="none" rendered="{!t.Name=='Medium Rectangle'}">
+                                        <a rel="shadowbox;height=250;width=300;" href="{!$Site.Prefix}/servlet/servlet.FileDownload?file={!thumbId}">Preview</a> &nbsp;|&nbsp;&nbsp; 
+                                    </apex:outputPanel>
+                                    <apex:outputPanel layout="none" rendered="{!t.Name=='Rectangle'}">
+                                        <a rel="shadowbox;height=150;width=180;" href="{!$Site.Prefix}/servlet/servlet.FileDownload?file={!thumbId}">Preview</a> &nbsp;|&nbsp;&nbsp;  
+                                    </apex:outputPanel>
+                                    <apex:outputLink value="{!URLFOR($Action.Attachment.Download, a.Id)}" target="_blank" title="{!JSENCODE(t.Name)}">Download</apex:outputLink>
+                                    
+                                    </span>
+                                </li>                               
+                            </apex:outputPanel>
+                        </apex:repeat>
+                        
+                    </apex:repeat>
+                    
+                </ul>
+                     </div> 
+                     
+                     
+                </div>
+            </div>
+       
+
+
+
+
+</apex:define>
+
+</apex:composition>
+</apex:page>

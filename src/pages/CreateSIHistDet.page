@@ -1,0 +1,4 @@
+<apex:page standardController="QB_Sales_Invoice_Header__c" 
+extensions="ffirule.IntegrationRuleEngine" action="{!convert}">
+<ffirule:IntegrationRule engine="{!engine}"/>
+</apex:page>

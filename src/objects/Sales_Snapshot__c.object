@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Snapshot for 12-week close rate and sales summary</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Lead_End__c</fullName>
+        <description>End of 12-week period for counting leads</description>
+        <externalId>false</externalId>
+        <label>Lead End</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Leads_Last_12_Weeks__c</fullName>
+        <description>Number of leads in last 12 weeks</description>
+        <externalId>false</externalId>
+        <label>Leads Last 12 Weeks</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunities_Last_12_Weeks__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunities Last 12 Weeks</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_End__c</fullName>
+        <description>End of 12-week period for sales count</description>
+        <externalId>false</externalId>
+        <label>Sales End</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Last_12_Weeks__c</fullName>
+        <description>Number of sales in last 12 weeks</description>
+        <externalId>false</externalId>
+        <label>Sales Last 12 Weeks</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Region</label>
+        <picklist>
+            <picklistValues>
+                <fullName>MD Region</fullName>
+                <color>#6600CC</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA Region</fullName>
+                <color>#33CC00</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WNY Region</fullName>
+                <color>#FFFF66</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA Region</fullName>
+                <color>#FFCC66</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH Region</fullName>
+                <color>#3366FF</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NYC Region</fullName>
+                <color>#FF0000</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CA Region</fullName>
+                <color>#006600</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CT Region</fullName>
+                <color>#33FFFF</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <color>#999999</color>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sales_This_Week__c</fullName>
+        <description>Number of sales in current week</description>
+        <externalId>false</externalId>
+        <label>Sales This Week</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Sales Snapshot</label>
+    <nameField>
+        <displayFormat>S{000000}</displayFormat>
+        <label>Sales Snapshot Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Sales Snapshots</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

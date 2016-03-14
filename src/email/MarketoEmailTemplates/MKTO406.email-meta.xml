@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>HWA Nurture Campaign - Renewed Customers, Send 2 Unopens.HWA_RenewedCustomers_Em</name>
+    <style>none</style>
+    <subject>Solar energy can help you save for decades.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/HWA?utm_medium=email&amp;utm_source=hwa&amp;utm_campaign=hwarenewal&amp;utm_content=hwarenewal-2-long&gt;
+
+
+Home Warranty of America
+ &lt;http://www.hwahomewarranty.com&gt;
+
+It’s Time for a Power Shift. 
+
+Learn More:
+&lt;http://www.directenergysolar.com/HWA?utm_medium=email&amp;utm_source=hwa&amp;utm_campaign=hwarenewal&amp;utm_content=hwarenewal-2-long&gt;
+
+Dear Homeowner,
+
+Do you open your electricity bill each month and cringe? Your smart decision to protect your home with a warranty from Home Warranty of America is providing you peace of mind from the unexpected surprises of owning a home, but how to do protect yourself from that shock when you open your electricity bill?
+
+We know you have better things to spend your money on than high electricity bills. What if we told you solar energy has the potential to save you thousands on your energy bills for decades?
+
+This is exactly what we’re doing for many customers who’ve already gone solar with Direct Energy Solar. That’s money you could be pouring into your home in other ways, like home improvements, new furniture or upgraded appliances. It’s your money. Spend it the way you want, not the way your utility company wants.
+
+Because you are customer with Home Warranty of America, you are already connected to Direct Energy Solar, part of the same family of brands. Direct Energy Solar is in your neighborhood and ready to help you harness those rays of sunshine to provide a consistent, reliable source of power on your roof.
+
+What are the benefits of switching to solar power?
+
+Solar energy’s positive impact on daily life is profound. When your home is solar powered, you can worry less about the small stuff, like recharging your family’s gadgets or turning up the thermostat a few degrees on a chilly night. And you can feel great about the big stuff, like your lighter carbon footprint and the example you are setting for your friends, neighbors and family.
+
+Financial Savings - When you switch to solar, your monthly electricity bills will be less than what you are currently paying to your utility company.
+
+Energy Independence - Having a consistent, reliable source of power on your own roof insulates you from pricing and supply volatility from other sources.
+
+Home Value Increases - A study published in the Appraisal Journal &lt;http://www.nrel.gov/docs/fy08osti/42733.pdf&gt; documented that the market value of a home increases $20 for every $1 decrease in the annual energy costs.
+
+Your Own “Green” Power Plant - When you go solar, you generate clean electricity from the sun—not energy created by burning fossil fuels.
+
+
+Three reasons why now is the perfect time for solar.
+
+
+1.) Solar is more accessible and affordable than ever. 
+ 
+The cost of solar panels has decreased 80% between 2009 and 2013 and they will continue to drop, according to the International Renewable Energy Agency &lt;http://www.irena.org&gt;. In addition, between a choice of attractive financing options and federal/state-provided 
+incentives, the cost of your system can be dramatically reduced even further.
+
+2.) Why gamble with future electricity costs? 
+ 
+The news has been filled with stories about the potential need for power companies to spend more to provide uninterrupted power generation. For ratepayers, like you, that predicts rising electricity costs in the coming years.(1)
+
+3.) The Federal government provides a 30% tax credit is set to expire at the end of next year. Act now, and you could save thousands upfront on the cost of your solar system. This a very generous offering provided by Uncle Sam, but you must act now to beat the anticipated rush as the deadline approaches &lt;http://energy.gov/savings/residential-renewable-energy-tax-credit&gt;.
+
+I Want to Find Out if Solar is Right for Me:
+ &lt;http://www.directenergysolar.com/HWA?utm_medium=email&amp;utm_source=hwa&amp;utm_campaign=hwarenewal&amp;utm_content=hwarenewal-2-long&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You are receiving this email because you are a Home Warranty of America customer and may want to learn more about Direct Energy Solar installations.
+
+(1) Electricity prices are predicted to rise based on the following sources: Electricity prices will rise to ensure U.S. power grid can meet longterm demand &lt;http://www.nj.com/business/index.ssf/2014/05/prices_will_rise_to_ensure_us_power_grid_can_meet_demand.html&gt;, Next 4 years of electricity costs looking bleak &lt;http://www.unionleader.com/article/20150315/NEWS05/150319395/1049/news50&gt;, California regulators pass higher electricity rates for most residents &lt;http://www.dailynews.com/government-and-politics/20150703/california-regulators-pass-higher-electricity-rates-for-most-residents&gt;, Recent Electricity Price Increases and Reliability Issues Due to Coal Plant Retirements &lt;http://www.americaspower.org/sites/default/files/Electricity-price-spikes_Feb_2014.pdf&gt;, and Annual Energy Outlook 2014 with Projections to 2040 &lt;http://www.eia.gov/forecasts/aeo/pdf/0383%282014%29.pdf&gt;.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 
+12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+ &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

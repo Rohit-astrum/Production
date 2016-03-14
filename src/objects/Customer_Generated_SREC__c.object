@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Customer Generated SREC</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Calendar_Compliance_Year__c</fullName>
+        <description>Calendar Compliance Year</description>
+        <externalId>false</externalId>
+        <formula>RIGHT(Vintage__c ,4)</formula>
+        <inlineHelpText>Calendar Compliance Year</inlineHelpText>
+        <label>Calendar Compliance Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_SREC_Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Originating Customer Contract for this SREC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Originating Customer Contract for this SREC</inlineHelpText>
+        <label>Customer SREC Contract</label>
+        <referenceTo>Customer_SREC_Contract__c</referenceTo>
+        <relationshipLabel>Customer Generated SRECs</relationshipLabel>
+        <relationshipName>Customer_Generated_SRECs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Date_Customer_Paid__c</fullName>
+        <description>Date Customer was Paid by Astrum Solar for SREC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Customer was Paid by Astrum Solar for SREC</inlineHelpText>
+        <label>Date Customer Paid</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Delivery_Confirmation_Date__c</fullName>
+        <description>Utility SREC Delivery Transfer Confirmation Date</description>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Transfer_Confirmation_Date__c</formula>
+        <inlineHelpText>Utility SREC Delivery Transfer Confirmation Date</inlineHelpText>
+        <label>Delivery Confirmation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Delivery_Counterparty__c</fullName>
+        <description>Delivery Counterparty</description>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Utility_SREC_Contract__r.Counterparty_Account__r.Name</formula>
+        <inlineHelpText>Delivery Counterparty</inlineHelpText>
+        <label>Delivery Counterparty</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Initiation_Date__c</fullName>
+        <description>Transfer Initiation Date on Delivery</description>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Transfer_Initiation_Date__c</formula>
+        <inlineHelpText>Transfer Initiation Date on Delivery</inlineHelpText>
+        <label>Delivery Initiation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Delivery_Price_SREC__c</fullName>
+        <description>Net Delivery Price [Price - Commission] ($/SREC)</description>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Contract_Price_per_SREC__c - Utility_SREC_Delivery__r.Utility_SREC_Contract__r.Brokerage_Commission__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Net Delivery Price [Price - Commission] ($/SREC)</inlineHelpText>
+        <label>Delivery Price ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Energy_Compliance_Year__c</fullName>
+        <description>Energy Compliance Year</description>
+        <externalId>false</externalId>
+        <formula>IF(TEXT(State__c) =&apos;DE&apos;,IF(VALUE(LEFT( Vintage__c ,2))&lt;6,TEXT(VALUE(RIGHT(Vintage__c,4))-1)+&apos;-&apos;+RIGHT(Vintage__c,4),RIGHT(Vintage__c,4)+&apos;-&apos;+TEXT(VALUE(RIGHT(Vintage__c,4))+1)),IF(VALUE(LEFT( Vintage__c ,2))&lt;6,RIGHT(Vintage__c,4),TEXT(VALUE(RIGHT(Vintage__c,4))+1)))</formula>
+        <inlineHelpText>Energy Compliance Year</inlineHelpText>
+        <label>Energy Compliance Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Facility_Name__c</fullName>
+        <description>Facility Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Facility Name</inlineHelpText>
+        <label>Facility Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GATS_GIS_Unit_Id__c</fullName>
+        <description>Unit ID in GATS/GIS</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Unit ID in GATS/GIS</inlineHelpText>
+        <label>GATS/GIS Unit Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Installed System Generating This SREC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Installed System Generating This SREC</inlineHelpText>
+        <label>Installed System</label>
+        <referenceTo>Installed_System__c</referenceTo>
+        <relationshipLabel>Customer Generated SRECs</relationshipLabel>
+        <relationshipName>Customer_Generated_SRECs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Previous_Owner_if_applicable__c</fullName>
+        <description>IF APPLICABLE - Previous Owner</description>
+        <externalId>false</externalId>
+        <inlineHelpText>IF APPLICABLE - Previous Owner</inlineHelpText>
+        <label>Previous Owner (if applicable)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Price_Paid_to_Customer_SREC__c</fullName>
+        <description>Price Received From Utility ($/SREC)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Price Received From Utility ($/SREC)</inlineHelpText>
+        <label>Price Paid to Customer ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Price_Received_From_Utility_SREC__c</fullName>
+        <description>Price Received From Utility ($/SREC)</description>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Contract_Price_per_SREC__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Price Received From Utility ($/SREC)</inlineHelpText>
+        <label>Price Received From Utility ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <description>Number of SRECs</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of SRECs</inlineHelpText>
+        <label>Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_DC__c</fullName>
+        <description>SREC Certification Number - DC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - DC</inlineHelpText>
+        <label>SREC Certification Number - DC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_DE__c</fullName>
+        <description>SREC Certification Number - DE</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - DE</inlineHelpText>
+        <label>SREC Certification Number - DE</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_IL__c</fullName>
+        <description>SREC Certification Number - IL</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - IL</inlineHelpText>
+        <label>SREC Certification Number - IL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_MA__c</fullName>
+        <description>SREC Certification Number - MA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - MA</inlineHelpText>
+        <label>SREC Certification Number - MA</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_MD__c</fullName>
+        <description>SREC Certification Number - MD</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - MD</inlineHelpText>
+        <label>SREC Certification Number - MD</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_NJ__c</fullName>
+        <description>SREC Certification Number - NJ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - NJ</inlineHelpText>
+        <label>SREC Certification Number - NJ</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_OH__c</fullName>
+        <description>SREC Certification Number - OH</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - OH</inlineHelpText>
+        <label>SREC Certification Number - OH</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Certification_Number_PA__c</fullName>
+        <description>SREC Certification Number - PA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>SREC Certification Number - PA</inlineHelpText>
+        <label>SREC Certification Number - PA</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Serial_Number__c</fullName>
+        <description>Serial Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Serial Number</inlineHelpText>
+        <label>Serial Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <description>State</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State</inlineHelpText>
+        <label>State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_DC__c</fullName>
+        <description>System Certification Number - DC</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_DC__c</formula>
+        <inlineHelpText>System Certification Number - DC</inlineHelpText>
+        <label>System Certification Number - DC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_DE__c</fullName>
+        <description>System Certification Number - DE</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_DE__c</formula>
+        <inlineHelpText>System Certification Number - DE</inlineHelpText>
+        <label>System Certification Number - DE</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_IL__c</fullName>
+        <description>System Certification Number - IL</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_IL__c</formula>
+        <inlineHelpText>System Certification Number - IL</inlineHelpText>
+        <label>System Certification Number - IL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_MA__c</fullName>
+        <description>System Certification Number - MA</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_MA__c</formula>
+        <inlineHelpText>System Certification Number - MA</inlineHelpText>
+        <label>System Certification Number - MA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_MD__c</fullName>
+        <description>System Certification Number - MD</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_MD__c</formula>
+        <inlineHelpText>System Certification Number - MD</inlineHelpText>
+        <label>System Certification Number - MD</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_NJ__c</fullName>
+        <description>System Certification Number - NJ</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_NJ__c</formula>
+        <inlineHelpText>System Certification Number - NJ</inlineHelpText>
+        <label>System Certification Number - NJ</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_OH__c</fullName>
+        <description>System Certification Number - OH</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_OH__c</formula>
+        <inlineHelpText>System Certification Number - OH</inlineHelpText>
+        <label>System Certification Number - OH</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Certification_Number_PA__c</fullName>
+        <description>System Certification Number - PA</description>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Certification_Number_PA__c</formula>
+        <inlineHelpText>System Certification Number - PA</inlineHelpText>
+        <label>System Certification Number - PA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Unique Transaction Identifier in GATS</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Unique Transaction Identifier in GATS</inlineHelpText>
+        <label>Transaction Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_SREC_Delivery__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Utility SREC Delivery</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Utility SREC Delivery</inlineHelpText>
+        <label>Utility SREC Delivery</label>
+        <referenceTo>Utility_SREC_Delivery__c</referenceTo>
+        <relationshipLabel>Customer Generated SRECs</relationshipLabel>
+        <relationshipName>Customer_Generated_SRECs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Vintage__c</fullName>
+        <description>Vintage</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Vintage</inlineHelpText>
+        <label>Vintage</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Customer Generated SREC</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Installed_System__c</columns>
+        <columns>System_Certification_Number_DC__c</columns>
+        <columns>System_Certification_Number_DE__c</columns>
+        <columns>System_Certification_Number_IL__c</columns>
+        <columns>System_Certification_Number_MA__c</columns>
+        <columns>System_Certification_Number_MD__c</columns>
+        <columns>System_Certification_Number_NJ__c</columns>
+        <columns>System_Certification_Number_OH__c</columns>
+        <columns>System_Certification_Number_PA__c</columns>
+        <columns>Quantity__c</columns>
+        <columns>State__c</columns>
+        <columns>Utility_SREC_Delivery__c</columns>
+        <columns>Price_Paid_to_Customer_SREC__c</columns>
+        <columns>Date_Customer_Paid__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CUSTOMER-SREC-{0000000000}</displayFormat>
+        <label>SREC Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer Generated SRECs</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

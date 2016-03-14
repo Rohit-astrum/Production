@@ -1,0 +1,75 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" action="{!checkMobile}" controller="PortalHomeController">
+<apex:composition template="PortalSiteTemplate">
+
+<apex:define name="head-top">
+    <meta name='description' content='Direct Energy Solar Professional Referral Network' />
+    <title>Direct Energy Solar Referral Partner Network - FAQ</title>
+</apex:define>
+    
+<apex:define name="head-bottom">
+    
+    
+  
+</apex:define>
+
+<apex:define name="content">
+
+        
+            <div>
+                <h2 class="blue">Direct Energy Solar Referral Partner Network FAQs</h2>
+            </div>
+       
+        
+       <div class="FAQ">
+
+           
+                <h3>Q: Who Is Direct Energy Solar and how do I know you&rsquo;ll do quality work for my customers?</h3>
+<p>A: Direct Energy Solar is the leading full-service residential solar provider headquartered in the Eastern U.S. When you refer to Direct Energy Solar, you can do so with the pride that we&rsquo;ll treat your customers with the same level of respect that you would. At Direct Energy Solar, residential solar power is our sole focus &mdash; it&rsquo;s all we do, and as a testament to our customer satisfaction record, more than one-third of our business comes from the referrals of our delighted customers.</p>
+
+<h3>Q: Is there a limit on how much money I can make?</h3>
+<p>A: There is absolutely no limit on the sale reward payments you can receive through this program. The more of your referrals who sign contracts with us, the more you make.</p>
+
+<h3>Q: How do you define a &ldquo;qualified&rdquo; lead?</h3>
+<p>A: We do not expect that each lead you submit will go solar, but we ask that you help increase the odds by looking for five easy minimum criteria before referring a customer:</p>
+<ul>
+    <li><span>Customer must have had no prior contact with Direct Energy Solar.</span></li>
+    <li><span>Customer must own the property.</span></li>
+    <li><span>Home site must be a possible candidate for solar.</span></li>
+    <li><span>Customer must expect to be contacted by Direct Energy Solar.</span></li>
+    <li><span>Lead has not been shared with another solar services company.</span></li>
+</ul>
+
+
+<h3>Q: How do I know if my customer&rsquo;s site is a possible candidate for solar?</h3>
+<p>A: You can find out what makes a home good for solar on our website at: <a href="http://www.directenergysolar.com" target="_blank">www.directenergysolar.com</a></p>
+
+<h3>Q: Can I present solar as a product line extension for my company?</h3>
+<p>A: Absolutely! The goal of the program is for you to present Direct Energy Solar as your company&rsquo;s official solar partner. You benefit by being able to offer a more robust line of services to your customers while getting an easy payment for the referral.</p>
+
+<h3>Q: I&rsquo;ve heard solar costs a lot. Is this appropriate only for my wealthier clients?</h3>
+<p>A: Anyone can afford solar. With our zero-down lease, available in most states we service, homeowners with good credit can go solar with no money out of pocket and have a cash-flow positive system from day one! Other homeowners may opt to make an up-front investment and buy their system, making even more money. Direct Energy Solar presents all options and encourages customers to choose the option that best suits them.</p>
+
+<h3>Q: How do I apply for the Direct Energy Solar Professional Referral Network?</h3>
+<p>A: Visit our online referral partner portal at partners.directenergysolar.com, click &ldquo;Apply Now,&rdquo; and complete the application. Direct Energy Solar will review your application and provide a response within two business days. Once accepted into the program, you will be provided a username and password to access the portal where you can submit and track your leads and access helpful outreach tools and resources.</p>
+
+<h3>Q: How do I submit a qualified lead?</h3>
+<p>A: Once you have registered and been accepted as a referral partner, lead submission is quick and easy. Simply sign into the portal, enter your customer&rsquo;s contact information, and you&rsquo;re done &mdash; your lead is added to your account and you can track their progress in the portal dashboard. You can even access the lead submission form from your smartphone. Coming soon, Direct Energy Solar will provide helpful outreach tools including web ads and co-branded landing pages to give your customers an additional way to register, and customizable flyers to help you spread the word.</p>
+
+<h3>Q: How will I be paid?</h3>
+<p>A: We will send you a check via U.S. Mail.</p>
+
+<h3>Q: Why do I need to submit a W-9 form to be a registered referral partner?</h3>
+<p>A: Per IRS regulations, Direct Energy Solar is required to report outside payments in excess of $600 as income and provide you with a SF 1099 for tax purposes. We need a completed W-9 form to properly pay you for your referrals.</p>
+
+<p class="contact">Contact our Partners Program Manager to learn more:</p>
+<p><span class="bold">Suzanne Borneman</span> &nbsp;|&nbsp; Sr. Manager, Field Marketing<br/>
+240-278-8616 &nbsp;|&nbsp; <a href="mailto:suzanne.borneman@directenergysolar.com?subject=Direct Energy Solar Partner Program Question">suzanne.borneman@directenergysolar.com</a></p>
+                
+
+</div>
+        
+
+</apex:define>
+
+</apex:composition>
+</apex:page>

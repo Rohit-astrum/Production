@@ -1,0 +1,19 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+
+<apex:composition template="PartnerLandingBase">
+
+    <apex:define name="name-logo">                                
+        
+        <!--Logo Left-->
+        <div class="logo-spot logo no-border">
+            <apex:insert name="partner-logo">
+                <img src="{!URLFOR($Resource.LandingPagePackage2_Resources, 'images/constellation-logo.jpg')}" title="Logo Image" />                         
+            </apex:insert>
+        </div>
+        <!--END Logo Left-->
+       
+    </apex:define>
+    
+</apex:composition>
+
+</apex:page>

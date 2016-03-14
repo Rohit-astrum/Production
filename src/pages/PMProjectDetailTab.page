@@ -1,0 +1,74 @@
+<!--
+FILE: PMProjectDetailTab.page
+AUTHOR: Tino Mattheou
+DATE: May 14, 2012
+PURPOSE: Displays project detail tab contents based on tab parameter
+MODIFICATION HISTORY:
+06/25/2012 TCM - zen-14 added base tag to force top navigation from inside a project detail tab link
+-->
+<apex:page standardController="PM_Project__c" doctype="html-5.0" sidebar="false" tabStyle="PM_Project__c" showHeader="false">
+
+    <base target="_top"/>
+
+    <apex:detail subject="{!PM_Project__c.Id}" inlineEdit="true" title="false" rendered="{!$CurrentPage.parameters.tab='Detail'}"/>
+    
+    <apex:detail subject="{!PM_Project__c.Sales_Order__r.AccountId__c}" rendered="{!$CurrentPage.parameters.tab='Account'}"/>
+
+    <apex:detail subject="{!PM_Project__c.Sales_Order__r.Property__c}" title="false" rendered="{!$CurrentPage.parameters.tab='Property'}"/>
+
+    <apex:detail subject="{!PM_Project__c.Sales_Order__c}" rendered="{!$CurrentPage.parameters.tab='SalesOrder'}"/>
+    
+    <apex:outputPanel rendered="{!$CurrentPage.parameters.tab='SystemDesign'}">
+    <style type="text/css">
+        input.btn {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function addViewDesignButton() {
+            var element = document.createElement("input");
+            element.type = 'button';
+            element.value = 'View Design';
+            element.name = 'view_design_btn';
+            element.onclick = function() {
+                window.location.href = "/apex/SystemDesignArraysView?id={!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}";
+            };
+            document.getElementById("topButtonRow").appendChild(element);
+        }
+    </script>
+    </apex:outputPanel>
+    <!--
+    <apex:detail subject="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}" title="false" rendered="{!$CurrentPage.parameters.tab='SystemDesign'}"/>
+    -->
+
+    <apex:detail subject="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}" title="false" rendered="{!AND($CurrentPage.parameters.tab='SystemDesign',ISNULL(PM_Project__c.Sales_Order__r.Approved_System_Design__c))}"/>
+    <apex:detail subject="{!PM_Project__c.Sales_Order__r.Approved_System_Design__c}" title="false" rendered="{! AND($CurrentPage.parameters.tab='SystemDesign',NOT(ISNULL(PM_Project__c.Sales_Order__r.Approved_System_Design__c)))}"/>
+    
+    <c:ImageLightbox projectid="{!PM_Project__c.Id}" rendered="{!$CurrentPage.parameters.tab='Images'}"/>
+
+    <!-- 
+    <c:DocumentPrintEmail projectid="{!PM_Project__c.Id}" rendered="{!$CurrentPage.parameters.tab='PrintEmail'}"/>
+    -->
+    
+    <c:ProjectChronology projectid="{!PM_Project__c.Id}" rendered="{!$CurrentPage.parameters.tab='History'}"/>
+     <script type="text/javascript">
+
+        window.addEventListener("load", (function() {
+            var lastHt = 0;
+            var curHt;
+            (function resizeTimer(){
+                if( document.body !== null ) {
+                    curHt = document.body.offsetHeight;
+                }
+                if( lastHt != curHt ) {
+                    window.parent.postMessage('tab:{!$CurrentPage.parameters.tab};height:' + curHt + ';', '*');
+                    lastHt = curHt;
+                }
+                window.setTimeout( resizeTimer, 500);
+            }());
+        }())
+        , false);
+
+    </script>
+
+</apex:page>

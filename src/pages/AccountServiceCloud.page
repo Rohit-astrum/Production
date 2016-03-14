@@ -1,0 +1,52 @@
+<apex:page standardController="Account" extensions="AccountServiceCloudExtension">
+
+	<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"/>
+	<apex:includeScript value="/support/console/26.0/integration.js"/>
+
+	<script type="text/javascript">
+	
+		function openAccountTabs() {
+			var primaryTabId;
+			
+			sforce.console.getEnclosingPrimaryTabId(function (result) {
+				primaryTabId = result.id;
+				//alert(primaryTabId);
+				<apex:repeat value="{!openCases}" var="c">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Case.View, c.Id)}", false, "{!JSENCODE(c.CaseNumber)}");
+				</apex:repeat>
+				<apex:repeat value="{!properties}" var="p">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Property__c.View, p.Id)}", false, "Property");
+				</apex:repeat>
+				<apex:repeat value="{!salesOrders}" var="so">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.SCRB_SalesOrder__c.View, so.Id)}", false, "Sales Order");
+				</apex:repeat>
+				<apex:repeat value="{!systemDesigns}" var="s">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.System_Design__c.View, s.Id)}", false, "System Design");
+				</apex:repeat>
+				<apex:repeat value="{!installedSystems}" var="s">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Installed_System__c.View, s.Id)}", false, "Installed System");
+					<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(s.Enphase_ID__c))}">
+						sforce.console.openSubtab(primaryTabId, "https://enlighten.enphaseenergy.com/systems/{!s.Enphase_ID__c}/arrays?", false, "Enphase Arrays");
+					</apex:outputPanel>
+				</apex:repeat>
+				<apex:repeat value="{!pmProjects}" var="s">
+					sforce.console.openSubtab(primaryTabId, "/{!s.Id}", false, "PM 2.0 Project");
+				</apex:repeat>
+				<apex:repeat value="{!alerts}" var="s">
+					sforce.console.openSubtab(primaryTabId, "/apex/EnphaseAlerts?id={!s.Id}", false, "Enphase Alerts");
+				</apex:repeat>
+				
+			});
+			
+		}
+		
+		$(function() {
+			if (sforce.console.isInConsole()) {
+				openAccountTabs();
+			}
+		});
+		
+	</script>
+
+
+</apex:page>

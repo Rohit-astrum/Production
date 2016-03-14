@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumTIME - Employee Time Sheet</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Employee_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Employee_Type__c</fullName>
+        <description>Type of Employee Filing This Timesheet</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(TEXT(Employee__r.Job_Title__c), &apos;Installer&apos;),&apos;INSTALLER&apos;, IF(CONTAINS(TEXT(Employee__r.Job_Title__c), &apos;Electrician&apos;),&apos;ELECTRICIAN&apos;,&apos;OTHER&apos;))</formula>
+        <inlineHelpText>Type of Employee Filing This Timesheet</inlineHelpText>
+        <label>Employee Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Employee__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Employee Who is Submitting This Time Sheet</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee Who is Submitting This Time Sheet</inlineHelpText>
+        <label>Employee</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Time Sheets</relationshipLabel>
+        <relationshipName>Time_Sheets</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>For_The_Week_Starting__c</fullName>
+        <defaultValue>TODAY()+(2-MOD( TODAY() - DATE(1900, 1, 6), 7))</defaultValue>
+        <description>The date of Monday of the week for which this time sheet is entered</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Monday of this Time Sheet&apos;s effective week.</inlineHelpText>
+        <label>For The Week Starting</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Budget_Impact_Hours__c</fullName>
+        <description>Number of Hours Impacting Project Budgets This Week</description>
+        <externalId>false</externalId>
+        <formula>Weekly_Standard_Hours__c + ($Setup.AstrumTIME_Settings__c.COEF_BONUS_Overtime_Hour_Multiplier__c * Weekly_Overtime_Hours__c ) + ( Weekly_Hotel_Costs__c /30)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of Hours Impacting Project Budgets This Week</inlineHelpText>
+        <label>Weekly Budget Impact Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weekly_Holiday_Hours__c</fullName>
+        <description>Weekly Holiday Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Weekly Holiday Hours</inlineHelpText>
+        <label>Weekly Holiday Hours</label>
+        <summarizedField>Time_Sheet_Entry__c.Total_Hours__c</summarizedField>
+        <summaryFilterItems>
+            <field>Time_Sheet_Entry__c.Purpose__c</field>
+            <operation>equals</operation>
+            <value>Holiday</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Hotel_Costs__c</fullName>
+        <description>Amount Spent On Hotels This Week</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount Spent On Hotels This Week</inlineHelpText>
+        <label>Weekly Hotel Costs</label>
+        <summarizedField>Time_Sheet_Entry__c.Hotel_Cost__c</summarizedField>
+        <summaryFilterItems>
+            <field>Time_Sheet_Entry__c.Hotel_Cost__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Hours_Worked__c</fullName>
+        <description>Weekly Hours Worked (Standard Hours Without PTO)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Weekly Hours Worked (Standard Hours Without PTO)</inlineHelpText>
+        <label>Weekly Hours Worked</label>
+        <summarizedField>Time_Sheet_Entry__c.Total_Hours__c</summarizedField>
+        <summaryFilterItems>
+            <field>Time_Sheet_Entry__c.Purpose__c</field>
+            <operation>notEqual</operation>
+            <value>Paid Time Off, Sick Time, Vacation Time, Holiday</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Overtime_Hours_Percentage__c</fullName>
+        <externalId>false</externalId>
+        <formula>Weekly_Overtime_Hours__c / Weekly_Total_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Weekly Overtime Hours Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Overtime_Hours__c</fullName>
+        <description>Hours Billed At Overtime Rate</description>
+        <externalId>false</externalId>
+        <formula>IF(Weekly_Hours_Worked__c &lt;=40,0,Weekly_Hours_Worked__c -40)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Hours Billed At Overtime Rate</inlineHelpText>
+        <label>Weekly Overtime Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weekly_Overtime_Pay__c</fullName>
+        <description>Weekly Pay for Overtime Hours</description>
+        <externalId>false</externalId>
+        <formula>Employee__r.Overtime_Rate__c * Weekly_Overtime_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Weekly Pay for Overtime Hours</inlineHelpText>
+        <label>Weekly Overtime Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Paid_Time_Off_Hours__c</fullName>
+        <description>Weekly Paid Time Off Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Weekly Paid Time Off Hours</inlineHelpText>
+        <label>Weekly Paid Time Off Hours</label>
+        <summarizedField>Time_Sheet_Entry__c.Total_Hours__c</summarizedField>
+        <summaryFilterItems>
+            <field>Time_Sheet_Entry__c.Purpose__c</field>
+            <operation>equals</operation>
+            <value>Paid Time Off</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Sick_Time_Hours__c</fullName>
+        <description>Weekly Sick Time Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Weekly Sick Time Hours</inlineHelpText>
+        <label>Weekly Sick Time Hours</label>
+        <summarizedField>Time_Sheet_Entry__c.Total_Hours__c</summarizedField>
+        <summaryFilterItems>
+            <field>Time_Sheet_Entry__c.Purpose__c</field>
+            <operation>equals</operation>
+            <value>Sick Time</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Standard_Hours__c</fullName>
+        <description>Hours Billed At Standard Rate</description>
+        <externalId>false</externalId>
+        <formula>IF( Weekly_Hours_Worked__c  &lt;=40,Weekly_Hours_Worked__c,40)+(Weekly_Total_Hours__c-Weekly_Hours_Worked__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Hours Billed At Standard Rate</inlineHelpText>
+        <label>Weekly Standard Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weekly_Standard_Pay__c</fullName>
+        <description>Weekly Pay for Standard Hours</description>
+        <externalId>false</externalId>
+        <formula>Employee__r.Hourly_Rate__c * Weekly_Standard_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Weekly Pay for Standard Hours</inlineHelpText>
+        <label>Weekly Standard Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Total_Hours__c</fullName>
+        <description>This Week&apos;s Total Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This Week&apos;s Total Hours</inlineHelpText>
+        <label>Weekly Total Hours</label>
+        <summarizedField>Time_Sheet_Entry__c.Total_Hours__c</summarizedField>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Total_Pay__c</fullName>
+        <description>Weekly Pay for Standard and Overtime Hours</description>
+        <externalId>false</externalId>
+        <formula>Weekly_Overtime_Pay__c + Weekly_Standard_Pay__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Weekly Pay for Standard and Overtime Hours</inlineHelpText>
+        <label>Weekly Total Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Weekly_Vacation_Time_Hours__c</fullName>
+        <description>Weekly Vacation Time Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Weekly Vacation Time Hours</inlineHelpText>
+        <label>Weekly Vacation Time Hours</label>
+        <summarizedField>Time_Sheet_Entry__c.Total_Hours__c</summarizedField>
+        <summaryFilterItems>
+            <field>Time_Sheet_Entry__c.Purpose__c</field>
+            <operation>equals</operation>
+            <value>Vacation Time</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Time_Sheet_Entry__c.Time_Sheet__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>Time Sheet</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Employee__c</columns>
+        <columns>For_The_Week_Starting__c</columns>
+        <columns>Weekly_Total_Hours__c</columns>
+        <columns>Weekly_Standard_Hours__c</columns>
+        <columns>Weekly_Overtime_Hours__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>TimeSheet-{000000}</displayFormat>
+        <label>Time Sheet Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Time Sheets</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Employee__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>For_The_Week_Starting__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Weekly_Standard_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Weekly_Overtime_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Weekly_Total_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Weekly_Budget_Impact_Hours__c</customTabListAdditionalFields>
+        <listViewButtons>Post_Timesheets</listViewButtons>
+        <lookupDialogsAdditionalFields>Employee__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>For_The_Week_Starting__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Weekly_Total_Hours__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Employee__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>For_The_Week_Starting__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Weekly_Overtime_Hours__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Weekly_Standard_Hours__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Weekly_Total_Hours__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Weeks_Must_Always_Start_on_Monday</fullName>
+        <active>true</active>
+        <description>Weeks Must Always Start on MONDAY</description>
+        <errorConditionFormula>(2-MOD( For_The_Week_Starting__c  - DATE(1900, 1, 6), 7))  &lt;&gt; 0</errorConditionFormula>
+        <errorDisplayField>For_The_Week_Starting__c</errorDisplayField>
+        <errorMessage>Weeks Must Always Start on MONDAY</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Post_Timesheets</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Post Timesheets</masterLabel>
+        <openType>noSidebar</openType>
+        <page>TimeSheetPost</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

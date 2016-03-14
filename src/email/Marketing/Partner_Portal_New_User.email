@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="Template" content="Response"/>
+</head>
+<body>
+<p>
+Dear {!Contact.FirstName},
+</p>
+<p>Welcome to the Direct Energy Solar Referral Partner Program!</p>
+<p>We are excited to have you as a Partner. As a Direct Energy Solar Partner, you will open new sales opportunities for you and for your organization! The goal of the program is for you to present Direct Energy Solar as your company’s official solar partner. As a Referral Partner we want you to do what you do best – talk with your customers about solar. Once you generate a qualified lead, we’ll take it from there answering questions, providing information and helping convert your leads into Direct Energy Solar customers.</p>
+<p>Below is your username and password to access our Partner Portal. This Portal will provide access to exclusive Direct Energy Solar marketing tools and resources to help you acquire leads.  More importantly the portal will allow you to submit qualified leads and track their progress through the sales cycle. The Portal can be accessed at <a href="http://partners.directenergysolar.com">partners.directenergysolar.com</a>.</p>
+<p>My contact information is below. Please do not hesitate to contact me with any questions.</p>
+<p>
+Regards,
+</p>
+<p>
+Suzanne Borneman<br/>
+Senior Manager, Field Marketing<br/>
+<br/>
+<img src="https://c.cs7.content.force.com/servlet/servlet.ImageServer?id=015M0000000C2Fj&oid=00DM0000001eF73" alt="Direct Energy Solar" />
+<br/>
+<br/>
+7101 Riverwood Drive <br/>
+Columbia, MD 21046<br/>
+P: 240-278-8616<br/>
+F: 443-267-0036<br/>
+directenergysolar.com<br/>
+suzanne.borneman@directenergysolar.com<br/>
+<br/>
+<img src="https://c.cs7.content.force.com/servlet/servlet.ImageServer?id=015M0000000C2Fo&oid=00DM0000001eF73&lastMod=1427396730000" alt="Your Sun. Your Power. Your Way." />
+<p style="font-size: 11px;">AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532</p>
+<p style="font-size: 11px;">© 2016 Direct Energy. All Rights Reserved.</p>
+</body>
+</html>

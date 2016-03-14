@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Taxes 2015.Taxes 2015 MA: Reminder</name>
+    <style>none</style>
+    <subject>Reminder: Important Tax Information</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com]]&gt;
+
+A Special Message for our Valued Customers
+
+IMPORTANT TAX INFORMATION
+
+Dear {{lead.First Name:default=Friend}},
+
+We hope you are enjoying the benefits of your new solar system. According to our records your solar system was installed in 2015, and you may be eligible to take advantage of federal government incentives to maximize the return on your investment.
+
+In December of 2015, the federal tax credit was extended through 2019, and purchasers of qualifying solar electric systems may be eligible for a federal tax credit up to 30% of the full cost of installing a system. The credit will remain available after 2019, but it will gradually decrease to 10% in 2022. The credit has no dollar limit to how large it can be, but other restrictions and qualifications may apply.
+
+To take advantage of the federal tax incentive, simply fill out IRS Form 5695 as part of your federal tax return. This form can be found on the IRS website here &lt;[[https://www.irs.gov/pub/irs-pdf/f5695.pdf]]&gt;.
+
+Massachusetts residents may also claim a state personal income tax credit equal to 15% of the full cost of installing a solar system, up to $1,000. To claim the Massachusetts personal income tax credit, you must submit the Schedule EC form with your state tax return which can be found here &lt;[[http://www.mass.gov/dor/docs/dor/forms/inctax15/addl/sched-ec.pdf]]&gt;.
+
+If you completed payment for your solar installation in 2015 and have not yet received a paid in full statement from us, please expect to receive your final statement via email from our accounting department by the end of January.
+
+If you have additional questions about your personal tax situation, we recommend that you contact a tax professional. If you have any other inquiries about your system, please do not hesitate to contact the Customer Relationship Team directly, at 1-888-603-6085 or customeradvisors@directenergysolar.com &lt;[[mailto:customeradvisors@directenergysolar.com]]&gt;.
+
+Thank you once more for choosing to go solar with Direct Energy Solar.
+
+Best Regards,
+
+Diane Benedetti
+ Senior Manager, Customer Relationships
+
+Customer Care:
+Contact Us: 888-603-6085
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you are a Direct Energy Solar customer.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;[[http://www.directenergysolar.com/privacy-policy]]&gt;
+
+Terms &amp; Conditions
+&lt;[[http://www.directenergysolar.com/terms-and-conditions]]&gt;
+
+DirectEnergySolar.com
+&lt;[[http://www.directenergysolar.com]]&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

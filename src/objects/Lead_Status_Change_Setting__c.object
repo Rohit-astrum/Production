@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Setting for Lead status change to Unresponsive based on number of Dials</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Number_Of_Dials__c</fullName>
+        <description>Number of Dials after which the Lead status changes to Unresponsive</description>
+        <externalId>false</externalId>
+        <label>Number Of Dials</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Lead Status Change Setting</label>
+</CustomObject>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Transaction History of SREC Certificate records.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Delivery_Counterparty__c</fullName>
+        <description>Delivery Counterparty</description>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Utility_SREC_Contract__r.Counterparty_Account__r.Name</formula>
+        <inlineHelpText>Delivery Counterparty</inlineHelpText>
+        <label>Delivery Counterparty</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Price_SREC__c</fullName>
+        <externalId>false</externalId>
+        <formula>Utility_SREC_Delivery__r.Contract_Price_per_SREC__c - Utility_SREC_Delivery__r.Utility_SREC_Contract__r.Brokerage_Commission__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Delivery Price ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Certificate__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to related SREC Certificate.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to related SREC Certificate.</inlineHelpText>
+        <label>SREC Certificate</label>
+        <referenceTo>SREC_Certificate__c</referenceTo>
+        <relationshipLabel>SREC Transactions History</relationshipLabel>
+        <relationshipName>SREC_Transactions_History</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Unique Transaction Identifier in Registry.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Unique Transaction Identifier in Registry.</inlineHelpText>
+        <label>Transaction Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Type__c</fullName>
+        <description>Type of Transaction.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of Transaction.</inlineHelpText>
+        <label>Transaction Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Buy</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sell</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Transfer_Completion_Date__c</fullName>
+        <description>Utility SREC Delivery Transfer Confirmation Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Utility SREC Delivery Transfer Confirmation Date</inlineHelpText>
+        <label>Transfer Completion Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Transfer_Initiation_Date__c</fullName>
+        <description>Transfer Initiation Date on Delivery</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Transfer Initiation Date on Delivery</inlineHelpText>
+        <label>Transfer Initiation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Transferee__c</fullName>
+        <description>Transferee</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Transferee</inlineHelpText>
+        <label>Transferee</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transferor__c</fullName>
+        <description>Transferor</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Transferor</inlineHelpText>
+        <label>Transferor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_SREC_Delivery__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Utility SREC Delivery.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lookup to Utility SREC Delivery.</inlineHelpText>
+        <label>Utility SREC Delivery</label>
+        <referenceTo>Utility_SREC_Delivery__c</referenceTo>
+        <relationshipLabel>SREC Transactions History</relationshipLabel>
+        <relationshipName>SREC_Transactions_History</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>SREC Transaction History</label>
+    <nameField>
+        <displayFormat>SRECTxn-{0000000}</displayFormat>
+        <label>SREC Transaction History Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>SREC Transactions History</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Transaction_Id__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Transaction_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Transferor__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Transferee__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SREC_Certificate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Delivery_Counterparty__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Delivery_Price_SREC__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Utility_SREC_Delivery__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Transaction_Id__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Transaction_Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Transferor__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Transferee__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SREC_Certificate__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Delivery_Counterparty__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Delivery_Price_SREC__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Utility_SREC_Delivery__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Transaction_Id__c</searchFilterFields>
+        <searchFilterFields>Transaction_Type__c</searchFilterFields>
+        <searchFilterFields>Transferor__c</searchFilterFields>
+        <searchFilterFields>Transferee__c</searchFilterFields>
+        <searchFilterFields>SREC_Certificate__c</searchFilterFields>
+        <searchFilterFields>Delivery_Counterparty__c</searchFilterFields>
+        <searchFilterFields>Delivery_Price_SREC__c</searchFilterFields>
+        <searchFilterFields>Utility_SREC_Delivery__c</searchFilterFields>
+        <searchResultsAdditionalFields>Transaction_Id__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Transaction_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Transferor__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Transferee__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SREC_Certificate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Delivery_Counterparty__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Delivery_Price_SREC__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Utility_SREC_Delivery__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

@@ -1,0 +1,11 @@
+<apex:page showHeader="false" sidebar="false"
+	standardController="Property__c"
+	extensions="QAS_NA.CARedirectToValidationPageController"
+	action="{!DetermineRedirect}">
+	<QAS_NA:CAAddressValidationRedirectComponent IsUpdated="{!IsUpdated}"
+		IsNewRecord="{!IsNewRecord}"
+		ValidateOnlyIfInConsoleView="{!ValidateOnlyIfInConsoleView}"
+		SFSessionId="{!SFSessionId}" RecordId="{!RecordId}"
+		sObjectName="{!SObjectName}" RNextUrl="{!RNextUrl}">
+	</QAS_NA:CAAddressValidationRedirectComponent>
+</apex:page>

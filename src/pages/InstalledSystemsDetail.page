@@ -1,0 +1,369 @@
+<apex:page standardController="Installed_System__c"
+    extensions="InstalledSystems_Detail" showHeader="true"
+    tabStyle="Installed_System__tab">
+    
+<style type="text/css">
+.bold {
+    font-weight: bold;
+    width: 75px;
+}
+.width {
+    width: 75px;
+}
+.text-right {
+    text-align: right; 
+}
+</style>
+<style type="text/css">
+.Summary {
+    text-align: right;
+    border: 0px solid #D4DADC;
+    padding-left: 0px;
+    border-spacing: 0px;
+    margin-right: 0px;
+}
+
+body .pbBody table.list tr th {
+    border: 0px;
+}
+
+.pjm-table { width: 100%; }
+
+#InstalledSystemsTabPanel {
+    padding-top: 15px;
+}
+
+span.requiredLegend { 
+    display: none; 
+}
+    
+</style>
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"/>
+<script type="text/javascript">
+     var $j = jQuery.noConflict(); 
+     $j(document).ready(function() {
+          $j("input[title='Log A Call']").hide();
+     });
+</script>
+
+<apex:includeScript value="https://www.google.com/jsapi"/>
+
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    
+   function drawChart() {
+                    
+        var data = new google.visualization.DataTable( {
+            cols: [
+                {id: 'month', label: 'Month', type: 'date'},
+                        {id: 'gats', label: 'PJM Gats Estimate (kWh)', type: 'number'},
+                        {id: 'astru', label: 'Astrum Estimate (kWh)', type: 'number'},
+                        {id: 'enphase', label: 'Enphase (kWh)', type: 'number'},
+                        {id: 'guar', label: 'Production Guarantee (kWh)', type: 'number'}
+                    ],
+                    rows: [
+                <apex:repeat value="{!production}" var="p">
+// <!--                     <apex:outputPanel layout="none" rendered="{!p.Start_of_Month__c >= Installed_System__r.Generation_Start_Date__c}"> -->
+                    <apex:outputPanel layout="none">
+                        {c:[
+                            {v: new Date( {!YEAR(p.Start_of_Month__c)}, {!MONTH(p.Start_of_Month__c)-1}, {!DAY(p.Start_of_Month__c)} )}, 
+                            {v: {!NULLVALUE(TEXT(ROUND(p.External_Estimated__c,0)),'null')} },
+                            {v: {!NULLVALUE(TEXT(ROUND(p.Astrum_Estimated__c,0)),'null')} },
+                            {v: {!NULLVALUE(TEXT(ROUND(p.Enphase_kWh__c,0)),'null')} }, 
+                            {v: {!NULLVALUE(TEXT(ROUND(p.Production_Guarantee__c,0)),'null')} }
+                        ]},
+                    </apex:outputPanel>
+                </apex:repeat>
+                    ]
+                });
+                
+        var dateFormat = new google.visualization.DateFormat({pattern: 'MMMM, yyyy'});
+        dateFormat.format(data, 0);
+        var decimalFormat = new google.visualization.NumberFormat({pattern: '#,##0'});
+        decimalFormat.format(data, 1);
+        decimalFormat.format(data, 2);
+        decimalFormat.format(data, 3);
+        decimalFormat.format(data, 4);
+        
+        var options = {
+                    title: 'Estimated vs. Guarantee vs. Actual (kWh)',
+                    reverseCategories: false,
+                    colors: ['#FF9900', '#9900FF', '#61AF3F', '#009DDC' ],
+            focusTarget: 'category',
+            legend: {
+                position: 'bottom'
+            },
+            series: {
+                0: { lineWidth: .5 },
+                1: { lineWidth: .5 },
+                2: { lineWidth: 4 },
+                3: { lineWidth: 4 },
+            },
+            hAxis: {
+                title: 'Month'
+            },
+            vAxis: {
+                title: 'kWh'
+            },
+            chartArea: {
+                left: 75,
+                top: 35,
+                width: '90%',
+                height: '75%'
+            }                           
+        };
+        
+        var chart = new google.visualization.LineChart(document.getElementById('prod_chart'));
+        chart.draw(data, options);
+    }
+    
+</script>
+    
+<apex:includeScript value="/support/console/26.0/integration.js"/>
+
+<script type="text/javascript">
+    
+    function openInstalledSystemTabs() {
+        var primaryTabId;
+            
+        sforce.console.getEnclosingPrimaryTabId(function (result) {
+            primaryTabId = result.id;
+            //alert(primaryTabId);
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Installed_System__c.Account__c))}">
+                sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Account.View, Installed_System__c.Account__c)}", false, "Account");
+            </apex:outputPanel>
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Installed_System__c.Property__c))}">
+                sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Property__c.View, Installed_System__c.Property__c)}", false, "Property");
+            </apex:outputPanel>
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Installed_System__c.Sales_Order__c))}">
+                sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.SCRB_SalesOrder__c.View, Installed_System__c.Sales_Order__c)}", false, "Sales Order");
+            </apex:outputPanel>
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Installed_System__c.Quoted_System_Design__r.System_Design__c))}">
+                sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.System_Design__c.View, Installed_System__c.Quoted_System_Design__r.System_Design__c)}", false, "System Design");
+            </apex:outputPanel>
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Installed_System__c.Enphase_ID__c))}">
+                sforce.console.openSubtab(primaryTabId, "https://enlighten.enphaseenergy.com/systems/{!Installed_System__c.Enphase_ID__c}/arrays?", false, "Enphase Arrays");
+            </apex:outputPanel>
+        });
+        
+    }
+    
+    
+    var $j = jQuery.noConflict(); 
+    $j(function() {
+        if (sforce.console.isInConsole()) {
+            openInstalledSystemTabs();
+        }
+    });
+    
+</script>
+    
+    <apex:sectionHeader subtitle="{!Installed_System__c.Name}" title="{!Installed_System__c.Property__r.Name}" />
+    
+    <apex:pageBlock mode="edit">
+    
+        <apex:pageBlockSection title="System Photos">
+        
+            <apex:outputPanel rendered="{!if(insSysImgPath == '', true, false)}">
+                <apex:image url="{!URLFOR($Resource.defaultimage,'logosys.gif')}" width="450px" style="margin-left:120px" />
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!if(insSysImgPath != '', true, false)}">
+                <apex:image url="/servlet/servlet.FileDownload?file={!insSysImgPath}" width="450px" />
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!if(sysDesignImgPath == '', true, false)}">
+                <apex:image url="{!URLFOR($Resource.defaultimage,'logosysdes.gif')}" width="450px" />
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!if(sysDesignImgPath != '', true, false)}">
+                <apex:image url="/servlet/servlet.FileDownload?file={!sysDesignImgPath}" width="450px" />
+            </apex:outputPanel>
+            
+        </apex:pageBlockSection>
+    
+    </apex:pageBlock>
+    
+    <apex:pageBlock mode="edit">
+    
+        <apex:pageBlockSection title="Production Chart" columns="1">
+        
+            <div id="prod_chart" style="width: 100%; height: 350px;"/>
+        
+        </apex:pageBlockSection>
+    
+    </apex:pageBlock>
+
+    <apex:pageBlock id="rec" title="Installed System Details" mode="edit">
+    
+        <apex:pageBlockSection collapsible="false">
+        
+            <apex:outputField value="{!Installed_System__c.Account__c}" />
+            <apex:outputField value="{!Installed_System__c.name}" />
+            <apex:outputField value="{!Installed_System__c.Property__c}" />
+            <apex:outputField value="{!Installed_System__c.Enphase_ID__c}" />
+            <apex:outputField value="{!Installed_System__c.State__c}" />
+            <apex:outputField value="{!Installed_System__c.PJM_Id__c}" />
+            <apex:outputField value="{!Installed_System__c.Sales_Order__c}" />
+            <apex:outputField value="{!Installed_System__c.Quoted_System_Design__r.System_Design__r.Total_Projected_Annual_Output_kWh_y__c}"/>
+            <apex:outputField value="{!Installed_System__c.Installation_Year__c}" />
+            <apex:outputField value="{!Installed_System__c.Project__c}" />
+            <apex:outputField value="{!Installed_System__c.PM_Project__c}" />
+            <apex:outputField value="{!Installed_System__c.Installation_Date__c}" />
+            <apex:outputField value="{!Installed_System__c.Quoted_System_Design__c}" />
+            <apex:outputField value="{!Installed_System__c.System_Makeup__c}" />
+            <apex:outputField value="{!Installed_System__c.Lease_Purchase__c}" />
+            <apex:outputField value="{!Installed_System__c.Lease_Financing_Type__c}" />
+            <apex:outputField value="{!Installed_System__c.Estimated_Annual_SRECs_Generated__c}" />
+            <apex:outputField value="{!Installed_System__c.System_Size_kW__c}" />
+            <apex:outputField value="{!Installed_System__c.Number_of_Panels__c}" />
+            <apex:outputField value="{!Installed_System__c.Interconnection_Date__c}" />
+            <apex:outputField value="{!Installed_System__c.Property__r.Optimal_Site_Quality_kWh_y_kW__c}"/>
+            <apex:outputField value="{!Installed_System__c.Property__r.Snow_De_Rate_kWh_y_kW__c}"/>
+
+            <apex:outputField value="{!Installed_System__c.Property__r.Max_Site_Quality__c}"/>
+            <apex:outputField value="{!Installed_System__c.Quoted_System_Design__r.System_Design__r.Overall_TSRF__c}"/>
+            
+            <apex:outputField value="{!Installed_System__c.Quoted_System_Design__r.System_Design__r.Overall_Site_Quality__c}"/>
+            <apex:outputField value="{!Installed_System__c.Property__r.DC_to_AC_Derate__c}"/>
+            
+            <apex:outputField value="{!objInstSys.System_Certification__c}" />
+
+            <apex:outputPanel >
+            
+                <apex:outputLink style="padding-left:100px;" value="https://enlighten.enphaseenergy.com/systems/{!Installed_System__c.Enphase_ID__c}/solar" 
+                    target="_blank">Enphase Enlighten Link</apex:outputLink>
+
+<!--                <apex:outputLink style="padding-left:100px;" value="https://gats.pjm-eis.com/myModule/reg/Generator.asp?action=update&id1={!Installed_System__c.PJM_Id__c}&Type=GEN&solargen=yes"  -->
+<!--                    target="_blank">PJM GATS Link</apex:outputLink> -->
+
+            </apex:outputPanel>
+
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection columns="2" title="Installed System" collapsible="false">
+        
+            <apex:outputField value="{!Installed_System__c.name}" />
+            <apex:outputField value="{!Installed_System__c.Account__c}" />
+            <apex:outputField value="{!Installed_System__c.Number_of_Panels__c}" />            
+            <apex:outputField value="{!Installed_System__c.Lease_Purchase__c}" />
+            <apex:outputField value="{!Installed_System__c.Lease_Financing_Type__c}" />
+            <apex:outputField value="{!Installed_System__c.State__c}" />
+            <apex:outputField value="{!Installed_System__c.Sales_Order__c}" />
+            <apex:outputField value="{!Installed_System__c.Year_of_Installation__c}" />
+            <apex:outputField value="{!Installed_System__c.Installation_Date__c}" /> 
+            <apex:outputField value="{!objInstSys.System_Certification__c}" />
+            
+        </apex:pageBlockSection>
+           
+        <apex:pageBlockSection columns="2" title="State Grant"  collapsible="false">
+            <apex:outputField value="{!Installed_System__c.State_Grant_W__c}" />
+            <apex:outputField value="{!Installed_System__c.State_Grant_Total__c}" />
+            <apex:outputField value="{!Installed_System__c.State_Grant_Total_Received__c}" />
+            <apex:outputField value="{!Installed_System__c.State_Grant_Date_Received__c}" />
+            <apex:outputField value="{!Installed_System__c.State_Grant_Expected_vs_Received__c}" />
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection columns="2" title="SRECs" collapsible="false">
+            <apex:outputField value="{!Installed_System__c.SREC_Curve__c}" />
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection columns="2" title="Lease Financial Information">
+            <apex:outputField value="{!Installed_System__c.FMV_W__c}" />
+            <apex:outputField value="{!Installed_System__c.FMV_System_Total__c}" />
+            <apex:outputField value="{!Installed_System__c.X1603_Compliant__c}" />
+            <apex:outputField value="{!Installed_System__c.Tranche_Number__c}" />
+            <apex:outputField value="{!Installed_System__c.CEG_expected_IRR__c}" />
+            <apex:outputField value="{!Installed_System__c.Customer_Down_Payment__c}" />
+            <apex:outputField value="{!Installed_System__c.Customer_Monthly_Payment__c}" />
+            <apex:outputField value="{!Installed_System__c.Customer_Monthy_Payment_Escalator__c}" />
+            <apex:outputField value="{!Installed_System__c.Treasury_Grant_Filing_Date__c}" />
+            <apex:outputField value="{!Installed_System__c.Treasury_Grant_Received_Amount__c}" />
+            <apex:outputField value="{!Installed_System__c.Treasury_Grant_Requested_Amount__c}" />
+            <apex:outputField value="{!Installed_System__c.Treasury_Grant_Requested_vs_Received__c}" />
+            <apex:outputField value="{!Installed_System__c.Treasury_Grant_Approval_Date__c}" />
+        </apex:pageBlockSection>
+            
+    
+    </apex:pageBlock>
+    
+    <apex:pageBlock mode="edit">
+
+        <apex:pageBlockSection title="Enphase Alerts" columns="1" collapsible="false">
+
+            <apex:pageBlockTable value="{!alerts}" var="a">
+                <apex:column value="{!a.Impact__c}" headerValue=" "/>
+                <apex:column value="{!a.Alert_Name__c}" />
+                <apex:column value="{!a.Alert_Start__c}"/>
+                <apex:column value="{!a.Number_of_Devices__c}" />
+            </apex:pageBlockTable>
+        
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+    
+    <apex:pageBlock mode="edit"> 
+
+        <apex:pageBlockSection title="Solar Renewable Energy Credits" columns="1" collapsible="false"> 
+        
+            <apex:pageBlockTable value="{!srecs}" var="s"> 
+                <apex:column value="{!s.Quantity__c}" /> 
+                <apex:column value="{!s.Serial_Number__c}" /> 
+                <apex:column value="{!s.Energy_Compliance_Year__c}"/> 
+                <apex:column value="{!s.Month_of_Generation__c}" /> 
+<!--                <apex:column value="{!s.Delivery_Initiation_Date__c}"/> -->
+<!--                <apex:column value="{!s.Delivery_Confirmation_Date__c}"/> -->
+                <apex:column value="{!s.Date_Customer_Paid__c}"/> 
+                <apex:column value="{!s.Price_Paid_to_Customer_SREC__c}" /> 
+            </apex:pageBlockTable> 
+        
+        </apex:pageBlockSection> 
+        
+    </apex:pageBlock> 
+
+    <apex:pageBlock mode="edit">
+
+        <apex:pageBlockSection title="Production Log" columns="1" collapsible="false">
+            
+            <apex:pageBlockTable value="{!production}" var="p">
+                <apex:column value="{!p.Year__c}" />
+                <apex:column value="{!p.Month__c}"/>
+                <apex:column value="{!p.Production_Guarantee__c}" />
+                <apex:column value="{!p.Enphase_kWh__c}" />
+                <apex:column value="{!p.Astrum_Estimated__c}" />
+                <apex:column value="{!p.External_Estimated__c}"/>
+            </apex:pageBlockTable>
+        
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+
+    <apex:pageBlock mode="edit">
+
+        <apex:pageBlockSection title="Installed Items" columns="1" collapsible="false">
+        
+            <apex:pageblockTable value="{!InstalledPanelsData}" var="po">
+                <apex:column headerValue="Panel">
+                    <a href="/{!po.Id}">{!po.Name}</a>
+                </apex:column>
+                <apex:column headerValue="Panel Manufacturer" value="{!po.Panel_Manufacturer__c}" />
+                <apex:column headerValue="Panel Type" value="{!po.Panel_Type__c}" />
+                <apex:column headerValue="Panel Output (W)" value="{!po.Panel_Output_W__c}" />
+                <apex:column headerValue="Panel Serial Number" value="{!po.Panel_Serial_Number__c}" />
+                <apex:column headerValue="Inverter Type" value="{!po.Inverter_Type__c}" />
+                <apex:column headerValue="Inverter Serial Number" value="{!po.Inverter_Serial_Number__c}" />
+                <apex:column headerValue="Created By" value="{!po.CreatedById}" />
+                <apex:column headerValue="Last Modified By" value="{!po.LastModifiedById}" />
+            </apex:pageblockTable>
+
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+    
+    <apex:relatedList id="noteslist" list="NotesAndAttachments" subject="{!instSysId}" />
+        
+    <apex:relatedList subject="{!instSysId}" list="ActivityHistories" />
+            
+</apex:page>

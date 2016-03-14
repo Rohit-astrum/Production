@@ -1,0 +1,62 @@
+<apex:page standardController="Time_Sheet__c" tabstyle="Time_Sheet__c" extensions="Time_Sheet_Controller_Extension" showHeader="true" sidebar="false">
+<style>
+span.dateInput span.dateFormat{display:none;} 
+</style>
+<apex:includeScript value="{!$Resource.jquery152MinJs}"/>
+<apex:includeScript value="{!$Resource.jqueryMaskedInput13MinJs}"/>
+
+<apex:sectionHeader title="{!Time_Sheet__c.Name}" subtitle="Add/Edit Entries"/>
+  
+<apex:form >
+    <apex:pageBlock title="Time Sheet Entries" mode="edit" id="block">
+        <apex:pageBlockButtons location="both">
+        <apex:commandButton action="{!doSaveEntries}" value="Save" reRender="block"/>
+        <apex:commandButton action="{!doCancel}" value="Cancel" reRender="block"/>
+        <apex:commandButton action="{!doAddEntry}" value="Add Entry" reRender="block"/>
+        </apex:pageBlockButtons>
+        <apex:pageMessages />
+        <apex:pageBlockTable value="{!entries}" var="e">
+        <apex:column >
+            <apex:facet name="header">Entry</apex:facet>
+            <apex:outputText value="{!e.name}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Project/Client/Job</apex:facet>
+            <apex:inputField value="{!e.Project_Client_Job__c}"/>
+        </apex:column>
+       <!-- <apex:column >
+            <apex:facet name="header">Purpose</apex:facet>
+            <apex:inputField required="true" value="{!e.Purpose__c}"/>
+        </apex:column> -->
+        <apex:column >
+            <apex:facet name="header">Timesheet Purpose</apex:facet>
+            <apex:inputField required="true" value="{!e.Timesheet_Purpose__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Start Time</apex:facet>
+            <apex:inputField value="{!e.Start_Time__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">End Time</apex:facet>
+            <apex:inputField value="{!e.End_Time__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Stayed Overnight</apex:facet>
+            <apex:inputField value="{!e.Stayed_Overnight__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Hotel Costs</apex:facet>
+            <apex:inputField value="{!e.Hotel_Cost__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Half-Hour Lunch Break?</apex:facet>
+            <apex:inputField required="true" value="{!e.Half_Hour_Lunch_Break__c}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Total Hours</apex:facet>
+            <apex:outputText value="{0,number,##.00}"><apex:param value="{!e.Total_Hours__c}" /></apex:outputText>
+        </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

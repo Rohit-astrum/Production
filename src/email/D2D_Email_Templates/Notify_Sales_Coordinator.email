@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="D2D: New Leads Uploaded" recipientType="User">
+<messaging:htmlEmailBody >
+   <c:D2DEmailComponent providedEmailTemplateType="SalesCoordinator"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

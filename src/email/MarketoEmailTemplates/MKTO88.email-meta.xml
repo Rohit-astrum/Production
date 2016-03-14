@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Suzanne Intro/Nest/Rebrand.Partner Suzanne Intro/Rebrand</name>
+    <style>none</style>
+    <subject>Exciting news from Astrum Solar&apos;s Partner Program</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com&gt;
+
+A Message from Our Partner Program
+
+Dear {{lead.First Name:default=Friend}},
+
+As the newly appointed Partner Program Manager at Astrum Solar, I’m here to support you in your efforts to grow your referral network. I’d like to take this opportunity to not only introduce myself but also make you aware of some exciting details.
+
+A New Name. The Same Mission.
+
+I am excited to announce that Astrum Solar is now part of Direct Energy®, one of North America’s largest energy and energy-related services providers with more than seven million residential and commercial customer relationships! As a proud member of the Direct Energy family, Astrum Solar is undergoing a transformation. Our new name, Direct Energy Solar, will be revealed to the public on April 1.
+
+While our website, collateral, and messaging will have a new look and feel, our mission remains the same—to provide an exceptional customer experience and ensure that customers get the most out of their solar panels: the most energy generated, the most electricity savings, the most beneficial environmental impact, and the most joy each time they see a sunny day. In the coming weeks, I will keep you posted on our progress!
+
+The Experience of Serving Over Six Million Homeowners
+
+This is an exciting time to be part of Astrum Solar. The Direct Energy family of companies has served over six million homeowners across North America for over 15 years. Direct Energy has become the largest home services provider on the continent by providing professional, affordable and high-quality energy products and home services to your neighbors. Your customers can trust us with their solar installations and many other home services needs.
+
+I look forward to working with you and sharing my plans to take this program forward.
+
+Thank you,
+Suzanne
+Sr. Manager, Field Marketing
+240-278-8616
+suzanne.borneman@astrumsolar.com
+
+You are receiving this email because you are a member of the Astrum Solar Partner Program.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Astrum Solar, Inc.
+8955 Henkels Lane, Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy &lt;http://www.astrumsolar.com/privacy-policy&gt; 
+
+Terms &amp; Conditions &lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com &lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Our Process</name>
+    <style>none</style>
+    <subject>See how we deliver the best value in solar.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=delivervalue&amp;utm_campaign=nurtur&amp;utm_content=delivervalue-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+We’re Ready to Help You Harness the Sun.
+
+Dear {{lead.First Name:default=Friend}},
+
+You and your home are unique. A cookie-cutter experience for your solar installation won’t provide you with choices so you can decide what’s best for you, your family, and home. Nor will it provide you with the best value. At Direct Energy Solar, our customized process is tailored to each individual—this means we can maximize your energy production and you control how you pay for solar, so you receive greater financial returns and get the most benefits out of your solar home.
+
+See How We Deliver the Best Value in Solar to You:
+ &lt;http://www.directenergysolar.com/solar-done-right/the-direct-energy-solar-difference?utm_medium=email&amp;utm_source=delivervalue&amp;utm_campaign=nurtur&amp;utm_content=delivervalue-button-deliver&gt;
+
+Step 1: A Quick Phone Call
+
+On this phone call, we’ll evaluate your home’s solar potential using our advanced 3D aerial imagery technology and discuss your current electricity bill. Our consultative approach helps us learn everything we can about your goals and priorities so we can design the system that is best for your home.
+
+Step 2: We Design Your System
+
+If your home is a good candidate for solar, we’ll use the latest technology to measure your sunlight and custom-design a solar system that is tailored specifically for your home. We’ll maximize your solar potential and provide you with a state-of-the-art production estimate that we guarantee.
+
+Step 3: Review Your Proposal
+
+A local Solar Consultant will meet with you in your home to review your custom system design,guaranteed energy production, a choice of payment options, incentives, warranties and more. You’ll have all the facts from our friendly, consultative team to make an informed decision.
+
+Step 4: Installation &amp; Power Up!
+
+Your Project Lead will handle permitting, inspections, interconnection, and more during your project—you don’t have to worry about a thing. All installations are completed within 120 days, guaranteed, and once we receive approval from your utility company, your net meter is installed and you can power up!
+
+Step 5: Lifetime of Support
+
+You can rest easy knowing you’ll receive a lifetime of support from a company that has helped thousands of homeowners switch to solar power. We monitor your system and take care of any problems that arise. We are dedicated to helping you get the most benefits out of your solar home.
+
+See Our Process in Action:
+&lt;http://www.directenergysolar.com/solar-done-right/the-direct-energy-solar-difference?utm_medium=email&amp;utm_source=delivervalue&amp;utm_campaign=nurtur&amp;utm_content=delivervalue-button-process&gt;
+
+“We had a great experience. And their work crew was the nicest, most polite crew we’ve ever had come through the house.” - Ruth and Dan
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=delivervalue&amp;utm_campaign=nurtur&amp;utm_content=delivervalue-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=delivervalue&amp;utm_campaign=nurtur&amp;utm_content=delivervalue-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=delivervalue&amp;utm_campaign=nurtur&amp;utm_content=delivervalue-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Solar Payback Factors Series: Your Available Sunlight</name>
+    <style>none</style>
+    <subject>How does sunlight impact your payback?</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors2&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Special Series: Solar Payback Factors
+
+Solar Payback Factor #2: Your Available Sunlight
+
+Dear {{lead.First Name:default=Friend}},
+
+Solar has many variables that can influence how much of a return you see from your system. In this special series focusing on solar payback factors, we’ll be taking a look at your available sunlight &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors1&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-link-availsun]]&gt;.
+
+One of the most common misconceptions we hear from people is “We don’t get enough sunlight where we live for solar.” The truth is that most homeowners get plenty of sunlight during the year for solar to provide them with an attractive financial return.
+
+How to Determine How Much Sunlight You Receive?
+
+The only sure way to assess how much sunshine you receive is to have Direct Energy Solar’s team of professionals evaluate your home’s potential for solar.
+
+Why does this evaluation matter? It ensures that we can maximize your energy production and financial return by installing as many panels as possible that face south, with a second option for east/west facing panels—these orientations will allow you to capture the maximum amount of sunlight possible.
+
+Wanna Know All of the Factors? Download Our Free Guide:
+ &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors2&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-button-guide]]&gt;
+
+“Direct Energy Solar’s evaluation of our roof was more thorough and logical than anyone else’s, but their flexibility when it came to meeting our specific needs was the tipping point for us.” - Rochelle
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=pbfactors2&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=pbfactors2&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors2&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

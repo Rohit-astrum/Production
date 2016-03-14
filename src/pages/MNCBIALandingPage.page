@@ -1,0 +1,423 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="PartnerLandingPageController" >
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+   <title>Astrum Solar - Home Solar the Right Way - Lower Your Utility Bills Today</title>
+    <meta name="robots" content="noindex,nofollow"/>    
+    
+    <link rel="Shortcut Icon" href="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/favicon.ico')}" />
+    
+    <apex:insert name="head-top"/>
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'fonts/avenir1stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'fonts/avenir2stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'fonts/avenir3stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'fonts/avenir4stylesheet.css')}" media="screen, projection" type="text/css" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'styles/screen.css')}" media="screen, projection" type="text/css" /> 
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <style type="text/css">
+         .gradient {
+            filter: none;
+     }
+    </style>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'javascript/plugins.js')}"></script>
+    <script src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'javascript/scripts.js')}"></script>
+    <script src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'javascript/jquery.validate.js')}"></script>
+    <script src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'javascript/jquery.maskedinput.js')}"></script>
+    <script src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'javascript/jquery.cookie-new.js')}"></script>
+    
+    <script type="text/javascript">
+    
+        function getURLParam(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
+            );
+        }
+        
+        var a_gclid = getURLParam('gclid');
+        var a_utmSource = getURLParam('utm_source');
+        var a_utmMedium = getURLParam('utm_medium');
+        var a_utmTerm = getURLParam('utm_term');
+        var a_utmCampaign = getURLParam('utm_campaign');
+        var a_utmContent = getURLParam('utm_content');
+        
+        if (a_gclid!=''){
+        $.cookie('apex__gclid', a_gclid, { expires: 30, path: '/' });
+        }
+        if (a_utmSource!=''){
+        $.cookie('apex__astrum_utm_source', a_utmSource, { expires: 30, path: '/' });
+        }
+        if (a_utmMedium!=''){
+        $.cookie('apex__astrum_utm_medium', a_utmMedium, { expires: 30, path: '/' });
+        }
+        if (a_utmTerm!=''){
+        $.cookie('apex__astrum_utm_term', a_utmTerm, { expires: 30, path: '/' });
+        }
+        if (a_utmCampaign!=''){
+        $.cookie('apex__astrum_utm_campaign', a_utmCampaign, { expires: 30, path: '/' });
+        }
+        if (a_utmContent!=''){
+        $.cookie('apex__astrum_utm_content', a_utmContent, { expires: 30, path: '/' });
+        }
+    
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        $.cookie();
+        }
+    </script>
+
+
+    <apex:insert name="head-bottom"/>
+
+</head>
+
+<body>
+
+    <div id="main-container">
+    <div id="body-container">
+    
+        <div id="header">
+            <p class="acc"><a href="#content" title="Skip to content">Skip to content</a></p>
+            <header role="banner" class="wrapper group">
+                <hgroup>
+                    <h1 id="logo"><a href="http://www.astrumsolar.com" title="Astrum Solar"><span>Astrum Solar</span></a></h1>
+                    <h2 id="logo2"><a href="http://www.mncbia.org/" title="Maryland-National Capital Building Industry Association"><span>Maryland-National Capital Building Industry Association</span></a></h2>
+                </hgroup>
+                <div id="UpperRightNav">
+                    <h2><span>More Info: 1-800-903-6130 ext 825</span></h2>
+                    <h3><span>See a Sunny Day in a Whole New Way</span></h3>
+                </div>
+            </header>
+        </div>
+    
+        <div id="content" role="main">
+            <div class="wrapper group"> 
+                <article>
+                    <section id="main" class="group">
+                        <div class="content-container">
+                            <h2 class="titleLeft">Earn More for Something You’re Already Doing...</h2> 
+                            <h2 class="titleRight">...Talking to Your Customers</h2>
+                            <div id="tab-content">
+        
+                                <!--BEGIN TAB ONE-->
+                                <div id="home">
+        
+                                    <!--Logo Left-->
+                                    <div class="logo-spot logo no-border">
+                                        <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/CleanAndGreen_Logo.gif')}" title="Clean &amp; Green Energy Program Partner" />                         
+                                   </div>
+                                    <!--END Logo Left-->
+                                            
+                                    <apex:insert name="home-image">
+                                        <p class="annotation left">Dan and Ruth, 7kW System – ELECTRICITY SAVINGS: $1,247/year</p>
+                                        <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/home-image.jpg')}" title="Dan and Ruth of Ellicott City, MD" />
+                                    </apex:insert>
+                                </div>
+                                <!--END TAB ONE-->
+                                
+                                <!--BEGIN TAB TWO-->
+                                <div id="faq">
+                                    <h3>Frequently Asked Questions</h3>
+                                    <h4>MNCBIA Clean and Green Energy Program</h4>
+                                    <p>Click on the questions below for answers.</p>
+                                    <div class="faq-container">
+                                     <div class="FAQQuestion">
+                                            <p>1. What is the MNCBIA Clean and Green Energy Program?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>It is a program designed to promote and reward the adoption of solar power among our MNCBIA builder community.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>2. Who is Astrum Solar?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>Astrum Solar is the leading full-service installer of residential photovoltaic systems based on the East Coast. Astrum Solar distinguishes itself in the industry in several ways, including its sole focus on residential systems, its performance of full in-person site surveys before the sales proposal stage, its exclusive use of more efficient microinverters and its customer satisfaction track record.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>3. How do I know Astrum Solar will do quality work for my customers?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>As a testament to Astrum Solar&rsquo;s outstanding customer satisfaction record, a third of its business comes from the referrals of its delighted customers. MNCBIA vetted the company as part of our RFP process and determined Astrum Solar had the best overall experience and expertise to serve the needs of our members through this program.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>4. Why should I offer a solar option to my residential customers?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>In addition to earning cash payments when your customers add solar, offering a solar power option is a great way to distinguish your homes from others in the Maryland marketplace. Solar power offers many benefits to homeowners including increased home values and long-term reductions in energy bills.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>5. How does the payment/discount work?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>When you refer a customer who signs a contract with Astrum Solar, you earn a cash referral payment of $1,250. You may choose in advance between keeping the entire $1,250 or passing through $250 of the available $1,250 to your customers as a cash back system discount and keeping $1,000. What&rsquo;s more, for each successful referral, Astrum Solar will also make a donation to MNCBIA, which helps us continue to serve the needs of the builder community.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>6. How do I participate and submit my leads for this program?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>You may enter lead information as a guest on this website using the form to the right. However, MNCBIA encourages you to take a moment to &nbsp; <apex:outputLink value="apply?hearabtus=Yes" >register</apex:outputLink>  your business as an Astrum Solar Referral Partner by clicking the link below the lead entry form. By registering, you will gain access to an online partner portal, allowing you to enter leads for this program under your own secure account and gain visibility on each lead&rsquo;s progress through a tracking dashboard.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>7. I’ve heard solar can be expensive, is this only a fit for my high-end homes?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>Anyone can afford solar and adding it to a project &mdash; new or existing &mdash; is easy. Astrum solar offers a monthly payment program where the installation can be free if the customer has good sun exposure and good credit. The homeowner simply pays for their solar by the month. The combination of the homeowner&rsquo;s remaining utility bill and their new solar bill will be LESS than they were paying the utility without solar.</p>
+                                     </div>
+                                     
+                                     <div class="FAQQuestion">
+                                            <p>8. Who is responsible for maintenance and warranty of the solar system?</p></div>
+                                     <div class="FAQAnswer" style="display: none;">
+                                            <p>Astrum Solar is solely responsible for the maintenance and warranty of the solar system for your customers, including guaranteeing the integrity of any roof penetrations performed as part of the solar installation.</p>
+                                     </div>
+                                     
+                                     
+                                    </div>
+                                    
+                                   
+                                </div>
+                                <!--END TAB TWO-->
+                                        
+                                <!--BEGIN TAB THREE-->
+                                <div id="customers" class="group">
+                                <h3>Meet Our Customers</h3>
+                                    <ul id="slideshow" class="group">
+                                        <li>
+                                            <h3>The Altman Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,377</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/altman.jpg')}" class="one" title="Altman" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">I had to sell my wife a bit on the idea. She had some aesthetic concerns. To me, solar panels are a complete no-brainer.&rdquo;</p>
+                                                    <p class="author">&mdash; Wayne and Vanna</p>
+                                                    <p class="author small">6.975 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Devine Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,266</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/devine.jpg')}" class="one" title="Devine" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">I even called my accountant and asked, &lsquo;Is this for real?&rsquo; He confirmed it.&rdquo;</p>
+                                                    <p class="author">&mdash; Jason and Crystal</p>
+                                                    <p class="author small">8.05 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Papandrea Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,414</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/papandrea.jpg')}" class="one" title="Papandrea" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Our solar panels were shockingly affordable.&rdquo;</p>
+                                                    <p class="author">&mdash; Tony and Karen</p>
+                                                    <p class="author small">9.6 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Vesay Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,805</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/vesay.jpg')}" class="one" title="Vesay" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Last summer, before solar, our electric bill was $300 a month. This summer our bill ranged from $40 to 60 a month.&rdquo;</p>
+                                                    <p class="author">&mdash; Dave and Michelle</p>
+                                                    <p class="author small">10.08 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Rogus Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,304</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/rogus.jpg')}" class="one" title="Rogus" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Astrum offered the best technology. They quoted exactly what we wanted without compromise.&rdquo;</p>
+                                                    <p class="author">&mdash; Mei and Joseph</p>
+                                                    <p class="author small">9.36 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--END TAB THREE-->
+                                    
+                            </div>
+                        </div>
+        
+                        <div class="form-container">
+                            <div class="referredBy"><p>Referred by an MNCBIA member</p></div>
+                            <!--BEGIN TAB NAV-->
+                            <ul id="tabs" class="group">
+                                <li class="home"><a href="javaScript:void(0);" title="Home" id="home-btn"><img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, 'images/home-btn.png')}" title="Home" /></a></li>
+                                <li><a href="javaScript:void(0);" title="Frequently Asked Questions" id="faq-btn">Frequently Asked Questions</a></li>
+                                <li><a href="javaScript:void(0);" title="Meet Our Customers" id="customers-btn">Meet<br />Our Customers</a></li>
+                            </ul>
+                            <!--END TAB NAV-->
+        
+                            <!--BEGIN FORM-->
+                            <div id="form">
+                               
+
+        <apex:form styleClass="save-form">
+        
+        <apex:actionRegion >
+    
+        <apex:outputPanel id="formArea" layout="block">
+        
+            <apex:outputPanel rendered="{!NOT(submitted=true)}">
+    
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <legend>Submit Your Qualified Lead to Astrum Solar</legend>
+            <ul>
+                <li class="fname">
+                    <label for="fname" class="acc">First Name</label>
+                    <input type="text" id="fname" name="fname" value="First Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="lname">
+                    <label for="lname" class="acc">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="Last Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="email">
+                    <label for="email" class="acc">Email Address</label>
+                    <input type="text" id="email" name="email" value="Email Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="phone">
+                    <label for="phone" class="acc">Phone</label>
+                    <input type="text" id="phone" name="phone" value="Phone" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="street">
+                    <label for="street" class="acc">Street Address</label>
+                    <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="city">
+                    <label for="city" class="acc">City</label>
+                    <input type="text" id="city" name="city" maxlength="100" value="City" placeholder=""  class="noPlaceholder"/>
+                </li>
+                <li class="state">
+                    <label for="state" class="acc">State</label>
+                    <select id="state" name="state" class="noPlaceholder required" onchange="changeState(this.value)">
+                        <apex:repeat value="{!states}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>
+                    </select>
+                </li>
+                <li class="zip">
+                    <label for="zip" class="acc">Zip</label>
+                    <input type="text" id="zip" name="zip" value="Zip" placeholder="" class="noPlaceholder" />
+                </li>
+                <li class="utility">
+                    <label for="utility" class="acc">Utility Company</label>
+                    <apex:outputPanel layout="block" id="utilitySelect">
+                        <select id="utility" name="utility" class="">                          
+                            <apex:repeat value="{!utilities}" var="u"><option value="{!u.value}">{!u.label}</option></apex:repeat>
+                        </select>
+                    </apex:outputPanel>
+                </li>
+                <li class="companyName">
+                    <label for="companyName" class="acc">MNCBIA Member Company Name</label>
+                    <input type="text" id="leadSourceNotes" name="leadSourceNotes" placeholder="" value="MNCBIA Member Company Name" class="noPlaceholder" />
+                </li>
+                <li class="errorMessage">
+                    <p>Please complete all required fields.</p>
+                </li>
+                <li class="submit">
+                    <input type="submit" value=""  class="button" id="submit-btn" />
+                </li>
+                <li class="updates group">
+                    <label for="updates" class="acc">Lead is expecting to be contacted by Astrum Solar.</label>
+                    <input type="checkbox" id="updates" name="updates" value="yes" checked="yes" />
+                    <p>Lead is expecting to be contacted<br /> by Astrum Solar.</p>
+                </li>
+            </ul>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!OR(submitted==true)}">
+                <h2>Submit Your Qualified Lead to Astrum Solar</h2>
+                <h3>Thank You</h3>
+                <p class="thanks">Thank you for requesting a solar consultation. One of our solar experts will contact your lead within the next 48 hours to 
+                follow up on your request for a no obligation home solar site assessment.</p>
+
+                <p class="thanks icon"><img src="{!URLFOR($Resource.MNCBIALandingPage_Resources, '/images/Form_KnowledgeIcon.png')}" alt="Lightbulb"/>We hope to have the opportunity to help your customer go solar.</p>
+    
+            </apex:outputPanel>
+        
+        </apex:outputPanel>
+
+        <apex:actionFunction name="doSubmit" action="{!submit}" rerender="formArea"/>
+
+        <apex:actionFunction name="changeState" action="{!stateChanged}" rerender="utilitySelect" immediate="true" oncomplete="utilUI()">
+            <apex:param name="state" value="" assignTo="{!newState}"/>
+        </apex:actionFunction>
+       
+        
+        </apex:actionRegion>
+
+        </apex:form>
+                            </div>
+        
+                            <div class="call-to-action">
+                                <p class="promo-text">To learn more or register for the program, tell us about your company.&nbsp;<apex:outputLink value="apply?hearabtus=Yes" >Sign Up</apex:outputLink></p> 
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section id="landing-content" class="group">
+                       <div class="landing-detail">
+                            <p class="marketing-content">The MNCBIA has chosen Astrum Solar as its exclusive &ldquo;Clean and Green&rdquo; Energy Program Partner. As an MNCBIA member you can offer solar power to your customers with Astrum Solar and earn generous cash incentives for each successful referral.* Astrum Solar provides a full turn-key sales and installation process and maintains and warrants your customer&rsquo;s system directly &mdash; all you need to do is submit the lead.</p>
+                        </div>
+                        <div class="landing-cta">
+                            <p>One of the fastest growing solar companies in America</p>
+                            <p class="pic"><img src="{!URLFOR($Resource.SolarizeNeedhamLandingPage_Resources, 'images/Inc500No2_2012.gif')}" title="" /></p>
+                            <p class="pic"><a id="bbblink" class="ruvtbus" href="http://www.bbb.org/greater-maryland/business-reviews/solar-energy-system-design-and-installation/astrum-solar-in-annapolis-junction-md-90168289#bbbseal" title="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" style="display: block;position: relative;overflow: hidden; width: 40px; height: 72px; margin: 0px; padding: 0px;"><img style="padding: 0px; border: none;" id="bbblinkimg" src="http://seal-greatermd.bbb.org/logo/ruvtbus/astrum-solar-90168289.png" width="80" height="72" alt="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" /></a><script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-greatermd.bbb.org' + unescape('%2Flogo%2Fastrum-solar-90168289.js') + "' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                        </div>
+                    </section>
+                        
+                </article>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <footer role="contentinfo" class="container group">
+                <div id="copyright">
+                    <p>Copyright &copy; {!YEAR(TODAY())} Astrum Solar, Inc.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/" title="Astrum Solar website">AstrumSolar.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/terms-and-conditions" title="Terms and Conditions">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/contact-us" title="Contact Us">Contact Us</a></p>
+                </div>
+                 <p class="companyDisclaimer"><apex:insert name="disclaimer-content"/>MNCBIA CLEAN AND GREEN ENERGY PROGRAM OFFER: Current MNCBIA member companies in good standing earn $1,250 when they refer a qualifying customer who signs a new solar system contract with Astrum Solar. The referring MNCBIA member company may elect in advance to pass-through $250 of the available $1,250 cash payment with its referred customers as a cash back system discount and receive a $1,000 cash payment instead for successful member referrals. Astrum Solar also provides a cash donation to MNCBIA for each successful member referral during the program. Not valid with any other Astrum Solar referral discount.</p>
+                
+            </footer>
+
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
+</apex:page>

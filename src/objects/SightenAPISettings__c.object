@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_URL__c</fullName>
+        <defaultValue>&quot;https://onboard.sighten.io:443/api/rest/&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>API URL</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Authorization_Token__c</fullName>
+        <description>The authorization token that must be included to make an API request to the Sighten API.</description>
+        <externalId>false</externalId>
+        <label>Authorization Token</label>
+        <length>50</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Callback_Token__c</fullName>
+        <description>The authorization token that must be included with any attempt to call the REST service for updating credit status or signature status in Salesforce</description>
+        <externalId>false</externalId>
+        <label>Callback Token</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Credit_Support_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Sighten Credit Support Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Credit_Support_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Sighten Credit Support Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Testing_Contact_Email__c</fullName>
+        <description>This field defines an email address to be used for testing purposes.  This field should be left blank in production environments.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field defines an email address to be used for testing purposes.  This field should be left blank in production environments.</inlineHelpText>
+        <label>Testing Contact Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Testing_Contact_Phone__c</fullName>
+        <description>This field defines a phone number to be used for testing purposes.  This field should be left blank in production environments.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field defines a phone number to be used for testing purposes.  This field should be left blank in production environments.</inlineHelpText>
+        <label>Testing Contact Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <label>Sighten API Settings</label>
+</CustomObject>

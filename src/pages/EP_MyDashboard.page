@@ -1,0 +1,222 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="EP_MyDashboardController">
+<apex:composition template="EP_SiteTemplate">
+
+<apex:define name="head-top">
+
+    <meta name='description' content='Direct Energy Solar Employee Portal - My Dashboard' />
+    <title>Direct Energy Solar Employee Portal - My Dashboard</title>
+
+</apex:define>
+
+<apex:define name="head-bottom">
+
+    <!--Google JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        
+    <!--ShadowboxJS--> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.EP_Resources, 'javascript/ShadowBoxJs/shadowbox.css')}" media="screen, projection" type="text/css" /> 
+    <script src="{!URLFOR($Resource.EP_Resources, 'javascript/ShadowBoxJs/shadowbox.js')}" type="text/javascript"></script>
+    <script type="text/javascript">
+        Shadowbox.init();
+    </script>
+    <!--end ShadowboxJS-->
+    
+    <style type="text/css">
+        .MyDashboard .DashboardContent .DashboardTable table th div a {
+            color: #666;
+			font-family: 'Conduit ITC W01 Medium',Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 14px;
+            padding-right: 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    </style>
+    
+</apex:define>
+
+<apex:define name="navigation">
+
+    <c:EP_AccountInfo />
+
+    <c:EP_Navigation current="dashboard"/>
+
+</apex:define>
+
+<apex:define name="content">
+<div id="Content">
+            <div class="container">
+                <div class="sixteen columns">
+<apex:form >
+
+    <div id="FullColumn">
+        <h2>My Dashboard</h2>
+  
+        <div class="MyDashboard">
+        
+            <div class="DashboardOptions">
+                <div class="SearchForm">
+                    <apex:inputText value="{!searchArg}" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);return false;}"/>
+                    <input type="button" value="Submit" class="standardButton smallButton" 
+                        onclick="setFilter(1);return false;"/>
+                </div>
+                <div class="FilterControl">
+                    <apex:selectList size="1" value="{!filterOption}" onchange="setFilter(1)">
+                        <apex:selectOptions value="{!filterOptions}"/>
+                    </apex:selectList>
+                </div>
+                <div class="PrintExport">
+                    <div class="Export">
+                        <a href="{!URLFOR($Page.EP_MyDashboardExport,null)}">Export</a>
+                    </div>
+                    <div class="Print">
+                        <a href="{!URLFOR($Page.EP_MyDashboardPrint,null)}" target="_blank">Print</a>
+                    </div>
+                </div>
+                
+                <apex:actionFunction name="setFilter" action="{!refresh}" rerender="myRefPanel,contactPanel,pagePanel" status="pageStatus,pageStatus2"
+                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                    <apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+                </apex:actionFunction> 
+                
+           </div>
+           
+           <div class="DashboardContent">
+
+                <div class="DashboardContentSummary">
+                    <span>Total Number of Leads:</span> <span class="SummaryNumber">
+                        <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalReferrals}"/></apex:outputText>
+                    </span> <span class="SummaryDivider">|</span> <span>Total Number Qualified:</span> <span class="SummaryNumber">
+                        <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalQualified}"/></apex:outputText>
+                    </span> <span class="SummaryDivider">|</span> <span>Total Number Sold:</span> <span class="SummaryNumber">
+                        <apex:outputText value="{0,number,#,##0}"><apex:param value="{!totalSold}"/></apex:outputText>
+                    </span> 
+                </div>
+
+                <apex:outputPanel layout="block" id="myRefPanel" styleClass="DashboardTable">
+                    <apex:dataTable value="{!referrals}" var="r">
+                    
+                        <apex:column headerClass="DashboardCol1">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Date" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Lead_Created_Date__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Lead_Created_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                            <apex:outputText value="{0,date,M/d/yy}">
+                                <apex:param value="{!r.Lead_Created_Date__c}"/>
+                            </apex:outputText>
+                        </apex:column>
+                        
+                        <apex:column headerClass="DashboardCol2">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Account Name" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Full_Name__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Full_Name__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                            <apex:outputLink value="EP_AccountInfo?id={!r.Id}" rel="shadowbox;height=300;width=470">{!r.Full_Name__c}</apex:outputLink>
+                        </apex:column>
+
+                        <apex:column value="{!r.Lead_Source__c}" headerClass="DashboardCol3">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Lead Source" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Lead_Source__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Lead_Source__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        
+                        <apex:column value="{!r.Method_of_Contact__c}" headerClass="DashboardCol4">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Method of Contact" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Method_of_Contact__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Method_of_Contact__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!r.Status__c}" headerClass="DashboardCol5">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Lead Status" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Status__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Status__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!r.Detail__c}" headerClass="DashboardCol6">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Lead Status Detail" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Detail__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Detail__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!r.Self_Generated__c}" headerClass="DashboardCol7">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!refresh}" value="Self Gen" rerender="myRefPanel,contactPanel,pagePanel"
+                                    styleClass="{!IF(sortExpression=='Self_Generated__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}"
+                                    oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                                    <apex:param value="Self_Generated__c"  assignTo="{!sortExpression}" ></apex:param>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                    </apex:dataTable>
+                </apex:outputPanel>
+                
+                <div class="DashboardPagination">
+                    <apex:outputPanel id="pagePanel" layout="block"> 
+                        <apex:outputPanel layout="none" rendered="{!AND(NOT(ISNULL(totalPages)),totalPages > 1)}">
+                            <ul>
+                                <li><a href="#" onclick="setPage({!TEXT(currentPage-1)});return false;">&laquo;</a></li>
+                                <apex:repeat value="{!pages}" var="pageNum">
+                                    <apex:outputPanel layout="none" rendered="{!pageNum=currentPage}">
+                                        <li class="active">{!TEXT(pageNum)}</li>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel layout="none" rendered="{!NOT(pageNum=currentPage)}">
+                                        <li><a href="#" onclick="setPage({!TEXT(pageNum)});return false;">{!TEXT(pageNum)}</a></li>
+                                    </apex:outputPanel>
+                                </apex:repeat>
+                                <li><a href="#" onclick="setPage({!TEXT(currentPage+1)});return false;">&raquo;</a></li>
+                            </ul>
+                        </apex:outputPanel>
+                        <apex:actionFunction name="setPage" action="{!refresh}" rerender="myRefPanel,contactPanel,pagePanel"
+                            oncomplete="Shadowbox.clearCache();Shadowbox.setup()">
+                            <apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+                        </apex:actionFunction> 
+                    </apex:outputPanel>
+                </div>
+                
+                <!-- from mockup
+                <div class="DashboardPagination">
+                    <ul>
+                        <li class="active">&laquo;</li>
+                        <li class="active">1</li>
+                        <li><a href="/">2</a></li>
+                        <li><a href="/">3</a></li>
+                        <li><a href="/">4</a></li>
+                        <li><a href="/">5</a></li>
+                        <li class="PaginationEllipsis">...</li>
+                        <li><a href="/">20</a></li>
+                        <li><a href="/">&raquo;</a></li>
+                    </ul>
+                </div>
+                -->
+                
+           </div>
+        </div>
+    </div>
+
+</apex:form>
+</div>
+</div>
+</div>
+</apex:define>
+
+</apex:composition>
+</apex:page>

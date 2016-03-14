@@ -1,0 +1,42 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_SignDoneController" applyHtmlTag="false" applyBodyTag="false">
+<apex:form >
+    <apex:composition template="D2D_SiteTemplate">
+        <apex:define name="head-top"> 
+        </apex:define>
+        <apex:define name="head-bottom"> 
+        
+            <script type="text/javascript">
+            
+                //Avoid conflicts between jQuery and apex
+                $j = jQuery.noConflict();
+
+                
+                $j(document).ready(function(){
+                	attachAndRedirect();
+                });
+            </script>
+        </apex:define>
+
+        <apex:define name="title">
+            <h1>Processing Signature</h1>
+        </apex:define>
+
+        <apex:define name="footer-btns">
+            <apex:pageMessages id="assignErrors" escape="false"/>
+            <apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+        </apex:define>
+        
+        <apex:define name="content">
+            <apex:actionFunction name="attachAndRedirect" action="{!attachAndRedirect}" reRender="assignErrors" />
+            <div class="signDone">
+                <div style="z-index: 1001; width: 300px; margin: auto;">
+                    <div class="signDoneLoading">
+                    	<span class="ui-icon-loading"></span>
+                    </div>
+                    <div class="signDoneText">Signature is processing. Please wait...</div>
+                </div>
+            </div>
+        </apex:define>
+    </apex:composition>
+</apex:form>
+</apex:page>

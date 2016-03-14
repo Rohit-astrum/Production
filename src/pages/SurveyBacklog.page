@@ -1,0 +1,37 @@
+<!--FILE: SurveyBacklog.page
+ * AUTHOR: Rohit Jain
+ * DATE: Aug 18, 2013
+ * PURPOSE: Edit page for Survey Backlog by Sales Coordinators
+ * MODIFICATION HISTORY 
+ -->
+<apex:page Controller="SurveyBacklogController" tabStyle="Astrum_Sales_Region__c">
+    <apex:form >
+    	<apex:outputPanel rendered="{!NOT(isEdit)}">
+	        <apex:pageBlock title="Survey Backlog">
+	            <apex:pageMessages />
+	            <apex:pageBlockButtons >
+	                <apex:commandButton value="Edit" action="{!edit}"/>               
+	            </apex:pageBlockButtons>
+	            <apex:pageBlockTable value="{!regions}" var="region">
+	                <apex:column value="{!region.name}"/>
+	                <apex:column value="{!region.Backlog_In_days__c}"/>                              
+	            </apex:pageBlockTable>      
+	        </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!isEdit}">
+	        <apex:pageBlock title="Edit Survey Backlog" mode="edit">
+	            <apex:pageMessages />
+	            <apex:pageBlockButtons >
+	                <apex:commandButton value="Save" action="{!save}"/>
+	                <apex:commandButton value="Cancel" action="{!cancel}"/>
+	            </apex:pageBlockButtons>
+	            <apex:pageBlockTable value="{!regions}" var="region">
+	                <apex:column value="{!region.name}"/>
+	                <apex:column headerValue="Backlog (in days)">
+	                    <apex:inputField value="{!region.Backlog_In_days__c}"/>
+	                </apex:column>                
+	            </apex:pageBlockTable>      
+	        </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

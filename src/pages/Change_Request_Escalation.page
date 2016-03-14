@@ -1,0 +1,23 @@
+<apex:page standardController="Change_Request__c"   extensions="Change_Request_Escalation_Controller">
+  <apex:form >
+  <apex:pageBlock title="Escalate Change Request for Master Electrician Review" id="thePageBlock" mode="edit">
+      <apex:pageMessages />
+       <apex:outputpanel rendered="{!AND(NOT(escalationDone),NOT(escalationNotAllowed))}">
+          <apex:pageBlockSection title="Escalation Comments" columns="1" >     
+              <apex:inputTextarea value="{!comments}" Style="Width:350px;Height:100px;" />   
+               <apex:outputpanel >
+                   <apex:commandButton value="Escalate" action="{!submitEscalation}" />  
+                   <apex:commandButton value="Cancel"  action="{!cancel}"/>     
+               </apex:outputpanel> 
+          </apex:pageBlockSection>
+      </apex:outputpanel> 
+      
+  <apex:outputText value="Escalation already done" rendered="{!escalationDone}"  />
+   <apex:pageBlockSection columns="1" >   
+  <apex:outputText value="Change Request can be Escalated only when it is Rejected or Submitted for Approval to VP." rendered="{!escalationNotAllowed }"  />
+  <apex:commandButton value="Return"  action="{!cancel}" rendered="{!escalationNotAllowed }"/>     
+   </apex:pageBlockSection>
+  
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

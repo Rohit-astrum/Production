@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>The calculated values necessary to display a proposal in the D2D application.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Annual_Consumption__c</fullName>
+        <externalId>false</externalId>
+        <label>Annual Consumption</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Annual_Production__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Size__c * Site_Quality__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Annual Production</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Average_Utility_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Average Utility Rate</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Estimated_Total_Savings__c</fullName>
+        <description>Semi-colon delimited list of 25 values</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Semi-colon delimited list of 25 values</inlineHelpText>
+        <label>Estimated Total Savings</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Year1_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Year1 Savings</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Footnote__c</fullName>
+        <externalId>false</externalId>
+        <label>Footnote</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Gross_System_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Gross System Price</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hudson_Monthly_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Hudson Monthly Payment</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Initial_Investment__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Investment</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Install_Location_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Install Location Count</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_Fund__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Lease Fund</label>
+        <referenceTo>Lease_Fund__c</referenceTo>
+        <relationshipLabel>D2D Proposals</relationshipLabel>
+        <relationshipName>D2D_Proposals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Lifetime_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Lifetime Savings</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monthly_Consumption__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Consumption</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Savings_Average__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Savings Average</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Net_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Net Cost</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Panels__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Panels</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payments_With_Solar__c</fullName>
+        <description>Semi-colon delimited list of 25 values</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Semi-colon delimited list of 25 values</inlineHelpText>
+        <label>Payments With Solar</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Payments_Without_Solar__c</fullName>
+        <description>Semi-colon delimited list of 25 values</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Semi-colon delimited list of 25 values</inlineHelpText>
+        <label>Payments Without Solar</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Physical_Surface_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Physical Surface Count</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Price</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDP_Inverter__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SDP Inverter</label>
+        <referenceTo>System_Design_Product__c</referenceTo>
+        <relationshipLabel>D2D Proposals</relationshipLabel>
+        <relationshipName>D2D_Proposals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SDP_Panel__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SDP Panel</label>
+        <referenceTo>System_Design_Product__c</referenceTo>
+        <relationshipLabel>D2D Proposals (SDP Panel)</relationshipLabel>
+        <relationshipName>D2D_Proposals1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Savings_Percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>Savings Percentage</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <label>Site Quality</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Solar_Cost_per_kWH__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Hudson_Monthly_Payment__c * 12 ) / Annual_Production__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Solar Cost per kWH</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <description>The 2 character USPS state abbreviation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The 2 character USPS state abbreviation</inlineHelpText>
+        <label>State</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Size__c</fullName>
+        <externalId>false</externalId>
+        <label>System Size</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Upfront_Costs__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Upfront Costs</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_of_Payments_With_Solar__c</fullName>
+        <externalId>false</externalId>
+        <label>Total of Payments With Solar</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_of_Payments_Without_Solar__c</fullName>
+        <externalId>false</externalId>
+        <label>Total of Payments Without Solar</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Five_Year_Savings_Dollars__c</fullName>
+        <externalId>false</externalId>
+        <label>25 Year Savings Dollars</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Five_Year_Savings_Percent__c</fullName>
+        <externalId>false</externalId>
+        <label>25 Year Savings Percent</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Utility_Company_Master__c</fullName>
+        <externalId>false</externalId>
+        <label>Utility Company</label>
+        <referenceTo>Utility_Company_master__c</referenceTo>
+        <relationshipLabel>D2D Proposals</relationshipLabel>
+        <relationshipName>D2D_Proposals</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>D2D Proposal</label>
+    <nameField>
+        <displayFormat>D2D-{0000}</displayFormat>
+        <label>D2D Proposal Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>D2D Proposals</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

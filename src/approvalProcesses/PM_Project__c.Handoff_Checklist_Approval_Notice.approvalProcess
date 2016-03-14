@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Customer_Care_Cases</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Customer Care Specialist Verification</description>
+        <label>Customer Care Specialist Verification</label>
+        <name>Customer_Care_Specialist_Verification</name>
+    </approvalStep>
+    <description>Handoff Checklist Approval Notice</description>
+    <emailTemplate>unfiled$public/Handoff_Checklist_Approval_Notice</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>PM_Project__c.Handoff_Check_list_Completed__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Handoff_Checklist_Status_Verified</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Handoff_Verification_date</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Handoff_Checklist_Rejection_Email_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Handoff_Checklist_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Handoff_Checklist_Completed_Flag</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Update_Handoff_Checklist_Completed_True</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Handoff Checklist Approval Notice</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

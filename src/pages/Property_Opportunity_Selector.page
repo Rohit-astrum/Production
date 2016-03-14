@@ -1,0 +1,36 @@
+<apex:page standardController="Property__c" extensions="PropertyControllerExtension" showHeader="false" sidebar="false">
+
+    <apex:outputPanel id="jspanel"> 
+        <script>  
+            function CloseAndRefresh(){
+                window.opener.location.href="/{!$CurrentPage.parameters.id}";
+                self.close();
+            }
+        </script>
+        </apex:outputPanel>
+
+    <apex:form >
+
+        <apex:pageBlock title="Select Opportunity for this Property.">
+        <apex:pageBlockTable value="{!accountOpportunities}" var="o">
+        <apex:column >
+            <apex:facet name="header">Account Name</apex:facet>
+            <apex:outputText value="{!o.Account.Name}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Opportunity Name</apex:facet>
+            <apex:outputText value="{!o.name}"/>
+        </apex:column>
+        <apex:column >
+            <apex:commandButton value="Assign" action="{!doAssignToOpp}" rerender="hiddenBlock" oncomplete="CloseAndRefresh()">
+                <apex:param name="oppId" value="{!o.Id}" assignTo="{!oppId}" />
+            </apex:commandButton>
+        </apex:column>
+
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+      
+        <apex:pageBlock id="hiddenBlock" rendered="false"></apex:pageBlock>
+
+    </apex:form>
+</apex:page>

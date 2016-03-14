@@ -1,0 +1,385 @@
+<apex:page doctype="html-5.0" controller="EmployeeLandingPageController" showHeader="false" sidebar="false" standardStyleSheets="false">
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+        <title>Astrum Solar - Home Solar the Right Way - Lower Your Utility Bills Today</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--<meta name="google-site-verification" content="vzNX2Vizola_A88N5vjQ-RSIrMiUp7RwHup00Y9wdNA" />-->
+        <meta name="description" content="The Local Home Solar Power Experts: you can afford to switch to solar today and instantly free yourself from unpredictable energy costs." />
+        <meta name="keywords" content="Astrum Solar, home solar, solar financing, solar lease, free solar installation, solar company" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0" /> -->
+    </meta>
+    
+    <link rel="Shortcut Icon" href="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/favicon.ico')}" />
+    
+    <apex:insert name="head-top"/>
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'fonts/avenir1stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'fonts/avenir2stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'fonts/avenir3stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'fonts/avenir4stylesheet.css')}" media="screen, projection" type="text/css" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'styles/screen.css')}" media="screen, projection" type="text/css" /> 
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <style type="text/css">
+         .gradient {
+            filter: none;
+     }
+    </style>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'javascript/plugins.js')}"></script>
+    <script src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'javascript/scripts.js')}"></script>
+    <script src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'javascript/jquery.maskedinput.js')}"></script>
+    <script src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'javascript/jquery.validate.js')}"></script>
+    <script src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'javascript/jquery.cookie-new.js')}"></script>
+   
+   
+   <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjW8e7ugyVVbyhx02d_viKVd9GP694je8&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+          var image = '{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/MAP_icon.png')}';
+          var myLatlng = new google.maps.LatLng(41.533166, -73.952302);
+          var mapOptions = {
+            zoom: 15,
+            center: myLatlng
+          }
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        
+          var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              icon: image,
+              title: 'We Are Going Solar!'
+          });
+        }
+     </script>
+
+
+
+    
+    <script type="text/javascript">
+    
+        function getURLParam(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
+            );
+        }
+        
+        var a_gclid = getURLParam('gclid');
+
+        var a_utmSource = getURLParam('utm_source');
+        if(a_utmSource == '')
+            a_utmSource = 'cmpt';
+            
+        var a_utmMedium = getURLParam('utm_medium');
+        if(a_utmMedium == '')
+            a_utmMedium = 'dm';
+            
+        var a_utmTerm = getURLParam('utm_term');
+
+        var a_utmContent = getURLParam('utm_content');
+
+        var a_utmCampaign = getURLParam('utm_campaign');
+        if(a_utmCampaign == '')
+            a_utmCampaign = 'indpachd'
+        
+        if (a_gclid!=''){
+        $.cookie('apex__gclid', a_gclid, { expires: 30, path: '/' });
+        }
+        if (a_utmSource!=''){
+        $.cookie('apex__astrum_utm_source', a_utmSource, { expires: 30, path: '/' });
+        }
+        if (a_utmMedium!=''){
+        $.cookie('apex__astrum_utm_medium', a_utmMedium, { expires: 30, path: '/' });
+        }
+        if (a_utmTerm!=''){
+        $.cookie('apex__astrum_utm_term', a_utmTerm, { expires: 30, path: '/' });
+        }
+        if (a_utmCampaign!=''){
+        $.cookie('apex__astrum_utm_campaign', a_utmCampaign, { expires: 30, path: '/' });
+        }
+        if (a_utmContent!=''){
+        $.cookie('apex__astrum_utm_content', a_utmContent, { expires: 30, path: '/' });
+        }
+    
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        $.cookie();
+        }
+    </script>
+
+    <apex:insert name="head-bottom"/>
+
+</head>
+
+<body>
+
+    <div id="main-container">
+    <div id="body-container">
+    
+        <div id="header">
+            <p class="acc"><a href="#content" title="Skip to content">Skip to content</a></p>
+            <header role="banner" class="wrapper group">
+                <hgroup>
+                    <h1 id="logo"><a href="http://www.astrumsolar.com" title="Astrum Solar"><span>Astrum Solar</span></a></h1>
+                </hgroup>
+                <div id="UpperRightNav">
+                     <h2><span>Call Us: 800-903-6130</span></h2>
+                     <h3><span>See a Sunny Day in a Whole New Way</span></h3>
+                     
+                </div>
+            </header>
+        </div>
+    
+        <div id="content" role="main">
+            <div class="wrapper group"> 
+                <article>
+                <h2>See a Solar Installation in Your Neighborhood!</h2>
+                    <section id="main" class="group">
+                        <div class="content-container">
+                            <div id="tab-content">
+        
+                                <!--BEGIN TAB ONE-->
+                                <div id="home">
+                                  <h3>Watch the installation and get your questions answered.</h3>
+                                  <div class="InstallHomeDateTimeInfo">
+                                     <div class="InstallHomeDateTimeInfoLeft">
+                                         <img src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/home-image.jpg')}"/>
+                                     </div>
+                                     <div class="InstallHomeDateTimeInfoRight">
+                                         <h2>You&rsquo;re Invited!</h2>
+                                         <p>Astrum Solar will be putting up a solar system on your neighbor&rsquo;s home in Wappingers Falls, located off of Sunflower Circle.</p>
+                                         <h3>Date:</h3>
+                                         <h4>June 21, 2014</h4>
+                                         <h3>Time:</h3>
+                                         <h4>11:00 AM &ndash; 3:00 PM</h4>
+                                         <h5>No RSVP Necessary. Just stop by!</h5>
+                                         <h5>Rain Date: June 22, 2014</h5>
+                                    </div>
+                                  </div> 
+                                </div>
+                                <!--END TAB ONE-->
+                                
+                                <!--BEGIN TAB TWO-->
+                                <div id="location">
+                                    <h3>View the below map to find out where we&rsquo;ll be.</h3>
+                                    <div class="InstallMap">
+                                        <div id="map-canvas" style="width: 100%; height: 100%"></div>
+                                        <p>Map of approximate installation location on Sunflower Circle in Wappingers Falls, NY. Look for Astrum Solar installation vehicles!</p>   
+                                    </div>
+                                </div>
+                                <!--END TAB TWO-->
+                                        
+                                <!--BEGIN TAB THREE-->
+                                <div id="contact" class="group">
+                                    <h3>Can&rsquo;t make it but have questions? Contact us today!</h3>
+                                    <div class="logo-spot-long group"><img title="Cara Humphrey" style="vertical-align:middle;" src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/headshot_Cara-Humphrey_noBorder.jpg')}"/>
+                                        <div class="partner-info local-solar-expert">
+                                            <p>Local Solar Expert</p>
+                                            <h3>Cara Humphrey</h3>
+                                            <p>845-489-7403</p>
+                                            <p><a href="mailto:cara.humphrey@astrumsolar.com">cara.humphrey@astrumsolar.com</a></p>
+                                        </div>
+                                    </div>
+                                    <p class="annotation left">Dan and Ruth, 7 kW System &mdash; ELECTRICITY SAVINGS: $1,247/year</p>
+                                </div>
+                                <!--END TAB THREE-->
+                                    
+                            </div>
+                        </div>
+        
+                        <div class="form-container">
+                           
+                            <!--BEGIN TAB NAV-->
+                            <ul id="tabs" class="group">
+                                <li class="home"><a href="javaScript:void(0);" title="Home" id="home-btn"><img src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/home-btn.png')}" title="Home" /></a></li>
+                                <li><a href="javaScript:void(0);" title="Map and Location" id="location-btn">Map &amp; Location</a></li>
+                                <li><a href="javaScript:void(0);" title="Can't Make It?" id="contact-btn">Can&rsquo;t Make It?</a></li>
+                            </ul>
+                            <!--END TAB NAV-->
+        
+                            <!--BEGIN FORM-->
+                            <div id="form">
+                                <apex:form styleClass="save-form">
+        
+        <apex:actionRegion >
+    
+        <apex:outputPanel id="formArea" layout="block">
+        
+            <apex:outputPanel rendered="{!NOT(submitted=true)}">
+    
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <legend>Find Out How Much You Can Save</legend>
+            <ul>
+                <li class="fname">
+                    <label for="fname" class="acc">First Name</label>
+                    <input type="text" id="fname" name="fname" value="First Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="lname">
+                    <label for="lname" class="acc">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="Last Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="email">
+                    <label for="email" class="acc">Email Address</label>
+                    <input type="text" id="email" name="email" value="Email Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="phone">
+                    <label for="phone" class="acc">Phone</label>
+                    <input type="text" id="phone" name="phone" value="Phone" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="street">
+                    <label for="street" class="acc">Street Address</label>
+                    <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="city">
+                    <label for="city" class="acc">City</label>
+                    <input type="text" id="city" name="city" maxlength="100" value="City" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="state">
+                    <label for="state" class="acc">State</label>
+                    <select id="state" name="state" class="noPlaceholder required" >
+                      <apex:repeat value="{!states}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>                      
+                    </select>
+                </li>
+                <li class="zip">
+                    <label for="zip" class="acc">Zip</label>
+                    <input type="text" id="zip" name="zip" value="Zip" placeholder="" class="noPlaceholder" />
+                </li>
+                
+               
+                
+                
+                <li class="heard">
+                    <label for="heard" class="acc">How Did You Hear About Us? </label>
+                    <apex:outputPanel layout="block" id="abourUsSelect">
+                        <select id="heard" name="heard" class="noPlaceholder notSelected">
+                            <option value="">How Did You Hear About Us? </option>
+                            <apex:repeat value="{!ctleadSources}" var="u"><option value="{!u.value}">{!u.label}</option></apex:repeat>
+                        </select>
+                    </apex:outputPanel>
+                </li>
+                
+                <li id="more-info" class="heard_detail" style="display: none;">
+                    <label class="acc" for="heard_detail">More Details</label>
+                        <input type="text" class="noPlaceholderMoreDetails" placeholder="" value="" name="heard_detail" id="heard_detail" />
+                    </li>
+                <li class="errorMessage">
+                    <p>Please complete all required fields.</p>
+                </li>
+                 
+                
+                <li class="submit">
+                    <input type="submit" value=""  class="button" id="submit-btn" />
+                </li>
+                <li class="updates group">
+                    <label for="updates" class="acc">I want to receive alerts &amp; Solarize program updates from Astrum Solar.</label>
+                    <input type="checkbox" id="updates" name="updates" value="yes" checked="yes" />
+                     <p>I want to receive alerts &amp; updates from Astrum Solar.</p>
+                </li>
+            </ul>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!OR(submitted==true)}">
+                <h2>Find Out How Much You Can Save</h2>
+                <h3>Thank You</h3>
+                <p class="thanks">Thank you for requesting a solar consultation. One of our solar experts will <span>contact you within the next 48 hours</span> to 
+                follow up on your request for a no obligation home solar site assessment.</p>
+
+                <p class="thanks icon"><img src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, '/images/Form_KnowledgeIcon.png')}" alt="Lightbulb"/>To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.</p>
+    
+                <p class="thanks"><span>We hope to have the opportunity to help you go solar.</span></p>
+    
+            </apex:outputPanel>
+        
+        </apex:outputPanel>
+
+        <apex:actionFunction name="doSubmit" action="{!submit}" rerender="formArea"/>
+        
+        </apex:actionRegion>
+
+        </apex:form>
+                            </div>
+        <div class="call-to-action">
+                        <p class="promo-text">When life gives you sunshine, make solar electricity!</p>
+                     </div>
+                            
+                        </div>
+                    </section>
+                    
+                    
+                    
+                    <section id="landing-content-1" class="group">
+                       <div class="landing-detail">
+                            <p class="marketing-content">Swing on by and watch live as Astrum Solar installs a solar system on your neighbor&rsquo;s home. An expert will be on hand to answer any questions you have about what&rsquo;s involved in going solar. If you&rsquo;re interested in going solar too, they&rsquo;ll be able to assess the solar potential and electricity savings for your home. Refreshments will be served. Bring your family and friends!</p>
+                        </div>
+                    </section>
+                    <section id="landing-content-3" class="group">
+                       <div class="landing-detail">
+                            <p class="marketing-content">Astrum Solar is proud to have helped thousands of homeowners become clean energy producers. Switch to solar today and instantly free yourself from unpredictable energy costs. Astrum Solar makes it so easy and rewarding that you have nothing to lose &mdash; and a lifetime of carefree energy savings to gain. <span>Request your no obligation home solar site assessment today.</span></p>
+                        </div>
+                        <div class="landing-cta">
+                            <p>Astrum Solar is one of the fastest growing solar companies in America.</p>
+                            <p class="pic"><img src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/Inc500No2_2012.gif')}" title="" /></p>
+                            <p class="pic"><a id="bbblink" class="ruvtbus" href="http://www.bbb.org/greater-maryland/business-reviews/solar-energy-system-design-and-installation/astrum-solar-in-annapolis-junction-md-90168289#bbbseal" title="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" style="display: block;position: relative;overflow: hidden; width: 40px; height: 72px; margin: 0px; padding: 0px;"><img style="padding: 0px; border: none;" id="bbblinkimg" src="http://seal-greatermd.bbb.org/logo/ruvtbus/astrum-solar-90168289.png" width="80" height="72" alt="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" /></a><script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-greatermd.bbb.org' + unescape('%2Flogo%2Fastrum-solar-90168289.js') + "' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                        </div>
+                    </section>
+                    <section id="landing-content-details-more-info" class="group">
+                       <div class="landing-content-details-more-info-left">
+                           <h4>System Details:</h4>
+                           <img align="left" src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/Installation_Photo.jpg')}"/>
+                           <p class="intro">Here&rsquo;s what we&rsquo;re installing!</p>
+                           <p><span>Size:</span> 8.25 kW</p>
+                           <p><span>Year 1 Electricity Savings:</span> $1,523</p>
+                       </div>
+                       <div class="landing-content-details-more-info-right">
+                           <h4>For More Information:</h4>
+                           <img align="left" src="{!URLFOR($Resource.InstallDemoLandingPage_Resources, 'images/headshot_Cara-Humphrey.jpg')}"/>
+                           <h5>Cara Humphrey</h5>
+                           <p class="phone"><span>Phone:</span> 845-489-7403</p>
+                           <p class="email"><span>Email:</span> <a href="mailto:cara.humphrey@astrumsolar.com">cara.humphrey@astrumsolar.com</a></p>
+                           <p class="quote">I&rsquo;ll be at the installation to answer your questions!</p>
+                       </div>
+                    </section>
+                        
+                </article>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <footer role="contentinfo" class="container group">
+                <div id="copyright">
+                    <p>Copyright &copy; {!YEAR(TODAY())} Astrum Solar, Inc.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/" title="Astrum Solar website">AstrumSolar.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/terms-and-conditions" title="Terms and Conditions">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/contact-us" title="Contact Us">Contact Us</a></p>
+                </div>   
+            </footer>
+
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
+</apex:page>

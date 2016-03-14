@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Mass Solar Connect 8/6/15.Mass Solar Connect 8/6/15</name>
+    <style>none</style>
+    <subject>Only 4 weeks left to get low Mass Solar Connect pricing!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://go.directenergysolar.com/mass-solar-connect&gt;
+
+Mass Solar Connect
+ &lt;http://www.masssolarconnect.org/&gt;
+
+Your Neighbors Are Going Solar. You Can Join Them.
+
+Dear {{lead.First Name:default=Friend}},
+
+Join the most popular and quickest-selling community solar program in Massachusetts history!
+
+Only 4 weeks left to sign a contract to get low Mass Solar Connect pricing. The Mass Solar Connect price is 30% lower than the price paid by MA residents who went solar in 2014.The program ends on August 31st.
+
+150 people have already signed up for solar, making this program one of the  most successful in the history of Solarize Mass programs. 
+
+We are pleased to announce that we are now offering the all-black LG 300-watt panel in place of the Suniva 275-watt panel for the same additional price per watt as the Suniva. This will help increase your power production with fewer panels required to cover your electric bill. If you already have a proposal for Suniva panels from your Solar Consultant, you can choose to continue with these panels or upgrade to the LG. Both panels are warrantied for 25 years and will provide reliable power for years to come.
+
+Massachusetts Clean Energy Center
+&lt;http://www.masscec.com/&gt;
+
+Mass Energy Consumers Alliance
+ &lt;http://www.massenergy.org/&gt;
+
+Mass Solar Connect is a partnership between Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumers Alliance (Mass Energy) and Direct Energy Solar.
+
+
+Many thanks to our program leaders!
+
+Our thanks to our Mass Solar Connect program leaders who collectively will install over 1 Megawatt in new clean solar power this year, reducing carbon emissions by 1,000,000 pounds each year. According to the Greenhouse Gas Equivalencies Calculator &lt;http://www.epa.gov/cleanenergy/energy-resources/calculator.html&gt; from the EPA, this is equivalent to planting 20,000 leafy green trees.
+
+Hurry, there is not much time left to go solar at Mass Solar Connect&apos;s incredibly low group price!
+
+If you are already working with a Solar Consultant, then please contact him or her. To request a free site evaluation, access www.masssolarconnect.org or call Direct Energy Solar at800-903-6130.
+
+If you have any questions, please contact Meredith Geraghty at meredith@massenergy.orgor 617-524-3950 ext. 128.
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Mass Solar Connect.
+
+The Mass Solar Connect program is open to Mass Energy members and members of affiliated nonprofits. The enrollment period begins March 2, 2015 and lasts through August 31, 2015.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumer Alliance (Mass Energy) or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+MA HIC 168228/ELC 21555A
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

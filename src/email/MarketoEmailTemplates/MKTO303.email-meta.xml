@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Roofing Installers 081015.Roofing Installers 1</name>
+    <style>none</style>
+    <subject>Your customers will love you for this</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+
+
+Earn thousands in added revenue for your business, simply by telling your customers how they can save with solar on their roof.
+&lt;http://partners.directenergysolar.com/roof&gt;
+
+Dear {{lead.First Name:default=Friend}},
+
+Most homeowners don’t realize how affordable solar has become. According to a report by the International Renewable Energy Agency, prices have fallen by 80% since 2008 and are expected to keep dropping. Meanwhile, panels have become more efficient, offering greater-than-ever savings. What does this have to do with your business? We want your help to get the word out to your customers.
+
+You’re already on their roofs. They are already making a 20+ year investment in their homes. It’s the perfect time for your customers to consider going solar to begin accruing big energy savings every year over the life of their new roof.
+
+Here’s the best part: While you’re helping your customers, you’re also helping your business by earning up to $900 on every qualified customer* you refer &lt;http://partners.directenergysolar.com/roof&gt; to us as a Referral Partner of Direct Energy Solar.
+
+It’s easy and risk-free to sign up to become a partner.
+• We will do all the marketing and selling
+• You get an easy-to-use online portal to input your leads and to track payouts
+
+Start earning your rewards today!
+ &lt;http://partners.directenergysolar.com/roof&gt;
+
+It’s as simple as that. What a great way to ensure they will continue to do business with you and refer your business to friends and family. I look forward to speaking to you more about this great opportunity for both our businesses.
+
+Suzanne Borneman
+Sr. Manager, Field Marketing
+240-278-8616
+roofingpartner@directenergysolar.com &lt;mailto:roofingpartner@directenergysolar.com&gt;
+
+You are receiving this email because you could benefit from the Direct Energy Solar Partner Program.
+
+*You will be paid $150 per qualified lead and $750 per each sale. A qualified lead is a prospect that agrees to a roof evaluation by Direct Energy Solar and has not been disqualified in Direct Energy Solar’s qualification process.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy 
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com 
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

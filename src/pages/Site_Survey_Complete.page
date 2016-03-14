@@ -1,0 +1,5 @@
+<apex:page standardController="Event"           
+           extensions="Site_Survey_Complete_Controller_Ext" showHeader="true" sidebar="true" 
+           action="{!updateEvent}" >
+   <apex:pageMessages id="messages" />
+</apex:page>

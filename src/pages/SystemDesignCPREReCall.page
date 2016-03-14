@@ -1,0 +1,10 @@
+<!-- 
+   FILE: SystemDesignCPREReCall
+ * AUTHOR: Rohit Jain
+ * DATE: Sep 24, 2013
+ * PURPOSE: Clean Power Estimator Web Service Callout for Site Quality Called from Button on System Design
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="System_Design__c" extensions="SystemDesignCPREReCallExtension" action="{!reCallCPRE}">  
+
+</apex:page>

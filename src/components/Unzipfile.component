@@ -1,0 +1,146 @@
+<apex:component >
+
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"/>
+    <apex:attribute name="name" type="string" description="Name of the Javascript function generated to unzip files"/>
+    <apex:attribute name="state" type="string" description="Value passed to the JavaScript Remoting action calls as each file is unzipped."/>
+    <apex:attribute name="onreceive" type="string" description="Name of a JavaScript Remoting action to receive the zip file entries."/>
+    <apex:attribute name="onstart" type="string" description="Name of a JavaScript Remoting action to Start."/>
+    <apex:attribute name="oncomplete" type="string" description="JavaScript executed when all the zip files entries are unzipped."/>
+    <apex:attribute name="locations" type="Install_Location__c[]" description="Value passed to the JavaScript Remoting action calls as each file is unzipped."/>    
+    <apex:attribute name="access" type="string" description="Box Access Token."/>   
+    
+    <script type="text/javascript">
+        
+        function receiveZipFileEntry(filename, path, data, locations) {
+            
+            if(locations == '[]')
+            {
+                Visualforce.remoting.Manager.invokeAction(
+                '{!onreceive}', 
+                filename, path, data, null,
+                function(result, event){
+                    if (event.status) {                        
+                        unzip{!name}Next(result);
+                    } else if (event.type === 'exception') {
+                        alert(event.message);
+                    } else {
+                        alert(event.message);
+                    }
+                }, 
+                {escape: true}
+                ); 
+            }
+            else
+            {
+                
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!onreceive}', 
+                    filename, path, data, locations,
+                    function(result, event){
+                        if (event.status) {
+                            unzip{!name}Next(result);
+                        } else if (event.type === 'exception') {
+                            alert(event.message);
+                        } else {
+                            alert(event.message);
+                        }
+                    }, 
+                    {escape: true}
+                );
+            }    
+        }
+        function receiveComplete(locations) {
+            $('#ajaxLoading').css('visibility', 'hidden');  
+            eval('{!oncomplete}');            
+        }     
+              
+    </script>   
+    <apex:pageBlockSection >
+    <apex:pageBlockSectionItem >
+    <apex:outputLabel value="Choose File" />
+   
+    <input type="file" id="files"/> <!-- TODO: Make this Id unique -->  
+    </apex:pageBlockSectionItem>
+    </apex:pageBlockSection>
+     <c:Unzip name="unzip{!name}" locations="{!locations}" oncomplete="if(more) receiveZipFileEntry(filename, path, data, locations); else receiveComplete(locations);"/>    
+    <script>
+        function handleFileSelect(evt) 
+        {
+            $('#ajaxLoading').css('visibility', 'visible');
+
+            var parentId;
+            var file = evt.target.files[0];    
+
+             /*          
+            var form = new FormData();
+           
+            // The content of the file
+            var fileBody = evt.target.files[0];
+             
+            // JS file-like object
+            var blob = new Blob([fileBody], { type: 'text/xml'});
+             
+            // Add the file to the form
+            //form.append('filetestrj', blob);
+            form.append('file1', fileBody );    
+           
+            var uploadUrl = 'https://upload.box.com/api/2.0/files/content';
+             
+            // The Box OAuth 2 Header. Add your access token.
+            var headers = {
+                Authorization: 'Bearer {!access}'
+            };
+
+           
+            SurveyCreationPageExtension.createBoxFolder('{!access}', function (result, event) {
+                if (event.status) {                    
+                    parentId = result;
+                    // Add the destination folder for the upload to the form
+                    form.append('parent_id', parentId);
+                    $.ajax({
+                        url: uploadUrl,
+                        headers: headers,
+                        type: 'POST',
+                        // This prevents JQuery from trying to append the form as a querystring
+                        processData: false,
+                        contentType: false,
+                        data: form
+                    }).complete(function ( data ) {
+                        // Log the JSON response to prove this worked
+                        console.log(data.responseText);
+                    });
+
+                    SurveyCreationPageExtension.updateBoxFolder('{!access}', parentId ,function (result, event) {
+                        if (event.status) {                    
+                           alert('update '+result);
+                        } else {
+                            alert(event.message);
+                        }
+                    });
+
+                } else {
+                    alert(event.message);
+                }
+            });
+
+
+            */
+
+            var reader = new FileReader();
+            reader.onload = (function(file) 
+            {
+                return function(e) 
+                { 
+                     unzip{!name}Start(file.name, e.target.result.split(",")[1]); 
+                };
+            }(file)); 
+                                       
+            reader.readAsDataURL(file);      
+
+
+           
+        }       
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);  
+        
+    </script>
+</apex:component>

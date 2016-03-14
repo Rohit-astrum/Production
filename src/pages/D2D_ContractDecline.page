@@ -1,0 +1,126 @@
+<apex:page showHeader="false" standardStyleSheets="false" controller="D2D_ContractDeclineController" applyHtmlTag="false" applyBodyTag="false">
+
+    <apex:composition template="D2D_SiteTemplate">
+        <apex:define name="head-top"> 
+
+            <meta name='description' content='D2D - Decline Contract' />
+            <title>D2D - Decline Contract</title>
+
+        </apex:define>
+        <apex:define name="head-bottom"> 
+        
+    		<script type="text/javascript">
+			
+				//Avoid conflicts between jQuery and apex
+      			$j = jQuery.noConflict();
+
+				$j(document).on('pageshow', function(){
+					$j('select').change(function() {
+						if($j(this).val()!='0'){
+							$j('#declineBtn').removeClass("ui-state-disabled"); 
+						} else {
+							$j('#declineBtn').addClass("ui-state-disabled"); 
+						}
+					});
+				});
+
+				function confirmNo(){
+					$j( '#closePopup' ).popup( 'open' );
+					return false;
+				}
+
+				function closePopupDialog(){
+					$j( '#closePopup' ).popup( 'close' );
+				}
+			</script>
+		</apex:define>
+
+        <apex:define name="navigation">
+
+            <c:D2D_AccountInfo />
+ 
+        </apex:define>
+			
+		<apex:define name="header-btns">
+		    <div class="headerBtns">
+				<!--<h1><span class="unbold">Lead: </span><span class="leadName">{!referral.Full_Name__c}</span>  <a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-orangebg"></i></a></h1>
+	    		<div>
+	    			<div class="headerBtnsLeft">
+	    				<h2><i class="fa fa-thumbs-down fa-1x fa-pageicon"></i> Opt Out</h2>
+	   				</div><div class="headerBtnsRight">
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-th fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+					</div>
+					<div class="ClearAll"></div>
+				</div>-->
+				<div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-thumbs-down fa-1x fa-pageicon"></i> Decline Contract</h1>
+		 			</div><div class="headerBtnsRight">
+		 				<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+	                </div>
+					<div class="ClearAll"></div>
+				</div>
+    		</div>
+			<div data-role="popup" data-overlay-theme="a" id="closePopup"  class="ui-content">
+				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+				<h3>Important!</h3>
+				<p>You chose to decline the contract. <b>This will close the opportunity. Are you sure</b>?</p>
+                   <div class="closePopupBtns">
+						<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all" onclick="closePopupDialog();displayLoader('Declining Contract...');decline();">Yes</a>
+                   		<a href="#" class="ui-btn ui-btn-inline ui-btn-grey ui-corner-all" onclick="closePopupDialog();">Cancel</a>
+                   </div>
+			</div>
+		</apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		    <div class="footerBtns">
+	    		<div class="footerBtnsLeft">
+		    		<!--<a class="ui-btn ui-btn-inline ui-icon-btn"  onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a> -->
+	    		</div><div class="footerBtnsRight">
+			    	<a href="#" id="declineBtn" class="ui-btn ui-btn-large ui-btn-inline ui-state-disabled ui-btn-green ui-corner-all" onclick="confirmNo();"><i class="fa fa-check fa-lg fa-left"></i>Submit</a>
+			    </div>
+				<div class="ClearAll"></div>
+		    </div> 
+	    </apex:define>
+
+		<apex:define name="content">
+		<apex:form styleclass="mainForm">
+			<div id="Content">
+				<div class="container greycontainer">
+					<table class="declineReason">
+						<tr>
+							<td>
+								<div class="declineReasonLabel">Reason for declining <span class="required">*</span></div>
+							</td>
+							<td>
+								<div class="declineReasonDropDown">
+				                    <apex:selectList value="{!selectedClosedReason}" size="1" rendered="true">
+				                    	<apex:selectOptions value="{!closedReasons}"/>
+				                    </apex:selectList>
+		                        </div>
+		                    </td>
+						</tr>
+						<tr>
+							<td>
+		                    	<div class="declineReasonLabel">Notes <span class="required">*</span></div>
+		                    </td>
+							<td>
+								<apex:inputTextArea value="{!closedNotes}" rendered="true"/>
+							</td>
+						</tr>
+					</table>
+	            </div>
+			</div>
+        	<apex:actionFunction name="decline" action="{!decline}" rerender="assignErrors" oncomplete="stopLoader();">
+            </apex:actionFunction>
+			</apex:form>
+		</apex:define>
+	
+    </apex:composition>
+</apex:page>

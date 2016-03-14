@@ -1,0 +1,32 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+<apex:composition template="{!$Site.Template}">
+
+<apex:define name="head-top">
+
+    <meta name='description' content='Direct Energy Solar Employee Portal' />
+    <title>Direct Energy Solar Employee Portal</title>
+    
+</apex:define>
+
+<apex:define name="navigation">
+
+    <!--<div id="BookMark">
+        <a href="javascript:if(document.all)window.external.AddFavorite(location.href,document.title); else if(window.sidebar)window.sidebar.addPanel (document.title,location.href,document.title); else if(chrome.booksmarks) chrome.bookmarks.create({'parentId': bookmarkBar.id});">Bookmark This Page</a>
+    </div>-->
+    
+</apex:define>
+
+<apex:define name="content">
+<div id="ContentLogin">
+            <div class="container">
+                <div class="sixteen columns">
+    <div id="FullColumn">
+        <c:EP_Login />
+    </div>
+  </div>
+  </div>
+  </div>
+</apex:define>
+
+</apex:composition>
+</apex:page>

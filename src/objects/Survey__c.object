@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>SurveyCreationPage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>SurveyCreationPage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumCRM - An object to keep track of the site survey events (Pictometry, Field, Electrical, and Structural) that occur on Properties.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>&apos;pete&apos;</formula>
+        <label>Account Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Aerial_Photo_Vendor__c</fullName>
+        <description>Which Vendor Provided the Aerial Photo Survey</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Which Vendor Provided the Aerial Photo Survey?</inlineHelpText>
+        <label>Aerial Photo Vendor</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Aurora</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Eagle View</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Date_Completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Completed</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <externalId>false</externalId>
+        <label>Property</label>
+        <referenceTo>Property__c</referenceTo>
+        <relationshipLabel>Surveys</relationshipLabel>
+        <relationshipName>Surveys</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Surveyor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Surveyor</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Surveys</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tree_Removal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Tree Removal</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Survey</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>Survey-{0}</displayFormat>
+        <label>Survey</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Surveys</pluralLabel>
+    <recordTypeTrackFeedHistory>true</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Aerial_Photo_Survey</fullName>
+        <active>true</active>
+        <description>Aerial Photography and Remote Measurement</description>
+        <label>Aerial Photo Survey</label>
+        <picklistValues>
+            <picklist>Aerial_Photo_Vendor__c</picklist>
+            <values>
+                <fullName>Aurora</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eagle View</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Electrical_Survey</fullName>
+        <active>true</active>
+        <description>Survey of the Electrical System</description>
+        <label>Electrical Survey</label>
+        <picklistValues>
+            <picklist>Aerial_Photo_Vendor__c</picklist>
+            <values>
+                <fullName>Eagle View</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Field_Survey</fullName>
+        <active>true</active>
+        <description>Survey Completed in Person By an Astrum Surveyor</description>
+        <label>Field Survey</label>
+        <picklistValues>
+            <picklist>Aerial_Photo_Vendor__c</picklist>
+            <values>
+                <fullName>Eagle View</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Structural_Survey</fullName>
+        <active>true</active>
+        <description>Survey of the Structural Members, Conditions, Etc</description>
+        <label>Structural Survey</label>
+        <picklistValues>
+            <picklist>Aerial_Photo_Vendor__c</picklist>
+            <values>
+                <fullName>Eagle View</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pictometry</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

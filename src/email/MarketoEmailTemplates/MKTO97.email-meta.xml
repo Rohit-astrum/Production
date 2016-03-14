@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Autoresponses.Astrum Solar Unresponsive Autoresponse</name>
+    <style>none</style>
+    <subject>{{lead.First Name:default=Friend}}, may we still help you go solar?</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com&gt;
+
+Call Us: 800-903-6130
+See a Sunny Day In a Whole New Way
+
+Let&apos;s lower your electricity bill.
+Dear {{lead.First Name:default=Friend}},
+We’ve been trying to reach you and haven’t heard back. May we still help you go solar?
+We have been trying to reach you to help you instantly lower your utility costs and protect you from rising electricity rates. Since we have not heard back from you, we wanted to reach out to see if you were still interested in going solar or if you had any questions.
+We understand you are busy and want to be respectful of your time and email inbox, so we’ll stop reaching out for the time being – we don’t want to be a pest! We hope to have the opportunity to help you go solar.
+If you are still interested, please call us at 800-903-6130.
+
+Let Astrum Solar help you understand your solar options. Download your free guide!
+
+We’re pleased to offer you our downloadable guide which will help you better understand the benefits of going solar, financing options available, and the factors that influence the amount of your financial return. Plus, much more!
+
+Download your free copy of “Your Guide to Understanding Solar Power.” &lt;http://pages.astrumsolar.com/rs/astrumsolarinc/images/AstrumSolar_UnderstandingSolarPower.pdf&gt;
+
+
+Hear from our satisfied customers.
+
+It started out with,‘Wouldn’t it be cool to do this,’ but then I saw how quickly this would pay out.”
+Dale and Janice, Derwood, MD
+ELECTRICITY SAVINGS: $1,202/yr
+
+Thousands of Astrum Solar customers are harnessing the sun’s full potential for their homes and saving money on electricity. Read their stories. &lt;http://www.astrumsolar.com/customer-stories/&gt;
+
+
+Call Us: 800-903-6130
+See a Sunny Day In a Whole New Way
+
+You’re receiving this email because you’ve expressed interest in an Astrum Solar system installation.
+
+A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. CA 992952, CT 0628993, DC 420212000078, MD 126447, MA 168228, NJ 13VH05618900, NYSERDA Certified Installer, OH 46771, PA 023535, VA 2705143744
+
+Astrum Solar, Inc.
+8955 Henkels Lane, Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+
+Copyright © 2014 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.astrumsolar.com/privacy-policy&gt; 
+
+Terms &amp; Conditions
+&lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com
+&lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,21 @@
+<messaging:emailTemplate subject="Meet Our Customer Care Team" recipientType="Contact" relatedToType="PM_Project__c">
+<messaging:plainTextEmailBody >
+
+Hello {!recipient.FirstName} {!recipient.LastName},
+
+Congratulations on the completion of your Direct Energy Solar system! It has been my pleasure to work with you during the installation process, and I am confident that in the coming months and years you will enjoy all the benefits of solar energy that you were looking for when you selected Direct Energy Solar as your partner.
+
+Going forward, if you ever need to contact us please reach out to our knowledgeable Customer Care Team. Anyone on the team will be happy to answer any questions or resolve any issues that arise. They may be reached at:
+ 
+CustomerCare@directenergysolar.com
+1-888-603-6085
+ 
+Additionally, soon you will receive a Customer Experience Satisfaction Survey by email. I would greatly value your honest feedback on our performance. Let us know what we doing well, as well as point out how we can improve, so we can continue to work toward exceeding our customers’ expectations. Thank you!
+ 
+Best regards,
+
+
+
+
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

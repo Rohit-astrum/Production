@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Autoresponses.3rd Party Lead Autoresponse</name>
+    <style>none</style>
+    <subject>Responding to your solar inquiry</subject>
+    <textOnly>{{lead.First Name:default=Friend}} - Thank You For Your Interest
+
+Astrum Solar is pleased to receive your request for information about residential solar installation via the form you submitted from one of our business partners. Per the terms outlined on their site, you are likely to receive information from multiple solar installers, and we look forward to the opportunity to share details about our products, pricing and experience.
+While we are in the process of reaching out to you via phone, we hope you will take this opportunity to become familiar with Astrum Solar, as we are one of the top ten solar installers in America.
+Here are a few facts about our company:
+ 
+
+
+ - Ranked #2 on the Inc. 500 list of fastest growing companies with a perfect &apos;A+&apos; rating from the Better Business Bureau
+ - Thousands of residential installations completed
+ - We will guarantee workmanship and energy production, while your panels and inverters are warrantied for 25 years
+ - Fast, efficient design and installation process with a single point of contact
+ - Financing options that meet your needs – purchase, lease or loan based on what is right for you
+
+
+These are just a few of the reasons why Astrum Solar has become a market leader in solar installations. We look forward to connecting with you to discuss your needs and appreciate your consideration of our company. If you are ready now to have a discussion, you can give us a ring at 800-903-6130.
+ 
+
+Best regards,
+
+Astrum Solar
+
+ &lt;http://www.bbb.org/greater-maryland/business-reviews/solar-energy-system-design-and-installation/astrum-solar-in-annapolis-junction-md-90168289#bbbseal&gt;
+
+
+Let Astrum Solar help you understand your solar options. Download your free guide!
+
+We’re pleased to offer you our downloadable guide which will help you better understand the benefits of going solar, financing options available, and the factors that influence the amount of your financial return. Plus, much more!
+
+Download your free copy of “Your Guide to Understanding Solar Power.” &lt;http://pages.astrumsolar.com/rs/astrumsolarinc/images/AstrumSolar_UnderstandingSolarPower.pdf&gt;
+You’re receiving this email because you’ve expressed interest in an Astrum Solar system installation.
+A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. CA 992952, CT 0628993, DC 420212000078, MD 126447, MA 168228, NJ  13VH05618900, NYSERDA Certified Installer, OH 46771, PA 023535, VA  2705143744
+Astrum Solar, Inc.
+
+8955 Henkels Lane, Suite 508
+
+Annapolis Junction, MD 20701
+
+P: 800-903-6130
+
+F: 443-267-0036</textOnly>
+    <type>custom</type>
+</EmailTemplate>

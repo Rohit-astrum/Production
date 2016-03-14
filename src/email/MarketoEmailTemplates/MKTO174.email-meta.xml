@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Re-engagement 1.Growth opportunities in solar (2)</name>
+    <style>none</style>
+    <subject>Growth opportunities in solar</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+A Special Message from Our Partner Program
+
+Dear {{lead.First Name:default=Friend}},
+
+Adoption of solar power is skyrocketing! Did you know the demand for solar is going to increase to over 1.5 million homes in 2017? As costs for solar continue to plummet, solar has become affordable for millions of homeowners.
+
+Your business already provides a valuable service for homeowners. As a Referral Partner of Direct Energy Solar you can help your customers save money on one of their highest monthly expenses by sharing your solar opportunity with them. When one of your customers decides to go solar, they will have at least twenty years of electricity savings that YOU helped them discover. What a great way to ensure they will continue to do business with you for the long term and refer you to their friends and family. Both our companies will benefit from our relationship. As you know, the majority of consumers base their purchases on referrals. What better way to add value to your existing customer base and make money doing it.
+
+Remember that you don’t have to sell solar – just provide referrals! It takes only minutes of conversation with a customer to get them excited about going solar.
+
+If 2 team members refer 5 sales each you could put $9,000 in your pocket*
+*based on $150 per qualified lead and $750 per sale
+
+
+Let us help you reach your solar goals:
+
+- No program costs
+
+- Marketing materials available to customize
+
+ - Online portal &lt;http://partners.directenergysolar.com/&gt; for easy lead submission
+
+ - Use of Monthly promotions &lt;http://www.directenergysolar.com/&gt;
+
+Please let me know how I can help you reach out to your customers!
+
+Suzanne
+Senior Manager, Field Marketing
+ 240-278-8616
+ suzanne.borneman@directenergysolar.com &lt;mailto:suzanne.borneman@directenergysolar.com&gt;
+
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

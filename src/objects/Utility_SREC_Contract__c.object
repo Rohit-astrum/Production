@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>SREC Contracts for deliveries of SRECs to Utility Companies</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Broker_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Broker for this Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Broker for this Contract</inlineHelpText>
+        <label>Broker Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Utility SREC Contracts (Broker Account)</relationshipLabel>
+        <relationshipName>Brokered_Utility_SREC_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Broker__c</fullName>
+        <description>Broker</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Broker</inlineHelpText>
+        <label>Broker</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Brokerage_Commission__c</fullName>
+        <description>Commission of Brokerage in $/SREC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Commission of Brokerage in $/SREC</inlineHelpText>
+        <label>Brokerage Commission ($/SREC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Certification_Type__c</fullName>
+        <description>Does this contract require certification or siting?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Does this contract require certification or siting?</inlineHelpText>
+        <label>Certification Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Certified</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sited</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Execution_Date__c</fullName>
+        <description>Contract Execution Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract Execution Date</inlineHelpText>
+        <label>Contract Execution Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Status__c</fullName>
+        <description>Contract Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract Status</inlineHelpText>
+        <label>Contract Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Current</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Type__c</fullName>
+        <description>Are we Buying or Selling SRECs in the Contract?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Are we Buying or Selling SRECs in the Contract?</inlineHelpText>
+        <label>Contract Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Sale</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Purchase</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Counterparty_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account of Contract&apos;s Counterparty</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account of Contract&apos;s Counterparty</inlineHelpText>
+        <label>Counterparty Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Utility SREC Contracts</relationshipLabel>
+        <relationshipName>Utility_SREC_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Eligible_States__c</fullName>
+        <description>States Where Contract is Eligible to be Certified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>States Where Contract is Eligible to be Certified</inlineHelpText>
+        <label>Eligible States</label>
+        <picklist>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>KY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Max_Contract_Price_SREC__c</fullName>
+        <description>Maximum Price of Deliveries on this Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Maximum Price of Deliveries on this Contract</inlineHelpText>
+        <label>Max Contract Price ($/SREC)</label>
+        <summarizedField>Utility_SREC_Delivery__c.Contract_Price_per_SREC__c</summarizedField>
+        <summaryForeignKey>Utility_SREC_Delivery__c.Utility_SREC_Contract__c</summaryForeignKey>
+        <summaryOperation>max</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Required_State_Certification__c</fullName>
+        <description>What State Certification is Required?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What State Certification is Required?</inlineHelpText>
+        <label>Required State Certification</label>
+        <picklist>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA II</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Trade_Date__c</fullName>
+        <description>Trade Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Trade Date</inlineHelpText>
+        <label>Trade Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Utility SREC Contract</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Contract_Type__c</columns>
+        <columns>Counterparty_Account__c</columns>
+        <columns>Required_State_Certification__c</columns>
+        <columns>Max_Contract_Price_SREC__c</columns>
+        <columns>Contract_Status__c</columns>
+        <columns>Contract_Execution_Date__c</columns>
+        <columns>Trade_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>UTILITY-SREC-{000000000}</displayFormat>
+        <label>Contract Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Utility SREC Contracts</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Counterparty_Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Contract_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Required_State_Certification__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Eligible_States__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Trade_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Contract_Execution_Date__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

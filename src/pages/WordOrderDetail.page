@@ -1,0 +1,257 @@
+<!--
+FILE: WordOrderDetail.page
+AUTHOR: Larry Hovind
+DATE: April 18, 2014
+PURPOSE: Displays Work Order details on PM Project 2.0 tab
+MODIFICATION HISTORY:
+    May 19 2014 - LLH - replaced all placeholder DIVs with Rootstock page in iFrames
+    May 23 2014 - LLH - added messaging logic to receive postMessage from iFrames and adjust height
+    May 27 2014 - LLH - changed handling of resize message, change onresize to timer watch of size
+    Aug 13 2015 - PB - Fixed the issue with scroll in the Item section list 
+ -->
+ <apex:page id="wopg" StandardController="PM_Project__c" extensions="WorkOrderDetailController" tabStyle="PM_Project__c" sidebar="false" showHeader="false">
+    <style>
+       
+        .bPageBlock .detailList .bomtbl {
+            width: 100%;
+            margin-top: 1em;
+            border: solid 1px #000;
+            border-spacing: 0;
+        }
+
+        .bPageBlock .detailList .bomtbl th {
+            background-color: #ececec;
+            border-color: #000;
+            border-style: none none solid solid;
+            border-width: 0 0 1px 1px;
+            text-align: center;
+            vertical-align: middle;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bPageBlock .detailList .bomtbl th:first-child {
+            border-style: none none solid none;
+        }
+        .bPageBlock .detailList .bomtbl tr {
+            border-bottom: solid 1px #808080;
+        }
+
+        .bPageBlock .detailList .bomtbl tr td {
+            vertical-align: middle;
+            border-bottom: solid 1px #ececec;
+            padding: 3px 5px 3px 5px;
+            margin: 0;
+        }
+
+        .bPageBlock .detailList .bomtbl tr td.lftp {
+            padding-left: 1.5em;
+        }
+
+        .bPageBlock .detailList .ctr {
+            text-align: center;
+        }
+
+        .bPageBlock .detailList .numin {
+            width: 4em;
+        }
+
+        .bPageBlock .detailList .pklst {
+            width: 9em;
+            padding-left: 0.5em;
+        }
+
+        #wocomphist td {
+            padding-left: 1em;
+            background-color: #fff;
+        }
+
+        #wopg\:woform\:wopgblck\:wohist {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+    <apex:pageMessages />
+    
+    <apex:form id="woform">
+            <!-- <button type='button' style="float: right;">()</button> -->
+        <apex:pageBlock id="wopgblck" mode="maindetail" title="Work Order Detail" rendered="{!projHasWorkOrder}">
+            <apex:pageBlockButtons location="top">
+                <!--
+                <apex:commandButton action="{!processClaimBy}" value="Claim for {!claimFor}" rendered="{!renderClaimBy}" />
+                <apex:commandButton action="{!processCompleteStage}" value="Complete Stage" disabled="{!workorder.Final_BOM_Complete__c != null}" />
+                -->
+
+                <apex:commandButton action="{!extractOperations}" value="Extract Operations" rendered="{!woStatus2 && !opsExtracted}" />
+        <!--        <apex:commandButton action="{!deleteOperations}" value="Delete Operations" rendered="{!woStatus2 && opsExtracted}" /> -->
+                <apex:commandButton action="{!generatePicklist}" value="Generate Picklist" rendered="{!woStatus2 }" />
+                <apex:commandButton action="{!reGeneratePicklist}" value="Regenerate Picklist" rendered="{!woStatus5 }" />
+
+                <!--
+                <apex:commandButton action="{!noop}" value="Install Picklist" rendered="{!woStatus5}" />
+                <apex:commandButton action="{!noop}" value="Electrical Picklist" rendered="{!woStatus5}" />
+                -->
+                
+                <apex:commandButton action="{!completeWO}" value="Complete Work Order" rendered="{!woStatus5}" />
+
+               <!-- <apex:commandButton action="{!noop}" value="Reverse Work Order Receipt" rendered="{!woStatus8}" /> -->
+                <apex:commandButton action="{!closeWO}" value="Close Work Order" rendered="{!woStatus8}" />
+                
+                <!-- <apex:commandButton action="{!noop}" value="Reverse Work Order Close" rendered="{!woStatus9}" /> -->
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection columns="2" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Order Number" />
+                    <apex:outputLink value="/{!workorder.Id}">{!workorder.name}</apex:outputLink>
+                    <!-- <apex:outputField value="{!workorder.id}" /> -->
+                </apex:pageBlockSectionItem>
+                <!-- <apex:outputField value="{!workorder.Name}" /> -->
+
+                <apex:outputField value="{!workorder.rstk__wocst_ordsts_pl__c}" />
+                <apex:outputField value="{!workorder.BOM_Stage__c}" />
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Rootstock Project" />
+                    <apex:outputField value="{!workorder.rstk__wocst_proj__c}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:outputField value="{!project.Electrical_Review__c}" />
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Rootstock Sales Order Line" />
+                    <!-- <apex:outputLink value="{!workorder.rstk__wocst_soline__r.Id}">{!workorder.rstk__wocst_soline__r.Name}</apex:outputLink> -->
+                    <apex:outputField value="{!workorder.rstk__wocst_soline__c}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:outputField value="{!project.Permit_Design__c}" />
+              <apex:outputField value="{!workorder.Electrical_Reviewer__c}" />
+                <apex:outputField value="{!workorder.Final_BOM_Complete__c}" />
+                <apex:outputField value="{!workorder.Field_Designer__c}" />
+
+            </apex:pageBlockSection>
+        
+        <div id="WO">
+            <apex:pageBlockSection id="sysdetail" title="System Design Detail" columns="2" html-class="WOsect">
+                <apex:outputField value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}" />
+                <apex:outputField value="{!sysdesign.System_Makeup__c}" />
+                <apex:outputField value="{!sysdesign.Ground_Mount_Arrays__c}">
+                    <apex:inlineEditSupport event="ondblclick" rendered="true" />
+                   </apex:outputField>
+                <apex:outputField value="{!sysdesign.Trenching_Required__c}" />
+                <apex:outputField value="{!sysdesign.Number_of_Arrays_on_Flat_Roofs__c}" />
+                <apex:outputField value="{!sysdesign.Trench_Length__c}" />
+                <apex:outputField value="{!sysdesign.Number_of_Arrays_With_Special_Parts__c}" />
+                <apex:outputField value="{!sysdesign.Vent_Stack_Movement_Required__c}" />
+                <apex:outputField value="{!sysdesign.Max_Install_Location_Pitch__c}" />
+                <apex:outputField value="{!sysdesign.Includes_Outbuilding_Installation__c}" />
+                <apex:outputField value="{!sysdesign.Max_Install_Location_Stories__c}" />
+                <apex:outputField value="{!sysdesign.Notes__c}" />
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="modinv" title="Module & Inverter" columns="1" html-class="WOsect">
+                <iframe src="{!rstkURL}/apex/woorddmdgrid?id={!workorder.Id}&cc1={!CommCodes['SM']}&cc2={!CommCodes['IV']}" sandbox="allow-same-origin allow-forms allow-scripts" seamless="seamless" width="100%" scrolling="no" style="border: none; overflow: hidden;" ></iframe>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="moninv" title="Monitor & Inverter BOS" columns="1" html-class="WOsect">
+                <iframe src="{!rstkURL}/apex/woorddmdgrid?id={!workorder.Id}&cc1={!CommCodes['ME']}&cc2={!CommCodes['IN']}" sandbox="allow-same-origin allow-forms allow-scripts" seamless="seamless" width="100%" style="border: none;" ></iframe>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="racking" title="Racking" columns="1" html-class="WOsect">
+                <iframe id="raframe" src="{!rstkURL}/apex/woorddmdgrid?id={!workorder.Id}&cc1={!CommCodes['RA']}" sandbox="allow-same-origin allow-forms allow-scripts" seamless="seamless" width="100%" style="border: none;" ></iframe>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="elec" title="Electrical" columns="1" html-class="WOsect">
+                <iframe src="{!rstkURL}/apex/woorddmdgrid?id={!workorder.Id}&cc1={!CommCodes['EL']}" sandbox="allow-same-origin allow-forms allow-scripts" seamless="seamless"  width="100%" style="border: none;"></iframe>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="gen" title="General" columns="1" html-class="WOsect">
+                <iframe id="genframe" src="{!rstkURL}/apex/woorddmdgrid?id={!workorder.Id}" sandbox="allow-same-origin allow-forms allow-scripts" seamless="seamless"  width="100%" style="border: none;"></iframe>
+            </apex:pageBlockSection>
+<!--
+            <apex:pageBlockSection id="genframe" title="General/All" columns="1" html-class="WOsect">
+                <apex:iframe id="genf" scrolling="true"  height="100%" width="100%" src="{!rstkURL}/apex/ComponentAddFromList?type=woorddmd&wocst={!workorder.Id}"></apex:iframe>
+            </apex:pageBlockSection>
+-->
+            <apex:pageBlockSection id="noninv" title="Non-Inventory Components" columns="1" html-class="WOsect">
+                <div style="height: 50px; background-color: #f7f7ff;">&nbsp;</div>
+            </apex:pageBlockSection>
+
+        </div>
+        </apex:pageBlock>
+    </apex:form>
+
+    <c:GenericHistoryComponent myObjectClass="{!workorder}" recordLimitCount="10" rendered="{!projHasWorkOrder}"/>
+
+    <script type="text/javascript">
+        // TODO - replace this with a list pulled from the Controller's Custom_Settings
+        //twistSection( document.getElementById('wopg:woform:wopgblck:modinv').getElementsByTagName('img')[0]);
+        //twistSection( document.getElementById('wopg:woform:wopgblck:moninv').getElementsByTagName('img')[0]);
+        //twistSection( document.getElementById('wopg:woform:wopgblck:elec').getElementsByTagName('img')[0]);
+        twistSection( document.getElementById('wopg:woform:wopgblck:noninv').getElementsByTagName('img')[0]);
+
+
+        function woResizeIframe( event ) {
+            
+            var obj = new Array();
+            var params = event.data.split(";");
+            for( var i=0; i<params.length; i++ ) {
+                var tmp = params[i].split(":");
+                obj[tmp[0]] = tmp[1];
+            }
+            var selstr;
+            var cc = '' + obj["cc1"];
+            var elem;
+            if(0 == cc.length){
+                selstr = "iframe[id=genframe]";
+                elem = document.querySelector(selstr);
+            }else{
+                selstr = "iframe[src*=" + obj["cc1"] + "]";
+                elem = document.querySelector(selstr);
+            }
+
+            if( elem != undefined ) {
+                if( navigator.userAgent.indexOf("Firefox") >= 0 ) {
+                    // for Firefox add space for margins and scrollbars
+                    var ht = parseInt(obj["height"]) + parseInt(20);
+                } else {
+                    var ht = parseInt(obj["height"]);
+                }
+                if( ht > 1000 ) {
+                    ht = 1000;
+                }
+                elem.style.height = "0px";
+                elem.style.height = ht + 134 + "px";                
+                event.stopPropagation();
+            } else {
+            }
+            
+        }
+
+
+        //window.onload = function (){
+            window.addEventListener("message", woResizeIframe, false);
+        //}
+
+        // this function sends a message to it's parent whenver the child changes size
+        // a timer was used instead of an onResize() event, because not all DOM changes fire that event
+        window.addEventListener("load", (function() {
+            var lastHt = 0;
+            var curHt;
+            (function resizeTimer(){
+                if ( window.location !== window.parent.location ) {
+                    curHt = document.body.offsetHeight;
+                    if( lastHt != curHt ) {
+                        window.parent.postMessage('tab:WorkOrder;height:' + curHt + ';', '*');
+                        // TODO - someday convert the above line to lookup the id of the iFrame
+                        lastHt = curHt;
+                    }
+                    window.setTimeout( resizeTimer, 500);
+                }
+            }());
+        }())
+        , false);
+
+    </script>
+
+</apex:page>

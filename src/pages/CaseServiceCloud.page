@@ -1,0 +1,61 @@
+<apex:page standardController="Case" extensions="CaseServiceCloudExtension">
+
+	<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"/>
+	<apex:includeScript value="/support/console/26.0/integration.js"/>
+
+	<script type="text/javascript">
+	
+		function openCaseTabs() {
+			var primaryTabId;
+			
+			sforce.console.getEnclosingPrimaryTabId(function (result) {
+				primaryTabId = result.id;
+				//alert(primaryTabId);
+				<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Case.AccountId))}">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Account.View, Case.AccountId)}", false, "Account");
+				</apex:outputPanel>
+				<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Case.ContactId))}">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Contact.View, Case.ContactId)}", false, "{!JSENCODE(Case.Contact.Name)}");
+				</apex:outputPanel>
+				<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(Case.Property__c))}">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Property__c.View, Case.Property__c)}", false, "Property");
+				</apex:outputPanel>
+				<apex:outputPanel layout="none" rendered="{!ISBLANK(Case.Property__c)}">
+					<apex:repeat value="{!properties}" var="p">
+						sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Property__c.View, p.Id)}", false, "Property");
+					</apex:repeat>
+				</apex:outputPanel>
+				<apex:repeat value="{!salesOrders}" var="so">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.SCRB_SalesOrder__c.View, so.Id)}", false, "Sales Order");
+				</apex:repeat>
+				<apex:repeat value="{!systemDesigns}" var="s">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.System_Design__c.View, s.Id)}", false, "System Design");
+				</apex:repeat>
+				<apex:repeat value="{!installedSystems}" var="s">
+					sforce.console.openSubtab(primaryTabId, "{!URLFOR($Action.Installed_System__c.View, s.Id)}", false, "Installed System");
+					<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(s.Enphase_ID__c))}">
+						sforce.console.openSubtab(primaryTabId, "https://enlighten.enphaseenergy.com/systems/{!s.Enphase_ID__c}/arrays?", false, "Enphase Arrays");
+					</apex:outputPanel>
+				</apex:repeat>
+				<apex:repeat value="{!lastEmailMessage}" var="s">
+					sforce.console.openSubtab(primaryTabId, "/{!s.Id}", false, "{!IF(s.Incoming,'Inbound', 'Outbound')} Email");
+				</apex:repeat>
+				<apex:repeat value="{!pmProjects}" var="s">
+					sforce.console.openSubtab(primaryTabId, "/{!s.Id}", false, "PM 2.0 Project");
+				</apex:repeat>
+				<apex:repeat value="{!alerts}" var="s">
+					sforce.console.openSubtab(primaryTabId, "/apex/EnphaseAlerts?id={!s.Id}", false, "Enphase Alerts");
+				</apex:repeat>
+			});
+			
+		}
+		
+		$(function() {
+			if (sforce.console.isInConsole()) {
+				openCaseTabs();
+			}
+		});
+		
+	</script>
+
+</apex:page>

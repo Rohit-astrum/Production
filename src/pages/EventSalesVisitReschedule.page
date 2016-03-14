@@ -1,0 +1,5 @@
+<apex:page standardController="Event"           
+           extensions="EventSalesVisitActionsExtension" showHeader="true" sidebar="true" 
+           action="{!rescheduleEvent}" >
+           
+</apex:page>

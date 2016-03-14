@@ -1,0 +1,29 @@
+<apex:component controller="YTD_OppClosesByRegionController">
+    <apex:attribute name="height" description="Chart height" type="Integer" default="500"/>
+    <apex:attribute name="width" description="Chart width" type="Integer" default="1000"/>
+    
+    <apex:form id="frm">
+        <apex:outputPanel >
+            <apex:outputText value="YTD Closes by Region" style="font-size:125%; font-weight:bold"/>
+            <apex:selectList value="{!year}" size="1" style="margin-left:20px">
+                <apex:selectOptions value="{!yearOptions}" />
+                <apex:actionSupport event="onchange" reRender="frm" />
+            </apex:selectList>
+        </apex:outputPanel>
+        <br/><br/>
+        <apex:chart height="{!height}" width="{!width}" data="{!revenueData}">
+            <apex:legend position="right"/>
+            <apex:axis type="Numeric" position="left" fields="closedCount,canceledCount" grid="true" title="Sales Orders Closed"/>
+            <apex:axis type="Category" position="bottom" fields="salesOrderRegion"/>
+            <apex:barSeries orientation="vertical" axis="left" xField="salesOrderRegion" yField="closedCount,canceledCount" colorSet="#4000FF,#FF0000" stacked="true">
+                <apex:chartTips height="20" width="120"/>
+            </apex:barSeries>
+            <!--<apex:scatterSeries title="Annual Opportunity Close Stretch" axis="left" xField="salesOrderRegion" yField="annualStretch" markerType="circle">
+                <apex:chartTips height="20" width="120"/>
+            </apex:scatterSeries>
+            <apex:scatterSeries title="Annual Opportunity Close Goal" axis="left" xField="salesOrderRegion" yField="annualGoal" markerType="cross">
+                <apex:chartTips height="20" width="120"/>
+            </apex:scatterSeries>-->
+        </apex:chart>
+    </apex:form>
+</apex:component>

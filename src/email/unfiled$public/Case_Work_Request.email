@@ -1,0 +1,6 @@
+{!Case_Work_Request__c.Description__c}
+
+--------------
+Case Work Request: {!Case_Work_Request__c.Name}
+Related Case: {!Case_Work_Request__c.Case__c}
+Created Date: {!Case_Work_Request__c.CreatedDate}

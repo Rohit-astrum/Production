@@ -1,0 +1,158 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_CreditCheckController" applyHtmlTag="false" applyBodyTag="false">
+    <apex:composition template="D2D_SiteTemplate">
+        <apex:define name="head-top"> 
+
+            <meta name='description' content='D2D - Credit Check' />
+            <title>D2D - Credit Check</title>
+
+        </apex:define>
+        <apex:define name="head-bottom"> 
+        
+    		<script type="text/javascript">
+			
+				//Avoid conflicts between jQuery and apex
+      			$j = jQuery.noConflict();
+
+      			$j(document).ready(function(){
+      				//if(confirm('A new window will now open to allow you to perform a credit check.')){
+	      			//	window.open('{!creditCheckUrl}');
+      				//}
+      			});
+      			
+				$j(document).on('pageshow', function(){
+					/*$j('select').change(function() {
+						if($j('select').val() == '0'){
+							$j('#creditSubmitBtn').addClass("ui-state-disabled"); 
+						} else {
+							$j('#creditSubmitBtn').removeClass("ui-state-disabled"); 
+						}
+					});*/
+					var ca = "{!referral.Credit_Approved__c}";
+					if(ca != ''){
+						$j('#creditSubmitBtn').removeClass("ui-state-disabled"); 
+					}
+					
+					$j('input:radio').change(function() {  
+						$j('input:radio').checkboxradio("refresh");
+						$j('#creditSubmitBtn').removeClass("ui-state-disabled"); 
+					});
+				});
+
+				function confirmNo(){
+					if($j('#creditApprovedNo').prop('checked') == true){
+						$j( '#closePopup' ).popup( 'open' );
+						return false;
+					} else {
+						displayLoader('Saving Credit Response...');
+						creditSubmit();
+					}
+				}
+
+				function closePopupDialog(){
+					$j( '#closePopup' ).popup( 'close' );
+				}
+			</script>
+		</apex:define>
+
+        <apex:define name="navigation">
+
+            <c:D2D_AccountInfo />
+ 
+        </apex:define>
+
+		<apex:define name="header-btns">
+		    <div class="headerBtns">
+				<div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-user fa-1x fa-pageicon"></i> Credit Check</h1>
+		 			</div><div class="headerBtnsRight">
+		 				<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+	                </div>
+					<div class="ClearAll"></div>
+				</div>
+    		</div>
+			<div data-role="popup" data-overlay-theme="a" id="closePopup"  class="ui-content">
+				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+				<h3>Important!</h3>
+				<p>You selected No.  <b>This will close the opportunity.  Are you sure</b>?</p>
+                   <div class="closePopupBtns">
+						<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all" onclick="closePopupDialog();displayLoader('Saving Credit Response...');creditSubmit();">Yes</a>
+                   		<a href="#" class="ui-btn ui-btn-inline ui-btn-grey ui-corner-all" onclick="closePopupDialog();">Cancel</a>
+                   </div>
+			</div>
+		</apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		    <div class="footerBtns">
+	    		<div class="footerBtnsLeft">
+		    		<a class="ui-btn ui-btn-inline ui-icon-btn"  onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a>
+	    		</div><div class="footerBtnsRight">
+			    	<a href="#" id="creditSubmitBtn" style="{!IF(contractState='completed', 'display:none;', '')}" class="ui-btn ui-btn-large ui-btn-inline ui-state-disabled ui-btn-green ui-corner-all" onclick="confirmNo();"><i class="fa fa-check fa-lg fa-left"></i>Submit</a>
+			    </div>
+				<div class="ClearAll"></div>
+		    </div> 
+	    </apex:define>
+
+		<apex:define name="content">
+			<apex:form styleclass="mainForm">
+			<div id="Content" class="creditApprovedContent">
+				<div class="container greycontainer">
+                	<!--<div class="creditApprovedSelect">
+	                    <apex:selectList id="creditApproved" value="{!referral.Credit_Approved__c}" size="1" onchange="">
+                    	    <apex:selectOptions value="{!creditApproved}"/>
+                    	</apex:selectList>
+                	</div>-->
+					<table class="creditApproved">
+						<tr>
+							<td>
+								<div class="creditApprovedLabel">Credit Approved <span class="required">*</span></div>
+							</td>
+							<td>
+			                	 <div class="creditApprovedRadioBtns">
+				                	<apex:outputPanel layout="none" rendered="{!referral.Credit_Approved__c='Yes'}">
+				                    	<input type="radio" name="creditApprovedRadioBtn" id="creditApprovedYes" value="Yes" checked="checked" />
+			                        	<label for="creditApprovedYes">Yes</label>
+				                    </apex:outputPanel>
+				                    <apex:outputPanel layout="none" rendered="{!NOT(referral.Credit_Approved__c='Yes')}">
+				                    	<input type="radio" name="creditApprovedRadioBtn" id="creditApprovedYes" value="Yes" />
+			                        	<label for="creditApprovedYes">Yes</label>
+				                    </apex:outputPanel>
+				                	<apex:outputPanel layout="none" rendered="{!referral.Credit_Approved__c='No'}">
+				                    	<input type="radio" name="creditApprovedRadioBtn" id="creditApprovedNo" value="No" checked="checked"/>
+			                        	<label for="creditApprovedNo">No</label>
+				                    </apex:outputPanel>
+				                    <apex:outputPanel layout="none" rendered="{!NOT(referral.Credit_Approved__c='No')}">
+				                    	<input type="radio" name="creditApprovedRadioBtn" id="creditApprovedNo" value="No" />
+			                        	<label for="creditApprovedNo">No</label>
+				                    </apex:outputPanel>
+				                	<apex:outputPanel layout="none" rendered="{!referral.Credit_Approved__c='Pending'}">
+				                    	<input type="radio" name="creditApprovedRadioBtn" id="creditApprovedPending" value="Pending" checked="checked" />
+			                        	<label for="creditApprovedPending">Pending</label>
+				                    </apex:outputPanel>
+				                    <apex:outputPanel layout="none" rendered="{!NOT(referral.Credit_Approved__c='Pending')}">
+				                    	<input type="radio" name="creditApprovedRadioBtn" id="creditApprovedPending" value="Pending" />
+			                        	<label for="creditApprovedPending">Pending</label>
+				                    </apex:outputPanel>
+			                    </div>  
+                    		</td>
+                    	</tr>
+                    	<tr>
+                    	<td></td>
+                    	<td><div class="creditApprovedLabel">NOTE: If credit check is declined, lead is considered unqualified.</div></td>
+                    	</tr>
+                    </table>
+	            </div>
+			</div>
+			<apex:actionFunction name="creditSubmit" action="{!submit}" rerender="none">
+	        </apex:actionFunction>
+			</apex:form>
+		</apex:define>
+	
+    </apex:composition>
+</apex:page>

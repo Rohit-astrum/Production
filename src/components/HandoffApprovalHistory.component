@@ -1,0 +1,4 @@
+<apex:component controller="HandoffApprovalHistoryController" access="global">
+    <apex:attribute name="projectId" assignTo="{!pmId}" type="String" description="Id of the Project"/>    
+    <apex:outputText value="{!comments}" />
+</apex:component>

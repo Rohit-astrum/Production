@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A collection of physically contiguous Install Locations sharing the same pitch and azimuth, with the same structural members and surface type, and located on the same Property.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Default_Mounting_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(ISPICKVAL(Surface_Type__c, &apos;Flat Concrete Tile&apos;), &apos;Flush Mounted on flat concrete tile, penetrations&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Curved Concrete Tile&apos;), &apos;Flush Mounted on curved concrete tile, penetrations&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Metal Seam&apos;), &apos;Clamped on Metal Seam&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Metal Corrogated&apos;), &apos;Attached Through Metal Panel Roof&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Soil&apos;), &apos;Ground Mount&apos;, &apos;&apos;)
+&amp;
+if(
+    (ISPICKVAL(Surface_Type__c, &apos;Light Weight Tile - Requires re-roof&apos;)
+       || ISPICKVAL(Surface_Type__c, &apos;Clay Tile - Requires re-roof&apos;))
+    , &apos;Flush Mounted on tile roof, requires comp shingle re-roof, penetrations&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Concrete Tile&apos;), &apos;Flush Mounted on Concrete Tile Roof, penetrating&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Slate Shingle&apos;), &apos;Flush Mounted on Slate Shingle, penetrating&apos;, &apos;&apos;)
+&amp;
+if(
+    (ISPICKVAL(Surface_Type__c, &apos;Rubber Membrane&apos;) 
+      || ISPICKVAL(Surface_Type__c, &apos;Other&apos;)
+      || ISPICKVAL(Surface_Type__c, &apos;Rolled Asphalt&apos;) 
+    ) &amp;&amp;
+        (if(Mounting_Plane_is_Not_Parallel__c,  Mounting_Plane_Tilt__c, Surface_Tilt__c)) &lt;= 5
+    , &apos;Ballasted System&apos;, &apos;&apos;)
+&amp;
+if(ISPICKVAL(Surface_Type__c, &apos;Asphalt Shingle&apos;) 
+    &amp;&amp; (if(Mounting_Plane_is_Not_Parallel__c,  Mounting_Plane_Tilt__c, Surface_Tilt__c)) &gt; 9
+   , &apos;Flush Mounted on pitched roof, penetrating&apos;, &apos;&apos;)
+&amp;
+if(
+    (ISPICKVAL(Surface_Type__c, &apos;Rubber Membrane&apos;)
+      || ISPICKVAL(Surface_Type__c, &apos;Other&apos;)
+      || ISPICKVAL(Surface_Type__c, &apos;Rolled Asphalt&apos;)
+    ) &amp;&amp; 
+        (if(Mounting_Plane_is_Not_Parallel__c,  Mounting_Plane_Tilt__c, Surface_Tilt__c)) &gt; 5
+    , &apos;Flush Mounted on Flat Roof, penetrating&apos;, &apos;&apos;)</formula>
+        <label>Default Mounting Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Mounting__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Default Mounting</label>
+        <referenceTo>System_Design_Product__c</referenceTo>
+        <relationshipLabel>Physical Surfaces</relationshipLabel>
+        <relationshipName>Physical_Surfaces</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Surface_Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Surface Azimuth</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Surface_Tilt__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Surface Tilt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Legacy__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>This Physical Surface was generated automatically from legacy data.  It is not a true representation of a Physical Surface.</inlineHelpText>
+        <label>Legacy</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Mounting_Allignment__c</fullName>
+        <externalId>false</externalId>
+        <label>Mounting Allignment</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Mounting_Plane_Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <label>Mounting Plane Azimuth</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mounting_Plane_Tilt__c</fullName>
+        <externalId>false</externalId>
+        <label>Mounting Plane Tilt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mounting_Plane_is_Not_Parallel__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Mounting Plane is Not Parallel</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Stories__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Stories</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Outbuilding__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Outbuilding</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Physical_Surface_Assigned_Letter__c</fullName>
+        <externalId>false</externalId>
+        <label>Physical Surface Assigned Letter</label>
+        <picklist>
+            <picklistValues>
+                <fullName>A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>D</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>F</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>G</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>H</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>J</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>K</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>L</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>M</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>O</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>P</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Q</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>S</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>T</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>U</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>V</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>W</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>X</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Y</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Z</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <externalId>false</externalId>
+        <label>Property</label>
+        <referenceTo>Property__c</referenceTo>
+        <relationshipLabel>Physical Surfaces</relationshipLabel>
+        <relationshipName>Physical_Surfaces</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Roof_Angle__c</fullName>
+        <externalId>false</externalId>
+        <label>Roof Angle</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Structural_Members__c</fullName>
+        <externalId>false</externalId>
+        <label>Structural Members</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Steel Beam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wood Rafters</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wood Truss</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Suneye_Tilt_and_Orien_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Suneye Tilt and Orien Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Surface_Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <label>Surface Azimuth</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Surface_Tilt__c</fullName>
+        <externalId>false</externalId>
+        <label>Surface Tilt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Surface_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Surface Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Concrete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Light Weight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Trenching_Dist_to_Intercon_Pt_ft__c</fullName>
+        <externalId>false</externalId>
+        <label>Trenching Dist. to Intercon. Pt.(ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Physical Surface</label>
+    <nameField>
+        <label>Physical Surface Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Physical Surfaces</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Mounting_Plane_Not_Parallel_unchecked</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(Mounting_Plane_is_Not_Parallel__c) &amp;&amp; 
+(
+
+  NOT(ISBLANK(Mounting_Plane_Tilt__c)) 
+  || 
+  NOT(ISBLANK(Mounting_Plane_Azimuth__c)) 
+
+)</errorConditionFormula>
+        <errorMessage>&quot;Mounting Plane Not Parallel&quot; field must be checked when entering any value into the Mounting Plane Tilt and Azimuth.  Either check the checkbox, or clear the values of these fields (highlight the number and delete).</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Mounting_Plane_Tilt_Azimuth_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>Mounting_Plane_is_Not_Parallel__c &amp;&amp; (ISBLANK( Mounting_Plane_Tilt__c ) || ISBLANK( Mounting_Plane_Azimuth__c ))</errorConditionFormula>
+        <errorMessage>Mounting Plane Tilt and Azimuth are required when the &quot;Mounting Plane Not Parallel&quot; field is checked.</errorMessage>
+    </validationRules>
+</CustomObject>

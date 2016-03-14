@@ -1,0 +1,45 @@
+<apex:page title="Sales Leaderboards">
+    <apex:pageBlock title="Sales Leaderboards">
+    
+        <apex:pageBlockSection title="YTD Revenue Leaderboard" collapsible="true">
+            <c:YTD_RevenueLeaderboard width="1200" />
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="YTD Revenue by Region" collapsible="true">
+            <c:YTD_RevenueByRegion />
+        </apex:pageBlockSection>
+                
+        <apex:pageBlockSection title="Monthly Revenue Leaderboard" collapsible="true">
+            <c:MonthlyRevenueLeaderboard width="1200" />
+        </apex:pageBlockSection>
+                    
+        <apex:pageBlockSection title="Monthly Revenue by Region" collapsible="true">    
+            <c:MonthlyRevenueByRegion />
+        </apex:pageBlockSection>
+                    
+        <apex:pageBlockSection title="YTD Closes Leaderboard" collapsible="true">
+            <c:YTD_OppClosesLeaderboard width="1200" />
+        </apex:pageBlockSection>
+                    
+        <apex:pageBlockSection title="YTD Closes by Region" collapsible="true">
+            <c:YTD_OppClosesByRegion />
+        </apex:pageBlockSection>
+                    
+        <apex:pageBlockSection title="Monthly Closes Leaderboard" collapsible="true">
+            <c:MonthlyOppCloseLeaderboard width="1200" />
+        </apex:pageBlockSection>
+                    
+        <apex:pageBlockSection title="Monthly Closes by Region" collapsible="true">
+            <c:MonthlyOppCloseByRegion />
+        </apex:pageBlockSection>
+                    
+        <apex:pageBlockSection title="Trailing 12 Week Closed Leaderboard" collapsible="true">
+            <c:Trailing12WeekOppClosed width="1200" />
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Trailing 12 Week Closed by Region" collapsible="true">       
+            <c:Trailing12WeekOppClosedRegion />
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+</apex:page>

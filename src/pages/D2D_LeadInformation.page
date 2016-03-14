@@ -1,0 +1,662 @@
+<apex:page doctype="html-5.0" applyHtmlTag="false" applyBodyTag="false" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_LeadInformationController">
+
+    <apex:composition template="D2D_LeadTemplate">
+    
+        <apex:define name="head-top">
+
+            <meta name='description' content='D2D - Lead' />
+            <title>D2D - Lead</title>
+            
+        </apex:define>
+        
+        <apex:define name="head-bottom">
+            <apex:includeScript value="{!URLFOR($Resource.D2D_Resources, '/javascript/Chart-customized.min.js')}"/>
+            <script type="text/javascript">
+            
+                //Avoid conflicts between jQuery and apex
+                $j = jQuery.noConflict();
+            
+                var ssgAccepted = "{!referral.SSG_Accepted__c}";    
+                var errors = "{!SUBSTITUTE(JSENCODE(errorMessage.ErrorFields),'\n','<br/>')}";         
+                var formDisabled = false;
+                var formIsSaved;
+                if (errors == '')
+                {
+                    formIsSaved = true;
+                } else {
+                    formIsSaved = false;
+                }
+                 
+                $j( document ).ready(function() {
+                
+                    $j( function() {
+                        $j( "#closePopup" ).enhanceWithin().popup(); 
+                        /*$j("#ssgHover").enhanceWithin().popup();*/
+                    });
+                    
+                    //Change background to grey for form fields that have already been completed
+                    $j('input').change(function() { 
+                        setInputStyle(this); 
+                        formIsSaved = false;
+                    });
+                    
+                    $j('textarea').change(function() { 
+                        setInputStyle(this); 
+                        formIsSaved = false;
+                    });
+                    
+                    $j('select').change(function() {  
+                        setDropdownStyle(this); 
+                        formIsSaved = false;
+                    });
+            
+                    $j('input').each(function() {
+                        setInputStyle(this);
+                    });
+                    
+                    $j('textarea').each(function() {
+                        setInputStyle(this);
+                    });
+                    
+                    $j('select').each(function() {
+                        setDropdownStyle(this);
+                    });
+                    
+                    //I discovered a bug with this code, so I instead added this code on pageshow: $j('.UtilityBill .ui-input-text').hide(); - SP
+                    //$j('input[id$="take-picture-btn"]').parent('div').hide();
+                    //$j('.NewLeadForm .CountySelect input').textinput('disable');
+                });
+                
+                $j('.ui-page').hide();
+                
+                $j(document).on('pageshow', function(){
+                
+                    $j('.UtilityBill .ui-input-text').hide();
+                    
+                    if(ssgAccepted=="True" && formDisabled==false)
+                    {
+                        $j('.leadContent .ui-input-text input').textinput('disable');
+                        $j('.leadContent textarea').textinput('disable');
+                        $j('.leadContent button').addClass("ui-state-disabled");
+                        $j('.leadContent .ui-select select').not('.creditApprovedSelect select').selectmenu('disable');
+                        $j('.leadContent .ui-flipswitch select').flipswitch('disable');
+                        $j('.leadContent .ui-radio input').checkboxradio( "disable" );
+                        $j('.leadContent a.ui-btn').addClass("ui-state-disabled");
+                        document.getElementById("mapDiv").style.opacity = .5;
+                        document.getElementById("mapPin").style.opacity = .7;
+                        
+                        formDisabled = true;
+                    }
+                });
+
+                function ensureEnabled(){
+                    $j('.leadContent .ui-input-text input').textinput('enable');
+                    $j('.leadContent textarea').textinput('enable');
+                    $j('.leadContent button').removeClass("ui-state-disabled");
+                    $j('.leadContent .ui-select select').not('.creditApprovedSelect select').selectmenu('enable');
+                    $j('.leadContent .ui-flipswitch select').flipswitch('enable');
+                    $j('.leadContent .ui-radio input').checkboxradio( "enable" );
+                    $j('.leadContent a.ui-btn').removeClass("ui-state-disabled");
+                }
+                
+                function closePage(){
+                    if(formIsSaved) {
+                        displayLoader('Opening dashboard...');
+                        window.location.href = "{!dashboardUrl}";
+                    } else {
+                        $j( '#closePopup' ).popup( 'open' );
+                    }
+                }
+                
+                function setInputStyle(target)
+                {
+                    if ($j(target).val()!='' && $j(target).val().indexOf("Select") <= 0)
+                    {
+                        $j(target).addClass('InputHighNolight');
+                        $j(target).removeClass('InputHighlight');
+                    }
+                    else 
+                    {
+                        $j(target).removeClass('InputHighNolight');
+                        $j(target).addClass('InputHighlight');
+                    }
+                }
+                
+                
+                function setDropdownStyle(target)
+                {
+                    if ($j(target).val()!='' && $j(target).val()!='0' && $j(target).val().indexOf("Select") <= 0)
+                    {
+                        $j(target).parent().addClass('InputHighNolight');
+                        $j(target).parent().removeClass('InputHighlight');
+                    }
+                    else 
+                    {
+                        $j(target).parent().removeClass('InputHighNolight');
+                        $j(target).parent().addClass('InputHighlight');
+                    }
+                }
+                
+                function refresh() {
+                    //$j('.CountySelect').trigger("create");
+                    $j('.UtilitySelect').trigger( "create" );
+                    $j('.utilityDependentControls').trigger("create");
+                    $j('.PSCSelect').trigger( "create" );
+                    $j('.sixteen').trigger("create");
+                    $j('select').change(function() {setDropdownStyle(this); });
+                }
+                
+            </script>
+            
+            <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
+        </apex:define>
+        
+        <apex:define name="title">
+            <h1>{!referral.Full_Name__c}</h1>
+            <div id="canvasContainer"></div>
+        </apex:define>
+        
+        <apex:define name="header-btns">
+            <div class="referralHeader">
+                <apex:outputPanel layout="block" rendered="{!referralID!= null}">
+                <div class="headerBtnsLead">
+                    <a href="D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+                    <h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+                </div>
+                </apex:outputPanel>
+                <apex:outputPanel layout="block" rendered="{!referralID=null}">
+                <div class="headerBtnsLead"></div>
+                </apex:outputPanel>
+                <div class="headerBtnsLeft">
+                    <h1><i class="fa fa-user fa-1x fa-pageicon"></i> Lead Information</h1>
+                </div><div class="headerBtnsRight">
+                    <a href="#"  style="{!IF((AND(readyForSSG, referral.SSG_Accepted__c='True')), 'display:none;', '')}" class="ui-btn ui-btn-inline ui-icon-btn ui-corner-all" onclick="ensureEnabled();displayLoader('Saving...');save();return false;"><i class="fa fa-save fa-lg fa-inverse fa-greenbg"></i>Save</a>
+                    <!--<a href="#" class="ui-btn ui-btn-inline ui-btn-white ui-icon-save ui-corner-all ui-btn-icon-left" onclick="ensureEnabled();displayLoader('Saving...');saveAndClose();return false;">Save &amp; Close</a>-->
+                    <apex:actionFunction name="save" action="{!submitAndReload}">
+                    </apex:actionFunction> 
+                    <apex:actionFunction name="saveAndClose" action="{!submit}">
+                    </apex:actionFunction> 
+                    <!--<a href="{!URLFOR($Page.D2D_SalesRepDashboard,null)}" target="_self" class="ui-btn ui-btn-inline ui-btn-white ui-icon-delete ui-corner-all ui-btn-icon-left">Cancel</a> -->
+                    <a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="closePage();"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+                </div>
+                <div class="ClearAll"></div>
+            </div>
+        </apex:define>
+        
+        <apex:define name="footer-btns">
+            <apex:pageMessages escape="false"/>
+            <apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+            <div class="footerBtns">
+                <div class="footerBtnsLeft footerError">
+                    <apex:outputPanel layout="none" rendered="{!errorMessage.Message!=''}">
+                        <table class="leadInfoErrorTable">
+                            <tr>
+                                <td><i class="fa fa-warning fa-lg"></i><!--<apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/> --></td>
+                                <td style="vertical-align: middle;"><span class="user-error">{!errorMessage.Message}</span></td>
+                            </tr>
+                        </table>
+                        <div style="visibility:hidden; height: 0;">
+                            <apex:outputText value="{!errorMessage.ErrorFields}"/>
+                        </div>
+                    </apex:outputPanel>
+	                <apex:outputPanel rendered="{!AND(NOT(ISNULL(referral.Id)), ssgWarningText!='', errorMessage.Message='')}">
+	                   <!-- <a href="#ssgHover" data-rel="popup" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-warning fa-lg fa-inverse fa-greenbg"></i></a>
+	                   <div data-overlay-theme="a" id="ssgHover" class="ui-content">
+	                     <span>{!ssgHoverText}</span>
+	                   </div> -->
+	                   <div class="footerWarning">
+	                   <table class="footerWarningTable">
+	                       <tbody>
+	                           <tr>
+	                                <td><i class="fa fa-warning fa-lg"></i></td>
+	                                <td>{!ssgWarningText}</td> 
+	                           </tr>
+	                       </tbody>
+	                   </table>
+	                   </div>
+	                 </apex:outputPanel>
+                    <!-- <a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a>-->
+                </div> 
+                <div class="footerBtnsRight">
+                    <a href="#" style="{!IF((AND(readyForSSG, readyToContinue, referral.SSG_Accepted__c='True')), 'display:none;', '')}" class="ui-btn ui-btn-inline ui-icon-btn {!IF((AND(readyForSSG, readyToContinue, NOT(referral.SSG_Accepted__c='True'))), '', 'ui-state-disabled')}" onclick="ensureEnabled();displayLoader('Saving...');saveAndContinue();return false;"><i class="fa fa-file fa-lg fa-inverse fa-greenbg"></i>Solar Savings Guide<i class="fa fa-chevron-right fa-lg fa-nobgRight"></i></a>
+                </div>
+                <apex:actionFunction name="saveAndContinue" action="{!submitAndContinue}">
+                </apex:actionFunction> 
+                <div class="ClearAll"></div>
+            </div> 
+        </apex:define>
+        
+        <apex:define name="popup">
+            <div data-role="popup" data-overlay-theme="a" id="closePopup"  class="ui-content">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <h3>Important!</h3>
+                <p>Would you like to <b>save before returning to dashboard</b>?</p>
+                   <div class="closePopupBtns">
+                        <a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all" onclick="ensureEnabled();displayLoader('Saving...');saveAndClose();return false;">Save</a>
+                        <a href="{!dashboardUrl}" target="_self" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-btn-grey ui-corner-all">Don't save</a>
+                   </div>
+            </div>
+        </apex:define>
+        
+        <apex:define name="navigation">
+            <c:D2D_AccountInfo />
+        </apex:define>
+
+        <apex:define name="content-page1">
+            <div id="Content" class="leadContent">
+                <div class="container greycontainer">
+                    <apex:outputPanel id="leadForm" layout="block">
+                        <div class="NewLeadForm">
+                        	<h2>Name</h2>
+                        	<div class="NewLeadFormRow">
+                        		<div class="leadColLeft">
+                                    <label>First Name <span class="required">*</span></label>
+                                    <div class="FirstNameSelect">
+                                    <apex:selectList value="{!salutation}" size="1">
+                                        <apex:selectOptions value="{!salutations}"/>
+                                    </apex:selectList>
+                                    </div><div class="FirstName1">
+                                        <apex:inputText id="firstName" value="{!referral.First_Name__c}" maxLength="20" 
+                                       styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[fname]'),'invalid','')}"/>
+                                   </div>
+                                   
+                                </div><div class="leadColRight">
+                                   <label>Last Name <span class="required">*</span></label>
+                                    <apex:inputText id="lastName" value="{!referral.Last_Name__c}" maxLength="40" 
+                                        styleClass="LongField {!IF(CONTAINS(errorMessage.ErrorFields,'[lname]'),'invalid','')}"/>
+                                </div>
+                            </div>
+                        	<h2>Contact Information</h2>
+                        	<div class="NewLeadFormRow">
+                        		<div class="leadColLeft">
+	                                <label>Home Phone <span class="required">*</span></label>
+	                                <div class="phoneInput">
+	                                    <apex:inputText id="phone" value="{!referral.Phone__c}" maxLength="40" 
+	                                    styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[phone]'),'invalid','')}"/>
+	                                </div><div class="primaryRadio">
+	                                    <span class="{!IF(CONTAINS(errorMessage.ErrorFields,'[primary]'),'invalid','')}">
+	                                        <apex:outputPanel layout="none" rendered="{!referral.Primary_Phone__c='Home Phone'}">
+	                                            <input type="radio" name="primaryPhone" id="primaryPhone1" value="Home Phone" checked="checked" />
+	                                            <label for="primaryPhone1">Primary</label>
+	                                        </apex:outputPanel>
+	                                        <apex:outputPanel layout="none" rendered="{!NOT(referral.Primary_Phone__c='Home Phone')}">
+	                                            <input type="radio" name="primaryPhone" id="primaryPhone1" value="Home Phone" />
+	                                            <label for="primaryPhone1">Primary</label>
+	                                        </apex:outputPanel>
+	                                    </span>
+	                                    </div>
+                                </div><div class="leadColRight">
+                                    <label>Best Time to Call</label>
+                                    <apex:selectList value="{!bestTime}" size="1" styleClass="BestTimeToCallSelect {!IF(CONTAINS(errorMessage.ErrorFields,'[bestTime]'),'invalid','')}">
+                                        <apex:selectOptions value="{!bestTimes}"/>
+                                    </apex:selectList>
+                                </div>
+                            </div>
+                            <div class="NewLeadFormRow">
+                        		<div class="leadColLeft">
+                                
+	                               <label>Mobile Phone</label>
+	                                <div class="phoneInput">
+	                                    <apex:inputText maxLength="40" value="{!referral.Mobile_Phone__c}"
+	                                    styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[phone]'),'invalid','')}"/>
+	                                </div><div class="primaryRadio">
+	                                    <span class="{!IF(CONTAINS(errorMessage.ErrorFields,'[primary]'),'invalid','')}">
+	                                        <apex:outputPanel layout="none" rendered="{!referral.Primary_Phone__c='Mobile Phone'}">
+	                                            <input type="radio" name="primaryPhone" id="primaryPhone2" value="Mobile Phone" checked="checked" />
+	                                            <label for="primaryPhone2">Primary</label>
+	                                        </apex:outputPanel>
+	                                        <apex:outputPanel layout="none" rendered="{!NOT(referral.Primary_Phone__c='Mobile Phone')}">
+	                                            <input type="radio" name="primaryPhone" id="primaryPhone2" value="Mobile Phone" />
+	                                            <label for="primaryPhone2">Primary</label>
+	                                        </apex:outputPanel>
+	                                    </span>
+		                            </div>
+                                </div><div class="leadColRight">
+                                    <label>Customer Timeframe</label>
+                                    <apex:selectList value="{!timeline}" size="1" styleClass="Timeline">
+                                        <apex:selectOptions value="{!timelines}"/>
+                                    </apex:selectList>
+                                </div>
+                            </div>
+                            <div class="NewLeadFormRow">
+                        		<div class="leadColLeft">
+                                
+	                               <label>Work Phone</label>
+	                                <div class="phoneInput">
+	                                    <apex:inputText maxLength="40" value="{!referral.Work_Phone__c}"
+	                                    styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[phone]'),'invalid','')}"/>
+	                                </div><div class="primaryRadio">
+	                                    <span class="{!IF(CONTAINS(errorMessage.ErrorFields,'[primary]'),'invalid','')}">
+	                                        <apex:outputPanel layout="none" rendered="{!referral.Primary_Phone__c='Work Phone'}">
+	                                            <input type="radio" name="primaryPhone" id="primaryPhone3" value="Work Phone" checked="checked" />
+	                                            <label for="primaryPhone3">Primary</label>
+	                                        </apex:outputPanel>
+	                                        <apex:outputPanel layout="none" rendered="{!NOT(referral.Primary_Phone__c='Work Phone')}">
+	                                            <input type="radio" name="primaryPhone" id="primaryPhone3" value="Work Phone" />
+	                                            <label for="primaryPhone3">Primary</label>
+	                                        </apex:outputPanel>
+	                                    </span>
+	                                </div>
+                                </div>
+                            </div>
+                            <div class="NewLeadFormRow">
+                        		<div class="leadColLeft">
+                                    <label>Email <span class="required">*</span></label>
+                                    <apex:inputText id="email" value="{!referral.Email__c}" maxLength="100" 
+                                        styleClass="LongField {!IF(CONTAINS(errorMessage.ErrorFields,'[email]'),'invalid','')}"/>
+                                </div>
+                            </div>
+                            
+                        	<h2>Address</h2>
+                        	
+                            <div class="NewLeadFormRow">
+                        		<div class="leadColLeft">
+                                    <label>Address <span class="required">*</span><apex:inputText id="address" value="{!referral.Street__c}" maxLength="80" 
+                                        styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[street]'),'invalid','')}"/></label>
+		                           
+                                </div><div class="leadColRight">
+                                    <apex:outputLabel for="city">City <span class="required">*</span></apex:outputLabel>
+                                    <apex:inputText id="city" value="{!referral.City__c}" maxLength="40" 
+                                        styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[city]'),'invalid','')}"/>
+                                </div>
+                            </div>
+                        	
+                            <div class="NewLeadFormRow">
+                            	<div class="leadColLeft">
+                                    <div class="InputLeft">
+                                        <label>State <span class="required">*</span></label>
+                                        <apex:selectList id="state" value="{!referral.State__c}" size="1"
+                                            styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[state]'),'invalid','')}"  onchange="changeState(this.value)">
+                                            <apex:selectOptions value="{!states}"/>
+                                        </apex:selectList>
+                                        <apex:actionFunction name="changeState" rerender="utilitySelect,utilityDependentControls,pscSelect" immediate="true" oncomplete="refresh();">
+                                            <apex:param name="state" value="" assignTo="{!newState}"/>
+                                        </apex:actionFunction>
+                                    </div><div class="InputRight">
+                                        <label>Zip <span class="required">*</span></label>
+                                        <apex:inputText id="zip" value="{!referral.Zip__c}" maxLength="10" styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[zip]'),'invalid','')}"/>
+                                    </div>
+                                </div>
+                                <!-- <div class="leadColRight">
+                                	<div class="CountySelect">
+                                        <apex:outputPanel layout="block" id="CountySelect">
+                                            <apex:outputPanel layout="block" rendered="{!NOT(ISBLANK(qasCounty))}">
+                                                <label>County</label>
+                                                <apex:inputText id="qasCounty" value="{!qasCounty}" maxLength="80" styleClass=""/>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" rendered="{!ISBLANK(qasCounty)}">
+                                                <label>County</label>
+                                                <apex:selectList id="county" value="{!county}" size="1"
+                                                    styleClass="{!IF(CONTAINS(errorMessage.ErrorFields,'[county]'),'invalid','')}">
+                                                    <apex:selectOptions value="{!counties}"/>
+                                                </apex:selectList>
+                                            </apex:outputPanel>
+                                        </apex:outputPanel>
+                                    </div>
+                            	</div> -->
+                            </div>
+                        	<h2>Property Information</h2>
+                        	
+                            <div class="NewLeadFormRow">
+	                           		<div class="leadColFull">
+	                                <apex:actionRegion >
+	                                        <label>Property Notes</label>
+	                                        <apex:inputTextArea value="{!propertyNotes}" styleClass="LongField"/>
+	                                </apex:actionRegion>
+                                </div>
+                            </div>
+                            <div class="NewLeadFormRow">
+                                <apex:actionRegion >
+                            	<div class="leadColLeft">
+	                                <label class="NoFloat OwnsPropertyLabel">Owns Property? <span class="required">*</span></label>
+                                            <select id="select-based-flipswitch" name="homeOwnerSwitch" value="{!homeOwner}" data-role="flipswitch">
+                                             <option value="No">No</option>
+                                             <option value="Yes">Yes</option>
+                                           </select>
+                                           <script type="text/javascript">
+                                                $j('#select-based-flipswitch').val('{!homeOwner}').flipswitch();
+                                           </script>
+                                </div><div class="leadColRight">
+                                	<label>Monthly Electric Bill ($) <span class="required">*</span></label>
+                                    <apex:inputText value="{!electricBill}" maxLength="10" 
+                                                styleClass="LongField {!IF(CONTAINS(errorMessage.ErrorFields,'[electricBill]'),'invalid','')}" title="Monthly bill in whole dollars"/>
+                            	</div>
+                                </apex:actionRegion>
+                            </div>
+                            <div class="NewLeadFormRow">
+                            	<div class="leadColLeft">
+                            		<label>Utility <span class="required">*</span></label>
+                                       <div class="UtilitySelect">
+                                           <apex:outputPanel layout="block" id="utilitySelect">
+                                               <apex:selectList value="{!utilityId}" size="1" styleClass="LongField">
+                                                   <apex:selectOptions value="{!utilities}"/>
+                                                   <apex:actionSupport event="onchange" reRender="utilityDependentControls" oncomplete="refresh();"/>
+                                               </apex:selectList>
+                                           </apex:outputPanel>
+                                       </div>
+                                </div><div class="leadColRight">
+                                	<apex:outputPanel layout="block" id="utilityDependentControls" styleClass="utilityDependentControls">
+		                                <label>System Size <span class="required">*</span></label>
+		                                <apex:selectList id="systemSize" size="1" value="{!referral.D2D_System_Size__c}">
+		                                    <apex:selectOptions value="{!systemSizes}"/>
+		                                </apex:selectList>
+                                    </apex:outputPanel>
+                            	</div>
+                            </div>
+                            <div class="NewLeadFormRow NewLeadFormRowBottom">
+                            	<div class="leadColLeft">
+	                                <label>Affiliate Community Program <span class="required">*</span></label>
+	                                <div class="ACPSelect">
+	                                    <apex:outputPanel layout="block" id="acpSelect">
+	                                        <apex:selectList value="{!affiliateCommunityProgram}" size="1" styleClass="LongField">
+	                                            <apex:selectOptions value="{!affiliateCommunityPrograms}"/>
+	                                        </apex:selectList>
+	                                    </apex:outputPanel>
+	                                </div>
+                                </div><div class="leadColRight">
+                                	<label>Primary Source Campaign <span class="required">*</span></label>
+                                     <div class="PSCSelect"  styleClass="PSCSelect">
+                                         <apex:outputPanel layout="block" id="pscSelect">
+                                             <apex:selectList value="{!primarySourceCampaign}" size="1" styleClass="LongField">
+                                                 <apex:selectOptions value="{!campaigns}"/>
+                                             </apex:selectList>
+                                         </apex:outputPanel>
+                                     </div>
+                            	</div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                    <h2>Property Location</h2>
+                    <div id="mapWrapper">
+                        <div id="mapDiv"></div>
+                        <img id="mapPin" src="{!URLFOR($Resource.EP_Resources, 'images/PushPin.png')}" />
+                        <div style="text-align: right; margin-top: 10px;">
+                            <button id="resetLoc" type="button" class="ui-btn ui-btn-inline ui-btn-grey ui-btn-corner-all">RESET TO LOCATION</button>
+                            <button id="pinme" type="button" class="ui-btn ui-btn-inline ui-btn-green ui-btn-corner-all ui-btn-no-margin">PIN ME</button>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <apex:inputHidden id="latitude" value="{!confirmedLatitude}" />
+                    <apex:inputHidden id="longitude" value="{!confirmedLongitude}" />
+                   </div>
+            </div>
+        </apex:define>
+        
+        <!-- <apex:define name="content-page2">
+            <div id="Content">
+                <div class="container greycontainer">
+                    <div id="mapWrapper">
+                        <div id="mapDiv"></div>
+                        <img id="mapPin" src="{!URLFOR($Resource.EP_Resources, 'images/PushPin.png')}" />
+                        <div style="text-align: right; margin-top: 10px;">
+                            <button id="resetLoc" type="button" class="ui-btn ui-btn-inline ui-btn-grey ui-btn-corner-all">RESET TO LOCATION</button>
+                            <button id="pinme" type="button" class="ui-btn ui-btn-inline ui-btn-green ui-btn-corner-all ui-btn-no-margin">PIN ME</button>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <apex:inputHidden id="latitude" value="{!confirmedLatitude}" />
+                    <apex:inputHidden id="longitude" value="{!confirmedLongitude}" />
+                </div>
+            </div>
+        </apex:define>-->
+        
+    </apex:composition>
+    
+    <script type="text/javascript">
+        
+        window.addEventListener( 'load', function() {
+            if(ssgAccepted!="True")
+            {
+                create_map();
+            }
+            else {
+                create_disabled_map();
+            }
+        }, false);
+
+        function create_map() {
+
+            map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), {credentials:"AmNusenC9lFa9mEzNcPkA20qId_7uSQjr13KIPqpc2dCcl7VovwdcBi-G9tQIxa5",showDashboard:false });
+    
+            //lookup_location(); 
+                
+            //document.querySelector("[name$='leadForm\:address']").addEventListener( "change", lookup_location, false );
+            //document.querySelector("[name$='leadForm\:city']").addEventListener( "change", lookup_location, false );
+            //document.querySelector("[name$='leadForm\:state']").addEventListener( "change", lookup_location, false );
+            //document.querySelector("[name$='leadForm\:zip']").addEventListener( "change", lookup_location, false );
+            document.querySelector("[name$='address']").addEventListener( "change", lookup_location, false );
+            document.querySelector("[name$='city']").addEventListener( "change", lookup_location, false );
+            document.querySelector("[name$='state']").addEventListener( "change", lookup_location, false );
+            document.querySelector("[name$='zip']").addEventListener( "change", lookup_location, false );
+            document.getElementById("pinme").addEventListener( "click", pinMe, false);
+            document.getElementById("resetLoc").addEventListener( "click", lookup_location, false);
+    
+            if( !check_geolocation() ) {
+                lookup_location();
+            }
+
+        }
+
+        function create_disabled_map() {
+
+            map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), {credentials:"AmNusenC9lFa9mEzNcPkA20qId_7uSQjr13KIPqpc2dCcl7VovwdcBi-G9tQIxa5",showDashboard:false, disableMouseInput:true, disableTouchInput: true });
+    
+            lookup_location();
+    
+            if( !check_geolocation() ) {
+                lookup_location();
+            }
+
+        }
+    
+        function lookup_location(event) {
+            // take address info and callout to Bing for map and geo coords
+            
+            // collect field data
+            //var address = document.querySelector("[name$='leadForm\:address']").value;
+            //var city = document.querySelector("[name$='leadForm\:city']").value;
+            //var state = document.querySelector("[name$='leadForm\:state']").value;
+            //var zip = document.querySelector("[name$='leadForm\:zip']").value;
+            var address = document.querySelector("[name$='address']").value;
+            var city = document.querySelector("[name$='city']").value;
+            var state = document.querySelector("[name$='state']").value;
+            var zip = document.querySelector("[name$='zip']").value;
+            if( address && city && state && zip ) {
+                // actual call out
+                var rqst = "https://dev.virtualearth.net/REST/v1/Locations?countryRegion=US";
+                rqst += "&locality=" + encodeURIComponent(city);
+                rqst += "&adminDistrict=" + encodeURIComponent(state) + "&postalCode=" + zip;
+                rqst += "&addressLine=" + encodeURIComponent(address);
+                rqst += "&output=json";
+                rqst += "&jsonp=GeocodeCallback";
+                rqst += "&key=AmNusenC9lFa9mEzNcPkA20qId_7uSQjr13KIPqpc2dCcl7VovwdcBi-G9tQIxa5";
+                
+                RequestViaJSONP(rqst);
+            }
+    
+        }
+    
+        function check_geolocation() {
+    
+            //var lat = document.querySelector("[name$='leadForm2\:latitude']").value;
+            //var lng = document.querySelector("[name$='leadForm2\:longitude']").value;
+            var lat = document.querySelector("[name$='latitude']").value;
+            var lng = document.querySelector("[name$='longitude']").value;
+            
+            if( lat && lng && Number(lat)!= 0 && Number(lng)!=0 ) {
+                var ctr = new Microsoft.Maps.Location( lat, lng);
+                map.setView({ center: ctr });
+                map.setView({ zoom: 18 });
+    
+                pinMe();
+                //document.getElementById("pinme").style.backgroundColor = "#00FF00";
+    
+                return true;
+            }
+    
+            return false;
+        }
+    
+        function RequestViaJSONP( request ) {
+            var script = document.createElement("script");
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("src", request);
+            document.body.appendChild(script);
+        }
+    
+        function GeocodeCallback(result) {
+            
+            //display_location();
+            
+            var coordinates = result.resourceSets[0].resources[0].point.coordinates;
+            var ctr = new Microsoft.Maps.Location( coordinates[0], coordinates[1]);
+            map.setView({ center: ctr });
+            map.setView({ zoom: 18 });
+            unPinMe();
+        }
+    
+        function pinMe() {
+            document.getElementById("pinme").removeEventListener( "click", pinMe, false);
+            // lock map center and read coordinates
+            map.setOptions({disablePanning: true});
+            var ctr = map.getCenter();
+            //document.querySelector("[name$='leadForm2\:latitude']").value = ctr.latitude;
+            //document.querySelector("[name$='leadForm2\:longitude']").value = ctr.longitude;
+            document.querySelector("[name$='latitude']").value = ctr.latitude;
+            document.querySelector("[name$='longitude']").value = ctr.longitude;
+            var elem = document.getElementById("pinme");
+            elem.style.backgroundColor="#666";
+            elem.innerHTML= "Unpin Me";
+            document.getElementById("pinme").addEventListener( "click", unPinMe, false);
+            
+            formIsSaved = false;
+        }
+    
+        function unPinMe() {
+            document.getElementById("pinme").removeEventListener( "click", unPinMe, false);
+            // lock map center and read coordinates
+            map.setOptions({disablePanning: false});
+            
+            //document.querySelector("[name$='leadForm2\:latitude']").value = '';
+            //document.querySelector("[name$='leadForm2\:longitude']").value = '';
+            document.querySelector("[name$='latitude']").value = '';
+            document.querySelector("[name$='longitude']").value = '';
+    
+            var elem = document.getElementById("pinme");
+            elem.style.backgroundColor="#61af3f";
+            elem.innerHTML= "Pin Me";
+            document.getElementById("pinme").addEventListener( "click", pinMe, false);
+    
+        }
+    
+        function resetForm() {
+            //var frm = document.querySelector("[id$='leadForm']");
+            //frm.reset();
+            var ctr = new Microsoft.Maps.Location( 0, 0);
+            map.setView({ center: ctr });
+            map.setView({ zoom: 1 });
+            unPinMe();
+        }
+
+    </script>
+</apex:page>

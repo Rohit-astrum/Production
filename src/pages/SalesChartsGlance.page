@@ -1,0 +1,19 @@
+<apex:page title="SalesChartsGlance" tabStyle="SCRB_SalesOrder__c">
+    <apex:pageBlock title="Sales Charts at a Glance">
+    
+        <apex:pageBlockSection title="Monthly Charts" collapsible="true">
+            <c:MonthlyRevenueLeaderboard height="300" width="600"/>
+            <c:MonthlyOppCloseLeaderboard height="300" width="600"/>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="YTD Charts" collapsible="true">
+            <c:YTD_RevenueLeaderboard height="300" width="600"/>
+            <c:YTD_OppClosesLeaderboard height="300" width="600"/>
+        </apex:pageBlockSection>        
+        
+        <apex:pageBlockSection title="Trailing 12 Week Opportunities Closed Leaderboard" collapsible="true">
+            <c:Trailing12WeekOppClosed />
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+</apex:page>

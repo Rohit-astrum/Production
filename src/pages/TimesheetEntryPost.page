@@ -1,0 +1,41 @@
+<apex:page standardController="Time_Sheet__c" extensions="TimesheetEntryPostController" showHeader="true" sidebar="false">
+   
+<apex:form >
+    <apex:pageBlock title="Time Sheet Entries" id="block">
+        <apex:pageBlockButtons location="both">
+              	<apex:commandButton value="Post to Payroll" action="{!postEntries}"/>
+              	<apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        <apex:pageMessages />
+        <apex:pageBlockTable value="{!payrollEntries}" var="entry" >
+
+        <apex:column >
+            <apex:facet name="header">Employee Name</apex:facet>
+            <apex:outputText value="{!timeSheet.Employee__r.Name}"/>
+        </apex:column>
+
+        <apex:column >
+            <apex:facet name="header">Employee Number</apex:facet>
+            <apex:outputText value="{!timeSheet.Employee__r.Employee_Number__c}"/>
+        </apex:column>
+
+        <apex:column >
+            <apex:facet name="header">Entry Date</apex:facet>
+            <apex:outputText value="{!entry.Time_Entry_Date__c}"/>
+        </apex:column>
+        
+       
+        <apex:column >
+            <apex:facet name="header">Hours</apex:facet>
+            <apex:outputText value="{0,number,##.00}"><apex:param value="{!entry.Hours__c}" /></apex:outputText>
+        </apex:column>
+
+        <apex:column >
+            <apex:facet name="header">DE Code</apex:facet>
+            <apex:outputText value="{!entry.DE_Code__c}"/>
+        </apex:column>
+        
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

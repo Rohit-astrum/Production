@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Solar is a Guaranteed Investment</name>
+    <style>none</style>
+    <subject>Going solar is a guaranteed investment.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=solarinvestment&amp;utm_campaign=nurture-tk&amp;utm_content=solarinvestment-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Solar is a Guaranteed Investment
+
+Dear {{lead.First Name:default=Friend}},
+
+How can we say that? Regardless of how you end up acquiring a solar system, your panels begin lowering your consumption of utility power from the moment your installation is completed.
+
+In Your Guide to Understanding Solar Power &lt;[[http://pages.directenergysolar.com/rs/410-XAV-850/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=solarinvestment&amp;utm_campaign=nurture-tk&amp;utm_content=solarinvestment-link-solarpdf]]&gt;, you’ll see that the bottom line is that by going solar, you’ll enjoy lower power bills from day 1.
+
+How Much You Save Depends on a Variety of Factors
+
+We’re pleased to offer you our free guide to help you better understand your options and the factors that influence the amount of your financial return. Plus, much more!
+
+Download Your Copy!
+ &lt;[[http://pages.directenergysolar.com/rs/410-XAV-850/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=solarinvestment&amp;utm_campaign=nurture-tk&amp;utm_content=solarinvestment-button-solarpdf]]&gt;
+
+“It started out with, ‘Wouldn’t it be cool to do this’. But then I saw how quickly this would pay out. The net cost made sense, and the timing was right because of the rebates.” - Dale and Janice
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=solarinvestment&amp;utm_campaign=nurture-tk&amp;utm_content=solarinvestment-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=solarinvestment&amp;utm_campaign=nurture-tk&amp;utm_content=solarinvestment-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=solarinvestment&amp;utm_campaign=nurture-tk&amp;utm_content=solarinvestment-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

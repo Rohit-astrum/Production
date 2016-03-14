@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Solar Payback Factors Series: The Cost of Your Solar Installati</name>
+    <style>none</style>
+    <subject>How is your solar system cost determined?</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors4&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors4-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Special Series: Solar Payback Factors
+
+Solar Payback Factor #4: The Cost of Your Solar Installation
+
+Dear {{lead.First Name:default=Friend}},
+
+Solar has many variables that can influence how much of a return you see from your system. In this special series focusing on solar payback factors, we’ll be taking a look at the total cost of your installation &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors4&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors4-link-totalcost]]&gt;.
+
+Obviously, the financial return on your solar system is higher the less that you pay for it. The total cost is difficult to standardize as it really depends on individual homeowners. The combination of federal, state, and local incentives, as well as your solar system configuration will determine your out-of-pocket costs for your solar installation:
+
+State and Local Governments Have Credits Available
+
+States and local governments have patchworks of credits that are available to homeowners. We’ll help you determine which discounts are available to you.
+
+What Incentives Are You Entitled To?
+
+When you receive your solar quote from us, it will have a complete breakdown of all available incentives and we’ll help you understand how you receive them.
+
+Wanna Know All of the Factors? Download Our Free Guide:
+ &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors4&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors4-button-guide]]&gt;
+
+“It was a no-brainer. With the incentives and rebates, the cost of the system is next to nothing. We couldn’t afford not to do it.” - Mary and David
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=pbfactors4&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors4-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=pbfactors4&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors4-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors4&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors4-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

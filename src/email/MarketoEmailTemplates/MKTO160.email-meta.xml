@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Re-engagement 1.We have not heard from you v2</name>
+    <style>none</style>
+    <subject>We have not heard from you</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+A Special Message from Our Partner Program
+We miss you, {{lead.First Name:default=Friend}}!
+
+I want to thank you for being a member of our Partner Referral Program. Our referral partners are a critical part of our business growth and I am committed to making this program successful for both of us. Thank you for the leads you have provided in the past – you are helping us to scale our business and we look forward to continuing to compensate you for the referrals that you provide from your customer base.
+
+That said we routinely monitor the performance of our Partners and noticed that we have not seen any leads from you for over 60 days. We understand you are running a successful business and need to make sure you execute your core business well. But want to make sure you know that I am available to assist you if there are specific needs that you may have. If you need a refresher on our partner program or required additional marketing support, I am here! Additionally, your partner portal &lt;http://partners.directenergysolar.com/&gt; has an updated list of marketing collateral available for you to customize. If you need access to the portal please email me at partners@directenergysolar.com &lt;mailto:partners@directenergysolar.com&gt;.
+
+Remember that we routinely have outstanding promotions &lt;http://www.directenergysolar.com/&gt; that you can share with your customers making it easier for them to make the decision to go solar and generating more revenue for you!
+
+Again, I want it as easy as possible for you to make solar available to your customers and generate incremental revenue for your business, so please let me know how I can help you. Thank you for your continued support.
+
+Suzanne
+Senior Manager, Field Marketing
+ 240-278-8616
+ suzanne.borneman@directenergysolar.com &lt;mailto:suzanne.borneman@directenergysolar.com&gt;
+
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

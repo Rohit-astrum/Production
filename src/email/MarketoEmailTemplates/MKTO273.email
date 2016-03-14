@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<title></title>
+
+<style type="text/css">
+.appleLinksGray a {
+        color: #666666;
+        text-decoration: none;
+}
+.appleLinksWhite a {
+        color: #ffffff;
+        text-decoration: none;
+}
+.appleLinksBlue a {
+        color: #1cef94;
+        text-decoration: none;
+}
+.appleLinksGreen a {
+        color: #61af3f;
+        text-decoration: none;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ><table style="width:100%; background-color:#e8e8e8; padding-bottom:30px; " ><tr ><td ><table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><div class="mktEditable" id="Header" style="margin-left:33px; margin-right:33px; margin-top:15px; margin-bottom:0px; font-size:0px; " ><table style="border-bottom-color: #cccccc; border-bottom-style: solid; border-bottom-width: 1px;" border="0" width="634" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+<tbody>
+<tr>
+<td style="vertical-align: top;" width="302" height="105">
+<div style="margin-top: 10px;"><a href="http://www.directenergysolar.com"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_logo.jpg" alt="Direct Energy Solar" width="295" height="64" border="0" /></a></div>
+</td>
+<td style="vertical-align: top;" align="right" width="472" height="105">
+<div style="margin-top: 10px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/Header_MessageForCustomers.jpg" alt="A special message for our valued customers" width="304" height="64" border="0" /></div>
+</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+<tr ><td width="634" style="padding-left:33px; padding-right:33px; " ><div class="mktEditable" id="BodyCopy" ><div style="margin-top: 25px; margin-bottom: 35px;"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/OpenHouseHeader.jpg" alt="Get rewarded for hosting a solar open hosue!" width="634" height="386" /></div>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 24px; margin-bottom: 5px; margin-top: 0px; padding-bottom: 0px; color: #1c3f94;">Dear {{lead.First Name:default=Friend}},</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px; padding-bottom: 0px; text-align: left;">Do you love your system and your savings? Help your friends go&nbsp;green and start saving green with Direct Energy Solar! Invite them to attend a solar open house and make money for doing that!</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 20px; margin-top: 15px; padding-bottom: 0px; text-align: left;">Direct Energy Solar will have a solar consultant at your party to answer any questions about what&rsquo;s involved in going solar. Your neighbors will be able to see how your system works and learn more about how the sun can power their homes and reduce their electricity bills.</p>
+<div style="margin-top: 10px; margin-bottom: 0px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<table border="0" width="634" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="vertical-align: top;" width="136">
+<div style="margin-top: 5px; margin-bottom: 0px;"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/Balloon.jpg" alt="Earn Cash Rewards" width="136" height="204" border="0" /></div>
+</td>
+<td style="vertical-align: top;" width="420">
+<div style="margin-top: 5px; margin-bottom: 0px;">
+<p style="font-family: Arial, Helvetica, sans-serif; color: #61af3f; font-weight: bold; font-size: 22px; line-height: 26px; margin-bottom: 0px; margin-top: 20px; text-transform: uppercase;"><strong>You&rsquo;ll receive $500 from each sale from the open house*</strong></p>
+<ul style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px;">
+<li>Direct Energy Solar will cover the cost of the event.</li>
+<li>You may promote the event to your community through channels you see fit.</li>
+<li>Direct Energy Solar can provide marketing materials.</li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<table border="0" width="634" cellspacing="0" cellpadding="0" bgcolor="#61af3f">
+<tbody>
+<tr>
+<td>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: bold; font-size: 22px; line-height: 26px; margin-bottom: 15px; margin-top: 20px; padding-bottom: 0px; text-align: center;"><strong>Act now to schedule your event by the end of the year!</strong></p>
+<p style="color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 22px; margin-bottom: 20px; margin-top: 0px; padding-bottom: 0px; text-align: center;"><strong>Contact: Lindsey Williams</strong><br /><em>Program Manager, Events &amp; Community Marketing</em><br /><span class="appleLinksGray">443-239-9809</span><br /><a style="text-decoration: none; font-weight: bold; color: #ffffff;" href="mailto:lindsey.williams@directenergysolar.com">lindsey.williams@directenergysolar.com</a></p>
+</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><table width="634" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; " ><tr ><td width="634" style="vertical-align:top; text-align:center; " ><div style="margin-top:25px; margin-bottom:25px; " class="mktEditable" id="PhoneTagline" ><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/Tagline.jpg" alt="Your Sun. Your Power. Your Way." width="273" height="15" border="0" /></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td style="padding-top:20px; padding-bottom:33px; padding-left:33px; padding-right:33px; " ><div style="color:#666666; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; " ><div class="mktEditable" id="disclaimerCopyWhy" >
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">You are receiving this email because you are a Direct Energy Solar customer.</p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">*You will receive $500 for each referral who signs a contract with Direct Energy Solar, resulting from the open house.
+ There is no limit to the amount of contracts signed from your open house.
+ This offer is not valid within special community pricing programs or in combination with any other offer&mdash;if your referral receives special community pricing on their solar contract, you will receive $200.
+ Individuals may not refer themselves.
+ Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral.
+ Payment in the form of a check is sent within 60 days of the sale.
+ If the customer decides to cancel the open house, they will make every effort to provide Direct Energy Solar with at least four weeks notice.
+ The customer agrees that a Direct Energy Solar sales/marketing representative will be onsite to answer questions for visitors.</p>
+</div>
+<div class="mktEditable" id="disclaimerCopyTerms" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.</span></p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532</span></p></div>
+<div class="mktEditable" id="OfficeDetails" ><p style="margin-bottom: 10px;"><span class="appleLinksGray">Direct Energy Solar</span><br /> <span class="appleLinksGray">7101 Riverwood Drive</span><br /> <span class="appleLinksGray">Columbia, MD 21046</span><br /> <span class="appleLinksGray">P: 800-903-6130</span><br /> <span class="appleLinksGray">F: 443-267-0036</span></p></div>
+<div class="mktEditable" id="TermsConditions" ><p style="font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px;">&copy; <span class="appleLinksGray">2015 Astrum Solar, Inc.</span> All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com/privacy-policy">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com/terms-and-conditions">Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com">DirectEnergySolar.com</a></p></div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

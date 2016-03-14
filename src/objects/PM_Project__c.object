@@ -1,0 +1,3586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>PMProjectDetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Astrum PM 2.0 Project Object</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Age__c</fullName>
+        <externalId>false</externalId>
+        <formula>(TODAY() - MOD( TODAY() - DATE(1900, 1, 6), 7)) -  Sale_Date_Week_Start__c</formula>
+        <label>Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approval_Comment_Check__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Comment Check</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Requested</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Required</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Approval_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Final_Documents__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Final Documents</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approved_Utility_Interconnect_Part_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Utility Interconnect Part 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approved_Utility_Interconnect_Part_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Utility Interconnect Part 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Astrum_Office__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Sales_Order__r.Property__r.Astrum_Office__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Astrum Office</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Branch_Map__c</fullName>
+        <externalId>false</externalId>
+        <label>Branch Map</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Building_Permit_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Building Permit Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Building_Permit__c</fullName>
+        <externalId>false</externalId>
+        <label>Building Permit Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CR_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>CR Status</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Central_Inverter_Model__c</fullName>
+        <description>Inverter Type -&gt; Central -&gt; Model</description>
+        <externalId>false</externalId>
+        <label>Central Inverter Model</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Central_Inverter_Type__c</fullName>
+        <description>Inverter Type -&gt; Central -&gt; Make</description>
+        <externalId>false</externalId>
+        <label>Central Inverter Type</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Change_Pending_Count__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Change Pending Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Compliance_Specialist__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lease Administration, Incentives Administration, and Documentation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease Administration, Incentives Administration, and Documentation</inlineHelpText>
+        <label>Compliance Specialist</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PM_Projects_Compliance</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Constellation_Tranche__c</fullName>
+        <description>Tranche Number for Constellation Leases</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tranche Number for Constellation Leases</inlineHelpText>
+        <label>Constellation Tranche</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>19</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Action_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Action Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer_Action_Resolved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Customer Action Resolved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Care_Handoff__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Care Handoff</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_Until_Install__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Week_Start__c  - (TODAY() - MOD( TODAY() - DATE(1900, 1, 6), 7))</formula>
+        <label>Days Until Install</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Final_SREC_Approval__c</fullName>
+        <description>The number of Days to Final SREC Approval. Needs “SREC Application Package” value in order to calculate.
+
+IF “SREC Application Package” = &lt;Null&gt;, THEN “Days to Final SREC
+Approval” = &lt;null&gt;,
+
+IF “SREC Docs” = &lt;null&gt;, THEN “Days to Final SREC Approval” =
+[Today’s Date] – “SREC Application Package”
+
+IF “SREC Docs” = &lt;value&gt; THEN “Days to Final SREC Approval” =
+“SREC_Docs__c” – “SREC Application Package”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(SREC_Application_Package__c), 
+   NULL, 
+
+/*ELSE*/ 
+   IF( ISBLANK(SREC_Docs__c), 
+      TODAY() - SREC_Application_Package__c, 
+   /*ELSE*/ 
+      SREC_Docs__c - SREC_Application_Package__c
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Final SREC Approval. Needs “SREC Application Package” value in order to calculate.</inlineHelpText>
+        <label>Days to Final SREC Approval</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Final_SREC_Submission__c</fullName>
+        <description>The number of Days to Final SREC Submission. Needs “Approved Utility Interconnect Part 2” value in order to calculate.
+
+IF “Approved Utility Interconnect Part 2” = &lt;Null&gt;, THEN “Days to
+Final SREC Submission” = &lt;null&gt;,
+
+IF “SREC Application Package” = &lt;null&gt;, THEN “Days to Final SREC
+Submission” = [Today’s Date] – “Approved Utility Interconnect Part 2”
+
+IF “SREC Application Package” = &lt;value&gt; THEN “Days to Final SREC
+Submission” = “SREC Application Package” – “Approved Utility Interconnect
+Part 2”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Approved_Utility_Interconnect_Part_2__c), 
+   NULL, 
+
+/*ELSE*/ 
+   IF( ISBLANK(SREC_Application_Package__c), 
+      TODAY() - Approved_Utility_Interconnect_Part_2__c, 
+   /*ELSE*/ 
+      SREC_Application_Package__c - Approved_Utility_Interconnect_Part_2__c
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Final SREC Submission. Needs “Approved Utility Interconnect Part 2” value in order to calculate.</inlineHelpText>
+        <label>Days to Final SREC Submission</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Finance_Final_Approval__c</fullName>
+        <description>The number of Days to Finance Final Approval. Needs “Approved Utility Interconnect Part 2” value in order to calculate.
+
+IF “Approved Utility Interconnect Part 2” = &lt;Null&gt;, THEN “Days to
+Finance Final Approval” = &lt;null&gt;,
+
+IF “Lease Final Package Approved” = &lt;null&gt;, THEN “Days to Finance
+Final Approval” = [Today’s Date] – “Approved Utility Interconnect Part 2”
+
+IF “Lease Final Package Approved” = &lt;value&gt; THEN “Days to Finance
+Final Approval” = “Lease Final Package Approved” – “Approved Utility
+Interconnect Part 2”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Approved_Utility_Interconnect_Part_2__c), 
+   NULL, 
+
+/*ELSE*/ 
+   IF( ISBLANK(Lease_Final_Package_Approved__c), 
+      TODAY() - Approved_Utility_Interconnect_Part_2__c, 
+   /*ELSE*/ 
+      Lease_Final_Package_Approved__c - Approved_Utility_Interconnect_Part_2__c
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Finance Final Approval. Needs “Approved Utility Interconnect Part 2” value in order to calculate.</inlineHelpText>
+        <label>Days to Finance Final Approval</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Finance_Substantial_Approval__c</fullName>
+        <description>The number of Days to Finance Substantial Approval. Needs “Work Completed” value in order to calculate.
+
+IF “Work Completed” = &lt;Null&gt;, THEN “Days to Finance Substantial
+Approval” = &lt;null&gt;,
+
+IF “Lease Substantially Complete” = &lt;null&gt;, THEN “Days to Finance
+Substantial Approval” = [Today’s Date] – “Work Completed”.
+
+IF “Lease Substantially Complete” = &lt;value&gt; THEN “Days to Finance
+Substantial Approval” = “Lease Substantially Complete” – “Work Completed”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Work_Completed__c),
+   NULL,
+
+/*ELSE*/
+   IF( ISBLANK(Lease_Substantially_Complete__c),
+      TODAY() - Work_Completed__c,
+   /*ELSE*/
+      Lease_Substantially_Complete__c - Work_Completed__c
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Finance Substantial Approval. Needs “Work Completed” value in order to calculate.</inlineHelpText>
+        <label>Days to Finance Substantial Approval</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Initial_SREC_Submission__c</fullName>
+        <description>The number of Days to Initial SREC Submission.
+
+IF “NJ SREC Application Package” = &lt;null&gt;, THEN “Days to Initial
+SREC Submission” = [Today’s Date] – “Sales Order: Created Date”
+
+IF “NJ SREC Application Package” = &lt;value&gt; THEN “Days to Initial
+SREC Submission” = “NJ SREC Application Package” – “Sales Order: Created
+Date”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(NJ_SREC_Application_Package__c), 
+   TODAY() - DATEVALUE(Sales_Order__r.CreatedDate), 
+
+/*ELSE*/ 
+   NJ_SREC_Application_Package__c - DATEVALUE(Sales_Order__r.CreatedDate)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Initial SREC Submission.</inlineHelpText>
+        <label>Days to Initial SREC Submission</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Notice_to_Construct__c</fullName>
+        <description>Needs Sales Order Approval Date in order to calculate.
+
+IF “Sales Order Approval Date” = &lt;Null&gt;, THEN “Days to Notice to
+Construct” = &lt;null&gt;,
+
+IF “Lease Design Approved” = &lt;null&gt;, THEN “Days to Notice to
+Construct” = [Today’s Date] – “Sales Order Approval Date”
+
+IF “Lease Design Approved” = &lt;value&gt; THEN “Days to Notice to
+Construct” = “Lease Design Approved” – “Sales Order Approval Date”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Sales_Order__r.Sales_Order_Approval_Date__c),
+   NULL,
+
+/*ELSE*/
+   IF( ISBLANK(Lease_Design__c),
+      TODAY() - Sales_Order__r.Sales_Order_Approval_Date__c,
+   /*ELSE*/
+      Lease_Design__c - Sales_Order__r.Sales_Order_Approval_Date__c
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Notice to Construct. Needs “Sales Order Approval Date” value in order to calculate.</inlineHelpText>
+        <label>Days to Notice to Construct</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Rebate_Completion__c</fullName>
+        <description>The number of Days to Rebate Completion. Needs “Approved Utility Interconnect Part 2” value in order to calculate.
+
+IF “Approved Utility Interconnect Part 2” = &lt;Null&gt;, THEN “Days to
+Rebate Completion” = &lt;null&gt;,
+
+IF “Grant Completion Approved Part 2” = &lt;null&gt;, THEN “Days to
+Rebate Completion” = [Today’s Date] – “Approved Utility Interconnect Part 2”
+
+IF “Grant Completion Approved Part 2” = &lt;value&gt; THEN “Days to
+Finance Final Approval” = “Grant Completion Approved Part 2” – “Approved
+Utility Interconnect Part 2”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Approved_Utility_Interconnect_Part_2__c),
+   NULL,
+
+/*ELSE*/
+   IF( ISBLANK(Grant_Completion_Approved_Part_2__c),
+      TODAY() - Approved_Utility_Interconnect_Part_2__c,
+   /*ELSE*/
+      Grant_Completion_Approved_Part_2__c - Approved_Utility_Interconnect_Part_2__c 
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Rebate Completion. Needs “Approved Utility Interconnect Part 2” value in order to calculate.</inlineHelpText>
+        <label>Days to Rebate Completion</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Reservation_Approval__c</fullName>
+        <description>The number of Days to Reservation Approval. Needs “Grant Reservation Submitted” value in order to calculate.
+
+IF “Grant Reservation Submitted” = &lt;null&gt;, THEN “Days to
+Reservation Approval” = &lt;null&gt;
+
+IF “Grant Reservation Approved” = &lt;null&gt;, THEN “Days to
+Reservation Approval” = [Today’s Date] – “Sales Order: Created Date”
+
+IF “Grant Reservation Approved” = &lt;value&gt; THEN “Days to
+Reservation Approval” = “Grant Reservation Approved” – “Sales Order:
+Created Date”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Grant_Reservation_Submitted__c), 
+   NULL, 
+
+/*ELSE*/ 
+   IF( ISBLANK(Grant_Documents__c), 
+      TODAY() - DATEVALUE(Sales_Order__r.CreatedDate),
+   /*ELSE*/ 
+      Grant_Documents__c - DATEVALUE(Sales_Order__r.CreatedDate)
+   )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Reservation Approval. Needs “Grant Reservation Submitted” value in order to calculate.</inlineHelpText>
+        <label>Days to Reservation Approval</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days_to_Reservation_Submission__c</fullName>
+        <description>The number of Days to Reservation Submission.
+
+IF “Grant Reservation Submitted” = &lt;null&gt;, THEN “Days to Rebate
+Submission” = [Today’s Date] – “Sales Order: Created Date”
+
+IF “Grant Reservation Submitted” = &lt;value&gt; THEN “Days to Rebate
+Submission” = “Grant Reservation Submitted” – “Sales Order: Created Date”</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Grant_Reservation_Submitted__c),
+   TODAY() - DATEVALUE(Sales_Order__r.CreatedDate),
+/*ELSE*/
+   Grant_Reservation_Submitted__c - DATEVALUE(Sales_Order__r.CreatedDate)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of Days to Reservation Submission.</inlineHelpText>
+        <label>Days to Reservation Submission</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drivers_Licenses__c</fullName>
+        <externalId>false</externalId>
+        <label>Drivers Licenses</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Electrical_Designer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Electrical Designer associated with this PM Project.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Electrical Designer associated with this PM Project.</inlineHelpText>
+        <label>Electrical Designer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PM_Projects2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Electrical_Permit_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Electrical Permit Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Electrical_Permit__c</fullName>
+        <externalId>false</externalId>
+        <label>Electrical Permit Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Electrical_Review_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Electrical Review Information Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Electrical_Review_Submitted_to_Approved__c</fullName>
+        <description>Electrical Review Submitted to Electrical Review Approved</description>
+        <externalId>false</externalId>
+        <formula>Electrical_Review__c - Electrical_Review_Submitted__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Electrical Review Submitted to Electrical Review Approved</inlineHelpText>
+        <label>Electrical Review Submitted to Approved</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrical_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Electrical Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Engineering_Permit_Design_Package__c</fullName>
+        <externalId>false</externalId>
+        <label>Engineering Permit Design Package</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Engineering_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Engineering Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Enphase_EUI64_Code__c</fullName>
+        <description>For Enphase revenue grade meter</description>
+        <externalId>false</externalId>
+        <label>Enphase EUI64 Code</label>
+        <length>16</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enphase_Install_Code__c</fullName>
+        <description>For Enphase revenue grade meter</description>
+        <externalId>false</externalId>
+        <label>Enphase Install Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enphase_Map__c</fullName>
+        <externalId>false</externalId>
+        <label>Enphase</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>External_Structural_Engineer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The external firm who will be the structural engineer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The external firm who will be the structural engineer</inlineHelpText>
+        <label>External Structural Engineer</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Type</field>
+                <operation>equals</operation>
+                <value>Vendor</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>PM Projects</relationshipLabel>
+        <relationshipName>PM_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Finance_Associate__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Finance_Associate__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Finance Associate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Finance_Comments__c</fullName>
+        <description>Comments related to the financing for the project.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comments related to the financing for the project.</inlineHelpText>
+        <label>Finance Comments</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Finance_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( AND(ISNULL( Grant_Documents__c ),
+       ( OR(  CONTAINS( Sales_Order__r.Financing_Option__c, &quot;CT Solar Loan&quot;),
+              CONTAINS( Sales_Order__r.Financing_Option__c, &quot;CT Smart E-Loan&quot;),
+              CONTAINS( Sales_Order__r.Financing_Option__c, &quot;NYSERDA&quot;),
+              CONTAINS( Sales_Order__r.Lease_PPA_Fund__r.Name, &quot;CT Lease Fund&quot;))
+)), &quot;0. Rebate Reservation&quot;,
+
+IF( AND( ISNULL( Lease_Contract_Submission__c ), ISNULL( Lease_Final_Package_Approved__c )), &quot;1. Contract Submission&quot;,
+
+IF( AND( ISNULL( Lease_Contract_Approval__c ), NOT( ISNULL( Lease_Contract_Submission__c ) ) ), &quot;2. Contract Approval&quot;,
+
+IF( AND( ISNULL( Lease_Design_Submitted__c ), NOT( ISNULL( Lease_Contract_Approval__c ) ) ), &quot;3. Design Submission&quot;,
+
+IF( AND( ISNULL( Lease_Design__c ), NOT( ISNULL( Lease_Design_Submitted__c ) ) ), &quot;4. Design Approval&quot;,
+
+IF( AND( ISNULL( Work_Completed__c ), NOT( ISNULL( Lease_Design__c ) ) ), &quot;5. Pending Work Complete&quot;,
+
+IF( AND( ISNULL( Lease_Substantially_Submitted__c ), NOT( ISNULL( Work_Completed__c ) ) ), &quot;6. Substantial Submission&quot;,
+
+IF( AND( ISNULL( Lease_Substantially_Complete__c ), NOT( ISNULL(  Lease_Substantially_Submitted__c ) ) ), &quot;7. Substantial Approval&quot;,
+
+IF( AND( ISNULL( Lease_Final_Package_Submission__c ), NOT( ISNULL(  Lease_Substantially_Complete__c ) ) ), &quot;8. Final Submission&quot;,
+
+IF( AND( ISNULL( Lease_Final_Package_Approved__c ), NOT( ISNULL(  Lease_Final_Package_Submission__c ) ) ), &quot;9. Final Approval&quot;,
+
+IF( AND( NOT( ISNULL(  Lease_Final_Package_Approved__c ) ) ), &quot;10. Finance Complete&quot;,
+
+&quot;&quot;)))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Finance Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Comments__c</fullName>
+        <description>Comments related to the grant.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comments related to the grant.</inlineHelpText>
+        <label>Grant Comments</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Grant_Comp_Approved_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Comp Approved Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Comp_Approved_P2_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Comp Approved P2 Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Comp_Completed_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Comp Completed Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Comp_Signed_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Comp Signed Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Comp_Submitted_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Comp Submitted Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Comp_Submitted_P2_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Comp Submitted P2 Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion_Amount__c</fullName>
+        <description>Grant Completion Amount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Grant Completion Amount</inlineHelpText>
+        <label>Grant Completion Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion_Approved_Part_2__c</fullName>
+        <description>Approved Application Part 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Approved Application Part 2</inlineHelpText>
+        <label>Grant Completion Approved Part 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion_Completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Completion Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion_Signed__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Completion Signed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion_Submitted_Part_2__c</fullName>
+        <description>Submitted Application Part 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Submitted Application Part 2</inlineHelpText>
+        <label>Grant Completion Submitted Part 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Completion Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Completion__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Completion Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Documents__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Reservation Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Estimate_Sold__c</fullName>
+        <description>Grant Estimate Sold</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Grant Estimate Sold</inlineHelpText>
+        <label>Grant Estimate Sold</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Payment_1_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Payment 1 Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Payment_1_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Payment 1 Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Payment_2_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Payment 2 Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Payment_2_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Payment 2 Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Res_Approved_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Res Approved Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Res_Completed_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Res Completed Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Res_Signed_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Res Signed Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Res_Submitted_Last_Updated_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Res Submitted Last Updated By</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Reservation_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Reservation Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Reservation_Completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Reservation Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Reservation_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Reservation Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Reservation_Signed__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Reservation Signed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Reservation_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Reservation Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Signatory_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_Owner__r.Grant_Signatory__r.Email</formula>
+        <label>Grant Signatory Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Signatory_First_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_Owner__r.Grant_Signatory__r.FirstName</formula>
+        <label>Grant Signatory First Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Signatory_Last_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_Owner__r.Grant_Signatory__r.LastName</formula>
+        <label>Grant Signatory Last Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Signatory_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_Owner__r.Grant_Signatory__r.Phone</formula>
+        <label>Grant Signatory Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HOA_Submitted_Documents__c</fullName>
+        <externalId>false</externalId>
+        <label>HOA Submitted Documents</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Big_Ticket_Electrical_Item__c</fullName>
+        <description>Customer has any big ticket electrical equipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer has any big ticket electrical equipment</inlineHelpText>
+        <label>Handoff Big Ticket Electrical Item</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Big_Ticket_Electrical_Type__c</fullName>
+        <description>Type of big ticket electrical equipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of big ticket electrical equipment</inlineHelpText>
+        <label>Handoff Big Ticket Electrical Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pool</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hot tub</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sauna</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Elevator</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Handoff_Bridge_Installed__c</fullName>
+        <description>Does customer have communication bridge installed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Does customer have communication bridge installed?</inlineHelpText>
+        <label>Handoff Bridge Installed</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Bridge_Model_Number__c</fullName>
+        <description>Model number of communication bridge installed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Model number of communication bridge installed</inlineHelpText>
+        <label>Handoff Bridge Model Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Bridge_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Bridge Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Powerline</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wireless</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>One Antenna Ubiquiti</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Two Antenna Ubiquiti</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tenda</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Check_list_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Handoff Check list Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Checklist_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Checklist Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Handoff_Checklist_Completion_Date__c</fullName>
+        <description>Handoff Checklist Completion Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Handoff Checklist Completion Date</inlineHelpText>
+        <label>Handoff Checklist Completion Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Checklist_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Checklist Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Verified</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Handoff Email Sent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Checklist_Verification_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Checklist Verification Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Customer_Care_Comments__c</fullName>
+        <description>Comments by Customer Care</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comments by Customer Care</inlineHelpText>
+        <label>Handoff Customer Care Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Handoff_Dedicate_Outlet_Breaker_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Dedicate Outlet Breaker Location</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Main Panel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PV Sub Panel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PV Combiner Panel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Dedicated_Outlet_for_Envoy__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Dedicated Outlet for Envoy</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Dedicated_Outlet_is_GFCI__c</fullName>
+        <description>Is the dedicated electrical outlet for Envoy GFCI ?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is the dedicated electrical outlet for Envoy GFCI ?</inlineHelpText>
+        <label>Handoff Dedicated Outlet is GFCI</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Distance_to_Mail_Supply_ft__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Distance to Mail Supply (ft.)</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Email_Sent_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Email Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Enlighten_Activated__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Enlighten Activated</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Enlighten_Verification_Date__c</fullName>
+        <description>Date that Project Lead confirmed Enlighten design and registration was completed correctly with no alerts present</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date that Project Lead confirmed Enlighten design and registration was completed correctly with no alerts present</inlineHelpText>
+        <label>Handoff Enlighten Verification Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Enphase_ID__c</fullName>
+        <description>ID of system in Enphase Enlighten portal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of system in Enphase Enlighten portal</inlineHelpText>
+        <label>Handoff Enphase ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Envoy_Location_Explanation__c</fullName>
+        <description>If not next to panel, explanation of location</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If not next to panel, explanation of location</inlineHelpText>
+        <label>Handoff Envoy Location Explanation</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Envoy_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Envoy Location</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Immediately next to panel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not immediately next to panel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Is_Internet_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Is Internet Access</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_Big_Ticket_Electrical__c</fullName>
+        <description>Other Big Ticket Electrical Item Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Other Big Ticket Electrical Item Type</inlineHelpText>
+        <label>Handoff Other Big Ticket Electrical</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_Bridge_Install_Type__c</fullName>
+        <description>Type of communication bridge installed if not one of the options on Bridge Type picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of communication bridge installed if not one of the options on Bridge Type picklist</inlineHelpText>
+        <label>Handoff Other Bridge Install Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_Internet_Access_Type__c</fullName>
+        <description>Type of internet connection if not one of the options on Type of Internet Access picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of internet connection if not one of the options on Type of Internet Access picklist</inlineHelpText>
+        <label>Handoff Other Internet Access Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_Outlet_Breaker_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Other Outlet Breaker Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_Revenue_Grade_Meter_Make__c</fullName>
+        <description>Name of Manufacturer of Revenue Grade Meter</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of Manufacturer of Revenue Grade Meter</inlineHelpText>
+        <label>Handoff Other Revenue Grade Meter Make</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_Revenue_Grade_Meter_Model__c</fullName>
+        <description>Model Number of Revenue Grade Meter</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Model Number of Revenue Grade Meter</inlineHelpText>
+        <label>Handoff Other Revenue Grade Meter Model</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Other_System_Location__c</fullName>
+        <description>Location of system if not one of the options on picklist of System Location</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Location of system if not one of the options on picklist of System Location</inlineHelpText>
+        <label>Handoff Other System Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Handoff_Revenue_Grade_Meter_Installed__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Revenue Grade Meter Installed</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Revenue_Grade_Meter_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff Revenue Grade Meter Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Enphase</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Locus</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hialeah</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Itron</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_System_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Handoff System Location</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Main House</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Garage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Barn</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Handoff_Type_of_Internet_Access__c</fullName>
+        <description>Type of internet connection used by homeowner</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of internet connection used by homeowner</inlineHelpText>
+        <label>Handoff Type of Internet Access</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Wireless/Standard</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WiFi/Air Card</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Inspection_Certificate_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Certificate Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Inspection_Last_Updated__c</fullName>
+        <description>Tracks when inspection date was last updated</description>
+        <externalId>false</externalId>
+        <label>Inspection Last Updated</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Inspection_Verified__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Inspection has been verified by either the VP of Ops or the Controller.</inlineHelpText>
+        <label>Inspection Verified</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Inspection__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Inspection_to_Submit_Interconnect__c</fullName>
+        <description>Proof of Inspection to Submit Utility Interconnect Part 2</description>
+        <externalId>false</externalId>
+        <formula>Submitted_Utility_Interconnect_Part_2__c -Proof_of_Inspection__c</formula>
+        <inlineHelpText>Proof of Inspection to Submit Utility Interconnect Part 2</inlineHelpText>
+        <label>Inspection to Submit Interconnect</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Install_Last_Updated__c</fullName>
+        <description>Tracks when Install date was last updated</description>
+        <externalId>false</externalId>
+        <label>Install Last Updated</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Install_Prep_Sheet__c</fullName>
+        <externalId>false</externalId>
+        <label>Install Prep Sheet</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Install_Week_Start__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install__c - (MOD( Install__c - DATE(1900, 1, 1), 7))
+/* MOD 6/12/14 LLH - changed DATE from 1900,1,6 to 1900,1,1 to correct for start of week */</formula>
+        <label>Install Week Start</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Install__c</fullName>
+        <externalId>false</externalId>
+        <label>Install</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Installation_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Name</formula>
+        <label>Installation Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_City__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_City__c</formula>
+        <label>Installation City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_County__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Sales_Order__r.Property__r.Property_County__c)</formula>
+        <label>Installation County</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Status__c,&apos;Completed&apos;), Install__c, null)</formula>
+        <label>Installation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Installation_Photos__c</fullName>
+        <externalId>false</externalId>
+        <label>Installation Photos</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Installation_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Sales_Order__r.Property__r.Property_State__c)</formula>
+        <label>Installation State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Suite_Apt_Bld__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_Address_2__c</formula>
+        <label>Installation Suite/Apt/Bld</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Zip_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(Sales_Order__r.Property__r.Property_ZIP__c,5)</formula>
+        <label>Installation Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Zip_Plus_4__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(LEN( Sales_Order__r.Property__r.Property_ZIP__c) = 10, MID(Sales_Order__r.Property__r.Property_ZIP__c,7,4), null)</formula>
+        <label>Installation Zip Plus 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Internal_Structural_Engineer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The internal employee who will be the structural engineer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The internal employee who will be the structural engineer</inlineHelpText>
+        <label>Internal Structural Engineer</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>User.UserRole.Name</field>
+                <operation>contains</operation>
+                <value>engineer</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PM_Projects4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Inverter_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Inverter Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Enphase</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SolarEdge</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Central</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Invoice_at_Start_of_Installation__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice at Start of Installation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Job_Id__c</fullName>
+        <description>Accounting Job Id</description>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Job_Id__c</formula>
+        <inlineHelpText>Accounting Job Id</inlineHelpText>
+        <label>Job Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Kickoff_Documents__c</fullName>
+        <externalId>false</externalId>
+        <label>Kickoff Documents</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Kickoff_Last_Updated__c</fullName>
+        <externalId>false</externalId>
+        <label>Kickoff Last Updated</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Kickoff_Photos__c</fullName>
+        <externalId>false</externalId>
+        <label>Kickoff Photos</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Kickoff__c</fullName>
+        <externalId>false</externalId>
+        <label>Kickoff</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Kickoff_to_Building_Permit_Submitted__c</fullName>
+        <description>Kickoff to Building Permit Submitted</description>
+        <externalId>false</externalId>
+        <formula>Building_Permit_Submitted__c -DATEVALUE( Kickoff__c )</formula>
+        <inlineHelpText>Kickoff to Building Permit Submitted</inlineHelpText>
+        <label>Kickoff to Building Permit Submitted</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Kickoff_to_Electrical_Review_Submitted__c</fullName>
+        <description>Kickoff to Electrical Review Submitted</description>
+        <externalId>false</externalId>
+        <formula>Electrical_Review_Submitted__c -  DATEVALUE(Kickoff__c)</formula>
+        <inlineHelpText>Kickoff to Electrical Review Submitted</inlineHelpText>
+        <label>Kickoff to Electrical Review Submitted</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Kickoff_to_Interconnect_Part_1_Submitted__c</fullName>
+        <description>Kickoff to Interconnect Part 1 Submitted</description>
+        <externalId>false</externalId>
+        <formula>Submit_Utility_Interconnect_Part_1__c - DATEVALUE(Kickoff__c)</formula>
+        <inlineHelpText>Kickoff to Interconnect Part 1 Submitted</inlineHelpText>
+        <label>Kickoff to Interconnect Part 1 Submitted</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Latitude__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Latitude__c</formula>
+        <label>Latitude</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_10_Invoice_Accepted__c</fullName>
+        <description>LEASE ONLY - CEG 10% Invoice Accepted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG 10% Invoice Accepted</inlineHelpText>
+        <label>Lease 10% Invoice Accepted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_10_Invoice_Submitted__c</fullName>
+        <description>LEASE ONLY - CEG 10% Invoice Submitted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG 10% Invoice Submitted</inlineHelpText>
+        <label>Lease 10% Invoice Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_30_Invoice_Accepted__c</fullName>
+        <description>LEASE ONLY - CEG 30% Invoice Accepted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG 30% Invoice Accepted</inlineHelpText>
+        <label>Lease 30% Invoice Accepted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_30_Invoice_Submitted__c</fullName>
+        <description>LEASE ONLY - CEG 30% Invoice Submitted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG 30% Invoice Submitted</inlineHelpText>
+        <label>Lease 30% Invoice Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_60_Invoice_Accepted__c</fullName>
+        <description>LEASE ONLY - CEG 60% Invoice Accepted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG 60% Invoice Accepted</inlineHelpText>
+        <label>Lease 60% Invoice Accepted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_60_Invoice_Submitted__c</fullName>
+        <description>LEASE ONLY - CEG 60% Invoice Submitted</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - CEG 60% Invoice Submitted</inlineHelpText>
+        <label>Lease 60% Invoice Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Approval_To_Inspect__c</fullName>
+        <description>NRG Only</description>
+        <externalId>false</externalId>
+        <label>Lease Approval To Inspect</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Commissioning_Checklist__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Commissioning Checklist</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Contract_Approval__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Contract Approval</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Contract_Submission__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Contract Submission</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Design_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Design Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Design__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Design Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Equip_Delivery_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease Equipment Delivery form Submitted</inlineHelpText>
+        <label>Lease Equip Delivery Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Equip_Delivery__c</fullName>
+        <description>Lease Equipment Delivery Confirmation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease Equipment Delivery Confirmation</inlineHelpText>
+        <label>Lease Equip Delivery</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Final_Package_Approved__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Final Package Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Final_Package_Submission__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Final Package Submission</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Funding_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Funding Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Change Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ready to Prepare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ready to Install</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Homeowner_Paid_In_Full_Date__c</fullName>
+        <description>LEASE ONLY - Homeowner Paid in Full Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Homeowner Paid in Full Date</inlineHelpText>
+        <label>Lease Homeowner Paid In Full Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Invoicing_Notes__c</fullName>
+        <description>LEASE ONLY - Notes about Invoicing for Lease</description>
+        <externalId>false</externalId>
+        <inlineHelpText>LEASE ONLY - Notes about Invoicing for Lease</inlineHelpText>
+        <label>Lease Invoicing Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_Procurement_Package_Approved__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Procurement Package Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Procurement_Package_Submission__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Procurement Package Submission</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Substantially_Complete_Approval__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Substantially Complete Approval</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Substantially_Complete__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease Substantially Complete / Approval to Interconnect</inlineHelpText>
+        <label>Lease Substantially Complete</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Substantially_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Substantially Complete / Approval to Interconnect  Submitted</inlineHelpText>
+        <label>Lease Substantially Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Locus_Mac_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Locus Mac ID</label>
+        <length>64</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Locus_Model__c</fullName>
+        <externalId>false</externalId>
+        <label>Locus Model</label>
+        <picklist>
+            <picklistValues>
+                <fullName>LGate101</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LGate120</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Longitude__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Longitude__c</formula>
+        <label>Longitude</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(FIND(&quot;\n&quot;, Sales_Order__r.Property__r.Property_Owner__r.BillingStreet) &gt; 0, 
+LEFT(Sales_Order__r.Property__r.Property_Owner__r.BillingStreet, FIND(&quot;\n&quot;, Sales_Order__r.Property__r.Property_Owner__r.BillingStreet)),
+Sales_Order__r.Property__r.Property_Owner__r.BillingStreet)</formula>
+        <label>Mailing Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_City__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Property__r.Property_Owner__r.BillingCity</formula>
+        <label>Mailing City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Suite_Apt_Bld__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (FIND(&quot;\n&quot;,Sales_Order__r.Property__r.Property_Owner__r.BillingStreet) &gt; 0,
+MID(Sales_Order__r.Property__r.Property_Owner__r.BillingStreet, FIND(&quot;\n&quot;,Sales_Order__r.Property__r.Property_Owner__r.BillingStreet) + 1, LEN(Sales_Order__r.Property__r.Property_Owner__r.BillingStreet) - FIND(&quot;\n&quot;,Sales_Order__r.Property__r.Property_Owner__r.BillingStreet)  - 1),
+null)</formula>
+        <label>Mailing Suite/Apt/Bld</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Zip_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(Sales_Order__r.Property__r.Property_Owner__r.BillingPostalCode,5)</formula>
+        <label>Mailing Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Zip_Plus_4__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (LEN(Sales_Order__r.Property__r.Property_Owner__r.BillingPostalCode) = 10,
+MID(Sales_Order__r.Property__r.Property_Owner__r.BillingPostalCode,7,4),
+null)</formula>
+        <label>Mailing Zip Plus 4</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Reading__c</fullName>
+        <description>Initial Meter Reading for SRECs</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Initial Meter Reading for SRECs</inlineHelpText>
+        <label>Meter Reading</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NJ_SREC_Application_Package__c</fullName>
+        <externalId>false</externalId>
+        <label>NJ SREC Application Package</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NJ_SREC_Docs__c</fullName>
+        <externalId>false</externalId>
+        <label>NJ SREC Docs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Days_Open__c</fullName>
+        <externalId>false</externalId>
+        <formula>TODAY() -   DATEVALUE( CreatedDate )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Days Open</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PL_Permit_Design_Package__c</fullName>
+        <externalId>false</externalId>
+        <label>PL Permit Design Package</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Paid_In_Full__c</fullName>
+        <externalId>false</externalId>
+        <label>Paid In Full</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Panel_and_Inverter_Serial_Numbers__c</fullName>
+        <externalId>false</externalId>
+        <label>Panel and Inverter Serial Numbers</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Permit_Design__c</fullName>
+        <externalId>false</externalId>
+        <label>Permit Design</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Permitting__c</fullName>
+        <externalId>false</externalId>
+        <label>Permitting</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Prelim_PDP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prelim PDP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Prelim_Solar_Engineering_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Prelim Solar Engineering Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Prelim_Structural_Engineering_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Prelim Structural Engineering Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Preliminary_Conduit_Run__c</fullName>
+        <externalId>false</externalId>
+        <label>Preliminary Conduit Run</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Preliminary_Electric_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Preliminary Electric Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Project_Engineer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Solar Engineer assigned to this Project.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Solar Engineer assigned to this Project.</inlineHelpText>
+        <label>Solar Engineer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PM_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_Lead_Assignment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Project Lead Assignment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Project_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Project Lead</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PM_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Proof_of_Inspection__c</fullName>
+        <externalId>false</externalId>
+        <label>Proof of Inspection</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Property_City_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.System_Design_Quote__r.System_Design__r.Property__r.Property_City__c +&apos;, &apos;+ TEXT(Sales_Order__r.System_Design_Quote__r.System_Design__r.Property__r.Property_State__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Property City/State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Tax_Approved__c</fullName>
+        <externalId>false</externalId>
+        <label>Property Tax Approved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Property_Tax_Submitted__c</fullName>
+        <externalId>false</externalId>
+        <label>Property Tax Submitted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Pull_List__c</fullName>
+        <externalId>false</externalId>
+        <label>Pull List</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>RSM_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>Salesperson__r.Manager.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>RSM Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ready_for_Install__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Ready for Install</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ready_for_Installation__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND(NOT(ISBLANK( Survey_Docs__c ))
+, NOT(ISBLANK(  Kickoff_Documents__c  ))
+, NOT(ISBLANK(  Prelim_Structural_Engineering_Review__c  ))
+, NOT(ISBLANK(  Preliminary_Electric_Review__c  ))
+, NOT(ISBLANK(  Prelim_Solar_Engineering_Review__c  ))
+, NOT(ISBLANK(  Approval_Final_Documents__c  ))
+, NOT(ISBLANK(  Solar_Engineering__c  ))
+, NOT(ISBLANK(  Structural_Engineering__c  ))
+, NOT(ISBLANK(  Permit_Design__c  ))
+, NOT(ISBLANK(  Electrical_Review__c  ))
+, NOT(ISBLANK(  Approved_Utility_Interconnect_Part_1__c  ))
+, NOT(ISBLANK( Lease_Design__c ))
+, NOT(ISBLANK( Grant_Documents__c )))
+,true,false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ready for Installation</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Rebate_Status__c</fullName>
+        <description>Status for Project Compliance to track PM Project process stages.</description>
+        <externalId>false</externalId>
+        <formula>IF( ISNULL( Grant_Reservation_Submitted__c ), &quot;0-Reservation Not Submitted&quot;,
+
+ IF( AND( ISNULL( Grant_Documents__c ),  NOT( ISNULL( Grant_Reservation_Submitted__c ))), &quot;1-Reservation Submitted, Not Approved&quot;,
+
+ IF( AND( ISNULL( Grant_Completion_Completed__c ),  NOT( ISNULL( Grant_Documents__c ))), &quot;2-Reserved, Completion Not Posted&quot;,
+
+ IF( AND( ISNULL( Work_Completed__c ),  NOT( ISNULL( Grant_Documents__c )),  NOT( ISNULL( Grant_Completion_Completed__c ))), &quot;3-Reserved, Work Not Complete&quot;,
+
+ IF( AND( ISNULL( Grant_Completion_Submitted__c ),  NOT( ISNULL( Grant_Documents__c )),  NOT( ISNULL( Grant_Completion_Completed__c )),  NOT( ISNULL( Work_Completed__c ))), &quot;4-Installed, Completion 1 Not Submitted&quot;,
+
+ IF( AND( ISNULL( Grant_Completion__c ),  NOT( ISNULL( Grant_Completion_Submitted__c ))), &quot;5-Completion 1 Submitted, Not Approved&quot;, 
+
+ IF( AND( ISNULL( Approved_Utility_Interconnect_Part_2__c ),  NOT( ISNULL( Grant_Completion_Submitted__c )),  NOT( ISNULL( Grant_Completion__c ))), &quot;6-Completion 1 Approved, Awaiting PTO&quot;,
+
+ IF( AND( ISNULL( Grant_Completion_Submitted_Part_2__c ),  NOT( ISNULL( Grant_Completion__c )),  NOT( ISNULL(  Approved_Utility_Interconnect_Part_2__c ))), &quot;7-PTO, Completion 2 Not Submitted&quot;,
+
+ IF( AND( ISNULL( Grant_Completion_Approved_Part_2__c ),  NOT( ISNULL( Grant_Completion_Submitted_Part_2__c ))), &quot;8-Completion 2 Submitted, Not Approved&quot;,
+
+ IF( NOT( ISNULL( Grant_Completion_Approved_Part_2__c )), &quot;9-Grant Complete&quot;, &quot;&quot; ))))))))))</formula>
+        <label>Rebate Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Regional_Sales_Manager__c</fullName>
+        <externalId>false</externalId>
+        <label>Regional Sales Manager</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Application_Package__c</fullName>
+        <externalId>false</externalId>
+        <label>SREC Application Package</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Comments__c</fullName>
+        <description>Comments related to the SREC.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comments related to the SREC.</inlineHelpText>
+        <label>SREC Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SREC_Docs__c</fullName>
+        <externalId>false</externalId>
+        <label>SREC Docs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Status__c</fullName>
+        <description>Shows the status of the SRECs for this project as it moves through the process.
+
+1. Initial Package Not Submitted
+2. Initial SREC Package Submitted
+3. Initial SREC Application Approved
+4. PTO, Final SREC Application Not Submitted
+5. Final Application Submitted, not Approved
+6. Final SREC Docs Approved</description>
+        <externalId>false</externalId>
+        <formula>IF(  AND( OR(Installation_State__c = &quot;NJ&quot;, Installation_State__c = &quot;MA&quot;) &amp;&amp; ISBLANK(NJ_SREC_Application_Package__c)),
+   &quot;1. Initial Package Not Submitted&quot;,
+
+/*ELSE*/
+   IF( AND( OR(Installation_State__c = &quot;NJ&quot;, Installation_State__c = &quot;MA&quot;) &amp;&amp; ISBLANK(NJ_SREC_Docs__c)),
+      &quot;2. Initial SREC Package Submitted&quot;,
+
+   /*ELSE*/
+      IF( ISBLANK(Approved_Utility_Interconnect_Part_2__c),
+         &quot;3. Initial SREC Application Approved&quot;,
+
+      /*ELSE*/
+         IF( ISBLANK(SREC_Application_Package__c),
+            &quot;4. PTO, Final SREC Application Not Submitted&quot;,
+
+         /*ELSE*/
+            IF( ISBLANK(SREC_Docs__c),
+               &quot;5. Final Application Submitted, not Approved&quot;,
+
+            /*ELSE*/
+               &quot;6. Final SREC Docs Approved&quot;
+            )
+         )
+      )
+   )
+)</formula>
+        <inlineHelpText>Shows the status of the SRECs for this project as it moves through the process.</inlineHelpText>
+        <label>SREC Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sale_Date_Week_Start__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sale_Date__c - (MOD( Sale_Date__c - DATE(1900, 1, 6), 7))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sale Date Week Start</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sale_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.OpportunityId__r.CloseDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sale Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>PM Projects</relationshipLabel>
+        <relationshipName>PM_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Salesperson__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Salesperson</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Sold_PM_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Signed_Conduit_Run_and_Layout__c</fullName>
+        <externalId>false</externalId>
+        <label>Signed Conduit Run and Layout</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Solar_Engineering__c</fullName>
+        <externalId>false</externalId>
+        <label>Solar Engineering</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Special_Parts_Required__c</fullName>
+        <description>Are Special Parts Required On This Project?</description>
+        <externalId>false</externalId>
+        <formula>IF(Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays_With_Special_Parts__c &gt;0,&apos;YES&apos;,&apos;NO&apos;)</formula>
+        <inlineHelpText>Are Special Parts Required On This Project?</inlineHelpText>
+        <label>Special Parts Required</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>On-Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PL Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Final Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Structural_Engineer__c</fullName>
+        <description>Displays the value of either the Internal Structural Engineer, or the External Structural Engineer. This is used in reporting so that 1 field can be used to group the Structural Engineer</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(Internal_Structural_Engineer__c),
+   External_Structural_Engineer__r.Name,
+/*ELSE*/
+   Internal_Structural_Engineer__r.FirstName &amp; &quot; &quot; &amp; Internal_Structural_Engineer__r.LastName
+)</formula>
+        <inlineHelpText>Displays the value of either the Internal Structural Engineer, or the External Structural Engineer. This is used in reporting so that 1 field can be used to group the Structural Engineer</inlineHelpText>
+        <label>Structural Engineer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Structural_Engineering_Group__c</fullName>
+        <description>Helps enforce that only one of the lookup fields (Internal Structural Engineer or External Structural Engineer) are populated. Default value is &quot;External&quot;. The &quot;Update PM Project Structural Engineer to Internal&quot; process will update this field to Internal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Helps enforce that only one of the lookup fields (Internal Structural Engineer or External Structural Engineer) are populated. Default value is &quot;External&quot;. The &quot;Update PM Project Structural Engineer to Internal&quot; process will update this field to Internal</inlineHelpText>
+        <label>Structural Engineering Group</label>
+        <picklist>
+            <picklistValues>
+                <fullName>External</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Structural_Engineering_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Structural Engineering Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Structural_Engineering__c</fullName>
+        <externalId>false</externalId>
+        <label>Structural Engineering</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Structural_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Structural Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Submit_Building_Permit_to_Approved__c</fullName>
+        <description>Time from Building Permit Submitted to Approved</description>
+        <externalId>false</externalId>
+        <formula>Building_Permit__c -  Building_Permit_Submitted__c</formula>
+        <label>Submit Building Permit to Approved</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submit_Electrical_Permit_to_Approved__c</fullName>
+        <description>Time from Electrical Permit Submitted to Approved</description>
+        <externalId>false</externalId>
+        <formula>Electrical_Permit__c - Electrical_Permit_Submitted__c</formula>
+        <label>Submit Electrical Permit to Approved</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submit_Grant_Completion_to_Approved__c</fullName>
+        <description>Time from Grant Completion Submitted to Approved</description>
+        <externalId>false</externalId>
+        <formula>Grant_Completion__c - Grant_Completion_Submitted__c</formula>
+        <label>Submit Grant Completion to Approved</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submit_Grant_Reservation_to_Approved__c</fullName>
+        <description>Time from Grant Reservation Submitted to Approved</description>
+        <externalId>false</externalId>
+        <formula>Grant_Documents__c - Grant_Reservation_Submitted__c</formula>
+        <label>Submit Grant Reseration to Approved</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submit_Utility_Interconnect_Part_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Submit Utility Interconnect Part 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Submit_Utility_Interconnect_to_Approved1__c</fullName>
+        <description>Time from submit utility interconnect to approved by PL (PART ONE)</description>
+        <externalId>false</externalId>
+        <formula>Approved_Utility_Interconnect_Part_1__c - Submit_Utility_Interconnect_Part_1__c</formula>
+        <label>Submit Utility Interconnect to Approved1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submit_Utility_Interconnect_to_Approved2__c</fullName>
+        <description>Time from submit utility interconnect to approved (PART 2)</description>
+        <externalId>false</externalId>
+        <formula>Approved_Utility_Interconnect_Part_2__c -  Submitted_Utility_Interconnect_Part_2__c</formula>
+        <label>Submit Utility Interconnect to Approved2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submitted_Utility_Interconnect_Part_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Submitted Utility Interconnect Part 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Sunpower_Warranty_Cards__c</fullName>
+        <externalId>false</externalId>
+        <label>Sunpower Warranty Cards</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Survey_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Survey_Docs__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey Docs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Survey_Photographs__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey Photographs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Survey_Sketch__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey Sketch</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>System_Designer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>System Designer assigned to this PM Project.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System Designer assigned to this PM Project.</inlineHelpText>
+        <label>Operations Surveyor</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PM_Projects3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Time_Elec_Review_to_Building_Perm_Submit__c</fullName>
+        <description>Time Elec Review to Building Perm Submit reflects the number of days between Electrical Review and Building Permit Submitted</description>
+        <externalId>false</externalId>
+        <formula>Building_Permit_Submitted__c  -  Electrical_Review__c</formula>
+        <label>Time Elec Review to Building Perm Submit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Elec_Review_to_Elec_Permit_Submit__c</fullName>
+        <description>Time Elec Review to Elec Permit Submit reflects the number of days between Electrical Review and Electrical Permit Submitted</description>
+        <externalId>false</externalId>
+        <formula>Electrical_Permit_Submitted__c  -  Electrical_Review__c</formula>
+        <label>Time Elec Review to Elec Permit Submit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Kickoff_to_Elec_Review_Info_Submit__c</fullName>
+        <description>Time Kickoff to Elec Review Info Submit reflects the number of days between Kickoff and Electrical Review Information Submitted</description>
+        <externalId>false</externalId>
+        <formula>Electrical_Review_Submitted__c  - DATEVALUE ( Kickoff__c )</formula>
+        <label>Time Kickoff to Elec Review Info Submit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Kickoff_to_Signed_Conduit_Run_L_O__c</fullName>
+        <description>Time Kickoff to Signed Conduit Run &amp; L/O reflects the number of days between Signed Conduit Run and Layout, and Kickoff</description>
+        <externalId>false</externalId>
+        <formula>Signed_Conduit_Run_and_Layout__c  - DATEVALUE ( Kickoff__c )</formula>
+        <label>Time Kickoff to Signed Conduit Run &amp; L/O</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Created_to_Install__c</fullName>
+        <description>Returns the month of installation, a number between 1 (January) and 12 (December)</description>
+        <externalId>false</externalId>
+        <formula>MONTH(Install__c )</formula>
+        <inlineHelpText>Returns the month of installation, a number between 1 (January) and 12 (December)</inlineHelpText>
+        <label>Install Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Install_to_Inspection__c</fullName>
+        <description>Time from Install to Inspection</description>
+        <externalId>false</externalId>
+        <formula>Proof_of_Inspection__c - Install__c</formula>
+        <label>Time from Install to Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Kickoff_to_Install_Prep_Sheet__c</fullName>
+        <description>Time from Kickoff to Install Prep Sheet reflects the number of days between Kickoff and Install Prep Sheet</description>
+        <externalId>false</externalId>
+        <formula>Install_Prep_Sheet__c  - DATEVALUE ( Kickoff__c )</formula>
+        <label>Time from Kickoff to Install Prep Sheet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Kickoff_to_Kickoff_Photos__c</fullName>
+        <description>Time from Kickoff to Kickoff Photos reflects the number of days between Kickoff and Kickoff Photos</description>
+        <externalId>false</externalId>
+        <formula>Kickoff_Photos__c  - DATEVALUE ( Kickoff__c )</formula>
+        <label>Time from Kickoff to Kickoff Photos</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Project_Creation_to_Inspection__c</fullName>
+        <description>Time from Project Creation to Inspection</description>
+        <externalId>false</externalId>
+        <formula>Proof_of_Inspection__c  -  DATEVALUE(  CreatedDate )</formula>
+        <label>Time from Project Creation to Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Project_Creation_to_Install__c</fullName>
+        <description>Time from Project Creation to Install</description>
+        <externalId>false</externalId>
+        <formula>Install__c - DATEVALUE( CreatedDate )</formula>
+        <label>Time from Project Creation to Install</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_from_Project_Creation_to_Kickoff__c</fullName>
+        <description>Time from Project Creation to Kickoff</description>
+        <externalId>false</externalId>
+        <formula>DATEVALUE( Kickoff__c) - DATEVALUE( CreatedDate )</formula>
+        <label>Time from Project Creation to Kickoff</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_System_Cost__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Amount__c</formula>
+        <label>Total System Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_System_Size_kW_DC__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.System_Size_kW__c</formula>
+        <label>Total System Size (kW DC)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_Bill__c</fullName>
+        <externalId>false</externalId>
+        <label>Utility Bill</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Utility_Interconnect_Part_2_Approval__c</fullName>
+        <externalId>false</externalId>
+        <label>Utility Interconnect Part 2 Approval</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Work_Completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Completed</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Work_Completed_to_Proof_of_Inspection__c</fullName>
+        <description>Work Completed to Proof of Inspection</description>
+        <externalId>false</externalId>
+        <formula>Proof_of_Inspection__c - Work_Completed__c</formula>
+        <inlineHelpText>Work Completed to Proof of Inspection</inlineHelpText>
+        <label>Work Completed to Proof of Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The related Rootstock Work Order. This lookup is used to update the related Work Order when the PM Project is updated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The related Rootstock Work Order.</inlineHelpText>
+        <label>Primary Work Order</label>
+        <referenceTo>rstk__wocst__c</referenceTo>
+        <relationshipLabel>PM Projects</relationshipLabel>
+        <relationshipName>PM_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>three_Line_diagram__c</fullName>
+        <externalId>false</externalId>
+        <label>3 Line diagram</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>PM Project</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Project Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>PM Projects</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Kickoff__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Install__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Inspection__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Kickoff__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Install__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Inspection__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>PMP001_Internal_vs_External_Struct_Engin</fullName>
+        <active>true</active>
+        <description>You may specify an Internal Structural Engineer or External Structural Engineer, but not both. PMP001</description>
+        <errorConditionFormula>!ISBLANK(Internal_Structural_Engineer__c) 
+&amp;&amp; 
+!ISBLANK(External_Structural_Engineer__c)</errorConditionFormula>
+        <errorDisplayField>External_Structural_Engineer__c</errorDisplayField>
+        <errorMessage>You may specify an Internal Structural Engineer or External Structural Engineer, but not both. PMP001</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PMP002_Internal_vs_External_Struct_Engin</fullName>
+        <active>true</active>
+        <description>You may specify an Internal Structural Engineer or External Structural Engineer, but not both. PMP002</description>
+        <errorConditionFormula>!ISBLANK(Internal_Structural_Engineer__c)
+&amp;&amp;
+!ISBLANK(External_Structural_Engineer__c)</errorConditionFormula>
+        <errorDisplayField>Internal_Structural_Engineer__c</errorDisplayField>
+        <errorMessage>You may specify an Internal Structural Engineer or External Structural Engineer, but not both. PMP002</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Conga_Composer</fullName>
+        <availability>online</availability>
+        <description>Conga Merge Document Composer</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Conga Composer</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.appextremes.com/apps/Conga/Composer.aspx 
+?SessionId={!API.Session_ID} 
+&amp;ServerUrl={!API.Partner_Server_URL_80} 
+&amp;Id={!PM_Project__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_Rootstock_Objects</fullName>
+        <availability>online</availability>
+        <description>Create Rootstock Objects for this PM Project</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create Rootstock Work Order</masterLabel>
+        <openType>sidebar</openType>
+        <page>CreateRootstockObjects</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Get_Fact_Sheet2</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Get Fact Sheet</masterLabel>
+        <openType>newWindow</openType>
+        <page>PMProjectFactSheet</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
+</CustomObject>

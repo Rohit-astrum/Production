@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lubbock - February 2016.Lubbock - Appointments - Henrietta, NY</name>
+    <style>none</style>
+    <subject>Important information about your Direct Energy Solar appointment.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for your interest in Direct Energy Solar. We are contacting you because you are currently investigating solar for your home and are scheduled to meet with one of our Solar Consultants.
+
+At this time, we have decided to suspend sales in Henrietta, NY. This is your local Direct Energy Solar office that would have completed your solar project. We will not be taking new business in your neighborhood, effective February 26, 2016.
+
+As a result, your upcoming appointment with us has been cancelled. We apologize for any inconvenience this may have caused.
+
+We greatly appreciate your consideration of our company as you begin your solar journey—because when you go solar, we all win by lowering our dependence on foreign and polluting energy sources, creating a cleaner environment for us all.
+
+Please contact us with any questions. Our commitment to providing you with the best customer experience remains our top priority.
+
+Customer Care Team
+Direct Energy Solar
+888-603-6085
+customercare@directenergysolar.com &lt;[[mailto:customercare@directenergysolar.com]]&gt;
+
+Call Us: 888-603-6085
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

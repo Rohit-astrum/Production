@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Weekly Company Wide Report - Management Only" recipientType="User" >
+<messaging:htmlEmailBody >
+   <c:CompanyWideReportComponent providedReportType="Weekly" providedManagementFlag="true" />
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

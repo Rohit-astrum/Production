@@ -1,0 +1,3263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumCRM/AstrumPM - System Design Products are the individual products (i.e. panels, inverters, etc) to be included in System Design Items.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Applicable_Alignment__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable Alignment</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Applicable_Mounting_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable Mounting Method</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Applicable_Roof_Angle__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable Roof Angle</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Applicable_Roof_Materials__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable Roof Materials</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Available_Product__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Available Product</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Country_of_Manufacture__c</fullName>
+        <externalId>false</externalId>
+        <label>Country of Manufacture</label>
+        <picklist>
+            <picklistValues>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DC_Optimizer_Efficiency__c</fullName>
+        <externalId>false</externalId>
+        <label>DC Optimizer Efficiency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Warranty_Years__c</fullName>
+        <externalId>false</externalId>
+        <label>Default Warranty Years</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_method__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Default method</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Depth_inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Depth (inches)</label>
+        <precision>17</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Clamp_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>End Clamp Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>A End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>D End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>D End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>G End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>G End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>H End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>H End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>J End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>J End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>K End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>K End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>L End Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>L End Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Engineering_Item_Master__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Engineering Item Master</label>
+        <referenceTo>rstk__peitem__c</referenceTo>
+        <relationshipLabel>System Design Products</relationshipLabel>
+        <relationshipName>System_Design_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ground_Mount__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Ground Mount</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Imp__c</fullName>
+        <externalId>false</externalId>
+        <label>Imp</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_CEC_Efficiency__c</fullName>
+        <externalId>false</externalId>
+        <label>Inverter CEC Efficiency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( 
+  RecordType.DeveloperName = &quot;Inverter&quot;
+  ,IF(
+      AND(
+          RIGHT(Make__c,4)=&quot;Edge&quot;
+          ,Model__c &lt;&gt; &quot;&quot;
+      )
+      ,&quot;&quot;
+      ,IF(
+          RIGHT(Make__c,4)&lt;&gt;&quot;Edge&quot;
+          ,Make__c &amp; &quot; &quot; &amp; Description__c
+          ,Description__c
+       )
+   )
+   ,&quot;&quot;
+)</formula>
+        <label>Inverter Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Isc__c</fullName>
+        <externalId>false</externalId>
+        <label>Isc</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Legacy__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Legacy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Length_inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Length (inches)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Make__c</fullName>
+        <externalId>false</externalId>
+        <label>Make</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_AC_Current__c</fullName>
+        <externalId>false</externalId>
+        <label>Max AC Current</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Current_Output__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Current Output</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_DC_Volt_Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Max DC Volt Rating</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Inverters_per_String__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Inverters per String</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_OCPD_Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Max OCPD Rating</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Power_at_40DegC__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Power @ 40 Degrees C</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_Voltage__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Voltage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Micro_Inverter__c</fullName>
+        <externalId>false</externalId>
+        <label>Micro Inverter</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mid_Clamp_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Mid Clamp Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>A Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>G Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>G Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>H Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>H Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>J Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>J Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>K Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>K Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>L Mid Clamp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>L Mid Clamp Dark</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Model__c</fullName>
+        <externalId>false</externalId>
+        <label>Model</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nominal_AC_Voltage__c</fullName>
+        <externalId>false</externalId>
+        <label>Nominal AC Voltage</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OCPD__c</fullName>
+        <externalId>false</externalId>
+        <label>OCPD</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PTC_Rating_W__c</fullName>
+        <externalId>false</externalId>
+        <label>PTC Rating (W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pmax__c</fullName>
+        <externalId>false</externalId>
+        <label>Pmax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rated_Output_W__c</fullName>
+        <externalId>false</externalId>
+        <label>Rated Output (W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Required_Amps_per_Panel__c</fullName>
+        <externalId>false</externalId>
+        <label>Required Amps per Panel</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Equipment_uuid__c</fullName>
+        <description>Contains the uuid for the equipment in the Sighten system</description>
+        <externalId>true</externalId>
+        <label>Sighten Equipment uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Unit</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>VOC_Temp_Coeff__c</fullName>
+        <externalId>false</externalId>
+        <label>VOC Temp Coeff</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Vmp__c</fullName>
+        <externalId>false</externalId>
+        <label>Vmp</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Voc__c</fullName>
+        <externalId>false</externalId>
+        <label>Voc</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Wattage__c</fullName>
+        <externalId>false</externalId>
+        <label>Wattage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weight_lbs__c</fullName>
+        <externalId>false</externalId>
+        <label>Weight (lbs)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Width_inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Width (inches)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Wire_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Wire Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Aluminum</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Copper</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>System Design Product</label>
+    <listViews>
+        <fullName>All1</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Make__c</columns>
+        <columns>Model__c</columns>
+        <columns>Rated_Output_W__c</columns>
+        <columns>Active__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Inverters</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Make__c</columns>
+        <columns>Model__c</columns>
+        <columns>Rated_Output_W__c</columns>
+        <columns>Active__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Default_Warranty_Years__c</columns>
+        <columns>Sighten_Equipment_uuid__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>System_Design_Product__c.Inverter</value>
+        </filters>
+        <label>Inverters</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Mounting</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Make__c</columns>
+        <columns>Model__c</columns>
+        <columns>Active__c</columns>
+        <columns>Default_method__c</columns>
+        <columns>Applicable_Alignment__c</columns>
+        <columns>Applicable_Mounting_Method__c</columns>
+        <columns>Applicable_Roof_Angle__c</columns>
+        <columns>Applicable_Roof_Materials__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>System_Design_Product__c.Mounting</value>
+        </filters>
+        <label>Mounting</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Panels</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Make__c</columns>
+        <columns>Model__c</columns>
+        <columns>Rated_Output_W__c</columns>
+        <columns>Active__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Sighten_Equipment_uuid__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>System_Design_Product__c.Panel</value>
+        </filters>
+        <label>Panels</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>SpecialParts</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Make__c</columns>
+        <columns>Model__c</columns>
+        <columns>Rated_Output_W__c</columns>
+        <columns>Active__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>System_Design_Product__c.Special_Part</value>
+        </filters>
+        <label>Special Parts</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>SDP-{0}</displayFormat>
+        <label>System Design Product Code</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>System Design Products</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Electrical</fullName>
+        <active>true</active>
+        <label>Electrical</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Entitlement</fullName>
+        <active>true</active>
+        <label>Entitlement</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wire_Type__c</picklist>
+            <values>
+                <fullName>Aluminum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copper</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Inverter</fullName>
+        <active>true</active>
+        <label>Inverter</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Labor</fullName>
+        <active>true</active>
+        <label>Labor</label>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wire_Type__c</picklist>
+            <values>
+                <fullName>Aluminum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copper</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Master</fullName>
+        <active>true</active>
+        <label>Master</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mounting</fullName>
+        <active>true</active>
+        <label>Mounting</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Panel</fullName>
+        <active>true</active>
+        <label>Panel</label>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Special_Part</fullName>
+        <active>true</active>
+        <label>Special Part</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wire_Type__c</picklist>
+            <values>
+                <fullName>Aluminum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copper</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Trenching</fullName>
+        <active>true</active>
+        <label>Trenching</label>
+        <picklistValues>
+            <picklist>Applicable_Alignment__c</picklist>
+            <values>
+                <fullName>Flush</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tilted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Mounting_Method__c</picklist>
+            <values>
+                <fullName>Ballasted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clamped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ground Mount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I-Beam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Penetrating</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Angle__c</picklist>
+            <values>
+                <fullName>Flat Roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pitched</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Applicable_Roof_Materials__c</picklist>
+            <values>
+                <fullName>Asphalt Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cedar Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clay Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Curved Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat Concrete Tile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lightweight Tile - Requires re-roof</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Corrogated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Metal Seam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rolled Asphalt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rubber Membrane</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Slate Shingle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_of_Manufacture__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>United States</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>End_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L End Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mid_Clamp_Type__c</picklist>
+            <values>
+                <fullName>A Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>A Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>D Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>F Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>G Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>H Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>I Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>K Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L Mid Clamp Dark</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Unit__c</picklist>
+            <values>
+                <fullName>Amp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Count</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Feet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watt</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wire_Type__c</picklist>
+            <values>
+                <fullName>Aluminum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Copper</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Make__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Model__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Make__c</searchFilterFields>
+        <searchFilterFields>Model__c</searchFilterFields>
+        <searchFilterFields>Description__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>20.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>/*
+             &lt;apex:detail relatedList=&quot;false&quot; subject=&quot;{!Milestone1_Project__c.Sales_Order__r.OpportunityId__r.Current_System_Design__c}&quot; title=&quot;false&quot; /&gt;
+             &lt;apex:relatedList subject=&quot;{!Milestone1_Project__c.Sales_Order__r.OpportunityId__r.Current_System_Design__c}&quot; list=&quot;System_Design_Items__r&quot; /&gt;
+             */</description>
+    <label>Milestone1 Project Fact Sheet</label>
+</ApexPage>

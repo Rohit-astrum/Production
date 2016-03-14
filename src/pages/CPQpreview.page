@@ -1,0 +1,535 @@
+<apex:page docType="html-5.0" controller="CPQpreviewController" showHeader="false" standardStylesheets="false">
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Account" fields="Id,Name,Phone,Billing_Email_Address__c">
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="Contact" fields="Id, Name, Email, Phone, AccountId">
+            <apex:remoteObjectField name="MailingStreet" />
+            <apex:remoteObjectField name="MailingCity" />
+            <apex:remoteObjectField name="MailingState" />
+            <apex:remoteObjectField name="MailingPostalCode" />
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="Proposal__c" fields="Id, Name">
+            <apex:remoteObjectField name="Current__c" />
+            <apex:remoteObjectField name="Valid__c" />
+            <apex:remoteObjectField name="System_Design_Quote__c" />
+        </apex:remoteObjectModel>
+        <apex:remoteObjectModel name="System_Design_Quote__c" fields="Id,Name,System_Design__c">
+            <apex:remoteObjectField name="Current__c" />
+            <apex:remoteObjectField name="Valid__c" />
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+    <html ng-app="cpqApp">
+        <head>
+            <title>ASTRUMSOLAR Configure, Price, Quote - Proposal</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.js"/>
+            <apex:includeScript value="{!URLFOR($Resource.SalesProposalRedesign_Resources, '/js/Chart-customized.min.js')}"/>
+            <apex:includeScript value="{! $Page.CPQpreview_services_js}" />
+            <apex:includeScript value="{! $Page.CPQpreview_app_js}" />
+            <apex:includeScript value="{! $Page.CPQpreview_directives_js}" />
+            <apex:includeScript value="{! $Page.CPQpreview_charts_js}" />
+            
+            <style>
+            @font-face {
+                    font-family: "Avenir LT W01 85 Heavy";
+                    src: url("{!URLFOR($Resource.SalesProposalRedesign_FontResources, 'fonts/f61bf0f6-c193-4100-b940-12a1a01dcee5.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.SalesProposalRedesign_FontResources, 'fonts/f61bf0f6-c193-4100-b940-12a1a01dcee5.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/7147ec3a-8ff8-4ec9-8c5c-bd1571dc6ae6.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/d1dc54b2-878d-4693-8d6e-b442e99fef68.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/731dd4d3-64da-427d-ba61-01575b3cf3f7.svg#731dd4d3-64da-427d-ba61-01575b3cf3f7')}") format("svg");
+                }
+                @font-face {
+                    font-family: "Avenir LT W01 35 Light";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/3511a780-31ca-4ee1-9083-89b1b7185748.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/3511a780-31ca-4ee1-9083-89b1b7185748.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/c4352a95-7a41-48c1-83ce-d8ffd2a3b118.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/3e419b5b-c789-488d-84cf-a64009cc308e.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/ca038835-1be3-4dc5-ba25-be1df6121499.svg#ca038835-1be3-4dc5-ba25-be1df6121499')}") format("svg");
+                }
+                @font-face {
+                    font-family: "AvenirLTW01-35LightObli";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/6500273c-8e8b-48d2-b0c0-dcae293c0120.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/6500273c-8e8b-48d2-b0c0-dcae293c0120.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/47fd1045-6e5b-4c87-9235-cfbc2b42cde7.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/60662abb-0ac3-46b2-930f-4719462489c9.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/9cf39ac2-87a5-4c4e-a604-7cece19d30bd.svg#9cf39ac2-87a5-4c4e-a604-7cece19d30bd')}") format("svg");
+                }
+                @font-face {
+                    font-family: "Avenir LT W01 65 Medium";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/212ab03d-5db2-4d6a-b94c-171cc702aa51.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/212ab03d-5db2-4d6a-b94c-171cc702aa51.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/2cac77ec-9bc0-4ee7-87e4-27650190744f.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/aaf11848-aac2-4d09-9a9c-aac5ff7b8ff4.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/294099f3-8d00-4676-afc5-5e9d8d43ad69.svg#294099f3-8d00-4676-afc5-5e9d8d43ad69')}") format("svg");
+                }
+                @font-face {
+                    font-family: "AvenirLTW01-85HeavyObli";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/7be0fdec-384a-42b5-ab27-c60a322cde7d.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/7be0fdec-384a-42b5-ab27-c60a322cde7d.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/53554f6f-4b01-4815-87fe-82c49b8ba5a9.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/28dfedaf-6372-45a1-8833-b3078dc56a21.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/f747b6ee-4d13-4e45-815d-f33ac1b71d63.svg#f747b6ee-4d13-4e45-815d-f33ac1b71d63')}") format("svg");
+                }
+                @font-face {
+                    font-family: "Avenir LT W01 45 Book";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/4f32268f-fd86-4960-b72c-4bb1ba75ec6f.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/4f32268f-fd86-4960-b72c-4bb1ba75ec6f.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/939cba03-5b40-4d01-9bc5-7589eca863db.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/849bc5b9-a2ff-4343-977b-26ba8bd24a60.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/f67fa3b5-c1d1-488f-8e60-a828b9ad56a4.svg#f67fa3b5-c1d1-488f-8e60-a828b9ad56a4')}") format("svg");
+                }
+                @font-face {
+                    font-family: "AvenirLTW01-45BookObliq";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/acc13cdc-338a-43e6-a156-e54a4c87582d.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/acc13cdc-338a-43e6-a156-e54a4c87582d.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/ca94ed56-18fc-4856-940a-70a072607c7c.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/dd6da407-70fe-4aa3-a1c7-64f0cb086f01.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/c7f424be-90e1-45b8-b617-ee3589a859bd.svg#c7f424be-90e1-45b8-b617-ee3589a859bd')}") format("svg");
+                }
+                @font-face {
+                    font-family: "AvenirLTW01-65MediumObl";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/2a6f81a2-475c-4831-9949-33d7748ee561.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/2a6f81a2-475c-4831-9949-33d7748ee561.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/e0af2f49-a399-482b-a54e-d745e268ec80.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/6803d3dd-2107-45fc-ac8a-a4fa13771547.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/1bb1acb5-8d4e-4800-88af-dbcf1fe96ef8.svg#1bb1acb5-8d4e-4800-88af-dbcf1fe96ef8')}") format("svg");
+                }
+                @font-face {
+                    font-family: "Avenir LT W01 95 Black";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/a24b3f55-c8c8-41a1-a77e-7cdf417d82f6.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/a24b3f55-c8c8-41a1-a77e-7cdf417d82f6.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/5a05cf7f-f332-456f-ae67-d8c26e0d35b3.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/c33278bc-988e-440b-b4be-6acc095e6044.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/7bdad4a5-289b-42f9-b6fa-c5883b9e9f23.svg#7bdad4a5-289b-42f9-b6fa-c5883b9e9f23')}") format("svg");
+                }
+                @font-face {
+                    font-family: "AvenirLTW01-95BlackObli";
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/fbf3e69b-73b2-406d-84bc-feda30a0a563.eot?#iefix')}");
+                    src: url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/fbf3e69b-73b2-406d-84bc-feda30a0a563.eot?#iefix')}") format("eot"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/36ec15b9-f8da-447f-8fed-a9cfdfb91fbb.woff')}") format("woff"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/230d6b14-6d44-4dd5-a6ae-a4287936e51e.ttf')}") format("truetype"), url("{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'fonts/9bce4920-94e2-4e4d-bd34-818801dd3eb3.svg#9bce4920-94e2-4e4d-bd34-818801dd3eb3')}") format("svg");
+                }
+                body {
+                    background-color: #f2f2f2;
+                    color: #666;
+                    font-size: 14px;
+                    font-family: 'Avenir LT W01 45 Book', 'Lucida Grande', Arial, Verdana, helvetica, sans-serif;
+                    line-height: 20px;
+                    padding: 15px;
+                }
+                div {
+                    margin: 10px;
+                }
+                hr {
+                    margin: 50px 0 40px 0;
+                    color: black;
+                    background-color: black;
+                }
+                fieldset {
+                    border: #ccc solid 1px;
+                    margin: 10px 0;
+                    position: relative;
+                }
+                fieldset fieldset {
+                    margin: 10px 0;
+                    border: none;
+                }
+                fieldset fieldset legend {
+                    border-top: #ccc solid 1px;
+                    color: #4D4D4D;
+                    font-family: 'Avenir LT W01 65 Medium', 'Lucida Grande', Arial, Verdana, helvetica, sans-serif;
+                    font-size: 16px;
+                    padding-top: 25px;
+                    text-transform: none;
+                    width: 100%;
+                }
+                fieldset legend {
+                    color: #61AF3F;
+                    font-size: 16px;
+                    padding: 0 .5em;
+                    text-transform: uppercase;
+                }
+                #contracts fieldset {
+                	display: inline-block;
+                	margin: 10px 10px 20px 10px;
+                	width: 45%;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+                input {
+                    font-size: 12pt;
+                    padding: 4px;
+                }
+                button {
+                    background-color: #fd9429;
+                    border: none;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-family: 'Avenir LT W01 65 Medium','Lucida Grande', Arial, Verdana, helvetica, sans-serif;
+                    font-size: 14px;
+                    line-height: 18px;
+                    padding: 10px 20px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                }
+                button:focus {outline:0;}
+                #contracts button {
+                    margin: 10px 10px 10px 0;
+                }
+                #contracts button.soldBtn {
+                	bottom: 0;
+                	position: absolute;
+                	right:0;
+                }
+                select {
+                    font-size: 12pt;
+                    padding: 4px;
+                }
+                div.section {
+                    background: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    margin: 0 5% 40px 5%;
+                    padding: 0 0 20px 0;
+                }
+                div.ib {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 0 10px;
+                }
+                div.ib fieldset {
+                    margin: 5px 0 0 0;
+                }
+                div.tbl {
+                    display: table;
+                }
+                div.tbl90 {
+                    display: table;
+                    width: 90%;
+                }
+                div.tbl94 {
+                    display: table;
+                    width: 94%;
+                }
+                div.tbl div {
+                    display: table-row;
+                }
+                div.tbl div > span {
+                    display: table-cell;
+                }
+                div.tbl div span:nth-child(1n+2) {
+                    /*border: #0000ff solid 2px;*/
+                    padding-left: 5px;
+                }
+                div.sdatbl div span:nth-child(1n+2) {
+                    /*border: #0000ff solid 2px;*/
+                    padding: 5px 10px;
+                    min-width: 4em;
+                    text-align: center;
+                }
+                div.t2c div span:nth-child(2) {
+                    display: table-cell;
+                    text-align: right;
+                }
+                div.undl span {
+                    border-bottom: #aaa solid 1px;
+                    margin-bottom: 3px;
+                }
+                div.ctrhd span {
+                    text-align: center;
+                }
+                div.box {
+                    padding: 1.25em;
+                    border: #0097C9 solid 2px;
+                    border-radius: 4px;
+                }
+                div.sect {
+                    font-family: 'Avenir LT W01 35 Light', 'Lucida Grande', Arial, Verdana, helvetica, sans-serif;
+                    font-size: 18px;
+                    padding: 10px 10px 8px 6px;
+                    background-color: #61AF3F;
+                    color: #fff;
+                    margin: 0 0 20px 0;
+                    border-radius: 10px 10px 0px 0px;
+                    text-transform: uppercase;
+                }
+                div.sect img {
+                    vertical-align: middle;
+                    height: 27px;
+                    margin-top: -4px;
+                }
+                div.sect span {
+                    margin-left: -12px;
+                }
+                div.sect + div {
+                    padding-left: 20px;
+                }
+                div.bbul > span {
+                    border-bottom: solid 1px #ccc;
+                    color: #4D4D4D;
+                    font-family: 'Avenir LT W01 65 Medium', 'Lucida Grande', Arial, Verdana, helvetica, sans-serif;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                    vertical-align: bottom;
+                }
+                span.ra {
+                    text-align: right;
+                }
+                span.bx1 {
+                    border: #888 solid 1px;
+                    border-radius: 3px;
+                    padding: 2px;
+                    text-align: right;
+                }
+                span.nw {
+                    text-wrap: none;
+                    white-space: nowrap;
+                }
+                table.usage {
+                    border-collapse: collapse;
+                    border: #000 solid 3px;
+                }
+                table.usage thead tr td {
+                    text-align: center;
+                    font-weight: bold;
+                    background-color: #0097C9;
+                    color: #fff;
+                }
+                table.usage tbody td {
+                    padding: 0 8px;
+                }
+                table.usage tbody tr:nth-child(even) {
+                    border-top: solid 1px #000;
+                    border-bottom: solid 1px #000;
+                    background-color: #ccc;
+                }
+                table.usage input {
+                    text-align: right;
+                }
+                input.prcnt {
+                    text-align: right;
+                }
+                input.dllr {
+                    text-align: right;
+                }
+                .cpqLink {
+                    background-color: #f0f0ff;
+                    padding: 0.5em 1.5em;
+                }
+                .sml {
+                    font-size: x-small;
+                }
+                .ctr {
+                    text-align: center;
+                }
+                .ra {
+                    text-align: right;
+                }
+                .ra2 {
+                    text-align: right;
+                    padding-left: 1.0em !important;
+                }
+                .h4 {
+                    font-weight: bold;
+                    font-size: 12pt;
+                }
+                .flex {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+                .expbtn {
+                    /*border: 1px solid #aaa;
+                    border-radius: 8px;*/
+                    cursor: pointer;
+                    display: block;
+                    color: #0097c9;
+                    font-size: 32px;
+                    padding: 0 4px 4px 4px;
+                }
+                #Header {
+                    margin: -22px -22px 40px -22px;
+                    background-color: #61AF3F;
+                    padding: 5px;
+                }
+                #Header #LogOut {
+                    float: right;
+                    margin-right: 20px;
+                    margin-top: 18px;
+                    vertical-align: middle;
+                }
+                #Header #LogOut a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+                div#Logo{
+                    margin: 10px 10px 5px 10px;
+                }
+                #menu {
+                    display: inline-block;
+                    border-radius: 4px;
+                    position: fixed;
+                    top: 3px;
+                    right: 3px;
+                }
+                #menu span {
+                    background-color: #FD9429;
+                    border-radius: 5px;
+                    display: block;
+                    padding: 10px;
+                    float: right;
+                    z-index:0;
+                    position:relative;
+                }
+                #menu div {
+                    display: none;
+                    background-color: #707274;
+                    /*transform: scale(0);
+                    transition: all 1s ease;*/
+                    margin: 0;
+                    z-index:1;
+                    position: relative;
+                    top: 5px;
+                    clear: both;
+                }
+                #menu:hover div {
+                    display: block;
+                    /*transform: scale(1);*/
+                }
+                #menu ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                #menu li {
+                    font-size: 16px;
+                    margin-left: 0;
+                    padding: 0;
+                    border-bottom: #ccc solid 1px;
+                }
+                #menu li a:hover {
+                    background-color: #8d8e90;
+                }
+                #menu li:last-child {
+                    border: none;
+                }
+                #menu li a {
+                display: block;
+                    text-decoration: none;
+                    color: white;
+                    cursor: pointer;
+                    padding: 0.25em 1em;
+                }
+                .sdqbtn {
+                    display: inline-block;
+                    cursor: pointer;
+                }
+                .sdqbtn:hover {
+                    background-color: #0097C9;
+                    color: #fff;
+                    border-radius: 9px;
+                }
+                .ng-modal-dlg {
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    z-index: 10000;
+                    transform: translate( -50%, -50% );
+                    width: 50%;
+                    background-color: #fff;
+                    border: solid 3px #0097C9;
+                    border-radius: 9px;
+                }
+                .ng-modal-ovrly {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 9999;
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, .5);
+                }
+                .ng-modal-close {
+                    position: fixed;
+                    top: -30px;
+                    right: -20px;
+                    padding: 5px;
+                    cursor: pointer;
+                    display: inline-block;
+                    background-color: #fff;
+                    border-radius: 1em;
+                }
+                .ng-modal-content {
+                    height: 100%;
+                    margin: 0;
+                }
+                .usage input {
+                    width: 6em;
+                }
+                #canvasContainer{
+	              display:none;
+	            }
+            </style>
+        </head>
+        <body>
+        	<div id="canvasContainer"></div>
+            <div id="Header" class="" style="background-color: #61AF3F;">             
+                  <div id="Logo" style="display: inline-block; vertical-align: middle;"><img src="{!URLFOR($Resource.PhotoAppResources, 'images/AstrumSolar_logo.png')}" title="Astrum Solar" /></div>
+            </div>
+            <div id="menu"><span style="text-decoration: none; color: white; font-size: 2em; font-weight: bold;">&#9776;</span>
+                <div>
+                    <ul>
+                        <li><a href="#proposals">Proposals</a></li>
+                    </ul>
+                </div>      
+            </div>
+            
+            <!-- data body begins here -->
+            <div id="proposals" class="section" ng-controller="ProposalsCtrl">
+                <div class="sect"><img src="{!URLFOR($Resource.CPQinputAlternateDesign_Resources, 'images/HeaderIcons_Proposals.png')}" /><span>&emsp;Proposals ({{CPQ.proposalList.length}})</span>&emsp;</div>
+                    <modal-dlg show='modalShown' width='50%' height='50%' ng-controller="ProposalChng" on-close="onClose()">
+                        <div  id="sdqchng" style="width: 40%; height: 40%; border-radius: 5px;">
+                            <button type="button" ng-click="onClose()">Close</button>
+                        </div>
+                    </modal-dlg>
+                    <div class="tbl" style="width: 100%;">
+                        <div class="bbul">
+                            <span>Proposal Name</span>
+                            <span class="ctr">Current</span><span>Last Modified</span>
+                        </div>
+                        <div class="sdqbtn" ng-repeat="prop in CPQ.proposalList" style="padding: 1em;" ng-click="loadProposal(prop.Id)">
+                            <span>{{prop.Name}}</span>
+                            <span ng-show="prop.Current__c">&#10004;</span><span>{{prop.LastModifiedDate | date : 'medium'}}</span>
+                        </div>
+                    </div>
+            </div>
+              <div id="proposal" class="section" ng-controller="ProposalCtrl">
+                <div class="sect"><img src="{!URLFOR($Resource.CPQinput_Resources, 'images/HeaderIcons_Proposal.png')}" /><span>&emsp;Proposal</span>&emsp;{{CPQ.proposal._props.Name}}</div>
+                <iframe ng-src="{{proposalURL()}}" style="width:90%; height:750px; margin-left: 5%;"></iframe>
+            </div>
+            <div id="contracts" class="section" >
+              	<div class="sect"><img src="{!URLFOR($Resource.CPQinput_Resources, 'images/HeaderIcons_Proposal.png')}" /><span>&emsp;Contract Options</span>&emsp;</div>
+              	<fieldset><legend>Option 1: Solar Ownership $51,123</legend>
+              		<button type="button">Save PDF</button>
+              		<button type="button">Print Contract</button>
+              		<button type="button">Send via Docusign</button>
+              		<br/>
+              		<br/>
+              		<input type="checkbox" name="vehicle" value="Bike"> Current</input>
+              		<br/>
+              		<br/>
+              		Status:
+              		<button type="button" class="soldBtn">Sold</button>
+            	</fieldset>
+    	        <fieldset><legend>Option 2: Purchase $43,234</legend>
+              		<button type="button">Save PDF</button>
+              		<button type="button">Print Contract</button>
+              		<button type="button">Send via Docusign</button>
+              		<br/>
+              		<br/>
+              		<input type="checkbox" name="vehicle" value="Bike"> Current</input>
+              		<br/>
+              		<br/>
+              		Status:
+              		<button type="button" class="soldBtn">Sold</button>
+            	</fieldset>
+              	<fieldset><legend>Option 3: Purchase $42,899</legend>
+              		<button type="button">Save PDF</button>
+              		<button type="button">Print Contract</button>
+              		<button type="button">Send via Docusign</button>
+              		<br/>
+              		<br/>
+              		<input type="checkbox" name="vehicle" value="Bike"> Current</input>
+              		<br/>
+              		<br/>
+              		Status: Saved PDF 11/18/2014
+              		<button type="button" class="soldBtn">Sold</button>
+            	</fieldset>
+              	<fieldset><legend>Option 4: Purchase $24,000</legend>
+              		<button type="button">Save PDF</button>
+              		<button type="button">Print Contract</button>
+              		<button type="button">Send via Docusign</button>
+              		<br/>
+              		<br/>
+              		<input type="checkbox" name="vehicle" value="Bike"> Current</input>
+              		<br/>
+              		<br/>
+              		Status:<button type="button" class="soldBtn">Sold</button>
+            	</fieldset>
+            </div>
+        </body>
+    </html>
+</apex:page>

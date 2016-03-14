@@ -1,0 +1,19 @@
+<p>Dear {!Lead.FirstName},</p>
+<p>It was great talking to you today about Astrum Solar and how you might qualify for our free installation to take control of unpredictable electricity bills. Thanks for taking the time to learn about us and how you can become your own energy provider.</p>
+<p>Please use this e-mail address to send me a copy of your latest electric bill. Below are some options for sending a copy of your bill in:</p>
+<ul><li>If you have <b>on-line access</b> to your account, you can save a copy of your bill on your computer, usually as an Adobe pdf. You can then e-mail this copy attached to the reply to me.</li>
+<li>If you don’t have on-line access, you can <b>scan a paper copy</b> of your bill and attach the scanned image or pdf to the reply to me.</li>
+<li>Should neither of these options work for you then you can <b>fax a copy</b> to (443) 267-0036. Please make sure you write my name on the first page of the fax, so I may identify it.</li></ul>
+<p>As our next step, I’ve contacted the Astrum Solar coordinator in your area, who will schedule a survey of your roof and home site by our home solar professionals so we can start designing your Astrum Solar system. You do not have to be home for this survey. The surveyor will take care of everything and will inform you before they come to visit, just to remind you.</p> <p>We are exclusively a home solar provider, so you can trust we’ll handle your solar installation and service the right way.</p>
+<p>Congratulations on taking this first step toward becoming energy independent! </p>
+<p>Again, thanks for your time and your interest in Astrum Solar!</p>
+<p>Best regards,  </p>
+<p>{!User.FirstName}</p>
+<p>
+<img src="https://c.na8.content.force.com/servlet/servlet.ImageServer?id=015800000017MZ3&oid=00D80000000dNiA&lastMod=1274981283000" /><br />
+8955 Henkels Lane Suite 508<br />
+Annapolis Junction, MD 20701<br />
+P: 800-903-6130<br />
+F: 443-267-0036<br />
+{!User.Email}<br />
+<a href="http://www.astrumsolar.com">www.astrumsolar.com</a></p>

@@ -1,0 +1,113 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" 
+   renderAs="pdf">
+<html>
+<head>
+        <meta charset="utf-8"/>
+        <title></title>
+        
+        <link href="{!URLFOR($Resource.PartnerPortal2_Resources,'css/applyStyles.css')}"  type="text/css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+         <!--Google JQuery-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="{!URLFOR($Resource.PartnerPortal2_Resources,'javascript/scripts.js')}" ></script>
+        
+    </head>
+<body>
+        
+    <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.type=='P'}">
+                <div class="TermsConditionsText">
+                                        <h1>Direct Energy Solar Professional Referral Network Agreement</h1>
+                                         <p class="intro">Once a Referral Partner has completed the free, no obligation registration process and has been verified as a participant in the program, an introduction will be sent via email.</p>
+                <ul>
+                    <li><span>When a registered Referral Partner submits a Qualified Lead to Direct Energy Solar, the Referral Partner will receive a payment specified as a Qualified Lead Bonus. This money is the Referral Partner&rsquo;s to keep regardless of whether any of these leads convert to sales.</span></li>
+                    <li><span>&ldquo;Qualified Leads&rdquo; shall be defined as follows:</span></li>
+                    <div class="subList">
+                        <ul>
+                            <li><span>Customer must have had no prior contact with Direct Energy Solar</span></li>
+                            <li><span>Customer owns Customer&rsquo;s property</span></li>
+                            <li><span>Customer is a potential candidate for solar, as reasonably determined by Direct Energy Solar</span></li>
+                            <li><span>Referral Partner has discussed Direct Energy Solar with the customer and the customer is expecting to be contacted</span></li>
+                            <li><span>Partner has not shared customer&rsquo;s information with any other solar services company</span></li>
+                            <li><span>Customer agrees to a sales visit to discuss the site evaluation and has a genuine interest in going solar, as reasonably determined by Direct Energy Solar</span></li>
+                        </ul>
+                    </div>
+                    <li><span>When Referral Partner&rsquo;s Qualified Lead enters into a contract for a solar power system with Direct Energy Solar, the Referral Partner receives a flat sale reward payment specified as a Sales Bonus.</span></li>
+                    <li><span>Payments are aggregated and paid by check and sent via U.S. mail the month following the activity.</span></li>
+                    <li><span>Qualified Leads who sign contracts for solar power systems with Direct Energy Solar may / may not  receive a discount toward their systems. Only one referral discount can be applied to any system dependent of the current Direct Energy Solar discount promotion.</span></li>
+                    <li><span>Partners are entitled to compensation for initiating a relationship with a new Direct Energy Solar customer, subject to other terms of the partner program. Once Direct Energy Solar has converted a partner submitted lead to a customer, partners are not entitled to any compensation for any additional products or services sold to that customer at a later date.</span></li>
+                    <li><span>Referral Partner must submit a completed W-9 form to Direct Energy Solar prior to receiving payments.</span></li>  
+                    <li><span>Referral Partner should submit a company logo to assist Direct Energy Solar in creating marketing collateral.</span></li>
+                    <li><span>All work for the solar power system sold will be performed by Direct Energy Solar.</span></li>
+                    <li><span>Referral Partner agrees to hold the terms of the agreement confidential, including payment amounts.</span></li>
+                    <li><span>Referral Partner agrees to only utilize marketing materials approved by Direct Energy Solar when promoting the program and to perform no marketing or advertising activities without permission of Direct Energy Solar.</span></li>
+                    <li><span>This agreement can be terminated by either party with a written notification. Referral Partner will get paid for any Qualified Leads referred prior to the date of cancellation.</span></li>
+                </ul>
+<p>By accepting this agreement, you acknowledge and agree to the terms and conditions above. Direct Energy Solar will permit individuals, employer affinity programs, lead generation services, non-profit and membership affiliate organizations into the program at the sole discretion of the program manager.</p>
+
+
+                </div>
+        </apex:outputPanel>
+        
+         <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.type=='AF'}">
+                 <div class="TermsConditionsText">
+                                        <h1>Direct Energy Solar Affiliate Network Agreement</h1>
+                <p class="intro">Once an Affiliate Candidate has completed the free, no obligation registration process and has been verified as a participant in the program, an addendum detailing payment amounts will be sent via email.</p>
+                <ul>
+                    <li><span>As an Direct Energy Solar Affiliate, the organization will take active steps to promote Direct Energy Solar to its constituents (members, visitors, citizens, etc.) including, but not limited to, providing a written endorsement of Direct Energy Solar, including the Direct Energy Solar offer on the organization&rsquo;s official website, newsletters, e-newsletters, and social media vehicles, and posting of flyers in appropriate areas.</span></li>
+                    <li><span>Affiliate Organization must have 100 or more constituents to qualify for this program.</span></li>
+                    <li><span>Each time a properly-registered constituent signs a contract for solar services with Direct Energy Solar, the Affiliate will receive an established Direct Energy Solar Affiliate program payment as a donation.</span></li>
+                    <li><span>In lieu of receiving the entire Affiliate program payment, the Affiliate may elect to split the reward 50/50 with the constituent, passing along half of the amount as a referral discount. </span></li>
+                    <li><span>A customer may only receive one referral discount per system.</span></li>
+                    <li><span>In order for the constituent and/or Affiliate to receive their applicable discount and donation, the constituent&rsquo;s lead information must be properly registered with Direct Energy Solar in one of the following ways:</span></li>
+                    <div class="subList">
+                        <ul>
+                            <li><span>Register on a co-branded landing page, provided by Direct Energy Solar</span></li>
+                            <li><span>Register via the lead entry form on the Affiliate web portal</span></li>
+                            <li><span>Contact Direct Energy Solar directly and cite the Affiliate Code, provided by Direct Energy Solar, during the first contact</span></li>
+                        </ul>
+                    </div>
+                    <li><span>When a constituent becomes a Direct Energy Solar customer and helps spread the word within the Affiliate organization, he/she can qualify for a separate appreciation payment in addition to the amount(s) paid to the constituent and/or Affiliate. In order to receive the separate appreciation reward, the referring constituent&rsquo;s name must be cited at the time of lead registration.</span></li>
+                    <li><span>Constituents who have already established contact with Direct Energy Solar are considered duplicate leads and are not eligible for the Affiliate payment/discount structure.</span></li>
+                    <li><span>All work for the solar power system sold will be performed by Direct Energy Solar.</span></li>
+                    <li><span>Affiliate agrees to hold the terms of the agreement confidential, including payment amounts.</span></li>  
+                    <li><span>Affiliate agrees to only utilize marketing materials approved by Direct Energy Solar when promoting the program and to perform no marketing or advertising activities without the express permission of Direct Energy Solar.</span></li>
+                    <li><span>This agreement can be terminated at anytime by either party with a written notification. Referral Partner will get paid for any Qualified Leads referred prior to the date of cancellation.</span></li>
+                </ul>
+<p>By accepting this agreement, you acknowledge and agree to the terms and conditions above. You also confirm that you are an authorized representative of a qualifying non-profit or membership-based organization.</p>
+                                    </div>
+        </apex:outputPanel>
+        
+         <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.type=='AN'}">
+                 <div class="TermsConditionsText">
+                                        <h1>Direct Energy Solar Corporate Affinity Agreement</h1>
+                <p class="intro">Once a Corporate Affinity Partner Candidate has completed the free, no obligation registration process and has been verified as a participant in the program, an addendum detailing payment amounts will be sent via email.</p>
+                <ul>
+                    <li><span>The registered Affinity Partner agrees to provide a written endorsement of Direct Energy Solar and incorporate Direct Energy Solar&rsquo;s offer to any existing corporate affinity/employee discount program. The Affinity partner also agrees to post a customized link, provided by Direct Energy Solar, on its affinity site, where applicable.</span></li>
+                    <li><span>The corporation must have 100 or more employees to qualify for this program.</span></li>
+                    <li><span>When a properly-registered employee lead from the Affinity Partner signs a contract for solar services with Direct Energy Solar, Direct Energy Solar will extend to them an established Affinity discount, provided as a credit on the first invoice if the employee purchases the system, or as a cash rebate if the employee enrolls in Direct Energy Solar&rsquo;s monthly payment program.</span></li>
+                    <li><span>The employee discount amount is applied in addition to the current publicly-available promotional discount.</span></li>
+                    <li><span>In order for the Affinity Partner&rsquo;s employee to receive the discount, the employee must be properly registered with Direct Energy Solar in one of the following ways:</span></li>
+                    <div class="subList">
+                        <ul>
+                            <li><span>Register on a co-branded landing page, provided by Direct Energy Solar</span></li>
+                            <li><span>Register via the lead entry form on the Affinity Partner web portal</span></li>
+                            <li><span>Contact Direct Energy Solar directly and cite the Affinity Code, provided by Direct Energy Solar, during the first contact</span></li>
+                        </ul>
+                    </div>
+                    <li><span>Employees of the Affinity Partner who have already established contact with Direct Energy Solar are considered duplicate leads and are not eligible for the Affinity Partner discount.</span></li>
+                    <li><span>When an Affinity Partner&rsquo;s employee becomes a Direct Energy Solar customer and helps spread the word within the organization, he/she can qualify for a separate appreciation reward payment. In order to receive the separate appreciation reward, the referring employee&rsquo;s name must be cited at the time of lead registration.</span></li>
+                    <li><span>A customer may only receive one referral discount per system.</span></li>
+                    <li><span>All work for the solar power system sold will be performed by Direct Energy Solar.</span></li>  
+                    <li><span>Affinity Partner agrees to hold the terms of the agreement confidential.</span></li>
+                    <li><span>Affinity Partner agrees to only utilize marketing materials approved by Direct Energy Solar when promoting the program and to perform no marketing or advertising activities without the express permission of Direct Energy Solar.</span></li>
+                    <li><span>This agreement can be terminated at anytime by either party with a written notification. Referral Partner will get paid for any Qualified Leads referred prior to the date of cancellation.</span></li>
+                </ul>
+<p>By accepting this agreement, you acknowledge and agree to the terms and conditions above.  You also confirm that you are an authorized representative of a qualifying employer.</p>
+                                    </div>
+        </apex:outputPanel>
+    
+</body>
+</html>
+</apex:page>

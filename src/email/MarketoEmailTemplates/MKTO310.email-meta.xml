@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>1000 to First 10 in County - Leads.1000 to First 10 in County - Leads - The race</name>
+    <style>none</style>
+    <subject>The race is on! Will you be one of the first 10 to go solar?</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+The Early Birds in Your County Get… Extra Savings!
+The first 10 people to go solar receive $1,000 discount(1). 
+
+Dear {{lead.First Name:default=Friend}},
+
+If you’ve been considering solar, now is the perfect time to begin your electricity-saving investment and lock in lower rates for decades to come...and we’re adding in some extra savings to get you started.
+
+You see your neighbors going solar. So what’s stopping you? Right now, you have yet another reason to join them:
+
+Be one of the first 10 people go solar in your county beginning October 6. You’ll receive $1,000 discount(1) on your system.
+
+This discount is in addition to the numerous financial and environmental benefits that you and your family will enjoy when you go solar. But you must act quickly, as this offer is of limited availability. Join your neighbors and lead the way of the future by shining as a bright example of energy efficiency, conservation and independence in your community.
+
+Another reason to take action now:
+
+Did you know that the Federal government provides a 30% tax credit &lt;http://energy.gov/savings/residential-renewable-energy-tax-credit&gt; that is set to expire at the end of next year? This generous incentive has been helping to make solar more affordable than ever—and you can take advantage of it when you purchase your system with cash or loan.
+
+Act now and you could save thousands upfront on the cost of your solar system and beat the anticipated rush as the Federal Tax Credit deadline approaches.
+
+Don’t wait any longer. Contact us today.
+
+We’re ready to design and install a customized solar panel system for your home that will give you the most for your investment, the most energy generated, and the most satisfaction each time you see a sunny day. What are you waiting for?
+
+Get started today by calling us at 800-903-6130 to schedule your consultation.
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+(1)Offer valid to the first ten qualifying homes in your county that sign a new solar system contract with Direct Energy Solar beginning October 6, 2015 and pay using cash, Enerbank Same as Cash financing or any other 0% interest short term loan for applicable government incentives. No extensions will be granted. Customers will receive a $1,000 discount off the contract price at the time of their purchase. Minimum system size is 4 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, leased systems, systems using term loan financing, or special community pricing programs. Only one discount offer per household.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

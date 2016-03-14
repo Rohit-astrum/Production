@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>   
+    <title>Direct Energy Solar Daily Report</title>
+   
+  </head>
+  <body>
+  	 <div align="center">Direct Energy Solar Daily Report</div>	
+         <br/>
+	 <table width="80%" border="1" >
+      <tr><!-- Row 1 -->
+         <td></td><!-- Col 1 -->
+         <td colspan="3"><div align="center"><strong>Yesterday</strong></div></td><!-- Col spanning 2,3,4,5,6 -->
+         
+         <td></td><!-- Col 7 -->
+         <td colspan="3"><div align="center"><strong>Month To Date</strong></div></td><!-- Col spanning 8,9,10,11,12 -->
+         
+         <td></td><!-- Col 13 -->
+         <td colspan="3"><div align="center"><strong>Year To Date</strong></div></td><!-- Col spanning 14,15,16,17,18 -->
+         
+      </tr>
+  <tr><!-- Row 2 -->
+     <td></td><!-- Col 1 -->
+     <td><div align="center"><strong>Actual</strong></div></td><!-- Col 2 -->
+     <td><div align="center"><strong>LE4 Target</strong></div></td><!-- Col 3 -->
+     <!--<td><div align="center"><strong>Stretch Goal</strong></div></td> Col 4 -->
+     <td><div align="center"><strong>Target Variance</strong></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><strong>Stretch Variance</strong></div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center"><strong>Actual</strong></div></td><!-- Col 8 -->
+     <td><div align="center"><strong>LE4 Target</strong></div></td><!-- Col 9 -->
+     <!--<td><div align="center"><strong>Stretch Goal</strong></div></td> Col 10 -->
+     <td><div align="center"><strong>Target Variance</strong></div></td><!-- Col 11 -->
+     <!--<td><div align="center"><strong>Stretch Variance</strong></div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center"><strong>Actual</strong></div></td><!-- Col 14 -->
+     <td><div align="center"><strong>LE4 Target</strong></div></td><!-- Col 15 -->
+     <!--<td><div align="center"><strong>Stretch Goal</strong></div></td> Col 16 -->
+     <td><div align="center"><strong>Target Variance</strong></div></td><!-- Col 17 -->
+     <!--<td><div align="center"><strong>Stretch Variance</strong></div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 3 -->
+     <td class="tdleft"><strong>Leads #</strong></td><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Leads_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Leads_Num__c}</div></td><!-- Col 3 -->
+     <!--<td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_Leads_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Leads_Num__c - Astrum_Daily_Report__c.Daily_Goal_Leads_Num__c}</div></td><!-- Col 5 -->
+     <!--<td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Leads_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_Leads_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Leads_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Leads_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_Leads_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Leads_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Leads_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Leads_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_Leads_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Leads_Num_Total__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Leads_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_Leads_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Leads_Num_Total__c - Astrum_Daily_Report__c.Yearly_Goal_Leads_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Leads_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_Leads_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 4 -->
+     <td class="tdleft"><strong>Opportunities #</strong></td><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Oppty_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Oppty_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_Oppty_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Oppty_Num__c - Astrum_Daily_Report__c.Daily_Goal_Oppty_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Oppty_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_Oppty_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Oppty_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Oppty_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_Oppty_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Oppty_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Oppty_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Oppty_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_Oppty_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Oppty_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Oppty_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_Oppty_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Oppty_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Oppty_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Oppty_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_Oppty_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 5 -->
+     <td class="tdleft"><strong>Sales #</td></strong><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Sales_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Sales_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_Sales_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Sales_Num__c - Astrum_Daily_Report__c.Daily_Goal_Sales_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Sales_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_Sales_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Sales_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Sales_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_Sales_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Sales_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Sales_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Sales_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_Sales_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Sales_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Sales_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_Sales_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Sales_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Sales_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Sales_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_Sales_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 6 -->
+     <td class="tdleft"><strong>Cancellations #</strong></td><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Cancel_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Cancel_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_cancel_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Cancel_Num__c - Astrum_Daily_Report__c.Daily_Goal_Cancel_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Cancel_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_cancel_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Cancel_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Cancel_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_cancel_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Cancel_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Cancel_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Cancel_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_cancel_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Cancel_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Cancel_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_cancel_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Cancel_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Cancel_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Cancel_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_cancel_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 7 -->
+     <td class="tdleft"><strong>Inspections #</strong></td><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Inspection_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Inspection_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_inspection_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Inspection_Num__c - Astrum_Daily_Report__c.Daily_Goal_Inspection_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Inspection_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_inspection_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Inspection_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Inspection_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_inspection_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Inspection_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Inspection_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Inspection_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_inspection_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Inspection_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Inspection_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_inspection_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Inspection_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Inspection_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Inspection_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_inspection_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 8 -->
+     <td></td><!-- Col 1 -->
+     <td></td><!-- Col 2 -->
+     <td></td><!-- Col 3 -->
+     <td></td><!-- Col 4 -->
+     <td></td><!-- Col 5 -->
+     <td></td><!-- Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td></td><!-- Col 8 -->
+     <td></td><!-- Col 9 -->
+     <td></td><!-- Col 1 -->
+     <td></td><!-- Col 2 -->
+     <td></td><!-- Col 3 -->
+  </tr>
+  <tr><!-- Row 9 -->
+     <td class="tdleft"><strong>Sales KW</td></strong><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Sales_KW_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Sales_KW_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_Sales_kw_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Sales_KW_Num__c - Astrum_Daily_Report__c.Daily_Goal_Sales_KW_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Sales_KW_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_Sales_kw_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Sales_KW_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Sales_KW_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_Sales_kw_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Sales_KW_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Sales_KW_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Sales_KW_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_Sales_kw_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Sales_KW_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Sales_KW_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_Sales_kw_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Sales_KW_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Sales_KW_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Sales_KW_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_Sales_kw_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 10 -->
+     <td class="tdleft"><strong>Cancellations KW</td></strong><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Cancel_KW_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Cancel_KW_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_cancel_kw_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Cancel_KW_Num__c - Astrum_Daily_Report__c.Daily_Goal_Cancel_KW_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Cancel_KW_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_cancel_kw_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Cancel_KW_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Cancel_KW_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_cancel_kw_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Cancel_KW_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Cancel_KW_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Cancel_KW_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_cancel_kw_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Cancel_KW_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Cancel_KW_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_cancel_kw_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Cancel_KW_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Cancel_KW_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Cancel_KW_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_cancel_kw_Num__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 11 -->
+     <td class="tdleft"><strong>Inspections KW</td></strong><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Inspection_KW_Num__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Inspection_KW_Num__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_inspection_kw_Num__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Inspection_KW_Num__c - Astrum_Daily_Report__c.Daily_Goal_Inspection_KW_Num__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Actual_Inspection_KW_Num__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_inspection_kw_Num__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Inspection_KW_Num__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Goal_Inspection_KW_Num__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Stretch_Goal_inspection_kw_Num__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Inspection_KW_Num__c - Astrum_Daily_Report__c.Monthly_Goal_Inspection_KW_Num__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Actual_Inspection_KW_Num__c - Astrum_Daily_Report__c.Monthly_Stretch_Goal_inspection_kw_Num__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Inspection_KW_Num__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Inspection_KW_Num__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Stretch_Goal_inspection_kw_Num__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Inspection_KW_Num__c - Astrum_Daily_Report__c.Yearly_Goal_Inspection_KW_Num__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Actual_Inspection_KW_Num__c - Astrum_Daily_Report__c.Yearly_Stretch_Goal_inspection_kw_Num__c}</div></td> Col 18 -->
+  </tr>
+<tr><!-- Row 12 -->
+     <td></td><!-- Col 1 -->
+     <td></td><!-- Col 2 -->
+     <td></td><!-- Col 3 -->
+     <td></td><!-- Col 4 -->
+     <td></td><!-- Col 5 -->
+     <td></td><!-- Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td></td><!-- Col 8 -->
+     <td></td><!-- Col 9 -->
+     <td></td><!-- Col 1 -->
+     <td></td><!-- Col 2 -->
+     <td></td><!-- Col 3 -->
+  </tr>
+ <tr><!-- Row 12 -->
+     <td class="tdleft"><strong>Median Time: Opp to First Sales Visit (Days)</td></strong><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_Avg_Time_to_Sales__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Avg_Time_Opty_to_Sales_Visit__c - Astrum_Daily_Report__c.Daily_Goal_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Avg_Time_Opty_to_Sales_Visit__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_Avg_Time_to_Sales__c}</div></td> Col 6 -->
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Month_Goal_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Month_Stretch_Goal_Avg_Time_to_Sales__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Avg_Time_Opty_to_Sales_Visit__c - Astrum_Daily_Report__c.Month_Goal_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Avg_Time_Opty_to_Sales_Visit__c - Astrum_Daily_Report__c.Month_Stretch_Goal_Avg_Time_to_Sales__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Year_Stretch_Goal_Avg_Time_to_Sales__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Avg_Time_Opty_to_Sales_Visit__c - Astrum_Daily_Report__c.Yearly_Goal_Avg_Time_Opty_to_Sales_Visit__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Avg_Time_Opty_to_Sales_Visit__c - Astrum_Daily_Report__c.Year_Stretch_Goal_Avg_Time_to_Sales__c}</div></td> Col 18 -->
+  </tr>
+  <tr><!-- Row 13 -->
+     <td class="tdleft"><strong>Median Time: Sale to Inspection (Days)</td></strong><!-- Col 1 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 2 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Goal_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 3 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Stretch_Goal_Avg_Time_to_Ins__c}</div></td> Col 4 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Avg_Time_Sales_to_Inspection__c - Astrum_Daily_Report__c.Daily_Goal_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 5 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Daily_Avg_Time_Sales_to_Inspection__c - Astrum_Daily_Report__c.Daily_Stretch_Goal_Avg_Time_to_Ins__c}</div></td> Col 6 -->
+
+     <td></td><!-- Col 7 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 8 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Month_Goal_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 9 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Month_Stretch_Goal_Avg_Time_to_Ins__c}</div></td> Col 10 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Avg_Time_Sales_to_Inspection__c - Astrum_Daily_Report__c.Month_Goal_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 11 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Monthly_Avg_Time_Sales_to_Inspection__c - Astrum_Daily_Report__c.Month_Stretch_Goal_Avg_Time_to_Ins__c}</div></td> Col 12 -->
+     <td></td><!-- Col 13 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 14 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Goal_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 15 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Year_Stretch_Goal_Avg_Time_to_Ins__c}</div></td> Col 16 -->
+     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Avg_Time_Sales_to_Inspection__c - Astrum_Daily_Report__c.Yearly_Goal_Avg_Time_Sales_to_Inspection__c}</div></td><!-- Col 17 -->
+<!--     <td><div align="center">{!Astrum_Daily_Report__c.Yearly_Avg_Time_Sales_to_Inspection__c - Astrum_Daily_Report__c.Year_Stretch_Goal_Avg_Time_to_Ins__c}</div></td> Col 18 -->
+  </tr>
+</table>
+
+
+<table border="1"  width="20%">
+  <tr><!-- Row 1 -->
+     <td></td><!-- Col 1 -->
+     <td><strong>Actual</strong></td><!-- Col 2 -->
+  </tr>
+  <tr><!-- Row 2 -->
+     <td class="tdleft"><strong>Current Backlog KW</strong></td><!-- Col 1 -->
+     <td>{!Astrum_Daily_Report__c.Current_Backlog_KW__c}</td><!-- Col 2 -->
+  </tr>
+</table>
+		
+  </body>
+</html>

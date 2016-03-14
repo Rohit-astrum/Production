@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Acknowledged__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Acknowledged</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Alert_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Alert Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>high</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Alert_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Alert Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alert_Start__c</fullName>
+        <externalId>false</externalId>
+        <label>Alert Start</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Impact__c</fullName>
+        <externalId>false</externalId>
+        <formula>IMAGE(
+  CASE(Alert_Level__c,
+    &apos;high&apos;, &apos;https://assets1.enphaseenergy.com/images/icons/e3_icon_sqr_error.png&apos;,
+    &apos;medium&apos;, &apos;https://assets1.enphaseenergy.com/images/icons/e3_icon_sqr_warning.png&apos;,
+    &apos;low&apos;, &apos;https://assets1.enphaseenergy.com/images/icons/e3_icon_sqr_info.png&apos;,
+    &apos;https://assets1.enphaseenergy.com/images/icons/e3_icon_sqr_info.png&apos;
+  ),
+  TEXT(Alert_Level__c),
+  15,
+  18
+)</formula>
+        <label>Impact</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System__c</fullName>
+        <externalId>false</externalId>
+        <label>Installed System</label>
+        <referenceTo>Installed_System__c</referenceTo>
+        <relationshipLabel>Enphase Alerts</relationshipLabel>
+        <relationshipName>Enphase_Alerts</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Number_of_Devices__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Devices</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>View_in_Enlighten__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;https://enlighten.enphaseenergy.com/systems/&apos; &amp; Installed_System__r.Enphase_ID__c  &amp; &apos;/arrays?&apos;, &apos;Enlighten&apos;, &apos;_blank&apos;)</formula>
+        <label>View in Enlighten</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Enphase Alert</label>
+    <nameField>
+        <displayFormat>A-{0000000}</displayFormat>
+        <label>Alert ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Enphase Alerts</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

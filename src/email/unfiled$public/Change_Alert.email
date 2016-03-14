@@ -1,0 +1,8 @@
+<html>
+<body>
+<p>Sales Order: <a href="https://na28.salesforce.com/{!Milestone1_Project__c.Sales_OrderId__c}">{!Milestone1_Project__c.Sales_Order__c}</a> </p>
+<p>for</p> 
+<p>Project: <a href="https://na28.salesforce.com/{!Milestone1_Project__c.Id}">{!Milestone1_Project__c.Name}</a></p>
+<p>has been changed by Sales.</p>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_RecordVisitController"  applyHtmlTag="false" applyBodyTag="false">
+
+	<apex:composition template="D2D_SiteTemplate">
+	
+		<apex:define name="head-top">
+
+		    <meta name='description' content='D2D - Record Visit' />
+		    <title>D2D - Record Visit</title>
+			
+		</apex:define>
+
+		<apex:define name="head-bottom"> 
+		    
+			<script type="text/javascript">
+				//Avoid conflicts between jQuery and apex
+				$j = jQuery.noConflict();
+			</script>
+		</apex:define>
+	
+		<apex:define name="navigation">
+            <c:D2D_AccountInfo />
+		</apex:define>
+			
+		<apex:define name="header-btns">
+		    <div class="headerBtns">
+				<!--<h1><span class="unbold">Lead: </span><span class="leadName">{!referral.Full_Name__c}</span>  <a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-orangebg"></i></a></h1>
+	    		<div>
+	    			<div class="headerBtnsLeft">
+	    				<h2><i class="fa fa-calendar fa-1x fa-pageicon"></i> Record a Visit</h2>
+	   				</div><div class="headerBtnsRight">
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-th fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+					</div>
+					<div class="ClearAll"></div>
+				</div> -->
+				<div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-calendar fa-1x fa-pageicon"></i> Record a Visit</h1>
+		 			</div><div class="headerBtnsRight">
+		 				<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+					</div>
+					<div class="ClearAll"></div>
+				</div>
+    		</div>
+		</apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		    <div class="footerBtns">
+	    		<!-- <div class="footerBtnsLeft">
+	    			<a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a>
+	    		</div>
+				<div class="ClearAll"></div>-->
+		    </div> 
+	    </apex:define>
+
+		<apex:define name="content">
+			<apex:form id="mainForm" styleClass="mainForm"> 
+			<div id="Content">
+				<div class="container greycontainer">
+		        	<apex:actionRegion >
+						<apex:outputPanel id="leadForm4">
+							<div class="NewLeadForm">
+								<div class="recordVisitColLeft">
+						            <div class="recordVisitFormRow">
+					                 	<label>Current Visit</label>
+					                 	<div class="visitName">{!IF(visits.size==0, 'NA Visit 1', IF(visits.size==1, 'NA Visit 2', IF(visits.size==2, 'Door Hanger', 'All visits have been completed.')))}</div>
+					                 	<apex:outputPanel layout="block" rendered="{!AND(visits.size<3,NOT(ISNULL(referral.Id)))}">
+						                 	<label>Visit Notes</label>
+						                 	<apex:inputTextarea id="visitNotes" value="{!newVisitNote}" />
+						                 	<div class="visitSubmit">
+												<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all" onclick="submitVisit();displayLoader('Saving visit...')">Submit</a>
+												<apex:actionFunction name="submitVisit" action="{!submitVisit}" status="">
+							                    </apex:actionFunction>
+											</div>
+										</apex:outputPanel>
+					                </div>
+						        </div><div class="recordVisitColRight">
+						            <div class="recordVisitFormRow">
+					                	<label>Visit History</label>
+										<table class="visitHistoryTable">
+											<tr>
+												<th class="visitHistoryTableDate">Date/Time</th>
+												<th class="visitHistoryTableType">Visit</th>
+												<th class="visitHistoryTableNotes">Notes</th>
+											</tr>
+											<apex:repeat value="{!visits}" var="visit">
+												<tr>
+													<td class="visitHistoryTableDate" >{!visit.VisitDatetime}</td>
+													<td class="visitHistoryTableType" >{!visit.VisitType}</td>
+													<td class="visitHistoryTableNotes" >{!visit.VisitNotes}</td>
+												</tr>
+											</apex:repeat>
+										</table>
+					                </div>
+					            </div>
+								<div class="ClearAll"></div>
+				            </div>
+						</apex:outputPanel>
+					</apex:actionRegion>
+				</div>
+			</div>
+			</apex:form>
+		</apex:define>
+
+	</apex:composition>
+</apex:page>

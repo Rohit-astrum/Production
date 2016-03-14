@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Sales Forecasting Settings</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Lease_With_SREC_Close_Rate_DC__c</fullName>
+        <description>Lease With SREC Close Rate - DC</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease With SREC Close Rate - DC</inlineHelpText>
+        <label>Lease With SREC Close Rate - DC</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_With_SREC_Close_Rate_MA__c</fullName>
+        <description>Lease With SREC Close Rate - MA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease With SREC Close Rate - MA</inlineHelpText>
+        <label>Lease With SREC Close Rate - MA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_With_SREC_Close_Rate_MD__c</fullName>
+        <description>Lease With SREC Close Rate - MD</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease With SREC Close Rate - MD</inlineHelpText>
+        <label>Lease With SREC Close Rate - MD</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_With_SREC_Close_Rate_NJ__c</fullName>
+        <description>Lease With SREC Close Rate - NJ</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease With SREC Close Rate - NJ</inlineHelpText>
+        <label>Lease With SREC Close Rate - NJ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_With_SREC_Close_Rate_OH__c</fullName>
+        <description>Lease With SREC Close Rate - OH</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease With SREC Close Rate - OH</inlineHelpText>
+        <label>Lease With SREC Close Rate - OH</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_With_SREC_Close_Rate_PA__c</fullName>
+        <description>Lease With SREC Close Rate - PA</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Lease With SREC Close Rate - PA</inlineHelpText>
+        <label>Lease With SREC Close Rate - PA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <label>Forecasting Settings</label>
+</CustomObject>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Autoresponses.Solar Lunch and Learn Reservation - Confirmation to Company</name>
+    <style>none</style>
+    <subject>Confirmation of your Solar Lunch-and-Learn request</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Who Says There’s No Such Thing as a Free Lunch?
+
+Hello {{lead.First Name:default=Friend}},
+
+Thank you for your interest in a Free Lunch-and-Learn Solar Seminar. We’ll be reaching out to you shortly to confirm your date and provide more information about your event. We look forwarding to talking with you!
+
+Confirmation of Your Request:
+
+Your Name: {{lead.First Name}} {{lead.Last Name}}
+Your Email: {{lead.Email Address}}
+Your Phone: {{lead.Phone Number}}
+Your Company: {{company.Company Name}}
+Number of Employees: {{lead.Marketing Notes}}
+Date Requested: {{lead.Lead Source Notes}}
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar Lunch-and-Learn Solar Seminar.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;[[http://www.directenergysolar.com/privacy-policy]]&gt;
+
+Terms &amp; Conditions
+&lt;[[http://www.directenergysolar.com/terms-and-conditions]]&gt;
+
+DirectEnergySolar.com
+&lt;[[http://www.directenergysolar.com]]&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,205 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+        
+        <link href="{!URLFOR($Resource.PartnerPortal2_Resources,'css/styles_PolicyShadowbox.css')}" type="text/css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    	<style>
+			@font-face{
+				font-family:"ConduitITCW01-ExtraLigh_731268";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/6d9d0397-2f59-4797-9d05-fc3dea90773e.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2edcd10-e47c-46ce-a26e-abc326913231.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/2ca7ac3e-e9ad-4469-ad0f-7ca39807abb6.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/97620ad5-a20b-4d15-846e-062fa737d4c2.svg#97620ad5-a20b-4d15-846e-062fa737d4c2')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-ExtraLigh_731271";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/2e1ec13f-ffb9-4785-8366-29fa78edab7d.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/cc4ea450-48c9-45ae-9905-49e4becb52cd.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e475c09-527f-4b4c-92d7-6f4bc0d2b863.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/c6005481-1bb3-4e65-9f23-3bf8f317d9e9.svg#c6005481-1bb3-4e65-9f23-3bf8f317d9e9')}') format("svg");
+			}
+			@font-face{
+				font-family:"Conduit ITC W01 Light";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/cf39e66c-fff7-43d5-b865-0a45543d590a.svg#cf39e66c-fff7-43d5-b865-0a45543d590a')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-LightItal";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/a4b3a81c-1256-49cb-a816-5d8931d352cb.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/cb1d6e54-081d-429a-a0e2-e09f003b52f6.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/4e4ba5dd-4e46-4afe-804b-624ab0b31d9e.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/64bf7dd4-f691-4801-b042-b720c1c115bd.svg#64bf7dd4-f691-4801-b042-b720c1c115bd')}') format("svg");
+			}
+			@font-face{
+				font-family:"Conduit ITC W01 Regular";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/8846bd5f-2288-474a-9e36-1f6a456687e8.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/e328f17d-e8e5-424f-92e8-31af32b2ebac.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/97556a76-3d0b-4ad7-ae17-02b5d97e928b.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/407529ad-dcaa-4637-ac62-6cf9265d4f52.svg#407529ad-dcaa-4637-ac62-6cf9265d4f52')}') format("svg");
+			}
+			@font-face{
+				font-family:"Conduit ITC W01 Italic";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/8f5aa48d-d6a8-44d6-8f8b-05a27be61180.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/0d4b4097-9f7f-486f-b108-07f6ab48ca1d.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/8e21264d-f678-4005-b90c-8d8288a0d179.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/a084d860-2279-4910-b924-82b72dcc36e0.svg#a084d860-2279-4910-b924-82b72dcc36e0')}') format("svg");
+			}
+			@font-face{
+				font-family:"Conduit ITC W01 Medium";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/62fbb38e-9226-47f8-90d8-3c37328ab6c9.svg#62fbb38e-9226-47f8-90d8-3c37328ab6c9')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-MediumIta";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/8eff5488-0bde-4d4c-8f56-058189978841.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/ebda6846-73f6-43d3-9197-a9577947f6c6.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/3df60eaf-797e-4c19-aa7c-b7f071f0cb44.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/29fffbbc-8876-445e-9ec0-1895f243a630.svg#29fffbbc-8876-445e-9ec0-1895f243a630')}') format("svg");
+			}
+			@font-face{
+				font-family:"Conduit ITC W01 Bold";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/4680ad80-371f-497c-8926-35654adc2249.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/fdaf48d4-c023-4a03-b948-53535ee4d571.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/ca6dc25e-d400-4735-9fb9-ee2d025ebb5c.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/aa206b9b-b888-4ce6-8039-669469e9b429.svg#aa206b9b-b888-4ce6-8039-669469e9b429')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-BoldItali";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d7196b2-01b1-40b5-96e0-fc359188ba6f.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/12c62c8a-5fa0-42e5-9dbe-d81e2cd53756.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/ec4d359c-2645-4fe6-81c9-a6926f0faefa.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/92dde6c0-7bec-4165-81cd-6565fa13067c.svg#92dde6c0-7bec-4165-81cd-6565fa13067c')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-ExtraBold_731262";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/7002aae3-e27a-49d5-b79b-44bcc8364444.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/a0afe27e-7751-4c93-8499-b73d4801ce53.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/2960bd08-c8ab-4549-8aab-dfc6245541f7.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/e9d182a6-38a1-4923-9d37-756b5cc46682.svg#e9d182a6-38a1-4923-9d37-756b5cc46682')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-ExtraBold_731265";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/d8515268-a189-493a-a1d4-5061408b4c84.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2fbf317-cd76-4a7a-bc66-4108d3ce5a94.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/d96fd761-8451-4d01-8443-fcb4d10fb3ce.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/7e039442-211a-4159-b641-e456210be8e3.svg#7e039442-211a-4159-b641-e456210be8e3')}') format("svg");
+			}
+			@font-face{
+				font-family:"Conduit ITC W01 Black";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/2a06e006-d37c-4d8f-a4bc-c9eec5d41e24.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/e560b829-e02c-4a01-bbe1-ddc574c1f8e8.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/d3baf0dc-04c7-4f98-a85b-6eb2d44be02a.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/9372a370-abb4-4516-836c-d7ca85e7f06a.svg#9372a370-abb4-4516-836c-d7ca85e7f06a')}') format("svg");
+			}
+			@font-face{
+				font-family:"ConduitITCW01-BlackItal";
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}');
+				src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}') format("eot"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f76f551-2973-4ff9-bcb8-d440bdbe93fa.woff2')}') format("woff2"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/1ce906cc-1f63-4410-ad83-e2251b2a9ed9.woff')}') format("woff"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/376e972f-a10d-46fa-8042-362f94ef52ec.ttf')}') format("truetype"),
+					url('{!URLFOR($Resource.WebFontResources, 'Conduit/d35847aa-1943-4214-bc22-81eba2f6a3af.svg#d35847aa-1943-4214-bc22-81eba2f6a3af')}') format("svg");
+			}
+        </style>
+    </head>
+    <body>
+        
+            <div id="Content">
+                <h1>Terms &amp; Conditions</h1>
+                <p>Thank you for visiting Directenergysolar.com (the &ldquo;Website&rdquo;). The following Terms and Conditions govern your use of this Website. Please review this information carefully. By using the Website, you agree to be bound by these Terms and Conditions.</p>
+                <p>If you do not agree with any of these Terms and Conditions, without limitation or qualification, please exit the Website.</p>
+                <p>Direct Energy Solar (&ldquo;Direct Energy Solar,&rdquo; &ldquo;us&rdquo; or &ldquo;we&rdquo;) reserves the right to change these Terms and Conditions by revising this page at any time without prior notice. You should periodically review these Terms and Conditions for changes. Your continued use of this Website shall constitute your acceptance of any such revised Terms and Conditions.</p>
+                <p>We reserve the right to take steps to block access to our Website by any person or entity for any reason.</p>
+                
+                
+               <h2>Copyright/Trademark</h2>
+               <p>This entire Website, copy, images, logos, indicia, text, and all content therein are owned and copyrighted by Direct Energy Solar. All third-party trademarks appearing herein are hereby acknowledged. &ldquo;Direct Energy Solar,&rdquo; &ldquo;directenergysolar.com,&rdquo; &ldquo;See a sunny day in a whole new way,&rdquo; any variation of them, and all other marks and logos appearing within this Website are trademarks of Direct Energy Solar or third party providers and may not be used without prior written permission.</p>
+               
+               <h2>Use of this Website</h2>
+               <p>Permission to use documents delivered from this Website and/or Direct Energy Solar&rsquo;s servers and related graphics is restricted. You may access, use and copy information and materials available through this Website only for purposes of considering and/or purchasing Direct Energy Solar products. That information and those materials, including pages and content, may not be copied, distributed, modified, published, or transmitted in any other manner, including for use in creative work or to sell or promote other products or services. Violation of this policy may result in infringement of Direct Energy Solar&rsquo;s or other third parties&rsquo; intellectual property and contractual rights which is prohibited by law and could result in substantial civil and criminal penalties.</p>
+
+<p>When retrieving information from our Website, you are prohibited from (1) using or attempting to use spiders, robots, avatars, intelligent agents, or any other extraction or navigation search except for a normal browser without our express written permission; (2) aggregating, copying or duplicating any of the materials or information available from the Website except for the reasonable amount of materials and information temporarily required for an ordinary single use of the Website; or (3) accessing data not intended for such user.</p>
+
+            <h2>Links to Third Party Sites</h2>
+            <p>This Website may contain links to sites owned or operated by parties other than Direct Energy Solar. Such links are provided for your convenience only. Direct Energy Solar does not control, and is not responsible for, the content or privacy policies on, or the security of, such sites. Without limiting the foregoing, Direct Energy Solar specifically disclaims any responsibility if such sites:</p>
+                <ul>
+                    <li><span>infringe any third party&rsquo;s intellectual property rights;</span></li>
+                    <li><span>are inaccurate, incomplete or misleading;</span></li>
+                    <li><span>are not merchantable or fit for a particular purpose;</span></li>
+                    <li><span>do not provide adequate security;</span></li>
+                    <li><span>contain viruses or other items of a destructive nature; or</span></li>  
+                    <li><span>are libelous or defamatory.</span></li>
+                </ul>
+<p>Direct Energy Solar does not endorse the content, or any products or services available, on such sites. If you establish a link to such sites, you do so at your own risk and without the permission of Direct Energy Solar.</p>
+
+            <h2>Submissions</h2>
+            <p>Any comments, feedback, notes, messages, ideas, suggestions or other communications (collectively, &ldquo;Comments&rdquo;) sent to Direct Energy Solar are non-confidential and non-proprietary and will be and remain Direct Energy Solar&rsquo;s exclusive property. Your submission of any such Comments constitutes an assignment to Direct Energy Solar of all rights, titles and interests in all copyrights and other intellectual property rights in any such Comments. Direct Energy Solar will be entitled to use, incorporate, reproduce, disclose, publish and distribute any material you submit for any purpose whatsoever, without restriction and without compensating you in any way. For this reason, we ask that you not send us any comments that you do not wish to assign to us, including any confidential information or any original creative materials such as stories, product ideas, computer code or original artwork.</p>
+
+            <p>By submitting information to Direct Energy Solar through the Website, you certify that the information is accurate and pertains only to you.</p>
+
+            <p>Though we take commercially reasonable steps to protect the security of our Website, we do not control all access channels to our Website. Accordingly, you acknowledge that any information you put into any field on the Website might be publicly accessible at any time during transmission. We are not liable for protection of privacy of any information transferred to us over the Internet until it enters our systems.</p>
+            
+            
+            <h2>Communication from Direct Energy Solar</h2>
+            <p>When you request a quote or other information from, or purchase a produce from Direct Energy Solar or subscribe to our e-newsletter, we reserve the right to email you product alerts and special offers that we believe may be of interest to you. We respect your right not to receive these communications. Each of these communications will contain a clear link to unsubscribe. When you unsubscribe, we will remove your name from the communication list and will no longer send you these special offers and alerts, unless you choose to re-subscribe at a later date.</p>
+            
+            <h2>Accuracy of Information Presented</h2>
+            <p>While we use reasonable efforts to present accurate and up to date information on the Website, we make no warranties or representations as to the accuracy, correctness, reliability or otherwise with respect to such information, and assume no liability or responsibility for any omissions or errors (including, without limitation, typographical errors and technical errors) in the content of the Website.</p>
+            <p>All stated solar energy related incentives discussed or set forth on this, whether federal, state, local or of any other nature, should be confirmed with Direct Energy Solar and/or the applicable governmental or other entity and are subject to availability and change at any time and without notice.</p>
+            
+            <h2>Indemnification</h2>
+            <p>By using the Website you agree to indemnify and hold Direct Energy Solar and its employees, representatives, agents, affiliates, directors, officers, managers and owners (collectively, the &ldquo;Parties&rdquo;) harmless from any damage, loss, or expense (including without limitation, attorneys&rsquo; fees and costs) incurred in connection with any third party claim, demand or action (a &ldquo;Claim&rdquo;) brought against any of the Parties alleging that you have breached any of these Terms and Conditions. Direct Energy Solar will have the right to control the defense, settlement, and resolution of any such Claim at your sole expense. You may not settle or otherwise resolve any Claim without Direct Energy Solar&rsquo;s express written permission.</p>
+           
+           <h2>Warranty and Limitation of Liability.</h2>
+            <p>Use of and browsing in the Website is done at your own risk. Neither Direct Energy Solar nor any other party involved in creating, producing or delivering the Website shall be liable for any direct, incidental, consequential, indirect or punitive damages arising out of your access to, or use of, or browsing the Website, or downloading of any materials, data, text, images, video or audio from the Website, including, without limitation, damage to, or viruses that may infect, your computer equipment or other property as a result thereof.
+Without limiting the foregoing, everything on the Website is provided to you &ldquo;AS IS&rdquo; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT. Please note that some jurisdictions may not allow the exclusion of implied warranties, so some of the above exclusions may not apply to you. Check your local laws for any restrictions or limitations regarding the exclusion of implied warranties.</p>
+
+            <h2>Severability</h2>
+            <p>If any provision of these Terms and Conditions is found to be unlawful, void or for any reason unenforceable, that provision will be deemed severable from these Terms and Conditions and will not affect the validity and enforceability of any remaining provision.</p>
+            
+            <h2>General Terms</h2>
+            <p>No failure or delay by a party in exercising any right, power or privilege under these Terms and Conditions will operate as a waiver thereof, nor will any single or partial exercise of any right, power or privilege preclude any other or further exercise thereof or the exercise of any other such right, power, or privilege. The invalidity or unenforceability of any provision of these Terms and Conditions will not affect the validity or enforceability of any other provision of these Terms and Conditions, all of which will remain in full force and effect.</p>
+
+<p>These Terms and Conditions will bind Direct Energy Solar, each Party identified above, and you, and each such person&rsquo;s or entity&rsquo;s successors and permitted assignees, and will governed by and construed in accordance with the laws of the State of Maryland without reference to conflict of law principles. These Terms and Conditions will not be assignable or transferable by you without the prior written consent of Direct Energy Solar. These Terms and Conditions contain the entire understanding of the parties regarding its subject matter, and supersede all prior and contemporaneous agreements and understandings between the parties regarding its subject matter.</p>
+                        
+                    
+            </div>
+
+      
+    </body>
+</html>
+</apex:page>

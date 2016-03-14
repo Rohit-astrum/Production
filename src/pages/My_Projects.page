@@ -1,0 +1,127 @@
+<apex:page standardController="Milestone1_Project__c"           
+           extensions="My_Projects_Controller_Extension" showHeader="true" sidebar="true" id="page">
+           
+        <apex:messages />
+        
+        <apex:pageBlock id="pageBlock" title="My Projects"> 
+
+            <apex:pageBlockTable value="{!projectHolders}" var="tempProjectHolder">
+            
+                <apex:column headerValue="Project Name">
+                   <apex:outputLink value="/{!tempProjectHolder.project.Id}"><apex:outputText value="{!tempProjectHolder.project.name}"/></apex:outputLink>
+                </apex:column>
+                
+                <apex:column headerValue="Status"><apex:outputText value="{!tempProjectHolder.project.Status__c}"/></apex:column>
+                
+                <apex:column headerValue="Open Tasks">
+                    <apex:outputText value="{0,number,0}">
+                        <apex:param value="{!tempProjectHolder.project.Total_Open_Task_Count__c}" /> 
+                    </apex:outputText>
+                </apex:column>
+
+                <apex:column headerValue="Owner Name">
+                <apex:outputLink value="/{!tempProjectHolder.project.OwnerId}">{!ownerFirstName} {!ownerLastName}</apex:outputLink>
+                </apex:column>
+                
+                <apex:column headerValue="Deadline">
+                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                        <apex:param value="{!tempProjectHolder.project.Deadline__c}" /> 
+                    </apex:outputText> 
+                </apex:column>
+                
+                <apex:column headerValue="Kickoff">
+                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                        <apex:param value="{!tempProjectHolder.project.Kickoff__c}" /> 
+                    </apex:outputText>                     
+                </apex:column>
+                
+                <apex:column headerValue="Project Lead">
+                   <apex:outputLink value="/{!tempProjectHolder.project.Project_Lead__r.Id}"><apex:outputText value="{!tempProjectHolder.project.Project_Lead__r.Name}"/></apex:outputLink>
+                </apex:column>
+                
+                <apex:column headerValue="Property">
+                   <apex:outputLink value="/{!tempProjectHolder.project.Sales_Order__r.OpportunityId__r.Property__r.Id}">{!tempProjectHolder.project.Sales_Order__r.OpportunityId__r.Property__r.Name}</apex:outputLink>
+                </apex:column>
+                
+                <apex:column headerValue="Sale Date">
+                     <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                        <apex:param value="{!tempProjectHolder.project.Sale_Date__c}" /> 
+                    </apex:outputText>               
+                </apex:column>
+                
+                <apex:column headerValue="Sales Person">
+                   <apex:outputLink value="/{!tempProjectHolder.project.Salesperson__r.Id}"><apex:outputText value="{!tempProjectHolder.project.Salesperson__r.Name}"/></apex:outputLink>
+                </apex:column>
+                
+                <apex:column headerValue="Sales Order">
+                   <apex:outputLink value="/{!tempProjectHolder.project.Sales_Order__r.Id}"><apex:outputText value="{!tempProjectHolder.project.Sales_Order__r.Name}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="County">
+                   <apex:outputText value="{!tempProjectHolder.project.Sales_Order__r.OpportunityId__r.Property__r.Property_County__c}"/>
+                </apex:column>       
+                
+                <apex:column headerValue="Kickoff Visit Complete">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[KICK_OFF_VISIT_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[KICK_OFF_VISIT_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>
+                                
+                <apex:column headerValue="Parts Calc Complete">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[CREATE_PARTS_CALCULATOR_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[CREATE_PARTS_CALCULATOR_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Permits Submitted">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[PERMITS_SENT_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[PERMITS_SENT_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Permits Approved">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[PERMITS_APPROVED_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[PERMITS_APPROVED_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Engineer Approved">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[ENGINEER_APPROVED_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[ENGINEER_APPROVED_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="HOA Required">
+                    <apex:outputLink value="/{!tempProjectHolder.project.Sales_Order__r.OpportunityId__r.Property__r.Id}"><apex:outputText value="{!tempProjectHolder.complete[HOA_REQUIRED_WORKFLOW_KEY]}"/></apex:outputLink>
+               </apex:column>                
+
+                <apex:column headerValue="HOA Submitted">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[HOA_SUBMITTED_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[HOA_SUBMITTED_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="HOA Approval" >
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[HOA_APPROVED_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[HOA_APPROVED_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+  
+                <apex:column headerValue="Interconnection Request Submitted">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[SUBMITTED_INTERCONNECT_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[SUBMITTED_INTERCONNECT_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Interconnection Request Approved">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[APPROVED_INTERCONNECT_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[APPROVED_INTERCONNECT_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Installation Begins">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[INSTALLATION_BEGINS_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[INSTALLATION_BEGINS_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Panel Work Complete">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[PANEL_WORK_COMPLETE_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[PANEL_WORK_COMPLETE_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Electrical Work Complete">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[ELECTRICAL_WORK_COMPLETE_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[ELECTRICAL_WORK_COMPLETE_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+                <apex:column headerValue="Inspection">
+                   <apex:outputLink value="/{!tempProjectHolder.completeId[INSPECTION_WORKFLOW_KEY]}"><apex:outputText value="{!tempProjectHolder.complete[INSPECTION_WORKFLOW_KEY]}"/></apex:outputLink>
+                </apex:column>                
+
+
+            </apex:pageBlockTable>
+                                    
+                          
+
+        </apex:pageBlock>
+        
+    </apex:page>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>An opportunity to establish a Community Program</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Date_On_Hold__c</fullName>
+        <description>The date the Stage field was set to &quot;On Hold&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date the Stage field was set to &quot;On Hold&quot;</inlineHelpText>
+        <label>Date On Hold</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>A description of this Community Program Lead</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A description of this Community Program Lead</inlineHelpText>
+        <label>Description</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Extension_End_Date__c</fullName>
+        <description>The day this Community Program period has been extended to</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The day this Community Program period has been extended to</inlineHelpText>
+        <label>Extension End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Program_End_Date__c</fullName>
+        <description>The day the Community Program period was originally scheduled to end. Specify an extension date in the &quot;Extension Deadline&quot; field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The day the Community Program period was originally scheduled to end. Specify an extension date in the &quot;Extension Deadline&quot; field</inlineHelpText>
+        <label>Program End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Program_Start_Date__c</fullName>
+        <description>The day the Community Program period starts</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The day the Community Program period starts</inlineHelpText>
+        <label>Program Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>RFP_Due_Date__c</fullName>
+        <description>The date the RFP is due</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date the RFP is due</inlineHelpText>
+        <label>RFP Due Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Referred_by_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Contact who referred us to this Community Program Lead</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Contact who referred us to this Community Program Lead</inlineHelpText>
+        <label>Referred by - Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>Community_Program_Lead_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Referred_by_Organization__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Organization who referred us to this Community Program Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Organization who referred us to this Community Program Opportunity</inlineHelpText>
+        <label>Referred by - Organization</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Community Program Opportunities</relationshipLabel>
+        <relationshipName>Community_Program_Opportunities</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Referred_by__c</fullName>
+        <description>A helper field that stores the value from either the Referred by - Organization or Referred by - Contact field, depending on which one has a value</description>
+        <externalId>false</externalId>
+        <formula>IF (ISBLANK(Referred_by_Organization__c) &amp;&amp; NOT(ISBLANK(Referred_by_Contact__c)),
+   Referred_by_Contact__r.FirstName + &quot; &quot; + Referred_by_Contact__r.LastName,
+/*ELSE*/
+   Referred_by_Organization__r.Name
+)</formula>
+        <inlineHelpText>A helper field that stores the value from either the Referred by - Organization or Referred by - Contact field, depending on which one has a value</inlineHelpText>
+        <label>Referred by</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage__c</fullName>
+        <description>The current stage of this Community Program Lead</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The current stage of this Community Program Lead</inlineHelpText>
+        <label>Stage</label>
+        <picklist>
+            <controllingField>Status__c</controllingField>
+            <picklistValues>
+                <fullName>Left message to call back</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Qualified</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meeting Scheduled</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Process Ongoing</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proposal Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Waiting on RFP</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RFP Issued</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RFP Submitted</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Installer Interview</fullName>
+                <controllingFieldValues>Active</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>On Hold</fullName>
+                <controllingFieldValues>Complete</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Won</fullName>
+                <controllingFieldValues>Complete</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Lost</fullName>
+                <controllingFieldValues>Complete</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unresponsive</fullName>
+                <controllingFieldValues>Complete</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>The Status of this Community Program Lead</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Status of this Community Program Lead</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Community Program Opportunity</label>
+    <nameField>
+        <label>Community Program Code Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Community Program Opportunities</pluralLabel>
+    <recordTypes>
+        <fullName>Non_RFP</fullName>
+        <active>true</active>
+        <label>Non-RFP</label>
+        <picklistValues>
+            <picklist>Stage__c</picklist>
+            <values>
+                <fullName>Closed - Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed - Won</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Left message to call back</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Process Ongoing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Qualified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RFP Issued</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unresponsive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>RFP</fullName>
+        <active>true</active>
+        <label>RFP</label>
+        <picklistValues>
+            <picklist>Stage__c</picklist>
+            <values>
+                <fullName>Closed - Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed - Won</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installer Interview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RFP Issued</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RFP Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unresponsive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting on RFP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>End_Date_must_be_greater_than_Start_Date</fullName>
+        <active>true</active>
+        <description>Program End Date must be greater than or equal to Program Start Date</description>
+        <errorConditionFormula>Program_End_Date__c &lt; Program_Start_Date__c</errorConditionFormula>
+        <errorDisplayField>Program_End_Date__c</errorDisplayField>
+        <errorMessage>Program End Date must be greater than or equal to Program Start Date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>End_Date_requires_Start_Date</fullName>
+        <active>true</active>
+        <description>Specifying a Program End Date requires a Program Start Date</description>
+        <errorConditionFormula>ISBLANK(Program_Start_Date__c)
+&amp;&amp; 
+NOT(ISBLANK(Program_End_Date__c))</errorConditionFormula>
+        <errorDisplayField>Program_Start_Date__c</errorDisplayField>
+        <errorMessage>Specifying a Program End Date requires a Program Start Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Extension_must_be_greater_than_End_Date</fullName>
+        <active>true</active>
+        <description>Specifying an Extension End Date requires a Program End Date. The Extension End Date must be greater than Program End Date</description>
+        <errorConditionFormula>( 
+   ISBLANK(Program_End_Date__c) &amp;&amp; 
+   NOT(ISBLANK(Extension_End_Date__c)) 
+) 
+|| 
+Extension_End_Date__c &lt;= Program_End_Date__c</errorConditionFormula>
+        <errorDisplayField>Extension_End_Date__c</errorDisplayField>
+        <errorMessage>Specifying an Extension End Date requires a Program End Date. The Extension End Date must be greater than Program End Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Referred_by_is_Contact_or_Organization</fullName>
+        <active>true</active>
+        <description>The Referred by field can only hold the lookup value of a Contact Name or Organization Name. This makes it possible to report on these values.</description>
+        <errorConditionFormula>NOT(ISBLANK(Referred_by_Contact__c)) &amp;&amp; NOT(ISBLANK(Referred_by_Organization__c))</errorConditionFormula>
+        <errorMessage>You may specify a Contact OR an Organization for the &quot;Referred by&quot; field, but not both. Please clear the value in either the &quot;Referred by - Contact&quot; field or the &quot;Referred by - Organization&quot; field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Date_requires_End_Date</fullName>
+        <active>true</active>
+        <description>Specifying a Program Start Date requires a Program End Date of an equal or later date.</description>
+        <errorConditionFormula>NOT(ISBLANK(Program_Start_Date__c))
+&amp;&amp;
+ISBLANK(Program_End_Date__c)</errorConditionFormula>
+        <errorDisplayField>Program_End_Date__c</errorDisplayField>
+        <errorMessage>Specifying a Program Start Date requires a Program End Date of an equal or later date.</errorMessage>
+    </validationRules>
+</CustomObject>

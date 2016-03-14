@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Your Approved/Edited Weekly Timesheet Summary" recipientType="User" relatedToType="Time_Sheet__c">
+<messaging:htmlEmailBody >    
+    <apex:outputText value="Below is the summary of Timesheet Entries for the Week starting on {!relatedTo.For_The_Week_Starting__c} at 12:00am."/><br/><br/>
+    <c:TimesheetWeeklySummary tsId="{!relatedTo.Id}" /><br/><br/>   
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

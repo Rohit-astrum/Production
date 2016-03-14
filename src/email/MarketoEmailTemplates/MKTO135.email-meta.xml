@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Referral Campaign Re-launch 4/22/15.Subject Line Test</name>
+    <style>none</style>
+    <subject>{{lead.First Name:default=Friend}}, get rewarded. Check out our new referral program!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+A Special Message for Our Valued Customers
+
+Spread the Word. Get Rewarded.
+&lt;http://www.directenergysolar.com/refer&gt;
+
+Dear {{lead.First Name:default=Friend}},
+
+Our business is based on the numerous referrals we receive from our satisfied customers. We love referrals and reward our customers who spread the word about the benefits of going solar the right way with Direct Energy Solar.
+
+Do you know someone who may benefit from going solar? As a Direct Energy Solar customer, you can earn a cash reward or any referral that switches to solar with Direct Energy Solar!
+
+You Receive a Cash Reward*: 
+$500
+
+Your Friend Receives:
+Free** 6-month heating &amp; cooling repair essentials plan from Direct Energy, plus $500 off their solar system.***
+
+Make even more by hosting an Open House!
+Receive $500 from each sale from your Open House.***
+
+Contact Lindsey Williams at 443.239.9809 or email lindsey.williams@directenergysolar.com &lt;mailto:lindsey.williams@directenergysolar.com&gt; for more information.
+
+Start earning your rewards today!
+&lt;http://www.directenergysolar.com/refer&gt;
+
+Download a printable version of this email 
+&lt;http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_ReferralProgram_042315.pdf&gt;
+
+You’re receiving this email because you are a Direct Energy Solar customer.
+
+*You must be an Direct Energy Solar customer to participate in the Direct Energy Solar Referral Program. For each referral that signs a solar contract with Direct Energy Solar, you will receive $500. Individuals may not refer themselves. Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral. Payment in the form of a check is sent within 30 days of the sale.
+
+**No extensions will be granted. An in-home consultation is contingent on your home being a good candidate for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the ‘Plan’) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited. Only one offer per household.
+
+***$500 cash back offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar between April 1, 2015—May 31, 2015. In lieu of a cash rebate, customers can opt to use the $500 as a down payment to reduce their monthly solar fees or to receive a $500 discount off the contract price at the time of their purchase. Otherwise, $500 cash back rebate to be mailed approximately 30 days after the system is installed. Minimum system size is 5 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+
+****You will be paid $500 for each contract signed with Direct Energy Solar resulting from the open house. There is no limit to the amount of contracts signed from your open house. If the customer decides to cancel participation, they will make every effort to provide Direct Energy Solar with at least four weeks notice. The customer agrees that an Direct Energy Solar sales/marketing representative will be onsite to answer questions for visitors.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+Direct Energy Solar
+
+8955 Henkels Lane, Suite 508
+
+Annapolis Junction, MD 20701
+
+P: 800-903-6130
+
+F: 443-267-0036
+© 2015 Astrum Solar, Inc. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

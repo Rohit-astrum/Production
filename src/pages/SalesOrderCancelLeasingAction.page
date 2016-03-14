@@ -1,0 +1,4 @@
+<apex:page standardController="SCRB_SalesOrder__c" extensions="SalesOrderLeasingActionController" showHeader="true" sidebar="true" 
+           action="{!submitCancellation}"   >
+           
+</apex:page>

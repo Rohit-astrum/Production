@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Mass Solar Connect 9/9/15.Mass Solar Connect 9/9/15</name>
+    <style>none</style>
+    <subject>Reduced Program Pricing Until September 30!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for your interest in the Mass Solar Connect program.
+
+The Mass Solar Connect program has achieved unparalleled success as Direct Energy Solar contracted over 200 systems, far exceeding Mass Energy’s program goal.
+
+Although the program has officially been closed by the Massachusetts Clean Energy Center, Direct Energy Solar is pleased to offer the reduced program pricing UNTIL SEPTEMBER 30 to all homeowners who signed up for a free solar consulation before August 31. 
+
+Please contact your Solar Consultant to move forward or call us at 800-903-6130.
+
+Mass Energy Consumers Alliance
+ &lt;http://www.massenergy.org/&gt;
+
+Mass Solar Connect is a partnership between Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumers Alliance (Mass Energy) and Direct Energy Solar.
+
+
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Mass Solar Connect.
+
+The Mass Solar Connect program is open to Mass Energy members and members of affiliated nonprofits. The enrollment period begins March 2, 2015 and lasts through August 31, 2015. Direct Energy Solar is pleased to offer the reduced program pricing until September 30, 2015 to all homeowners who signed up for a free solar consultation before August 31, 2015.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumer Alliance (Mass Energy) or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+MA HIC 168228/ELC 21555A
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+©2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

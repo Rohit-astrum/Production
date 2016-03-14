@@ -1,0 +1,301 @@
+<apex:page showHeader="true" sidebar="true" > <!-- controller="SystemDesignImageController"-->
+	<!-- <apex:includeScript value='https://10.1.8.2/resources/utils.js' /> -->
+	<!-- <apex:includeScript value='https://10.1.8.2/resources/imgedit.js' /> -->
+	<!-- <apex:stylesheet value='https://10.1.8.2/resources/imgedit.css' /> -->
+	<style>
+		canvas {
+			/*border: 1px solid #f0f0f0;*/
+			/*width: 600px;
+			height: 400px;*/
+			background-color: #fff;
+			position: relative;
+		}
+
+		input {
+			border: 1px solid #c0c0c0;
+		}
+
+		input[id$=img_file] {
+			border: 3px solid #00ff00;
+		}
+
+		.ib {
+			display: inline-block;
+		}
+
+		.cframe {
+			width: 500;
+			height: 400;
+			overflow: hidden;
+			background-color: #e0e0e0;
+			border: 1px solid #a0a0FF;
+		}
+
+		.imgeditor {
+			display: inline-block;
+			margin: 25px;
+			border: 2px solid #404040;
+			padding: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		/**
+		 * TODO - insert copyright notice
+		 * Created: Lawrence L Hovind
+		 * Date: May 12, 2014 1155 ET
+		 */
+
+		/*function resize( elemId, wd, ht ) {
+			elem = document.getElementById(elemId);
+			if( elem != undefined ) {
+				elem.style.width = wd;
+				elem.style.height = ht;
+			}
+		}
+
+		function cntr( elemId, direction ) {
+			elem = document.getElementById(elemId);
+			
+			elem.style.position = "absolute";
+			elem.style.top = Math.round((window.innerHeight - elem.offsetHeight) / 2) + 'px';
+			elem.style.left = Math.round((window.innerWidth - elem.offsetWidth) / 2) + 'px';
+			//elem.style.marginTop = '-' + Math.round(elem.offsetHeight / 2) + 'px';
+			//elem.style.marginLeft = '-' + Math.round(elem.offsetWidth / 2) + 'px';
+		}
+
+		function RequestViaJSONP( request ) {
+			var script = document.createElement("script");
+			script.setAttribute("type", "text/javascript");
+			script.setAttribute("src", request);
+			document.body.appendChild(script);
+		}
+		// TODO - insert copyright notice
+		// Created: Lawrence L Hovind
+		// Date: May 8, 2014 1432 ET
+
+		function readFile(evt) {
+			file = evt.target.files[0];
+			fr = new FileReader();
+			fr.onload = loadImage;
+			fr.readAsDataURL(file);
+		}
+
+		function loadImage() {
+			panel = document.getElementById("canvas1");
+			context = panel.getContext('2d');
+			
+			img = new Image();
+			img.src = fr.result;
+			img.onload = function(){
+				panel.width = img.width;
+				panel.height = img.height;
+				document.getElementById("wd").innerHTML = img.width;
+				document.getElementById("ht").innerHTML = img.height;
+				context.drawImage(img, 0, 0);
+				};
+			
+		}
+
+		function ie_scaleImage(req) {
+			panel = document.getElementById("canvas1");
+			context = panel.getContext('2d');
+			
+			zoom = req / 100;
+			panel.width = img.width * zoom;
+			panel.height = img.height *zoom;
+			context.drawImage(img, 0, 0, panel.width, panel.height);
+			// reposition image, if necessary
+			if( Math.abs(parseInt(panel.style.left)) > (panel.width - 10) ) {
+				panel.style.left = "0";
+			}
+			if( Math.abs(parseInt(panel.style.top)) > (panel.height - 10) ) {
+				panel.style.top = "0";
+			}
+		}
+
+		function snapToWidth() {
+			panel = document.getElementById("canvas1");
+			context = panel.getContext('2d');
+			
+			frm = document.getElementById("cframe");
+			if( frm != undefined ) {
+					wd = frm.offsetWidth;
+					ht = frm.offsetHeight;
+				}
+			
+		}
+
+		function checkVisibilty() {
+			
+		}
+
+		var dragObj;
+		var top0=0, left0=0, x=0, y=0;
+		var cframe;
+
+		function dragStart(event) {
+			dragObj = event.target;
+			top0 = parseInt(dragObj.style.top + 0);
+			left0 = parseInt(dragObj.style.left + 0);
+			x = event.clientX;
+			y = event.clientY;
+			document.addEventListener("mousemove", dragMove, true);
+			document.addEventListener("mouseup", dragStop, true);
+			//console.log("drag start");
+		}
+
+		function dragMove(event) {
+			
+			dx = left0 + event.clientX - x;
+			
+			// check for right most bound
+			if( dx < (cframe.clientWidth - dragObj.width) ) {
+				dx = (cframe.clientWidth - dragObj.width);
+			}
+			// check for left most bound
+			if( dx > 0 ) {
+				dx = 0;
+			}
+			dragObj.style.left = dx + "px";
+
+			
+			dy = top0 + event.clientY - y;
+			
+			// check for lower bound
+			if( dy < (cframe.clientHeight - dragObj.height)  ) {
+				dy = (cframe.clientHeight - dragObj.height);
+			}
+			// check for upper bound
+			if( dy > 0 ) {
+				dy = 0;
+			}
+			dragObj.style.top = dy + "px";
+			
+			//document.getElementById("objx").innerHTML = dx;
+			//document.getElementById("objy").innerHTML = dy;
+			//console.log("drag move: " + dx);
+		}
+
+		function dragStop() {
+			document.removeEventListener("mousemove", dragMove, true);
+			document.removeEventListener("mouseup", dragStop, true);
+			dragObj = undefined;
+			//console.log("drag stop");
+		}
+
+		function zoomchg(event) {
+			zoom = event.target.value;
+			cntrl = event.target.id;
+			if( cntrl == "zoomspin" ) {
+				other = document.getElementById("zoomsldr");
+			}
+			if( cntrl == "zoomsldr" ) {
+				other = document.getElementById("zoomspin");
+			}
+			other.value = zoom;
+			
+			ie_scaleImage(zoom);
+		}
+
+		function cropCanvas(canvas, x, y, wd, ht) {
+			//var panel = document.getElementById("canvas1");
+			context = canvas.getContext('2d');
+			
+			// check that the current canvas isn't smaller than the frame
+			// check ht is too large
+			if( (canvas.height - y) < ht ) {
+				ht = canvas.height - y;
+			}
+			// check wd is too large
+			if( (canvas.width - x) < wd ) {
+				wd = canvas.width - x;
+			}
+			
+			imgData = context.getImageData(x, y, wd, ht);
+			canvas.width = wd;
+			canvas.height = ht;
+			canvas.style.left = "0";
+			canvas.style.top = "0";
+			context.putImageData(imgData, 0, 0);
+			
+		}
+
+		function saveImage(event) {
+			var panel = document.getElementById("canvas1");
+			//context = panel.getContext('2d');
+			
+			var imgDataURL = panel.toDataURL('image/jpeg', 1.0);
+			//var imgDataURL = panel.toDataURL('image/jpeg', 1.0).replace('image/jpeg', 'image/octet-stream');
+			
+			//imgwin = document.getElementById("newimg");
+			//imgwin.src = imgDataURL;
+			
+			input_img = document.querySelector('input[id$=img_url]');
+			if( input_img != undefined ) {
+				input_img.value = imgDataURL;
+				console.log("ImgFile <input> would be filled with: " + imgDataURL.length + " bytes");
+			} else {
+				console.log("ImgFile <input> was not found");
+			}
+
+			uploadImg();
+		}
+
+		function cropSaveImage( cframe, event ) {
+			frm = document.getElementById(cframe);
+			if( frm != undefined ) {
+				cnvs = frm.getElementsByTagName("canvas")[0];
+				if( cnvs != undefined ) {
+					x = Math.abs(parseInt(cnvs.style.left) || 0);
+					y = Math.abs(parseInt(cnvs.style.top) || 0);
+					wd = frm.offsetWidth;
+					ht = frm.offsetHeight;
+					cropCanvas( cnvs, x, y, wd, ht);
+					saveImage(event);
+				}
+			}
+		}*/
+
+	</script>
+	<!--<apex:sectionHeader title="System Design" />
+		<apex:messages />
+	<apex:form id="imageeditor">
+		<apex:pageBlock title="New System Design Edit">
+			<apex:pageBlockButtons location="top">
+	                <apex:commandButton action="{!noop}" value="Save" disabled="true" />
+	                <apex:commandButton action="{!noop}" value="Save & New" disabled="true" />
+	                <apex:commandButton action="{!noop}" value="Cancel" disabled="true" />
+			</apex:pageBlockButtons>
+
+				<apex:actionFunction name="uploadImg" action="{!uploadImg}" />
+
+				<div>
+					<label>Upload SketchUp file:</label>&emsp;<input type="file" value="" onchange="readFile(event)" />&emsp;
+				</div>
+				<div id="iedit" class="imgeditor">
+					<div id="cframe" class="cframe" style="width: 700px; height: 335px;">
+						<canvas id="canvas1">
+						</canvas>
+					</div>
+					<div style="margin-bottom: 5px;">
+						
+						<span>Original image size: </span><span id="wd" class="ib">0</span>&nbsp;x&nbsp;<span id="ht" class="ib">0</span>
+					</div>
+					<div>
+						<div style="display: inline-block;">
+							Zoom: <input id="zoomspin" type="number" min="0" max="100" step=".1" value="100" style="width: 6em;" onchange="zoomchg(event)" />%<br />
+							<input id="zoomsldr" type="range" min="0" max="100" step=".1" value="100" onchange="zoomchg(event)" />
+						</div>
+						<div style="display: inline-block; float: right;">
+							<button type="button" onclick="cropSaveImage('cframe', event)">Crop &amp; Save</button>
+						</div>
+					</div>
+				</div>
+				<apex:inputText value="{!imgURL}" id="img_url" maxlength="512000" style="visibility: hidden;" />
+		</apex:pageBlock>
+	</apex:form>
+	<script type="text/javascript">
+		cframe = document.getElementById("cframe");
+		document.getElementById("canvas1").addEventListener("mousedown", dragStart, true);
+	</script>-->
+</apex:page>

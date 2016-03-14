@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <description>Hold User Settings for Availability Blocks</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Friday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Friday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Monday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Visits_Per_Week__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Visits Per Week</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Saturday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Saturday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sunday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Sunday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Thursday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Thursday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tuesday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Tuesday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Wednesday_Sales_Visits__c</fullName>
+        <externalId>false</externalId>
+        <label>Wednesday Sales Visits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Astrum Scheduling</label>
+</CustomObject>

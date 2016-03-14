@@ -1,0 +1,106 @@
+<apex:page id="pg" standardController="Astrum_Event__c" extensions="AstrumEventToScheduleController" showHeader="true" sidebar="true">
+
+<apex:stylesheet value="{!$Resource.AjaxStatusStyle}"/>
+
+<script type="text/javascript" language="javascript">
+	function ShowLoading() {
+	document.getElementById('blockbckanim').style.display="block";
+	}
+	function HideLoading() {
+	document.getElementById('blockbckanim').style.display="none";
+	}
+
+	//--------------------------------------------------------------------------------------------------------------
+	// This function prevents the user from accidentally submitting/cancelling the form through enter key
+	//--------------------------------------------------------------------------------------------------------------
+	function stopRKey(evt) {
+	   var evt = (evt) ? evt : ((event) ? event : null);
+	   var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+	   if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+	}
+
+	document.onkeypress = stopRKey;
+
+</script>
+
+<div id="blockbckanim" style="display:none">
+<img id="apimgld" style="" src="/img/loading32.gif" />
+</div>
+
+<apex:pageMessages />
+
+<apex:form id="frmSuccess" rendered="{!showSuccessNav}">
+	<apex:sectionHeader title="Successful Event Schedule"/>
+	<apex:pageBlock title="Success">
+		<apex:pageBlockButtons location="Top" >
+			<apex:commandButton action="{!successFinish}" value="OK"/>
+		</apex:pageBlockButtons>
+	</apex:pageBlock>
+</apex:form>
+
+<apex:form id="frm" rendered="{!NOT(hideForm)}">
+
+	<!-- Hidden fields for controller extension access -->
+	<apex:outputField rendered="false" value="{!Astrum_Event__c.RecordTypeID}" />
+	<apex:outputField rendered="false" value="{!Astrum_Event__c.RecordType.Name}" />
+	<apex:outputField rendered="false" value="{!Astrum_Event__c.Status__c}" />
+	<apex:outputField rendered="false" value="{!Astrum_Event__c.Start_Date_Time__c}" />
+	<apex:outputField rendered="false" value="{!Astrum_Event__c.Stop_Date_Time__c}" />
+
+	<apex:sectionHeader title="New Sales Visit" subtitle="New Onsite Sales Visit" />
+	<apex:pageBlock title="New Schedule">
+		<apex:pageBlockButtons >
+			<apex:actionStatus id="preventDoubleClickStatus" >
+				<apex:facet name="start">
+					<apex:outputPanel >
+						<img id="apimgld" style="" src="/img/loading32.gif" />
+					</apex:outputPanel>
+				</apex:facet>
+				<apex:facet name="stop"> 
+					<apex:outputPanel >						
+						<apex:commandButton action="{!cancel}" value="Cancel Event"/>
+						<apex:commandButton action="{!save}" onclick="tempDisableBeforeUnload = true;" value="Schedule & Email Sales Person" status="preventDoubleClickStatus"/>						
+					</apex:outputPanel>
+				</apex:facet>
+			</apex:actionStatus>
+		</apex:pageBlockButtons>
+		
+		<apex:pageBlockSection title="Information" columns="1">
+			<apex:outputField label="Selected Sales Rep" value="{!Astrum_Event__c.OwnerID}" />
+			<apex:inputField label="Event Subject" value="{!Astrum_Event__c.Subject__c}"  style="width:400px;" />
+			<apex:inputField label="Description" value="{!Astrum_Event__c.Notes__c}" style="width:400px; height:150px;"/>
+			<apex:inputField label="Location" value="{!Astrum_Event__c.Location__c}" style="width:400px;"/>
+			<apex:outputField value="{!Astrum_Event__c.Customer_Start_Date_Time_Text__c}" />
+			<apex:outputField value="{!Astrum_Event__c.Customer_Stop_Date_Time_Text__c}" />
+		</apex:pageBlockSection>
+
+		<apex:pageBlockSection title="Property/Opp Info" columns="1" rendered="{!Astrum_Event__c.Opportunity__c != null}">
+			<apex:outputField value="{!Astrum_Event__c.Contact__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.StageName}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__r.Property_Address_2__c}" style="width:225px"/>			
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__r.Property_City__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__r.Property_State__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__r.Property_County__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__r.QAS_Property_County__c}" style="width:225px"/>
+			<apex:outputField value="{!Astrum_Event__c.Opportunity__r.Property__r.Time_Zone__c}" style="width:225px"/>
+		</apex:pageBlockSection>
+
+		<apex:pageBlockSection title="Lead Info" columns="1" rendered="{!Astrum_Event__c.Lead__c != null && Astrum_Event__c.Opportunity__c == null}">
+			<apex:outputField value="{!Astrum_Event__c.Lead__c}" style="width:225px" />
+			<apex:outputField value="{!Astrum_Event__c.Lead__r.Street}" style="width:225px" />			
+			<apex:outputField value="{!Astrum_Event__c.Lead__r.City}" style="width:225px" />
+			<apex:outputField value="{!Astrum_Event__c.Lead__r.State}" style="width:225px" />
+			<apex:outputField value="{!Astrum_Event__c.Lead__r.County__c}" style="width:225px" />
+			<apex:outputField value="{!Astrum_Event__c.Lead__r.QAS_County__c}" style="width:225px" />
+			<apex:outputField value="{!Astrum_Event__c.Lead__r.Time_Zone__c}" style="width:225px" />
+		</apex:pageBlockSection>
+
+
+		
+
+	</apex:pageBlock>
+</apex:form>
+
+</apex:page>

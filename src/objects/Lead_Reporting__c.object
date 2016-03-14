@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>City__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  Opportunity__r.Property__r.Property_City__c   ,  Lead__r.City  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Detail__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),   Opportunity__r.Contact_Detail__c ,  Lead__r.Contact_Detail__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contact Detail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>County__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ), IF(ISBLANK(Opportunity__r.Property__r.QAS_Property_County__c), TEXT( Opportunity__r.Property__r.Property_County__c ),Opportunity__r.Property__r.QAS_Property_County__c)   ,   IF(ISBLANK(Lead__r.QAS_County__c),TEXT(Lead__r.County__c),Lead__r.QAS_County__c)  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>County</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Imported_Lead_Created_Date__c</fullName>
+        <description>Initial Load of Lead Created Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Initial Load of Lead Created Date</inlineHelpText>
+        <label>Imported Lead Created Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LeadSource__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  TEXT(Opportunity__r.LeadSource)   ,  TEXT(Lead__r.LeadSource)  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LeadSource</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Created_Date__c</fullName>
+        <description>Date/Time Lead was Created</description>
+        <externalId>false</externalId>
+        <formula>BLANKVALUE(Lead__r.CreatedDate, Imported_Lead_Created_Date__c)</formula>
+        <inlineHelpText>Date/Time Lead was Created</inlineHelpText>
+        <label>Lead Created Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Source_Detail__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  TEXT(Opportunity__r.Lead_Source_Detail__c)   ,  TEXT(Lead__r.Lead_Source_Detail__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lead Source Detail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipName>Lead_Source_Reporting</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Method_of_Contact__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),   Opportunity__r.Method_of_Contact__c , TEXT(Lead__r.Method_of_Contact__c)  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method of Contact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  Opportunity__r.Account.Name , Lead__r.FirstName + &apos; &apos;+ Lead__r.LastName )</formula>
+        <label>Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipName>Lead_Source_Reporting</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PostalCode__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  Opportunity__r.Property__r.Property_ZIP__c  ,  Lead__r.PostalCode)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PostalCode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Source_Campaign__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),   Opportunity__r.Account.Primary_Source_Campaign__r.Name    ,  Lead__r.Primary_Source_Campaign__r.Name )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Primary Source Campaign</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referring_Account__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),   Opportunity__r.Referring_Account__r.Name   ,  Lead__r.Referring_Account__r.Name)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Referring Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Region__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ), TEXT(Opportunity__r.Sales_Region__c) , TEXT(Lead__r.Sales_Region__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Second_Lead_Source_Detail__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  TEXT(Opportunity__r.Second_Lead_Source_Detail__c)   ,  TEXT(Lead__r.Second_Lead_Source_Detail__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Second Lead Source Detail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Second_Lead_Source__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  TEXT(Opportunity__r.Second_Lead_Source__c)   ,  TEXT(Lead__r.Second_Lead_Source__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Second Lead Source</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Secondary_Referring_Account__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  Opportunity__r.Secondary_Referring_Account__r.Name   ,  Lead__r.Secondary_Referring_Account__r.Name)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Secondary Referring Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Secondary_Source_Campaign__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ), Opportunity__r.Secondary_Source_Campaign__c , Lead__r.Secondary_Source_Campaign__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Secondary Source Campaign</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ), TEXT(Opportunity__r.Property__r.Property_State__c), Lead__r.State )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Street__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR(ISBLANK(Lead__c), Lead__r.IsConverted ),  Opportunity__r.Property__r.Name , Lead__r.Street )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Street</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Lead Reporting</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Name__c</columns>
+        <columns>Lead__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>LeadSource__c</columns>
+        <columns>Lead_Source_Detail__c</columns>
+        <columns>Primary_Source_Campaign__c</columns>
+        <columns>Referring_Account__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>Street__c</columns>
+        <columns>City__c</columns>
+        <columns>State__c</columns>
+        <columns>County__c</columns>
+        <columns>PostalCode__c</columns>
+        <columns>Method_of_Contact__c</columns>
+        <columns>Contact_Detail__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>LR-{0000000}</displayFormat>
+        <label>Lead Reporting Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Lead Reporting</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

@@ -1,0 +1,16 @@
+<html>
+<body>
+<p>A <strong><a href="https://na28.salesforce.com/{!Change_Request__c.Id}">Change Request</a></strong> with the following details is completed and requires your approval.</p>
+
+<ul style="list-style:none">
+<li>Type 1 : {!Change_Request__c.Type_1__c}</li>
+<li>Type 1 Detail : {!Change_Request__c.Type_1_Detail__c}</li>
+<li>Change Reason 1 : {!Change_Request__c.Reason_for_Change_1__c}</li>
+<li>Type 2 : {!Change_Request__c.Type_2__c}</li>
+<li>Type 2 Detail : {!Change_Request__c.Type_2_Detail__c}</li>
+<li>Change Reason 2 : {!Change_Request__c.Reason_for_Change_2__c}</li>
+<li>Change From : {!Change_Request__c.Change_From__c}</li>
+<li>Change To : {!Change_Request__c.Change_To__c}</li>
+</ul>
+
+<p>To Approve This Change Request, please <strong><a href="https://na28.salesforce.com/{!Change_Request__c.Id}">Review Here</a></strong></p>

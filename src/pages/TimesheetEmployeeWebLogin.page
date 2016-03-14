@@ -1,0 +1,599 @@
+<apex:page docType="html-5.0" sidebar="false" 
+           showHeader="false" standardStylesheets="false" 
+           cache="false" controller="TimeSheetEmployeeController">
+   
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        
+        <link rel="stylesheet" type="text/css" href="https://localhost/css/index.css" />
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+        <link rel="stylesheet" href="{!URLFOR($Resource.TimesheetEmployeeResources, 'css/styles.css')}" media="screen, projection" type="text/css" /> 
+        
+        <style>
+        
+        /*Web Fonts*/
+    
+    
+	    @font-face{
+			font-family:"ConduitITCW01-ExtraLigh_731268";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/6d9d0397-2f59-4797-9d05-fc3dea90773e.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2edcd10-e47c-46ce-a26e-abc326913231.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2ca7ac3e-e9ad-4469-ad0f-7ca39807abb6.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/97620ad5-a20b-4d15-846e-062fa737d4c2.svg#97620ad5-a20b-4d15-846e-062fa737d4c2')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-ExtraLigh_731271";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2e1ec13f-ffb9-4785-8366-29fa78edab7d.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/cc4ea450-48c9-45ae-9905-49e4becb52cd.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e475c09-527f-4b4c-92d7-6f4bc0d2b863.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/c6005481-1bb3-4e65-9f23-3bf8f317d9e9.svg#c6005481-1bb3-4e65-9f23-3bf8f317d9e9')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Light";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/cf39e66c-fff7-43d5-b865-0a45543d590a.svg#cf39e66c-fff7-43d5-b865-0a45543d590a')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-LightItal";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a4b3a81c-1256-49cb-a816-5d8931d352cb.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/cb1d6e54-081d-429a-a0e2-e09f003b52f6.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/4e4ba5dd-4e46-4afe-804b-624ab0b31d9e.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/64bf7dd4-f691-4801-b042-b720c1c115bd.svg#64bf7dd4-f691-4801-b042-b720c1c115bd')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Regular";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8846bd5f-2288-474a-9e36-1f6a456687e8.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e328f17d-e8e5-424f-92e8-31af32b2ebac.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/97556a76-3d0b-4ad7-ae17-02b5d97e928b.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/407529ad-dcaa-4637-ac62-6cf9265d4f52.svg#407529ad-dcaa-4637-ac62-6cf9265d4f52')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Italic";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8f5aa48d-d6a8-44d6-8f8b-05a27be61180.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/0d4b4097-9f7f-486f-b108-07f6ab48ca1d.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8e21264d-f678-4005-b90c-8d8288a0d179.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a084d860-2279-4910-b924-82b72dcc36e0.svg#a084d860-2279-4910-b924-82b72dcc36e0')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Medium";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/62fbb38e-9226-47f8-90d8-3c37328ab6c9.svg#62fbb38e-9226-47f8-90d8-3c37328ab6c9')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-MediumIta";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/8eff5488-0bde-4d4c-8f56-058189978841.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ebda6846-73f6-43d3-9197-a9577947f6c6.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/3df60eaf-797e-4c19-aa7c-b7f071f0cb44.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/29fffbbc-8876-445e-9ec0-1895f243a630.svg#29fffbbc-8876-445e-9ec0-1895f243a630')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Bold";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/4680ad80-371f-497c-8926-35654adc2249.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/fdaf48d4-c023-4a03-b948-53535ee4d571.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ca6dc25e-d400-4735-9fb9-ee2d025ebb5c.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/aa206b9b-b888-4ce6-8039-669469e9b429.svg#aa206b9b-b888-4ce6-8039-669469e9b429')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-BoldItali";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d7196b2-01b1-40b5-96e0-fc359188ba6f.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/12c62c8a-5fa0-42e5-9dbe-d81e2cd53756.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/ec4d359c-2645-4fe6-81c9-a6926f0faefa.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/92dde6c0-7bec-4165-81cd-6565fa13067c.svg#92dde6c0-7bec-4165-81cd-6565fa13067c')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-ExtraBold_731262";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/7002aae3-e27a-49d5-b79b-44bcc8364444.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/a0afe27e-7751-4c93-8499-b73d4801ce53.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2960bd08-c8ab-4549-8aab-dfc6245541f7.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e9d182a6-38a1-4923-9d37-756b5cc46682.svg#e9d182a6-38a1-4923-9d37-756b5cc46682')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-ExtraBold_731265";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d8515268-a189-493a-a1d4-5061408b4c84.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2fbf317-cd76-4a7a-bc66-4108d3ce5a94.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d96fd761-8451-4d01-8443-fcb4d10fb3ce.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/7e039442-211a-4159-b641-e456210be8e3.svg#7e039442-211a-4159-b641-e456210be8e3')}') format("svg");
+		}
+		@font-face{
+			font-family:"Conduit ITC W01 Black";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/2a06e006-d37c-4d8f-a4bc-c9eec5d41e24.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/e560b829-e02c-4a01-bbe1-ddc574c1f8e8.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d3baf0dc-04c7-4f98-a85b-6eb2d44be02a.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/9372a370-abb4-4516-836c-d7ca85e7f06a.svg#9372a370-abb4-4516-836c-d7ca85e7f06a')}') format("svg");
+		}
+		@font-face{
+			font-family:"ConduitITCW01-BlackItal";
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}');
+			src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}') format("eot"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f76f551-2973-4ff9-bcb8-d440bdbe93fa.woff2')}') format("woff2"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/1ce906cc-1f63-4410-ad83-e2251b2a9ed9.woff')}') format("woff"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/376e972f-a10d-46fa-8042-362f94ef52ec.ttf')}') format("truetype"),
+				url('{!URLFOR($Resource.WebFontResources, 'Conduit/d35847aa-1943-4214-bc22-81eba2f6a3af.svg#d35847aa-1943-4214-bc22-81eba2f6a3af')}') format("svg");
+		}
+		
+        </style>
+                
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>        
+       
+        <script type="text/javascript">
+		    var projectRecs = new Array();
+		    
+		    var $j = jQuery.noConflict(); 			    
+			
+
+		    
+		    function getProjects(callback) {
+		        $j('#projectList').empty();
+		        console.log('1a');
+		        //Invoke JS Remoting function to retrieve Project Records 		        
+		        TimeSheetEmployeeController.getProjectRecs(false,function(records, e) { 
+		                                                        showProject(records, callback) }, 
+		                                                        {escape:true}); 
+		    }
+
+		    function populatePurpose(empClass,woStatus) {	
+		    	$j('#purpose').empty();	        
+		        //Invoke JS Remoting function to retrieve Purpose Records 
+		        TimeSheetEmployeeController.getPurpose(empClass,woStatus,function(records, e) { 
+		                                                        showPurpose(records) }, 
+		                                                        {escape:true}); 
+		    }
+
+		    function showPurpose(records) {		    			    	    	
+		    	var options = $j('#purpose');
+		    	options.append('<option value = "">Select Purpose</option>');
+				$j.each(records, function() {
+					options.append($j("<option />").val(this.Id).text(this.Name));  						 
+				});		
+				options.selectmenu( "refresh" );				
+		    }
+		    
+		    function showProject(records, callback) {
+		        projectRecs.length = 0;
+
+		        
+		        
+		        //Iterate through Project records and add each rec. to the page DOM
+		        for(var i = 0; i < records.length; i++) { projectRecs[records[i].Id] = records[i]; }
+		        var x = 0;
+		    	var empClass = $j('#employeeClass').html();
+		    	console.log('empClass '+empClass);
+		        $j.each(records,
+		            function() {
+		            var newLi = $j('<li></li>');
+		                        
+		            var newLink = $j('<a id="' +this.Id+ '" data-transition="flip"><h3>' +this.Name+ '</h3></a>');
+		            newLink.click(function(e) {
+		                e.preventDefault();
+		                console.log('projectRecs[this.id].Wo_Status__c '+ '-' +projectRecs[this.id].WO_Status__c);
+		                $j.mobile.loading('show', {	text: 'loading',textVisible: true,	theme: 'b',	html: ""});
+		                populatePurpose(empClass, projectRecs[this.id].WO_Status__c);
+		                $j('#projectName').html(projectRecs[this.id].Name);
+		                $j('#jobid').html(projectRecs[this.id].Name);	
+		                $j('#projectId').html(this.id);		               
+		                $j.mobile.loading('hide');
+		                $j('#PD').removeClass('ui-hidden-accessible');		                
+		                $j.mobile.changePage('#detailpage', {changeHash: true});
+		            });
+		            newLi.append(newLink);            
+		            newLi.clone(true, true).appendTo('#projectListDetail');
+		            newLi.appendTo('#projectList');
+		            x++;
+		          });
+		        
+		        $j('#projectList').listview('refresh');		        
+		        if(callback != null) { callback(); }
+		    } 	
+		    
+		   
+
+		    function employeeLogin(){
+	            $j.mobile.loading('show', {	text: 'Logging in..',textVisible: true,	theme: 'b',	html: ""});
+
+	            var employeeId =  $j('#username').val();
+	            var empPin = $j("#passwd").val();
+
+	            console.log('employeeId id '+employeeId);
+	            console.log('empPin '+empPin);
+	            
+	            if(employeeId && empPin )
+	            {
+		        	//Invoke the JS Remoting function to complete the check-in. 
+		        	console.log('call login '+empPin);
+		        	TimeSheetEmployeeController.employeeLogin(employeeId, 
+		                     empPin, 		                    
+		                     function(record, e) { 
+			                 	$j.mobile.loading('hide');
+			                 	if(record)
+			                 	{
+			                 		console.log('loginVerified ** '+record);
+			                 		$j('#employeeClass').html(record.empClass);
+			                 		$j('#employeeId').html(record.empId);
+			                 		loginVerified(record); 			                 		
+			                 	}
+			                 	else
+			                 	{
+			                 		$j('#loginerror').html('Invalid username or PIN.');		
+			                 		$j('#passwd').val('');	
+			                 	}
+			                 }
+			                 ); 
+		        }
+		        else
+		        {
+		        	$j.mobile.loading('hide');
+		        	$j('#loginerror').html('Enter a valid username and PIN.');
+		        }	        	
+	            console.log('after calling login ');
+        	}
+
+        	function loginVerified(record) {
+		        
+		        $j('#passwd').val('');	
+                $j('#username').val('');	
+                $j('#loginerror').html('');	
+                $j('#coProjectName').html('');  
+                var empClass = $j('#employeeClass').html();   
+		        if(record.timeSheetEntry)
+		        {		        	
+		        	console.log('CO:Purpose ** '+record.timeSheetEntry.Timesheet_Purpose__r.Name);
+		        	console.log('CO:Project Id ** '+record.timeSheetEntry.Project_Client_Job__c);
+		        	
+		        	var date = new Date(record.timeSheetEntry.Start_Time__c);
+		        	var dt = date.toLocaleDateString();
+					var time = date.toLocaleTimeString();
+		        	$j('#checkin').html(dt+' '+time);	
+		        	$j('#coPurpose').html(record.timeSheetEntry.Timesheet_Purpose__r.Name);	
+		        	if(record.timeSheetEntry.Project_Client_Job__c)
+		        	{
+		        		console.log('CO:Project ** '+record.timeSheetEntry.Project_Client_Job__r.Name);
+		        		$j('#coProjectName').html(record.timeSheetEntry.Project_Client_Job__r.Name);	
+		        	}
+		        	$j('#timesheetEntryId').html(record.timeSheetEntry.Id);	
+		        	   	
+		        	$j.mobile.changePage('#checkoutpage', {changeHash: true});	
+		        }
+		        else
+		        {
+			     	 if(empClass.indexOf('NP') != -1)
+			     	 {
+			     	 	getNonJob();	
+			     	 }
+			     	 else
+			     	 {
+			     	 	$j.mobile.changePage('#listpage', {changeHash: true});   
+			     	 }
+			    }
+		        
+		    } 	
+
+		    function getNonJob() {	
+		    	var empClass = $j('#employeeClass').html();		
+		    	$j('#projectId').html('');    	
+		    	populatePurpose(empClass,'NA');		
+		    	$j('#PD').addClass('ui-hidden-accessible');	    	
+		        $j.mobile.changePage('#detailpage', {changeHash: true});
+		        
+		    } 	
+
+		    function getInstallProjects()
+		    {		    	
+		    	$j.mobile.loading('show', {	text: 'loading',textVisible: true,	theme: 'b',	html: ""});
+			        getProjects( function(){
+			                    $j.mobile.loading('hide');			                   
+			                });		
+			    $j.mobile.changePage('#listmanualpage', {changeHash: true});	
+		    }
+
+		    function completeCheckIn(){
+	            $j.mobile.loading('show', {	text: 'Saving..',textVisible: true,	theme: 'b',	html: ""});
+	        	//Invoke the PhoneGap geolocatoion API
+	        	console.log('calling geo ');
+	            navigator.geolocation.getCurrentPosition(onCheckInSuccess, 
+	                                                     onCheckInFailure, 
+	                                                     { enableHighAccuracy: true });	             
+	           
+	            console.log('after calling geo ');
+        	}
+
+        	function onCheckInSuccess(position) {
+        		console.log('Success Checkin - ' + position.coords.latitude + ' '+position.coords.longitude);
+	            var projectId =  $j('#projectId').html();
+	            var purpose = $j("#purpose :selected").text();
+	            var purposeId = $j("#purpose").val();
+	            var empId =  $j('#employeeId').html();
+	            var timesheetEntryId =  $j('#timesheetEntryId').html();
+	            console.log('Project id '+projectId);
+	            console.log('purposeId '+purposeId);
+	            console.log('purpose '+purpose);
+	            console.log('timesheetEntryId '+timesheetEntryId);
+
+
+	            if(purposeId)
+	            {
+		        	//Invoke the JS Remoting function to complete the check-in. 
+		        	TimeSheetEmployeeController.completeCheckIn(position.coords.latitude, 
+		                     position.coords.longitude,
+		                     empId, 
+		                     projectId, 
+		                     purposeId,
+		                     timesheetEntryId,
+		                     function(record, e) { 
+			                 	$j.mobile.loading('hide');
+			                 	if(record)
+			                 	{
+			                 		$j.mobile.changePage('#loginpage', {changeHash: true});	
+			                 		var date = new Date(record);
+									var n = date.toLocaleDateString();
+									var time = date.toLocaleTimeString();
+			                 		$j('#checkMessage').html('You have successfully Clocked In at '+ n +' '+ time);
+			                 		var interval = setInterval(function(){
+						                $j('#mypopup').popup('open', {history: false,positionTo: '#checkMessage'});
+						                var intervalClose = setInterval(function(){    
+						                    $j('#mypopup').popup('close');
+						                    clearInterval(intervalClose);
+						                },3000);
+						                clearInterval(interval);
+						            },1); 
+
+			                 	}
+			                 	else
+			                 	{
+			                 		alert('Error while checkin');	
+			                 	}
+			                 }
+			                 ); 
+		        }
+		        else
+		        {
+		        	$j.mobile.loading('hide');
+		        	alert('Please select the purpose');
+		        }
+        	}
+
+        	function onCheckInFailure(error) {
+        		console.log('ERROR(' + error.code + '): ' + error.message);
+            	$j.mobile.loading('hide');
+            	alert('Sorry, we could not get your current location! Please try again');
+        	}
+
+        	function changePurpose(){
+        		var empClass = $j('#employeeClass').html();		 
+        		$j('#back2Checkout').removeClass('ui-hidden-accessible');      
+
+        		if(empClass.indexOf('NP') != -1)
+		     	{
+		     		getNonJob();	
+		     	}
+		     	else
+		     	{
+		     		$j.mobile.changePage('#listpage', {changeHash: true});   
+		     	}     
+	        	
+        	}
+
+        	function completeCheckOut(){
+	            $j.mobile.loading('show', {	text: 'Saving..',textVisible: true,	theme: 'b',	html: ""});
+
+	            console.log('calling geo ');
+	            navigator.geolocation.getCurrentPosition(onCheckOutSuccess, 
+	                                                     onCheckInFailure, 
+	                                                     { enableHighAccuracy: true });	             
+	           
+	            console.log('after calling geo ');
+
+	           
+        	}
+
+        	function onCheckOutSuccess(position) {
+        		console.log('Success Checkout - ' + position.coords.latitude + ' '+position.coords.longitude);
+        		var timesheetEntryId =  $j('#timesheetEntryId').html();
+	        	//Invoke the PhoneGap geolocatoion API
+	        	console.log('calling checkout **'+timesheetEntryId);
+
+	            TimeSheetEmployeeController.completeCheckOut(position.coords.latitude, 
+		                     position.coords.longitude, timesheetEntryId,
+		                     function(record, e) { 
+			                 	$j.mobile.loading('hide');
+			                 	if(record)
+			                 	{
+			                 		var date = new Date(record);
+									var n = date.toLocaleDateString();
+									var time = date.toLocaleTimeString();
+			                 		$j.mobile.changePage('#loginpage', {changeHash: true});	
+			                 		$j('#checkMessage').html('You have successfully Clocked Out at '+ n +' '+ time);
+			                 		var interval = setInterval(function(){
+						                $j('#mypopup').popup('open', {history: false,positionTo: '#checkMessage'});
+						                var intervalClose = setInterval(function(){    
+						                    $j('#mypopup').popup('close');
+						                    clearInterval(intervalClose);
+						                },3000);
+						                clearInterval(interval);
+						            },1);     
+
+			                 	}
+			                 	else
+			                 	{
+			                 		alert('Error while checkout');
+			                 	}
+			                 }
+			                 );             
+	           
+	            console.log('after calling checkout ');
+        	}
+
+
+		</script>
+
+    </head>
+
+    <body>    	
+
+	    <div data-role="page" data-theme="a" id="loginpage"> 
+
+	    	  
+	    	    
+	        <div data-role="header" data-position="fixed">	            
+	        	<div id="Logo"><img src="{!URLFOR($Resource.PhotoAppResources, 'images/DirectEnergySolar_logo.jpg')}" title="Direct Energy Solar" /></div>            	            
+	        </div>
+	        <h1>Timeclock</h1>	   
+
+	        <div id="logincontent">
+		        <div id="loginerror"></div>
+	
+		        <div data-role="fieldcontain" class="ui-hide-label">
+					<label for="username">Username:</label>
+					<input type="text" name="username" id="username" value="" placeholder="Username"/>
+				</div>  
+	
+				<div data-role="fieldcontain" class="ui-hide-label">
+					<label for="passwd">PIN:</label>
+					<input type="password" name="passwd" id="passwd" value="" placeholder="PIN"/>
+				</div> 
+
+				<div id="mypopup" data-role="popup" data-overlay-theme="a" class="ui-content">
+	        		<div id="checkMessage" data-role="content"></div>
+	    		</div>  
+	
+	    		<div class="ui-hidden-accessible"  id="employeeClass" />
+	    		<div class="ui-hidden-accessible"  id="employeeId" />	       
+		        
+				<a class="ui-nodisc-icon" data-iconpos="right" data-theme="a" data-corners="true" data-shadow="false" data-role="button" data-icon="arrow-r" href="#" data-inline="true" onclick="employeeLogin();" >Login</a>
+			</div> 
+    	</div>	
+
+
+	    <div data-role="page" data-theme="a" id="listpage">            
+	        <div data-role="header" data-position="fixed">
+	        	
+	        	<a href='#checkoutpage' id="back2Checkout" class='ui-hidden-accessible ui-btn-left' data-icon='arrow-l' data-direction="reverse" data-transition="flip">Back</a>
+	        	
+	            <a href='#loginpage' id="home" class='ui-btn-right'  data-iconpos="right" data-icon='home' >Logout</a>
+	        	<div id="Logo"><img src="{!URLFOR($Resource.PhotoAppResources, 'images/DirectEnergySolar_logo.jpg')}" title="Direct Energy Solar" /></div>            	            
+	        </div>
+	        <h1>Timeclock</h1>	
+
+	        <a href='#' id="startScan" data-icon="grid" class='ui-hidden-accessible ' data-role="button"  data-theme="a" >Scan Project</a>
+	        <a href='#' id="manualProject" data-icon="user" class='large-button ui-nodisc-icon' data-role="button" data-theme="a" onclick="getInstallProjects();">Manually Select Project</a>
+	        <a href='#' id="skipProject" data-icon="gear" class='large-button ui-nodisc-icon' data-role="button" data-theme="a" onclick="getNonJob();" >Skip Project</a>
+
+    	</div>
+
+    	<div data-role="page" data-theme="a" id="listmanualpage">            
+	        <div data-role="header" data-position="fixed">
+	            <a href='#listpage' id="back2Project" class='ui-btn-left' data-icon='arrow-l' data-direction="reverse" data-transition="flip">Back</a>
+	            <a href='#loginpage' id="home" data-iconpos="right" class='ui-btn-right' data-icon='home' >Logout</a>
+	        	<div id="Logo"><img src="{!URLFOR($Resource.PhotoAppResources, 'images/DirectEnergySolar_logo.jpg')}" title="Direct Energy Solar" /></div>            	            
+	        </div>	  
+	        <h1>Timeclock</h1>	      
+	       
+	        <div id="results"></div>
+	        <div data-role="content" id="projList">            
+	            <ul id="projectList" data-filter="true" data-inset="true" data-role="listview" 
+	                data-theme="c" data-dividertheme="b">
+	            </ul>
+	        </div>		           
+    	</div>
+    
+	    
+	    <div data-role="page" data-theme="a" id="detailpage">
+	        <div data-role="header" data-position="fixed">	        	
+	            <a href='#listpage' id="back2Project" class='ui-btn-left' data-icon='arrow-l' data-direction="reverse" data-transition="flip">Back</a>
+	            <a href='#loginpage' id="home" class='ui-btn-right' data-icon='home' >Logout</a>
+	        	<div id="Logo"><img src="{!URLFOR($Resource.PhotoAppResources, 'images/DirectEnergySolar_logo.jpg')}" title="Direct Energy Solar" /></div>            	            
+	        </div>
+	        <h1>Timeclock</h1>	
+	        <div data-role="content">	            	            
+	            <form>
+	            	<div id="rightPanel">
+	            		<div id="PD" class="ui-hidden-accessible">
+		            		<h2 id="projectName"></h2>
+			                <table>
+			                    <tr><td><b>Job id:</b></td><td id="jobid"></td></tr>	                    
+			                </table>
+			                <div class="ui-hidden-accessible" id="projectId" />
+		                </div>
+		            	<li data-role="fieldcontain">							
+							<select name="purpose" id="purpose" data-native-menu="false">
+								<option value = "">Select Purpose</option>								
+							</select>
+						</li>
+
+						<a href="#listpage" data-theme="a" class="ui-nodisc-icon cancel-button" data-role="button" data-icon="delete" data-inline="true" data-direction="reverse" data-transition="flip">Cancel</a>
+						<a data-theme="a" class="ui-nodisc-icon" data-role="button" data-icon="check" href="#" data-inline="true" onclick="completeCheckIn();" >Clock-In</a>
+					</div>	
+	            </form>  
+	        </div>
+	    </div>	   
+
+	    <div data-role="page" data-theme="a" id="checkoutpage">
+	        <div data-role="header" data-position="fixed">	            
+	             <a href='#loginpage' id="home" class='ui-btn-right' data-icon='home' >Logout</a>
+	        	<div id="Logo"><img src="{!URLFOR($Resource.PhotoAppResources, 'images/DirectEnergySolar_logo.jpg')}" title="Direct Energy Solar" /></div>            	            
+	        </div>
+	        <h1>Timeclock</h1>	
+	        <div data-role="content">	            	            
+	            <form>
+	            	<div id="rightPanel">
+	            		<h1 id="coProjectName"></h1>
+		                <table>
+		                	<tr><td><b>Purpose:</b></td><td id="coPurpose"></td></tr>
+		                    <tr><td><b>Clock-in Time:</b></td><td id="checkin"></td></tr>	                    
+		                </table>
+		                <div class="ui-hidden-accessible"  id="timesheetEntryId" />		            	
+
+						<a href="#loginpage" data-theme="a" data-role="button" data-icon="delete" data-inline="true" data-direction="reverse" data-transition="flip"  class="ui-nodisc-icon cancel-button">Cancel</a>
+						<a data-theme="a" data-role="button" data-icon="check" href="#" data-inline="true"  class="ui-nodisc-icon" onclick="completeCheckOut();" >Clock-Out</a>
+						<a data-theme="a" data-role="button" data-icon="recycle" href="#" data-inline="true"  class="ui-nodisc-icon" onclick="changePurpose();" >Change Purpose</a>
+					</div>	
+
+	            </form>  
+	        </div>
+	    </div>	   
+
+	    
+
+	    <script src="https://localhost/cordova.js"></script>  
+	    <!--<apex:includeScript  value="{!URLFOR($Resource.QRScan)}" />    -->
+
+
+    </body>
+
+
+
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page sidebar="true" showHeader="true" tabStyle="Installed_System__tab">  
+    <apex:pageBlock title="Installed Systems" >
+        <apex:outputPanel id="myProjects">
+            <apex:enhancedList type="Installed_System__c" height="300" rowsPerPage="10" id="ProjectList" />
+        </apex:outputPanel>
+    </apex:pageBlock> 
+</apex:page>

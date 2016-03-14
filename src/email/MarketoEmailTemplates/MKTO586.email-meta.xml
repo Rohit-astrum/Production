@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Choosing the Right Solar Installer - TK</name>
+    <style>none</style>
+    <subject>Download your guide to choosing a solar installer.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=rightinstaller&amp;utm_campaign=nurture-tk&amp;utm_content=rightinstaller-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+How Do You Choose the Right Solar Installer?
+
+Dear {{lead.First Name:default=Friend}},
+
+Your choice of solar installer is an important decision. After all, they will be working with you to design your system, install your system, and provide decades of support. There’s no shortage of options—it’s become a buyer’s market with countless installers competing for your business.
+
+How do you decide which installer is right for you and your family? Read our guide to help you as you evaluate solar companies.
+
+Get the Free Guide:
+ &lt;http://www.directenergysolar.com/blog/post/how-to-choose-the-right-solar-installer?utm_medium=email&amp;utm_source=rightinstaller&amp;utm_campaign=nurture-tk&amp;utm_content=rightinstaller-button&gt;
+
+Ready to start comparing?
+
+At Direct Energy Solar, part of our process is to educate our customers and make going solar easy. Knowing what questions to ask the installers you are evaluating and staying organized can help greatly in making your decision.
+
+So be sure to download this complimentary worksheet to help you choose the right installer for you.
+
+Start comparing!
+ &lt;http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_SolarWorksheet.pdf?utm_medium=email&amp;utm_source=rightinstaller&amp;utm_campaign=nurture-tk&amp;utm_content=rightinstaller-button-comparing&gt;
+
+
+“I am very picky. I wanted it the way I wanted it and Direct Energy Solar was the company that met every criteria I had.” - David and Jan
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=rightinstaller&amp;utm_campaign=nurture-tk&amp;utm_content=rightinstaller-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=rightinstaller&amp;utm_campaign=nurture-tk&amp;utm_content=rightinstaller-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=rightinstaller&amp;utm_campaign=nurture-tk&amp;utm_content=rightinstaller-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

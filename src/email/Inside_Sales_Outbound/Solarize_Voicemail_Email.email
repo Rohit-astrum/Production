@@ -1,0 +1,246 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<font color="#999999"><font size="5"><font face="Arial,Sans-Serif"><font color="#666666" size="3"><br>Dear {!Lead.FirstName},</font><br></font></font></font>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"ＭＳ 明朝";
+	mso-font-charset:78;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073743103 0 0 415 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Cambria;
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-family:Cambria;
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+
+
+
+
+
+<p class="MsoNormal"></p><p class="MsoNormal">
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Cambria;
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-family:Cambria;
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style></p><font color="#666666"><font size="3"><font face="Arial, sans-serif">Thank you for your interest in {!Lead.Community_Program__c}! We’re sorry we missed you. <br><br>We know you’re eager to find out if your home is right for solar and we’re ready to answer any questions you might have about the program and our process. <br></font></font></font><br><font color="#666666"><font size="3"><font face="Arial, sans-serif"><font color="#666666"><font size="3"><font face="Arial, sans-serif">{!Lead.Community_Program__c}
+ is a limited-time opportunity for your community. It’s important we 
+chat with you soon to get the process started.<br><br></font></font></font></font></font></font><font color="#666666"><font size="3"><font face="Arial, sans-serif"><font color="#666666"><font size="3"><font face="Arial, sans-serif">I will make another attempt to call you and speak with you personally. However, if you prefer, please give us a call back </font></font></font>at <b>800-903-6130</b> and select the option for sales. One of our Solar Advisors can answer your questions right away and talk to you about our free solar installation and personalized system designs. <br><br>We look forward to hearing from you soon!</font></font></font><p></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<font face="Arial,Sans-Serif" color="#666666" size="3">Best Regards,</font><br><br><font face="Arial,Sans-Serif" color="#666666" size="3">{!User.FirstName}</font><br><br><style><!--
+ /* Font Definitions */
+@font-face
+	{font-family:Arial;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536859905 -1073711037 9 0 511 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	mso-font-charset:78;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073743103 0 0 415 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Cambria;
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-family:Cambria;
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><font color="#666666"><font size="2"><font face="Arial,Sans-Serif">7101 Riverwood Drive <br>Columbia, MD 21046</font></font></font><p class="MsoNormal"><font face="Arial,Sans-Serif" color="#666666" size="2">P: 800-903-6130</font></p>
+
+<p class="MsoNormal"><font face="Arial,Sans-Serif" color="#666666" size="2">F: 800-949-1408</font></p>
+
+<p class="MsoNormal"><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;">directenergysolar.com</span></p><p class="MsoNormal"><br><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;"></span></p><p class="MsoNormal"><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;"><font size="1">Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.<br><br></font></span><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;"><font size="1"><font face="Arial,Sans-Serif" color="#666666" size="2"><font size="1">AZ
+ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 
+2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 
+21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, 
+PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk
+ 54817-H, Putnam PC66168, Rockland H-11532<br><br>© 2016 Direct Energy. All Rights Reserved.</font></font></font></span></p><p class="MsoNormal"><font face="Arial,Sans-Serif" color="#666666" size="3"><br></font></p>]]></td>
+</tr>
+</table>

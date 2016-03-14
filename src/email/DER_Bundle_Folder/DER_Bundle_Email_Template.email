@@ -1,0 +1,9 @@
+{!DER_Bundle_Log__c.Timestamp__c}
+
+Total Records: {!DER_Bundle_Log__c.Total_Records__c}
+Successful Transfers:  {!DER_Bundle_Log__c.Successful_Transfers__c}
+Transfers w/o Attachment: {!DER_Bundle_Log__c.Transfers_Missing_Attachment__c}
+Failed Transfers: {!DER_Bundle_Log__c.Failed_Transfers__c}
+
+Message:
+{!DER_Bundle_Log__c.Error_Message__c}

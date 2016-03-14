@@ -1,0 +1,42 @@
+<messaging:emailTemplate subject="Sales Order {!relatedTo.name} is Escalated for Your Approval" recipientType="User" relatedToType="SCRB_SalesOrder__c">
+<messaging:HtmlEmailBody >
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="Template" content="Response"/>
+</head>
+<body>
+
+<p>A <strong><a href="https://na28.salesforce.com/{!relatedTo.Id}">Sales Order</a></strong> with the following details has been escalated for your approval.</p>
+
+<apex:outputPanel rendered="{!relatedTo.StatusCode__c == 'Escalated to VP Sales'}">
+<p><u>Issues Requiring VP Sales Approval</u> :</p>
+    <b>
+    <apex:outputText escape="false" value="{0}">
+            <apex:param value="{!relatedTo.Escalation_Comments__c}"/>        
+    </apex:outputText>
+    </b> 
+</apex:outputPanel>
+<apex:outputPanel rendered="{!relatedTo.StatusCode__c == 'Controller Rejected'}">
+<p><b>Controller Rejection Comments :</b></p>
+ <c:SalesOrderApprovalHistory sorderId="{!relatedTo.Id}"/>
+</apex:outputPanel>
+
+
+<ul style="list-style:none">
+    <li><u>Customer Name</u>  : {!relatedTo.AccountId__r.Name}</li>   
+    <li><u>City, State of Property</u>  : {!relatedTo.Installation_City__c}, {!relatedTo.Installation_State__c}</li>
+    <li><u>Total System Size    </u>   : {!relatedTo.System_Size_kW__c}</li>
+    <li><u>Final System Price   </u>   : &nbsp; <apex:outputText value="{0, number, currency}"> <apex:param value="{!relatedTo.Amount__c}"/></apex:outputText>    </li>
+    <li><u>Total Panel Count  </u>     : <apex:outputText value="{0,number,#,##0}"> <apex:param value="{!relatedTo.Total_Panel_Count__c}"/></apex:outputText></li>
+    <li><u>Type and Quantity  </u>    : {!relatedTo.System_Makeup__c}</li>
+    <li><u>Field Surveys Complete ?</u>  : {!relatedTo.Has_Field_Survey_Been__c}</li>   
+    <li><u>Hand Off Notes       </u>   : {!relatedTo.Hand_Off_Notes__c}</li>  
+</ul>
+
+<p>To Approve this Sales Order, Please <strong><a href="https://na28.salesforce.com/{!relatedTo.Id}">Review Here</a></strong></p>
+
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,1307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Referrals from the Partner Program website</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Referring Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Carrier_Route__c</fullName>
+        <externalId>false</externalId>
+        <label>Carrier Route</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <description>City for referral</description>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Community_Program_Offer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Community Program Offer</label>
+        <referenceTo>Community_Program_Offer__c</referenceTo>
+        <relationshipLabel>Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Community_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>Community Program</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Solarize Bridgeport</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Concord Solar Challenge</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Frederick</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Newtown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pikesville Solar Sprint</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Glastonbury</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Stamford</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Cheshire</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Needham</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize  Lexington-Bedford</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Andover</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wellesley Power to Choose Sun</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize SOMA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Westport</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Windham</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Torrington</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CPN College Park</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fairfield Energy Challenge</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Tompkins</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solarize Huntington</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Confirmed_Location__c</fullName>
+        <description>Confirmed Geolocation point of Lead&apos;s address</description>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Confirmed Location</label>
+        <required>false</required>
+        <scale>15</scale>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Credit_Approved__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit_Approved</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Lead_Status_At_Opt_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D Lead Status At Opt Out</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>D2D_Lead_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D Lead Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Closed - Lost</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contract Generated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Credit Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Credit Declined</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Opt-In</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer Opt-Out</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Door Hanger</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing Utility Bill</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NA Visit 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NA Visit 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Passed Validation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Photos Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prospect New</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Visit Scheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>D2D Manager</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Opt_Out_Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D Opt Out Detail</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>D2D_Sales_Rep__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>D2D Sales Rep</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Portal_Referrals1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Scheduled_Visit_Datetime__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D Scheduled Visit Datetime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D Site Quality</label>
+        <picklist>
+            <controllingField>State__c</controllingField>
+            <picklistValues>
+                <fullName>1050</fullName>
+                <controllingFieldValues>NY</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1150</fullName>
+                <controllingFieldValues>NY</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1250</fullName>
+                <controllingFieldValues>NY</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1400</fullName>
+                <controllingFieldValues>CA</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1500</fullName>
+                <controllingFieldValues>CA</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1600</fullName>
+                <controllingFieldValues>CA</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>D2D_System_Size__c</fullName>
+        <externalId>false</externalId>
+        <label>D2D System Size</label>
+        <picklist>
+            <controllingField>State__c</controllingField>
+            <picklistValues>
+                <fullName>16 Panel</fullName>
+                <controllingFieldValues>CA</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>24 Panel</fullName>
+                <controllingFieldValues>CA</controllingFieldValues>
+                <controllingFieldValues>NY</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>36 Panel</fullName>
+                <controllingFieldValues>NY</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>D2D_Visit_Scheduled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>D2D Visit Scheduled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Detail__c</fullName>
+        <externalId>false</externalId>
+        <label>Detail</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EP_Second_Lead_Source__c</fullName>
+        <description>Employee Portal Second Lead Source</description>
+        <externalId>false</externalId>
+        <label>EP Second Lead Source</label>
+        <picklist>
+            <controllingField>Lead_Source__c</controllingField>
+            <picklistValues>
+                <fullName>Search Engine</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Retail Tabling</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Online Ad</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Retail Tabling</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Offline Ad</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Retail Tabling</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Postcard/Mailer</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Retail Tabling</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Individual Referral</fullName>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Personal Networking</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Retail Tabling</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Tabling</fullName>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Seminar</fullName>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Open House</fullName>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canvassing</fullName>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retail Tabling</fullName>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Door Hanger</fullName>
+                <controllingFieldValues>Canvassing</controllingFieldValues>
+                <controllingFieldValues>Community Seminar</controllingFieldValues>
+                <controllingFieldValues>Community Tabling</controllingFieldValues>
+                <controllingFieldValues>Door Hanger</controllingFieldValues>
+                <controllingFieldValues>Individual Referral</controllingFieldValues>
+                <controllingFieldValues>Partner Referral</controllingFieldValues>
+                <controllingFieldValues>Retail Tabling</controllingFieldValues>
+                <controllingFieldValues>Sales Personal Networking</controllingFieldValues>
+                <controllingFieldValues>Solar Open House</controllingFieldValues>
+                <controllingFieldValues>Trade Show</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <description>First name of referral</description>
+        <externalId>false</externalId>
+        <label>First Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Visit_Datetime__c</fullName>
+        <externalId>false</externalId>
+        <label>First Visit Datetime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>First_Visit_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>First Visit Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Full_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Last_Name__c  &amp; &apos;, &apos; &amp; First_Name__c</formula>
+        <label>Full Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Landing_Page_Template__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Landing Page Template where referral came from</inlineHelpText>
+        <label>Landing Page Template</label>
+        <referenceTo>Partner_Page_Template__c</referenceTo>
+        <relationshipLabel>Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <description>Last name of referral</description>
+        <externalId>false</externalId>
+        <label>Last Name</label>
+        <length>80</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Status_Change_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Status Change Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Created_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Created Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Source__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>value from Lead.LeadSource</inlineHelpText>
+        <label>Lead Source</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Canvassing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Seminar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Community Tabling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Door Hanger</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Individual Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retail Tabling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Personal Networking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Open House</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Method_of_Contact__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Lead__r.Method_of_Contact__c)</formula>
+        <label>Method of Contact</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mobile_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Mobile Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opt_Out_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Opt_Out_Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Professional</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Affiliate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Affinity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Portal_Hear_About_Us__c</fullName>
+        <description>Employee Landing  Page Hear About Us</description>
+        <externalId>false</externalId>
+        <label>Portal Hear About Us</label>
+        <picklist>
+            <picklistValues>
+                <fullName>News Article/Broadcast</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Search Engine</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Online Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Radio Ad</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct Energy Solar Vehicle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Referral by Customer/Employee</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Referral by Direct Energy Solar Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Postcard/Mailer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Door Hanger</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Portal_Payment_Plan__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Portal Payment Plan</label>
+        <referenceTo>Portal_Payment_Plan__c</referenceTo>
+        <relationshipLabel>Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Portal_Referral_Fee__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount earned for this referral (per referral basis)</inlineHelpText>
+        <label>Portal Referral Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Phone</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Home</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Work</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>QAS_Addresss_Validation_Timestamp__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Addresss Validation Timestamp</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>QAS_County__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QAS_Latitude__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Latitude</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QAS_Longitude__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Longitude</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QAS_Validation_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>QAS Validation Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referral_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Portal_Referral_Fee__c +  Sold_Referral_Fee__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total of all referral fees for this referral</inlineHelpText>
+        <label>Referral Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Referred_by_Text__c</fullName>
+        <description>Name of contact for display in the portal</description>
+        <externalId>false</externalId>
+        <formula>Referred_by__r.LastName + &apos;, &apos; + Referred_by__r.FirstName</formula>
+        <label>Referred by</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referred_by__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Referred by</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Partner Portal Referrals</relationshipLabel>
+        <relationshipName>Portal_Referrals</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SSG_Accepted__c</fullName>
+        <defaultValue>&quot;false&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>SSG_Accepted</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Second_Visit_Datetime__c</fullName>
+        <externalId>false</externalId>
+        <label>Second Visit Datetime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Second_Visit_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Second Visit Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Segment_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Segment Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Self_Generated__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Lead__r.Self_Generated__c, &apos;Yes&apos;, null)</formula>
+        <label>Self Generated</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sold_Referral_Fee__c</fullName>
+        <description>Fee paid from a sold referral</description>
+        <externalId>false</externalId>
+        <label>Sold Referral Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <externalId>false</externalId>
+        <label>State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>CA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TX</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WV</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>OPEN</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>QUALIFIED</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SOLD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CLOSED</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Street__c</fullName>
+        <description>Street of Referral</description>
+        <externalId>false</externalId>
+        <label>Street</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Third_Visit_Datetime__c</fullName>
+        <externalId>false</externalId>
+        <label>Third Visit Datetime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Third_Visit_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Third Visit Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Walk_Sequence__c</fullName>
+        <externalId>false</externalId>
+        <label>Walk Sequence</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Zip__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Portal Referral</label>
+    <listViews>
+        <fullName>Active_Referrals</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Status__c</columns>
+        <columns>Detail__c</columns>
+        <columns>Email__c</columns>
+        <columns>Phone__c</columns>
+        <columns>Street__c</columns>
+        <columns>City__c</columns>
+        <columns>State__c</columns>
+        <columns>Zip__c</columns>
+        <columns>Lead__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Duplicate</value>
+        </filters>
+        <label>Active Referrals</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Duplicates</fullName>
+        <columns>NAME</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Lead_Created_Date__c</columns>
+        <columns>Lead_Source__c</columns>
+        <columns>Account__c</columns>
+        <columns>Self_Generated__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Duplicate</value>
+        </filters>
+        <label>Duplicates</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>REF-{000000}</displayFormat>
+        <label>Portal Referral Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Portal Referrals</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>First_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Last_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Detail__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>State__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Lead__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Opportunity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Referral_Earnings__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>First_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Last_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Phone__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Email__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Street__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>City__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>State__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Zip__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

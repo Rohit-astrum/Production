@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Solar Payback Factors Series: Your Installation Size.Subject Li</name>
+    <style>none</style>
+    <subject>How does the size of your system impact your payback?</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors1&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors1-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+Special Series: Solar Payback Factors
+
+Solar Payback Factor #1: The Size of Your Solar Installation
+
+Dear {{lead.First Name:default=Friend}},
+
+Solar has many variables that can influence how much of a return you see from your system. In this special series focusing on solar payback factors, we’ll be taking a look at installation size &lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors2&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors2-link-installsize]]&gt;.
+
+On average, solar panels can generate approximately 250 watts per panel. The maximum amount your total system can produce is equal to the number of panels multiplied by 250 watts. Many of our systems are in the 8 kW range—a system comprised of 32 panels.
+
+Every Installation is Customized. What’s Right for You?
+
+Your roof may or may not have enough space for an installation of 8 kW. In some cases, customers will use a ground mount system, or install panels on adjacent structures as alternatives to a roof-mounted system.
+
+A system can be sized to offset a specific amount of your total load in watts, including systems that completely offset all of your production, depending on where you live.
+
+Want to Know All of the Factors? Download Our Free Guide:
+&lt;[[http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf?utm_medium=email&amp;utm_source=pbfactors1&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors1-button-guide]]&gt;
+
+“Direct Energy Solar had the best reputation and gave us the best payback. They were upfront about everything, honest about the details, and were pretty flexible in working with us on the design and how the panels were fitted on the roof.” - Sharon and Elliot
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=pbfactors1&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors1-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=pbfactors1&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors1-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=pbfactors1&amp;utm_campaign=nurture-tk&amp;utm_content=pbfactors1-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

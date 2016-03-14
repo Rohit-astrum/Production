@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ComposeGmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LogCall</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>MailMerge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SendEmail</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewAll</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ActivityDateCopy__c</fullName>
+        <description>Copy of ActivityDate, to be used with Process Builder since it won&apos;t allow selecting ActivityDate</description>
+        <externalId>false</externalId>
+        <formula>ActivityDate</formula>
+        <label>Activity Date Copy</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Astrum_Event_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>Used to link the event to an Astrum Event.</description>
+        <externalId>true</externalId>
+        <label>Astrum Event ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Call_Answered__c</fullName>
+        <description>For Inbound Calls, Was It Answered?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Inbound Calls, Was It Answered?</inlineHelpText>
+        <label>Call Answered</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Call_Duration__c</fullName>
+        <description>Manual Entry Call Duration (MINUTES)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Manual Entry Call Duration (MINUTES)</inlineHelpText>
+        <label>Call Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Canceled_by_Customer_Date__c</fullName>
+        <description>Canceled by Customer Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Canceled by Customer Date</inlineHelpText>
+        <label>Canceled by Customer Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CompleteTime__c</fullName>
+        <description>Opportunity Complete Time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Time difference between the creation of the Event and the moment it was marked Completed in days and fractions of days.</inlineHelpText>
+        <label>CompleteTime</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Completed_Date__c</fullName>
+        <description>Date that Completed is marked &apos;True&apos;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date that Completed is marked &apos;True&apos;</inlineHelpText>
+        <label>Completed Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Determines if this activity/event is completed.</description>
+        <externalId>false</externalId>
+        <label>Completed</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Created_Date_Time__c</fullName>
+        <description>Created Date-Time for Reports</description>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <inlineHelpText>Created Date-Time for Reports</inlineHelpText>
+        <label>Created Date-Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Created_Hour__c</fullName>
+        <externalId>false</externalId>
+        <formula>VALUE(MID(TEXT(CreatedDate-0.2083333333333333),12,2))</formula>
+        <label>Created Hour</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_End_Date_Time_Text__c</fullName>
+        <description>Date/Time set to the time zone of the customer&apos;s address</description>
+        <externalId>false</externalId>
+        <label>Customer End Date Time</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_No_Show_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer No-Show Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Start_Date_Time_Text__c</fullName>
+        <description>Date/Time set to the time zone of the customer&apos;s address</description>
+        <externalId>false</externalId>
+        <label>Customer Start Date Time</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CycleTimeActualScheduled__c</fullName>
+        <description>Opportunity Cycle Time Actual Scheduled</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Time difference between the Opportunity Create Date/Time and the currently scheduled Date/Time of the Event in days and fractions of days.</inlineHelpText>
+        <label>CycleTimeActualScheduled</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CycleTimeOriginalScheduled__c</fullName>
+        <description>Opportunity Cycle Time Original Scheduled</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Time difference between the Opportunity Create Date/Time and the Originally scheduled Date/Time of the Event in days and fractions of days.</inlineHelpText>
+        <label>CycleTimeOriginalScheduled</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>D2D_Survey_Request__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>D2D Survey Request</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Date_has_Passed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is used by an automated process that will set the value to &quot;true&quot; one day after the &quot;Due Date&quot; field on tasks, or &quot;Start&quot; on events</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is used by an automated process that will set the value to &quot;true&quot; one day after the &quot;Due Date&quot; field on tasks, or &quot;Start&quot; on events</inlineHelpText>
+        <label>Date has Passed</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disqualified_Approved_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Disqualified Approved Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Disqualified_Date__c</fullName>
+        <description>Disqualified Date</description>
+        <externalId>false</externalId>
+        <label>Disqualified Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Disqualified_Rejected_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Disqualified Rejected Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Event_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Event Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rescheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canceled by Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Disqualified-Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Customer No-Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Ever_Been_Missed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Ever Been Missed ?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>High_Priority__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is this request high priority?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this request high priority?</inlineHelpText>
+        <label>High Priority</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Min_Not_Complete_Action_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>MIN(IF(NOT(ISNULL(Disqualified_Date__c)),Disqualified_Date__c  - StartDateTimeCopy__c ,100000),  IF(NOT(ISNULL( Canceled_by_Customer_Date__c) ),Canceled_by_Customer_Date__c - StartDateTimeCopy__c ,100000),  IF(NOT(ISNULL(  Completed_Date__c ) ),Completed_Date__c - StartDateTimeCopy__c ,100000),  IF(NOT(ISNULL(  Rescheduled_Date__c ) ),Rescheduled_Date__c - StartDateTimeCopy__c ,100000),  IF(NOT(ISNULL(  Customer_No_Show_Date__c ) ),Customer_No_Show_Date__c - StartDateTimeCopy__c ,100000))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Min Not Complete Action Date</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Missed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Missed Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <description>Notes pertinent to the schedule or surveyor (e.g. shading issues, roofs to survey/avoid, mean dogs, scheduling constraints, etc.)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Notes pertinent to the schedule or surveyor (e.g. shading issues, roofs to survey/avoid, mean dogs, scheduling constraints, etc.)</inlineHelpText>
+        <label>Notes</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Original_End_Date_Time__c</fullName>
+        <description>Is set only upon record insertion</description>
+        <externalId>false</externalId>
+        <label>Original End Date Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Original_Start_Date_Time__c</fullName>
+        <description>Is set only upon record insertion</description>
+        <externalId>false</externalId>
+        <label>Original Start Date Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Name__c</fullName>
+        <description>This is referenced in the Event Trigger for use in synchronizing with the Astrum Event.  Formula used because you can&apos;t reference this easily through trigger list.</description>
+        <externalId>false</externalId>
+        <formula>RecordType.Name</formula>
+        <label>Record Type Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Property_Link__c</fullName>
+        <description>Property (if any) Related To This Activity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Property (if any) Related To This Activity</inlineHelpText>
+        <label>Related Property Link</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Related_Property_Name__c</fullName>
+        <description>The related property name.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The related property name.</inlineHelpText>
+        <label>Related Property Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Property__c</fullName>
+        <description>Link to the related property.</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( Related_Property_Link__c ,  Related_Property_Name__c )</formula>
+        <inlineHelpText>Link to the related property.</inlineHelpText>
+        <label>Related Property</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Date__c</fullName>
+        <description>Requested Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Requested Date</inlineHelpText>
+        <label>Requested Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Rescheduled_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Rescheduled Date</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Rescheduled_Event_Id__c</fullName>
+        <description>Rescheduled Event Id</description>
+        <externalId>false</externalId>
+        <label>Rescheduled Event Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Run_Trigger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Run Trigger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Site_Survey_Points__c</fullName>
+        <description>Bonus Program Points for Surveyors</description>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(Site_Survey_Type__c), &apos;Measurement + Draw&apos;, 1.000 , &apos;Measurement Only (long)&apos;, 0.667,&apos;Re-Measure (short)&apos;,0.333,&apos;Drawing only (long)&apos;,0.333,&apos;Pictometry&apos;,0.500,&apos;Redraw (short)&apos;,0.167,0)</formula>
+        <inlineHelpText>Bonus Program Points for Surveyors</inlineHelpText>
+        <label>Site Survey Points</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Site_Survey_Type__c</fullName>
+        <description>Site Survey Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Site Survey Type</inlineHelpText>
+        <label>Site Survey Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Residential Field Survey</fullName>
+                <color>#0B6FCE</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Residential Remote Survey</fullName>
+                <color>#78C953</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commercial Survey</fullName>
+                <color>#E27001</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Channel Survey</fullName>
+                <color>#A845DC</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Measurement + Draw</fullName>
+                <color>#F3D904</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Measurement Only (long)</fullName>
+                <color>#A53711</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Re-Measure (short)</fullName>
+                <color>#66E9BD</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Drawing only (long)</fullName>
+                <color>#0B24BE</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pictometry</fullName>
+                <color>#419249</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Redraw (short)</fullName>
+                <color>#B6E32E</color>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>StartDateTimeCopy__c</fullName>
+        <externalId>false</externalId>
+        <label>StartDateTimeCopy</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>TEMP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Delete Me Immediately</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Delete Me Immediately</inlineHelpText>
+        <label>TEMP</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Task_Event_Count__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Completed__c , 1 , 1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Task/Event Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isdc_acd_name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>ACD Name</inlineHelpText>
+        <label>ACD Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isdc_dialed_phone_number__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Phone Dialed</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>isdc_dialer_call_type__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Dialer Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Click-to-Call</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seek</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Domino</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>isdc_dialer_list_name__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>List Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isdc_dialer_query_name__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Query Name</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_call_answered__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Call Answered</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_call_failover__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Call Failover</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_callerid__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Inbound Caller-ID</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_failover_number__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Failover Number</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_number_dialed__c</fullName>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Inbound Number Dialed</label>
+        <required>false</required>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_routed_to_last_caller__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Route to Last Caller</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_routed_to_owner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>Route to Owner</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isdc_inbound_wait_time__c</fullName>
+        <description>InsideSales.com</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com</inlineHelpText>
+        <label>Wait Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isdc_local_presence_call__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>InsideSales.com Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>InsideSales.com Field</inlineHelpText>
+        <label>LocalPresence</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__CallRecordingURL__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Link to the call recording</description>
+        <externalId>false</externalId>
+        <label>Call Recording</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Call_Date_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Call Date/Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Call_Dial_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Total number of dials on the record being called</description>
+        <externalId>false</externalId>
+        <label>Call Dial Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Call_Hour__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Hour in which the call was placed from the record&apos;s perspective</description>
+        <externalId>false</externalId>
+        <label>Call Hour</label>
+        <length>8</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Call_Lead_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Lead Status of the record called</description>
+        <externalId>false</externalId>
+        <label>Call Lead Status</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Call_Ring_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Ring Time of the phone call</description>
+        <externalId>false</externalId>
+        <label>Call Ring Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Call_Time_Zone__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Time zone of the number being called</description>
+        <externalId>false</externalId>
+        <label>Call Time Zone</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__Callback_Date_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Callback Date/Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>qbdialer__ImpressionId__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Impression ID</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>qbdialer__SMSReminder__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Text message reminders will be sent to all attendees at the set reminder time.</inlineHelpText>
+        <label>Send text msg reminder to all attendees</label>
+        <type>Checkbox</type>
+    </fields>
+    <listViews>
+        <fullName>Inside_Sales_Activity_View</fullName>
+        <columns>TASK.SUBJECT</columns>
+        <columns>TASK.WHO_NAME</columns>
+        <columns>TASK.WHAT_NAME</columns>
+        <columns>TASK.DUE_DATE</columns>
+        <columns>TASK.STATUS</columns>
+        <columns>CORE.USERS.FULL_NAME</columns>
+        <columns>EVENT.LOCATION</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Event_Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled,Disqualified</value>
+        </filters>
+        <filters>
+            <field>TASK.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Event.Sales_Visit_Onsite,Event.Sales_Visit_Remote,Event.Standard</value>
+        </filters>
+        <label>Inside Sales Activity View</label>
+        <language>en_US</language>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Senior_Qualification_Team_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>MyActivities</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>MyDelegatedActivities</fullName>
+        <columns>TASK.WHO_NAME</columns>
+        <columns>TASK.SUBJECT</columns>
+        <columns>TASK.WHAT_NAME</columns>
+        <columns>TASK.CREATED_DATE</columns>
+        <columns>ACTIVITY.TASK</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Team</filterScope>
+        <label>My Delegated Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>MyTeamsActivities</fullName>
+        <filterScope>Team</filterScope>
+        <label>My Team&apos;s Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>TodaysTasks</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>TASK.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TOMORROW</value>
+        </filters>
+        <label>Today&apos;s Tasks</label>
+    </listViews>
+    <listViews>
+        <fullName>UpcomingEvents</fullName>
+        <columns>CORE.USERS.FULL_NAME</columns>
+        <columns>TASK.WHAT_NAME</columns>
+        <columns>EVENT.LOCATION</columns>
+        <columns>TASK.SUBJECT</columns>
+        <columns>TASK.DUE_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>greaterThan</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <filters>
+            <field>TASK.WHO_NAME</field>
+            <operation>equals</operation>
+        </filters>
+        <label>Upcoming Events</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__AllActivities</fullName>
+        <filterScope>Team</filterScope>
+        <label>All Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__MyActivities</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Activities</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__TodaysTasks</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>TASK.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TOMORROW</value>
+        </filters>
+        <label>Today&apos;s Tasks</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__UpcomingEvents</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>ACTIVITY.TASK</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>TASK.DUE_DATE</field>
+            <operation>greaterThan</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>Upcoming Events</label>
+    </listViews>
+    <searchLayouts>
+        <listViewButtons>qbdialer__Launch_Click_to_Call</listViewButtons>
+        <listViewButtons>qbdialer__Create_List</listViewButtons>
+        <listViewButtons>qbdialer__Manage_Lists</listViewButtons>
+        <searchResultsAdditionalFields>TASK.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHO_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.WHAT_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TASK.DUE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Event_Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>qbdialer__Launch_Click_to_Call</fullName>
+        <availability>online</availability>
+        <description>For Beta</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Launch Click-to-Call</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var th = window.top.document.body;
+			var s = window.top.document.createElement(&apos;script&apos;);
+			s.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);
+			s.setAttribute(&apos;src&apos;,&quot;/resource/qbdialer__c2c_resources/20160122025855/c2c_console.js&quot;);
+			th.appendChild(s);</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Sign-Up 10/02/14 Did Not Click.Partner Sign-Up 10/02/14 Did Not Click</name>
+    <style>none</style>
+    <subject>Your special invitation is waiting. Don&apos;t miss out!</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com&gt;
+
+A Message from Our Partner Program
+Boost your company&apos;s success.
+
+Solar energy is the future. Are you missing out?
+
+Discover a new opportunity.
+&lt;http://www.astrumsolar.com/company/partner-programs&gt;
+
+Your company can profit from solar’s growth.
+
+The Astrum Solar Partners Program is a great way to add to your bottom line by participating in one of the hottest growth segments for home owners. Solar installations are skyrocketing with more solar installations in the US over the last 18 months than in the past 30 years. With no investment on your part, you can profit from that growth!
+
+All you have to do is something you are already doing, talk to your  customers and refer them to us. For every home owner you refer to us  that completes a site survey, you get paid, and your cash bonus is even  higher if they become one of our customers.
+
+Earn $100/Qualified Lead*, $750/Sale
+No Fees to Join
+Online Landing Page
+Marketing Templates
+
+Questions?
+Email us at partners@astrumsolar.com &lt;mailto:partners@astrumsolar.com&gt;.
+
+Profit from solar. Become a partner.
+ &lt;http://www.astrumsolar.com/company/partner-programs&gt;
+
+See a Sunny Day in a Whole New Way
+Call Us: 800-903-6130 ext. 825
+
+You are receiving this email because you could benefit from the Astrum Solar Partner Program.
+
+ * A qualified lead is when the referral prospect agrees to a roof evaluation (i.e. site survey) by Astrum Solar. A solar power system is customized for per home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. CA 957994, CT 0628993, DC 42021-20000078, MD 126447, MA 168228, NJ  13VH05618900, NYSERDA Certified Installer, OH 201021101310, PA 023535,  VA 2705143744.
+
+Astrum Solar, Inc.
+8955 Henkels Lane, Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+
+Copyright © 2014 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy &lt;http://www.astrumsolar.com/privacy-policy&gt; 
+
+Terms &amp; Conditions &lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com &lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

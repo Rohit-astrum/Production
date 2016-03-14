@@ -1,0 +1,29 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false">
+
+<apex:composition template="PartnerLandingBase">
+
+    <apex:define name="home-image">
+        <p class="annotation left">Michelle and Dave, 10.08kW System – ELECTRICITY SAVINGS: $1,805/year</p>
+        <p class="annotation right">Michelle and Dave, 10.08kW System – ELECTRICITY SAVINGS: $1,805/year</p>
+        <img src="{!URLFOR($Resource.LandingPagePackage2_Resources, 'images/home-image-2.jpg')}" title="Michelle and Dave Vesay of New Ringgold, PA" />
+    </apex:define>
+
+    <apex:define name="name-logo">                                
+        <!--Partner's Name / Logo / Headshot Right-->
+        <div class="logo-spot-long group left">
+            <apex:insert name="partner-logo">
+                <img src="{!URLFOR($Resource.LandingPagePackage2_Resources, 'images/partner-image.jpg')}" title="Partner Image" />
+            </apex:insert>
+            <div class="partner-info local-solar-expert">
+                <p>Local Solar Expert</p>
+                <h3><apex:insert name="contact-name">Joe Doe</apex:insert></h3>
+                <p><apex:insert name="contact-phone">(888) 555-5555</apex:insert></p>
+                <p><a href="#"><apex:insert name="contact-email">email@address.com</apex:insert></a></p>
+            </div>
+        </div>
+       <!--END Partner's Name / Logo / Headshot Right-->
+    </apex:define>
+    
+</apex:composition>
+
+</apex:page>

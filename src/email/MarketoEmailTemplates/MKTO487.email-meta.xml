@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Solarize Aquidneck 2/1/16.Solarize Aquidneck 2/1/16</name>
+    <style>none</style>
+    <subject>Hurry, only two weeks left to sign!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://directenergysolar.com&gt;
+
+Solarize Rhode Island
+ &lt;http://solarizeri.com/solarize-aquidneck/&gt;
+
+Your Neighbors are Going Solar. You Can Join Them.
+
+Hurry! Online 2 Weeks Left to Sign
+
+Dear {{lead.First Name:default=Homeowner}},
+
+If you&apos;re thinking about going solar, the time is now. There are less than two weeks left to go solar through the Solarize Aquidneck program. The program ends on February 15th, and will not be extended! All contracts must be signed by then.  
+
+Don’t miss out on an incredible opportunity many of your Portsmouth neighbors have already jumped on.
+
+If you are already working with a Solar Consultant, then please contact him or her. To request a free site evaluation, access solarizeri.com/solarize-aquidneck &lt;[[http://solarizeri.com/solarize-aquidneck/. ]]&gt;.
+
+Solarize Aquidneck is a community-supported discount buying program for Middletown, Portsmouth and Newport residents that use tiered-pricing, town-supported education and outreach, competitively selected installers and access to flexible financing to dramatically reduce the cost of solar. Thanks to your neighbors who have already gone solar, the program is now in the lowest pricing tier!
+
+Direct Energy Solar was chosen as one of the three installers for this program. While you as the customer, have the option to get a bid with any of the chosen installers, each installer was also assigned to one of the three communities. Direct Energy Solar was assigned to the Portsmouth community!
+
+Thank you.
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Solarize Aquidneck.
+
+You must be a resident of Middletown, Portsmouth or Newport, RI to participate in this program. Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Aquidneck Island Planning Commission, Commerce RI, The Town of Portsmouth, SmartPower, Rhode Island Office of Energy Resources or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+RI registration number 30377
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

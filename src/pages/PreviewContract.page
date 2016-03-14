@@ -1,0 +1,115 @@
+<apex:page standardController="Astrum_Contract__c" extensions="PreviewContractCtrl" title="Contract Preview" showHeader="true" doctype="html-5.0">
+	<style>
+	.activeRow {
+		background: #53CA51;
+		font-weight: bold;
+	}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<apex:form id="frm">
+		<apex:pageBlock title="Contract {!selectedContr.Name}">
+			<apex:pageBlockButtons location="top">
+				<apex:outputLink value="/apex/PreviewProposal?id={!selectedContr.Proposal__c}" styleClass="btn">Return to Proposal Preview</apex:outputLink>
+			</apex:pageBlockButtons>
+
+			<apex:pageBlockSection columns="1">
+				<apex:actionFunction name="reselectContract" action="{!switchContract}" rerender="frm">
+					<apex:param name="contractID" value="" />
+				</apex:actionFunction>
+				<apex:pageBlockTable id="contractTable" value="{!contractList}" var="contr" styleClass="tbl" width="100%">
+				    <apex:column headerValue="Contract Name" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.Name}" />
+					</apex:column>
+					<apex:column headerValue="Scenario" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.Scenario__c}"/>
+					</apex:column>
+					<apex:column headerValue="Current" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.Current__c}"/>
+					</apex:column>
+					<apex:column headerValue="Open Quote" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.Open_Quote__c}"/>
+					</apex:column>
+					<apex:column headerValue="Closed" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.Closed__c}"/>
+					</apex:column>
+					<apex:column headerValue="System Design Quote" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.Proposal__r.System_Design_Quote__r.Name}"/>
+					</apex:column>
+					<apex:column headerValue="CreatedDate" styleClass="{!IF(contr.ID == selectedContr.ID, 'activeRow', '')}" html-data-contractID="{!contr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!contr.CreatedDate}"/>
+					</apex:column>
+				</apex:pageBlockTable>
+			</apex:pageBlockSection>
+
+			<apex:pageBlockSection columns="1">
+				<apex:pageMessages id="msg"/>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+
+		<apex:outputPanel rendered="{!OR(pdfID == null, preventSelling != 0)}">
+			<apex:outputText value="Failed to generate Contract PDF. Please contact System Administrator to review your Conga license status, then please try again by creating new Proposal and Contract records." style="color:#9F0606; margin-left:10px; font-weight:bold" rendered="{!pdfID == null}"/><br/>
+			<!--<apex:outputText value="This Contract has already been closed." style="color:#9F0606; margin-left:10px; font-weight:bold" rendered="{!preventSelling == 1}"/>-->
+			<apex:outputText value="This Contract's parent Proposal must be marked 'Current' in order to continue." style="color:#9F0606; margin-left:10px; font-weight:bold" rendered="{!preventSelling == 2}"/>
+			<apex:outputText value="This Contract must be marked 'Current' in order to continue." style="color:#9F0606; margin-left:10px; font-weight:bold" rendered="{!preventSelling == 3}"/>
+			<apex:outputText value="The parent Proposal is locked. No other Contracts may be sold for this System Design." style="color:#9F0606; margin-left:10px; font-weight:bold" rendered="{!preventSelling == 4}"/>
+		</apex:outputPanel>
+
+		<apex:pageBlock id="previewBlock" >
+			<apex:pageBlockButtons location="top">
+				<apex:commandLink value="Open PDF" action="{!goToContractPDF}" target="_blank" rendered="{!pdfID != null}" styleClass="btn"/>
+				<apex:outputPanel rendered="{!AND(isSightenContract, sightenStatus == 'NOT SENT')}">
+					<apex:actionStatus id="sightenStatus">
+						<apex:facet name="start">
+							<apex:commandButton value="Generate & Send Contract" disabled="true" status="sightenStatus"/>
+						</apex:facet>
+						<apex:facet name="stop">
+							<apex:commandButton value="Generate & Send Contract" action="{!generateAndSendContract}" reRender="msg" status="sightenStatus" />
+						</apex:facet>
+					</apex:actionStatus>
+				</apex:outputPanel>
+				<apex:outputPanel rendered="{!AND(isSightenContract, sightenStatus == 'SIGNED')}">
+					<apex:actionStatus id="sightenStatus2">
+						<apex:facet name="start">
+							<apex:commandButton value="Download Contract" disabled="true" status="sightenStatus"/>
+						</apex:facet>
+						<apex:facet name="stop">
+							<apex:commandButton value="Download Contract" action="{!downloadContract}" reRender="msg" status="sightenStatus" />
+						</apex:facet>
+					</apex:actionStatus>
+				</apex:outputPanel>
+				<apex:outputPanel rendered="{!OR(AND(NOT(isSightenContract), preventSelling == 0, pdfID != null), AND(isSightenContract, sightenStatus == 'DOWNLOADED'))}">
+					<apex:actionStatus id="soldStatus">
+						<apex:facet name="start">
+							<apex:commandButton value="Sold" disabled="true" status="soldStatus" />
+						</apex:facet>
+						<apex:facet name="stop">
+							<apex:commandButton value="Sold" action="{!sellContract}" rerender="msg" status="soldStatus" />
+						</apex:facet>
+					</apex:actionStatus>
+				</apex:outputPanel>
+				<apex:outputLink value="/apex/CloseContract?id={!selectedContr.ID}" styleClass="btn" rendered="{!AND(selectedContr.Closed__c, !selectedContr.Locked__c, selectedContr.Proposal__r.Current__c, selectedContr.Current__c, !selectedContr.Proposal__r.Locked__c)}">Finish Closing</apex:outputLink>
+			</apex:pageBlockButtons>
+			<iframe src="/servlet/servlet.FileDownload?file={!pdfID}" style="width:90%; height:750px; margin-left:5%;"></iframe>
+		</apex:pageBlock>
+
+		<script>
+			$(document).ready(function() {
+				//OnClick action for dataRow in contractTable
+				$("table[id$='contractTable'] tr.dataRow").click(function() {
+					//Get the Contract ID from the row's cells
+				    var contrID = $(this).children("td.dataCell").attr("data-contractID");
+				    if (!contrID){
+				    	alert("Something went wrong. Please refresh the page and try again.")
+				    } else {
+				    	//Call the actionFunction to switch the page's active Contract
+				    	reselectContract(contrID);
+				    }
+				});
+				
+			});
+		</script>
+	</apex:form>
+
+</apex:page>

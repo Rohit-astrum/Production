@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>End of year list.November Promotion</name>
+    <style>none</style>
+    <subject>A special offer from Direct Energy Solar</subject>
+    <textOnly>&lt;http://www.directenergysolar.com&gt;
+Dear {{lead.First Name:default=Friend}},
+
+
+
+Thank you for the business you have referred to Direct Energy Solar.
+
+Our Referral Partners are critical part of our business and we are committed to making this program successful for the both of us.We appreciate your participation in the program and hope this holiday season is a joyous time for you and your family.
+
+Direct Energy Solar is offering a special Holiday Promotion for you. Starting today through December 31, 2015 for every qualified lead you will receive an additional $50. Plus submit five or more qualified leads during this time and you will receive an additional $50 gift card to Amazon. More conversations with your customer mean more money in your pocket.
+
+
+
+Let Direct Energy Solar help you understand solar options for your customers.
+
+We are pleased to offer you our downloadable guide which will help you better understand the benefits of going solar, financing options available, and the factors that influence the amount of financial return.
+
+
+
+Download your free copy of Your Guide to Understanding Solar Power &lt;http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf&gt;.
+IN THE NEWS
+
+
+
+
+
+
+
+Solar in New Jersey
+
+Change Your World, One Panel at a Time
+
+December 2
+
+
+
+Understand the Solar Fine Print
+
+December 8
+
+
+
+Renewable Energy&apos;s Perfect Storm
+
+December 16
+
+
+
+Solar in San Diego, CA
+
+Is Solar Right for You?
+
+December 2 and
+
+December 9
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+Direct Energy Solar
+
+7101 Riverwood Drive
+
+Columbia, MD 21046
+
+P: 800-903-6130
+
+F: 443-267-0036
+Copyright © 2015 Clockwork IP, LLC. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

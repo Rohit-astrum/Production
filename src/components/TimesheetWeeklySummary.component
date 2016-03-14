@@ -1,0 +1,19 @@
+<apex:component controller="TimesheetWeeklySummaryController" access="global">
+    <apex:attribute name="tsId" type="Id" description="Id of the TimeSheet" assignTo="{!timesheetId}"/>
+    <table border = "2" cellspacing = "5">
+        <tr>
+            <td>Project</td>
+            <td>Purpose</td> 
+            <td>Start Time</td> 
+            <td>End Time</td>                
+        </tr>
+        <apex:repeat value="{!timeEntries}" var="tse">
+        <tr>
+            <td>{!tse.Project_Client_Job__r.Name}</td>
+            <td>{!tse.timesheet_purpose__r.Name}</td> 
+            <td><apex:outputText value="{!tse.Start_Time__c} "/></td>  
+            <td><apex:outputText value="{!tse.End_Time__c} "/></td>               
+        </tr>
+        </apex:repeat>        
+    </table>
+</apex:component>

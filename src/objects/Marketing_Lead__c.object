@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Marketing Lead from Website Calculator for use with Mailing, etc.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Address_1__c</fullName>
+        <description>Street Address 1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street Address 1</inlineHelpText>
+        <label>Address 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_2__c</fullName>
+        <description>Street Address 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Street Address 2</inlineHelpText>
+        <label>Address 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculator_Estimate_URL__c</fullName>
+        <description>Link  to Calculator Estimate</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&apos;http://www.astrumsolar.com/calculator/estimate/&apos;+ TEXT(Calculator_Lead_Id__c) +&apos;/&apos;+ Calculator_Uniqid__c , &apos;Calculator Estimate&apos;,&apos;_blank&apos;)</formula>
+        <inlineHelpText>Link  to Calculator Estimate</inlineHelpText>
+        <label>Calculator Estimate URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculator_Lead_Id__c</fullName>
+        <description>Id of Lead in Calculator Database</description>
+        <externalId>true</externalId>
+        <label>Calculator Lead Id</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculator_Submission_Date__c</fullName>
+        <description>Date Lead Submitted for Contact on Calculator</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Lead Submitted for Contact on Calculator</inlineHelpText>
+        <label>Calculator Submission Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Calculator_Uniqid__c</fullName>
+        <description>Calculator Lead Uniqid</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Calculator Lead Uniqid</inlineHelpText>
+        <label>Calculator Uniqid</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <description>City</description>
+        <externalId>false</externalId>
+        <inlineHelpText>City</inlineHelpText>
+        <label>City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <description>Country</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Country</inlineHelpText>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>County__c</fullName>
+        <description>County</description>
+        <externalId>false</externalId>
+        <inlineHelpText>County</inlineHelpText>
+        <label>County</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <description>Email Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Email Address</inlineHelpText>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <description>First Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>First Name</inlineHelpText>
+        <label>First Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <description>Last Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Last Name</inlineHelpText>
+        <label>Last Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Date__c</fullName>
+        <description>Original Submission Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Original Submission Date</inlineHelpText>
+        <label>Lead Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <description>Phone</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone</inlineHelpText>
+        <label>Phone</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <description>State</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State</inlineHelpText>
+        <label>State</label>
+        <length>2</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_Company__c</fullName>
+        <description>Utility Company</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Utility Company</inlineHelpText>
+        <label>Utility Company</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ValidationStatus__c</fullName>
+        <description>QAS Validation Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QAS Validation Status</inlineHelpText>
+        <label>QAS Validation Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ValidationTimestamp__c</fullName>
+        <description>QAS Validation Timestamp</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QAS Validation Timestamp</inlineHelpText>
+        <label>QAS Validation Timestamp</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Zip__c</fullName>
+        <description>Zip/Postal Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Zip/Postal Code</inlineHelpText>
+        <label>Zip</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Marketing Lead</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <columns>Address_1__c</columns>
+        <columns>Address_2__c</columns>
+        <columns>City__c</columns>
+        <columns>State__c</columns>
+        <columns>Zip__c</columns>
+        <columns>ValidationStatus__c</columns>
+        <columns>ValidationTimestamp__c</columns>
+        <columns>Calculator_Submission_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>ML-{0000000000}</displayFormat>
+        <label>Marketing Lead Number</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Marketing Leads</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

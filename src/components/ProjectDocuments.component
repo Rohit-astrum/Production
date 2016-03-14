@@ -1,0 +1,1200 @@
+<!--
+06/27/2012 TCM - zen-10 create image thumbnails when uploading
+12/07/2012 TCM - zen-79 inspection verification 
+01/21/2013 TCM - zen-96 file uploads stop working - update jquery, jquery ui, and file upload
+-->
+<apex:component controller="ProjectDocumentsController" allowDML="true">
+
+<apex:attribute name="projectId"
+                description="Id of project to show documents for"
+                type="String"
+                required="true"
+                assignTo="{!projectId}"/>
+
+<apex:variable var="prefix" value="projdoc-"/>
+                
+<apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/redmond/jquery-ui.css"/>
+<apex:stylesheet value="{!URLFOR($Resource.FileUpload, 'css/jquery.fileupload-ui.css')}" />
+<!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style type="text/css">
+
+    body { user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+    
+    div.bin-container { 
+        padding: 5px 5px 5px 10px; 
+        background-color: #e0e0e0; /* gainsboro; */ 
+        margin-bottom: 20px; 
+        margin-right: 20px; 
+        display: inline-block;
+        
+        /*
+        border-right: 2px solid #898b8c;
+        border-bottom: 2px solid #898b8c;
+        */
+        
+        -moz-box-shadow: 3px 3px 4px #898b8c; /* astrum stone 80% */
+        -webkit-box-shadow: 3px 3px 4px #898b8c;
+        box-shadow: 3px 3px 4px #898b8c; 
+        
+        /* For IE 8 */
+        /* -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')"; */
+        /* For IE 5.5 - 7 */
+        /* filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000'); */
+    }
+    
+    .bin-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #231F20; /* astrum black */
+        font-size: 110%;
+    }
+    
+    .bin-status {
+        float: right;
+        font-weight: bold; 
+        padding-left: 5px;
+    }
+    .bin-status-submitted { color: chocolate; }
+    .bin-status-complete { color: green; }
+    .bin-status img { vertical-align: middle; margin-right: 3px; }
+    
+    .bin-title-line {
+        clear: both;
+    }
+    
+    div.bin-container a {
+        color: blue;
+    }
+
+    .ui-widget-overlay { background-color: #404040; opacity: .65; background-image: none; }
+
+    div.drop { 
+        margin-right: 5px; 
+        margin-bottom: 5px; 
+        display: inline-block; 
+    }
+    .drop-area { 
+        padding: 1px 1px 1px 1px; 
+        min-height: 100px;
+        background: #FFFFFF; /* old browsers */
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #CCCCCC 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(100%,#CCCCCC)); /* webkit */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#CCCCCC',GradientType=0 ); /* ie */
+        /* border: 1px solid gray; */
+    }
+    .drop-area-title {
+        font-weight: bold;
+        margin: 3px;
+        white-space: nowrap;
+    }
+    .drop-area-required {
+        color: red;
+        font-weight: normal;
+        margin: 3px;
+    }
+    .drop-item {
+        padding: 5px;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .drop-item-image {
+        vertical-align: middle;
+    }
+    .drop-item-name {
+        padding: 3px;
+    }
+    
+    div.well { padding: 5px; }
+    
+    img.cat-file {
+        vertical-align: middle;
+        margin-right: 4px;
+        position: relative;
+        top: -2px;
+        opacity: 0.8; 
+    }
+
+    img.verify-file-icon {
+        vertical-align: middle;
+    }
+
+    img.comment-file {
+        vertical-align: middle;
+        /* position: relative;
+        top: -3px; */
+    }
+    
+    .drop td {
+        padding: 2px 5px;
+    }
+    
+    td.cat-date {
+        width: 72px;
+    }
+
+    td.comment-col {
+        width: 24px;
+    }
+    
+    .table-striped tbody tr td,
+    .table-striped tbody tr th {
+        background-color:#f9f9f9;
+    }
+    
+    .cat-toolbar {
+        padding: 0px;
+        width: 100%;
+        height: 18px;
+        background-color: #c4c4c4; /* gainsboro; */
+        /* background-color: lightblue; */
+        /* border-top: 1px solid black; */
+        border-bottom: 1px solid #ccc;
+    }
+
+    .cat-doc .ui-button-text, .cat-note .ui-button-text {
+        padding: 0;
+    }
+    
+    .cat-doc, .cat-note {
+        display: inline-block;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        border: 1px solid transparent; 
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    
+    .cat-doc:hover, .cat-note:hover {
+        border-color: black;
+    }
+
+    .cat-doc {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/GenericFile.gif')}');
+        position: relative;
+        top: -1px;
+    }
+    
+    .cat-note {
+        background-image: url('{!URLFOR($Resource.DocumentBinResources, 'images/pencil.png')}');
+    }
+    
+    #{!prefix}noteDialog {
+        background-color: lightYellow;
+        overflow: hidden;
+        padding: 5px;
+    }
+    
+    #{!prefix}noteDialog textarea {
+        width: 350px;
+        height: 350px;
+        resize: none;
+    }
+    
+    #{!prefix}noteDialog .ui-dialog-buttonpane { 
+        margin: 0; 
+        border-top: none;
+        background-color: lightYellow;
+    }
+    .ui-dialog .ui-dialog-buttonpane button { margin: 0; }
+    
+    .docDate {
+        width: 70px;
+        border: 1px solid lightGrey;
+    }
+
+    .docDateRequired .docDate {
+        border-color: red;
+    }
+    
+    .docDateError {
+        background-color: #FEBCBC;
+    }
+    
+    .template-download .note {
+        background-color: lightYellow;
+        user-select: text; -webkit-user-select: text; -moz-user-select: text;
+    }
+
+    .template-download .author {
+        font-weight: bold;
+        font-size: 80%;
+        white-space: nowrap;
+    }
+    
+    .cat-doc input {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+        border: none;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -moz-transform: translate(-300px, 0) scale(4);
+        direction: ltr;
+        cursor: pointer;
+    }
+    
+    #gbox_templates { margin: 10px; }
+    #gbox_formData { margin: 10px; }
+    #gbox_submissionDocs { margin: 10px; }
+    #templateName { margin: 10px; font-weight: bold; }
+    
+    .issue-selected {
+        background-color: yellow;
+    }
+    
+    #{!prefix}issueDialog {
+        overflow: hidden;
+        padding: 0;
+    }
+    
+
+</style>
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"/>
+
+<!-- The Templates plugin is included to render the upload/download listings -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'JavaScript-Templates/tmpl.min.js')}"/>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'JavaScript-Load-Image/load-image.min.js')}"/>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'JavaScript-Canvas-to-Blob/canvas-to-blob.min.js')}"/>
+<!-- jQuery Image Gallery -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'jQuery-Image-Gallery/js/jquery.image-gallery.min.js')}"/>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'js/jquery.iframe-transport.js')}"/>
+<!-- The basic File Upload plugin -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'js/jquery.fileupload.js')}"/>
+<!-- The File Upload image processing plugin -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'js/jquery.fileupload-fp.js')}"/>
+<!-- The File Upload user interface plugin -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'js/jquery.fileupload-ui.js')}"/>
+<!-- The File Upload jQuery UI plugin -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'js/jquery.fileupload-jui.js')}"/>
+<!-- The localization script -->
+<apex:includeScript value="{!URLFOR($Resource.FileUpload, 'js/locale.js')}"/>
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
+<apex:variable var="xdrtrans" value="{!URLFOR($Resource.FileUpload, 'js/cors/jquery.xdr-transport.js')}"/>
+<!--[if gte IE 8]><script src="{!xdrtrans}"></script><![endif]-->
+
+<script type="text/javascript"> 
+// Note: this is a total hack into Salesforce's "main.js" script for "setFocusOnLoad which is:    
+// function setFocusOnLoad() {
+//      beenFocused || setFocus();
+// }
+// So, if we tell it that the focus has already been set, it does a shortcircuit evaluation and doesn't
+// run the Salesforce code to set the focus itself.  e.g. the Date Pickers don't come up.
+beenFocused = true;
+</script> 
+
+<script type="text/javascript">
+
+    var dropCategory;
+    var binName;
+    var categoryName;
+
+    var dragSourceEl = null;
+    
+    //initializes the page
+    $(function() {
+        'use strict';
+
+        var attentionUrl = "{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}";
+        var okUrl = "{!URLFOR($Resource.DocumentBinResources, 'images/feedback.16.gif')}";
+        var verifiedUrl = "{!URLFOR($Resource.DocumentBinResources, 'images/checked.png')}";
+        var unverifiedUrl = "{!URLFOR($Resource.DocumentBinResources, 'images/unchecked.png')}";
+
+        var noteDialog = '#{!prefix}noteDialog';
+        var issueDialog = '#{!prefix}issueDialog';
+        var issueFrame = '#{!prefix}issueFrame';
+        var issueFrameLoading = '#{!prefix}issueFrameLoading';
+
+        //set datepicker defaults
+        $.datepicker.setDefaults({ dateFormat: 'm/d/yy' });
+
+        //prevent doc-level drag drop
+        $(document).bind('drop dragover', function (e) {
+            e.preventDefault();
+        });
+        
+        //set listeners to set category info on a drop into a category
+        $('div.drop').on('drop', function (e) {
+            dropCategory = '#' + $(this).attr('id') + ' tbody.files';
+            binName = $(this).closest('div.bin-container').attr('data-bin-name');
+            categoryName = $(this).attr('data-category-name');
+        });
+        
+        $('input:submit', ProjectDocuments.formSelector).addClass("start");
+        
+        //file duplication for thumbnail upload
+        $.blueimp.fileupload.prototype.processActions.duplicate = function (data, options) {
+            var file = data.files[data.index];
+            if (file.type.indexOf('image/') == 0) {
+                data.files.push(file);
+            }
+            return data;
+        };
+        
+        // Initialize the jQuery File Upload widget:
+        $(ProjectDocuments.formSelector).fileupload({
+            dropZone: $('div.drop'),
+            autoUpload: true,
+            recalculateProgress: false,
+            sequentialUploads: true
+        });
+        //static part of form data
+        ProjectDocuments.formData = [
+           { name: '{!$Component.fileUpload}', value: '{!$Component.fileUpload}' },
+           { name: '{!$Component.fileUpload.uploadBtn}', value: $('#{!SUBSTITUTE($Component.fileUpload.uploadBtn,':','\\\\:')}').val() },
+           { name: 'com.salesforce.visualforce.ViewState', value: $('#com\\.salesforce\\.visualforce\\.ViewState').val() },
+           { name: 'com.salesforce.visualforce.ViewStateMAC', value: $('#com\\.salesforce\\.visualforce\\.ViewStateMAC').val() },
+           { name: 'com.salesforce.visualforce.ViewStateCSRF', value: $('#com\\.salesforce\\.visualforce\\.ViewStateCSRF').val() }
+        ],
+        //load the dropped file into the right category
+        $(ProjectDocuments.formSelector).bind('fileuploadadd', function (e, data) { // non-UI
+            $(ProjectDocuments.formSelector).fileupload('option', 'filesContainer', dropCategory);
+            $.each(data.files, function (index, file) {
+                file.categoryName = categoryName;
+                file.date = '<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!NOW()}"/></apex:outputText>';
+            });
+        });
+        //after item uploaded and rendered, add datepicker, remove a[download] dragstart
+        $(ProjectDocuments.formSelector).bind('fileuploadadded fileuploadcompleted', function (e, data) { // UI Version
+            //$('a[download]', data.context).unbind('dragstart');
+            if (dropCategory != 'Trash') {
+                $('input.docDate', data.context).datepicker();
+            }
+        });
+        //makes sure the category is uploaded with the file 
+        $(ProjectDocuments.formSelector).bind('fileuploadsubmit', function (e, data) {
+            var formData = [];
+            //process thumbnail - 0 = blob (thumbnail), 1 = file
+            if (data.files.length == 1 && data.files[0].type.indexOf('image/') == 0) {
+                $.extend(data, ProjectDocuments.thumbOptions);
+                //invoke the process to create thumbnail
+                $(this).fileupload('process', data).done(function() { data.submit() });
+                return false;
+            } else if (data.files.length == 2) {
+                //$.extend(data, ProjectDocuments.thumbOptions);
+                data.files[0].categoryName = data.files[1].categoryName;
+                data.files[0].date = data.files[1].date;
+                data.files[0].isThumb = true;
+            }
+            $.each(ProjectDocuments.formData, function() {formData.push( $.extend({},this));}); //clone
+            formData.push({ name: 'categoryName', value: data.files[0].categoryName});
+            var keyDate = $('.docDate', data.context).val(); 
+            formData.push({ name: 'keyDate', value: keyDate });
+            var binName = $(data.context).closest('div.bin-container').attr('data-bin-name');
+            formData.push({ name: 'binName', value: binName });
+            $(ProjectDocuments.formSelector).fileupload('option', 'formData', formData);
+        });
+        //Load Documents and Notes      
+        <apex:repeat value="{!documents}" var="d">
+            <apex:repeat value="{!d.Attachments}" var="a" rows="1">
+                dropCategory = '{!JSENCODE(d.Category__c)}';
+                $(ProjectDocuments.formSelector).fileupload('option', 'filesContainer', 
+                    "div.bin-container[data-bin-name='{!SUBSTITUTE(JSENCODE(d.Bin__c)," ", "\\ ")}'] div.drop[data-category-name='{!SUBSTITUTE(JSENCODE(d.Category__c)," ", "\\ ")}'] tbody.files")
+                .each(function () {
+                    $(this).fileupload('option', 'done')
+                        .call(this , null, { result: 
+                            { files: [
+                                {
+                                docid: "{!d.Id}",
+                                name: "{!JSENCODE(a.Name)}",
+                                size: {!a.BodyLength},
+                                url: "/servlet/servlet.FileDownload?file={!a.Id}",
+                                docDate: '<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!d.LastModifiedDate}"/></apex:outputText>',
+                                keyDate: '<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!d.Document_Key_Date__c}"/></apex:outputText>',
+                                contentType: "{!JSENCODE(a.ContentType)}"
+                                <apex:repeat value="{!d.PM_Project_Issues__r}" var="i" rows="1">,issue: true</apex:repeat>
+                                <apex:outputPanel layout="none" rendered="{!d.Verified__c=true}">,verified: true</apex:outputPanel>
+                                <apex:outputPanel layout="none" rendered="{!AND(d.Category__c!='Proof of Inspection',d.CreatedById != $User.Id)}">,"verifiable": true</apex:outputPanel>
+                                <apex:outputPanel layout="none" rendered="{!AND(d.Category__c=='Proof of Inspection',OR(profileName=='VP of Operations',profileName=='Controller',$User.Username == 'jenny.yang@directenergysolar.com' ,$User.Username == 'hillel.halberstam@directenergysolar.com'))}">,"verifiable": true</apex:outputPanel>
+                                }
+                            ]}
+                        });
+                });
+            </apex:repeat>
+            <apex:repeat value="{!d.Notes}" var="n">
+                dropCategory = '{!JSENCODE(d.Category__c)}';
+                $(ProjectDocuments.formSelector).fileupload('option', 'filesContainer', 
+                    "div.bin-container[data-bin-name='{!SUBSTITUTE(JSENCODE(d.Bin__c)," ", "\\ ")}'] div.drop[data-category-name='{!SUBSTITUTE(JSENCODE(d.Category__c)," ", "\\ ")}'] tbody.files")
+                .each(function () {
+                    $(this).fileupload('option', 'done')
+                        .call(this , null, { result: 
+                            { files: [
+                                {
+                                docid: "{!d.Id}",
+                                notes: "{!JSENCODE(n.Body)}",
+                                author: '{!JSENCODE(n.LastModifiedBy.Name)}',
+                                docDate: '<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!d.LastModifiedDate}"/></apex:outputText>',
+                                keyDate: '<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!d.Document_Key_Date__c}"/></apex:outputText>'
+                                <apex:repeat value="{!d.PM_Project_Issues__r}" var="i" rows="1">,issue: true</apex:repeat>
+                                <apex:outputPanel layout="none" rendered="{!d.Verified__c=true}">,verified: true</apex:outputPanel>
+                                <apex:outputPanel layout="none" rendered="{!AND(d.Category__c!='Proof of Inspection',d.CreatedById != $User.Id)}">,"verifiable": true</apex:outputPanel>
+                                <apex:outputPanel layout="none" rendered="{!AND(d.Category__c=='Proof of Inspection',OR(profileName=='VP of Operations',profileName=='Controller',$User.Username == 'jenny.yang@directenergysolar.com',$User.Username == 'hillel.halberstam@directenergysolar.com'))}">,"verifiable": true</apex:outputPanel>
+                                }
+                            ]}
+                        });
+                });
+            </apex:repeat>
+        </apex:repeat>
+        
+        //Load Documents and Notes
+        /*      
+        ProjectDocumentsController.getDocuments('PL', '{!projectId}', function (result, event) {
+            if (event.status) {
+                for (var i = 0; i < result.length; i++) {
+                    $(formSelector).fileupload('option', 'filesContainer',
+                        "div.bin-container[data-bin-name='" + result[i].binName.replace(' ', '\\ ')
+                        + "'] div.drop[data-category-name='" + result[i].categoryName.replace(' ', '\\ ')
+                        + "'] .files");
+                            //alert($(formSelector).fileupload('option', 'filesContainer'));
+                    $(formSelector).fileupload('option', 'done').call($(formSelector)[0] , null, { result: [ result[i] ] });
+                }
+            } else {
+                alert(event.message);
+            }
+        });
+        */
+        
+        
+        //$('.drop .files .docDate').datepicker(); 
+        
+        //set the names of the file inputs to the visualforce inputFile control name 
+        //  so the uploaded file is sent correctly
+        var inputFileName = $("input:file[name!='']").attr('name');
+        $("input:file").each(function (index) {
+            $(this).attr('name', inputFileName);
+        });
+        
+        //$('form').bind('fileuploadcompleted', function (e, data) {
+        //  checkBinComplete();
+        //});
+        
+        //equalize the widths of the categories
+        /*
+        var maxWidth = 100;
+        $('.drop').each(function (index) {
+            if ($(this).width() > maxWidth) {
+                maxWidth = $(this).width();
+            }
+        })
+        $('.drop').css('min-width', maxWidth);
+        */
+        
+        //equalize the heights of the categories in each bin
+        var rowMap = { };
+        $('div.bin-container').each(function (index) {
+            var $t = $(this);
+            var top = $t.position().top;
+            if (rowMap[top]) {
+                rowMap[top].push($t);
+            } else {
+                rowMap[top] = [$t];
+            }
+        });
+        $.each(rowMap, function(index, bins) {
+            var maxHeight = 100;
+            for (var i = 0; i < bins.length; i++) {
+                $('div.drop-area', bins[i]).each(function(index) {
+                    var $d = $(this);
+                    if ($d.height() > maxHeight) {
+                        maxHeight = $d.height();
+                    }
+                });
+            }
+            for (var i = 0; i < bins.length; i++) {
+                $('div.drop-area', bins[i]).css('min-height', maxHeight);
+            }
+        });
+        
+        //note handling
+        $(noteDialog).dialog({
+            autoOpen: false,
+            modal: true,
+            width: 'auto',
+            height: 'auto',
+            resizable: false,
+            buttons: { 
+                "Save": function() {
+                    ProjectDocumentsController.addNote('{!projectId}', 
+                        $(noteDialog).data('noteDialog').binName, 
+                        $(noteDialog).data('noteDialog').categoryName,
+                        $('textarea', noteDialog).val(),
+                        function (result, event) {
+                            if (event.status) {
+                                var data = $(noteDialog).data('noteDialog');
+                                $(ProjectDocuments.formSelector).fileupload('option', 'filesContainer', data.filesSelector)
+                                .each(function () {
+                                    $(this).fileupload('option', 'done')
+                                        .call(this , null, { result: 
+                                            { files: [
+                                                {
+                                                "docid": result,  
+                                                "notes": $('textarea', noteDialog).val(),
+                                                "author": "{!JSENCODE($User.FirstName)} {!JSENCODE($User.LastName)}",
+                                                "date": '<apex:outputText value="{0,date,M/d/yyyy}"><apex:param value="{!NOW()}"/></apex:outputText>'
+                                                }
+                                            ]}
+                                        });
+                                });
+                                checkBinComplete();
+                            } else {
+                                alert(event.message);
+                            }
+                        });
+                        
+                    $(this).dialog("close"); 
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }
+        });
+        
+        //set category and files selector when add document clicked
+        $('.cat-doc').click(function () {
+            categoryName = $(this).closest('div.drop').attr('data-category-name');
+            dropCategory = '#' + $(this).closest('div.drop').attr('id') + ' tbody.files';
+        });
+        
+        //click on note toolbar icon
+        $('.cat-note').click(function () {
+            $('textarea', noteDialog).val(undefined);
+            var binName = $(this).closest('div.bin-container').attr('data-bin-name');
+            var catName = $(this).closest('div.drop').attr('data-category-name');
+            var filesSelector = '#' + $(this).closest('div.drop')[0].id + ' tbody.files';
+            $(noteDialog).data('noteDialog', {
+                binName: binName,
+                categoryName: catName,
+                filesSelector: filesSelector
+            });
+            $(noteDialog).dialog('option', 'title', 'NOTE: ' + catName);
+            $(noteDialog).dialog("open");
+        });
+        
+        //if a document date changes, update it
+        $('div.drop').on('change', '.docDate', function(e) {
+            var docid = $(this).closest('tr.template-download').attr('data-docid');
+            var bin = $(this).closest('div.bin-container').attr('data-bin-name');
+//TODO: date validation
+            ProjectDocumentsController.updateDocument(docid, $(this).val(),   
+                function (result, event) {
+                    if (event.status) {
+//TODO: make this generic - pass selector / bin(s)
+                        if (ProjectDetailGrid) {
+                            ProjectDetailGrid.reload();
+                        }
+                        //update the bin dates
+                        ProjectDocumentsController.getAllBinStates('{!projectId}', function (result, event) {
+                            if (event.status) {
+                                $("div.bin-container[data-bin-name='" + bin.replace(' ','\\ ') + "'] div.bin-status").remove();
+                                for (var i = 0; i < result.length; i++) {
+                                    if (result[i].binName == bin) {
+                                        ProjectDocuments.createBinDate(result[i]);
+                                    }
+                                }
+                            } else {
+                                alert(event.message);
+                            }
+                        });
+                    } else {
+                        alert(event.message);
+                    }
+                }
+            );
+            
+        });
+        
+        //ISSUES
+        //configure the issues dialog
+        $(issueDialog).dialog({
+            autoOpen: false,
+            modal: true,
+            width: 'auto',
+            height: 'auto',
+            resizable: false,
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    $(issueFrame).one('load', function() {
+                        $(that).dialog("close"); 
+                        var docId = $(that).data('issueDialog').docId;
+                        ProjectDocumentsController.getDocIssueCount('{!JSENCODE(appName)}', docId, function (result, event) {
+                            if (event.status) {
+                                var row = $(that).data('issueDialog').row;
+                                $('img.comment-file', row).attr('src', (result > 0) ? attentionUrl : okUrl);
+                            } else {
+                                alert(event.message);
+                            }
+                        });
+                    });
+                    $(issueFrame)[0].contentWindow.doSubmit();
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            },
+            close: function (e, ui) {
+                var data = $(this).data('issueDialog');
+                $('td', data.row).removeClass('issue-selected');
+            }
+        });
+
+        //click on the document issue button        
+        $('div.drop').on('click', 'img.comment-file', function (e) {
+            var row = $(this).closest('tr.template-download'); 
+            $('td', row).addClass('issue-selected');
+            var docId = $(this).parent().attr('data-docid');
+            var binName = $(this).closest('div.bin-container').attr('data-bin-name');
+            var categoryName = $(this).closest('div.drop').attr('data-category-name');
+            var binUrl = "/apex/ProjectIssue?projectId={!projectId}&bin=" + encodeURIComponent(binName) + "&appName={!URLENCODE(appName)}&astrumDocId=" 
+                + docId + "&category=" + encodeURIComponent(categoryName);
+            var documentName = $('td.name', row).text() || 'Note';
+            $(issueDialog).dialog("option", "title", "ISSUES: " + documentName);
+            $(issueFrame).hide();
+            $(issueFrameLoading).show();
+            $(issueFrame).one('load', function () {
+                $(issueFrameLoading).hide();
+                $(this).show();
+            });
+            //store data to use to update the grid after close
+            $(issueDialog).data("issueDialog", { 
+                row: row,
+                docId: docId
+            });
+            $(issueDialog).dialog("open");
+            $(issueFrame).attr("src", binUrl);
+            return false;   
+        });
+
+        //VERIFICATION
+        //click on the document issue button        
+        $('div.drop').on('click', 'img.verify-file', function (e) {
+            var that = this;
+            var docId = $(this).parent().attr('data-docid');
+            var bin = $(this).closest('div.bin-container').attr('data-bin-name');
+            var category = $(this).closest('div.drop').attr('data-category-name');
+            ProjectDocumentsController.verifyDocument(docId, function (result, event) {
+                if (event.status) {
+                    var verified = result;
+                    var newImageUrl = verified ? verifiedUrl : unverifiedUrl;
+                    $(that).attr('src', newImageUrl);
+                    if (category == 'Proof of Inspection') {
+                        //update the bin dates
+                        ProjectDocumentsController.getAllBinStates('{!projectId}', function (result, event) {
+                            if (event.status) {
+                                $("div.bin-container[data-bin-name='" + bin.replace(' ','\\ ') + "'] div.bin-status").remove();
+                                for (var i = 0; i < result.length; i++) {
+                                    if (result[i].binName == bin) {
+                                        ProjectDocuments.createBinDate(result[i]);
+                                    }
+                                }
+                            } else {
+                                alert(event.message);
+                            }
+                        });
+                    }
+                } else {
+                    alert(event.message);
+                }
+            });
+        });
+
+        //DRAG DROP BETWEEN CATEGORIES      
+        //handle drag start
+        $('div.drop').on('dragstart', 'tr.template-download', function(e) {
+            dragSourceEl = this;
+            //e.originalEvent.dataTransfer.clearData();
+            //e.originalEvent.dataTransfer.setData("DownloadURL", $(this).attr('data-downloadurl'));
+            e.originalEvent.dataTransfer.setData('astrum-pm/note', $(this).attr('data-docid'));
+            /*
+            var link = $('a[download]', this);
+            if (link.size() > 0) {
+                var url = link.attr('href');
+                var name = link.attr('download');
+//TODO: get the right content type
+                var type = 'application/octet-stream';
+                e.originalEvent.dataTransfer.setData('DownloadURL',[type, name, url].join(':'));
+                console.log(e.originalEvent.dataTransfer.types);
+                //alert(e.originalEvent.dataTransfer.getData('DownloadURL'));
+            }
+            */
+        });
+
+//TODO: handle required date change, if any
+        //handle drop notes     
+        $('div.drop').on('drop', function(e) {
+            //can't drop onto same category
+            if ($(dragSourceEl).closest('div.drop').attr('id') == this.id) {
+                dragSourceEl = null;
+                return;
+            }
+            var docid = $(dragSourceEl).attr('data-docid');
+            if (!docid) {
+                dragSourceEl = null;
+                return;
+            }
+            var oldBin = $(dragSourceEl).closest('div.bin-container').attr('data-bin-name');
+            var bin = $(this).closest('div.bin-container').attr('data-bin-name');
+            var category = $(this).attr('data-category-name');
+            $('input.docDate', dragSourceEl).datepicker('destroy');
+            $('table.table', this).append($(dragSourceEl).remove());
+            if (category != 'Trash') {
+                $('input.docDate', dragSourceEl).datepicker();
+            }
+            
+            if ($(this).hasClass('docDateRequired') && !$('.docDate', dragSourceEl).val()) {
+                $('.docDate', dragSourceEl).focus();
+            }
+            
+            //update the category
+            $(this).queue('updates', function() {
+                var that = this;
+                ProjectDocumentsController.updateCategory(docid, bin, category, function (result, event) {
+                    if (event.status) {
+                    } else {
+                        alert(event.message);
+                    }
+                    $(that).dequeue('updates');
+                });
+            });
+            //update the old bin if different
+            if (bin != oldBin) {
+                $(this).queue('updates', function() {
+                    var that = this;
+                    ProjectDocumentsController.checkBinComplete('{!projectId}', oldBin, function (result, event) {
+                        if (event.status) {
+                        } else {
+                            alert(event.message);
+                        }
+                        $(that).dequeue('updates');
+                    });
+                });
+            }
+            //update the dates
+            $(this).queue('updates', function() {
+                if (ProjectDetailGrid) {
+                    ProjectDetailGrid.reload();
+                }
+                ProjectDocumentsController.getAllBinStates('{!projectId}', function (result, event) {
+                    if (event.status) {
+                        $("div.bin-container[data-bin-name='" + bin.replace(' ','\\ ') + "'] div.bin-status").remove();
+                        if (bin != oldBin) {
+                            $("div.bin-container[data-bin-name='" + oldBin.replace(' ','\\ ') + "'] div.bin-status").remove();
+                        }
+                        for (var i = 0; i < result.length; i++) {
+                            if (result[i].binName == bin || result[i].binName == oldBin) {
+                                ProjectDocuments.createBinDate(result[i]);
+                            }
+                        }
+                    } else {
+                        alert(event.message);
+                    }
+                });
+            });
+            
+            //start the updates
+            $(this).dequeue('updates');
+            
+            dragSourceEl = null;
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            
+        });
+        
+        //load the bin dates
+        ProjectDocumentsController.getAllBinStates('{!projectId}', function (result, event) {
+            if (event.status) {
+                for (var i = 0; i < result.length; i++) {
+                    ProjectDocuments.createBinDate(result[i]);
+                }
+            } else {
+                alert(event.message);
+            }
+        });
+
+    });
+    
+    function isValid(callback) {
+        var result = true;
+        $('.docDateRequired').each(function (index) {
+//TODO: check date format validity
+            if (!$(this).val() && !$(this).attr('value')) {
+                $(this).addClass('docDateError');
+                result = false;
+            } else {
+                $(this).removeClass('docDateError');
+            }
+        });
+        if ($('.docDateError').size() > 0) {
+            $('.docDateError').first().focus();
+        }
+        if (!result) {
+            return result;
+        }
+        //update moved documents
+        $('div.drop tr.template-download[data-changed="true"]').each(function (index) {
+            var docid = $(this).attr('data-docid');
+            var category = $(this).closest('div.drop').attr('data-category-name');
+            ProjectDocumentsController.updateCategory(docid, category, function (result, event) {
+                if (event.status) {
+                } else {
+                    alert(event.message);
+                }
+            });
+        });
+//TODO: disable input while uploading
+        //upload any dropped or added files
+        if ($('.template-upload').size() > 0) {
+            $('form').fileupload('option', 'filesContainer', $('div.drop tbody.files'));
+            $('form').data('checkBinComplete', {callback: callback});
+            $('form').bind('fileuploadprogressall', function (e, data) {
+                if (data.loaded >= data.total) {
+                    $('form').bind('fileuploadcompleted', function (e, data) {
+                        $('form').unbind('fileuploadcompleted');
+                        //call ajax function to check if bin complete
+                        checkBinComplete();
+                    });
+                }
+            });
+            $('.start').click();
+        } else {
+            if (window.dateWasUpdated) {
+                $('form').data('checkBinComplete', {callback: callback});
+                checkBinComplete();
+            } else if (callback) {
+                callback();
+            }
+        }
+    }
+    
+//TODO: check complete after a note is created
+    function checkComplete() {
+        var data = $('form').data('checkBinComplete');
+        if (data && data.callback) {
+            data.callback();
+        }
+    }
+    
+    //JavaScript API for this component
+    var ProjectDocuments = {
+        formSelector: '#{!SUBSTITUTE($Component.fileUpload,':','\\\\:')}',
+        thumbOptions: {
+            paramName: [
+                '{!$Component.fileUpload.thumbfile}:inputFile:file',
+                '{!$Component.fileUpload.ufile}:inputFile:file'
+            ],
+            process: [
+                { 
+                    action: 'load',
+                    fileTypes: /^image\/(gif|jpeg|png)$/
+                },
+                { 
+                    action: 'save' 
+                },
+                { //make thumbnail and save 
+                    action: 'duplicate' 
+                },
+                { 
+                    action: 'resize',
+                    maxWidth: 200,
+                    maxHeight: 200
+                },
+                { 
+                    action: 'save' 
+                },
+            ]
+        },
+        reloadBin: function (binName) {
+            var bin = $("div.bin-container[data-bin-name='" + binName.replace(' ', '\\ ') + "']");
+            ProjectDocumentsController.getAllBinStates('{!projectId}', function (result, event) {
+                if (event.status) {
+                    //remove bin dates
+                    $('div.bin-status', bin).remove();
+                    //reload the bin dates
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].binName == binName) {
+                            ProjectDocuments.createBinDate(result[i]);
+                        }
+                    }
+                } else {
+                    alert(event.message);
+                }
+            });
+            //reload the documents
+            ProjectDocumentsController.getDocuments('PL', '{!projectId}', binName, function (result, event) {
+                if (event.status) {
+                    //remove the datepickers
+                    $('input.docDate', bin).datepicker('destroy');
+                    //remove all the documents
+                    $('tr.template-download', bin).remove();
+                    var frm = $(ProjectDocuments.formSelector); 
+                    for (var i = 0; i < result.length; i++) {
+                        frm.fileupload('option', 'filesContainer', $("div.drop[data-category-name='" + result[i].categoryName.replace(' ', '\\ ')
+                            + "'] tbody.files", bin));
+                        frm.fileupload('option', 'done').call(frm[0] , null, { result: [ result[i] ] });
+                    }
+                } else {
+                    alert(event.message);
+                }
+            });
+        },
+        createBinDate: function(state) {
+            var dt = new Date(state.binDate);
+            if (!isNaN(dt)) {
+                var dtFormatted = (dt.getUTCMonth() + 1) + "/" + dt.getUTCDate() + "/" + (dt.getUTCFullYear() % 100); 
+                var bin = $("div.bin-container[data-bin-name='" + state.binName.replace(' ', '\\ ') + "']");
+                var cls = Boolean(state.categoryName) ? 'bin-status-submitted' : 'bin-status-complete';
+                var img = Boolean(state.categoryName) ? 
+                    '<img class="bin-status-image" src="{!URLFOR($Resource.DocumentBinResources, 'images/calendar.png')}"/>'
+                    : '<img class="bin-status-image" src="{!URLFOR($Resource.DocumentBinResources, 'images/checkbox.png')}"/>';
+                if (state.binState == 'Verified') {
+                    img = '<img class="bin-status-image" src="{!URLFOR($Resource.DocumentBinResources, 'images/verified.png')}"/>'
+                }
+                $(':first', bin).before('<div class="bin-status ' + cls + '">' + img + dtFormatted + ' ' + state.binState + '</div>');
+            }
+        } 
+
+    }
+    
+    
+</script>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    {% if (!file.isThumb) { %}
+    <tr class="template-upload fade">
+        <td>
+            <input type="text" class="docDate" title="Enter Key Date" placeholder="m/d/yyyy" value="{%=file.keyDate%}"/>
+        </td>
+        <!-- <td class="preview"><span class="fade"></span></td> -->
+        <td class="name"><span>{%=file.name%}</span></td>
+        {% if (file.error) { %}
+            <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else if (o.files.valid && !i) { %}
+            <td>
+                <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+            </td>
+            <td class="start" style="display:none;">{% if (!o.options.autoUpload) { %}
+                <button class="btn btn-primary">
+                    <i class="icon-upload icon-white"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            {% } %}</td>
+        {% } else { %}
+            <td colspan="2"></td>
+        {% } %}
+        <td class="cancel" style="display:none;">{% if (!i) { %}
+            <button class="btn btn-warning">
+                <i class="icon-ban-circle icon-white"></i>
+                <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+        {% } %}</td>
+    </tr>
+   {% } %}
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<!--<tr class="template-download fade" data-docid="{%=file.docid%}"> FF ISSUE WITH FADE-->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    {% if (!file.isThumb) { %}
+    <tr class="template-download" data-docid="{%=file.docid%}" {% if (!file.error) { %} draggable="true" {% } %} data-downloadurl="{%=file.contentType%}:{%=file.name%}:{%=file.url%}">
+        {% if (file.notes) { %}
+            <td class="cat-date">
+                <input type="text" class="docDate" title="Enter Key Date" placeholder="m/d/yyyy" value="{%=file.keyDate%}"/>
+            </td>
+            <td class="note" colspan="4">
+                <span>
+                    <span class="author">{%=file.author%}&nbsp;{%=file.docDate%}</span><br />
+                    {%=file.notes%}
+                </span>
+            </td>
+            <td class="verify-col" data-docid="{%=file.docid%}">
+                {% if(file.verified) { %}
+                    <img class="verify-file-icon {% if(file.verifiable){ %}verify-file{% } %}" src="{!URLFOR($Resource.DocumentBinResources, 'images/checked.png')}" 
+                        title="{% if(file.verifiable){ %}Unverify this Document{% }else{ %}Document Verified{% } %}"/>
+                {% } else { %}
+                    <img class="verify-file-icon {% if(file.verifiable){ %}verify-file{% } %}" src="{!URLFOR($Resource.DocumentBinResources, 'images/unchecked.png')}" 
+                        title="{% if(file.verifiable){ %}Verify this Document{% }else{ %}Document not Verified{% } %}"/>
+                {% } %}
+            </td>
+            <td class="comment-col" data-docid="{%=file.docid%}">
+                {% if(file.issue) { %}
+                    <img class="comment-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}" title="Respond to issue"/>
+                {% } else { %}
+                    <img class="comment-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/feedback.16.gif')}" title="Create or respond to issue"/>
+                {% } %}
+            </td>
+        {% } else if (file.error) { %}
+            <td></td>
+            <td class="name"><span>{%=file.name%}</span></td>
+            <td class="error" colspan="5"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else { %}
+            <td class="cat-date">
+                <input type="text" class="docDate" title="Enter Key Date" placeholder="m/d/yyyy" value="{%=file.keyDate%}"/>
+            </td>
+            <td class="name" colspan="4">
+                <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}" target="_blank">
+                    {% if (file.contentType == "application/vnd.ms-excel" || file.contentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") { %}
+                        <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon-ms-excel.png')}"/>
+                    {% } else if (file.contentType == "application/msword" || file.contentType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") { %}
+                        <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/ms_word_icon.png')}"/>
+                    {% } else if (file.contentType == "application/pdf") { %}
+                        <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/pdf-icon.png')}"/>
+                    {% } else if (file.contentType == "image/gif" || file.contentType == "image/jpeg" || file.contentType == "image/png") { %}
+                        <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/photo.gif')}"/>
+                    {% } else { %}
+                        <img class="cat-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/GenericFile.gif')}"/>
+                    {% } %}
+                    <span>{%=file.name%}</span>
+                </a>
+            </td>
+            <td class="verify-col" data-docid="{%=file.docid%}">
+                {% if(file.verified) { %}
+                    <img class="verify-file-icon {% if(file.verifiable){ %}verify-file{% } %}" src="{!URLFOR($Resource.DocumentBinResources, 'images/checked.png')}" 
+                        title="{% if(file.verifiable){ %}Unverify this Document{% }else{ %}Document Verified{% } %}"/>
+                {% } else { %}
+                    <img class="verify-file-icon {% if(file.verifiable){ %}verify-file{% } %}" src="{!URLFOR($Resource.DocumentBinResources, 'images/unchecked.png')}" 
+                        title="{% if(file.verifiable){ %}Verify this Document{% }else{ %}Document not Verified{% } %}"/>
+                {% } %}
+            </td>
+            <td class="comment-col" data-docid="{%=file.docid%}">
+                {% if(file.issue) { %}
+                    <img class="comment-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}" title="Respond to issue"/>
+                {% } else { %}
+                    <img class="comment-file" src="{!URLFOR($Resource.DocumentBinResources, 'images/feedback.16.gif')}" title="Create or respond to issue"/>
+                {% } %}
+            </td>
+        {% } %}
+    </tr>
+    {% } %}
+{% } %}
+</script>
+
+    <!-- preload icons -->
+    <apex:image value="{!URLFOR($Resource.DocumentBinResources, 'images/GenericFile.gif')}" style="display:none;"/>
+    <apex:image value="{!URLFOR($Resource.DocumentBinResources, 'images/pencil.png')}" style="display:none;"/>
+
+<apex:form id="fileupload">
+
+    <apex:inputFile id="ufile" value="{!uploadFile.Body}" contentType="{!uploadFile.ContentType}" fileName="{!uploadFile.Name}" style="display:none;"/>
+    <apex:inputFile id="thumbfile" value="{!thumbFile.Body}" contentType="{!thumbFile.ContentType}" fileName="{!thumbFile.Name}" style="display:none;"/>
+    
+    <div class="fileupload-buttonbar">
+        <apex:commandButton id="uploadBtn" value="UPLOAD" action="{!upload}" style="display:none;"/>
+        <!-- 
+        <div class="progress progress-success progress-striped active fade">
+            <div class="bar" style="width:0%;"></div>
+        </div>
+        -->
+    </div>
+
+    <apex:repeat value="{!binGroups}" var="group">
+        <apex:pageBlock mode="maindetail">
+        <apex:pageBlockSection title="{!group}" columns="1">
+        
+            <apex:pageBlockSectionItem >
+            <apex:outputPanel layout="block">
+            
+                <apex:repeat value="{!binConfig}" var="bin">
+            
+                    <apex:outputPanel layout="none" rendered="{!group = bin.Bin_Grouping_Name__c}">
+                    <div class="bin-container" data-bin-name="{!HTMLENCODE(bin.Bin__c)}">
+                        
+                        <div class="bin-title">{!bin.Bin__c}</div>
+                        
+                        <hr class="bin-title-line"/>
+                
+                        <apex:repeat value="{!categories}" var="c">
+        
+                            <apex:outputPanel layout="none" rendered="{!bin.Bin__c = c.Bin__c}">
+                                <div id="drop{!c.Id}" class="drop {!IF(c.Document_Date_Required__c=true,'docDateRequired','')}" 
+                                     data-category-name="{!HTMLENCODE(c.Category__c)}"> 
+                                     
+                                    <div class="drop-area ui-corner-all">
+                                        <div class="drop-area-title">{!c.Category__c}&nbsp;
+                                            <apex:outputPanel layout="inline" styleClass="drop-area-required" 
+                                                              rendered="{!AND(NOT(ISNULL(c.Minimum_Required__c)), c.Minimum_Required__c > 0)}">
+                                                              <apex:outputText value="{0,number,0} Required"><apex:param value="{!c.Minimum_Required__c}"/></apex:outputText>
+                                            </apex:outputPanel>
+                                        </div>
+                                        <div class="cat-toolbar">
+                                            <span class="cat-doc" title="Add Documents" >
+                                                <input type="file" multiple="multiple"/>
+                                            </span>
+                                            <div class="cat-note" title="Add Note" />
+                                        </div>
+                                        <!-- The table listing the files available for upload/download -->
+                                        <table class="table table-striped" style="width: 100%"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                        
+                        </apex:repeat> <!-- categories -->
+
+                        <div id="drop2{!bin.Id}" class="drop" 
+                             data-category-name="Uncategorized">
+                         
+                            <div class="drop-area ui-corner-all">
+                                <div class="drop-area-title">Uncategorized</div>
+                                <div class="cat-toolbar">
+                                    <span class="cat-doc" title="Add Documents" >
+                                        <input type="file" multiple="multiple"/>
+                                    </span>
+                                    <div class="cat-note" title="Add Note" />
+                                </div>
+                                <!-- The table listing the files available for upload/download -->
+                                <table class="table table-striped" style="width: 100%;"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </apex:outputPanel>
+
+                </apex:repeat> <!-- bins -->
+                
+            </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+        </apex:pageBlockSection>
+        </apex:pageBlock>   
+    
+    </apex:repeat> <!-- bin groups -->
+    
+    <div class="bin-container" data-bin-name="Trash">
+        <div id="drop2trash" class="drop" 
+            data-category-name="Trash">
+            <div class="drop-area ui-corner-all">
+                <div class="drop-area-title">Trash</div>
+                <table class="table table-striped" style="width: 100%;"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+            </div>
+        </div>
+    </div>
+            
+    
+    
+</apex:form>
+
+<div style="display:none">
+    <div id="{!prefix}noteDialog">
+        <textarea placeholder="Enter note" maxLength="32000"/> 
+    </div>
+</div>
+
+<div style="display:none">
+    <div id="{!prefix}issueDialog">
+        <div id="{!prefix}issueFrameLoading" style="display:none;text-align:center;width:600px;height:304px;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+        <iframe id="{!prefix}issueFrame" width="600" height="300" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+    </div>
+</div>
+
+</apex:component>

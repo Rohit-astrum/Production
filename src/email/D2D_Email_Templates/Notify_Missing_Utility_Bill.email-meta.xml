@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Notify Missing Utility Bill</name>
+    <style>freeForm</style>
+    <subject>D2D Missing Utility Bill</subject>
+    <textOnly>The following D2D lead is missing a utility bill:
+
+{!Portal_Referral__c.Full_Name__c}
+
+Please log into the D2D portal and upload a utility bill. A system design cannot be created until a utility bill is uploaded.</textOnly>
+    <type>html</type>
+</EmailTemplate>

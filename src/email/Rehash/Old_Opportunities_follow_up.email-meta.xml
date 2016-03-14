@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Teaser email to be used to approach older opportunities after leaving them a voicemail.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Old Opportunities follow-up</name>
+    <style>freeForm</style>
+    <subject>Lower your electric bill with Direct Energy Solar</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Are you still paying too much for your electricity??
+
+
+
+If so, I’ve got good news:  DIRECT ENERGY SOLAR is here to help.  You see, while electricity rates have continued to rise since you first contacted us about going solar, the costs associated with installing solar panels have come down significantly.
+
+
+
+Not only is our pricing lower, but we now also have several attractive loan and lease options that in many cases allow you to install solar with no money out of pocket so you’ll start saving right away!
+
+
+
+If you’re interested in having us prepare a new, no-obligation solar quote for you please call or email me right away – before your rates go up again!
+
+
+
+Best regards,
+
+
+
+{!User.FirstName} {!User.LastName}
+{!User.Title}
+
+P (844) 473-4274
+E {!User.Email}
+
+
+
+www.directenergysolar.com</textOnly>
+    <type>html</type>
+</EmailTemplate>

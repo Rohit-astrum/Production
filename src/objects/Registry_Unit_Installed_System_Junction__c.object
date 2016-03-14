@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object relates SREC Registry Units with Installed Systems in a many-to-many relationship.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Astrum_Est_Annual_Prod_Roll_up__c</fullName>
+        <description>Estimated annual production</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimated annual production</inlineHelpText>
+        <label>Astrum Est Annual Prod (Roll-up)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_Est_Annual_SRECs_Roll_up__c</fullName>
+        <description>Estimated annual SRECs</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Estimated annual SRECs</inlineHelpText>
+        <label>Astrum Est Annual SRECs (Roll-up)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_Estimated_Annual_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Projected_Annual_Production_kWh_yr__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Astrum Estimated Annual Production (kWh)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_Estimated_Annual_SRECs__c</fullName>
+        <externalId>false</externalId>
+        <formula>Installed_System__r.Estimated_Annual_SRECs_Generated__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Astrum Estimated Annual SRECs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System__c</fullName>
+        <description>This is the Installed System that the Registry Unit-Installed System Junction record is associated with.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the Installed System that the Registry Unit-Installed System Junction record is associated with.</inlineHelpText>
+        <label>Installed System</label>
+        <referenceTo>Installed_System__c</referenceTo>
+        <relationshipLabel>SREC Registry Units</relationshipLabel>
+        <relationshipName>Registry_Unit_Installed_System_Junctions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>SREC_Registry_Unit__c</fullName>
+        <description>This is the SREC Registry Unit that the Registry Unit-Installed System Junction record is associated with.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the SREC Registry Unit that the Registry Unit-Installed System Junction record is associated with.</inlineHelpText>
+        <label>SREC Registry Unit</label>
+        <referenceTo>SREC_Registry_Unit__c</referenceTo>
+        <relationshipLabel>Installed Systems</relationshipLabel>
+        <relationshipName>Registry_Unit_Installed_System_Junctions</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Registry Unit-Installed System Junction</label>
+    <nameField>
+        <displayFormat>Jct-{0000000000}</displayFormat>
+        <label>Registry Unit Installed System Junction</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Registry Unit-Installed System Junctions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

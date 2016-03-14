@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>AstrumTIME - Parameters</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Baltimore_County__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Baltimore County</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Baltimore County</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Baltimore County</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Distance_Hours__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient Distance Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient Distance Hours</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Distance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Flat_Roof__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Flat Roof</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Flat Roof</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Flat Roof</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Ground_Mount__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Ground Mount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Ground Mount</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Ground Mount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Inside_Only_Conduit__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Inside Only Conduit</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Inside Only Conduit</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Inside Only Conduit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Intercept__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coeffient for Intercept</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coeffient for Intercept</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Intercept</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Num_Installers__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Number of Electricians</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Number of Electricians</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Num Electricians</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Num_Panels__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Number of Panels</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Number of Panels</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Num Panels</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_ELECTRIC_Outbuilding_Install__c</fullName>
+        <description>ELECTRICIAN Bonus Program Coefficient for Outbuilding Install</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Bonus Program Coefficient for Outbuilding Install</inlineHelpText>
+        <label>COEF BONUS ELECTRIC Outbuilding Install</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_Hotel_Cost__c</fullName>
+        <description>Bonus Program Install Hours - Coefficient for Calculating How Many Hours A Hotel Stay Counts For</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - Coefficient for Calculating How Many Hours A Hotel Stay Counts For</inlineHelpText>
+        <label>COEF BONUS Hotel Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Distance_Hours__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Distance From Office Hours Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Distance From Office Hours Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Distance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Flat_Roof__c</fullName>
+        <description>INSTALLER Bonus Program Coefficient for Flat Roof</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Coefficient for Flat Roof</inlineHelpText>
+        <label>COEF BONUS INSTALLER Flat Roof</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Ground_Mount__c</fullName>
+        <description>INSTALLER Bonus Program Coefficient for Ground Mount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Coefficient for Ground Mount</inlineHelpText>
+        <label>COEF BONUS INSTALLER Ground Mount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Intercept__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Intercept Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Intercept Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Intercept</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Num_Installers__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Number of Installers Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Number of Installers Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Num Installers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Num_Panels__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Number of Panels Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Number of Panels Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Num Panels</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Num_Roofs__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Number of Roofs Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Number of Roofs Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Num Roofs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Num_Stories__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Number of Stories Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Number of Stories Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Num Stories</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Roof_Pitch__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Degrees of Roof Pitch Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Degrees of Roof Pitch Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Roof Pitch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Trenching_Req__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours - Trenching Required Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours - Trenching Required Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Trenching Req</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_INSTALLER_Vent_Stack_Move__c</fullName>
+        <description>INSTALLER Bonus Program Install Hours -Vent Stack Movement Coefficient</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Bonus Program Install Hours -Vent Stack Movement Coefficient</inlineHelpText>
+        <label>COEF BONUS INSTALLER Vent Stack Move</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_Maintenance_After_Month__c</fullName>
+        <description>Bonus Program Install Hours - How Many Standard Hours Does an Maintenance Hour AFTER 1 Month Count For?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - How Many Standard Hours Does an Maintenance Hour AFTER 1 Month Count For?</inlineHelpText>
+        <label>COEF BONUS Maintenance After Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_Maintenance_Within_Month__c</fullName>
+        <description>Bonus Program Install Hours - How Many Standard Hours Does an Maintenance Hour WITHIN 1 Month Count For?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - How Many Standard Hours Does an Maintenance Hour WITHIN 1 Month Count For?</inlineHelpText>
+        <label>COEF BONUS Maintenance Within Month</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COEF_BONUS_Overtime_Hour_Multiplier__c</fullName>
+        <description>Bonus Program Install Hours - How Many Standard Hours Does an Overtime Hour Count For?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - How Many Standard Hours Does an Overtime Hour Count For?</inlineHelpText>
+        <label>COEF BONUS Overtime Hour Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>14</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CONST_BONUS_ELECTRIC_Electrician_Per_Job__c</fullName>
+        <description>ELECTRICIAN CONSTANT - Number of Electricians Assumed to Be on Each Job</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN CONSTANT - Number of Electricians Assumed to Be on Each Job</inlineHelpText>
+        <label>CONST BONUS ELECTRIC Electrician Per Job</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CONST_BONUS_INSTALLER_Installers_Per_Job__c</fullName>
+        <description>INSTALLER Constant - Number of Installers Assumed on Each Job</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Constant - Number of Installers Assumed on Each Job</inlineHelpText>
+        <label>CONST BONUS INSTALLER Installers Per Job</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CONST_BONUS_Ops_Manager_Amount__c</fullName>
+        <description>Bonus Program Install Hours - Amount Awarded ($) to Ops Manager for every hour under budgeted goal for Office</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - Amount Awarded ($) to Ops Manager for every hour under budgeted goal for Office</inlineHelpText>
+        <label>CONST BONUS Ops Manager Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CONST_BONUS_Team_Distribution_Amount__c</fullName>
+        <description>Bonus Program Install Hours - Amount Awarded ($) to Team for distribution for every hour under budgeted goal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - Amount Awarded ($) to Team for distribution for every hour under budgeted goal</inlineHelpText>
+        <label>CONST BONUS Team Distribution Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CONST_BONUS_Team_Lead_Amount__c</fullName>
+        <description>Bonus Program Install Hours - Amount Awarded ($) to Team Lead for every hour under budgeted goal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bonus Program Install Hours - Amount Awarded ($) to Team Lead for every hour under budgeted goal</inlineHelpText>
+        <label>CONST BONUS Team Lead Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>AstrumTIME - Settings</label>
+</CustomObject>

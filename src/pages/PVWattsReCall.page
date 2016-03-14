@@ -1,0 +1,2 @@
+<apex:page standardController="Property__c" extensions="PVWattsReCallExtension" action="{!reCallPVWatts}">
+</apex:page>

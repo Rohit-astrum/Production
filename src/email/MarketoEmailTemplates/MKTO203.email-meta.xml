@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Referral Campaign 6/4/15.Referral Campaign Unopens Round1</name>
+    <style>none</style>
+    <subject>For a limited time, earn more rewards!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+A Special Message for Our Valued Customers
+
+Spread the Word. Get Rewarded.
+&lt;http://www.directenergysolar.com/refer&gt;
+
+Dear {{lead.First Name:default=Friend}},
+
+Our  business is based on the numerous referrals we receive from our  satisfied customers—and we reward our customers for spreading the word  about the benefits of going solar with Direct Energy Solar. 
+
+We have just increased our cash reward to $750 for a limited time! Do you know someone who may benefit from going solar? Earn your cash reward for any referral that switches to solar with us.
+
+You Receive a Cash Reward(1): 
+$750
+
+Your Friend Receives:
+$1,500 Cash Back(2)
+$500 rebate if we miss our install deadline(3)
+Free AC/Heating repair plan(4)
+
+Make even more by hosting an Open House!
+Receive $750 from each sale from your Open House.(5)
+
+Contact Lindsey Williams at 443.239.9809 or email lindsey.williams@directenergysolar.com &lt;mailto:lindsey.williams@directenergysolar.com&gt; for more information.
+
+Start Earning Your Rewards Today!
+&lt;http://www.directenergysolar.com/refer&gt;
+
+
+You’re receiving this email because you are a Direct Energy Solar customer.
+
+(1)You must be an Direct Energy Solar customer to participate in the Direct Energy Solar Referral Program. For each referral who signs a contract with Direct Energy Solar between June 15, 2015–July 15, 2015, you will receive $750. This referral offer is not valid within special community pricing programs or in combination with any other offer—if your referral receives special community pricing on their solar contract, you will receive $100. Individuals may not refer themselves. Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral. Payment in the form of a check is sent within 30 days of the sale.
+
+(2)Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar between May 18, 2015–July 15, 2015. In lieu of a cash rebate, customers can opt to use the $1,500 as a down payment to reduce their monthly solar fees or to receive a $1,500 discount off the contract price at the time of their purchase. Otherwise, $1,500 cash back rebate to be mailed approximately 30 days after the system is installed. Minimum system size is 4 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+
+(3)For systems with signed contracts between May 18, 2015–July 15, 2015, if Direct Energy Solar fails to install your solar system and/or your solar system does not pass electrical inspection within the following timeframes, you will receive $500 (60-day timeframe in CA/MD/NJ; 75-day timeframe in all other regions Direct Energy Solar serves). The number of days due to the following potential delays not caused by Direct Energy Solar will be added to the applicable timeframe: customer scheduling conflicts, structural issues, roof replacements, tree removal, utility transformer issues, and HOA delays. Ground mounts, non-standard roof mounts, commercial systems, leased systems, and systems over 15 kW are excluded. The timeframe begins on the day Direct Energy Solar receives a signed contract and deposit payment (if applicable) for the system. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+
+(4)Meet with a Direct Energy Solar consultant for an in-home consultation between April 1, 2015–July 15, 2015 and receive a free 6-month trial of our Heating &amp; Cooling Repair Essentials Plan. No extensions will be granted. An in-home consultation is contingent on your home passing a qualifying process for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the “Plan”) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited.
+Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+
+(5)You will receive $750 for each contract, resulting from the open house, that is signed with Direct Energy Solar between June 15, 2015–July 15, 2015. There is no limit to the amount of contracts signed from your open house. If the customer decides to cancel participation, they will make every effort to provide Direct Energy Solar with at least four weeks notice. The customer agrees that a Direct Energy Solar sales/marketing representative will be onsite to answer questions for visitors.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

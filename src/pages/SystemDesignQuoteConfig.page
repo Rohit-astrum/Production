@@ -1,0 +1,2343 @@
+<!-- FILE: SystemDesignQuoteConfig.page
+ * AUTHOR: Rohit Jain
+ * DATE: 02/10/2015
+ * PURPOSE: Page for creating and editing a system design quote.
+ * MODIFICATION HISTORY:
+ * 07/06/2015: PB CPQ-234 Provide VP Override Permissions
+ * 07/08/2015: PB CPQ-460 New Scenarios to Set Up Default SREC   
+ -->
+
+<apex:page id="pg" StandardController="System_Design_Quote__c" title="SDQ Edit" extensions="SystemDesignQuoteConfigExtension" showHeader="true" sidebar="false" action="{!initSDQEditMode}" docType="html-5.0">
+
+<style>
+    #blockbckanim
+    {
+        background-color:rgba(0, 14, 44, 0.7);
+        width:100%;
+        height:100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 10000;
+        rgba(0, 0, 0, 0.71);
+        cursor: wait;
+    }
+    #apimgld
+    {
+        width: 20px;
+        height: 20px;
+        top:49%;
+        left:45%;
+        position:fixed;
+        border-radius: 2px;
+        -webkit-border-radius: 2px ;
+        -moz-border-radius: 2px ;
+    }
+    .custErrorPopup{
+        background-color: white;
+        border-width: 1px;
+        border-style: solid;
+        z-index: 9999;
+        left: 40%;
+        padding:10px;
+        position: fixed;
+        opacity:1;
+        width: 600px;
+        margin-left: -230px;
+        top:40%;
+        text-align: left;
+    }
+    .statusBlk
+    {
+        width: 300px;
+        height: 20px;
+        top:47%;
+        left:42%;
+        position:fixed;
+        z-index: 10000;
+        font-weight: bold;
+        color: #000000; 
+    }
+    .notesBox {
+        width:100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; 
+    }
+
+    .surfaceHeader {
+        color:#000;
+        font-size:1.3em; 
+    }
+
+    .grayRow {
+        background-color: #FFF0F0; 
+    }
+
+    #canvasContainer{
+        display:none;
+    }
+
+    .custPopup{
+        background-color: white;
+        border-width: 1px;
+        border-style: solid;
+        z-index: 9999;
+        left: 50%;
+        padding:5px;
+        position: fixed;
+        /* These are the 3 css properties you will need to change so the popup 
+        displays in the center of the screen. First set the width. Then set 
+        margin-left to negative half of what the width is. You can add 
+        the height property for a fixed size pop up if you want.*/
+        width: 800px;
+        margin-left: -400px;
+        margin-top: -315px;
+        top:50%;
+        
+    }
+    .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }
+    .custPopup2{
+        background-color: white;
+        border-width: 1px;
+        border-style: solid;
+        z-index: 9999;
+        padding:10px;
+        position: fixed;
+        /* These are the 3 css properties you will need to change so the popup 
+        displays in the center of the screen. First set the width. Then set 
+        margin-left to negative half of what the width is. You can add 
+        the height property for a fixed size pop up if you want.*/
+        width: 90%;
+        height: 80%;
+        text-align:center;
+        top:10%;
+        left:4%;
+        
+    }
+    .popupBackground2{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }
+    .custPopup3{
+        background-color: white;
+        border-width: 1px;
+        border-style: solid;
+        z-index: 9999;
+        left: 40%;
+        padding:10px;
+        position: fixed;
+        /* These are the 3 css properties you will need to change so the popup 
+        displays in the center of the screen. First set the width. Then set 
+        margin-left to negative half of what the width is. You can add 
+        the height property for a fixed size pop up if you want.*/
+        width: 800px;
+        margin-left: -230px;
+        top:20%;
+    }
+    .note {
+        font-size: 9px;
+    }
+    .subheading{
+        font-weight: bold;
+        color: #2f2f36;
+        
+    }
+    
+    .errorlabel{
+        font-weight: bold;
+        color: red;        
+    }
+    
+    .statuslabel{
+        font-weight: bold;
+        color: #000066;        
+    }
+    .custlabel1{
+        font-size: 91%;
+        font-weight: bold;
+        color: #4a4a56;
+        width:50%;
+        text-align: right;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left:10px;
+        padding-right:20px;
+        position: relative;
+        white-space: nowrap;
+        
+    }
+    .custlabel2{
+        font-size: 91%;
+        font-weight: bold;
+        color: #4a4a56;
+        width:50%;
+        text-align: right;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left:40px;
+        padding-right:20px;
+        position: relative;
+        white-space: nowrap;
+        
+    }
+    .custlabel3{
+        font-size: 91%;
+        font-weight: bold;
+        color: #4a4a56;
+        width:50%;
+        text-align: right;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left:0px;
+        padding-right:20px;
+        position: relative;
+        white-space: nowrap;
+        
+    }    
+    .custdatacell1{
+        color: #333;
+        padding: 4px 2px 4px 5px;
+        font-family:Arial,Helvetica,sans-serif;
+        font-size:12px;
+    font-weight:normal;
+    }
+
+
+</style> 
+
+<script type="text/javascript" language="javascript">   
+
+    var totalCharts = 0;
+    var totalChartsCompleted = 0;
+    var parentID;
+
+    function ShowLoading() {
+        document.getElementById('blockbckanim').style.display="block";
+    }
+
+    function HideLoading() {
+        document.getElementById('blockbckanim').style.display="none";
+    }
+
+    function prepareProposal(){
+        var sdqId =  document.getElementById('{!$Component.frm.sdqid}').value;
+        var sdId =  document.getElementById('{!$Component.frm.sdid}').value;
+        var utilserviceId =  document.getElementById('{!$Component.frm.utilserviceid}').value;
+
+        var isc1 = false;
+        if (document.getElementById('{!$Component.frm.sdqedit.finProd.op1.scenario1Include}') != null)
+            isc1 = document.getElementById('{!$Component.frm.sdqedit.finProd.op1.scenario1Include}').checked;
+        var isc2 = false;
+        if (document.getElementById('{!$Component.frm.sdqedit.finProd.op2.scenario2Include}') != null)
+            isc2 = document.getElementById('{!$Component.frm.sdqedit.finProd.op2.scenario2Include}').checked;
+        var isc3 = false;
+        if (document.getElementById('{!$Component.frm.sdqedit.finProd.op3.scenario3Include}') != null)
+            isc3 = document.getElementById('{!$Component.frm.sdqedit.finProd.op3.scenario3Include}').checked;
+        var isc4 = false;
+        if (document.getElementById('{!$Component.frm.sdqedit.finProd.op4.scenario4Include}') != null)
+            isc4 = document.getElementById('{!$Component.frm.sdqedit.finProd.op4.scenario4Include}').checked;
+        var expireDays = '';
+        if (document.getElementById('{!$Component.frm.sdqedit.newProposalSection.propExpireDays}') != null)
+            expireDays = document.getElementById('{!$Component.frm.sdqedit.newProposalSection.propExpireDays}').value + '';
+        console.log(expireDays);
+
+        SystemDesignQuoteConfigExtension.generatePreviewProposal(sdqId, sdId, utilserviceId, isc1, isc2, isc3, isc4, expireDays, function(result, event){
+            if (event.status) {
+                if(result[0] == 'Valid'){
+                    parentID = result[1];
+                    var chartDataset = [];
+                    chartDataset.push(result[2], result[3], result[4], result[5], result[6], result[7], result[8]);
+                    initCharts(chartDataset);
+                } else {                    
+                    console.log(result[0]);
+                    showPageMessage('ERROR', result[0]);
+                    //document.getElementById('{!$Component.messages}').value = result[1];
+                    HideLoading();
+                }
+                //window.location.href = '/apex/PreviewProposal?id=' + result[0];               
+            } else {
+                alert('Event Status: ' + event.status);
+            }
+        });
+    }
+    
+    function initCharts(chartDataset) {
+        //First, extract the data from the JSON array
+        var prodVsUsageData = JSON.parse(chartDataset[0]);      //[0]: Solar Production, [1]: Home Consumption
+        var currentBillPart1 = JSON.parse(chartDataset[1]);     //[0]: Tier Label Numbers (variable length), [1]: Fixed Charges, [2]: Net Charges
+        var currentBillPart2 = JSON.parse(chartDataset[2]);     //Variable length array of Tier Costs
+        var newBillPart1 = JSON.parse(chartDataset[3]);         //[0]: Tier Label Numbers (variable length), [1]: Fixed Charges, [2]: Net Charges
+        var newBillPart2 = JSON.parse(chartDataset[4]);         //Variable length array of Tier Costs
+
+        var div = document.createElement('div');
+        div.innerHTML = chartDataset[5];
+        var sanitizedChartDataFive = div.firstChild.nodeValue;  //Only way to get rid of the "&quot;" entity, which Javascript is awful at handling
+        div.innerHTML = '';
+        var comparativeRatesPart1 = JSON.parse(sanitizedChartDataFive);   //[0]: X-axis year labels, [1]: Financing Plan Key Labels (variable length)
+        var comparativeRatesPart2 = JSON.parse(chartDataset[6]);   //[0]: Nonsolar electricity rate, [N]: Scenario N electricity rate
+
+        Chart.defaults.global.animation = false;
+        Chart.defaults.global.responsive = false;
+        Chart.defaults.global.scaleFontFamily = "'Arial', 'sans-serif'";
+        Chart.defaults.global.scaleFontStyle = "bold";
+        Chart.defaults.global.scaleFontColor = "#e45206";
+        Chart.defaults.global.showTooltips = false;
+        
+        var currTierFiveData = currentBillPart2.length >= 5 ? currentBillPart2[4] : null;
+        var currTierFourData = currentBillPart2.length >= 4 ? currentBillPart2[3] : null;
+        var currTierThreeData = currentBillPart2.length >= 3 ? currentBillPart2[2] : null;
+        var currTierTwoData = currentBillPart2.length >= 2 ? currentBillPart2[1] : null;
+        var currTierOneData =  currentBillPart2.length >= 1 ? currentBillPart2[0] : null;
+        var currFixedChargesData = currentBillPart1[1];
+        //var currNetChargeData = currentBillPart1[2];
+        //var currTierLabels = currentBillPart1[0];     //Implemented, but not used
+        
+        var newTierFiveData = newBillPart2.length >= 5 ? newBillPart2[4] : null;
+        var newTierFourData = newBillPart2.length >= 4 ? newBillPart2[3] : null;
+        var newTierThreeData = newBillPart2.length >= 3 ? newBillPart2[2] : null;
+        var newTierTwoData = newBillPart2.length >= 2 ? newBillPart2[1] : null;
+        var newTierOneData = newBillPart2.length >= 1 ? newBillPart2[0] : null;
+        var newFixedChargesData = newBillPart1[1];
+        //var newNetChargeData = newBillPart1[2];
+        //var newTierLabels = newBillPart2[0];      //Implemented, but not used
+
+        var comparativeRatesYears = comparativeRatesPart1[0];
+        var comparativeRatesKey = comparativeRatesPart1[1];
+        var comparativeRatesNonsolar = comparativeRatesPart2[0];
+        var comparativeRatesOpt4 = comparativeRatesPart2.length >= 5 ? comparativeRatesPart2[4] : null;
+        var comparativeRatesOpt3 = comparativeRatesPart2.length >= 4 ? comparativeRatesPart2[3] : null;
+        var comparativeRatesOpt2 = comparativeRatesPart2.length >= 3 ? comparativeRatesPart2[2] : null;
+        var comparativeRatesOpt1 = comparativeRatesPart2.length >= 2 ? comparativeRatesPart2[1] : null;
+        
+        var utilBillAllChartValues = [];
+        
+        for (j = 0; j < currentBillPart1[1].length; j++) {
+            utilBillAllChartValues.push(currentBillPart1[1][j]);
+        }
+        
+        for (i = 0; i < currentBillPart2.length; i++) {
+            for (j = 0; j < currentBillPart2[i].length; j++) {
+                utilBillAllChartValues.push(currentBillPart2[i][j]);
+            }
+        }
+        
+        for (i = 0; i < newBillPart1[1].length; i++) {
+        
+            utilBillAllChartValues.push(newBillPart1[1][i]);
+        }
+        
+        for (i = 0; i < newBillPart2.length; i++) {
+            for (j = 0; j < newBillPart2[i].length; j++) {
+            
+                utilBillAllChartValues.push(newBillPart2[i][j]);
+            }
+        }
+        
+        var utilBillChartMax = Math.ceil(getMaxOfArray(utilBillAllChartValues)/100)*100;
+        var utilBillChartMin = Math.floor(((getMinOfArray(utilBillAllChartValues) < 0) ? getMinOfArray(utilBillAllChartValues) : 0)/100)*100;
+        var utilBillChartSteps = ((utilBillChartMax - utilBillChartMin)/100)*2;
+        
+        
+        generateUtilBillChart("currUtilBill", currTierFiveData, currTierFourData, currTierThreeData, currTierTwoData, currTierOneData, currFixedChargesData, utilBillChartMax, utilBillChartMin, utilBillChartSteps);
+        generateUtilBillChart("newUtilBill", newTierFiveData, newTierFourData, newTierThreeData, newTierTwoData, newTierOneData, newFixedChargesData, utilBillChartMax, utilBillChartMin, utilBillChartSteps);
+        
+        //var energyConsumptionData = [1300,1350,1800,2100,3000,4200,3900,4500,3800,1500,1500,1500];
+        var energyConsumptionData = prodVsUsageData[1];
+        //var solarProductionData = [600,4000,1800,1600,2500,2600,2500,2400,1800,1600,1000,900];
+        var solarProductionData = prodVsUsageData[0];
+        
+        var productionVsUsageAllChartValues = [];
+        
+        for (i = 0; i < prodVsUsageData.length; i++) {
+            for (j = 0; j < prodVsUsageData[i].length; j++) {
+                productionVsUsageAllChartValues.push(prodVsUsageData[i][j]);
+            }
+        }
+        
+        var productionVsUsageChartMax = Math.ceil(getMaxOfArray(productionVsUsageAllChartValues)/100)*100;
+        var productionVsUsageChartMin = Math.floor(((getMinOfArray(productionVsUsageAllChartValues) < 0) ? getMinOfArray(productionVsUsageAllChartValues) : 0)/100)*100;
+        generateProductionVsUsageChart("productionVsUsage", energyConsumptionData, solarProductionData, productionVsUsageChartMax, productionVsUsageChartMin);
+
+        generateComparativeRatesChart("comparativeRates", comparativeRatesNonsolar, comparativeRatesOpt4, comparativeRatesOpt3, comparativeRatesOpt2, comparativeRatesOpt1, comparativeRatesYears, comparativeRatesKey);
+    }
+    
+    function getMaxOfArray(numArray) {
+      return Math.max.apply(null, numArray);
+    }
+    function getMinOfArray(numArray) {
+      return Math.min.apply(null, numArray);
+    }
+    
+    function generateProductionVsUsageChart(chartName, energyConsumption, solarProduction, chartMax, chartMin) {
+        
+        totalCharts++;
+        
+        var chartSettings =  {
+            chartType:"overlay",
+            chartWidth:425,
+            chartHeight:300,
+            chartOptions: { 
+                bezierCurve : false,
+                scaleShowGridLines : false,
+                scaleShowHorizontalLines: false,
+                scaleShowVerticalLines: false,
+                scaleFontColor: "#e45206",
+                scaleLabel : "<%= Number(value).toFixed(0) +' kWh' %>",
+                scaleOverride: true,
+                scaleSteps: 5,
+                scaleStepWidth: Math.ceil(chartMax / 5),
+                scaleStartValue: chartMin
+            },
+            chartData:{
+                labels: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+                datasets: [
+                {
+                    /*label: "Home Energy Consumption",*/
+                    //new option, barline will default to bar as that what is used to create the scale
+                    type: "line",
+                    fillColor: "#fdd2b9",
+                    strokeColor: "#fdd2b9",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "rgba(255,255,2555,0)",
+                    pointHighlightFill: "rgba(255,255,2555,0)",
+                    pointHighlightStroke: "rgba(255,255,2555,0)"
+                },
+                {
+                    /*label: "Solar Production",*/
+                    //new option, barline will default to bar as that what is used to create the scale
+                    type: "bar",
+                    fillColor: "#e45206",
+                    strokeColor: "rgba(255,255,2555,0)",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)"
+                }]
+            }
+        };
+        
+        chartSettings.chartName = chartName;
+        chartSettings.chartData.datasets[0].data = energyConsumption;
+        chartSettings.chartData.datasets[1].data = solarProduction;
+        
+        var imgDataUrl = createChart(chartSettings);        
+        
+        attachChart(imgDataUrl, chartSettings.chartName);
+    }
+    
+    function generateUtilBillChart(chartName, tierFive, tierFour, tierThree, tierTwo, tierOne, fixedCharges, chartMax, chartMin, chartSteps) {
+        
+        totalCharts++;
+    
+        var chartSettings =  {
+            chartType:"line",
+            chartWidth:425,
+            chartHeight:300,
+            chartOptions: { 
+                 scaleShowGridLines : false,
+                 scaleShowHorizontalLines: false,
+                 scaleShowVerticalLines: false,
+                 bezierCurve : false,
+                 datasetStrokeWidth : 4,
+                 scaleLabel : "<%= '$' + Number(value).toFixed(0)%>",
+                 scaleOverride: true,
+                 scaleSteps: chartSteps,
+                 scaleStepWidth: Math.ceil((chartMax-chartMin) / chartSteps),
+                 scaleStartValue: chartMin
+             },
+            chartData:{
+            labels : /*["JAN","","","FEB","","","MAR","","","APR","","","MAY","","","JUN","","","JUL","","","AUG","","","SEP","","","OCT","","","NOV","","","DEC","",""]*/["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+            datasets : [
+                {
+                    /*label: "Tier 5 - " + tierLabels.length >= 5 ? "$" + tierLabels[4] + "/Kwh" : "N/A",*/
+                    fillColor : "rgba(252,216,194,.5)",
+                    strokeColor : "#fcd8c2",
+                    pointColor: "rgba(255,255,255,0)",
+                    pointStrokeColor: "rgba(255,255,255,0)",
+                    pointHighlightFill: "rgba(255,255,255,0)",
+                    pointHighlightStroke: "rgba(255,255,255,0)",
+                    fillToZero: true
+                },
+                {
+                    /*label: "Tier 4 - " + tierLabels.length >= 4 ? "$" + tierLabels[3] + "/Kwh" : "N/A",*/
+                    fillColor : "rgba(251,199,168,.5)",
+                    strokeColor : "#fbc7a8",
+                    pointColor: "rgba(255,255,255,0)",
+                    pointStrokeColor: "rgba(255,255,255,0)",
+                    pointHighlightFill: "rgba(255,255,255,0)",
+                    pointHighlightStroke: "rgba(255,255,255,0)",
+                    fillToZero: true
+                },
+                {
+                    /*label: "Tier 3 - " + tierLabels.length >= 3 ? "$" + tierLabels[2] + "/Kwh" : "N/A",*/
+                    fillColor : "rgba(248,163,119,.5)",
+                    strokeColor : "#f8a377",
+                    pointColor: "rgba(255,255,255,0)",
+                    pointStrokeColor: "rgba(255,255,255,0)",
+                    pointHighlightFill: "rgba(255,255,255,0)",
+                    pointHighlightStroke: "rgba(255,255,255,0)",
+                    fillToZero: true
+                },
+                {
+                    /*label: "Tier 2 - " + tierLabels.length >= 2 ? "$" + tierLabels[1] + "/Kwh" : "N/A",*/
+                    fillColor : "rgba(244,130,76,.5)",
+                    strokeColor : "#f4824c",
+                    pointColor: "rgba(255,255,255,0)",
+                    pointStrokeColor: "rgba(255,255,255,0)",
+                    pointHighlightFill: "rgba(255,255,255,0)",
+                    pointHighlightStroke: "rgba(255,255,255,0)",
+                    fillToZero: true
+                },
+                {
+                    /*label: "Tier 1 - " + tierLabels.length >= 1 ? "$" + tierLabels[0] + "/Kwh" : "N/A",*/
+                    fillColor : "rgba(228,82,6,.5)",
+                    strokeColor : "#e45206",
+                    pointColor: "rgba(255,255,255,0)",
+                    pointStrokeColor: "rgba(255,255,255,0)",
+                    pointHighlightFill: "rgba(255,255,255,0)",
+                    pointHighlightStroke: "rgba(255,255,255,0)",
+                    fillToZero: true
+                },
+                {
+                    /*label: "Fixed Charges",*/
+                    fillColor : "rgba(102,102,102,.7)",
+                    strokeColor : "#666666",
+                    pointColor: "rgba(255,255,255,0)",
+                    pointStrokeColor: "rgba(255,255,255,0)",
+                    pointHighlightFill: "rgba(255,255,255,0)",
+                    pointHighlightStroke: "rgba(255,255,255,0)",
+                    fillToZero: true
+                }]
+            }
+        };
+        
+        chartSettings.chartName = chartName;
+        chartSettings.chartData.datasets[0].data = tierFive;
+        chartSettings.chartData.datasets[1].data = tierFour;
+        chartSettings.chartData.datasets[2].data = tierThree;
+        chartSettings.chartData.datasets[3].data = tierTwo;
+        chartSettings.chartData.datasets[4].data = tierOne;
+        chartSettings.chartData.datasets[5].data = fixedCharges;
+        if (tierFive == null){
+            chartSettings.chartData.datasets.shift();
+            if (tierFour == null)
+                chartSettings.chartData.datasets.shift();
+                if (tierThree == null)
+                    chartSettings.chartData.datasets.shift();
+                    if (tierTwo == null)
+                        chartSettings.chartData.datasets.shift();
+                        if (tierOne == null)
+                            chartSettings.chartData.datasets.shift();
+        }
+        var imgDataUrl = createChart(chartSettings);
+        
+        attachChart(imgDataUrl, chartSettings.chartName);
+    }
+
+    function generateComparativeRatesChart(chartName, nonsolarRate, opt4Rate, opt3Rate, opt2Rate, opt1Rate, yearsAxis, financeLabels){
+        totalCharts++;
+    
+        var chartSettings =  {
+            chartType: "line",
+            chartWidth:425,
+            chartHeight:300,
+            chartOptions: {
+                scaleShowGridLines : false,
+                scaleShowHorizontalLines: false,
+                scaleShowVerticalLines: false,
+                datasetStrokeWidth : 2,
+                bezierCurve : false,
+                scaleLabel : "<%= '$' + Number(value).toFixed(2)%>",
+            },
+            chartData:{
+            labels : yearsAxis,
+            datasets : [
+                {
+                    /*label: financeLabels.length >= 5 ? financeLabels[4] : "",*/
+                    fillColor : "rgba(255,255,2555,0)",
+                    strokeColor : "#e45206",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "rgba(255,255,2555,0)",
+                    pointHighlightFill: "rgba(255,255,2555,0)",
+                    pointHighlightStroke: "rgba(255,255,2555,0)"
+                },
+                {
+                    /*label: financeLabels.length >= 4 ? financeLabels[3] : "",*/
+                    fillColor : "rgba(255,255,2555,0)",
+                    strokeColor : "#f4824c",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "rgba(255,255,2555,0)",
+                    pointHighlightFill: "rgba(255,255,2555,0)",
+                    pointHighlightStroke: "rgba(255,255,2555,0)"
+                },
+                {
+                    /*label: financeLabels.length >= 3 ? financeLabels[2] : "",*/
+                    fillColor : "rgba(255,255,2555,0)",
+                    strokeColor : "#f8a377",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "rgba(255,255,2555,0)",
+                    pointHighlightFill: "rgba(255,255,2555,0)",
+                    pointHighlightStroke: "rgba(255,255,2555,0)"
+                },
+                {
+                    /*label: financeLabels.length >= 2 ? financeLabels[1] : "",*/
+                    fillColor : "rgba(255,255,2555,0)",
+                    strokeColor : "#fbc7a8",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "rgba(255,255,2555,0)",
+                    pointHighlightFill: "rgba(255,255,2555,0)",
+                    pointHighlightStroke: "rgba(255,255,2555,0)"
+                },
+                {
+                    /*label: financeLabels[0],*/
+                    fillColor : "rgba(255,255,2555,0)",
+                    strokeColor : "#666666",
+                    pointColor: "rgba(255,255,2555,0)",
+                    pointStrokeColor: "rgba(255,255,2555,0)",
+                    pointHighlightFill: "rgba(255,255,2555,0)",
+                    pointHighlightStroke: "rgba(255,255,2555,0)"
+                }]
+            }
+        };
+        
+        chartSettings.chartName = chartName;
+        chartSettings.chartData.datasets[0].data = opt4Rate;
+        chartSettings.chartData.datasets[1].data = opt3Rate;
+        chartSettings.chartData.datasets[2].data = opt2Rate;
+        chartSettings.chartData.datasets[3].data = opt1Rate;
+        chartSettings.chartData.datasets[4].data = nonsolarRate;
+        if (opt4Rate == null){
+            chartSettings.chartData.datasets.shift();
+            if (opt3Rate == null)
+                chartSettings.chartData.datasets.shift();
+            if (opt2Rate == null)
+                chartSettings.chartData.datasets.shift();
+            if (opt1Rate == null)
+                chartSettings.chartData.datasets.shift();
+        }
+        var imgDataUrl = createChart(chartSettings);
+        
+        attachChart(imgDataUrl, chartSettings.chartName);
+    }
+    
+    function createChart(chartObj) {
+    
+        var newChart;
+        var chartType = chartObj.chartType;
+        var chartData = chartObj.chartData;
+        var chartOptions = chartObj.chartOptions;
+        var chartName= chartObj.chartName;
+        
+        var canvasContainer = document.getElementById("canvasContainer");
+        var newCanvas = document.createElement("canvas");
+        newCanvas.id = chartName+"Canvas";
+        newCanvas.width  = chartObj.chartWidth;
+        newCanvas.height = chartObj.chartHeight;
+        canvasContainer.appendChild(newCanvas);
+        
+        var newChartCtx = document.getElementById(newCanvas.id).getContext("2d");
+        
+        if(chartType=="line"){
+            newChart = new Chart(newChartCtx).Line(chartData, chartOptions);
+        } 
+        else if(chartType=="overlay"){
+            newChart = new Chart(newChartCtx).Overlay(chartData, chartOptions);
+        }
+        
+        var imgDataURL = newChart.toBase64Image();
+        
+        return imgDataURL;
+    }
+    
+    function attachChart(chartImgDataUrl, chartName) {
+    
+        SystemDesignQuoteConfigExtension.insertAttachment(chartImgDataUrl, chartName+".png", parentID, function(result, event){         
+            console.log("Insert attachment result is " + result);
+            totalChartsCompleted++;
+            if(totalChartsCompleted == totalCharts){
+                window.location.href = '/apex/PreviewProposal?id=' + parentID;  
+            }
+        });
+    }
+
+    function jsprimarycontact(primaryCon){
+        document.getElementById('{!$Component.frm.primaryContact}').value = primaryCon.value;
+    }
+
+</script>
+
+<div id="canvasContainer"></div>
+
+<apex:includeScript value="{!URLFOR($Resource.SalesProposalRedesign_Resources, '/js/Chart-customized.min.js')}"/>
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"  />    
+
+<apex:pageBlock id="messages" rendered="{!AND(isSDQInsert,NOT(System_Design_Quote__c.Current__c))}"> 
+    <apex:pageMessages id="showmsg" />
+</apex:pageBlock>
+
+<apex:form id="frm">
+    <apex:inputHidden id="sdqid" value="{!System_Design_Quote__c.Id}" />
+    <apex:inputHidden id="sdid" value="{!System_Design_Quote__c.System_Design__c}" />
+    <apex:inputHidden id="utilserviceid" value="{!utilityService.ID}" />
+    <apex:inputHidden value="{!primaryContactId}" id="primaryContact" />
+    <apex:actionStatus id="processingStatus"  onStart="ShowLoading();" onstop="HideLoading();" />
+    <div id="blockbckanim" style="display:none">
+    <img id="apimgld" style="" src="/img/loading32.gif" />
+    </div>
+    
+
+    <apex:sectionHeader title="System Design Quote Configuration" subtitle="{!if(isSDqInsert, 'New System Design Quote', System_Design_Quote__c.Name)}" />
+
+    <apex:actionFunction name="showPageMessage" action="{!showPageMessage}" rerender="messages,footermessages">
+      <apex:param name="level" assignTo="{!level}" value="" />
+      <apex:param name="message" assignTo="{!message}" value="" />
+    </apex:actionFunction>
+
+    <apex:pageBlock title="System Design Quote Create" rendered="{!isSDQInsert}">     
+
+        <apex:pageBlockButtons >            
+            <!-- Sandbox test: https://c.cs14.visual.force.com/apex/SystemDesignEdit?id=a0Uc0000001gwm6 -->
+            <apex:commandButton action="{!saveAndConfig}" value="Save and Configure" onclick="ShowLoading();"/><!-- prevent double-click, and can't rerender whole frm because using richtext -->
+            <!--<apex:commandButton action="{!saveAndNext}" value="Save & Assign Panels" onclick="ShowLoading();"/>       -->  
+            <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
+        </apex:pageBlockButtons>
+
+        <apex:pageBlockSection title="Quote Creation" columns="2">   
+
+            <apex:outputField label="System Design" value="{!System_Design_Quote__c.System_Design__c}" />    
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Current Quote"/>
+                <apex:outputLink value="/{!currentQuote.Id}" > {!currentQuote.Name} </apex:outputLink>     
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+    </apex:pageBlock>
+
+    <apex:pageBlock title="System Design Quote Create" rendered="{!AND(NOT(isSDQInsert),NOT(System_Design_Quote__c.Current__c))}">     
+
+        <apex:pageBlockButtons location="top">            
+            <!-- Sandbox test: https://c.cs14.visual.force.com/apex/SystemDesignEdit?id=a0Uc0000001gwm6 -->
+            <apex:commandButton action="{!makeCurrent}" value="Make Current" onclick="ShowLoading();" rendered="{!isMakeCurrentValid}"/><!-- prevent double-click, and can't rerender whole frm because using richtext -->
+            <apex:commandButton action="{!makeNewQuote}" value="Create New Quote" onclick="ShowLoading();"/>
+            <!--<apex:commandButton action="{!saveAndNext}" value="Save & Assign Panels" onclick="ShowLoading();"/>       -->  
+            <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
+        </apex:pageBlockButtons>
+
+        <apex:pageBlockSection columns="1">   
+
+            <apex:outputText value="This Quote is not Current. Would you like to make it Current? Or You can create a new Quote." />    
+            <apex:outputText value="Note: Making a quote current can alter a System Design" />
+            
+            
+        </apex:pageBlockSection>
+
+    </apex:pageBlock>
+
+    <apex:pageBlock title="System Design Quote Edit" rendered="{!AND(NOT(isSDQInsert),System_Design_Quote__c.Current__c)}" id="sdqedit">     
+
+        
+        <apex:pageBlockButtons >            
+            <!-- Sandbox test: https://c.cs14.visual.force.com/apex/SystemDesignEdit?id=a0Uc0000001gwm6 
+            <apex:commandButton action="{!save}" value="Save" onclick="ShowLoading();"/><!-- prevent double-click, and can't rerender whole frm because using richtext -->
+            <apex:commandButton action="{!saveAndReturnPrice}" value="Save & Return Pricing" onclick="ShowLoading();"/>         
+            <apex:commandButton action="{!Cancel}" value="Cancel" immediate="true"/>
+            <apex:commandButton value="Generate & Preview Proposal" reRender="none" onclick="ShowLoading(); prepareProposal();" />           
+
+        </apex:pageBlockButtons>
+
+        <!-- Customer Information Section -->
+        
+        <apex:pageBlockSection title="Customer Information" columns="1">
+            <apex:commandButton value="Edit Customer Info" action="{!showCustPopup}" reRender="editCustomerInfopanel"/>
+            <apex:pageBlockTable value="{!contactInfos}" var="cInfo">
+                <apex:column headerValue="Primary">
+                    <apex:inputCheckbox value="{!cInfo.isPrimary}" disabled="true" />                 
+                </apex:column>
+                <apex:column value="{!cInfo.con.Name}"></apex:column>               
+                <apex:column headerValue="Role" >
+                    <apex:outputText value="{!cInfo.Role}" />
+                </apex:column>
+                <apex:column headerValue="Phone" >
+                    <apex:outputField value="{!cInfo.con.Phone}"/>
+                </apex:column>
+                <apex:column headerValue="Email" >
+                    <apex:outputField value="{!cInfo.con.Email}"/>
+                </apex:column>                            
+            </apex:pageBlockTable>
+            <apex:pageBlockSection columns="2" >
+                <apex:pageBlockSection title="Mailing Address" columns="1">
+                    <apex:outputPanel >
+                        <apex:outputText value="{!contactInfos[0].con.MailingStreet}" /><br/>
+                        <apex:outputText value="{!contactInfos[0].con.MailingCity}, {!contactInfos[0].con.MailingState} {!contactInfos[0].con.MailingPostalCode}" /> 
+                    </apex:outputPanel>          
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Installation Address" columns="1" >
+                    <apex:outputPanel >
+                        <apex:outputText value="{!propertyInfo.Name + propertyInfo.Property_Address_2__c}" /><br/>
+                        <apex:outputText value="{!propertyInfo.Property_City__c}, {!propertyInfo.Property_State__c} {!propertyInfo.Property_ZIP__c}" />
+                    </apex:outputPanel> 
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>            
+            <apex:pageBlockSection title="Customer Tax Information" columns="2" >            
+                <apex:inputField label="Previously Received State Rebate?" value="{!System_Design_Quote__c.Previously_Received_State_Rebate__c}" id="test"/>            
+                <apex:inputField label="Previously Received State Tax Credit?" value="{!System_Design_Quote__c.Previously_Received_State_Tax_Credit__c}"/>
+                <apex:inputField label="Previously Received County Tax Credit?" value="{!System_Design_Quote__c.Previously_Received_County_Tax_Credit__c}"/>
+                <apex:inputField label="Previously Received Utility Rebate?" value="{!System_Design_Quote__c.Previously_Received_Utility_Rebate__c}"/>
+                <apex:inputField label="Customer Tax Rate" value="{!System_Design_Quote__c.Income_Corporate_Tax_Rate__c}"/>
+                <apex:inputField label="Annual Property Tax Bill" value="{!System_Design_Quote__c.Annual_Property_Tax_Bill__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlockSection>
+        
+        <apex:outputPanel id="editCustomerInfopanel">
+                <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayCustPopUp}" />
+                <apex:outputPanel id="custpopUp"  styleClass="custPopup3" layout="block" rendered="{!displayCustPopUp}">
+                    <apex:pageBlockSection title="Customer Information" columns="1">
+                        <apex:pageBlockTable id="customertbl" value="{!contactInfos}" var="customerInfo">
+                            <apex:column headerValue="Primary">
+                                <apex:outputPanel rendered="{!customerInfo.isPrimary}" layout="none">
+                                    <input type="radio" name="roleRadio" value="{!customerInfo.con.Id}" checked="checked" onclick="jsprimarycontact(this);"/>   
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(customerInfo.isPrimary)}" layout="none">
+                                    <input type="radio" name="roleRadio" value="{!customerInfo.con.Id}" onclick="jsprimarycontact(this);"/> 
+                                </apex:outputPanel>                                
+                            </apex:column>                            
+                            <apex:column headerValue="First Name" >
+                                <apex:inputField value="{!customerInfo.con.FirstName}" style="width: 120px"/>
+                            </apex:column>
+                            <apex:column headerValue="Last Name" >
+                                <apex:inputText value="{!customerInfo.con.LastName}" required="true" style="width: 120px"/>
+                            </apex:column>                     
+                            <apex:column headerValue="Role" >
+                                <apex:selectList value="{!customerInfo.Role}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!roles}"/>
+                                </apex:selectList>
+                            </apex:column>
+                            <apex:column headerValue="Phone" >
+                                <apex:InputField value="{!customerInfo.con.Phone}" style="width: 140px"/>
+                            </apex:column>
+                            <apex:column headerValue="Email" >
+                                <apex:InputField value="{!customerInfo.con.Email}"/>
+                            </apex:column>                            
+                        </apex:pageBlockTable>
+                        <apex:outputPanel >
+                            <apex:commandButton value="Create New Contact" action="{!addNewContact}" rendered="{!contactInfos.size > 0}" reRender="customertbl"/>
+                            <apex:commandButton value="Reset Changes" action="{!resetContactInfo}" reRender="customertbl" style="margin-left:5px" immediate="true"/>
+                        </apex:outputPanel>
+                        <apex:pageBlockSection title="Mailing Address" columns="1">                            
+                            <apex:inputField value="{!contactInfos[0].con.MailingStreet}" />
+                            <apex:inputField value="{!contactInfos[0].con.MailingCity}"/>
+                            <apex:inputField value="{!contactInfos[0].con.MailingState}"/>
+                            <apex:inputField value="{!contactInfos[0].con.MailingPostalCode}"/>                                      
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection >
+                            <apex:pageBlockSectionItem dataStyle="text-align:right;">
+                                <apex:commandButton value="Save" action="{!saveCustomerInfo}"/>
+                            </apex:pageBlockSectionItem>
+                            <apex:commandButton value="Cancel" action="{!closeCustPopup}" reRender="editCustomerInfopanel" immediate="true"/>
+                        </apex:pageBlockSection>
+                    </apex:pageBlockSection>
+                    
+                </apex:outputPanel>
+            
+        </apex:outputPanel>
+        
+        <!-- System Design Section -->
+        <apex:pageBlockSection id="sd" title="System Design" columns="1">
+           
+            <apex:commandButton value="Edit" action="{!showPopup2}" rerender="editsdpanel" />
+            <apex:pageBlockSection columns="2">
+                <apex:outputText label="Total System Size (kW):" value="{!systemDesignInfo.Total_System_Size_kW__c}"/>
+                <apex:outputText label="Overall TSRF:" value="{!systemDesignInfo.Overall_TSRF__c}"/>
+                <apex:outputText label="Total Panel Count:" value="{!systemDesignInfo.Panel_Count__c}"/>
+                <apex:outputText label="Panel Make and Model:" value="{!systemDesignInfo.System_Panel__r.Make__c + ' ' + systemDesignInfo.System_Panel__r.Model__c}"/>
+                <apex:outputText label="Astrum Site Quality:" value="{!systemDesignInfo.Overall_Site_Quality__c}"/>
+                <apex:outputText label="Inverter Make and Model:" value="{!systemDesignInfo.System_Inverter__r.Make__c + ' ' + systemDesignInfo.System_Inverter__r.Model__c}"/>
+                 <apex:outputText label="Projected Annual Output:" value="{!systemDesignInfo.Total_Projected_Annual_Output_kWh_y__c}"/>
+                
+                <apex:outputText label="CPRE Site Quality:" value="{!systemDesignInfo.Sunnova_Overall_Site_Quality__c}"/>
+                <apex:outputText label="Internal Salesforce notes:" value="{!systemDesignInfo.Notes__c}"/>
+               
+                <apex:pageBlockSectionItem rendered="{!systemDesignInfo.Validation_Errors__c != ''}">
+                    <apex:outputLabel value="Validation Errors"/>
+                    <apex:outputPanel >
+                        <apex:outputText value="{!systemDesignInfo.Validation_Errors__c}"/> 
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="System Make-Up" columns="1">
+                <apex:pageBlockTable value="{!sysDesignArrays}" var="arr">
+                    <apex:column headerValue="Number of Panels" value="{!arr.sysDesignArray.Panel_Count__c}"/>
+                    <apex:column headerValue="Tilt" value="{!arr.sysDesignArray.Original_Surface_Tilt__c}"/>
+                    <apex:column headerValue="Azimuth" value="{!arr.sysDesignArray.Original_Surface_Azimuth__c}"/>
+                    <apex:column headerValue="Mounting Type" value="{!arr.Mounting_Type}"/>
+                    <apex:column headerValue="Trenching" value="{!arr.sysDesignArray.Total_Trenching_Length_ft__c}"/>
+                    <apex:column headerValue="Wire Material" value="{!arr.Wire_Material}"/>
+                </apex:pageBlockTable>
+                <apex:outputLabel value="Special Parts" />
+                <apex:pageBlockTable value="{!specialParts}" var="part" rendered="{!specialParts.size > 0}" >
+                    <apex:column headerValue="Part Name" value="{!part.System_Design_Product__r.Description__c}"/>
+                    <apex:column headerValue="Quantity" value="{!part.Quantity__c}" />
+                </apex:pageBlockTable>                
+            </apex:pageBlockSection>
+        </apex:pageBlockSection>
+        <apex:outputPanel id="editsdpanel">
+                <apex:outputPanel styleClass="popupBackground2" layout="block" rendered="{!displayPopUp2}" />
+                <apex:outputPanel id="sdpopUp"  styleClass="custPopup2" layout="block" rendered="{!displayPopUp2}">
+                    <apex:iframe id="sdedit" scrolling="true"  height="100%" width="100%" src="{!'/apex/SystemDesignArraysEdit?id=' + System_Design_Quote__c.System_Design__c  + '&sdqid='+ System_Design_Quote__c.Id}" ></apex:iframe>                       
+                </apex:outputPanel>                 
+        </apex:outputPanel>
+        <apex:actionFunction name="jsclosePopup" action="{!closePopup}" rerender="editUtilityPanel"/>
+        <apex:actionFunction name="jsclosePopup2" action="{!closePopup2}" rerender="editsdpanel"/>
+
+        <apex:outputPanel id="editUtilityPanel">
+            <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+                <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                    <apex:pageBlockSection title="Utility Service and Usage" columns="1" id="UtilityServiceE">
+                        <apex:pageBlockSection title="Utility Rate Code" columns="1">
+                            <apex:actionFunction name="changeAllElec" action="{!offerChanged}" rerender="rateCodesPanel">
+                                <apex:param name="allel" value="" assignTo="{!selectedAllElectric}"/>
+                            </apex:actionFunction>
+                            <apex:inputField label="Current Utility Service" value="{!utilityService.Utility_Company_Master__c}" >
+                                <apex:actionSupport event="onchange" action="{!compMasterChanged}" reRender="rateCodesPanel,allalec,utilityTerritoriesPanel"/>
+                            </apex:inputField>                
+                            
+                            <apex:outputPanel id="utilityTerritoriesPanel">
+                                <apex:pageBlockSection columns="1">
+                            <apex:selectList label="Utility Territory"  value="{!selectedTerritory}"  size="1" rendered="{!AND(territorries != null,territorries.size > 0)}" onchange="changeTerritory(this.value);">
+                                <apex:selectOption itemValue="" itemLabel="--None--" ></apex:selectOption>
+                                <apex:selectOptions value="{!territorries}"/>
+                            </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+
+                            <apex:selectList id="allalec" label="All Electric"  value="{!selectedAllElectric}"  size="1"  onchange="changeAllElec(this.value);">
+                                <apex:selectOptions value="{!allElectrics}" />
+                            </apex:selectList>              
+
+                            <apex:outputPanel id="rateCodesPanel">
+                                <apex:pageBlockSection columns="1">
+                                
+                                    <apex:selectList label="Current Rate Code"  value="{!utilityService.Utility_Rate_Code_Before_Solar__c}"  size="1">
+                                        <apex:selectOptions value="{!rateCodes}"/>
+                                    </apex:selectList>
+                                  
+                                    <apex:selectList label="Future Rate Code"  value="{!utilityService.Utility_Rate_Code_After_Solar__c}"  size="1">
+                                        <apex:selectOptions value="{!rateCodes}"/>
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                            
+                            <apex:inputField label="Electric Vehicle" value="{!utilityService.Electric_Vehicle__c}" />
+                            <apex:inputField label="Usage Profile" value="{!utilityService.Consumption_Profile__c}" />
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="" />
+                                <apex:actionStatus id="openCustomRateCodeStatus">
+                                    <apex:facet name="start">
+                                        <apex:commandButton value="Set Custom Utility Rate" disabled="true" status="openCustomRateCodeStatus" />
+                                    </apex:facet>
+                                    <apex:facet name="stop">
+                                        <apex:commandButton value="Set Custom Utility Rate" action="{!showPopup3}" rerender="customRatePanel, editUtilityPanel" disabled="{!utilityService.Before_First_Year_Avg_Price__c == null}" status="openCustomRateCodeStatus" />
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:pageBlockSectionItem>
+
+                            <apex:actionFunction name="changeTerritory" action="{!offerChanged}" rerender="rateCodesPanel">
+                                <apex:param name="terr" value="" assignTo="{!selectedTerritory}"/>
+                            </apex:actionFunction>
+                            
+                        </apex:pageBlockSection>
+
+                        <apex:pageBlockSection title="Current Usage" columns="1">
+                            <apex:pageBlockSection columns="1">
+                            <!--    <apex:inputField label="Current Usage Type" value="{!utilityService.Current_Usage_Type__c}">
+                                    <apex:actionSupport event="onchange" reRender="monthlyusagepnl,annualusagepnl"/>
+                                </apex:inputField> -->
+                                <apex:selectList label="Current Usage Type" size="1" value="{!utilityService.Current_Usage_Type__c}" >
+                                    <apex:selectOptions value="{!UsageTypes}"/>
+                                    <apex:actionSupport event="onchange" reRender="monthlyusagepnl,annualusagepnl"/>
+                                </apex:selectList>
+                            </apex:pageBlockSection>
+                            <apex:outputPanel id="monthlyusagepnl" >
+                                <apex:outputPanel rendered="{!utilityService.Current_Usage_Type__c == 'Monthly'}">
+                                    <apex:pageBlockSection columns="2">
+                                        <apex:inputField label="Jan(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Jan__c}" />       
+                                        <apex:inputField label="Feb(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Feb__c}" />       
+                                        <apex:inputField label="Mar(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Mar__c}" />       
+                                        <apex:inputField label="Apr(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Apr__c}" />       
+                                        <apex:inputField label="May(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_May__c}" />       
+                                        <apex:inputField label="Jun(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Jun__c}" />       
+                                        <apex:inputField label="Jul(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Jul__c}" />       
+                                        <apex:inputField label="Aug(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Aug__c}" />       
+                                        <apex:inputField label="Sep(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Sep__c}" />       
+                                        <apex:inputField label="Oct(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Oct__c}" />       
+                                        <apex:inputField label="Nov(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Nov__c}" />       
+                                        <apex:inputField label="Dec(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Dec__c}" /> 
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="annualusagepnl">
+                                <apex:outputPanel rendered="{!utilityService.Current_Usage_Type__c == 'Annual'}">
+                                    <apex:pageBlockSection columns="1">
+                                        <apex:inputField label="Annual Electricity Consumption(kWH)" value="{!utilityService.Annual_Electricity_Consumption_kWh__c}" />
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection columns="2">
+                            <apex:pageBlockSectionItem dataStyle="text-align:right;">
+                            <apex:commandButton value="Cancel" action="{!closePopup}" rerender="editUtilityPanel"/>
+                            </apex:pageBlockSectionItem>
+                            <!-- 05/29/2015 PB JIRA-158 Added RecallSQ functionality on saving Utility Service -->
+                            <!--    <apex:commandButton value="Save" action="{!saveUtilityService}" /> -->
+                            <apex:commandButton value="Save" onclick="ShowLoading();saveUtility_JS();return false;"  />                            
+                        </apex:pageBlockSection>
+                        <!-- 05/29/2015 PB JIRA-158 Added RecallSQ functionality on saving Utility Service, display status to user since RecallSQ webservice call takes few seconds to return  -->
+                        <apex:outputPanel id="statuses" styleClass="statuslabel">
+                            <apex:actionStatus id="Status1" startText="...Saving Utility Service..." onstart="ShowLoading();" />
+                            <apex:actionStatus id="Status2" startText="...Recalculating Site Quality..." onstart="ShowLoading();"/>
+                            <apex:actionStatus id="Status3" startText="...Creating new Quote..."  />
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="customRatePanel">
+            <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp3}"/>
+                <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp3}">
+                    <apex:pageBlockSection title="Please Set Utility Rates" columns="3" id="setCustomRateSection" collapsible="false">
+                        
+                        <apex:pageBlockSection title="Current Rates ($/kWh)" columns="1" collapsible="false">
+                            <apex:outputText label="Tier 1" value="{!currentTier1Rate}" />
+                            <apex:outputText label="Tier 2" value="{!currentTier2Rate}" />
+                            <apex:outputText label="Tier 3" value="{!currentTier3Rate}" />
+                            <apex:outputText label="Tier 4" value="{!currentTier4Rate}" />
+                            <apex:outputText label="Tier 5" value="{!currentTier5Rate}" />
+                        </apex:pageBlockSection>
+                        
+                        <apex:pageBlockSection title="Tier Rate Caps" columns="1" collapsible="false">
+                            <apex:outputText label="Tier 1" value="{!tier1RateCap}" />
+                            <apex:outputText label="Tier 2" value="{!tier2RateCap}" />
+                            <apex:outputText label="Tier 3" value="{!tier3RateCap}" />
+                            <apex:outputText label="Tier 4" value="{!tier4RateCap}" />
+                            <apex:outputText label="Tier 5" value="{!tier5RateCap}" />
+                        </apex:pageBlockSection>
+                        
+                        <apex:pageBlockSection title="Custom Rates ($/kWh)" columns="1" collapsible="false">
+                            <apex:inputText label="Tier 1" value="{!customRates[0]}" />
+                            <apex:inputText label="Tier 2" value="{!customRates[1]}" />
+                            <apex:inputText label="Tier 3" value="{!customRates[2]}" />
+                            <apex:inputText label="Tier 4" value="{!customRates[3]}" />
+                            <apex:inputText label="Tier 5" value="{!customRates[4]}" />
+                        </apex:pageBlockSection>            
+                    </apex:pageBlockSection>
+
+                    <apex:pageBlockSection columns="1">
+                        <p>Please enter customer's 12 month average Tier Rates for all existing tiers.</p>
+                        <p>FIXED COSTS will be added monthly utility bills where applicable based on system defaults.  Please do not include customer's fixed costs when inserting custom rates</p>
+                    </apex:pageBlockSection>
+
+                    <apex:pageBlockSection columns="2">
+                        <apex:pageBlockSectionItem dataStyle="text-align:right;">
+                            <apex:actionStatus id="cancelCustomRateCodeStatus">
+                                <apex:facet name="start">
+                                    <apex:commandButton value="Cancel" disabled="true" status="cancelCustomRateCodeStatus"/>
+                                </apex:facet>
+                                <apex:facet name="stop">
+                                    <apex:commandButton value="Cancel" action="{!closePopup3}" rerender="customRatePanel" status="cancelCustomRateCodeStatus"/>
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:pageBlockSectionItem>
+                        <!--onclick="ShowLoading();saveUtility_JS();return false;"-->
+
+                        <apex:actionStatus id="applyCustomRateCodeStatus">
+                            <apex:facet name="start">
+                                <apex:commandButton value="Apply Changes" disabled="true" status="applyCustomRateCodeStatus"/>
+                            </apex:facet>
+                            <apex:facet name="stop">
+                                <apex:commandButton value="Apply Changes" action="{!createCustomRateCode}" oncomplete="calcSQ_JS()" rerender="customRateResultSection" status="applyCustomRateCodeStatus"/>
+                            </apex:facet>
+                        </apex:actionStatus>
+                    </apex:pageBlockSection>
+
+                    <apex:pageBlockSection columns="1" id="customRateResultSection">
+                        <apex:outputText style="font-weight:bold; size:110%; font-style:italic" value="{!customRateResultMsg}" escape="false"/>
+                    </apex:pageBlockSection>
+
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <apex:actionFunction action="{!saveUtility}" name="saveUtility_JS" oncomplete="HideLoading();calcSQ_JS();return true;"  reRender="statuses,messages,footermessages,UtilityPanel,editUtilityPanel" status="Status1" />
+        <apex:actionFunction action="{!calcSQ}" name="calcSQ_JS" reRender="statuses,messages,footermessages,editUtilityPanel" status="Status2"  oncomplete="HideLoading();"/>
+        
+        <apex:outputPanel id="UtilityPanel">
+            
+                <apex:pageBlockSection title="Utility Service and Usage" columns="1" id="UtilityService">   
+                    
+                    
+                    <apex:commandButton value="Edit" action="{!showPopup}" rerender="editUtilityPanel"/>
+                    
+
+                    <apex:pageBlockSection columns="2"> 
+                        <apex:pageBlockSection title="Utility Rate Code" columns="1">   
+
+                            <apex:outputField label="Current Utility Service" value="{!utilityService.Utility_Company_Master__c}" /> 
+                            <apex:outputField label="Utility Territory" value="{!utilityService.Service_Territory__c}" rendered="{!AND(territorries != null,territorries.size > 0)}" />  
+                            
+                            <apex:outputField label="Current Rate Code" value="{!utilityService.Utility_Rate_Code_Before_Solar__c}" />
+                            <apex:outputField label="Future Rate Code" value="{!utilityService.Utility_Rate_Code_After_Solar__c}" />
+                            
+                            <apex:outputField label="Electric Vehicle" value="{!utilityService.Electric_Vehicle__c}" />
+                            <apex:outputField label="Usage Profile" value="{!utilityService.Consumption_Profile__c}" />
+                            <apex:outputField label="Total Forecasted Consumption(kWH)" value="{!utilityService.Total_Forecasted_Consumption_kWh__c}" />
+                            <apex:inputField label="Utility Rate Escalator" value="{!System_Design_Quote__c.Utility_Annual_Increase__c}" />
+                            <apex:outputField label="Before Utility Rate" value="{!utilityService.Before_First_Year_Avg_Price__c}" />
+                            <apex:outputField label="Custom Utility Rate Applied" value="{!utilityService.Custom_Utility_Rate_Applied__c}" />
+
+                        </apex:pageBlockSection>
+
+                        <apex:pageBlockSection title="Current Usage" columns="2">   
+                            <apex:outputField label="Jan(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Jan__c}" />         
+                            <apex:outputField label="Feb(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Feb__c}" />         
+                            <apex:outputField label="Mar(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Mar__c}" />         
+                            <apex:outputField label="Apr(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Apr__c}" />         
+                            <apex:outputField label="May(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_May__c}" />         
+                            <apex:outputField label="Jun(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Jun__c}" />         
+                            <apex:outputField label="Jul(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Jul__c}" />         
+                            <apex:outputField label="Aug(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Aug__c}" />         
+                            <apex:outputField label="Sep(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Sep__c}" />         
+                            <apex:outputField label="Oct(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Oct__c}" />         
+                            <apex:outputField label="Nov(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Nov__c}" />         
+                            <apex:outputField label="Dec(kWH)" value="{!utilityService.Monthly_Electric_Consumption_KWH_Dec__c}" />         
+                        </apex:pageBlockSection>
+                    </apex:pageBlockSection>        
+                </apex:pageBlockSection>
+         </apex:outputPanel>
+        <!-- COMMUNITY PROGRAM -->
+        <apex:pageBlockSection title="Community Program" columns="2" rendered="{!System_Design_Quote__c.Community_Program_Offer__c != null}">
+            <apex:outputText label="Community Program Name:" value="{!System_Design_Quote__c.Community_Program_Offer__r.Account__r.Name}"/>
+            <apex:outputText label="Current Price Tier:" value="{!System_Design_Quote__c.Community_Program_Offer__r.Current_Tier__c}"/>
+            <apex:inputCheckbox disabled="true" label="Early Adopter Program applied" value="{!System_Design_Quote__c.Community_Program_Offer__r.Early_Adopter_Promotion_Available__c}"/>        
+        </apex:pageBlockSection>
+        <!-- CHANNEL PARTNER -->
+        <apex:pageBlockSection title="Channel Partner" columns="1" rendered="{!displayChannelPartner}">
+            <apex:inputCheckbox label="Channel Partner:" value="{!System_Design_Quote__c.Channel_Partner__c}"/>
+            <apex:inputField label="Channel Partner Lease Rate:" value="{!System_Design_Quote__c.Channel_Partner_Lease_Rate_kWh__c}"/>
+        </apex:pageBlockSection>
+        
+        <!-- SCENARIOS / OPTIONS -->
+        <apex:pageBlockSection title="Financing Products and Options" columns="2"  id="finProd">
+            <!-- S1 OPTIONS -->
+            <apex:pageBlockSection title="Option 1" columns="1" id="op1">
+                <apex:outputPanel rendered="{!System_Design_Quote__c.Scenario_1_Error_Log__c != ''}">
+                    <apex:outputLabel styleClass="errorlabel" style="padding-right:16px;" value="*Pricing Error" rendered="{!System_Design_Quote__c.Scenario_1_Error_Log__c != ''}" />
+                    <apex:outputField label="Pricing Error" value="{!System_Design_Quote__c.Scenario_1_Error_Log__c}" rendered="{!System_Design_Quote__c.Scenario_1_Error_Log__c != ''}" style="background-color:'yellow'}" />            
+                </apex:outputPanel>
+                <apex:outputPanel id="inc1">
+                    <apex:outputLabel styleClass="subheading" style="padding-right:10px" value="Include in Proposal" rendered="{!OR(System_Design_Quote__c.Scenario_1_Error_Log__c == null || System_Design_Quote__c.Scenario_1_Error_Log__c == '')}"/>
+                    <apex:inputCheckbox id="scenario1Include" value="{!includeScenario1}" rendered="{!OR(System_Design_Quote__c.Scenario_1_Error_Log__c == null || System_Design_Quote__c.Scenario_1_Error_Log__c == '')}"/>                    
+                </apex:outputPanel>
+                <apex:pageBlockSectionItem >                        
+                    <apex:outputLabel value="Financing Type" />                 
+                    <apex:actionRegion >
+                        <apex:selectList size="1" id="finType" value="{!System_Design_Quote__c.Scenario_1_Financing_Type__c}">
+                            <apex:selectOptions value="{!financingTypeOptions}"/>
+                            <apex:actionSupport event="onchange" rerender="finTypeOpPnl_s1,srecOfferToApplyPnl_s1,srecoffersPnl_s1,promoOffer_s1" action="{!resetFinanceOptions1}" status="status"/>
+                        </apex:selectList>
+                    </apex:actionRegion>                    
+                </apex:pageBlockSectionItem>
+                <!-- S1 PURCHASE -->
+                <apex:outputPanel id="finTypeOpPnl_s1" layout="none" >
+                    <apex:outputPanel id="purchaseOpPnl_s1" rendered="{!System_Design_Quote__c.Scenario_1_Financing_Type__c == 'Purchase'}">
+                        <apex:pageBlockSection columns="2" >
+                            <apex:selectList label="Term Loan" size="1" value="{!System_Design_Quote__c.Scenario_1_Term_Loan__c}" >
+                                <apex:selectOptions value="{!termLoans}"/>
+                                <apex:actionSupport event="onchange" reRender="purchaseOpPnl_s1,sacloanadjsPnl_s1,srecOfferToApplyPnl_s1" action="{!resetSACOptions1}"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:selectList id="sacloans_s1" label="SAC Loan" size="1" value="{!System_Design_Quote__c.Scenario_1_SAC_Loan__c}">
+                                <apex:selectOptions value="{!sacLoans1}"/>
+                                <apex:actionSupport event="onchange"  reRender="sacloanadjsPnl_s1"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText> 
+                            <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_1_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_1_Term_Loan__c!= null}"/>
+                            <apex:outputText value=""></apex:outputText> 
+                            <apex:inputCheckbox value="{!System_Design_Quote__c.Scenario_1_Refuse_ACH__c}" rendered="{!scenario1ACHOption}"/>
+                            <apex:outputText value="" rendered="{!scenario1ACHOption}"></apex:outputText>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <!-- S1 LEASE -->
+                    <apex:outputPanel id="leaseOpPnl_s1" rendered="{!OR(System_Design_Quote__c.Scenario_1_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_1_Financing_Type__c == 'PPA')}">
+                        <apex:pageBlockSection columns="2">
+                            <apex:selectList id="leaseFund_s1" label="Lease Fund"  value="{!System_Design_Quote__c.Scenario_1_Lease_Fund__c}" size="1" >
+                                <apex:selectOptions value="{!Funds1}"/>
+                                <apex:actionSupport event="onchange" reRender="fundsOpPnl_s1, leaseEscalatorPnl_s1, promoOffer_s1" action="{!resetLeaseOp1}" /> 
+                            </apex:selectList>   
+                            <apex:selectList label="Options" id="fundsOpPnl_s1"  value="{!System_Design_Quote__c.Scenario_1_Lease_Option__c}"  size="1" >
+                                <apex:selectOptions value="{!leaseOptions1}"/>
+                                <apex:actionSupport event="onchange" reRender="leaseEscalatorPnl_s1" />                                        
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                        <apex:outputPanel id="leaseEscalatorPnl_s1" layout="none">
+                            <apex:outputPanel rendered="{!AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_1_Lease_Option__c)), OR(CONTAINS(System_Design_Quote__c.Scenario_1_Lease_Option__c,'Month'), System_Design_Quote__c.Scenario_1_Lease_Option__c == 'Portfolio PPA'))}">
+                                <apex:pageBlockSection >
+                                    <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_1_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_1_Lease_Option__c != 'Portfolio PPA'}"/>                       
+                                    <apex:inputField label="Lease Rate Escalator" value="{!System_Design_Quote__c.Scenario_1_Lease_Escalator__c}" />
+                                    <apex:selectList label="Portfolio Rate Tier" value="{!System_Design_Quote__c.Scenario_1_Portfolio_Tier_Selected__c}" size="1" rendered="{!System_Design_Quote__c.Scenario_1_Lease_Option__c == 'Portfolio PPA'}">
+                                        <apex:selectOptions value="{!portfolioRateTiers1}" />
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_1_Financing_Type__c == 'PPA', System_Design_Quote__c.Scenario_1_Lease_Option__c == 'Fixed-Rate PPA')}">
+                                <apex:pageBlockSection >
+                                    <apex:selectList label="PPA Rate Escalator" value="{!System_Design_Quote__c.Scenario_1_Lease_Escalator__c}" size="1">
+                                        <apex:selectOptions value="{!escalatorPPA1}" />
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                        </apex:outputPanel>                         
+                    </apex:outputPanel>
+                    <!--PPA -->
+                </apex:outputPanel>
+                                
+                <!-- S1 PROMOTIONAL OFFER TO APPLY -->
+                <apex:outputLabel styleClass="subheading" value="Promotional Offer to Apply" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_1_Lease_Option__c != 'Portfolio PPA')}" />
+                <apex:actionRegion rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_1_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:outputPanel id="promoOffer_s1" style="white-space:nowrap;" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_1_Lease_Option__c != 'Portfolio PPA')}" >
+                    <apex:pageBlockSectionItem >                                    
+                        <apex:outputLabel value="Offer Type" styleClass="custlabel1" for="offerTypes1" />                                         
+                        <!--<apex:inputField id="offerTypes1" styleClass="" value="{!System_Design_Quote__c.Scenario_1_Set_Standard_Adjustment_Type__c}"  onchange="changeOffer1(this.value);"/>-->
+                            <apex:selectList id="offerTypes1" value="{!System_Design_Quote__c.Scenario_1_Set_Standard_Adjustment_Type__c}" size="1" onchange="changeOffer1(this.value);">
+                                <apex:selectOption itemLabel="--None--" itemValue="" />
+                                <apex:selectOption itemLabel="Dollar per Watt" itemValue="Dollar per Watt" />
+                            </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="offerT1">
+                        <apex:outputPanel id="offerType1" rendered="{!(System_Design_Quote__c.Scenario_1_Set_Standard_Adjustment_Type__c != '')}">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="offerTypeOps1" value="{!System_Design_Quote__c.Scenario_1_Set_Standard_Adjustment_Type__c}" styleClass="custlabel2" />
+                                <apex:selectList id="offerTypeOps1" label="{!System_Design_Quote__c.Scenario_1_Set_Standard_Adjustment_Type__c}"  value="{!System_Design_Quote__c.Scenario_1_Set_Standard_Adjustment_Amoun__c}"  size="1">
+                                    <apex:selectOptions value="{!standardPromotions1}"/>
+                                </apex:selectList>
+                            </apex:pageBlockSectionItem>        
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                        </apex:outputPanel>
+                </apex:actionRegion>
+                <apex:actionFunction name="changeOffer1" action="{!offerChanged}" rerender="offerT1" rendered="{!System_Design_Quote__c.Community_Program_Offer__c == null}">
+                    <apex:param name="offer" value="" assignTo="{!selectedStdPromotion1}"/>
+                </apex:actionFunction>  
+
+                <!-- S1 SREC OFFER TO APPLY -->
+                <apex:outputPanel id="srecOfferToApplyPnl_s1" layout="none">
+                    <!--cpq-460<apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_1_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_1_Financing_Type__c != 'PPA', availableSRECOffers1.size > 0)}" >-->
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_1_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_1_Financing_Type__c != 'PPA', SRECContOffers1.size > 0)}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offer to Apply" />                        
+                        <apex:pageBlockSection columns="1">
+                            <apex:outputText value="" title="space"/>
+                            <!--cpq-460<apex:selectList label="SREC Offer"  value="{!System_Design_Quote__c.Scenario_1_Available_SREC_Contract_Offer__c}"  size="1">-->
+                            <apex:selectList label="SREC Offer"  value="{!selectedSRECContOffer1}"  size="1">
+                                <!--cpq-460<apex:selectOptions value="{!availableSRECOffers1}"/>-->
+                                <apex:selectOptions value="{!SRECContOffers1}"/>
+                                <apex:selectOption itemValue="" itemLabel="--None--" ></apex:selectOption>
+                        </apex:selectList>
+                        </apex:pageBlockSection>                        
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <!-- S1 PROMOTIONS -->
+                <apex:outputLabel styleClass="subheading" value="Promotions" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!StandardPriceAdjustments1}" var="spa"  title="Promotions">                         
+                        <apex:column >
+                            <apex:outputPanel rendered="{!OR(AND(spa.Promotion__r.Required_Promotion__c == true, spa.Type__c == 'Program'), spa.Type__c == 'Standard')}">
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(spa.Promotion__r.Required_Promotion__c == false, spa.Type__c == 'Program')}">                
+                                <apex:inputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Promotion__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+
+                <!--<apex:pageBlockSection columns="1">
+                    <apex:outputField label="Eligible Promotions" value="{!System_Design_Quote__c.Scenario_1_Eligible_Promo_Cash_Rebate__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_1_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_1_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_1_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                    <apex:inputField label="Apply as Cash Rebate" value="{!System_Design_Quote__c.Scenario_1_Promotion_Cash_Rebate_Amount__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_1_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_1_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_1_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                </apex:pageBlockSection>-->
+
+                <!-- S1 INCENTIVES -->
+                <apex:outputLabel styleClass="subheading" value="Incentives" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!incentiveOffers1}" var="io"  title="Incentives" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!io.Incentive_Applied__c}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!io.Incentive_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!io.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+
+                <!-- S1 SREC OFFERS -->
+                <apex:outputPanel id="srecoffersPnl_s1" layout="none">
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_1_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_1_Financing_Type__c != 'PPA',srecOffers1.size > 0 )}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offers" />                
+                        <apex:pageBlockSection columns="2" >
+                            <apex:outputText value="" title="space"/>
+                            <apex:outputText value="" title="space"/>
+                            <!-- Surfaces list using cSurface cS -->                    
+                            <apex:pageBlockTable value="{!srecOffers1}" var="io"  title="SREC Offers"  >                       
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Contract_Offer_Applied__c}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputText value="{!io.SREC_Contract_Offer__r.Name}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Upfront_Effective_Dollar_Amount__c}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+
+                <!-- S1 GUARANTEES AND WARRANTIES -->
+                <apex:outputLabel styleClass="subheading" value="Guarantees and Warranties" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!entitlementPriceAdjustments1}" var="spa"  title="Guarantees and Warranties" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!spa.Adjustment_Applied__c}" rendered="{!spa.Entitlement_Offer__r.Opt_Out_Allowed__c}"/>
+                            <apex:outputField value="{!spa.Adjustment_Applied__c}" rendered="{!NOT(spa.Entitlement_Offer__r.Opt_Out_Allowed__c)}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Entitlement_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>                
+                
+                <!-- S1 SAC LOAN ADJUSTMENTS -->
+                <apex:outputPanel id="sacloanadjsPnl_s1" >
+                    <apex:outputLabel styleClass="subheading" value="SAC Loan Adjustments" rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_1_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_1_Term_Loan__c)))}" />                     
+                        <apex:pageBlockSection columns="1"  rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_1_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_1_Term_Loan__c)))}" >
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;" >
+                            <apex:outputLabel value="SAC Incentives"></apex:outputLabel>
+                            <apex:outputField label="SAC Incentives" value="{!System_Design_Quote__c.Scenario_1_SAC_Incentives__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;" rendered="{!System_Design_Quote__c.Scenario_1_SAC_Loan__r.Fixed_Finance_Amount__c != true}">
+                            <apex:outputLabel value="SAC Loan Adjustment"></apex:outputLabel>
+                            <apex:inputField style="width:105px" value="{!System_Design_Quote__c.Scenario_1_SAC_Loan_Adjustment__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:outputText label=" "  styleClass="note" value="'Maximum SAC Allowed '  ${0, number, ###,##0.00}" rendered="{!maxSACAllowed1 > 0}" >
+                            <apex:param value="{!maxSACAllowed1}"/>
+                        </apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S1 VP OVERRIDE ADJUSTMENTS -->
+                <apex:outputPanel id="vpoverridepriceadjsPnl_s1" >
+                    <!--CPQ-234<apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!displayVPOverride}"/>-->
+                    <apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!isVPOverride}"/>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!displayVPOverride}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!isVPOverride}">
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="Full Design Price"></apex:outputLabel>
+                            <apex:outputText value="{!System_Design_Quote__c.Scenario_1_Design_Price__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                        <apex:outputLabel value="VP Override Sales Adjustment"></apex:outputLabel>
+                        <apex:inputField style="width:105px" value="{!System_Design_Quote__c.Scenario_1_VP_Sales_Adjustments__c}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!AND(displayVPOverride,vPOverridePriceAdjustments1.size > 0,vPOverridePriceAdjustments1[0].Adjustment_Applied__c)}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!AND(isVPOverride,vPOverridePriceAdjustments1.size > 0,vPOverridePriceAdjustments1[0].Adjustment_Applied__c)}">                                       
+                        <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!vpOverridePriceAdjustments1}" var="spa"  title="Promotions" columnClasses="custdatacell1,custdatacell1,custdatacell1">           
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:column>
+                            <apex:column style="text-align: left;">                          
+                                <apex:outputText value="VP Override Price Adjustment"/>
+                            </apex:column>
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                            <apex:outputLabel value=""></apex:outputLabel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S1 PRICING -->
+                <apex:outputLabel styleClass="subheading" value="Pricing" /> 
+                <apex:commandButton action="{!getSightenMonthlyPayment}" value="Get Monthly Payment" reRender="finProd,sightenMessages" rendered="{!scenario1IsSighten}" onclick="ShowLoading();" oncomplete="HideLoading();">
+                    <apex:param name="scenario1" assignTo="{!buttonScenario}" value="1"/>
+                </apex:commandButton>
+                <apex:pageBlockSection columns="1"  >
+                    <!-- Surfaces list using cSurface cS -->
+                    <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!pricingCalcs1}" var="pc"  title="Pricing" columnClasses="custdatacell1,custdatacell1,custdatacell1">                         
+                        <apex:column >  
+                        </apex:column>
+                        <apex:column style="text-align: left;" >                          
+                            <apex:outputText value="{!pc.pricingLabel}"/>
+                        </apex:column>
+                        <apex:column width="35%" >                                                      
+                            <apex:outputText value="${0, number, ###,##0.00}" rendered="{!pc.valType == 'currency'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="${0, number, ###,##0.0000}" rendered="{!pc.valType == 'currency-4'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="{!pc.pricingValue}" rendered="{!pc.valType == 'Text'}"/>
+                        </apex:column>                      
+                    </apex:pageBlockTable>
+                        <apex:outputLabel value=""></apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+
+            <!-- S2 OPTIONS -->
+            <apex:pageBlockSection title="Option 2" columns="1" id="op2">
+                
+                <!-- S2 FINANCING OPTIONS -->
+                <apex:outputPanel rendered="{!System_Design_Quote__c.Scenario_2_Error_Log__c != ''}">
+                    <apex:outputLabel styleClass="errorlabel" style="padding-right:16px;" value="*Pricing Error" rendered="{!System_Design_Quote__c.Scenario_2_Error_Log__c != ''}" />
+                    <apex:outputField label="Pricing Error" value="{!System_Design_Quote__c.Scenario_2_Error_Log__c}" rendered="{!System_Design_Quote__c.Scenario_2_Error_Log__c != ''}" style="background-color:'yellow'}" />            
+                </apex:outputPanel>
+                <apex:outputPanel id="inc2">
+                    <apex:outputLabel styleClass="subheading" style="padding-right:10px" value="Include in Proposal" rendered="{!OR(System_Design_Quote__c.Scenario_2_Error_Log__c == null || System_Design_Quote__c.Scenario_2_Error_Log__c == '')}"/>
+                    <apex:inputCheckbox id="scenario2Include" value="{!includeScenario2}" rendered="{!OR(System_Design_Quote__c.Scenario_2_Error_Log__c == null || System_Design_Quote__c.Scenario_2_Error_Log__c == '')}"/>                    
+                </apex:outputPanel>
+                <apex:pageBlockSectionItem >                        
+                    <apex:outputLabel value="Financing Type" />                 
+                    <apex:actionRegion >
+                        <apex:selectList size="1" id="finType" value="{!System_Design_Quote__c.Scenario_2_Financing_Type__c}">
+                            <apex:selectOptions value="{!financingTypeOptions}"/>
+                            <apex:actionSupport event="onchange" rerender="finTypeOpPanel2,srecOfferToApplys2,srecofferss2,promoOffer_s2" action="{!resetFinanceOptions2}" status="status"/>
+                        </apex:selectList>
+                    </apex:actionRegion>                    
+                </apex:pageBlockSectionItem>
+                <apex:outputPanel id="finTypeOpPanel2">
+                    <!-- S2 PURCHASE -->
+                    <apex:outputPanel id="purchaseOpPanel2" rendered="{!System_Design_Quote__c.Scenario_2_Financing_Type__c == 'Purchase'}">
+                        <apex:pageBlockSection columns="2" >
+                            <apex:selectList label="Term Loan" size="1" value="{!System_Design_Quote__c.Scenario_2_Term_Loan__c}" >
+                                <apex:selectOptions value="{!termLoans}"/>
+                                <apex:actionSupport event="onchange" reRender="purchaseOpPanel2,s2sacloanadjs,srecOfferToApplys2" action="{!resetSACOptions2}"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:selectList id="s2sacloans" label="SAC Loan" size="1" value="{!System_Design_Quote__c.Scenario_2_SAC_Loan__c}">
+                                <apex:selectOptions value="{!sacLoans2}"/>
+                                <apex:actionSupport event="onchange"  reRender="s2sacloanadjs"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText> 
+                            <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_2_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_2_Term_Loan__c!= null}"/>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:inputCheckbox value="{!System_Design_Quote__c.Scenario_2_Refuse_ACH__c}" rendered="{!scenario2ACHOption}"/>
+                            <apex:outputText value="" rendered="{!scenario2ACHOption}"></apex:outputText>
+                        </apex:pageBlockSection>       
+                    </apex:outputPanel>
+                    <!-- S2 LEASE -->
+                    <apex:outputPanel id="leaseOpPnl_s2" rendered="{!OR(System_Design_Quote__c.Scenario_2_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_2_Financing_Type__c == 'PPA')}">
+                        <apex:pageBlockSection columns="2">
+                            <apex:selectList id="leaseFund_s2" label="Lease Fund"  value="{!System_Design_Quote__c.Scenario_2_Lease_Fund__c}" size="1" >
+                                <apex:selectOptions value="{!Funds2}"/>
+                                <apex:actionSupport event="onchange" reRender="fundsOpPnl_s2, leaseEscalatorPnl_s2, promoOffer_s2" action="{!resetLeaseOp2}" /> 
+                            </apex:selectList>   
+                            <apex:selectList label="Options" id="fundsOpPnl_s2"  value="{!System_Design_Quote__c.Scenario_2_Lease_Option__c}"  size="1" >
+                                <apex:selectOptions value="{!leaseOptions2}"/>
+                                <apex:actionSupport event="onchange" reRender="leaseEscalatorPnl_s2" />                                        
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                        <apex:outputPanel id="leaseEscalatorPnl_s2" layout="none">
+                            <apex:outputPanel rendered="{!AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_2_Lease_Option__c)), OR(CONTAINS(System_Design_Quote__c.Scenario_2_Lease_Option__c,'Month'), System_Design_Quote__c.Scenario_2_Lease_Option__c == 'Portfolio PPA'))}">
+                                <apex:pageBlockSection >
+                                    <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_2_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_2_Lease_Option__c != 'Portfolio PPA'}"/>                       
+                                    <apex:inputField label="Lease Rate Escalator" value="{!System_Design_Quote__c.Scenario_2_Lease_Escalator__c}" />
+                                    <apex:selectList label="Portfolio Rate Tier" value="{!System_Design_Quote__c.Scenario_2_Portfolio_Tier_Selected__c}" size="1" rendered="{!System_Design_Quote__c.Scenario_2_Lease_Option__c == 'Portfolio PPA'}">
+                                        <apex:selectOptions value="{!portfolioRateTiers2}" />
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_2_Financing_Type__c == 'PPA', System_Design_Quote__c.Scenario_2_Lease_Option__c == 'Fixed-Rate PPA')}">
+                                <apex:pageBlockSection >
+                                    <apex:selectList label="PPA Rate Escalator" value="{!System_Design_Quote__c.Scenario_2_Lease_Escalator__c}" size="1">
+                                        <apex:selectOptions value="{!escalatorPPA2}" />
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                        </apex:outputPanel>                         
+                    </apex:outputPanel>                    
+                    <!-- S2 PPA -->
+                </apex:outputPanel>
+                
+                <!-- S2 PROMOTIONAL OFFER TO APPLY -->
+                <apex:outputLabel styleClass="subheading" value="Promotional Offer to Apply" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_2_Lease_Option__c != 'Portfolio PPA')}"/>
+                <apex:actionRegion rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_2_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:outputPanel id="promoOffer_s2" style="white-space:nowrap;" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null,System_Design_Quote__c.Scenario_2_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Offer Type" styleClass="custlabel1" for="offerTypes2"/>                                         
+                        <!--<apex:inputField id="offerTypes2" value="{!System_Design_Quote__c.Scenario_2_Set_Standard_Adjustment_Type__c}"  onchange="changeOffer2(this.value);"/>-->
+                            <apex:selectList id="offerTypes2" value="{!System_Design_Quote__c.Scenario_2_Set_Standard_Adjustment_Type__c}" size="1" onchange="changeOffer2(this.value);">
+                                <apex:selectOption itemLabel="--None--" itemValue="" />
+                                <apex:selectOption itemLabel="Dollar per Watt" itemValue="Dollar per Watt" />
+                            </apex:selectList>                               
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="offerT2">
+                        <apex:outputPanel id="offerType2" rendered="{!(System_Design_Quote__c.Scenario_2_Set_Standard_Adjustment_Type__c != '')}">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="offerTypeOps2" value="{!System_Design_Quote__c.Scenario_2_Set_Standard_Adjustment_Type__c}" styleClass="custlabel2" />                                
+                                <apex:selectList id="offerTypeOps2" label="{!System_Design_Quote__c.Scenario_2_Set_Standard_Adjustment_Type__c}"  value="{!System_Design_Quote__c.Scenario_2_Set_Standard_Adjustment_Amoun__c}"  size="1">
+                                    <apex:selectOptions value="{!standardPromotions2}"/>
+                                </apex:selectList>
+                            </apex:pageBlockSectionItem>        
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:actionRegion>
+                <apex:actionFunction name="changeOffer2" action="{!offerChanged}" rerender="offerT2" rendered="{!System_Design_Quote__c.Community_Program_Offer__c == null}">
+                    <apex:param name="offer" value="" assignTo="{!selectedStdPromotion2}"/>
+                </apex:actionFunction>  
+                
+                <!-- S2 SREC OFFER TO APPLY -->
+                <apex:outputPanel id="srecOfferToApplys2" layout="none">
+                    <!--cpq-460<apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_2_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_2_Financing_Type__c != 'PPA', availableSRECOffers2.size > 0)}" >-->
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_2_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_2_Financing_Type__c != 'PPA', SRECContOffers2.size > 0)}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offer to Apply" />                        
+                        <apex:pageBlockSection columns="1">
+                            <apex:outputText value="" title="space"/>
+                            <!--cpq-460<apex:selectList label="SREC Offer"  value="{!System_Design_Quote__c.Scenario_2_Available_SREC_Contract_Offer__c}"  size="1">-->
+                            <apex:selectList label="SREC Offer"  value="{!selectedSRECContOffer2}"  size="1">
+                                <!--cpq-460<apex:selectOptions value="{!availableSRECOffers2}"/>-->
+                                <apex:selectOptions value="{!SRECContOffers2}"/>
+                                <apex:selectOption itemValue="" itemLabel="--None--" ></apex:selectOption>
+                            </apex:selectList>
+                        </apex:pageBlockSection>                        
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <!-- S2 PROMOTIONS -->
+                <apex:outputLabel styleClass="subheading" value="Promotions" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!StandardPriceAdjustments2}" var="spa"  title="Promotions" >                         
+                        <apex:column >                          
+                            <apex:outputPanel rendered="{!OR(AND(spa.Promotion__r.Required_Promotion__c == true, spa.Type__c == 'Program'), spa.Type__c == 'Standard')}">
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(spa.Promotion__r.Required_Promotion__c == false, spa.Type__c == 'Program')}">                
+                                <apex:inputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Promotion__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+
+                <!--<apex:pageBlockSection columns="1">
+                    <apex:outputField label="Eligible Promotions" value="{!System_Design_Quote__c.Scenario_2_Eligible_Promo_Cash_Rebate__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_2_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_2_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_2_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                    <apex:inputField label="Apply as Cash Rebate" value="{!System_Design_Quote__c.Scenario_2_Promotion_Cash_Rebate_Amount__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_2_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_2_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_2_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                </apex:pageBlockSection>-->
+                
+                <!-- S2 INCENTIVES -->
+                <apex:outputLabel styleClass="subheading" value="Incentives" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!incentiveOffers2}" var="io"  title="Incentives" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!io.Incentive_Applied__c}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!io.Incentive_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!io.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                
+                <!-- S2 SREC OFFERS -->
+                <apex:outputPanel id="srecofferss2" layout="none">
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_2_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_2_Financing_Type__c != 'PPA',srecOffers2.size > 0 )}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offers" />
+                        <apex:pageBlockSection columns="2" >
+                            <!-- Surfaces list using cSurface cS -->                    
+                            <apex:pageBlockTable value="{!srecOffers2}" var="io"  title="SREC Offers" >                       
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Contract_Offer_Applied__c}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputText value="{!io.SREC_Contract_Offer__r.Name}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Upfront_Effective_Dollar_Amount__c}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <!-- S2 GUARANTEES AND WARRANTIES -->
+                <apex:outputLabel styleClass="subheading" value="Guarantees and Warranties" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!entitlementPriceAdjustments2}" var="spa"  title="Guarantees and Warranties" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!spa.Adjustment_Applied__c}" rendered="{!spa.Entitlement_Offer__r.Opt_Out_Allowed__c}"/>
+                            <apex:outputField value="{!spa.Adjustment_Applied__c}" rendered="{!NOT(spa.Entitlement_Offer__r.Opt_Out_Allowed__c)}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Entitlement_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                
+                <!-- S2 SAC LOAN ADJUSTMENTS -->
+                <apex:outputPanel id="s2sacloanadjs" >
+                    <apex:outputLabel styleClass="subheading" value="SAC Loan Adjustments" rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_2_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_2_Term_Loan__c)))}" />                     
+                        <apex:pageBlockSection columns="1"  rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_2_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_2_Term_Loan__c)))}" >
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="SAC Incentives"></apex:outputLabel>
+                            <apex:outputField label="SAC Incentives" value="{!System_Design_Quote__c.Scenario_2_SAC_Incentives__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;" rendered="{!System_Design_Quote__c.Scenario_2_SAC_Loan__r.Fixed_Finance_Amount__c != true}">
+                            <apex:outputLabel value="SAC Loan Adjustment"></apex:outputLabel>
+                            <apex:inputField style="width:105px"  value="{!System_Design_Quote__c.Scenario_2_SAC_Loan_Adjustment__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:outputText label=" "  styleClass="note" value="'Maximum SAC Allowed '  ${0, number, ###,##0.00}" rendered="{!maxSACAllowed2 > 0}" >
+                            <apex:param value="{!maxSACAllowed2}"/>
+                        </apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S2 VP OVERRIDE ADJUSTMENTS -->
+                <apex:outputPanel id="s2vpoverridepriceadjs" >
+                    <!--CPQ-234<apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!displayVPOverride}"/>-->
+                    <apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!isVPOverride}"/>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!displayVPOverride}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!isVPOverride}">
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="Full Design Price"></apex:outputLabel>
+                            <apex:outputText value="{!System_Design_Quote__c.Scenario_2_Design_Price__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="VP Override Sales Adjustment"></apex:outputLabel>
+                            <apex:inputField style="width:105px" value="{!System_Design_Quote__c.Scenario_2_VP_Sales_Adjustments__c}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!AND(displayVPOverride,vPOverridePriceAdjustments2.size > 0,vPOverridePriceAdjustments2[0].Adjustment_Applied__c)}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!AND(isVPOverride,vPOverridePriceAdjustments2.size > 0,vPOverridePriceAdjustments2[0].Adjustment_Applied__c)}">                    
+                        <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!vpOverridePriceAdjustments2}" var="spa"  title="Promotions" columnClasses="custdatacell1,custdatacell1,custdatacell1">
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:column>
+                            <apex:column style="text-align: left;">                          
+                                <apex:outputText value="VP Override Price Adjustment"/>
+                            </apex:column>
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                            <apex:outputLabel value=""></apex:outputLabel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+
+                <!-- S2 PRICING -->
+                <apex:outputLabel styleClass="subheading" value="Pricing" /> 
+                <apex:commandButton action="{!getSightenMonthlyPayment}" value="Get Monthly Payment" reRender="op2,sightenMessages" rendered="{!scenario2IsSighten}">
+                    <apex:param name="scenario2" assignTo="{!buttonScenario}" value="2"/>
+                </apex:commandButton>
+                <apex:pageBlockSection columns="1"  >
+                    <!-- Surfaces list using cSurface cS -->
+                    <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!pricingCalcs2}" var="pc"  title="Pricing" columnClasses="custdatacell1,custdatacell1,custdatacell1">                         
+                        <apex:column >  
+                        </apex:column>
+                        <apex:column style="text-align: left;" >                          
+                            <apex:outputText value="{!pc.pricingLabel}"/>
+                        </apex:column>
+                        <apex:column width="35%" >                                                      
+                            <apex:outputText value="${0, number, ###,##0.00}" rendered="{!pc.valType == 'currency'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="${0, number, ###,##0.0000}" rendered="{!pc.valType == 'currency-4'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="{!pc.pricingValue}" rendered="{!pc.valType == 'Text'}"/>
+                        </apex:column>                      
+                    </apex:pageBlockTable>
+                        <apex:outputLabel value=""></apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlockSection>
+            
+            <!-- S3 OPTIONS -->
+            <apex:pageBlockSection title="Option 3" columns="1" id="op3">
+                <apex:outputPanel rendered="{!System_Design_Quote__c.Scenario_3_Error_Log__c != ''}">
+                    <apex:outputLabel styleClass="errorlabel" style="padding-right:16px;" value="*Pricing Error" rendered="{!System_Design_Quote__c.Scenario_3_Error_Log__c != ''}" />
+                    <apex:outputField label="Pricing Error" value="{!System_Design_Quote__c.Scenario_3_Error_Log__c}" rendered="{!System_Design_Quote__c.Scenario_3_Error_Log__c != ''}" style="background-color:'yellow'}" />            
+                </apex:outputPanel>
+                <apex:outputPanel id="inc3">
+                    <apex:outputLabel styleClass="subheading" style="padding-right:10px" value="Include in Proposal" rendered="{!OR(System_Design_Quote__c.Scenario_3_Error_Log__c == null || System_Design_Quote__c.Scenario_3_Error_Log__c == '')}"/>
+                    <apex:inputCheckbox id="scenario3Include" value="{!includeScenario3}" rendered="{!OR(System_Design_Quote__c.Scenario_3_Error_Log__c == null || System_Design_Quote__c.Scenario_3_Error_Log__c == '')}"/>                    
+                </apex:outputPanel>
+                <apex:pageBlockSectionItem >                        
+                    <apex:outputLabel value="Financing Type" />                 
+                    <apex:actionRegion >
+                        <apex:selectList size="1" id="finType" value="{!System_Design_Quote__c.Scenario_3_Financing_Type__c}">
+                            <apex:selectOptions value="{!financingTypeOptions}"/>
+                            <apex:actionSupport event="onchange" rerender="finTypeOpPnl_s3,srecOfferToApplyPnl_s3,srecoffersPnl_s3, promoOffer_s3" action="{!resetFinanceOptions3}" status="status"/>
+                        </apex:selectList>
+                    </apex:actionRegion>                    
+                </apex:pageBlockSectionItem>
+                <apex:outputPanel id="finTypeOpPnl_s3" layout="none" >
+                    <!-- S3 PURCHASE -->                
+                    <apex:outputPanel id="purchaseOpPnl_s3" rendered="{!System_Design_Quote__c.Scenario_3_Financing_Type__c == 'Purchase'}">
+                        <apex:pageBlockSection columns="2" >
+                            <apex:selectList label="Term Loan" size="1" value="{!System_Design_Quote__c.Scenario_3_Term_Loan__c}" >
+                                <apex:selectOptions value="{!termLoans}"/>
+                                <apex:actionSupport event="onchange" reRender="purchaseOpPnl_s3,sacloanadjsPnl_s3,srecOfferToApplyPnl_s3" action="{!resetSACOptions3}"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:selectList id="sacloans_s3" label="SAC Loan" size="1" value="{!System_Design_Quote__c.Scenario_3_SAC_Loan__c}">
+                                <apex:selectOptions value="{!sacLoans3}"/>
+                                <apex:actionSupport event="onchange"  reRender="sacloanadjsPnl_s3"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText> 
+                            <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_3_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_3_Term_Loan__c!= null}"/>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:inputCheckbox value="{!System_Design_Quote__c.Scenario_3_Refuse_ACH__c}"  rendered="{!scenario3ACHOption}"/>
+                            <apex:outputText value="" rendered="{!scenario3ACHOption}"></apex:outputText>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <!-- S3 LEASE -->
+                    <apex:outputPanel id="leaseOpPnl_s3" rendered="{!OR(System_Design_Quote__c.Scenario_3_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_3_Financing_Type__c == 'PPA')}">
+                        <apex:pageBlockSection columns="2">
+                            <apex:selectList id="leaseFund_s3" label="Lease Fund"  value="{!System_Design_Quote__c.Scenario_3_Lease_Fund__c}" size="1" >
+                                <apex:selectOptions value="{!Funds3}"/>
+                                <apex:actionSupport event="onchange" reRender="fundsOpPnl_s3, leaseEscalatorPnl_s3, promoOffer_s3" action="{!resetLeaseOp3}" /> 
+                            </apex:selectList>   
+                            <apex:selectList label="Options" id="fundsOpPnl_s3"  value="{!System_Design_Quote__c.Scenario_3_Lease_Option__c}"  size="1" >
+                                <apex:selectOptions value="{!leaseOptions3}"/>
+                                <apex:actionSupport event="onchange" reRender="leaseEscalatorPnl_s3" />                                        
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                            <apex:outputPanel id="leaseEscalatorPnl_s3" layout="none">
+                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_3_Lease_Option__c)), OR(CONTAINS(System_Design_Quote__c.Scenario_3_Lease_Option__c,'Month'), System_Design_Quote__c.Scenario_3_Lease_Option__c == 'Portfolio PPA'))}">
+                                <apex:pageBlockSection >
+                                    <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_3_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_3_Lease_Option__c != 'Portfolio PPA'}"/>                       
+                                    <apex:inputField label="Lease Rate Escalator" value="{!System_Design_Quote__c.Scenario_3_Lease_Escalator__c}" />
+                                    <apex:selectList label="Portfolio Rate Tier" value="{!System_Design_Quote__c.Scenario_3_Portfolio_Tier_Selected__c}" size="1" rendered="{!System_Design_Quote__c.Scenario_3_Lease_Option__c == 'Portfolio PPA'}">
+                                        <apex:selectOptions value="{!portfolioRateTiers3}" />
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                                <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_3_Financing_Type__c == 'PPA', System_Design_Quote__c.Scenario_3_Lease_Option__c == 'Fixed-Rate PPA')}">
+                                    <apex:pageBlockSection >
+                                        <apex:selectList label="PPA Rate Escalator" value="{!System_Design_Quote__c.Scenario_3_Lease_Escalator__c}" size="1">
+                                            <apex:selectOptions value="{!escalatorPPA3}" />
+                                        </apex:selectList>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                            </apex:outputPanel>                         
+                    </apex:outputPanel>                    
+                    <!--PPA -->
+                </apex:outputPanel>
+                
+                <!-- S3 PROMOTIONAL OFFER TO APPLY -->
+                <apex:outputLabel styleClass="subheading" value="Promotional Offer to Apply" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_3_Lease_Option__c != 'Portfolio PPA')}" />
+                <apex:actionRegion rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_3_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:outputPanel id="promoOffer_s3" style="white-space:nowrap;" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_3_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:pageBlockSectionItem >                                    
+                        <apex:outputLabel value="Offer Type" styleClass="custlabel1" for="offerTypes3" />                                         
+                        <!--<apex:inputField id="offerTypes3" styleClass="" value="{!System_Design_Quote__c.Scenario_3_Set_Standard_Adjustment_Type__c}"  onchange="changeOffer3(this.value);"/>-->
+                            <apex:selectList id="offerTypes3" value="{!System_Design_Quote__c.Scenario_3_Set_Standard_Adjustment_Type__c}" size="1" onchange="changeOffer3(this.value);">
+                                <apex:selectOption itemLabel="--None--" itemValue="" />
+                                <apex:selectOption itemLabel="Dollar per Watt" itemValue="Dollar per Watt" />
+                            </apex:selectList>    
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="offerT3">
+                        <apex:outputPanel id="offerType3" rendered="{!(System_Design_Quote__c.Scenario_3_Set_Standard_Adjustment_Type__c != '')}">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="offerTypeOps3" value="{!System_Design_Quote__c.Scenario_3_Set_Standard_Adjustment_Type__c}" styleClass="custlabel2" />
+                                <apex:selectList id="offerTypeOps3" label="{!System_Design_Quote__c.Scenario_3_Set_Standard_Adjustment_Type__c}"  value="{!System_Design_Quote__c.Scenario_3_Set_Standard_Adjustment_Amoun__c}"  size="1">
+                                    <apex:selectOptions value="{!standardPromotions3}"/>
+                                </apex:selectList>
+                            </apex:pageBlockSectionItem>        
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                        </apex:outputPanel>
+                </apex:actionRegion>
+                <apex:actionFunction name="changeOffer3" action="{!offerChanged}" rerender="offerT3" rendered="{!System_Design_Quote__c.Community_Program_Offer__c == null}">
+                    <apex:param name="offer" value="" assignTo="{!selectedStdPromotion3}"/>
+                </apex:actionFunction>
+                
+                <!-- S3 SREC OFFER TO APPLY -->
+                <apex:outputPanel id="srecOfferToApplyPnl_s3" layout="none">
+                    <!--cpq-460<apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_3_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_3_Financing_Type__c != 'PPA', availableSRECOffers3.size > 0)}" >-->
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_3_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_3_Financing_Type__c != 'PPA', SRECContOffers3.size > 0)}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offer to Apply" />                        
+                        <apex:pageBlockSection columns="1">
+                            <apex:outputText value="" title="space"/>
+                            <!--cpq-460<apex:selectList label="SREC Offer"  value="{!System_Design_Quote__c.Scenario_3_Available_SREC_Contract_Offer__c}"  size="1">-->
+                            <apex:selectList label="SREC Offer"  value="{!selectedSRECContOffer3}"  size="1">
+                                <!--cpq-460<apex:selectOptions value="{!availableSRECOffers3}"/>-->
+                                <apex:selectOptions value="{!SRECContOffers3}"/>
+                                <apex:selectOption itemValue="" itemLabel="--None--" ></apex:selectOption>                            
+                        </apex:selectList>
+                        </apex:pageBlockSection>                        
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <!-- S3 PROMOTIONS -->
+                <apex:outputLabel styleClass="subheading" value="Promotions" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!StandardPriceAdjustments3}" var="spa"  title="Promotions" >                         
+                        <apex:column >                          
+                            <apex:outputPanel rendered="{!OR(AND(spa.Promotion__r.Required_Promotion__c == true, spa.Type__c == 'Program'), spa.Type__c == 'Standard')}">
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(spa.Promotion__r.Required_Promotion__c == false, spa.Type__c == 'Program')}">                
+                                <apex:inputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Promotion__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+
+                <!--<apex:pageBlockSection columns="1">
+                    <apex:outputField label="Eligible Promotions" value="{!System_Design_Quote__c.Scenario_3_Eligible_Promo_Cash_Rebate__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_3_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_3_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_3_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                    <apex:inputField label="Apply as Cash Rebate" value="{!System_Design_Quote__c.Scenario_3_Promotion_Cash_Rebate_Amount__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_3_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_3_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_3_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                </apex:pageBlockSection>-->
+
+                <!-- S3 INCENTIVES -->
+                <apex:outputLabel styleClass="subheading" value="Incentives" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!incentiveOffers3}" var="io"  title="Incentives" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!io.Incentive_Applied__c}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!io.Incentive_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!io.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                
+                <!-- S3 SREC OFFERS -->
+                <apex:outputPanel id="srecoffersPnl_s3" layout="none">
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_3_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_3_Financing_Type__c != 'PPA',srecOffers3.size > 0 )}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offers" />                
+                        <apex:pageBlockSection columns="2" >
+                            <apex:outputText value="" title="space"/>
+                            <apex:outputText value="" title="space"/>
+                            <!-- Surfaces list using cSurface cS -->                    
+                            <apex:pageBlockTable value="{!srecOffers3}" var="io"  title="SREC Offers"  >                       
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Contract_Offer_Applied__c}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputText value="{!io.SREC_Contract_Offer__r.Name}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Upfront_Effective_Dollar_Amount__c}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+
+                <!-- S3 GUARANTEES AND WARRANTIES -->
+                <apex:outputLabel styleClass="subheading" value="Guarantees and Warranties" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!entitlementPriceAdjustments3}" var="spa"  title="Guarantees and Warranties" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!spa.Adjustment_Applied__c}" rendered="{!spa.Entitlement_Offer__r.Opt_Out_Allowed__c}"/>
+                            <apex:outputField value="{!spa.Adjustment_Applied__c}" rendered="{!NOT(spa.Entitlement_Offer__r.Opt_Out_Allowed__c)}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Entitlement_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                
+                <!-- S3 SAC LOAN ADJUSTMENTS -->
+                <apex:outputPanel id="sacloanadjsPnl_s3" >
+                    <apex:outputLabel styleClass="subheading" value="SAC Loan Adjustments" rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_3_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_3_Term_Loan__c)))}" />                     
+                        <apex:pageBlockSection columns="1"  rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_3_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_3_Term_Loan__c)))}" >
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="SAC Incentives"></apex:outputLabel>
+                            <apex:outputField label="SAC Incentives" value="{!System_Design_Quote__c.Scenario_3_SAC_Incentives__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;" rendered="{!System_Design_Quote__c.Scenario_3_SAC_Loan__r.Fixed_Finance_Amount__c != true}">
+                            <apex:outputLabel value="SAC Loan Adjustment"></apex:outputLabel>
+                            <apex:inputField style="width:105px"  value="{!System_Design_Quote__c.Scenario_3_SAC_Loan_Adjustment__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:outputText label=" "  styleClass="note" value="'Maximum SAC Allowed '  ${0, number, ###,##0.00}" rendered="{!maxSACAllowed3 > 0}" >
+                            <apex:param value="{!maxSACAllowed3}"/>
+                        </apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S3 VP OVERRIDE ADJUSTMENTS -->
+                <apex:outputPanel id="vpoverridepriceadjsPnl_s3" >
+                    <!--CPQ-234<apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!displayVPOverride}"/>-->
+                    <apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!isVPOverride}"/>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!displayVPOverride}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!isVPOverride}">
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="Full Design Price"></apex:outputLabel>
+                            <apex:outputText value="{!System_Design_Quote__c.Scenario_3_Design_Price__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                        <apex:outputLabel value="VP Override Sales Adjustment"></apex:outputLabel>
+                        <apex:inputField style="width:105px" value="{!System_Design_Quote__c.Scenario_3_VP_Sales_Adjustments__c}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!AND(displayVPOverride,vPOverridePriceAdjustments3.size > 0,vPOverridePriceAdjustments3[0].Adjustment_Applied__c)}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!AND(isVPOverride,vPOverridePriceAdjustments3.size > 0,vPOverridePriceAdjustments3[0].Adjustment_Applied__c)}">                    
+                        <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!vpOverridePriceAdjustments3}" var="spa"  title="Promotions" columnClasses="custdatacell1,custdatacell1,custdatacell1">                         
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:column>
+                            <apex:column style="text-align: left;">                          
+                                <apex:outputText value="VP Override Price Adjustment"/>
+                            </apex:column>
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                            <apex:outputLabel value=""></apex:outputLabel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S3 PRICING -->
+                <apex:outputLabel styleClass="subheading" value="Pricing" /> 
+                <apex:commandButton action="{!getSightenMonthlyPayment}" value="Get Monthly Payment" reRender="op3,sightenMessages" rendered="{!scenario3IsSighten}">
+                    <apex:param name="scenario3" assignTo="{!buttonScenario}" value="3"/>
+                </apex:commandButton>
+                <apex:pageBlockSection columns="1"  >
+                    <!-- Surfaces list using cSurface cS -->
+                    <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!pricingCalcs3}" var="pc"  title="Pricing" columnClasses="custdatacell1,custdatacell1,custdatacell1">                         
+                        <apex:column >  
+                        </apex:column>
+                        <apex:column style="text-align: left;" >                          
+                            <apex:outputText value="{!pc.pricingLabel}"/>
+                        </apex:column>
+                        <apex:column width="35%" >                                                      
+                            <apex:outputText value="${0, number, ###,##0.00}" rendered="{!pc.valType == 'currency'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="${0, number, ###,##0.0000}" rendered="{!pc.valType == 'currency-4'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="{!pc.pricingValue}" rendered="{!pc.valType == 'Text'}"/>
+                        </apex:column>                      
+                    </apex:pageBlockTable>
+                        <apex:outputLabel value=""></apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+            </apex:pageBlockSection>
+            
+            <!-- S4 OPTIONS -->
+            <apex:pageBlockSection title="Option 4" columns="1" id="op4">
+                <apex:outputPanel rendered="{!System_Design_Quote__c.Scenario_4_Error_Log__c != ''}">
+                    <apex:outputLabel styleClass="errorlabel" style="padding-right:16px;" value="*Pricing Error" rendered="{!System_Design_Quote__c.Scenario_4_Error_Log__c != ''}" />
+                    <apex:outputField label="Pricing Error" value="{!System_Design_Quote__c.Scenario_4_Error_Log__c}" rendered="{!System_Design_Quote__c.Scenario_4_Error_Log__c != ''}" style="background-color:'yellow'}" /> 
+                </apex:outputPanel>
+                <apex:outputPanel id="inc4">
+                    <apex:outputLabel styleClass="subheading" style="padding-right:10px" value="Include in Proposal" rendered="{!OR(System_Design_Quote__c.Scenario_4_Error_Log__c == null || System_Design_Quote__c.Scenario_4_Error_Log__c == '')}"/>
+                    <apex:inputCheckbox id="scenario4Include" value="{!includeScenario4}" rendered="{!OR(System_Design_Quote__c.Scenario_4_Error_Log__c == null || System_Design_Quote__c.Scenario_4_Error_Log__c == '')}"/> 
+                </apex:outputPanel>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Financing Type" /> 
+                    <apex:actionRegion >
+                        <apex:selectList size="1" id="finType4" value="{!System_Design_Quote__c.Scenario_4_Financing_Type__c}">
+                            <apex:selectOptions value="{!financingTypeOptions}"/>
+                            <apex:actionSupport event="onchange" rerender="finTypeOpPnl_s4,srecOfferToApplyPnl_s4,srecoffersPnl_s4, promoOffer_s4" action="{!resetFinanceOptions4}" status="status"/>
+                        </apex:selectList>
+                    </apex:actionRegion> 
+                </apex:pageBlockSectionItem>
+                <apex:outputPanel id="finTypeOpPnl_s4" layout="none" >
+                    <!-- S4 PURCHASE -->                
+                    <apex:outputPanel id="purchaseOpPnl_s4" rendered="{!System_Design_Quote__c.Scenario_4_Financing_Type__c == 'Purchase'}">
+                        <apex:pageBlockSection columns="2" >
+                            <apex:selectList label="Term Loan" size="1" value="{!System_Design_Quote__c.Scenario_4_Term_Loan__c}" >
+                                <apex:selectOptions value="{!termLoans}"/>
+                                <apex:actionSupport event="onchange" reRender="purchaseOpPnl_s4,sacloanadjsPnl_s4,srecOfferToApplyPnl_s4" action="{!resetSACOptions4}"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:selectList id="sacloans_s4" label="SAC Loan" size="1" value="{!System_Design_Quote__c.Scenario_4_SAC_Loan__c}">
+                                <apex:selectOptions value="{!sacLoans4}"/>
+                                <apex:actionSupport event="onchange"  reRender="sacloanadjsPnl_s4"/>
+                            </apex:selectList>
+                            <apex:outputText value=""></apex:outputText> 
+                            <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_4_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_4_Term_Loan__c!= null}"/>
+                            <apex:outputText value=""></apex:outputText>
+                            <apex:inputCheckbox value="{!System_Design_Quote__c.Scenario_4_Refuse_ACH__c}" rendered="{!scenario4ACHOption}"/>
+                            <apex:outputText value=""  rendered="{!scenario4ACHOption}"></apex:outputText>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <!-- S4 LEASE -->
+                    <apex:outputPanel id="leaseOpPnl_s4" rendered="{!OR(System_Design_Quote__c.Scenario_4_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_4_Financing_Type__c == 'PPA')}">
+                        <apex:pageBlockSection columns="2">
+                            <apex:selectList id="leaseFund_s4" label="Lease Fund"  value="{!System_Design_Quote__c.Scenario_4_Lease_Fund__c}" size="1" >
+                                <apex:selectOptions value="{!Funds4}"/>
+                                <apex:actionSupport event="onchange" reRender="fundsOpPnl_s4, leaseEscalatorPnl_s4, promoOffer_s4" action="{!resetLeaseOp4}" /> 
+                            </apex:selectList>   
+                            <apex:selectList label="Options" id="fundsOpPnl_s4"  value="{!System_Design_Quote__c.Scenario_4_Lease_Option__c}"  size="1" >
+                                <apex:selectOptions value="{!leaseOptions4}"/>
+                                <apex:actionSupport event="onchange" reRender="leaseEscalatorPnl_s4" />                                        
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                            <apex:outputPanel id="leaseEscalatorPnl_s4" layout="none">
+                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_4_Lease_Option__c)), OR(CONTAINS(System_Design_Quote__c.Scenario_4_Lease_Option__c,'Month'), System_Design_Quote__c.Scenario_4_Lease_Option__c == 'Portfolio PPA'))}">
+                                <apex:pageBlockSection >
+                                    <apex:inputField label="Down Payment" value="{!System_Design_Quote__c.Scenario_4_Down_Payment__c}" rendered="{!System_Design_Quote__c.Scenario_4_Lease_Option__c != 'Portfolio PPA'}"/>                       
+                                    <apex:inputField label="Lease Rate Escalator" value="{!System_Design_Quote__c.Scenario_4_Lease_Escalator__c}" />
+                                    <apex:selectList label="Portfolio Rate Tier" value="{!System_Design_Quote__c.Scenario_4_Portfolio_Tier_Selected__c}" size="1" rendered="{!System_Design_Quote__c.Scenario_4_Lease_Option__c == 'Portfolio PPA'}">
+                                        <apex:selectOptions value="{!portfolioRateTiers4}" />
+                                    </apex:selectList>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                                <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_4_Financing_Type__c == 'PPA', System_Design_Quote__c.Scenario_4_Lease_Option__c == 'Fixed-Rate PPA')}">
+                                    <apex:pageBlockSection >
+                                        <apex:selectList label="PPA Rate Escalator" value="{!System_Design_Quote__c.Scenario_4_Lease_Escalator__c}" size="1">
+                                            <apex:selectOptions value="{!escalatorPPA4}" />
+                                        </apex:selectList>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                            </apex:outputPanel>                         
+                    </apex:outputPanel>                    
+                    <!--PPA -->
+                </apex:outputPanel>
+                <!-- S4 PROMOTIONAL OFFER TO APPLY -->
+                <apex:outputLabel styleClass="subheading" value="Promotional Offer to Apply" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_4_Lease_Option__c != 'Portfolio PPA')}" />
+                <apex:actionRegion rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_4_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:outputPanel id="promoOffer_s4" style="white-space:nowrap;" rendered="{!AND(System_Design_Quote__c.Community_Program_Offer__c == null, System_Design_Quote__c.Scenario_4_Lease_Option__c != 'Portfolio PPA')}">
+                    <apex:pageBlockSectionItem >                                    
+                        <apex:outputLabel value="Offer Type" styleClass="custlabel1" for="offerTypes4" />                                         
+                        <!--<apex:inputField id="offerTypes4" styleClass="" value="{!System_Design_Quote__c.Scenario_4_Set_Standard_Adjustment_Type__c}"  onchange="changeOffer4(this.value);"/>-->
+                            <apex:selectList id="offerTypes4" value="{!System_Design_Quote__c.Scenario_4_Set_Standard_Adjustment_Type__c}" size="1" onchange="changeOffer4(this.value);">
+                                <apex:selectOption itemLabel="--None--" itemValue="" />
+                                <apex:selectOption itemLabel="Dollar per Watt" itemValue="Dollar per Watt" />
+                            </apex:selectList>                 
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="offerT4">
+                        <apex:outputPanel id="offerType4" rendered="{!(System_Design_Quote__c.Scenario_4_Set_Standard_Adjustment_Type__c != '')}">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel for="offerTypeOps4" value="{!System_Design_Quote__c.Scenario_4_Set_Standard_Adjustment_Type__c}" styleClass="custlabel2" />
+                                <apex:selectList id="offerTypeOps4" label="{!System_Design_Quote__c.Scenario_4_Set_Standard_Adjustment_Type__c}"  value="{!System_Design_Quote__c.Scenario_4_Set_Standard_Adjustment_Amoun__c}"  size="1">
+                                    <apex:selectOptions value="{!standardPromotions4}"/>
+                                </apex:selectList>
+                            </apex:pageBlockSectionItem>        
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                        </apex:outputPanel>
+                </apex:actionRegion>
+                <apex:actionFunction name="changeOffer4" action="{!offerChanged}" rerender="offerT4" rendered="{!System_Design_Quote__c.Community_Program_Offer__c == null}">
+                    <apex:param name="offer" value="" assignTo="{!selectedStdPromotion4}"/>
+                </apex:actionFunction>
+                
+                <!-- S4 SREC OFFER TO APPLY -->
+                <apex:outputPanel id="srecOfferToApplyPnl_s4" layout="none">
+                    <!--cpq-460<apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_4_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_4_Financing_Type__c != 'PPA', availableSRECOffers4.size > 0)}" >-->
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_4_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_4_Financing_Type__c != 'PPA', SRECContOffers4.size > 0)}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offer to Apply" />                        
+                        <apex:pageBlockSection columns="1">
+                            <apex:outputText value="" title="space"/>
+                            <!--cpq-460<apex:selectList label="SREC Offer"  value="{!System_Design_Quote__c.Scenario_4_Available_SREC_Contract_Offer__c}"  size="1">-->
+                            <apex:selectList label="SREC Offer"  value="{!selectedSRECContOffer4}"  size="1">
+                                <!--cpq-460<apex:selectOptions value="{!availableSRECOffers4}"/>-->
+                                <apex:selectOptions value="{!SRECContOffers4}"/>
+                                <apex:selectOption itemValue="" itemLabel="--None--" ></apex:selectOption>                            
+                        </apex:selectList>
+                        </apex:pageBlockSection>                        
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <!-- S4 PROMOTIONS -->
+                <apex:outputLabel styleClass="subheading" value="Promotions" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!StandardPriceAdjustments4}" var="spa"  title="Promotions" >                         
+                        <apex:column >                          
+                            <apex:outputPanel rendered="{!OR(AND(spa.Promotion__r.Required_Promotion__c == true, spa.Type__c == 'Program'), spa.Type__c == 'Standard')}">
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!AND(spa.Promotion__r.Required_Promotion__c == false, spa.Type__c == 'Program')}">                
+                                <apex:inputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:outputPanel>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Promotion__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+
+                <!--<apex:pageBlockSection columns="1">
+                    <apex:outputField label="Eligible Promotions" value="{!System_Design_Quote__c.Scenario_4_Eligible_Promo_Cash_Rebate__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_4_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_4_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_4_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                    <apex:inputField label="Apply as Cash Rebate" value="{!System_Design_Quote__c.Scenario_4_Promotion_Cash_Rebate_Amount__c}" rendered="{!AND(OR(System_Design_Quote__c.Scenario_4_Financing_Type__c == 'Lease', System_Design_Quote__c.Scenario_4_Financing_Type__c == 'PPA'), BLANKVALUE(System_Design_Quote__c.Scenario_4_Eligible_Promo_Cash_Rebate__c, 0) != 0, System_Design_Quote__c.System_Size_kW__c >= minSysSizeForCashRebate)}" />
+                </apex:pageBlockSection>-->
+
+                <!-- S4 INCENTIVES -->
+                <apex:outputLabel styleClass="subheading" value="Incentives" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!incentiveOffers4}" var="io"  title="Incentives" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!io.Incentive_Applied__c}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!io.Incentive_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!io.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                
+                <!-- S4 SREC OFFERS -->
+                <apex:outputPanel id="srecoffersPnl_s4" layout="none">
+                    <apex:outputPanel rendered="{!AND(System_Design_Quote__c.Scenario_4_Financing_Type__c != 'Lease',System_Design_Quote__c.Scenario_4_Financing_Type__c != 'PPA',srecOffers4.size > 0 )}" >
+                        <apex:outputLabel styleClass="subheading" value="SREC Offers" />                
+                        <apex:pageBlockSection columns="2" >
+                            <apex:outputText value="" title="space"/>
+                            <apex:outputText value="" title="space"/>
+                            <!-- Surfaces list using cSurface cS -->                    
+                            <apex:pageBlockTable value="{!srecOffers4}" var="io"  title="SREC Offers"  >                       
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Contract_Offer_Applied__c}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputText value="{!io.SREC_Contract_Offer__r.Name}"/>
+                                </apex:column>
+                                <apex:column >                          
+                                    <apex:outputField value="{!io.Upfront_Effective_Dollar_Amount__c}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+
+                <!-- S4 GUARANTEES AND WARRANTIES -->
+                <apex:outputLabel styleClass="subheading" value="Guarantees and Warranties" /> 
+                <apex:pageBlockSection columns="2" >
+                    <!-- Surfaces list using cSurface cS -->                    
+                    <apex:pageBlockTable value="{!entitlementPriceAdjustments4}" var="spa"  title="Guarantees and Warranties" >                       
+                        <apex:column >                          
+                            <apex:inputField value="{!spa.Adjustment_Applied__c}" rendered="{!spa.Entitlement_Offer__r.Opt_Out_Allowed__c}"/>
+                            <apex:outputField value="{!spa.Adjustment_Applied__c}" rendered="{!NOT(spa.Entitlement_Offer__r.Opt_Out_Allowed__c)}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputText value="{!spa.Entitlement_Offer__r.Name}"/>
+                        </apex:column>
+                        <apex:column >                          
+                            <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                
+                <!-- S4 SAC LOAN ADJUSTMENTS -->
+                <apex:outputPanel id="sacloanadjsPnl_s4" >
+                    <apex:outputLabel styleClass="subheading" value="SAC Loan Adjustments" rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_4_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_4_Term_Loan__c)))}" />                     
+                        <apex:pageBlockSection columns="1"  rendered="{! AND(NOT(ISBLANK(System_Design_Quote__c.Scenario_4_SAC_Loan__c)) , NOT(ISBLANK(System_Design_Quote__c.Scenario_4_Term_Loan__c)))}" >
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="SAC Incentives"></apex:outputLabel>
+                            <apex:outputField label="SAC Incentives" value="{!System_Design_Quote__c.Scenario_4_SAC_Incentives__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;" rendered="{!System_Design_Quote__c.Scenario_4_SAC_Loan__r.Fixed_Finance_Amount__c != true}">
+                            <apex:outputLabel value="SAC Loan Adjustment"></apex:outputLabel>
+                            <apex:inputField style="width:105px"  value="{!System_Design_Quote__c.Scenario_4_SAC_Loan_Adjustment__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:outputText label=" "  styleClass="note" value="'Maximum SAC Allowed '  ${0, number, ###,##0.00}" rendered="{!maxSACAllowed4 > 0}" >
+                            <apex:param value="{!maxSACAllowed4}"/>
+                        </apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S4 VP OVERRIDE ADJUSTMENTS -->
+                <apex:outputPanel id="vpoverridepriceadjsPnl_s4" >
+                    <!--CPQ-234<apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!displayVPOverride}"/>-->
+                    <apex:outputlabel styleClass="subheading" value="VP Override Adjustments" rendered="{!isVPOverride}"/>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!displayVPOverride}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!isVPOverride}">
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                            <apex:outputLabel value="Full Design Price"></apex:outputLabel>
+                            <apex:outputText value="{!System_Design_Quote__c.Scenario_4_Design_Price__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem labelStyle="width:28%; text-align:left;padding-left:10px;padding-top:10px;">
+                        <apex:outputLabel value="VP Override Sales Adjustment"></apex:outputLabel>
+                        <apex:inputField style="width:105px" value="{!System_Design_Quote__c.Scenario_4_VP_Sales_Adjustments__c}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <!--CPQ-234<apex:pageBlockSection columns="1" rendered="{!AND(displayVPOverride,vPOverridePriceAdjustments4.size > 0,vPOverridePriceAdjustments4[0].Adjustment_Applied__c)}">-->
+                    <apex:pageBlockSection columns="1" rendered="{!AND(isVPOverride,vPOverridePriceAdjustments4.size > 0,vPOverridePriceAdjustments4[0].Adjustment_Applied__c)}">                    
+                        <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!vpOverridePriceAdjustments4}" var="spa"  title="Promotions" columnClasses="custdatacell1,custdatacell1,custdatacell1">                         
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Adjustment_Applied__c}"/>
+                            </apex:column>
+                            <apex:column style="text-align: left;">                          
+                                <apex:outputText value="VP Override Price Adjustment"/>
+                            </apex:column>
+                            <apex:column >                          
+                                <apex:outputField value="{!spa.Effective_Dollar_Amount__c}"/>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                            <apex:outputLabel value=""></apex:outputLabel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+                
+                <!-- S4 PRICING -->
+                <apex:outputLabel styleClass="subheading" value="Pricing" /> 
+                <apex:commandButton action="{!getSightenMonthlyPayment}" value="Get Monthly Payment" reRender="op4,sightenMessages" rendered="{!scenario4IsSighten}">
+                    <apex:param name="scenario4" assignTo="{!buttonScenario}" value="4"/>
+                </apex:commandButton>
+                <apex:pageBlockSection columns="1"  >
+                    <!-- Surfaces list using cSurface cS -->
+                    <apex:pageBlockSectionItem labelStyle="width:52%">
+                        <apex:pageBlockTable value="{!pricingCalcs4}" var="pc"  title="Pricing" columnClasses="custdatacell1,custdatacell1,custdatacell1">                         
+                        <apex:column >  
+                        </apex:column>
+                        <apex:column style="text-align: left;" >                          
+                            <apex:outputText value="{!pc.pricingLabel}"/>
+                        </apex:column>
+                        <apex:column width="35%" >                                                      
+                            <apex:outputText value="${0, number, ###,##0.00}" rendered="{!pc.valType == 'currency'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="${0, number, ###,##0.0000}" rendered="{!pc.valType == 'currency-4'}">
+                                <apex:param value="{!pc.pricingValue}"/>
+                            </apex:outputText>
+                            <apex:outputText value="{!pc.pricingValue}" rendered="{!pc.valType == 'Text'}"/>
+                        </apex:column>                      
+                    </apex:pageBlockTable>
+                        <apex:outputLabel value=""></apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+            </apex:pageBlockSection>
+            <!-- End of s4 option -->
+ 
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Set Pricing Date" columns="2" >
+            <apex:outputField label="Pricing Date" value="{!System_Design_Quote__c.Pricing_Date__c}"/>
+            <apex:inputField label="As-Of Pricing Date" value="{!System_Design_Quote__c.As_Of_Pricing_Date__c}"/>
+        </apex:pageBlockSection>
+
+        <!--NEW PROPOSAL-->
+        <apex:pageBlockSection title="New Proposal" columns="1" id="newProposalSection">
+            <apex:inputText id="propExpireDays" label="Days Until Proposal Expires" />
+        </apex:pageBlockSection> 
+
+        <!--PROPOSALS -->
+        <apex:pageBlockSection title="Proposals" rendered="{!proposals.size > 0}" columns="1">
+            <apex:pageBlockTable value="{!proposals}" var="pro">
+                <apex:column >
+                    <apex:outputLink value="/apex/PreviewProposal?id={!pro.Id}">View</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!pro.Name}" title="Proposal Name" />
+                <apex:column value="{!pro.Current__c}" title="Current" />
+                <apex:column value="{!pro.Scenario_1_Financing_Plan__c}" title="Finance Option1" />
+                <apex:column value="{!pro.Scenario_2_Financing_Plan__c}" title="Finance Option2" />
+                <apex:column value="{!pro.Scenario_3_Financing_Plan__c}" title="Finance Option3" />
+                <apex:column value="{!pro.Scenario_4_Financing_Plan__c}" title="Finance Option4" /> 
+                <apex:column value="{!pro.Proposal_Expiration_Date__c}" title="Proposal Expiration Date" />
+            </apex:pageBlockTable>
+        </apex:pageBlockSection> 
+
+    </apex:pageBlock>
+    <!-- 06/05/2015 PB CPQ-220 Display error messages in a popup -->
+    <apex:outputPanel id="footermessages" >
+        <apex:outputPanel rendered="{!AND(hasErrors,NOT(isSDQInsert),System_Design_Quote__c.Current__c)}" > 
+            <apex:outputPanel id="errorPopUp" styleClass="popupBackground" layout="block">
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="custErrorPopup" layout="block">
+                <apex:pageMessages />
+                <div style="text-align:center"  >
+                    <apex:commandButton value="OK" action="{!closeErrorPopUp}" />
+                </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+    <apex:outputPanel id="sightenMessages">
+        <apex:outputPanel rendered="{!displaySightenPopup}">
+            <apex:outputPanel id="sightenPopUp" styleClass="popupBackground" layout="block">
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="custErrorPopup" layout="block">
+                <apex:pageMessages escape="false" />
+                <div style="text-align:center"  >
+                    <apex:commandButton value="OK" action="{!closeSightenPopUp}" reRender="sightenMessages"/>
+                </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:outputPanel>
+</apex:form>
+</apex:page>

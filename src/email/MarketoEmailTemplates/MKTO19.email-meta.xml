@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CT Grand Opening 8/21/14.CT Grand Opening 8/21/14</name>
+    <style>none</style>
+    <subject>Celebrate our grand opening with us!</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com&gt;
+
+Astrum Solar Special Event
+
+Celebrate our Grand Opening!
+
+&lt;https://www.eventbrite.com/e/astrum-solar-grand-opening-tickets-12561885939&gt;
+
+Tuesday, August 26
+5:00 PM – 7:00 PM
+
+Astrum Solar
+54 Tuttle Place
+Middletown, CT 06457
+
+You are invited to join us at an event to celebrate the grand opening of our Middletown, Connecticut office with a ribbon cutting ceremony by Mayor Daniel T. Drew. This event is open to the public and free! Bring your family and friends for light refreshments and an inside look on how Astrum Solar can save you money on your electricity bill. Hope to see you there!
+
+RSVP and celebrate with us!
+ &lt;https://www.eventbrite.com/e/astrum-solar-grand-opening-tickets-12561885939&gt;
+
+Turnkey Solar Solutions to Save You Money
+
+Astrum Solar’s turnkey process makes it easy to switch to solar. Our team of solar experts personally handles every detail and turns a complex process into one that is smooth, simple and carefree for you. With our solar financing options you can go solar for $0 Down and start saving from day one and keep saving year after year.
+
+You’re receiving this email because you’ve expressed interest in an Astrum Solar system installation or partnership.
+
+A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. CT HIC 0628993
+
+Astrum Solar, Inc.
+ 54 Tuttle Place
+ Middletown, CT 06457
+P: 800-903-6130
+F: 203-886-1440
+
+Copyright © 2014 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy 
+&lt;http://www.astrumsolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com
+&lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

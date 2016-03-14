@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use this e-mail to inform customer that this is the last time we&apos;re reaching out. Only send this after the last VoiceMail.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Final E-Mail</name>
+    <style>formalLetter</style>
+    <subject>May we still help you go solar?</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+We have been attempting to reach you to follow up on your inquiry to go solar for your home. Since we have not heard back from you, we wanted to reach out to see if you were still interested or had any questions.
+
+We would like the opportunity to speak with you directly to answer your questions and to set up convenient time for a Direct Energy Solar Sales Consultant to meet with you. On our initial phone call, we will work with you to determine if your home is a good candidate to take advantage of solar power and walk you through our easy, turnkey process of going solar. It is easier—and more affordable—than you may think. We will tell you about our free installation and tailored system designs—it won’t take much time.
+
+Because we have made several attempts to contact you and have been unsuccessful thus far, we do not want to bother you in the event you have changed your mind at this time. Therefore, this will be the last time we will be reaching out to you. If we have just been unlucky in reaching you and you still would like to meet with a Solar Consultant to better understand the amazing savings that are possible and/or the positive impact you could have on our environment, please give us a call at 800-903-6130.
+
+Direct Energy Solar is the best in this business and will ensure your experience in going solar is simple, turnkey and enjoyable. We look forward to meeting you and servicing your residential solar needs.
+
+Best,
+
+{!User.FirstName}
+
+7101 Riverwood Drive 
+Columbia, MD 21046
+P: 800-903-6130
+F: 800-949-1408
+{!User.Email}
+directenergysolar.com
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

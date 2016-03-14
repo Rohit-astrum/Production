@@ -1,0 +1,98 @@
+<apex:page controller="EnphaseAlertsController" title="Enphase Alerts">
+
+    <style type="text/css">
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        body .pbBody table.list tr.dataRow td { vertical-align: top !important; }
+        body { padding-top: 10px; padding-bottom: 10px;
+    </style>
+    
+	<apex:includeScript value="/support/console/20.0/integration.js"/>
+	<script type="text/javascript">
+		function openLink(url, name) {
+			sforce.console.openPrimaryTab(null, url, true, name);		
+		}
+	</script>
+
+	<apex:pageBlock title="Enphase Alerts">
+	
+		<apex:pageBlockTable value="{!alerts}" var="a">
+			
+			<apex:column headerValue="Last Alert" width="110">
+				<apex:outputText value="{!a.latest}"/>
+			</apex:column>
+			
+			<apex:column headerValue="System Info" width="300">
+                
+                <apex:panelGrid columns="2">
+                    <apex:outputLabel value="Account: " style="font-weight:bold;"/>
+                    <apex:outputLink value="#" 
+                        onclick="openLink('{!JSENCODE(URLFOR($Action.Account.View, a.accountId))}');return false;"
+                        rendered="{!a.accountId!=null}">{!a.accountName}</apex:outputLink>
+
+                    <apex:outputLabel value="Property: " style="font-weight:bold;"/>
+                    <apex:outputPanel layout="block">
+                        <apex:outputLink value="#" 
+                            onclick="openLink('{!JSENCODE(URLFOR($Action.Property__c.View, a.propertyId))}');return false;"
+                            rendered="{!a.PropertyId!=null}">{!a.propertyName}</apex:outputLink>
+                    </apex:outputPanel>
+
+                    <apex:outputLabel value="City/State: " style="font-weight:bold;"/>
+                    <apex:outputPanel layout="block">
+                        <apex:outputField value="{!a.alert1.Installed_System__r.Property__r.Property_City__c}"/>&nbsp;
+                        <apex:outputField value=" {!a.alert1.Installed_System__r.Property__r.Property_State__c}"/>
+                    </apex:outputPanel>
+
+					<apex:outputLabel value="Astrum Office: " style="font-weight:bold;"/>
+					<apex:outputField value="{!a.alert1.Installed_System__r.Property__r.Astrum_Office__c} "/>
+                    
+                    <apex:outputLabel value="Installed System: " style="font-weight:bold;"/>
+                    <apex:outputLink value="#" 
+                        onclick="openLink('{!JSENCODE(URLFOR($Action.Installed_System__c.View, a.installedSystemId))}', '{!JSENCODE(a.systemName)}');return false;"
+                        rendered="{!a.installedSystemId!=null}">{!a.systemName}</apex:outputLink>
+
+					<apex:outputLabel value="Enphase Link: " style="font-weight:bold;"/>
+					<apex:outputField value="{!a.alert1.View_in_Enlighten__c} "/>
+
+                </apex:panelGrid>
+                
+			</apex:column>
+			
+            <apex:column headerValue="Unhandled Alerts" width="365">
+                
+                <apex:pageBlockTable value="{!a.activeAlerts}" var="b">
+                    <apex:column value="{!b.Impact__c}" width="45" styleClass="text-center" headerClass="text-center"/>
+                    <apex:column value="{!b.Alert_Start__c}" width="110"/>
+                    <apex:column value="{!b.Number_of_Devices__c}" headerValue="#" width="20" styleClass="text-right" headerClass="text-right"/>
+                    <apex:column value="{!b.Alert_Name__c}" width="180"/>
+                </apex:pageBlockTable>
+                
+            </apex:column>
+
+			<apex:column headerValue="Handled Alerts" width="365">
+                
+                <apex:pageBlockTable value="{!a.inactiveAlerts}" var="b" rendered="{!a.inactiveAlerts.size>0}">
+                    <apex:column value="{!b.Impact__c}" width="45" styleClass="text-center" headerClass="text-center"/>
+                    <apex:column value="{!b.Alert_Start__c}" width="110"/>
+                    <apex:column value="{!b.Number_of_Devices__c}" headerValue="#" width="20" styleClass="text-right" headerClass="text-right"/>
+                    <apex:column value="{!b.Alert_Name__c}" width="180"/>
+                </apex:pageBlockTable>
+                
+            </apex:column>
+            
+            <apex:column headerValue="Recent Cases">
+                
+                <apex:pageBlockTable value="{!a.recentCases}" var="c" rendered="{!a.recentCases.size>0}">
+                    <apex:column value="{!c.CreatedDate}" width="110" />
+                    <apex:column value="{!c.Status}" width="75" />
+                    <apex:column value="{!c.Type}" width="85"/>
+                    <apex:column value="{!c.Subject}" width="190"/>
+                </apex:pageBlockTable>
+                
+            </apex:column>
+
+		</apex:pageBlockTable>
+	
+	</apex:pageBlock>
+
+</apex:page>

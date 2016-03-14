@@ -1,0 +1,48 @@
+<messaging:emailTemplate subject="Sales Order {!relatedTo.name} Requires Revision" recipientType="User" relatedToType="SCRB_SalesOrder__c">
+<messaging:HtmlEmailBody >
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="Template" content="Response"/>
+</head>
+<body>
+
+<p>A <strong><a href="https://na28.salesforce.com/{!relatedTo.Id}">Sales Order</a></strong> with the following details has been rejected.</p>
+
+ <p><u>Rejection Comments :</u></p>
+ <b><c:SalesOrderApprovalHistory sorderId="{!relatedTo.Id}"/> </b>
+ 
+<ul style="list-style:none">
+    <li><u>Customer Name       </u>     : {!relatedTo.AccountId__r.Name}</li>   
+    <li><u>City, State of Property </u> : {!relatedTo.Installation_City__c}, {!relatedTo.Installation_State__c}</li>
+    <li><u>Total System Size    </u>    : {!relatedTo.System_Size_kW__c}</li>
+    <li><u>Final System Price  </u>    : &nbsp; <apex:outputText value="{0, number, currency}"> <apex:param value="{!relatedTo.Amount__c}"/></apex:outputText>    </li>
+    <li><u>Total Panel Count   </u>    : <apex:outputText value="{0,number,#,##0}"> <apex:param value="{!relatedTo.Total_Panel_Count__c}"/></apex:outputText></li>
+    <li><u>Type and Quantity   </u>     : {!relatedTo.System_Makeup__c}</li>
+    <li><u>Field Surveys Complete ?</u> : {!relatedTo.Has_Field_Survey_Been__c}</li>   
+    <li><u>Hand Off Notes        </u>   : {!relatedTo.Hand_Off_Notes__c}</li>   
+</ul>
+<p> Check the following fields as required by Contract Admin Approval </p>
+    
+    <ul style="list-style:none">
+        <li><u>Sales Proposal Attached  </u>              : {!relatedTo.Sales_Proposal_Attached__c}</li>   
+        <li><u>Sold System Design SKP Attached </u>       : {!relatedTo.Sold_System_Design_SKP_Attached__c}</li>
+        <li><u>System Design Drawing Attached</u>         : {!relatedTo.System_Design_Drawing_Attached__c}</li>
+        <li><u>Sales Contract Attached      </u>          : {!relatedTo.Sales_Contract_Attached__c}</li>
+        <li><u>Customer Check is Attached   </u>          : {!relatedTo.Customer_Check_is_Attached__c}</li>
+        <li><u>Financing Type       </u>                  : {!relatedTo.Financing_Type__c}</li>
+        <li><u>Signed Credit App Attached ( required for Lease Financing Type)</u>               : {!relatedTo.Signed_Credit_App_Attached_Lease__c}</li> 
+        <li><u>Utility Bill Attached( required for MA, CT, NY, NJ, OH, DC ) </u>                 : {!relatedTo.Utility_Bill_Attached__c}</li>   
+        <li><u>Obstruction Elevations Attached ( required for MA, CT, NY)  </u>                  : {!relatedTo.Obstruction_Elevation_Attached__c}</li>  
+        <li><u>Requires Tree Removal            </u>        : {!relatedTo.Requires_Tree_Removal__c}</li>  
+        <li><u>Tree Removal Addendum Attached ( required if Requires Tree Removal)   </u>         : {!relatedTo.Tree_Removal_Addendum_Attached__c}</li> 
+          
+    </ul>
+    
+ 
+<p>To Revise this Sales Order, Please <strong><a href="https://na28.salesforce.com/{!relatedTo.Id}">Review Here</a></strong></p>
+
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

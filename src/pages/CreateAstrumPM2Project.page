@@ -1,0 +1,30 @@
+<apex:page standardController="SCRB_SalesOrder__c" extensions="CreateAstrumPM2ProjectExtension" action="{!createProject}">
+
+    <style type="text/css">
+        .error-link {
+            font-weight: bold;
+            font-size: 110%;
+            margin: 10px;
+            margin-left: 25px;
+            color: blue;
+        }
+    </style>
+
+    <apex:PageMessages />
+    
+    <apex:outputPanel rendered="{!NOT(ISNULL(projectId))}">
+
+        <apex:outputLink value="{!URLFOR($Action.PM_Project__c.View, projectId)}" styleClass="error-link">View Project Details</apex:outputLink>
+       
+        
+        <apex:detail subject="{!projectId}"/>  
+    
+    </apex:outputPanel>
+    
+    <apex:outputLink value="{!URLFOR($Action.SCRB_SalesOrder__c.View, SCRB_SalesOrder__c.id)}" styleClass="error-link">Return to Sales Order</apex:outputLink>
+
+    <apex:outputField value="{!SCRB_SalesOrder__c.RequestedShipmentOn__c}" rendered="false"/>   
+    <apex:outputField value="{!SCRB_SalesOrder__c.AccountId__r.Name}" rendered="false"/>    
+    <apex:outputField value="{!SCRB_SalesOrder__c.OpportunityId__r.OwnerId}" rendered="false"/> 
+
+</apex:page>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use this e-mail to request an electric bill without promising a survey</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Request bill - NO SURVEY</name>
+    <style>formalLetter</style>
+    <subject>Direct Energy Solar: Let&apos;s look at your electricity usage</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+It was great talking to you today about Direct Energy Solar and how you might qualify for our free installation to take control of unpredictable electricity bills. Thanks for taking the time to learn about us and how you can become your own energy provider.
+
+Please use this e-mail address to send me a copy of your electric bill. We are looking for the last 12 months of electric usage. Below are some options for sending this information in:
+
+• If you have on-line access to your account, you can save a copy of your bill on your computer, usually as an Adobe pdf. You can then e-mail these copies attached to the reply to me.
+
+• If you don’t have on-line access, you can scan paper copies of your bills and attach the scanned images or pdf to the reply to me.
+
+• Should neither of these options work for you then you can fax a copy of your bill to (800) 949-1408. Please make sure you write my name on the first page of the fax, so I may identify it.
+
+We need the last 12 months of usage history. Most bills have this information, either in a total or a bar graph. You can send us multiple bills, should your bill not have total annual usage.
+
+Again, thanks for your time and your interest in Direct Energy Solar!
+
+Best regards,
+{!User.FirstName}
+7101 Riverwood Drive 
+Columbia, MD 21046
+P: 800-903-6130
+F: 800-949-1408
+directenergysolar.com
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

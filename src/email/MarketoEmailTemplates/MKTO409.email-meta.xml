@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>2015 Happy Holidays.2015 Happy Holidays</name>
+    <style>none</style>
+    <subject>Wishing you all things sunny and bright!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+A special message for our valued customers.
+
+
+
+
+Wishing You All Things Sunny &amp; Bright This Holiday Season!
+
+{{lead.First Name:default=Friend}}, you helped us light up this year with solar! Over the next 20 years, the systems we installed this year alone will:
+
+Generate an estimated $100,000,000 in electricity savings
+(payments not made to utility)
+
+Generate an estimated $40,000,000 in net savings for our customers
+(money saved over and above what was invested)
+
+Avoid emission of 500,000,000 pounds of CO2
+
+Warmest wishes for a Happy Holiday and a Bright New Year! Let 2016 be a year full of sunshine, electricity savings and good health.
+
+From,
+Your friends at Direct Energy Solar
+
+Contact Customer Care at 888-603-6085
+Your Sun. Your Power. Your Way.
+
+You are receiving this email because you are a Direct Energy Solar customer.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar 
+power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and 
+conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, 
+MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, 
+Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;[[http://www.directenergysolar.com/privacy-policy]]&gt;
+
+Terms &amp; Conditions
+&lt;[[http://www.directenergysolar.com/terms-and-conditions]]&gt;
+
+DirectEnergySolar.com
+&lt;[[http://www.directenergysolar.com]]&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

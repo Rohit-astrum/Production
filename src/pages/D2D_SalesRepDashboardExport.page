@@ -1,0 +1,20 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_SalesRepDashboardController" contenttype="application/x-excel#MyDashboard.xls">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+    <apex:dataTable value="{!referrals}" var="r">
+        <apex:column headerValue="Date" styleClass="referral-center">
+            <apex:outputText value="{0,date,M/d/yy}">
+                <apex:param value="{!r.Lead_Created_Date__c}"/>
+            </apex:outputText>
+        </apex:column>
+        <apex:column value="{!r.Full_Name__c}" headerValue="Referral"/>
+        <apex:column value="{!r.Street__c}" headerValue="Street" style="width:1.5in;overflow:hidden;"/>
+        <apex:column value="{!r.City__c}" headerValue="City"/>
+        <apex:column value="{!r.State__c}" headerValue="State"/>
+        <apex:column value="{!r.Zip__c}" headerValue="Zip"/>
+        <apex:column value="{!r.D2D_System_Size__c}" headerValue="Segment Priority"/>
+        <apex:column value="{!r.D2D_Lead_Status__c}" headerValue="Lead Status"/>
+    </apex:dataTable>
+
+</apex:page>

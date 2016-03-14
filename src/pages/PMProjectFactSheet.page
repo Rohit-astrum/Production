@@ -1,0 +1,383 @@
+<apex:page standardController="PM_Project__c" extensions="PMProjectFactSheetExtension" doctype="html-5.0" showHeader="false" sidebar="false" standardStylesheets="true" >
+<style type="text/css">
+    @media print {
+        .printButton {
+            display:none;
+        }
+        .printForm {
+        display:none;
+        } 
+    }
+    .printButton {
+        float: right;
+        margin: 15px;
+    } 
+    .printForm {
+        float: right;
+        margin: 15px;
+    } 
+       
+}
+    
+</style>
+  
+<apex:outputPanel >
+  
+    <button onclick="window.print();" class="printButton">Print</button>
+   
+    <apex:outputPanel rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease' && PM_Project__c.Sales_Order__r.Lease_PPA_Fund__c = nrgLeaseFundId}" >
+        <button onclick="window.open('/servlet/servlet.FileDownload?file={!NRGDocuments.Id}');" class="printButton">Print NRG Forms</button>    
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease' && PM_Project__c.Sales_Order__r.Lease_PPA_Fund__c = sunnovaLeaseFundId}" >
+        <button onclick="window.open('/servlet/servlet.FileDownload?file={!SunnovaDocuments.Id}');" class="printButton">Print Sunnova Forms</button>    
+    </apex:outputPanel>
+
+
+    <apex:sectionHeader subtitle="{!PM_Project__c.Sales_Order__r.AccountId__r.name}" title="Fact Sheet"/>
+
+    <apex:outputPanel >
+        <apex:outputText value="{!installQRCode}" escape="false"/>
+        <apex:image url="/servlet/servlet.FileDownload?file={!sampleSketchID}" rendered="{!NOT(ISBLANK(sampleSketchID))}" width="300" style="float:right; align:right"/>
+    </apex:outputPanel>
+    
+    <apex:sectionHeader subtitle="{!leaseFundStatusMessage}" rendered="{!leaseFundStatusMessage != null}" />
+    
+    <apex:sectionHeader subtitle="{!changeRequestSubmitted}" rendered="{!changeRequestSubmitted != null}" />     
+
+    <apex:pageBlock >
+    
+        <apex:pageBlockSection >
+
+            <!--  
+            <apex:outputField value="{!PM_Project__c.Sales_Order__r.AccountId__r.Billing_Email_Address__c}"/>
+            -->
+            
+            <apex:outputField value="{!PM_Project__c.Name}"/>
+            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Account Owner" for="AccountOwner"/>
+                <apex:outputField value="{!PM_Project__c.Sales_Order__r.AccountId__r.Owner.Name}" id="AccountOwner"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputField value="{!PM_Project__c.Sales_Order__r.Job_Id__c}"/>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Salesperson"/>
+                <apex:outputField value="{!PM_Project__c.Sales_Order__r.OpportunityId__r.Owner.Name}"/>
+            </apex:pageBlockSectionItem>
+
+            <apex:outputField value="{!PM_Project__c.Sales_Order__r.AccountId__r.AccountNumber}"/>
+           
+            <apex:outputField value="{!PM_Project__c.Project_Lead__c}"/>
+
+            <apex:outputField value="{!PM_Project__c.Sales_Order__r.Property__r.Astrum_Office__c}"/>
+
+            <apex:outputField value="{!PM_Project__c.Kickoff__c}"/>
+
+
+            <apex:outputField value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Total_System_Size_kW__c}"/>
+
+            <!-- 
+            <apex:outputField value="{!Milestone1_Project__c.Benchmark_Completion_Date__c}"/>
+            <apex:outputField value="{!Milestone1_Project__c.Deadline__c}"/>
+            -->
+            <apex:outputField value="{!PM_Project__c.Install__c}"/>
+
+            <apex:outputField value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Total_Projected_Annual_Output_kWh_y__c}"/>
+
+            <apex:outputField value="{!PM_Project__c.Inspection__c}"/>
+            <!-- 
+            <apex:outputField value="{!Milestone1_Project__c.Paid_In_Full_Date__c}"/>
+            -->
+
+          
+        </apex:pageBlockSection>
+      
+    </apex:pageBlock>
+
+    <!-- TODO: get the right field -->
+    <apex:sectionHeader subtitle="Sold Through Door to Door"
+            rendered="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.Community_Program_Offer__r.RecordType.Name = 'Door to Door'}" />
+
+    <apex:sectionHeader subtitle="Constellation Lease Inverters Required: {!PM_Project__c.Sales_Order__r.Constellation_Lease_Inverters__c}"
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'&&(PM_Project__c.Sales_Order__r.Lease_Fund__c = 'CITI1'||PM_Project__c.Sales_Order__r.Lease_Fund__c = 'CITI2'||PM_Project__c.Sales_Order__r.Lease_Fund__c = 'CITI2 - M210')}" />
+    <apex:sectionHeader subtitle="Do NOT Install Project at Current Time.  Special Order Inverters.  Verify with Ben Davis."
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'&&(PM_Project__c.Sales_Order__r.Lease_Fund__c = 'NJ - SPECIAL'||PM_Project__c.Sales_Order__r.Lease_Fund__c = 'MA - SPECIAL'||PM_Project__c.Sales_Order__r.Lease_Fund__c = 'CPF'||PM_Project__c.Sales_Order__r.Lease_Fund__c = 'Goldman - Do Not Install')}" />
+    <apex:sectionHeader subtitle="Review With Ben Davis Before Scheduling Install."
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'&&(PM_Project__c.Sales_Order__r.Lease_Fund__c = 'VA - TBR')}" />
+    <apex:sectionHeader subtitle="No Lease Inverters.  Use 2011 Astrum Inverters.  Confirm Quantity and Serial Numbers with Ben Davis and Jessica Weigh Before Install."
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'&&(PM_Project__c.Sales_Order__r.Lease_Fund__c = 'ASTRUM - M210')}" />        
+    <apex:sectionHeader subtitle="Do NOT Install.  Check with Ben Davis to verify if customer credit has been confirmed."
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'&&(PM_Project__c.Sales_Order__r.Lease_Fund__c = 'Goldman - Do Not Install - Credit')}" />        
+    <apex:sectionHeader subtitle="No Lease Inverters.  Use ALL Astrum Inverters."
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'CITI1'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'CITI2'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'CITI2 - M210'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'NJ - SPECIAL'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'MA - SPECIAL'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'Goldman - Do Not Install'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'VA - TBR'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'ASTRUM - M210'&&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'Goldman - Do Not Install - Credit' &&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'NRG Residential Solar Solutions, LLC' &&PM_Project__c.Sales_Order__r.Lease_Fund__c != 'Sunnova Energy Corporation'}" />
+    <apex:sectionHeader subtitle="NRG Lease – Documents and Equipment Required On-Site"
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease' && PM_Project__c.Sales_Order__r.Lease_Fund__c = 'NRG Residential Solar Solutions, LLC'}" >       
+           
+         <ul style="list-style:none">              
+        
+           <li>
+               <B>Equipment Delivery Confirmation Photo and Form </B> – Form must be signed by customer, or if unavailable, by Lead Installer. 
+           </li>    
+          <li>    
+                <B>Homeowner Acceptance Form </B>– Completed by last Astrum team on-site, signed by customer
+           </li>              
+         <li>    
+                <B>Locus Meter</B>
+         </li>  
+         <li>
+             <B><u>Do not turn on or test the system until approved by NRG.</u></B>
+          </li>  
+          <li>
+               <B>Commissioning Checklist and Production Verification (Irradiance Testing)  </B> – Must be completed on-site. 
+           </li>    
+             
+             
+         </ul>   
+          
+    </apex:sectionHeader> 
+    <apex:sectionHeader subtitle="Sunnova Lease – Documents and Equipment Required On-Site"
+            rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease' && PM_Project__c.Sales_Order__r.Lease_Fund__c = 'Sunnova Energy Corporation'}" >       
+           
+           <ul style="list-style:none">
+          <li>    
+                <B>Commissioning Checklist and Production Verification (Irradiance Testing)</B> – Must be completed on-site
+           </li>    
+         <li>    
+                <B>Itron / GE I210+C Meter</B>
+           </li>    
+         </ul>   
+    </apex:sectionHeader>     
+            
+    <!--            
+    <apex:pageBlock title="Project Notes">
+        <apex:outputField value="{!Milestone1_Project__c.Project_Notes__c}"/>
+    </apex:pageBlock>
+     -->
+    
+    <apex:pageBlock title="Change Requests">
+        
+        <apex:repeat value="{!changeRequests}" var="crm" id="theRepeat">
+            <apex:pageBlockTable value="{!crm}" var="cr">
+                <apex:column rendered="{!cr.CR_Overall_Status__c == 'S'}">
+                    <apex:image url="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}" height="16" width="16"/>
+                </apex:column>
+                <apex:column rendered="{!cr.CR_Overall_Status__c == 'P'}">
+                    <apex:image url="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}" height="16" width="16"/>
+                </apex:column>
+                <apex:column rendered="{!cr.CR_Overall_Status__c == 'C'}">
+                    <apex:image url="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}" height="16" width="16"/>
+                </apex:column>
+                <apex:column rendered="{!cr.CR_Overall_Status__c == null}">
+                </apex:column>
+                <apex:column value="{!cr.Name}"/>
+                <apex:column value="{!cr.Status__c}"/>
+                <apex:column value="{!cr.Type_1__c}"/>
+                <apex:column value="{!cr.Type_1_Detail__c}"/>
+                <apex:column value="{!cr.Reason_for_Change_1__c}"/>
+                <apex:column value="{!cr.Type_2__c}"/>
+                <apex:column value="{!cr.Type_2_Detail__c}"/>
+                <apex:column value="{!cr.Reason_for_Change_2__c}"/>                
+            </apex:pageBlockTable> 
+            <apex:pageBlockTable value="{!crm}" var="cr">
+                <apex:column value="{!cr.Change_From__c}"/> 
+                <apex:column value="{!cr.Change_To__c}"/> 
+            </apex:pageBlockTable>  
+           
+        </apex:repeat>        
+    </apex:pageBlock> 
+    
+    <apex:pageBlock title="Contacts">
+        <apex:pageBlockTable value="{!contacts}" var="contact">
+            <apex:column value="{!contact.FirstName}"/>
+            <apex:column value="{!contact.LastName}"/>
+            <apex:column value="{!contact.Email}"/>
+            <apex:column value="{!contact.HomePhone}"/>
+            <apex:column value="{!contact.MobilePhone}"/>
+            <apex:column value="{!contact.Phone}"/>
+            <apex:column value="{!contact.Work_Phone__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock> 
+  
+    <apex:pageBlock title="Property">
+        <apex:pageBlockTable value="{!PM_Project__c}" var="property1">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.name}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Property_Address_2__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Property_City__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Property_State__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Property_ZIP__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Property_County__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Permit_Jurisdiction__c}"/>
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!PM_Project__c}" var="property2">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.HOA_Contact_Name__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.HOA_Contact_Phone__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.HOA_Contact_Email__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Optimal_Site_Quality_kWh_y_kW__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Astrum_Office__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Property__r.Hours_From_Nearest_Office__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+  <!--
+    <apex:pageBlock title="Install Locations">
+        <apex:pageBlockTable value="{!installLocations}" var="il">
+          MK - 2014-05-04 - Need to remove this field since it will not be filled in moving forward.  
+            Improvements need to be made to include only install locations for Surface/Survey combination for each array.
+            <apex:column value="{!il.Property__c}"/>
+            <apex:column value="{!il.Name}"/>
+            <apex:column value="{!il.Azimuth__c}"/>
+            <apex:column value="{!il.Pitch__c}"/>
+            <apex:column value="{!il.Number_of_Stories__c}"/>
+            <apex:column value="{!il.Stuctural_Members__c}"/>
+            <apex:column value="{!il.Surface_Type__c}"/>
+            <apex:column value="{!il.TSRF__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+  -->
+    <apex:pageBlock title="Utility Services">
+        <apex:pageBlockTable value="{!utilityServices}" var="us">
+            <apex:column value="{!us.Property__c}"/>
+            <apex:column value="{!us.Name}"/>
+            <apex:column value="{!us.Service_Account_Number__c}"/>
+            <apex:column value="{!us.Utility_Company__c}"/>
+            <apex:column value="{!us.Amperage__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+     
+    <apex:pageBlock title="Circuit Breaker Panels">
+        <apex:pageBlockTable value="{!cbPanels}" var="cbp">
+            <apex:column value="{!cbp.Name}"/>
+            <apex:column value="{!cbp.Utility_Service__c}"/>
+            <apex:column value="{!cbp.Panel_Location__c}"/>
+            <apex:column value="{!cbp.Parent_CB_Panel__c}"/>
+            <apex:column value="{!cbp.Main_Breaker_Rating_Amps__c}"/>
+            <apex:column value="{!cbp.Bus_Rating_Amps__c }"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+    
+    <apex:pageBlock title="Sales Order">
+        <apex:pageBlockTable value="{!PM_Project__c}" var="so">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Name}" style="vertical-align:top;"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Has_Field_Survey_Been__c}" style="vertical-align:top;"/>
+            
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Financing_Type__c}" style="vertical-align:top;"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Financing_Option__c}" style="vertical-align:top;"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Leasing_Option__c}" style="vertical-align:top;"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Lease_PPA_Fund__c}"  rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'}" style="vertical-align:top;"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.Constellation_Job_Id__c}" rendered="{!PM_Project__c.Sales_Order__r.Financing_Type__c = 'Lease'}"  style="vertical-align:top;"/>
+        </apex:pageBlockTable>
+        <apex:outputField value="{!PM_Project__c.Sales_Order__r.Hand_Off_Notes__c}"/> 
+    </apex:pageBlock>
+     <!--
+    <apex:pageBlock title="System Design Quote">
+        <apex:pageBlockTable value="{!PM_Project__c}" var="sdq">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.Name}"/>
+            
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+
+    
+
+     <apex:pageBlock title="System Design">
+        <apex:pageBlockTable value="{!PM_Project__c}" var="sd1">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Property__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Name}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Total_Projected_Annual_Output_kWh_y__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Total_System_Size_kW__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Ground_Mount_Arrays__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Panel_Count__c}"/>
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!PM_Project__c}" var="sd2">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.System_Makeup__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays_on_Flat_Roofs__c}" headerValue="Arrays on Flat Roofs"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Overall_Site_Quality__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Overall_TSRF__c}"/>
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!PM_Project__c}" var="sd3">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Max_Install_Location_Pitch__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Max_Install_Location_Stories__c}"/> 
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Includes_Outbuilding_Installation__c}" headerValue="Includes Outbuilding"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Inside_Only_Conduit__c}"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Trenching_Required__c}" headerValue="Trenching?"/>
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Vent_Stack_Movement_Required__c}" headerValue="Move Vent Stacks"/>    
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!PM_Project__c}" var="sd4">
+            <apex:column value="{!PM_Project__c.Sales_Order__r.System_Design_Quote__r.System_Design__r.Notes__c}"/>      
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+
+-->
+    <apex:pageBlock title="Sold Scenario Pricing">
+        <apex:outputText value="{!soldScenarioPricingURL}" escape="false"/>
+    </apex:pageBlock>
+
+    <apex:pageBlock title="System Design">
+        <apex:outputText value="{!systemDesignArrayViewURL}" escape="false"/>
+    </apex:pageBlock>
+
+   <!--
+    <apex:pageBlock title="Price Adjustments">
+        <apex:pageBlockTable value="{!priceAdjustments}" var="pr">
+            <apex:column value="{!pr.Name}"/>
+            <apex:column value="{!pr.Amount__c}"/>
+            <apex:column value="{!pr.Amount_per_Watt__c}"/>
+            <apex:column value="{!pr.Percent__c}"/>
+            <apex:column value="{!pr.Type__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+    -->
+   
+   <!--
+    <apex:pageBlock title="System Design Array(s)">
+        <apex:pageBlockTable value="{!systemDesignArrays}" var="sda">
+            <apex:column value="{!sda.Name}" headerValue="Name"/>
+            <apex:column value="{!sda.Mounting_Type__c}"/>
+            <apex:column value="{!sda.Special_Parts_Required__c}" headerValue="Special Parts?"/>
+            <apex:column value="{!sda.Electrical_Adder__c}"/>
+            <apex:column value="{!sda.CB_Panel__c}"/>
+            <apex:column value="{!sda.Array_Size_kW__c}"/>
+            <apex:column value="{!sda.Items_On_Flat_Roof__c}"/>
+            <apex:column value="{!sda.Max_Install_Location_Pitch__c}"/>
+            <apex:column value="{!sda.Max_Install_Location_Stories__c}"/>
+            <apex:column value="{!sda.Panel_Count__c}"/>
+            <apex:column value="{!sda.Projected_Annual_Output_kWh_y__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+   
+    <apex:pageBlock title="System Design Item(s)">
+        <apex:pageBlockTable value="{!systemDesignItems}" var="sdi">
+            <apex:column value="{!sdi.System_Design_Array__c}"/>
+            <apex:column value="{!sdi.Name}"/>
+            <apex:column value="{!sdi.Property__c}"/>
+            <apex:column value="{!sdi.Install_Location__c}"/>
+            <apex:column value="{!sdi.Quantity__c}"/>
+            <apex:column value="{!sdi.System_Design_Product__r.Description__c}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock> 
+  
+  <!--  
+  <apex:pageBlock title="Milestone(s)">
+        <apex:pageBlockTable value="{!milestones}" var="ms">
+            <apex:column value="{!ms.Name}"/>
+            <apex:column value="{!ms.Total_Open_Tasks__c}" headerValue="Open Tasks"/>
+            <apex:column value="{!ms.Total_Blocked_Tasks__c}" headerValue="Blocked Tasks"/>
+            <apex:column value="{!ms.Total_Late_Tasks__c}" headerValue="Late Tasks"/>
+            <apex:column value="{!ms.Total_Complete_Tasks__c}" headerValue="Complete Tasks"/>
+            <apex:column value="{!ms.Kickoff__c}"/>
+            <apex:column value="{!ms.Deadline__c}"/>
+            <apex:column value="{!ms.Complete__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock>
+ 
+  <apex:relatedList title="Log(s)" list="Project_Logs__r" />
+  
+   -->
+  
+  
+        
+  </apex:outputPanel>
+  
+</apex:page>

@@ -1,0 +1,30 @@
+<apex:page standardController="Lead"           
+           extensions="Lead_Status_Controller_Extension" showHeader="true" sidebar="true" id="page" tabStyle="Pipeline_L__tab">
+           
+        <apex:messages />
+
+        <apex:sectionHeader title="Lead Pipeline" /> 
+         
+        <apex:pageBlock title="Leads"> 
+                  
+            <c:Lead_Status_Table title="Leads Not Contacted Within 4 Business Hours.  Status: Open - New" leadStatusHolders="{!leadsEarlyStageToContact}" />            
+
+            <c:Lead_Status_Table title="Leads Not Contacted At Least 3 Times Within The First 3 Business Days.  Status: Contacted by Us" leadStatusHolders="{!leadsMediumStageToContact}" />          
+
+            <c:Lead_Status_Table title="Leads Not Contacted At Least 4 Times Within The First Business Week.  Status: Contacted by Us" leadStatusHolders="{!leadsLateStageToContact}" />          
+
+	        <apex:pageBlockSection title="All of My Leads" columns="1">
+	            <c:Lead_Status_Table title="Status: Open - New" leadStatusHolders="{!openNewLeads}" />           
+	            <c:Lead_Status_Table title="Status: Contacted by Us" leadStatusHolders="{!contactedByUsLeads}" />           
+	            <c:Lead_Status_Table title="Status: Contacted Us Back" leadStatusHolders="{!contactedUsBackLeads}" />           
+	            <c:Lead_Status_Table title="Status: Qualified" leadStatusHolders="{!qualifiedLeads}" />           
+	            <c:Lead_Status_Table title="Status: On Hold" leadStatusHolders="{!onHoldLeads}" />           
+	            <c:Lead_Status_Table title="Status: Unqualified" leadStatusHolders="{!unqualifiedLeads}" />           
+	            <c:Lead_Status_Table title="Status: Unresponsive" leadStatusHolders="{!unresponsiveLeads}" />           
+	            <c:Lead_Status_Table title="Status: Marketing – Influencer" leadStatusHolders="{!marketingInfluencerLeads}" />           
+	            <c:Lead_Status_Table title="Status: Lost – Competition" leadStatusHolders="{!lostCompetitionLeads}" />           
+			</apex:pageBlockSection>
+			
+        </apex:pageBlock>
+
+</apex:page>

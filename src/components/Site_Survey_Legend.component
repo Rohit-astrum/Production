@@ -1,0 +1,20 @@
+<apex:component >
+        <apex:attribute name="scheduledColor" type="String" required="true" description="Scheduled Color" />
+        <apex:attribute name="pastDueColor" type="String" required="true" description="Past Due Color" />
+        <apex:attribute name="completedColor" type="String" required="true" description="Completed Color" />
+        
+        <table border="0" style="margin:0 0 8px 0">
+            <tr>
+                <td style="background : {!scheduledColor};width:25px;border: 1px solid #EFEFEF;"></td>
+                <td style="padding : 2px 5px;">Scheduled</td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td style="background : {!pastDueColor};width:25px;" ></td>
+                <td style="padding : 2px 5px;">Pending / Past Due</td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td style="background : {!completedColor};width:25px;"></td>
+                <td style="padding : 2px 5px;">Completed</td>
+                <td >&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+        </table>
+
+</apex:component>

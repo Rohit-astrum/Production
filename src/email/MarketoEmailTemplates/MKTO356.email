@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<title></title>
+
+<style type="text/css">
+.appleLinksGray a {
+        color: #666666;
+        text-decoration: none;
+}
+.appleLinksWhite a {
+        color: #ffffff;
+        text-decoration: none;
+}
+.appleLinksBlue a {
+        color: #1cef94;
+        text-decoration: none;
+}
+.appleLinksGreen a {
+        color: #61af3f;
+        text-decoration: none;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ><table style="width:100%; background-color:#e8e8e8; padding-bottom:30px; " ><tr ><td ><table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><div class="mktEditable" id="Header" style="margin-left:33px; margin-right:33px; margin-top:15px; margin-bottom:0px; font-size:0px; " ><table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td style="vertical-align: top;" height="105" width="302">
+<div style="margin-top: 10px;"><a href="http://www.directenergysolar.com"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_logo.jpg" alt="Direct Energy Solar" height="64" border="0" width="295" /></a></div>
+</td>
+<td style="vertical-align: top;" height="105" align="right" width="472">
+<div style="margin-top: 13px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/PhoneTagline.jpg" alt="Your Sun. Your Power. Your Way. Call Us: 800-903-6130" height="40" border="0" width="273" /></div>
+</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+<tr ><td width="634" style="padding-left:33px; padding-right:33px; " ><div class="mktEditable" id="BodyCopy" ><div style="margin-top: 0px; margin-bottom: 0px;">
+<div style="margin-top: 0px; margin-bottom: 35px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/RowOfCustomers.jpg" alt="Direct Energy Solar customers" height="135" border="0" width="634" /></div>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 23px; line-height: 24px; margin-bottom: 5px; margin-top: 0px; padding-bottom: 0px; color: #1c3f94;">Dear {{lead.First Name:default=Friend}},</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px; padding-bottom: 0px; text-align: left;">Installing a solar system on your home is a smart way to immediately save on your monthly power bill. And now there is an innovative new way to pay for your system and maximize your energy savings.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px; padding-bottom: 0px; text-align: left;">Direct Energy Solar&rsquo;s mission is to make going solar as easy and rewarding as possible for you. That&rsquo;s why we&rsquo;re so excited to let you know about a new, <strong>no-fee</strong>, <strong>no-money-down</strong> financing plan we&rsquo;ve just introduced through our partner, Sungage Financial.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 30px; margin-top: 15px; padding-bottom: 0px; text-align: left;">As one of the nation&rsquo;s leading solar finance companies, Sungage is committed to providing homeowners like you with consumer-friendly financing options that allow you to own your solar equipment&mdash;for less money and in less time than with other plans. In fact, you don&rsquo;t need any money down to start saving on your energy bill.</p>
+<div style="margin-top: 10px; margin-bottom: 15px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td style="background-color: #e45206;" width="634">
+<p style="color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 28px; line-height: 32px; margin-bottom: 10px; margin-left: 20px; margin-top: 10px; text-align: left; font-weight: bold;">Eliminate Any Out-of-Pocket Investment</p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<div style="margin-top: 15px; margin-bottom: 0px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/Sungage_TaxCreditLoan.jpg" alt="Eliminate Any Out-of-Pocket Investment" height="144" width="634" />
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 30px; margin-top: 15px;">As you are likely aware, the federal government currently offers a <a style="color: #61af3f; font-weight: bold; text-decoration: none;" href="http://energy.gov/savings/residential-renewable-energy-tax-credit">30% Tax Credit</a> on the cost of installing your system, which is set to expire at the end of <span class="appleLinksGray">2016</span>. Sungage<sup>&reg;</sup><sup><sup>&dagger;</sup></sup> has developed an innovative approach that allows you to take advantage of those tax credits from day one with a 0% loan<sup>1</sup> and no additional fees.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td style="background-color: #e45206;" width="634">
+<p style="color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 28px; line-height: 32px; margin-bottom: 10px; margin-left: 20px; margin-top: 10px; text-align: left; font-weight: bold;">A Quicker Path to Saving Money</p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<div style="margin-top: 15px; margin-bottom: 0px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/Sungage_PayFasterSaveSooner.jpg" alt="A Quicker Path to Saving Money" height="203" width="634" />
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px;">Another advantage of Sungage&rsquo;s financing options are shorter terms than those of our existing loans. Sungage offers 10-year loans to allow you to pay off your system faster and start saving sooner.</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 0px;">And with extremely competitive rates, financing with Sungage is very easy.<sup>1</sup> Rates are currently at an APR of 5.49% for 10 years.</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 0px;">Once your loan is repaid, you&rsquo;ll enjoy &ldquo;free&rdquo; electricity from the sun! That&rsquo;s smart planning for the future.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td style="background-color: #e45206;" width="634">
+<p style="color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 28px; line-height: 32px; margin-bottom: 10px; margin-left: 20px; margin-top: 10px; text-align: left; font-weight: bold;">Get Paid for Your Clean Energy Production</p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<div style="margin-top: 15px; margin-bottom: 0px;"><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/Sungage_SRECPaymentsRev.jpg" alt="Get Paid for Your Clean Energy Production" height="182" width="634" />
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 15px;">You&rsquo;re probably also aware of another benefit of going solar with us: we can help you sell Solar Renewable Energy Certificates (SRECs). Those are the credits you earn for all the clean energy your system produces each year, which pays you back in cash when sold on the open market.</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 0px;">Now, rather than waiting to accumulate and then sell your SRECs at end of each year, you can start putting these dollars to work for you immediately when you finance through Sungage<sup>2</sup>.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<table style="border-top-color: #cccccc; border-top-style: solid; border-top-width: 1px;" align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="634">
+<tbody>
+<tr>
+<td>
+<div style="margin-top: 0px; margin-bottom: 10px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<p style="color: #e45206; font-size: 35px; line-height: 32px; margin-bottom: 0px; margin-top: 20px; text-align: center; font-weight: bold;">Let&rsquo;s Talk!</p>
+<p style="color: #1c3f94; font-size: 18px; line-height: 22px; margin-bottom: 15px; margin-top: 10px; text-align: center; font-weight: bold;">Now you can see why we&rsquo;re so excited to show you how a Sungage loan can be applied to your home&rsquo;s solar project. So what&rsquo;s stopping you? Contact us today to set up your appointment.</p>
+<p style="color: #61af3f; font-size: 24px; line-height: 28px; margin-bottom: 25px; margin-top: 0px; text-align: center; font-weight: bold;"><span class="appleLinksGreen">Give us a call at 800-903-6130</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><table width="634" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; " ><tr ><td width="634" style="vertical-align:top; text-align:center; " ><div style="margin-top:25px; margin-bottom:25px; " class="mktEditable" id="PhoneTagline" ><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/PhoneTagline.jpg" alt="Your Sun. Your Power. Your Way. Call Us: 800-903-6130" height="40" border="0" width="273" /></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td style="padding-top:20px; padding-bottom:33px; padding-left:33px; padding-right:33px; " ><div style="color:#666666; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; " ><div class="mktEditable" id="disclaimerCopyWhy" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">You&rsquo;re receiving this email because you&rsquo;ve expressed interest in a Direct Energy Solar system installation.</p></div>
+<div class="mktEditable" id="disclaimerCopyTerms" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><sup>1</sup>Customers must meet certain criteria to qualify for financing, including without limitation a minimum FICO score of 640, with a maximum debt-to-income of 50%. The residence must be the homeowner&rsquo;s primary residence, not held in trust, and with no subdivided deed. Other restrictions apply. Rates are effective as of <span class="appleLinksGray">10/1/2015</span> and are subject to change.</p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><sup>&dagger;</sup> Financing applications are processed by Digital Federal Credit Union (DCU) and DCU is the creditor for any such approved financing.</p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><sup>2</sup>To qualify for Sungage SREC products, the project must have pre-paid data acquisition/reporting services. The Sungage SREC product cannot be bundled with loans other than the Sungage loan product. Customers do not need to use the SREC product to get a Sungage loan product. There are no fees for Sungage SREC products.</p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.</span></p>
+<p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532</span></p></div>
+<div class="mktEditable" id="OfficeDetails" ><p style="margin-bottom: 10px;"><span class="appleLinksGray">Direct Energy Solar</span><br /> <span class="appleLinksGray">7101 Riverwood Drive</span><br /> <span class="appleLinksGray">Columbia, MD 21046</span><br /> <span class="appleLinksGray">P: 800-903-6130</span><br /> <span class="appleLinksGray">F: 443-267-0036</span></p></div>
+<div class="mktEditable" id="TermsConditions" ><p style="font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px;">&copy; <span class="appleLinksGray">2015 Clockwork IP, LLC.</span> All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com/privacy-policy">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com/terms-and-conditions">Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;" href="http://www.directenergysolar.com">DirectEnergySolar.com</a></p></div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

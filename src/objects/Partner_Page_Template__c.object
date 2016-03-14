@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Landing Page templates</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Numbers__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Numbers</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Disclaimer_Content__c</fullName>
+        <externalId>false</externalId>
+        <label>Disclaimer Content</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Logo_Tagline__c</fullName>
+        <externalId>false</externalId>
+        <label>Logo Tagline</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Marketing_Content__c</fullName>
+        <description>Default Marketing Content for a Template</description>
+        <externalId>false</externalId>
+        <label>Marketing Content</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Page_Headline__c</fullName>
+        <externalId>false</externalId>
+        <label>Page Headline</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Portal__c</fullName>
+        <externalId>false</externalId>
+        <label>Portal</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Landing Page Site</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Portal Site</fullName>
+                <default>true</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Program_Disclaimer__c</fullName>
+        <externalId>false</externalId>
+        <label>Program Disclaimer</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Promo_Disclaimer__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Disclaimer</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Promo_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Text</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>VisualForce_Page__c</fullName>
+        <description>Name of VisualForce Page (IT Setting)</description>
+        <externalId>false</externalId>
+        <label>VisualForce Page</label>
+        <length>255</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Landing Page Template</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>VisualForce_Page__c</columns>
+        <columns>Active__c</columns>
+        <columns>Portal__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Page_Headline__c</columns>
+        <columns>Promo_Text__c</columns>
+        <columns>Marketing_Content__c</columns>
+        <columns>Logo_Tagline__c</columns>
+        <columns>Promo_Disclaimer__c</columns>
+        <columns>Disclaimer_Content__c</columns>
+        <columns>Program_Disclaimer__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Landing_Page_Site</fullName>
+        <columns>NAME</columns>
+        <columns>Portal__c</columns>
+        <columns>Active__c</columns>
+        <columns>VisualForce_Page__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Portal__c</field>
+            <operation>equals</operation>
+            <value>Landing Page Site</value>
+        </filters>
+        <label>Landing Page Site</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Partner_Portal_Site</fullName>
+        <columns>NAME</columns>
+        <columns>Portal__c</columns>
+        <columns>Active__c</columns>
+        <columns>VisualForce_Page__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Portal__c</field>
+            <operation>equals</operation>
+            <value>Partner Portal Site</value>
+        </filters>
+        <label>Partner Portal Site</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Template Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Landing Page Templates</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>VisualForce_Page__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Portal__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>VisualForce_Page__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Portal__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

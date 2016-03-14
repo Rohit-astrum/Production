@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Middletown Office Open House 110515.Middletown Office OpenHouse 110515</name>
+    <style>none</style>
+    <subject>You are invited to a Solar Open House</subject>
+    <textOnly>directenergysolar.com
+
+
+Dear Friend,
+
+Please join us Monday November 16th for an Open House and Fire Safety Training at Direct Energy Solar’s Hudson Valley headquarters in Middletown, NY. 
+
+Since 2010, Direct Energy Solar has served hundreds of families throughout the Hudson Valley—many of whom are in our own backyard! Now we invite you to our home in Middletown to learn more about solar and how Direct Energy Solar is helping your community go green and save money. 
+
+Monday, November 16
+7:00 – 7:30pm: Fire Safety Training
+7:30 – 9:00pm: Open House and Solar Info Session
+28 Industrial Dr., Middletown NY 10941
+RSVP
+
+During the first part of the evening, our Operations Team will host a Fire Safety Training for regional fire safety officials. Following this half hour presentation you’ll have a chance to speak one-on-one with our Solar Consultants, Operations Team, and current customers. You can also learn about special limited-time solar discounts currently available in the Hudson Valley. 
+
+While our doors are always open, there’s no better opportunity than this event to get your questions answered and find out if switching to solar is right for you. 
+
+We look forward to seeing you November 16th!
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+1Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar within the valid dates of your community solar program. No extensions will be granted. Your Nest Thermostat will be mailed 30 days after your contract signing. Offer not valid with any other promotions or discounts. Only one offer per household. Nest®, Nest Learning Thermostat™, Nest Leaf™, Airwave™, Auto-Away™ and the Nest logo are trademarks or servicemarks of Nest Labs, Inc.
+
+2Meet with a Direct Energy Solar consultant for an in-home consultation during the valid dates of your community solar program and receive a free 6-month trial of our Heating &amp; Cooling Repair Essentials Plan. No extensions will be granted. An in-home consultation is contingent on your home passing a qualifying process for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the “Plan”) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited. Offer not valid with any other promotions or discounts. Only one offer per household.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of The Newtown Clean Energy Commission or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+CT HIC 06289933/ELC 0200988
+Direct Energy Solar
+
+28 Industrial Drive
+
+Middletown, NY 10941
+
+P: 800-903-6130
+
+F: 845-853-1620
+© 2015 Clockwork IP, LLC. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

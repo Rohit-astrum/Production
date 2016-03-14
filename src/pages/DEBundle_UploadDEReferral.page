@@ -1,0 +1,60 @@
+<apex:page standardController="SCRB_SalesOrder__c" extensions="DEBundle_UploadDEReferralController" showHeader="false" sidebar="false" standardStylesheets="true">
+	<head>
+        <apex:includeScript value="{!URLFOR($Resource.jQueryForPopup, '/jQuery/jquery-1.8.2.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jQueryForPopup, '/jQuery/postmessage/jquery.ba-postmessage.js')}"/>
+ 
+        <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+     
+            var parent_domain = '{!parentDomain}';
+     
+            j$(document).ready(function() {
+				rerenderOnLoad();
+            });
+            
+            function closeIfSaved() {
+            	var updateStatus = document.getElementById('{!$Component.survey.status}');
+            	if(updateStatus.value == 'true')
+            	{
+               		setTimeout(closeModalDialog('close_modal_dialog_redirect'), 800);
+          		}
+            	
+               	return false;
+            }
+             
+            function closeModalDialog(action) {
+                //window.close();
+                var cross_result = new Object();
+                cross_result.action = action;       
+                                 
+                j$.postMessage(
+                    cross_result,
+                    parent_domain,
+                    parent
+                );
+            }
+        </script>
+	</head>
+
+	<apex:form id="mainForm">
+		<apex:pageMessages id="assignErrors" escape="false"/>
+		<apex:pageBlock >
+			<apex:pageBlockButtons location="top">
+    	      	<button type="button" onclick="closeModalDialog('close_modal_dialog');">Close</button> 
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection >
+				<apex:inputFile value="{!uploadFile.Body}" contentType="{!uploadFile.ContentType}" fileName="{!uploadFile.Name}" fileSize="{!uploadFile.BodyLength}" accept="image/*;pdf" id="uploadFile" onchange="handleFileSelect();" />
+        	  	<apex:actionFunction name="doSubmit" action="{!upload}" />
+				<span id="ajaxLoading" style="text-align: center; display:inline-block;vertical-align:top;visibility:hidden">
+					<img src="/img/loading32.gif" />
+				</span>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+	<script>
+		function handleFileSelect(evt){
+			document.getElementById('ajaxLoading').style.visibility = 'visible';
+			doSubmit();
+		}
+	</script>
+</apex:page>

@@ -1,0 +1,389 @@
+<!--
+FILE: PMProjectDetail.page
+AUTHOR: Tino Mattheou
+DATE: April 18, 2012
+PURPOSE: Displays project details
+MODIFICATION HISTORY:
+06/25/2012 TCM - Removed HTML5 sandbox from Property, Sales Order, and System Design tabs to enable box integration zen-7
+08/01/2012 TCM - Firefox drag and drop scroll issue zen-11
+09/26/2012 TCM - fix for service cloud console issues
+05/27/2014 LLH - added Work Order Tab, changes some tab settings on iFrames for resizing purposes
+07/11/2014 LLH - cleaned up iframe settings, set all to allow crosss-origin framing
+ -->
+<apex:page standardController="PM_Project__c" doctype="html-5.0" sidebar="false" tabStyle="PM_Project__c" title="{!PM_Project__c.Name}" extensions="CustomerSurveySendExtension">
+ 
+        
+       
+        
+        <!-- forces Google Chrome Frame -->
+        <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+        
+        <apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/redmond/jquery-ui.css"/>
+        
+        <style type="text/css">
+            #project-tabs {
+                margin-top: 10px;
+            }
+            #project-tabs li {
+                display: inline;
+                color: white;
+            }
+            #project-tabs ul.ui-tabs-nav a {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+            #fact-sheet-button, #send-survey-button {
+                float: right;
+                margin-right: 20px;
+            }
+            #fact-sheet-button span.ui-button-text, #send-survey-button span.ui-button-text {
+                padding-top: 2px;
+                padding-bottom: 2px;
+            } 
+            
+            #send-survey-button {
+            
+            }           
+           
+            iframe.detail-tab {
+                height: 1024px;
+            }
+            
+            #SendSurvey {
+                display: none;
+                background-color: #ffffff;
+                border: 2px solid #cccccc;        
+                position: absolute;
+                right: 190px;
+                top: 63px;
+                padding: 20px;
+                z-index: 99998;
+                width: 300px;
+                }
+                
+           #SendSurvey .SendSurveyRow {
+                display: block;
+                float: left;
+                padding: 5px 0;
+                width: 100%;
+            }
+
+            #SendSurvey .SendSurveyRow label {
+                color: #666666;
+                font-weight: bold;
+                display: block;
+                font-size: 14px;
+                line-height: 14px;
+                margin: 0 0 5px 0;
+                padding: 0;
+            }
+            
+           
+            
+            #SendSurvey .SendSurveyRow select {
+                background-color: #ffffff;
+                border: 1px solid #cccccc;
+                color: #666666;
+                font-size: 14px;
+                padding: 3px;
+                width: 100%;
+                border-radius: 0px;
+                -webkit-appearance: none;
+            }  
+            
+            #SendSurvey .SendSurveyRow button.SendSurveyButtonSend {
+                color: #ffffff;
+                cursor: pointer;
+                background-color: #666666;
+                background-image: none;
+                border: 0;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: block;
+                float: left;
+                font-size:  12px;
+                margin-top: 5px;
+                margin-right: 5px;
+                padding: 5px;
+                width: 60px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            
+            #SendSurvey .SendSurveyRow button.SendSurveyButtonClose {
+                color: #ffffff;
+                cursor: pointer;
+                background-color: #666666;
+                background-image: none;
+                border: 0;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                display: block;
+                float: left;
+                font-size:  12px;
+                margin-top: 5px;
+                margin-right: 5px;
+                padding: 5px;
+                width: 60px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+  
+  
+           
+        </style>
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"/>
+<apex:includeScript value="{!URLFOR($Resource.iFrameAutoHeight160,'js/jquery.iframe-auto-height.plugin.1.6.0.min.js')}"/>
+<script type="text/javascript" src="{!URLFOR($Resource.DocumentBinResources,'images/jquery.dnd_page_scroll.js')}"></script>
+
+<script type="text/javascript">
+    
+    //TODO: how to dynamically populate the other tabs in the background? iframes? 
+
+    $(function() { 
+        
+    
+        $('#project-tabs').tabs();
+        
+        $('#fact-sheet-button').button({
+            icons: {
+                primary: "ui-icon-clipboard"
+            }
+        })
+        .click(function () {
+            window.open("/apex/PMProjectFactSheet?id={!PM_Project__c.Id}", "FactSheet",
+                'location=no,dependent=no,resizable=yes,toolbar=no,status=no,directories=no,menubar=no,scrollbars=yes',false);
+        }); 
+        
+        $('#send-survey-button').button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+        })
+        .click(function () {
+            $( "#SendSurvey" ).slideToggle('fast');
+        })
+        
+        //enables page scrolling in FireFox and IE7/8
+        $.fn.dndPageScroll();
+        
+        /* $('iframe.detail-tab').iframeAutoHeight({
+            debug: true,
+            minHeight: 1024
+        }); */
+    });
+    
+    function showPrint(url) {
+        var win = window.open(url, "PRINTDOC",
+            'location=no,dependent=no,resizable=yes,toolbar=no,status=no,directories=no,menubar=no,scrollbars=yes',false);
+    }
+    
+    $(document).ready(function(){
+
+            
+    $('.SendSurveyButtonSend').click(function() {     
+        
+        var contactList = document.getElementById('{!$Component.survey.SendSurveySelect}');         
+        var contact = contactList.options[contactList.selectedIndex].value;          
+        CustomerSurveySendExtension.sendSurvey(contact, function (result, event) {
+                        if (event.status) {                            
+                            if(result.length > 0)
+                            {
+                                 alert(result);    
+                            }
+                        } else {
+                            alert(event.message);
+                        }
+                    });                    
+       
+        $( "#SendSurvey" ).slideToggle('fast');
+        
+    });
+    
+            
+    $('.SendSurveyButtonClose').click(function() {
+        $( "#SendSurvey" ).slideToggle('fast');
+    });
+    });
+
+    /*
+    function sizeIFrame( elem ) {
+        console.log( elem.tagName );
+        //var doc = elem.getElementsByTagName("body")[0];
+        var ifrmht = parseInt(elem.contentWindow.document.body.offsetHeight);
+        console.log( ifrmht );
+        if( ifrmht > 0 ) {
+            elem.style.height = ifrmht + "px";
+        }
+
+        frm = elem.contentWindow.document.getElementById("wopg\:woform");
+        if( frm != undefined ) {
+            console.log( "Form height: " + frm.offsetHeight );
+        }
+        
+        //timer = setTimeout( sizeIFrame(elem), 3000);
+    }
+
+    function resizeIFrame( height ) {
+        console.log("Resize IFrame to: " + height);
+        document.getElementById("wotable").height = height;
+    }
+    */
+   
+ </script>
+ 
+
+
+    <table style="width:100%"><tr>
+        <td>
+            <apex:sectionHeader title="Project Detail" subtitle="{!PM_Project__c.Name}"/>
+        </td>
+        <td>        
+            <span id="fact-sheet-button">Get Fact Sheet</span>              
+            <apex:outputpanel rendered="{!IF(($Profile.Name == 'Customer Care' || $Profile.Name == 'Customer Care Manager' || $Profile.Name == 'System Administrator')  && NOT(ISNULL(PM_Project__c.Approved_Utility_Interconnect_Part_2__c)) , true, false)}" >
+               <span id="send-survey-button">Send Survey</span>  
+            </apex:outputpanel>
+                
+            
+        </td>
+    </tr></table>
+     <apex:form id="survey">    
+         <div id="SendSurvey">
+          <div class="SendSurveyRow">
+            <label>Choose a recipient:</label>
+             <apex:selectList value="{!selectedContact}" size="1" id="SendSurveySelect">
+                <apex:selectOptions value="{!Contacts}"/>   
+             </apex:selectList>            
+          </div>
+          <div class="SendSurveyRow"> <button class="SendSurveyButtonSend" type="button">Send</button> <button class="SendSurveyButtonClose" type="button">Close</button> </div>
+        </div>
+    </apex:form>
+    <div id="project-tabs">
+
+        <ul>
+            <li><a href="#project-overview">Overview</a></li>
+            <li><a href="#project-detail">Details</a></li>
+            <li><a href="#project-account">Account</a></li>
+            <li><a href="#project-property">Property</a></li>
+            <li><a href="#project-workorder">Work Order</a></li>
+            <li><a href="#project-salesorder">Sales Order</a></li>
+            <li><a href="#project-systemdesign">System Design</a></li>
+            <li><a href="#project-images">Images</a></li>
+            <li><a href="#project-printemail">Print/Email</a></li>
+            <li><a href="#project-history">History</a></li>
+        </ul>   
+        
+        <div id="project-overview">
+            <c:ProjectDetailGrid projectid="{!PM_Project__c.Id}"/>
+            <c:ProjectDocuments projectid="{!PM_Project__c.Id}"/>
+        </div>
+
+        <div id="project-detail">
+            
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=Detail" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+            
+        </div>  
+
+        <div id="project-account">
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=Account" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+        </div>  
+
+        <div id="project-property">
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=Property" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+        </div>
+        
+        <div id="project-workorder">
+             
+            <iframe class="detail-tab" src="{!URLFOR($Page.WordOrderDetail,null)}?id={!PM_Project__c.Id}&tab=WorkOrder" width="100%"
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless" id="wotable" ></iframe>
+            
+        </div>
+        
+        <div id="project-salesorder">
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=SalesOrder" width="100%"  
+                frameborder="0" seamless="seamless"></iframe>
+        </div>
+        
+        <div id="project-systemdesign">
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=SystemDesign" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+        </div>
+        
+        <div id="project-images">
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=Images" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+        </div>
+
+        <div id="project-printemail">
+            <iframe class="detail-tab" src="/apex/DocumentPrintEmail?id={!PM_Project__c.Id}" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+            <!-- 
+            <iframe class="detail-tab" src="{!URLFOR($Page.PMProjectDetailTab,null)}?id={!PM_Project__c.Id}&tab=PrintEmail" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+             -->
+        </div>
+    
+        <div id="project-history">
+            <iframe class="detail-tab" src="/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=History" width="100%"  
+                sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seamless="seamless"></iframe>
+        </div>
+
+    
+    </div>  
+
+    <script type="text/javascript">
+
+        //$("#project-details").load("/apex/PMProjectDetailTab?id={!PM_Project__c.Id}&tab=Detail&isdtp=vw");
+        //$("#project-workorder").load("/apex/WorkOrderDetail?id={!PM_Project__c.Id}&isdtp=vw");
+
+        function resizeIframe( event ) {
+
+            //console.log("PMProjectDetail incoming Message: " + event.data);
+
+            var ht;
+            var obj = new Array();
+            var params = event.data.split(";");
+            for( var i=0; i<params.length; i++ ) {
+                var tmp = params[i].split(":");
+                obj[tmp[0]] = tmp[1];
+            }
+
+            if( obj["tab"] !== undefined ) {
+                var elemId = 'project-' + obj["tab"].toLowerCase();
+                var pelem = document.getElementById(elemId);
+                var peframes = pelem.getElementsByTagName("iframe");
+                var elem = peframes[0];
+
+                if( elem != undefined ) {
+                    //var ht = parseInt(obj["height"]) + 25;
+                    //ht = parseInt(obj["height"]);
+                    ht = parseInt(obj["height"]) + 10;
+                    if( ht > 5000 ) {
+                        ht = 5000;
+                    }
+                    console.log("Received height message for " + obj["tab"] + ", request height: " + obj["height"] + " calc: " + (ht + 10) );
+                    elem.style.height = "0px";
+                    elem.style.height = ht + "px";
+                } else {
+                    console.log("Received message, element undefined. Message data: " + event.data);
+                }
+            }
+            
+        }
+
+        window.addEventListener("load", (function() {
+            window.addEventListener("message", resizeIframe, false);
+        }())
+        , false);
+
+
+    </script>
+
+</apex:page>

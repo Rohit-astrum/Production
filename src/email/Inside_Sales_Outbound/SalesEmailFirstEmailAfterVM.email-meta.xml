@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>First E-mail after VM</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>First Email after VM</name>
+    <style>formalLetter</style>
+    <subject>Start saving with Direct Energy Solar</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+Thank you for your recent inquiry regarding solar for your home. We just left you a phone message and are sorry we missed you. We will be calling you back in an attempt to reach you in person. 
+
+Should you wish to speak to a solar specialist before we connect please give us a call back at 800-903-6130 and select the option for sales. One of our solar specialists will consult with you to answer questions you may have and to determine if your home is a good candidate for solar. We will also set up an agreeable time that is convenient for you to have a solar consultant meet with you in your home to review your options. 
+
+Whether your decision to inquire about solar is because you want to save money on your electricity bill, or you want to have a bigger influence on our environment, Direct Energy Solar is an expert at installing residential solar and we will tailor a system to meet your specific needs. 
+
+Again, I will attempt to reach you personally, but if you prefer, please call us at 800-903-6130 and select the option for sales so that  we can get you started. 
+
+Thank you and have a great day.
+
+Best,
+
+{!User.FirstName}
+
+7101 Riverwood Drive 
+Columbia, MD 21046
+P: 800-903-6130
+F: 800-949-1408
+{!User.Email}
+directenergysolar.com
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

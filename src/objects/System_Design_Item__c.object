@@ -1,0 +1,3922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumCRM/AstrumPM - System Design Item.  A collection of one or more System Design Products that are to be placed on a single Install Location.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Annual_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <label>Annual Solar Access</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Apr_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Apr_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Apr Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Astrum_Balance_of_System_Derate_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Astrum Balance of System Derate Text</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_Balance_of_System_Derate__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(System_Design_Array__r.System_Design__r.Astrum_Balance_of_System_Derate__c &gt; 0 ,System_Design_Array__r.System_Design__r.Astrum_Balance_of_System_Derate__c,$Setup.System_Derate_Defaults__c.Astrum_Balance_of_System_Derate__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Astrum Balance of System Derate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_PV_Watts_Derate_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Astrum PV Watts Derate Text</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_PV_Watts_Derate__c</fullName>
+        <externalId>false</externalId>
+        <formula>Astrum_Balance_of_System_Derate__c *  Inverter_and_Transformer_Efficiency__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Astrum PV Watts Derate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_PV_Watts_Optimal_Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <label>Astrum PV Watts Optimal Site Quality</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_PV_Watts_Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <label>Astrum PV Watts Site Quality</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_Projected_Annual_Output_kWh_y__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(  Legacy_Astrum_Site_Quality__c ,  Projected_Annual_Output_kWh_y__c , Astrum_PV_Watts_Site_Quality__c *  Rated_Output_kW__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Astrum Projected Annual Output (kWh/y)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Aug_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Aug_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Aug Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Azimuth_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Azimuth Text</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <label>Azimuth</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPF_Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <formula>ROUND( Panel_Azimuth__c / 5,0) * 5</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Azimuth Sent to CPF - Rounded to nearest 5</inlineHelpText>
+        <label>CPF Azimuth</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CPRE_Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Panel_Azimuth__c &lt;= 180 , Panel_Azimuth__c  + 180 ,Panel_Azimuth__c - 180)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CPRE Azimuth</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DC_Optimizer_Efficiency__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Product__r.DC_Optimizer_Efficiency__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DC Optimizer Efficiency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Dec_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Dec_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Dec Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Effective_TSRF__c</fullName>
+        <description>Calculated TSRF at the mounted panel pitch.</description>
+        <externalId>false</externalId>
+        <formula>TSRF_Adjustment__c  +  Install_Location__r.TSRF__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Effective TSRF</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Feb_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Feb_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Feb Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Ground_Mount__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Product__r.Ground_Mount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ground Mount</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Install_Location__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Install Location</label>
+        <referenceTo>Install_Location__c</referenceTo>
+        <relationshipLabel>System Design Items</relationshipLabel>
+        <relationshipName>System_Design_Items</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Inverter_CEC_Efficiency__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Product__r.Inverter_CEC_Efficiency__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Inverter CEC Efficiency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_Rating_W__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(RecordType.Name = &apos;Inverter&apos;, System_Design_Product__r.Rated_Output_W__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Inverter Rating (W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_Transformer_Efficiency_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Inverter/Transformer Efficiency Text</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_and_Transformer_Efficiency__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Array__r.Inverter_and_Transformer_Efficiency__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Inverter and Transformer Efficiency</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Jan_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Jan_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Jan Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Jul_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Jul_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Jul Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Jun_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Jun_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Jun Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Legacy_Astrum_Site_Quality__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Legacy Astrum Site Quality</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Location_Pitch__c</fullName>
+        <description>Pitch of Install Location (Retrieved Automatically)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Pitch of Install Location (Retrieved Automatically)</inlineHelpText>
+        <label>Location Pitch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location_Stories__c</fullName>
+        <description>Number Of Stories Of Install Location (Retrieved Automatically)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Stories Of Install Location (Retrieved Automatically)</inlineHelpText>
+        <label>Location Stories</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <description>For use by the SDWR</description>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Location__c</formula>
+        <label>Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location_has_Tree_Removal__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( RecordType.DeveloperName = &apos;Panel&apos; &amp;&amp; Quantity__c &gt; 0 &amp;&amp; Install_Location__r.Survey__r.Tree_Removal__c = true, 1, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Location has Tree Removal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Locked</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Make__c</fullName>
+        <description>Make</description>
+        <externalId>false</externalId>
+        <formula>System_Design_Product__r.Make__c</formula>
+        <inlineHelpText>Make</inlineHelpText>
+        <label>Make</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mar_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Mar_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Mar Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>MasterSD__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Array__r.System_Design__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MasterSD</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>May_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.May_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>May Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Apr Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Apr_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Apr Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Apr Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Apr_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Apr Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Apr Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Apr_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Apr Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Apr Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Apr_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Apr_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Apr Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Aug Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Aug_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Aug Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Aug Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Aug_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Aug Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Aug Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Aug_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Aug Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Aug Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Aug_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Aug_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Aug Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Dec Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Dec_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Dec Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Dec Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Dec_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Dec Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Dec Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Dec_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Dec Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Dec Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Dec_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Dec_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Dec Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Feb Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Feb_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Feb Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Feb Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Feb_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Feb Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Feb Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Feb_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Feb Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Feb Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Feb_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Feb_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Feb Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jan Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jan_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jan Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jan Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jan_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jan Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jan Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jan_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jan Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jan Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jan_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jan_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jan Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jul Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jul_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jul Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jul Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jul_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jul Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jul Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jul_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jul Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jul Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jul_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jul_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jul Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jun Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jun_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jun Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jun Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jun_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jun Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jun Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jun_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jun Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Jun Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Jun_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Jun_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Jun Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Mar Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Mar_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Mar Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Mar Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Mar_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Mar Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Mar Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Mar_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Mar Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Mar Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Mar_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Mar_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Mar Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 May Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_May_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 May Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 May Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_May_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 May Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 May Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_May_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 May Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 May Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_May_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_May_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 May Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Nov Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Nov_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Nov Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Nov Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Nov_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Nov Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Nov Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Nov_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Nov Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Nov Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Nov_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Nov_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Nov Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Oct Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Oct_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Oct Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Oct Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Oct_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Oct Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Oct Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Oct_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Oct Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Oct Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Oct_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Oct_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Oct Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Period_1_Production_kWh__c</fullName>
+        <description>Monthly Production for Each Month</description>
+        <externalId>false</externalId>
+        <label>Method 1 Period 1 Production kWh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Period_2_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Period 2 Production kWh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Period_3_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Period 3 Production kWh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Period_4_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Period 4 Production kWh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Period_5_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Period 5 Production kWh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Period_6_Production_kWh__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Period 6 Production kWh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Sep Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Sep_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Sep Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Sep Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Sep_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Sep Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Sep Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Sep_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Sep Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 1 Sep Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_1_Sep_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_1_Sep_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 1 Sep Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Apr Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Apr_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Apr Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Apr Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Apr_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Apr Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Apr Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Apr_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Apr Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Apr Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Apr_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Apr_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Apr Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Aug Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Aug_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Aug Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Aug Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Aug_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Aug Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Aug Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Aug_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Aug Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Aug Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Aug_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Aug_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Aug Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Dec Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Dec_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Dec Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Dec Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Dec_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Dec Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Dec Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Dec_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Dec Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Dec Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Dec_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Dec_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Dec Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Feb Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Feb_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Feb Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Feb Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Feb_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Feb Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Feb Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Feb_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Feb Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Feb Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Feb_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Feb_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Feb Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jan Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jan_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jan Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jan Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jan_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jan Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jan Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jan_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jan Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jan Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jan_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jan_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jan Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jul Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jul_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jul Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jul Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jul_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jul Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jul Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jul_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jul Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jul Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jul_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jul_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jul Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jun Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jun_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jun Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jun Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jun_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jun Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jun Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jun_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jun Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Jun Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Jun_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Jun_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Jun Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Mar Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Mar_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Mar Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Mar Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Mar_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Mar Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Mar Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Mar_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Mar Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Mar Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Mar_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Mar_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Mar Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 May Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_May_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 May Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 May Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_May_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 May Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 May Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_May_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 May Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 May Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_May_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_May_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 May Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Nov Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Nov_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Nov Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Nov Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Nov_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Nov Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Nov Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Nov_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Nov Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Nov Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Nov_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Nov_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Nov Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Oct Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Oct_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Oct Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Oct Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Oct_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Oct Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Oct Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Oct_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Oct Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Oct Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Oct_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Oct_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Oct Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Flat_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Sep Flat SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Flat_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Sep_Flat_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Sep Flat kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Off_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Sep Off_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Off_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Sep_Off_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Sep Off_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Part_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Sep Part_Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Part_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Sep_Part_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Sep Part_Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Peak_SQ__c</fullName>
+        <externalId>false</externalId>
+        <label>Method 2 Sep Peak SQ</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_2_Sep_Peak_kwh__c</fullName>
+        <externalId>false</externalId>
+        <formula>Method_2_Sep_Peak_SQ__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Method 2 Sep Peak kwh</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Model__c</fullName>
+        <description>Model</description>
+        <externalId>false</externalId>
+        <formula>System_Design_Product__r.Model__c</formula>
+        <inlineHelpText>Model</inlineHelpText>
+        <label>Model</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NRG_Balance_of_System_Derate_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>NRG Balance of System Derate Text</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NRG_Balance_of_System_Derate__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(System_Design_Array__r.System_Design__r.NRG_Balance_of_System_Derate__c &gt; 0,System_Design_Array__r.System_Design__r.NRG_Balance_of_System_Derate__c,$Setup.System_Derate_Defaults__c.NRG_Balance_of_System_Derate__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NRG Balance of System Derate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NRG_PV_Watts_De_Rate__c</fullName>
+        <description>NRG PVWatts derate is calculated based on the specific inverter and whether the inverter is a central or microinverter.
+NRG PV Watts Derate = AC-to-DC Derate Factor * Inverter CEC Efficiency * Shading Factor
+AC-to-DC Derate is 0.946 for microinverters and 0.895 for string inverters
+CEC Efficiency is the California Energy Commission (CEC) listed efficiency of the inverter
+Shading Factor is the Solar Access percentage (SA) for string inverters and (0.4 + 0.6 * SA) for microinverters.</description>
+        <externalId>false</externalId>
+        <formula>NRG_Balance_of_System_Derate__c  *  Inverter_and_Transformer_Efficiency__c  * (0.4 + (0.6 *  Panel_Annual_Solar_Access__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NRG PV Watts De-Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NRG_PV_Watts_Derate_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>NRG PV Watts Derate Text</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NRG_Projected_Annual_Output_kWh_y__c</fullName>
+        <externalId>false</externalId>
+        <formula>NRG_Site_Quality__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NRG Projected Annual Output (kWh/y)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NRG_Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <label>NRG Site Quality</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nov_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Nov_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Nov Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Oct_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Oct_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Oct Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PTC_Rating_kW__c</fullName>
+        <externalId>false</externalId>
+        <formula>(System_Design_Product__r.PTC_Rating_W__c *  Quantity__c) / 1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PTC Rating (kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Panel_Annual_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Annual_Solar_Access__c</formula>
+        <label>Panel Annual Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Panel_Azimuth__c</fullName>
+        <externalId>false</externalId>
+        <formula>Azimuth__c +  Install_Location__r.Azimuth__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Panel Azimuth</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Panel_Pitch__c</fullName>
+        <description>Calculated pitch of the panels as mounted</description>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Pitch__c  +  Tilt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Panel Pitch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projected_Annual_Output_kWh_y__c</fullName>
+        <description>This Field is Auto-Calculated on Update</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This Field is Auto-Calculated on Update</inlineHelpText>
+        <label>Projected Annual Output (kWh/y)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Array__r.System_Design__r.Property__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Property</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rated_Output_W__c</fullName>
+        <description>Rated Output (W)</description>
+        <externalId>false</externalId>
+        <formula>System_Design_Product__r.Rated_Output_W__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Rated Output (W)</inlineHelpText>
+        <label>Rated Output (W)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rated_Output_kW__c</fullName>
+        <description>This Field is Auto-Calculated on Update</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This Field is Auto-Calculated on Update</inlineHelpText>
+        <label>Rated Output (kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sep_Solar_Access__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Sep_Solar_Access__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sep Solar Access</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Shading_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Shading Text</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shading__c</fullName>
+        <externalId>false</externalId>
+        <label>Shading</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Snow_De_Rate_kWh_y_kW__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Array__r.System_Design__r.Property__r.Snow_De_Rate_kWh_y_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Snow De-Rate (kWh/y/kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Snow_Derate_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Snow Derate Text</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Suneye_TSRF_Multiplier__c</fullName>
+        <externalId>false</externalId>
+        <formula>(Suneye_TSRF__c -  TSRF_Adjustment__c ) *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Suneye TSRF Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Suneye_TSRF__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Annual_Solar_Access__c *  Install_Location__r.Suneye_Tilt_and_Orientation_Factor_TOF__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Suneye TSRF</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Sunnova_Projected_Annual_Output_kWhy__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sunnova_Site_Quality__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sunnova Projected Annual Output (kWh/y)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sunnova_Site_Quality__c</fullName>
+        <externalId>false</externalId>
+        <label>Sunnova Site Quality</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sunnova_Upgrade_Factor__c</fullName>
+        <defaultValue>1.11</defaultValue>
+        <externalId>false</externalId>
+        <label>Sunnova Upgrade Factor</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Array__c</fullName>
+        <externalId>false</externalId>
+        <label>System Design Array</label>
+        <referenceTo>System_Design_Array__c</referenceTo>
+        <relationshipLabel>System Design Items</relationshipLabel>
+        <relationshipName>System_Design_Items</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>System_Design_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>System Design Product</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>(1 AND 2) OR (3 AND 4) OR (5) OR (6 AND 7) OR (8 AND 9) OR 10</booleanFilter>
+            <filterItems>
+                <field>System_Design_Product__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Panel</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Panel</value>
+            </filterItems>
+            <filterItems>
+                <field>System_Design_Product__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Inverter</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Inverter</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Mounting</value>
+            </filterItems>
+            <filterItems>
+                <field>System_Design_Product__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Electrical</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Electrical</value>
+            </filterItems>
+            <filterItems>
+                <field>System_Design_Product__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Trenching</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Trenching</value>
+            </filterItems>
+            <filterItems>
+                <field>$Source.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Special Part</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>System_Design_Product__c</referenceTo>
+        <relationshipLabel>System Design Items</relationshipLabel>
+        <relationshipName>System_Design_Items</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>System_Design__c</fullName>
+        <description>System Design Id</description>
+        <externalId>false</externalId>
+        <formula>System_Design_Array__r.System_Design__r.Id</formula>
+        <inlineHelpText>System Design Id</inlineHelpText>
+        <label>System Design</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TSRF_Adjustment__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>The amount by which TSRF is improved (+) or degraded (-) as a result of the tilt.  
+This value cannot adjusted unless there is a tilt.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The amount by which TSRF is improved (+) or degraded (-) as a result of the tilt.  
+This value cannot adjusted unless there is a tilt.</inlineHelpText>
+        <label>TSRF Adjustment For Panel Tilt</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Tilt_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Tilt Text</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tilt__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Angular offset imparted by a tilted mounting system.  Flush mounts would be 0 degrees.
+Positive tilts move the panel closer to vertical.  Negative tilts move the panels closer to horizontal.
+Note: this is NOT the effective &quot;pitch&quot; of the panel once mounted.  That value is the sum of the Location&apos;s &quot;pitch&quot; and the Item&apos;s &quot;tilt&quot;.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Angular offset imparted by a tilted mounting system.  Flush mounts would be 0 degrees.
+Positive tilts move the panel closer to vertical.  Negative tilts move the panels closer to horizontal.</inlineHelpText>
+        <label>Tilt of Panel (Degrees)</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_TSRF__c</fullName>
+        <externalId>false</externalId>
+        <formula>Effective_TSRF__c *  Rated_Output_kW__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Used for calculating Weighted Overall TSRF as System Design</inlineHelpText>
+        <label>Total TSRF</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Trenching_Length_ft__c</fullName>
+        <externalId>false</externalId>
+        <formula>Install_Location__r.Physical_Surface__r.Trenching_Dist_to_Intercon_Pt_ft__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Trenching Length (ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Trenching_Lengthft__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Trenching Length (ft)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weighted_Panel_Azimuth_Sum__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(RecordType.Name = &apos;Panel&apos;, Panel_Azimuth__c * Quantity__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Weighted Panel Azimuth Sum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weighted_Panel_Tilt_Sum__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(RecordType.Name = &apos;Panel&apos;, Panel_Pitch__c * Quantity__c, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Weighted Panel Tilt Sum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>System Design Item</label>
+    <nameField>
+        <label>System Design Item Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>System Design Items</pluralLabel>
+    <recordTypeTrackFeedHistory>true</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Electrical</fullName>
+        <active>true</active>
+        <label>Electrical</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Entitlement</fullName>
+        <active>true</active>
+        <label>Entitlement</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Inverter</fullName>
+        <active>true</active>
+        <label>Inverter</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mounting</fullName>
+        <active>true</active>
+        <label>Mounting</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Panel</fullName>
+        <active>true</active>
+        <label>Panel</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Special_Part</fullName>
+        <active>true</active>
+        <label>Special Part</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Trenching</fullName>
+        <active>true</active>
+        <description>A trenching System Design Item represents the presence or absence of Trenching for a System Design Array.</description>
+        <label>Trenching</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Effective_TSFR_cannot_Exceed_100</fullName>
+        <active>true</active>
+        <errorConditionFormula>Effective_TSRF__c   &gt; 1</errorConditionFormula>
+        <errorDisplayField>TSRF_Adjustment__c</errorDisplayField>
+        <errorMessage>Effective TSRF Cannot exceed 100%</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Install_Location_Cannot_Be_Null</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( RecordType.Id = &quot;012C0000000HjPW&quot; ,ISNULL( Install_Location__c))</errorConditionFormula>
+        <errorDisplayField>Install_Location__c</errorDisplayField>
+        <errorMessage>Install Location Must be set for each System Design Item</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Property_Check</fullName>
+        <active>true</active>
+        <description>Install Location&apos;s Property must match System Design&apos;s Property.</description>
+        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Panel&apos;, Install_Location__r.Physical_Surface__r.Property__r.Id  &lt;&gt;  System_Design_Array__r.System_Design__r.Property__r.Id)</errorConditionFormula>
+        <errorDisplayField>Install_Location__c</errorDisplayField>
+        <errorMessage>Install Location must be on the Property specified by this System Design.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Record_is_Locked</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Profile.Name = &apos;System Administrator&apos;, false, PRIORVALUE(Locked__c) = true)</errorConditionFormula>
+        <errorMessage>Record is part of a closed Contract, and is locked from further editing</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSRF_Adj_IFF_Tilted</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+    TSRF_Adjustment__c &lt;&gt; 0  ,
+     Tilt__c = 0)</errorConditionFormula>
+        <errorDisplayField>TSRF_Adjustment__c</errorDisplayField>
+        <errorMessage>TSFR Adjustments can only be made on &quot;Tilted&quot; Design Items</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Re_Call_Astrum_SQ</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Re-Call Astrum SQ</masterLabel>
+        <openType>replace</openType>
+        <page>AstrumSQReCall</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Re_Call_CPRE</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Re-Call CPRE</masterLabel>
+        <openType>replace</openType>
+        <page>CPREReCall</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Re_Call_NRG</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Re-Call NRG</masterLabel>
+        <openType>replace</openType>
+        <page>NRGReCall</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Daily Company Wide Report" recipientType="User" >
+<messaging:htmlEmailBody >
+   <c:CompanyWideReportComponent providedReportType="Daily"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

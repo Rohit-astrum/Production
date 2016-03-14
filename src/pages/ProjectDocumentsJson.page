@@ -1,0 +1,27 @@
+<apex:page standardController="PM_Project__c" contentType="text/plain" showHeader="false" sidebar="false" standardStylesheets="false" cache="false">
+{
+	"files": 
+		[
+		  {
+		    "name": "{!$CurrentPage.parameters.fileName}",
+		    "size": {!$CurrentPage.parameters.fileSize},
+		    "url": "/servlet/servlet.FileDownload?file={!$CurrentPage.parameters.attId}",
+		    "keyDate": "{!$CurrentPage.parameters.keyDate}",
+		    "contentType": "{!JSENCODE($CurrentPage.parameters.contentType)}",
+		    "docid": "{!$CurrentPage.parameters.docId}",
+		    "error": "{!$CurrentPage.parameters.error}"
+		  }
+		  <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK($CurrentPage.parameters.thumbId))}">
+		  ,{
+		    "name": "{!$CurrentPage.parameters.fileName}",
+		    "size": {!$CurrentPage.parameters.fileSize},
+		    "url": "/servlet/servlet.FileDownload?file={!$CurrentPage.parameters.thumbId}",
+		    "keyDate": "{!$CurrentPage.parameters.keyDate}",
+		    "contentType": "{!JSENCODE($CurrentPage.parameters.contentType)}",
+		    "docid": "{!$CurrentPage.parameters.docId}",
+		    "isThumb": true
+		  }
+		  </apex:outputPanel>
+		]
+}
+</apex:page>

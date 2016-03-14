@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumTIME - An Astrum Solar Employee Record for the AstumTIME app</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Department__c</fullName>
+        <description>Employee&apos;s Department</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee&apos;s Department</inlineHelpText>
+        <label>Department</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Install</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Operations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Employee_Class__c</fullName>
+        <description>Suffix the Employee Class with &quot;- NP&quot; to indicate if they dont need access to Install Projects. All the other Employee Class will be prompted to select Project.</description>
+        <externalId>false</externalId>
+        <label>Employee Class</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Field Sales</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inside Sales - NP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Number__c</fullName>
+        <description>Insperity Employee Number</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Insperity Employee Number</inlineHelpText>
+        <label>Employee Number</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Employee_PIN__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee PIN</label>
+        <length>8</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Holiday_Rate__c</fullName>
+        <description>Hourly Rate For Special Holidays</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Hourly Rate For Special Holidays</inlineHelpText>
+        <label>Holiday Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Home_Office_Location__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>A lookup to the office location to have information about potential CA overtime rules</description>
+        <externalId>false</externalId>
+        <label>Home Office Location</label>
+        <referenceTo>Office_Location__c</referenceTo>
+        <relationshipLabel>Employees (Office Location)</relationshipLabel>
+        <relationshipName>Employees1</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Home_Office__c</fullName>
+        <description>Employee&apos;s Home Office</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee&apos;s Home Office</inlineHelpText>
+        <label>Home Office</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Columbia, MD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commercial</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corona, CA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cromwell, CT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fresno, CA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Henrietta, NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hopkinton, MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Long Island, NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Middletown, NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norristown, PA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pennsauken, NJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ronkonkoma, NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>San Diego, CA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Simi Valley, CA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Springfield, MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Syracuse, NY</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Taunton, MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Westford, MA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Youngstown, OH</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Hourly_Rate_String__c</fullName>
+        <description>Hourly rate string</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Hourly rate string</inlineHelpText>
+        <label>Hourly Rate String</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hourly_Rate__c</fullName>
+        <description>Employee&apos;s Standard Hourly Rate</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee&apos;s Standard Hourly Rate</inlineHelpText>
+        <label>Hourly Rate</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Insperity_Name__c</fullName>
+        <description>Name of This Employee in the Insperity Payroll System</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of This Employee in the Insperity Payroll System</inlineHelpText>
+        <label>Insperity Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Install_Team__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This Employee is Currently a Member of What Install Team?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This Employee is Currently a Member of What Install Team?</inlineHelpText>
+        <label>Install Team</label>
+        <referenceTo>Install_Team__c</referenceTo>
+        <relationshipLabel>Team Members</relationshipLabel>
+        <relationshipName>Team_Members</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Job_Title__c</fullName>
+        <description>Employee&apos;s Job Title</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee&apos;s Job Title</inlineHelpText>
+        <label>Job Title</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Lead Installer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Installer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lead Electrician</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrician</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Surveyor/Designer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Administrative Assistant</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Overtime_Hourly_Rate_String__c</fullName>
+        <description>Overtime Hourly Rate String</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overtime Hourly Rate String</inlineHelpText>
+        <label>Overtime Hourly Rate String</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overtime_Rate__c</fullName>
+        <description>Overtime Rate in $/hr is 1.5 Standard Hourly Rate</description>
+        <externalId>false</externalId>
+        <formula>Hourly_Rate__c * 1.5</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Overtime Rate in $/hr is 1.5 Standard Hourly Rate</inlineHelpText>
+        <label>Overtime Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SFDC_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Install/Electrical Lead&apos;s Salesforce User</inlineHelpText>
+        <label>SFDC User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Employees1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1099</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>W-2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>W-2 - Weekly Temp EES</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>W-2 - Hourly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Vendor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Supervisor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Employee&apos;s Supervisor</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee&apos;s Supervisor</inlineHelpText>
+        <label>Supervisor</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Employees</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Employee</label>
+    <listViews>
+        <fullName>My_Employees</fullName>
+        <columns>NAME</columns>
+        <columns>Job_Title__c</columns>
+        <columns>Department__c</columns>
+        <columns>Home_Office__c</columns>
+        <columns>Status__c</columns>
+        <columns>Supervisor__c</columns>
+        <columns>Employee_Number__c</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Inactive</value>
+        </filters>
+        <label>My Employees</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Employee Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Employees</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Employee_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Home_Office__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Job_Title__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Install_Team__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Supervisor__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Department__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Employee_Number__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Home_Office__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Job_Title__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Supervisor__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Department__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Employee_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Home_Office__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Job_Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Supervisor__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Department__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <fullName>Generate_PIN</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Generate PIN</masterLabel>
+        <openType>sidebar</openType>
+        <page>EmployeePINGeneratorPage</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

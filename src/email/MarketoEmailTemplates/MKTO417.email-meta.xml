@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Guarantees and Warranties</name>
+    <style>none</style>
+    <subject>Compare our industry-leading warranties and guarantees.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=industryleading&amp;utm_campaign=nurtur&amp;utm_content=industryleading-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+We’re Dedicated to Your Solar Home
+
+Dear {{lead.First Name:default=Friend}},
+
+When you go solar, your system will be up on your roof for decades, so it’s important to choose a solar company that will be there to support you through the life of your system. As part of the Direct Energy family with $19.5 billion in revenue in 2014, Direct Energy Solar will be here to support your entire solar experience—before, during, and after installation. Our company’s growth benefits you—your system includes:
+
+Compare of industry-leading warranties and guarantees:
+ &lt;http://www.directenergysolar.com/solar-done-right/worry-free-guarantees?utm_medium=email&amp;utm_source=industryleading&amp;utm_campaign=nurtur=&amp;utm_content=industryleading-button-compare&gt;
+
+
+Guaranteed Production:
+
+Your system’s energy production is guaranteed for 10 years—this can be extended to 20 years. When your system over performs, you save more. If your system falls short of our production estimates, we’ll pay you a fee to compensate you for that shortfall in production.
+
+
+Workmanship Warranties:
+
+Your system comes with a 10-Year Workmanship Warranty to guarantee your system is free of defects from materials and components—this warranty can be extended to 20 years. Installation hardware will be serviced free of charge if defects are found.
+
+
+Manufacturer Warranties:
+
+We use high quality PV panels developed by industry-leading manufacturers who rigorously test their panels and provide 25-year warranties for their products. Panel optimizer warranties vary from 12 years to 25 years, depending on the manufacturer.
+
+
+A Lifetime of Support:
+
+Rest easy knowing you’ll receive a lifetime of support from a company that has helped thousands of homeowners switch to solar power. We monitor your system and take care of any problems. We’re dedicated to helping you get the most out of your solar home.
+
+
+Peace of Mind:
+
+Life is full of surprises. We also offer services that extend beyond the installation itself. What if you are moving? What if you need a new roof? We offer solutions to accommodate your needs.
+
+
+Learn more about our solutions:
+ &lt;http://www.directenergysolar.com/solar-done-right/the-direct-energy-solar-difference?utm_medium=email&amp;utm_source=industryleading&amp;utm_campaign=nurtur=&amp;utm_content=industryleading-button-solutions&gt;
+
+
+“We chose Direct Energy Solar because they had the total package. They thought through everything, all possible scenarios, even moving.” - Don and Lauren
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015-2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=industryleading&amp;utm_campaign=nurtur&amp;utm_content=industryleading-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=industryleading&amp;utm_campaign=nurtur&amp;utm_content=industryleading-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=industryleading&amp;utm_campaign=nurtur&amp;utm_content=industryleading-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

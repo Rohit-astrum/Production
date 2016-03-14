@@ -1,0 +1,401 @@
+<apex:page id="pg" standardController="rstk__pohdr__c" extensions="rstk.ControllerExtnPurchOrdPrint" sideBar="true" action="{!doBeforePageLoad}" renderAs="pdf">
+<apex:variable var="h_f" value="{!$ObjectType.rstk__PO_Print_Header__c.fields}" />
+<apex:variable var="l_f" value="{!$ObjectType.rstk__PO_Print_Line__c.fields}" />
+<head>
+<style type="text/css">
+    //Note that the style must be in this template in order to work for both the Email Template and VF-generated PDF.
+    @page {
+        size:portrait;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    
+    }
+    body, table, th, td, div { 
+        font:normal normal 95%/1.0 arial, verdana, times new roman; 
+    }
+    body {
+        counter-reset: pg 0;
+    }
+    table {
+        cell-padding: 0;
+        cell-spacing: 0;
+    }
+    #main {
+        margin:auto;
+        width:700px;
+        background:#ffffff;
+    }
+    .headerSect {
+        width:700px;
+    }
+    .logoDiv {
+        height:95px;
+        width:350px;
+        z-index:1000;
+    }
+    .logoDiv img {
+        display: block;
+        height: 100%;
+    }
+    .logo {
+        height:90px;
+        width:190px;
+    }
+    .header {
+        float:right;
+        width:280px;
+        border: 1px solid;
+        padding: 4px;
+    }
+    .formTitle {
+        float:left;
+        font-weight: bold;
+        font-size: 140%;
+        padding-left:4px;
+    }
+    .pageNumSect {
+        float:right;
+        counter-increment: pg;
+    }
+    .revisedSect {
+        float:left;
+    }
+    div.pageNumSect:before {
+        content: "Page " counter(pg) " of " ;
+    
+    }
+    .headerInfo {
+        margin-top:24px;
+        padding: 2px;
+    }
+    <!--.hdrInfoLbl {
+        font:normal bold 95%/1.1 "Arial Unicode MS";
+        width: 40%;
+    }-->
+    
+    .hdrInfoLbl {
+        font-weight: bold;
+    }
+    
+    .hdrInfoData {
+        font-weight: normal;
+    }
+        
+    <!--.hdrInfoData {
+        font-weight: normal;
+        width: 60%;
+    -->}
+    
+    .hdrInfoData {
+        font-weight: normal;
+    }
+        
+    td {
+        padding: 2px;
+    }
+
+    .termsSect {
+        width:700px;
+        margin-top:6px;
+        margin-right:2px;
+    }
+
+    .rightjustified {
+        text-align: right;
+    }
+    .centerjustified {
+        text-align: center;
+    }
+    table.lines {
+        width:700px;
+        table-layout:fixed;
+        background-color: #ffffff;
+        margin-top:6px;
+        margin-right:2px;
+        cellspacing: 0;
+        cellpadding: 0;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
+    }
+    table.lines td {
+        font:normal normal 90%/1.0 "Serif";
+        vertical-align:top;
+        padding: 2px;
+        border-left: 1px solid black;
+    }
+    table.lines tr.oddRow {
+        background-color:#ffffff;
+    }
+    table.lines tr.evenRow {
+        background-color:#EEE9E9;
+    }
+    table.lines td.dtl {
+      /* background-color:#EEE9E9; */
+    }
+    table.lines th {
+        font:normal normal 90%/1.1 "Arial Unicode MS";
+        background-color:#000000;
+        color:#ffffff;
+        text-align:center;
+    }
+    .addressSect {
+        background-color: #000000;
+        width:700px;
+        margin-top:6px;
+        margin-right:2px;
+    }
+    .addressSect th {
+        text-align:center;
+        font:normal normal 95%/1.1 "Arial Unicode MS";
+        background-color:#000000;
+        color:#ffffff;
+        padding: 2px;
+    } 
+    .addressSect td {
+        background-color:#ffffff;
+        padding: 0px;
+        font:normal normal 95%/1.0 "Serif";
+    }
+    .label {
+        font:normal bold 95%/1.1 "Arial Unicode MS";
+    }
+    .data {
+        font:normal normal 95%/1.1 "Serif";
+    }
+    .termsSect {
+        width: 700px;
+        padding: 0px;
+        margin-top:6px;
+        margin-right:2px;
+    }
+    .termsSect td {
+        padding: 0px;
+    }
+    .headerSect2 {
+        padding: 0px;
+        margin-top:6px;
+        margin-right:2px;
+    }
+    .headerSect2 td {
+        padding: 0px;
+    }
+    table.footerSect {
+        width:700px;
+        margin-top:6px;
+        margin-right:2px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
+    }
+    table.footerSect td {
+        margin-top: 6px;
+        border-left: 1px solid black;
+    }
+    table.footerSect td td {
+        border: none;
+    }
+    .totalLabel {
+        font-weight: bold;
+        width: 80px;
+    }
+    .totalAmt {
+        text-align:right;
+        width: 150px;
+    }
+    .totalSect td {
+        border: 0;
+    }
+</style>
+</head>
+<body>
+<div id="main">
+<apex:repeat value="{!pages}" var="page">
+    <div class="headerSect" style="{!IF(page.pageNum>1,'page-break-before:always;','')}">
+      <table cellspacing="0" cellpadding="0" border="0">
+      <tr><td>
+        <div class="logoDiv">
+            <apex:image styleClass="logo" value="{!relatedTo.rstk__Company_Logo__c}" rendered="{!!ISBLANK(relatedTo.rstk__Company_Logo__c)}"/>
+        </div>
+        </td>
+        <td valign="top">
+        <div class="revisedSect"><apex:outputText value="Revised" rendered="{!relatedTo.rstk__Vendor_Revision__c!=0}"/></div>
+        </td>
+        <td valign="top">
+        <div class="header">
+            <div class="formTitle">Purchase Order</div>
+            <div class="pageNumSect">{!pages.size}</div>
+            <apex:panelGrid styleClass="headerInfo" columnClasses="hdrInfoLbl,hdrInfoData" columns="2" width="100%">
+                <apex:outputText value="{!h_f.rstk__Order_Number__c.label}"/>
+                <apex:outputText value="{!relatedTo.rstk__Order_Number__c}"/>
+                <apex:outputText value="{!h_f.rstk__Vendor_Submission_Date__c.label}"/>
+                <apex:outputField value="{!relatedTo.rstk__Vendor_Submission_Date__c}"/>
+            </apex:panelGrid>
+        </div>
+        </td>
+        </tr></table>
+    </div>
+    <table class="headerSect2">
+        <tr>
+            <td class="label">{!h_f.rstk__Vendor_Revision__c.label}&nbsp;:</td>
+            <td class="data"><apex:outputText value="{0,number,###0}"><apex:param value="{!relatedTo.rstk__Vendor_Revision__c}"/></apex:outputText></td>
+        </tr>
+        <tr>
+            <td class="label">{!h_f.rstk__PO_Add_Date__c.label}&nbsp;:</td>
+            <td class="data">
+                <apex:outputField value="{!relatedTo.rstk__PO_Add_Date__c}"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">{!h_f.rstk__Agreement_No__c.label}&nbsp;:</td>
+            <td class="data">{!relatedTo.rstk__Agreement_No__c}</td>
+        </tr>                                                       
+        <tr>
+            <td class="label">Contact&nbsp;:</td>
+            <td class="data">
+                <apex:outputText value="{0} {1} {2}">
+                    <apex:param value="{!relatedTo.rstk__Buyer_Contact__c}"/>
+                    <apex:param value="{!IF(ISBLANK(relatedTo.rstk__Buyer_Phone__c),'','/ '&relatedTo.rstk__Buyer_Phone__c)}"/>
+                    <apex:param value="{!IF(ISBLANK(relatedTo.rstk__Buyer_Email__c),'','/ '&relatedTo.rstk__Buyer_Email__c)}"/>
+                </apex:outputText>
+            </td>
+        </tr>
+        
+        <!--<tr>
+            <td class="label">Test Phone #:</td>
+            <td class="data">{!relatedTo.rstk__poprinthdr_ordno__r.pohdr_addrtmp_remit_phone__c}</td>
+        </tr>-->
+                                                              
+    </table>
+
+    <table class="addressSect" cellspacing="1">
+        <tr>
+            <th>Vendor Info</th><th>Ship To</th>
+        </tr>
+        <tr width="100%">
+            <td valign="top" width="50%">
+            <apex:panelGrid columns="1" width="100%">
+                <apex:outputText value="{!relatedTo.rstk__Vendor_No__c}"/>
+                <apex:outputText value="{!relatedTo.rstk__Vendor_Name__c}"/>
+                <apex:outputText value="{!relatedTo.rstk__MailTo_Street__c}"/>
+                <apex:outputText value="{0}, {1}  {2}">
+                    <apex:param value="{!relatedTo.rstk__MailTo_City__c}"/>
+                    <apex:param value="{!relatedTo.rstk__MailTo_State_or_Province__c}"/>
+                    <apex:param value="{!relatedTo.rstk__MailTo_Zip_or_Postal_Code__c}"/>
+                </apex:outputText>
+                <apex:outputText value="{!relatedTo.rstk__MailTo_Country__c}" rendered="{!!ISBLANK(relatedTo.rstk__MailTo_Country__c)}"/>
+            </apex:panelGrid>
+            </td>
+            <td valign="top" width="50%">
+            <apex:panelGrid columns="1" width="100%">
+                <apex:outputText value="{!relatedTo.rstk__ShipTo_Name__c}"/>
+                <apex:outputText value="{!relatedTo.rstk__ShipTo_Street__c}"/>
+                <apex:outputText value="{0}, {1}  {2}">
+                    <apex:param value="{!relatedTo.rstk__ShipTo_City__c}"/>
+                    <apex:param value="{!relatedTo.rstk__ShipTo_State_or_Province__c}"/>
+                    <apex:param value="{!relatedTo.rstk__ShipTo_Zip_or_Postal_Code__c}"/>
+                </apex:outputText>
+                <apex:outputText value="{!relatedTo.rstk__ShipTo_Country__c}" rendered="{!!ISBLANK(relatedTo.rstk__ShipTo_Country__c)}"/>
+            </apex:panelGrid>
+        </td>
+        </tr>
+    </table>
+    <table class="termsSect">
+        <colgroup>
+            <col style="width:120px;"/>
+            <col style="width:230px;"/>
+            <col style="width:150px;"/>
+            <col style="width:200px;"/>
+        </colgroup>
+        <tr>
+          <td class="label">{!h_f.rstk__Carrier__c.label}&nbsp;:</td>
+          <td>{!relatedTo.rstk__Carrier__c}<apex:outputText value="/{0}" rendered="{!!ISBLANK(relatedTo.rstk__Ship_Via__c)}"><apex:param value="{!relatedTo.rstk__Ship_Via__c}"/></apex:outputText></td>
+          <td class="data">{!IF(!ISBLANK(relatedTo.rstk__Federal_ID_Number__c),h_f.rstk__Federal_ID_Number__c.label,'')}</td>
+          <td>{!relatedTo.rstk__Federal_ID_Number__c}</td>
+        </tr>
+        <tr>
+          <td class="label">{!h_f.rstk__FOB__c.label}&nbsp;:</td>
+          <td colspan="3">{!relatedTo.rstk__FOB__c}</td>
+        </tr>
+        <tr>
+          <td class="label">{!h_f.rstk__Payment_Terms__c.label}&nbsp;:</td>
+          <td colspan="3">{!relatedTo.rstk__Payment_Terms__c}</td>
+        </tr>
+        <tr>
+          <td class="label">{!h_f.rstk__Freight_Terms__c.label}&nbsp;:</td>
+          <td colspan="3">{!relatedTo.rstk__Freight_Terms__c}</td>
+        </tr>
+    </table>
+    
+    <table border="0" cellspacing="0" cellpadding="0" class="lines">
+        <tr>
+          <th width="30px" style="padding-bottom:2px;"><br/>{!l_f.rstk__Line__c.label}</th>
+          <th width="263px" style="padding-bottom:2px;"><br/>{!l_f.rstk__Item__c.label}</th>
+          <th width="29px" style="padding-bottom:2px;"><br/>{!l_f.rstk__UOM__c.label}</th>
+          <th width="29px" style="padding-bottom:2px;">{!l_f.rstk__Line_Revision__c.label}</th>
+          <th width="65px" style="padding-bottom:2px;">{!l_f.rstk__Quantity__c.label}</th>
+          <th width="65px" style="padding-bottom:2px;">{!l_f.rstk__Balance_Due__c.label}</th>
+          <th width="59px" style="padding-bottom:2px;">{!l_f.rstk__Promised_Dock_Date__c.label}</th>
+          <th width="63px" style="padding-bottom:2px;"><br/>{!l_f.rstk__Unit_Price__c.label}</th>
+          <th width="84px" style="padding-bottom:2px;">{!l_f.rstk__Extended_Amount__c.label}</th>
+          <th width="13px" style="padding-bottom:2px;"><br/>{!l_f.rstk__Taxable__c.label}</th>
+        </tr>
+        <apex:repeat var="line" value="{!page.lines}">
+        
+        <tr class="{!IF(MOD(line.rstk__Line__c,2)==1 || line.rstk__Item__c=' ','odd','even')}Row" >
+         <apex:outputPanel layout="none" rendered="{!line.rstk__linetype__c='Desc'}">
+            <td></td>
+            <td colspan="9" class="dtl" style="overflow:hidden;text-overflow:clip;white-space:nowrap;">{!line.rstk__Description__c}</td>           
+         </apex:outputPanel>
+         <apex:outputPanel layout="none" rendered="{!line.rstk__linetype__c!='Desc'}">
+            <td class="rightjustified"><apex:outputText value="{0,number,###0}"><apex:param value="{!line.rstk__Line__c}"/></apex:outputText></td>
+            <td style="overflow:hidden;text-overflow:clip;white-space:nowrap;{!IF(line.rstk__Item__c=' ','color:white;','')}">
+                {!IF(line.rstk__Item__c=' ','X',line.rstk__Item__c)}
+            </td>
+            <td>{!line.rstk__UOM__c}</td>
+            <td><apex:outputText value="{0,number,###0}"><apex:param value="{!line.rstk__Line_Revision__c}"/></apex:outputText></td>
+            <td class="rightjustified">
+              <apex:outputText value="{0,Number,###,###,###,###,##0.00}">
+                <apex:param value="{!line.rstk__Quantity__c}"/>
+              </apex:outputText>
+            </td>
+            <td class="rightjustified">
+              <apex:outputText value="{0,Number,###,###,###,###,##0.00}">
+                <apex:param value="{!line.rstk__Balance_Due__c}"/>
+              </apex:outputText>
+            </td>
+            <td class="centerjustified">
+              <apex:outputField value="{!line.rstk__Promised_Dock_Date__c}" />
+            </td>
+            <td class="rightjustified">
+              <apex:outputText value="{0,Number,###,###,###,###,##0.00}">
+                <apex:param value="{!line.rstk__Unit_Price__c}"/>
+              </apex:outputText>
+            </td>
+            <td class="rightjustified">
+              <apex:outputText value="{0,Number,###,###,###,###,##0.00}">
+                <apex:param value="{!line.rstk__Extended_Amount__c}"/>
+              </apex:outputText>
+            </td>
+            <td>{!IF(line.rstk__Taxable__c,'Y','')}</td>
+         </apex:outputPanel>
+        </tr>
+
+        
+      </apex:repeat> 
+    </table>
+</apex:repeat>
+<table class="footerSect" cellpadding="0" cellspacing="0">
+  <tr><td width="460px" valign="top">
+      <!-- (Sample of Terms & Conditions)<br/>IMPORTANT: Include PO number on all shipments and invoices. The above stated prices and due dates are deemed to be acceptable unless an order confirmation stating otherwise is received.-->
+      </td>
+      <td width="230px">
+      <apex:panelGrid styleClass="totalSect" columnClasses="totalLabel,totalAmt" columns="2" width="225px" >
+        <apex:outputText styleclass="hdrInfoLbl" value="{!h_f.rstk__Order_Total__c.label}"/>
+        <apex:outputText value="{!relatedTo.rstk__currency_total__c}" />
+      </apex:panelGrid>
+  </td></tr>
+</table>
+</div>
+</body>
+</apex:page>

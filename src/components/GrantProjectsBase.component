@@ -1,0 +1,933 @@
+<!-- 
+01/22/2013 TCM - update to jquery 1.8.3, jquery ui 1.9.1
+01/22/2012 TCM - fix for notes disappear after sorting - zen-27
+-->
+<apex:component controller="GrantProjectsController">
+
+<apex:attribute name="tabName" 
+                description="name of incentives tab"
+                type="String" 
+                required="true"/>
+
+<apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/redmond/jquery-ui.css"/>
+<apex:stylesheet value="{!URLFOR($Resource.fullcalendar153, 'fullcalendar/fullcalendar.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.jqgrid433, 'css/ui.jqgrid.css')}" />
+
+<style type="text/css">
+
+    body, html {
+        margin: 0px important!;
+        overflow: hidden;
+    }
+
+    .pbSubheader {
+        margin-top: 5px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr { border-left : 1px solid; border-right : 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-rtl { border-left : 1px solid; border-right : 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { border-top: 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { border-bottom: 1px solid; }
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #1D5987; }
+    .ui-jqgrid .ui-jqgrid-htable th { height: auto; }
+    .ui-jqgrid .ui-jqgrid-htable th div { overflow: visible; height: auto; }
+    
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column-header,
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { 
+        overflow: hidden;
+        background-image: none; 
+    }
+    
+    table.ui-jqgrid-htable, table.ui-jqgrid-btable {
+        border-collapse: collapse;
+    }
+    
+    div.ui-jqgrid div.ui-jqgrid-hdiv, 
+    div.ui-jqgrid div.ui-jqgrid-bdiv {
+        overflow: hidden;
+    }
+        
+    div.ui-jqgrid div.ui-jqgrid-view div.ui-jqgrid-hdiv {
+        border: none;
+    }
+    
+    div.ui-jqgrid tr.jqgrow td {
+        border-left : 1px solid #ececec; border-right : 1px solid #ececec; 
+    }
+    
+    .pcell { vertical-align: middle important!;}
+    
+    .gridAltRows { color: black; background-color: #eee; }
+    
+    .noSidebarCell { padding-top: 0px; }
+    
+    .ui-widget-overlay { background-color: #404040; opacity: .65; background-image: none; }
+    
+    .ui-dialog .ui-dialog-buttonpane { 
+        margin: 0; 
+        border-top: 2px groove white;
+        background-color: #e3e3e3;
+    }
+    .ui-dialog .ui-dialog-buttonpane button { margin: 0; }
+
+    /* calendar styles */
+
+    .fc-border-separate { border: 1px solid #2E6E9E; }
+    
+    #calendar {
+        width: 1024px;
+        margin-bottom: 10px;
+    }
+    #calendar div.fc-day-number {
+        float: left;
+        padding: 0 2px;
+    }
+    #calendar td.fc-widget-content { 
+        border: 1px solid #DFEFFC; 
+    }
+    #calendar td.fc-first {
+        border-left: 1px solid #2E6E9E;
+    } 
+    #calendar td.fc-last {
+        border-right: 1px solid #2E6E9E;
+    } 
+    #calendar tr.fc-last td {
+        border-bottom: 1px solid #2E6E9E;
+    } 
+    #calendar table {
+        border-collapse: collapse;
+    }
+    #calendar th.fc-widget-header {
+        color: #2E6E9E;
+        background-color: #DFEFFC;
+        border: 1px solid #2E6E9E;
+    }
+    
+    .fc-event { font-size: 1em; }
+    
+    a.fc-event-skin:hover { text-decoration: none; }
+    
+    .fc-event-skin { background-color: #009DDC; }
+    
+    td.fc-sat,
+    td.fc-sun {
+        background-color: #f0f0f0;
+    }
+    
+    .cal-kickoff-event .fc-event-skin {
+        background-color: #fba751; /* astrum sunset 80% */  /* sandyBrown #ffca6e*/
+        color: #000;
+    }
+
+    .cal-inspect-event .fc-event-skin {
+        background-color: #61AF3F; /* #228822 */
+    }
+        
+    table#newProjects td.pcell, 
+    table#activeProjects td.pcell, 
+    table#onHoldProjects td.pcell, 
+    table#cancelledProjects td.pcell, 
+    table#plCompleteProjects td.pcell, 
+    table#finalCompleteProjects td.pcell { 
+        vertical-align: middle;
+    }
+
+    div#gbox_newProjects th.ui-th-column, 
+    div#gbox_activeProjects th.ui-th-column, 
+    div#gbox_onHoldProjects th.ui-th-column, 
+    div#gbox_cancelledProjects th.ui-th-column, 
+    div#gbox_plCompleteProjects th.ui-th-column, 
+    div#gbox_finalCompleteProjects th.ui-th-column { 
+        vertical-align: middle;
+    }
+    
+    table#newProjects .grid-checkbox,
+    table#activeProjects .grid-checkbox, 
+    table#onHoldProjects .grid-checkbox, 
+    table#cancelledProjects .grid-checkbox, 
+    table#plCompleteProjects .grid-checkbox, 
+    table#finalCompleteProjects .grid-checkbox { 
+        vertical-align: middle;
+    }
+    
+    .ui-jqgrid tr.jqgrow td {
+        font-weight: bold;
+    }
+    
+    .ui-jqgrid-sortable, .ui-jqgrid .ui-th-div-ie {
+        white-space: normal;
+        height: auto;
+    }
+        
+    .alert-plus-note {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+    }
+    
+    .green-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .orange-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    } 
+
+    .alert-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')});
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    
+    .green-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')});
+    }
+    
+    .orange-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')});
+    } 
+
+    .note-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+    
+    .ui-state-highlight, .ui-widget-content .ui-state-highlight {
+        background-image: none;
+        background-color: #faf6de;
+    }
+
+    .ui-state-highlight.alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .ui-state-highlight.green-alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.green-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .ui-state-highlight.orange-alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.orange-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+
+    .ui-state-highlight.alert-only, .ui-widget-content .ui-state-highlight.alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')});
+    }
+    
+    .ui-state-highlight.green-alert-only, .ui-widget-content .ui-state-highlight.green-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')});
+    }
+    
+    .ui-state-highlight.orange-alert-only, .ui-widget-content .ui-state-highlight.orange-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')});
+    }
+
+    .ui-state-highlight.note-only, .ui-widget-content .ui-state-highlight.note-only {
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .filter-block {
+        display: none;
+    }
+    
+    span.filter-button {
+        /* min-width: 120px; */
+        margin-right: 0px;
+        /* background-color: #paleturquoise important!; */
+        background-image: none;
+    }
+    
+    span.filter-button .ui-button-text {
+        text-align: left;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    
+    span.filter-button .ui-button-icon-secondary {
+        top: 75%;
+    }
+    
+    span.filter-button span.selections {
+        color: black;
+    }
+
+    .filter-label {
+        font-weight: bold;
+        vertical-align: top;
+        position: relative;
+        top: 12px;
+        margin-right: 5px;
+        font-size: 105%;
+    }
+
+    .filter-apply {
+        vertical-align: top;
+        margin-left: 5px;
+    }
+
+    .filter-clear {
+        margin-left: 5px;
+    }
+    
+    span.selections {
+        font-weight: normal;
+    }
+    
+    .option-selection-box {
+        padding: 10px;
+        box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+        border: 1px solid black;
+        z-index: 100;
+    }
+    
+    #state-default-button {
+        margin-top: 5px;
+    }
+    
+    #state-default-button .ui-button-text {
+        padding: 1px 3px;
+    }
+    
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="{!URLFOR($Resource.jqGrid433, 'js/i18n/grid.locale-en.js')}"></script>
+<script type='text/javascript'>$.jgrid.no_legacy_api = true;</script>
+<script type="text/javascript" src="{!URLFOR($Resource.jqGrid433, 'js/jquery.jqGrid.min.js')}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.fullcalendar153, 'fullcalendar/fullcalendar.min.js')}"></script>
+
+<script type='text/javascript'>
+
+    var appName = 'GRANTS';
+    
+    var timezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
+    
+    var nameToColIdMap = {}; 
+    var nameToColIndexMap = {}; 
+    
+    var projectFilters = [];    
+
+    //formats integer from remote to a date
+    function remoteDateFormatter(cellValue, options, rowObject) {
+        if (cellValue) {
+            var dt = new Date(cellValue);
+            if (isNaN(dt)) {
+                return cellValue;
+            }
+            var dtFormatted = (dt.getUTCMonth() + 1) + "/" + dt.getUTCDate() + "/" + (dt.getUTCFullYear() % 100); 
+            if (dt.getFullYear() > 8000) {
+                return '<span style="color:darkorange">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')}"/>';
+            } else if (dt.getFullYear() > 6000) {
+                return '<span style="color:blue">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/signed-16.png')}"/>';
+            } else if (dt.getFullYear() > 4000) {
+                return '<span style="color:green">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/artists_alphabet_p.gif')}"/>';
+            } else {
+                return dtFormatted;
+            }
+        } else {
+            return "";
+        } 
+    }
+    
+    //formats project name into link
+    function projectLinkFormatter(cellValue, options, rowObject) {
+        if (cellValue) {
+            if (rowObject.Id == "EMPTYID" || rowObject.id == 'EMPTYID') {
+                return cellValue;
+            } else {
+                return '<a href="/' + (rowObject.Id ? rowObject.Id : rowObject.id)
+                    + '" target="_blank" style="text-decoration: underline;">' + cellValue + '</a>';
+            }
+        } else {
+            return "";
+        } 
+    }
+    
+    var emptyGrid = [ {Id: "EMPTYID", Name:"NO PROJECTS"} ];
+    
+    var hasNJ = false;
+    
+    var requestCount = 0;
+    
+    function populateGrid (status, selector) {
+        requestCount++;
+        GrantProjectsController.getProjects(appName, status, projectFilters, function (result, event) {
+            requestCount--;
+            $s = $(selector);
+            $s.jqGrid('clearGridData');
+            if (event.status) {
+                //populate grid data
+                if (result.length) {
+                    //reformat related data
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].Sales_Order__r && result[i].Sales_Order__r.Property__r) {
+                            //TODO: normalize names
+                            result[i]['Property__r.Name'] = result[i].Sales_Order__r.Property__r.Name;
+                            result[i]['Property__r.Property_City__c'] = result[i].Sales_Order__r.Property__r.Property_City__c;
+                            result[i]['Property__r.Property_State__c'] = result[i].Sales_Order__r.Property__r.Property_State__c;
+                            result[i]['Property__r.Property_County__c'] = result[i].Sales_Order__r.Property__r.Property_County__c;
+                            if (result[i]['Property__r.Property_State__c'] == 'NJ') {
+                                hasNJ = true;
+                            }
+                        }
+                        if (result[i].Sales_Order__r) {
+                            result[i]['Sales_Order__r.Financing_Type__c'] = result[i].Sales_Order__r.Financing_Type__c;
+                        }
+                    }
+                    $s.jqGrid('addRowData', 'Id', result);
+                    $s.data('projectGrid', { status: status });
+                    $s.data('projectIssuesNotes', { notes: result });
+                    addIssuesAndNotes($s, result);
+                    if (status == 'Active') {
+                        populateCalendar(result);
+                    }
+                } else {
+                    $s.jqGrid('addRowData', 'Id', emptyGrid);
+                    $s.jqGrid('setGridParam', 'cellEdit', false);
+                }
+            } else {
+                alert(event.message);
+            }
+            if (requestCount == 0) {
+                GrantProjects.reloadComplete();
+            }
+        });
+    }
+    
+    function populateCalendar(result) {
+        var calEvents = [];
+        for (var i = 0; i < result.length; i++) {
+            var row = result[i];
+            if (row.Kickoff__c) {
+                calEvents.push({
+                    id: row.Id + ':Kickoff__c', 
+                    title: "Kickoff: " + row.Name,
+                    start: new Date(row.Kickoff__c + timezoneOffset),
+                    className: "cal-kickoff-event",
+                    url: '/' + row.Id
+                });
+            }
+            if (row.Install__c) {
+                calEvents.push({ 
+                    id: row.Id + ':Install__c', 
+                    title: "Install: " + row.Name,
+                    start: new Date(row.Install__c + timezoneOffset),
+                    className: "cal-install-event",
+                    url: '/' + row.Id
+                });
+            }
+            if (row.Inspection__c) {
+                calEvents.push({ 
+                    id: row.Id + ':Inspection__c', 
+                    title: "Inspection: " + row.Name,
+                    start: new Date(row.Inspection__c + timezoneOffset),
+                    className: "cal-inspect-event",
+                    url: '/' + row.Id
+                });
+            }
+        }
+        if (calEvents.length > 0) {
+            $('#calendar').fullCalendar('addEventSource', calEvents);
+        }
+        $('#calendar a.fc-event').attr('target','_blank');  
+    }
+    
+    function addIssuesAndNotes(grid, result) {
+        //determine if there are any alerts
+        for (var i = 0; i < result.length; i++) {
+            var row = result[i];
+            var rowid = row.Id;
+            
+            var hasIssues = row.PM_Project_Issues__r != null && row.PM_Project_Issues__r.length > 0;
+            var hasNotes = row.Astrum_Docs__r != null && row.Astrum_Docs__r.length > 0;
+            
+            if (hasIssues) {
+                for (var j = 0; j < row.PM_Project_Issues__r.length; j++) {
+                  
+                    var issue = row.PM_Project_Issues__r[j];                   
+                    if (issue.Bin__c) {                       
+                       
+                        var colid = nameToColIdMap[issue.Bin__c];
+                        if (colid) {    
+                            var colIndex1 = nameToColIndexMap[issue.Bin__c];                       
+                            var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';                                
+                            var description = 'ISSUE: ' + issue.Description__c; 
+                            
+                            if(issue.Status__c == 'Fixed' && issue.To__c != 'GRANTS') 
+                            {  
+                                if ($(selector1).hasClass('orange-alert-only'))
+                                {
+                                    $(selector1).removeClass('orange-alert-only').addClass('green-alert-only');
+                                }     
+                                grid.jqGrid('setCell', rowid, colid, '', 'green-alert-only', { title: description });
+                            }    
+                            else if(issue.Status__c == 'Open' && issue.To__c != 'GRANTS')  
+                            {                                     
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });
+                            }    
+                            else if(issue.Status__c == 'Open' && issue.To__c == 'GRANTS') 
+                            {
+                                if ($(selector1).hasClass('orange-alert-only') )                                    
+                                     $(selector1).removeClass('orange-alert-only').addClass('alert-only');      
+                                if ($(selector1).hasClass('green-alert-only') )                                    
+                                     $(selector1).removeClass('green-alert-only').addClass('alert-only'); 
+                                
+                                grid.jqGrid('setCell', rowid, colid, '', 'alert-only', { title: description }); 
+                            }    
+                            else if(issue.Status__c == 'Fixed' && issue.To__c == 'PL' && issue.Bin__c == 'Electrical Review') 
+                            {
+                                if (!($(selector1).hasClass('alert-only')))   
+                                    grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });  
+                             }       
+                            else if(issue.Status__c == 'Open' && issue.To__c == 'PL' && issue.Bin__c == 'Electrical Review')                                    
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });                                   
+                            else
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });
+                                    
+                        }    
+                    }
+                }
+            }
+            
+            if (hasNotes) {
+                for (var j = 0; j < row.Astrum_Docs__r.length; j++) {
+                    var note = row.Astrum_Docs__r[j];
+                    if (note.Bin__c) {
+                        var colIndex = nameToColIndexMap[note.Bin__c];
+                        var selector = '#' + rowid + ' td:eq(' + colIndex + ')';
+                        if ($(selector).hasClass('alert-plus-note') || $(selector).hasClass('green-alert-plus-note') || $(selector).hasClass('orange-alert-plus-note') || $(selector).hasClass('note-only')) {
+                            //nothing to do here, already set
+                        } else if ($(selector).hasClass('alert-only')) {
+                            $(selector).removeClass('alert-only').addClass('alert-plus-note');     
+                        } else if ($(selector).hasClass('green-alert-only')) {
+                            $(selector).removeClass('green-alert-only').addClass('green-alert-plus-note');                                 
+                        } else if ($(selector).hasClass('orange-alert-only')) {
+                            $(selector).removeClass('orange-alert-only').addClass('orange-alert-plus-note');                                 
+                        } else {
+                            $(selector).removeClass('alert-only').addClass('note-only');
+                        }
+                    }
+                }
+            }             
+            
+        }
+    }
+    
+    function cellClick (rowId, colId, cellContent, evt) {
+        if (rowId == "EMPTYID") {
+            $(this).jqGrid('resetSelection');
+            return false;
+        }
+        var binName = $(this).jqGrid('getGridParam', "colNames")[colId];
+        if (binName == "Project" || binName == "State" || binName == "Financing Type" || binName == "Installation Address" 
+        || binName == "City" || binName == "County" || binName == "Customer Care Handoff" || binName == "Paid In Full"
+        || binName == "Kickoff" || binName == "Install" || binName == "Inspection" || binName == "Ready for Install"
+        || binName == 'Work Completed' || binName == 'Grant Reservation Number' || binName == 'Grant Reservation Amount') {
+            return;
+        } 
+        $('td.ui-state-highlight', '#'+rowId).removeClass('ui-state-highlight'); 
+        var binUrl = "/apex/DocumentBinDialog?id=" + rowId + "&binName=" + encodeURIComponent(binName) + "&appName=" + appName;
+        $("#binDialog").dialog("option", "title", binName);
+        $("#binFrame").hide();
+        $("#binFrameLoading").show();
+        $("#binFrame").load(function () {
+            $(this).unbind('load');
+            $("#binFrameLoading").hide();
+            $("#binFrame").show();
+        });
+        //store data to use to update the grid after close
+        $('#binDialog').data("binDialog", { 
+            rowId: rowId,
+            colId: colId,
+            binName: binName,
+            status: $(this).data('projectGrid').status,
+            jqGrid: $(this) 
+        });
+        $('#binDialog').dialog("open");
+        $("#binFrame").attr("src", binUrl);
+        
+        return false;   
+    }
+
+    //reload the row    
+    function dialogClose(evt, ui) {
+        var data = $('#binDialog').data('binDialog');
+        GrantProjectsController.getProjects(appName, data.status, projectFilters, function (result, event) {
+            if (event.status) {
+                for (var i = 0; i < result.length; i++) {
+                    if (result[i].Id == data.rowId) {
+                        var row = result[i];
+                        var binField = nameToColIdMap[data.binName];
+                        if (binField && row[binField] == undefined) {
+                            row[binField] = null;
+                        }
+                        data.jqGrid.jqGrid('setRowData', row.Id, row);
+                        
+                        //update the saved notes data for sorting                       
+                        var notesData = data.jqGrid.data('projectIssuesNotes');
+                        if (notesData != null && notesData.notes != null) {
+                            notesData = notesData.notes;
+                            for (var j = 0; j < notesData.length; j++) {
+                                if (notesData[j].Id == data.rowId) {
+                                    notesData[j] = row;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        $('td', '#'+row.Id).removeClass('alert-only').removeClass('note-only').removeClass('alert-plus-note').removeClass('green-alert-only').removeClass('orange-alert-only').removeClass('orange-alert-plus-note').removeClass('green-alert-plus-note');   
+                        addIssuesAndNotes(data.jqGrid, [row]);
+                        return false;
+                    }
+                }
+            } else {
+                alert(event.message);
+            }
+        });
+    }
+
+    //onload
+    $(function() {
+    
+        //fix for jqgrid width cutoff
+        $.jgrid.cellWidth = function() { return false; }
+
+        var resizer = function () {
+            //$('#scrollWindow').width($('#tabContainer').width() - 50);
+            $('#scrollWindow').width($(window).width() - 30);
+            $('#scrollWindow').height($(window).height() - $('.bPageHeader').height());
+        }
+
+        resizer();  
+        
+        //$('#bodyCell').css('margin','0px');
+        $(window).resize(resizer);
+    
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        
+        var calendar = $('#calendar').fullCalendar({
+            header: {
+                left: 'month,basicWeek,basicDay',
+                center: 'title',
+                right: 'prev,next'
+            },
+            //theme: true,
+            weekMode: 'liquid', 
+            contentHeight: 300, 
+            defaultView: 'month',
+            editable: false,
+        });
+
+        //definition for grids
+        $("#activeProjects,#newProjects,#onHoldProjects,#cancelledProjects,#plCompleteProjects,#finalCompleteProjects").jqGrid({
+            afterSaveCell: function (rowid, cellname, value, iRow, iCol) {
+                if (cellname != 'Grant_Reservation_Number__c' && cellname != 'Grant_Reservation_Amount__c') {
+                    return;
+                }
+                //update salesForce
+                GrantProjectsController.setProjectField(rowid, cellname, value, function (result, event) {
+                    if (event.status) {
+                    } else {
+                        alert(event.message);
+                    }
+                });
+            },
+<apex:componentBody />
+        });
+
+        //load the map of column names to column id's
+        var $newProjects = $('#newProjects')
+        var colNames = $newProjects.jqGrid('getGridParam', 'colNames');
+        var colModel = $newProjects.jqGrid('getGridParam', 'colModel');
+        for (var i = 0; i < colNames.length; i++) {
+            nameToColIdMap[colNames[i]] = colModel[i].name;
+            nameToColIndexMap[colNames[i]] = i;
+        }
+
+        $('#binDialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 950,
+            height: 600,
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    $('#binFrame')[0].contentWindow.isValid(function() {
+                        $(that).dialog("close"); 
+                    });
+                    return false;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }
+        })
+        .css('overflow', 'hidden').css('padding', '0')
+        .bind('dialogclose', dialogClose);
+        
+        $(document).disableSelection();
+        
+        //TODO: persist sections that are closed    
+        //close the calendar --
+        $("img[name='Calendar']").each(function() {
+            //twistSection(this);
+        });
+        
+        $(window).resize(function() {
+            $("#binDialog").dialog("option", "position", "center");
+        });
+        
+        //filter buttons
+        $('#topTable span.filter-button').button({
+            icons: { secondary: "ui-icon-triangle-1-s" }
+        })
+        .removeClass('ui-corner-all')
+        .click(function (e) {
+            var dialogId = $(this).attr('data-dialog-id');
+            var pos = $(this).position();
+            var height = $(this).outerHeight();
+            //alert(dialogId + $(".option-selection-box[id!='" + dialogId + "']").size());
+            $(".option-selection-box[id!='" + dialogId + "']").hide();
+            //show the menu directly over the placeholder
+            $('#' + dialogId).css({
+                position: "absolute",
+                top: (pos.top + height - 1) + "px",
+                left: pos.left + "px"
+            }).toggle();
+            e.preventDefault();
+            return false;
+        });
+        $('#topTable td.filter-block').show();
+        
+        //hide filter selection on click
+        $("body").click(function(e) {
+            if ($(e.target).hasClass('option-selection-box') || $(e.target).closest('.option-selection-box').size() > 0) {
+                //do nothing
+            } else {
+                $('.option-selection-box').hide()
+            }
+            //if ($(e.target).hasClass('edit-cell') || $(e.target).parents('td.').size() > 0) {
+            //if ($('table.ui-jqgrid-btable td.edit-cell'))
+        });
+        
+        //state checkboxes
+        $('.state-option').click(function (e) {
+            if ($('.state-option:checked').size() == 0) {
+                $('.state-option-all').attr('checked', 'checked');
+            } else {
+                $('.state-option-all').removeAttr('checked');
+            }
+            GrantProjects.updateFilter('state');
+        });
+        $('.state-option-all').click(function (e) {
+            $('.state-option:checked').removeAttr('checked');
+            //can't uncheck all
+            if ($(this).attr('checked') != 'checked') {
+                $(this).attr('checked', 'checked');
+            }
+            GrantProjects.updateFilter('state');
+        });
+        
+        //filter handlers       
+        $('.filter-apply').click(GrantProjects.applyFilters);
+        $('.filter-clear').click(GrantProjects.clearFilters);
+        
+        //handle default button
+        $('#state-default-button').button()
+        .click(function () {
+            var optionBox = $(this).closest('div.option-selection-box'); 
+            optionBox.hide();
+            var states = $('input.state-option:checked', optionBox).map(function () {
+                return $(this).val();
+            }).get().join(';');
+            GrantProjectsController.setStateSettings(states, function (result, event) {
+                if (event.status) {
+                    GrantProjects.stateSettings = states;
+                } else {
+                    alert(event.message);
+                }
+            });
+        });
+        
+        //set the grid to default settings
+        GrantProjects.clearFilters();
+        
+    });
+    
+    var GrantProjects = {
+        sorting: false,
+        stateSettings: '{!JSENCODE(stateSettings)}',
+        updateFilter: function (prefix) {
+            var labels = $('.' + prefix + '-option-all:checked, .' + prefix + '-option:checked').next();
+            var size = labels.size();
+            var selection = $('.' + prefix + '-selections'); 
+            if (size > 1) {
+                selection.text(size + ' selected');
+            } else {
+                selection.text(labels.text());
+            }
+        },
+        applyFilters: function () {
+            var prefixes = ["state"];
+            var result = [];
+            for (var i = 0; i < prefixes.length; i++) {
+                var prefix = prefixes[i];
+                $('.' + prefix + '-option-all:checked, .' + prefix + '-option:checked').each(function (index, cb) {
+                    result.push(prefix + ':' + $(this).next().text());
+                });
+            }
+            projectFilters = result;
+            GrantProjects.reloadGrid(); 
+        },
+        clearFilters: function () {
+            projectFilters = [];
+            if (GrantProjects.stateSettings) {
+                $('#stateOptions input.state-option-all').removeAttr('checked');
+                $('#stateOptions input.state-option').removeAttr('checked');
+                var states = GrantProjects.stateSettings.split(';');
+                $.each(states, function(index, value) {
+                    $('#stateOptions input.state-option[value="' + value + '"]').attr('checked', 'checked');
+                });
+                GrantProjects.updateFilter('state');
+                GrantProjects.applyFilters();
+            } else {
+                var prefixes = ["state"];
+                for (var i = 0; i < prefixes.length; i++) {
+                    var prefix = prefixes[i];
+                    $('.' + prefix + '-option').removeAttr('checked');
+                    $('.' + prefix + '-option-all').attr('checked', 'checked');
+                    $('.' + prefix + '-selections').text('All'); 
+                }
+                GrantProjects.reloadGrid();
+            }   
+        },
+        reloadGrid: function () {
+            $('#ajaxLoading').css('visibility', 'visible');
+            hasNJ = false;
+            $('#calendar').fullCalendar('removeEvents');
+            //load the data via remoteaction calls      
+            populateGrid("New", "#newProjects");
+            populateGrid("Active", "#activeProjects");
+            populateGrid("PL Complete", "#plCompleteProjects");
+            populateGrid("Final Complete", "#finalCompleteProjects");
+            populateGrid("On-Hold", "#onHoldProjects");
+            populateGrid("Cancelled", "#cancelledProjects");
+        },
+        reloadComplete: function () {
+            $("#activeProjects,#newProjects,#onHoldProjects,#cancelledProjects,#plCompleteProjects,#finalCompleteProjects").jqGrid(hasNJ? 'showCol' : 'hideCol', 'NJ_SREC_Docs__c');
+        },
+        gridComplete: function () {
+            $t = $(this);
+            if (GrantProjects.sorting) {
+                GrantProjects.sorting = false;
+                var data = $t.data('projectIssuesNotes');
+                if (data != null) {
+                    addIssuesAndNotes($t, data.notes);
+                }
+            }
+            $('#ajaxLoading').css('visibility', 'hidden');
+        }
+    };
+
+</script>
+
+<body scroll="no">
+
+<div id="scrollWindow" style="width: 1024px; height: 200px; overflow: scroll;">
+
+    <table id="topTable" style="width:100%;">
+    <tr>
+        <td style="width:40em;"><apex:sectionHeader title="Incentives" subtitle="{!tabName}"/></td>
+        <td class="filter-block">
+            <span class="filter-label">Filters:</span>
+            <span class="filter-button" data-dialog-id="stateOptions">State<br/><span class="selections state-selections">All</span></span>
+            <span style="display:inline-block">
+                <button class="filter-apply" type="button">Apply Filters</button><br />
+                <button class="filter-clear" type="button">Clear Filters</button>
+            </span>
+        </td>
+        <td>
+            <span id="ajaxLoading" style="display:inline-block;vertical-align:top;padding-left:50px;padding-right:10px;zoom:1.3">
+                <img src="{!URLFOR($Resource.AjaxLoader)}"/>&nbsp;&nbsp;Loading...
+            </span>
+        </td>
+    </tr>
+    </table>
+    
+    <apex:pageBlock mode="maindetail">
+        <apex:pageBlockSection title="Calendar" columns="1">
+            <div id="calendar" class="project-grid"></div>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="New Projects" columns="1">
+            <table id="newProjects" class="project-grid" disabled="true"></table>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Active Projects" columns="1">
+            <table id="activeProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="On-Hold Projects" columns="1">
+            <table id="onHoldProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Cancelled Projects" columns="1">
+            <table id="cancelledProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="PL Complete Projects" columns="1">
+            <table id="plCompleteProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Final Complete Projects" columns="1">
+            <table id="finalCompleteProjects" class="project-grid"></table>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+</div>
+
+<div id="binWrapper" style="display:none">
+<div id="binDialog">
+    <div id="binFrameLoading" style="display:none;text-align:center;width:100%;height:100%;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+    <iframe id="binFrame" width="100%" height="100%" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+</div>
+</div>
+
+<div id="stateOptions" style="display:none" class="ui-widget-content option-selection-box">
+    <div><input id="stateall" class="state-option-all" type="checkbox" checked="checked"/><label for="stateall">All</label></div>
+    <apex:repeat value="{!states}" var="s">
+        <div><input id="state{!s}" class="state-option" type="checkbox" value="{!s}"/><label for="state{!s}">{!s}</label></div>
+    </apex:repeat>
+    <span id="state-default-button">Set As<br/>My Default</span>
+</div>
+
+</body>
+</apex:component>

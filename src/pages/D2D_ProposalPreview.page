@@ -1,0 +1,73 @@
+<apex:page docType="html-5.0" controller="D2D_ProposalPreviewController" showHeader="false" standardStylesheets="false"  applyHtmlTag="false" applyBodyTag="false">
+    <apex:composition template="D2D_SiteTemplate">
+        <apex:define name="head-top"> 
+
+            <meta name='description' content='D2D - Proposal' />
+            <title>D2D - Proposal</title>
+
+        </apex:define>
+        <apex:define name="head-bottom"> 
+        
+    		<script type="text/javascript">
+			
+				//Avoid conflicts between jQuery and apex
+      			$j = jQuery.noConflict();
+      			
+			</script>
+		</apex:define>
+
+        <apex:define name="navigation">
+
+            <c:D2D_AccountInfo />
+ 
+        </apex:define>
+                
+        <apex:define name="header-btns">
+            <div class="headerBtns">
+               	<!--<h1><span class="unbold">Lead: </span><span class="leadName">{!referral.Full_Name__c}</span>  <a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-orangebg"></i></a></h1> 
+                <div class="headerBtnsLeft">  
+	   				<h2><i class="fa fa-file fa-1x fa-pageicon"></i> Proposal</h2> 
+                </div>
+                <div class="headerBtnsRight">
+					<a href="{!pdfUrl}"  target="_blank"  class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-share-square-o fa-lg fa-inverse fa-greenbg"></i>Open PDF</a>
+					<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-th fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+                </div>
+                <div class="ClearAll"></div>
+                 -->
+                 <div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-file fa-1x fa-pageicon"></i> Proposal</h1>
+		 			</div><div class="headerBtnsRight">
+						<a href="{!pdfUrl}"  target="_blank"  class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-share-square-o fa-lg fa-inverse fa-greenbg"></i>Open PDF</a>
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+	                </div>
+					<div class="ClearAll"></div>
+				</div>
+            </div>
+        </apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+		    <div class="footerBtns">
+	    		<!--<div class="footerBtnsLeft">
+		    		<a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="goToPrevious();"><i class="fa fa-chevron-left fa-lg fa-nobg"></i>Previous</a>
+	    		</div> -->
+		    	<apex:outputPanel rendered="{!contractState!='completed'}">
+    			<div class="footerBtnsRight">
+	    			<a href="/d2d/D2D_ContractPreview?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-file fa-lg fa-inverse fa-greenbg"></i>Contract<i class="fa fa-chevron-right fa-lg fa-nobgRight"></i></a>	
+		   		</div>
+			    </apex:outputPanel>
+				<div class="ClearAll"></div>
+		    </div> 
+	    </apex:define>
+
+        <apex:define name="content">
+            <div class="scroll-wrapper-proposal"><iframe id="theFrame" src="{!pdfUrl}" width="100%" height="100%" /></div>
+        </apex:define>
+    </apex:composition>
+</apex:page>

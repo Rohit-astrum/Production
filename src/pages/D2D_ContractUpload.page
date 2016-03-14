@@ -1,0 +1,75 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_ContractUploadController" applyHtmlTag="false" applyBodyTag="false">
+	<apex:composition template="D2D_SiteTemplate">
+		<apex:define name="head-top"> 
+
+		    <meta name='description' content='D2D - Contract Upload' />
+		    <title>D2D - Contract Upload</title>  
+
+		</apex:define>
+
+		<apex:define name="navigation">
+
+            <c:D2D_AccountInfo />
+
+		</apex:define>
+				
+		<apex:define name="header-btns">
+		    <div class="headerBtns">
+				<div class="referralHeader">
+					<div class="headerBtnsLead">
+						<a href="/d2d/D2D_LeadMenu?id={!referral.Id}" data-ajax="false" class="ui-btn ui-btn-inline ui-btn-large ui-btn-orange ui-corner-all"><i class="fa fa-th fa-lg fa-left"></i>Lead Menu</a>
+						<h2><span class="leadName">{!referral.Full_Name__c}</span></h2>
+					</div>
+					<div class="headerBtnsLeft">
+		   				<h1><i class="fa fa-file fa-1x fa-pageicon"></i> Contract</h1>
+		 			</div><div class="headerBtnsRight">
+						<a href="{!dashboardUrl}"  data-ajax="false" onclick="displayLoader('Opening dashboard...');" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-navicon fa-lg fa-inverse fa-greenbg"></i>Dashboard</a>
+	                </div>
+					<div class="ClearAll"></div>
+				</div>
+			</div>
+		</apex:define>
+		
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+			<apex:outputText value="{!stackTrace}" style="visibility:hidden;"/>
+	    </apex:define>
+
+		<apex:define name="content">
+			<apex:form id="mainForm">
+			<div id="Content">
+				<div class="container greycontainer">
+					<apex:outputPanel layout="block" id="signer" styleClass="signer">
+						<div class="PropertyPhotosLeftCol">
+							<div class="scroll-wrapper">
+								<div class="uploadFile">
+									<a href="#" class="ui-btn ui-btn-inline ui-btn-green ui-corner-all {!IF(allowUpload, '', 'ui-state-disabled')}" onclick="captureFile();"><i class="fa fa-plus-circle fa-lg fa-left"></i>Upload Contract</a>
+								</div>
+								<apex:inputFile value="{!uploadFile.Body}" contentType="{!uploadFile.ContentType}" fileName="{!uploadFile.Name}" fileSize="{!uploadFile.BodyLength}" 
+									accept="image/*;capture=camera" id="take-picture-btn" style="display:none;" onchange="displayLoader('Uploading file...');doSubmit();return false;" />
+								<apex:actionFunction name="doSubmit" action="{!upload}" />
+								<apex:outputPanel id="wasProcessed" rendered="{!wasProcessed}">
+									The file was uploaded successfully and a sales order has been created.
+								</apex:outputPanel>
+							</div>
+						</div>
+					</apex:outputPanel>
+				</div>
+			</div>
+			</apex:form>
+		</apex:define>
+
+	</apex:composition>
+
+	<script type="text/javascript">
+
+		//Avoid conflicts between jQuery and apex
+		$j = jQuery.noConflict();
+
+	    function captureFile() {
+	    	$j('input[id$="take-picture-btn"]').click();
+	    	return false;
+	    }
+	   
+	</script>
+</apex:page>

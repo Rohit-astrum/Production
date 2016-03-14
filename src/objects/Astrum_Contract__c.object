@@ -1,0 +1,2341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>ContractDetailPage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>PreviewContract</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Contract object to facilitate Conga Contracts</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Billing_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_County__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Zip__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Zip</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cash_Discount_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Cash Discount Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Cash_Rebate_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Cash Rebate Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Closed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Closed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Community_Program_Tier__c</fullName>
+        <externalId>false</externalId>
+        <label>Community Program Tier</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Execution_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Execution Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_PDF_Name__c</fullName>
+        <description>Determines what the Contract PDF will be named when it&apos;s generated by Conga</description>
+        <externalId>false</externalId>
+        <label>Contract PDF Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Template_IDs__c</fullName>
+        <description>IDs of the Conga templates to put in the URL when generating a new Contract PDF</description>
+        <externalId>false</externalId>
+        <label>Contract Template IDs</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>County_Lease_Tax_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>County Lease Tax Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Cumulative_Guaranteed_Sys_Output__c</fullName>
+        <description>Sum of all &quot;Guaranteed Sys Output kWh Year N&quot; fields</description>
+        <externalId>false</externalId>
+        <label>Cumulative Guaranteed Sys Output</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Current</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Down_Payment__c</fullName>
+        <description>Amount the customer will use as down payment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount the customer will use as down payment.</inlineHelpText>
+        <label>Down Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Est_Interconnect_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Est Interconnect Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Year_One_Price_Per_KWH__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Year One Price Per KWH</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Federal_Tax_Credit__c</fullName>
+        <description>Available Federal Tax Credit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Available Federal Tax Credit.</inlineHelpText>
+        <label>Federal Tax Credit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Financing_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+	TEXT(Proposal__r.System_Design_Quote__r.Scenario_1_Financing_Type__c),
+	
+	IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+		TEXT(Proposal__r.System_Design_Quote__r.Scenario_2_Financing_Type__c),
+		
+		IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+			TEXT(Proposal__r.System_Design_Quote__r.Scenario_3_Financing_Type__c),
+			
+			IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+				TEXT(Proposal__r.System_Design_Quote__r.Scenario_4_Financing_Type__c), &apos;&apos;
+			)
+		)
+	)
+)</formula>
+        <label>Financing Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Month_Payment_Post_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>First Month Payment Post Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>First_Month_Payment_Pre_Tax__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_1_First_Month_Payment__c,
+
+IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_2_First_Month_Payment__c,
+
+IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_3_First_Month_Payment__c,
+
+IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_4_First_Month_Payment__c, 0
+)
+)
+)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>First Month Payment Pre Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Full_Property_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Property_Address_Line_1__c &amp; IF(ISBLANK(Property_Address_Line_2__c), &quot;&quot;, &quot; &quot; &amp; Property_Address_Line_2__c) &amp; &quot;, &quot; &amp; Property_City__c &amp; &quot;, &quot; &amp; Property_State__c &amp; &quot; &quot; &amp; Property_Zip__c</formula>
+        <label>Full Property Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gross_Amount_Due__c</fullName>
+        <externalId>false</externalId>
+        <label>Gross Amount Due</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guarantee_Years_New_Roof_Num__c</fullName>
+        <description>New Roof Guarantee years (number).</description>
+        <externalId>false</externalId>
+        <label>Guarantee Years New Roof</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guarantee_Years_New_Roof_Text__c</fullName>
+        <description>New Roof Guarantee years (text).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>New Roof Guarantee years (text).</inlineHelpText>
+        <label>Guarantee Years New Roof Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guarantee_Years_System_Moving_Num__c</fullName>
+        <description>System Moving Guarantee years (number).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System Moving Guarantee years (number).</inlineHelpText>
+        <label>Guarantee Years System Moving</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guarantee_Years_System_Moving_Text__c</fullName>
+        <description>System Moving Guarantee years (text).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System Moving Guarantee years (text).</inlineHelpText>
+        <label>Guarantee Years System Moving Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_10__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 10</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_11__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 11</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_12__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 12</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_13__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 13</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_14__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 14</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_15__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 15</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_16__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 16</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_17__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 17</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_18__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 18</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_19__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 19</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_20__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 20</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 3</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 4</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 5</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 6</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 7</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 8</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Price_Per_kWh_Year_9__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Price Per kWh Year 9</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_10__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 10</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_11__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 11</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_12__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 12</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_13__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 13</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_14__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 14</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_15__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 15</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_16__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 16</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_17__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 17</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_18__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 18</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_19__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 19</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_20__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 20</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 3</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 4</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 5</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 6</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 7</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 8</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Sys_Output_kWh_Year_9__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Sys Output kWh Year 9</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Initial_Term_Production_Estimate__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Term Production Estimate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interconnect_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Interconnect Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Inverter_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Inverter Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_Manufacturer__c</fullName>
+        <externalId>false</externalId>
+        <label>Inverter Manufacturer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_Type__c</fullName>
+        <description>Type of inverter.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of inverter.</inlineHelpText>
+        <label>Inverter Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Kilowatt_Other_Charges__c</fullName>
+        <externalId>false</externalId>
+        <label>Kilowatt Other Charges</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Escalator__c</fullName>
+        <externalId>false</externalId>
+        <label>Lease Escalator</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Fund__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+	Proposal__r.System_Design_Quote__r.Scenario_1_Lease_Fund__r.Name,
+	
+	IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+		Proposal__r.System_Design_Quote__r.Scenario_2_Lease_Fund__r.Name,
+		
+		IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+			Proposal__r.System_Design_Quote__r.Scenario_3_Lease_Fund__r.Name,
+			
+			IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+				Proposal__r.System_Design_Quote__r.Scenario_4_Lease_Fund__r.Name, &apos;&apos;
+			)
+		)
+	)
+)</formula>
+        <label>Lease Fund</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lease_Option__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+	TEXT(Proposal__r.System_Design_Quote__r.Scenario_1_Lease_Option__c),
+	
+	IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+		TEXT(Proposal__r.System_Design_Quote__r.Scenario_2_Lease_Option__c),
+		
+		IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+			TEXT(Proposal__r.System_Design_Quote__r.Scenario_3_Lease_Option__c),
+			
+			IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+				TEXT(Proposal__r.System_Design_Quote__r.Scenario_4_Lease_Option__c), &apos;&apos;
+			)
+		)
+	)
+)</formula>
+        <label>Lease Option</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_Tax_Credit__c</fullName>
+        <description>Local tax credit applicable to the customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Local tax credit applicable to the customer.</inlineHelpText>
+        <label>Local Tax Credit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Locked</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Module_Manufacturer__c</fullName>
+        <externalId>false</externalId>
+        <label>Module Manufacturer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monitoring_Device__c</fullName>
+        <description>Monitoring device for use with system.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Monitoring device for use with system.</inlineHelpText>
+        <label>Monitoring Device</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_10__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 10</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_11__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 11</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_12__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 12</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_13__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 13</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_14__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 14</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_15__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 15</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_16__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 16</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_17__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 17</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_18__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 18</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_19__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 19</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_20__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 20</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 3</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 4</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 5</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 6</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_7__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 7</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 8</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment_Year_9__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Payment Year 9</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Net_Proceeds__c</fullName>
+        <externalId>false</externalId>
+        <label>Net Proceeds</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OID_Amount__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Original Issue Discount Amount</inlineHelpText>
+        <label>OID Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Office_Address__c</fullName>
+        <description>Drawn from Property.Astrum_Office_Lookup (as of 7/24/15)</description>
+        <externalId>false</externalId>
+        <label>Office Address</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_Quote__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Open Quote</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PPA_Buyout_Discount_Rate__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Financing_Type__c == &apos;PPA&apos;, 
+
+IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_1_Lease_Fund__r.Buyout_Discount_Rate__c,
+
+IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_2_Lease_Fund__r.Buyout_Discount_Rate__c,
+
+IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_3_Lease_Fund__r.Buyout_Discount_Rate__c,
+
+IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+Proposal__r.System_Design_Quote__r.Scenario_4_Lease_Fund__r.Buyout_Discount_Rate__c, 0)
+)
+)
+), 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PPA Buyout Discount Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PPA_System_Buyout_Basis_EPC__c</fullName>
+        <description>See the &quot;System Buyout Basis EPC&quot; field on Lease Fund</description>
+        <externalId>false</externalId>
+        <label>PPA System Buyout Basis EPC</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Panel_Count__c</fullName>
+        <description>Number of solar panels.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of solar panels.</inlineHelpText>
+        <label>Panel Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Panel_Type__c</fullName>
+        <description>Type of solar panel.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Type of solar panel.</inlineHelpText>
+        <label>Panel Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prepaid_Avg_Price_Per_KWH__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_Prepaid_Lease_Amount__c / Cumulative_Guaranteed_Sys_Output__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prepaid Avg Price Per KWH</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prepaid_Lease_Install_Payment__c</fullName>
+        <externalId>false</externalId>
+        <formula>Total_Prepaid_Lease_Amount__c - Prepaid_Lease_Upfront_Payment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prepaid Lease Install Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Prepaid_Lease_Upfront_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Prepaid Lease Upfront Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Property_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Property Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Property Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Property City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_County__c</fullName>
+        <externalId>false</externalId>
+        <label>Property County</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Property State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Zip__c</fullName>
+        <externalId>false</externalId>
+        <label>Property Zip</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposal__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposal</label>
+        <referenceTo>Proposal__c</referenceTo>
+        <relationshipLabel>Astrum Contracts</relationshipLabel>
+        <relationshipName>Astrum_Contracts</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Purchase_Price_Due_Final_Inspection__c</fullName>
+        <description>Amount due at final inspection for purchase.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount due at final inspection for purchase.</inlineHelpText>
+        <label>Purchase Price Due Final Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Purchase_Price_Due_First_Day_Install__c</fullName>
+        <description>Amount due at first day of install for purchase.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount due at first day of install for purchase.</inlineHelpText>
+        <label>Purchase Price Due First Day Install</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Purchase_Price_Due_at_Signing__c</fullName>
+        <description>Amount due at signing.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount due at signing.</inlineHelpText>
+        <label>Purchase Price Due at Signing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_APR__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC OID</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Balloon_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Balloon Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Completion_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Completion Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Finance_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Finance Charge</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Financed_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Financed Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Interconnect_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Interconnect Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Loan__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+	Proposal__r.System_Design_Quote__r.Scenario_1_SAC_Loan__r.Name,
+	
+	IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+		Proposal__r.System_Design_Quote__r.Scenario_2_SAC_Loan__r.Name,
+		
+		IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+			Proposal__r.System_Design_Quote__r.Scenario_3_SAC_Loan__r.Name,
+			
+			IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+				Proposal__r.System_Design_Quote__r.Scenario_4_SAC_Loan__r.Name, &apos;&apos;
+			)
+		)
+	)
+)</formula>
+        <label>SAC Loan</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SAC_Maturity_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Maturity Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Total_Payment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>SAC Interconnect Payment + SAC Completion Payment</inlineHelpText>
+        <label>SAC Total Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SAC_Total_Payments__c</fullName>
+        <externalId>false</externalId>
+        <label>SAC Total Payments</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Cash_Back__c</fullName>
+        <description>Pulled from SDQ field</description>
+        <externalId>false</externalId>
+        <label>SREC Cash Back</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Contract_Discount__c</fullName>
+        <description>Pulled from SDQ field</description>
+        <externalId>false</externalId>
+        <label>SREC Contract Discount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sighten_Contract_uuid__c</fullName>
+        <description>Contains the uuid for the contract in the Sighten system</description>
+        <externalId>true</externalId>
+        <label>Sighten Contract uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Signing_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Sighten Signing Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>NOT SIGHTEN</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NOT SENT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SENT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SIGNED</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DOWNLOADED</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ERROR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Signatory_1_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Signatory 1 Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Signatory_1_Phone__c</fullName>
+        <description>Phone number for Signatory 1.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number for Signatory 1.</inlineHelpText>
+        <label>Signatory 1 Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Signatory_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Signatory 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Signatory_2_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Signatory 2 Email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Signatory_2_Phone__c</fullName>
+        <description>Phone number for Signatory 2.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone number for Signatory 2.</inlineHelpText>
+        <label>Signatory 2 Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Signatory_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Signatory 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Grant_Amount__c</fullName>
+        <description>Value for the State Grant applicable to the customer.</description>
+        <externalId>false</externalId>
+        <label>State Grant Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State_Grant_Tax_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>State Grant Tax Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>State_Tax_Credit__c</fullName>
+        <description>Available state tax credit for the customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Available state tax credit for the customer.</inlineHelpText>
+        <label>State Tax Credit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>System_Design_Quote_Name__c</fullName>
+        <description>Proposal&apos;s SDQ</description>
+        <externalId>false</externalId>
+        <formula>Proposal__r.System_Design_Quote__r.Name</formula>
+        <label>System Design Quote Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Reconstruction_Record__c</fullName>
+        <externalId>false</externalId>
+        <label>System Design Reconstruction Record</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>System_Net_Cost__c</fullName>
+        <description>Net cost of solar system.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Net cost of solar system.</inlineHelpText>
+        <label>System Net Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>System_Purchase_Price_After_Adjustments__c</fullName>
+        <externalId>false</externalId>
+        <label>System Purchase Price After Adjustments</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>System_Size__c</fullName>
+        <description>Size of system in kW.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Size of system in kW.</inlineHelpText>
+        <label>System Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_APR__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan APR</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Completion_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Completion Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Est_Completion_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Est Completion Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Finance_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Finance Charge</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Financed_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Financed Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_First_Payment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan First Payment Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Interconnect_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Interconnect Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Last_Payment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Last Payment Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Monthly_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Term Loan Monthly Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Term__c</fullName>
+        <description>Number of months of payments.</description>
+        <externalId>false</externalId>
+        <label>Term Loan Term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Term_Loan_Total_Payments__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText># Months x Monthly Payment</inlineHelpText>
+        <label>Term Loan Total Payments</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Term_Loan__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISPICKVAL(Scenario__c, &apos;1&apos;),
+	Proposal__r.System_Design_Quote__r.Scenario_1_Term_Loan__r.Name,
+	
+	IF (ISPICKVAL(Scenario__c, &apos;2&apos;),
+		Proposal__r.System_Design_Quote__r.Scenario_2_Term_Loan__r.Name,
+		
+		IF (ISPICKVAL(Scenario__c, &apos;3&apos;),
+			Proposal__r.System_Design_Quote__r.Scenario_3_Term_Loan__r.Name,
+			
+			IF (ISPICKVAL(Scenario__c, &apos;4&apos;),
+				Proposal__r.System_Design_Quote__r.Scenario_4_Term_Loan__r.Name, &apos;&apos;
+			)
+		)
+	)
+)</formula>
+        <label>Term Loan</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Prepaid_Lease_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Prepaid Lease Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_System_Price__c</fullName>
+        <description>Total cost of system price.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total cost of system price.</inlineHelpText>
+        <label>Total System Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Tax_Paid__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Tax Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_of_All_Payments__c</fullName>
+        <externalId>false</externalId>
+        <label>Total of All Payments</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_of_Monthly_Payments_Post_Tax__c</fullName>
+        <description>Total of all monthly payments excluding upfront payment (AFTER Taxes)</description>
+        <externalId>false</externalId>
+        <label>Total of Monthly Payments Post Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_of_Monthly_Payments_Pre_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>Total of Monthly Payments Pre Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Upfront_SREC_Amount__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Upfront SREC Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Utility_Incentive_Amount__c</fullName>
+        <description>Does the option qualify for any Utility Incentives?</description>
+        <externalId>false</externalId>
+        <label>Utility Incentive Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Valid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Valid</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Warranty_Years_Inverter_Num__c</fullName>
+        <description>Warranty years for Inverters (number format).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Warranty years for Inverters (number format).</inlineHelpText>
+        <label>Warranty Years Inverter</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Years_Inverter_Text__c</fullName>
+        <description>Warranty years for Inverters (text format).</description>
+        <externalId>false</externalId>
+        <label>Warranty Years Inverter Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Years_Limited_Production_Num__c</fullName>
+        <description>Limited Production Warranty years (number).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Limited Production Warranty years (number).</inlineHelpText>
+        <label>Warranty Years Limited Production</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Years_Limited_Production_Text__c</fullName>
+        <description>Limited Production Warranty years (text).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Limited Production Warranty years (text).</inlineHelpText>
+        <label>Warranty Years Limited Production Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Years_Parts_Labor_Num__c</fullName>
+        <description>Warranty years for Parts and Labor on Installation (number format).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Warranty years for Parts and Labor on Installation (number format).</inlineHelpText>
+        <label>Warranty Years Parts &amp; Labor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Years_Parts_Labor_Text__c</fullName>
+        <description>Warranty years for Parts &amp; Labor on Installation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Warranty years for Parts &amp; Labor on Installation.</inlineHelpText>
+        <label>Warranty Years Parts &amp; Labor Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Year_10_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 10 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_11_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 11 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_12_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 12 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_13_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 13 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_14_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 14 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_15_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 15 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_16_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 16 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_17_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 17 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_18_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 18 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_19_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 19 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_1_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 1 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_20_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 20 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_2_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 2 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_3_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 3 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_4_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 4 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_5_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 5 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_6_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 6 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_7_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 7 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_8_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 8 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_9_OneRoof_PPA_Buyout_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Year 9 OneRoof PPA Buyout Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Year_One_Production_Estimate__c</fullName>
+        <externalId>false</externalId>
+        <label>Year One Production Estimate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Astrum Contract</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Closed__c</columns>
+        <columns>Current__c</columns>
+        <columns>Financing_Type__c</columns>
+        <columns>Locked__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>AC-{MM}-{DD}-{YY}-{0000}</displayFormat>
+        <label>Astrum Contracts Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Astrum Contracts</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>Record_is_Locked</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Profile.Name = &apos;System Administrator&apos;, false, PRIORVALUE(Locked__c) = true)</errorConditionFormula>
+        <errorMessage>Record is part of a closed Contract, and is locked from further editing</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Conga_Composer</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Conga Composer</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://www.appextremes.com/apps/Conga/Composer.aspx
+?SessionId={!API.Session_ID}
+&amp;ServerUrl={!API.Partner_Server_URL_80}
+&amp;Id={!Astrum_Contract__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Preview_Contract</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Preview Contract</masterLabel>
+        <openType>sidebar</openType>
+        <page>PreviewContract</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

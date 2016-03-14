@@ -1,0 +1,28 @@
+<apex:page showHeader="false" sidebar="false" standardStyleSheets="false" controller="EP_MyDashboardController" contenttype="application/x-excel#MyDashboard.xls" readOnly="true">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+    <apex:dataTable value="{!referrals}" var="r">
+        <apex:column headerValue="Date" styleClass="referral-center">
+            <apex:outputText value="{0,date,M/d/yy}">
+                <apex:param value="{!r.Lead_Created_Date__c}"/>
+            </apex:outputText>
+        </apex:column>
+        <apex:column value="{!r.Full_Name__c}" headerValue="Name"/>
+        <apex:column value="{!r.Street__c}" headerValue="Address"/>
+        <apex:column value="{!r.City__c}" headerValue="City"/>
+        <apex:column value="{!r.State__c}" headerValue="State"/>
+        <apex:column value="{!r.Zip__c}" headerValue="Zip Code"/>
+        <apex:column value="{!r.Email__c}" headerValue="Email"/>
+        <apex:column value="{!r.Phone__c}" headerValue="Home Phone"/>
+        <apex:column value="{!r.Mobile_Phone__c}" headerValue="Cell Phone"/>
+        <apex:column value="{!r.Work_Phone__c}" headerValue="Work Phone"/>
+        <apex:column value="{!r.Primary_Phone__c}" headerValue="Primary Phone"/>
+        <apex:column value="{!r.Lead_Source__c}" headerValue="Lead Source"/>
+        <apex:column value="{!r.Status__c}" headerValue="Status"/>
+        <apex:column value="{!r.Detail__c}" headerValue="Detail"/>
+        <apex:column value="{!r.Method_of_Contact__c}" headerValue="Method of Contact"/>
+        <apex:column value="{!r.Self_Generated__c}" headerValue="Self Generated"/>
+    </apex:dataTable>
+
+</apex:page>

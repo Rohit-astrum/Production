@@ -1,0 +1,31 @@
+<apex:page showHeader="false" title="{!$Label.site.authorization_required}" id="Unauthorized" cache="false" 
+	controller="PortalDummyController" extensions="PortalTemplateExtension">
+
+<apex:composition template="{!template}">
+
+	<apex:define name="css-custom">
+		<style type="text/css">
+			.loginGrid { width: 100%; }
+		</style>
+	</apex:define>
+
+	<apex:define name="content">
+		<apex:panelGrid cellpadding="0" cellspacing="0" columns="1" width="100%" styleClass="unauthGrid">
+			<apex:image url="{!URLFOR($Resource.SiteSamples, 'img/unauthorized.gif')}"/>
+			<apex:panelGroup >
+				<apex:outputText styleClass="title" value="{!$Label.site.authorization_required}"/>
+				<!-- 
+				<br/>
+				<apex:outputText value="{!$Label.site.login_or_register_first}"/>
+				<br/>
+				<apex:outputText value="{!$Label.site.click_forget_password}"/>
+				<br/>
+				 -->
+			</apex:panelGroup>
+			<c:SiteLogin rendered="{!$Site.LoginEnabled && ISPICKVAL($User.UserType,'Guest')}" showRegistration="false" id="siteLogin"/>
+		</apex:panelGrid>
+	</apex:define>
+	
+</apex:composition>
+	
+</apex:page>

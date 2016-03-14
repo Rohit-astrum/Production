@@ -1,0 +1,1030 @@
+<apex:page doctype="html-5.0" showHeader="true" sidebar="true" standardStyleSheets="true" controller="PipelineManagementController">
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> 
+    <!--
+    <html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+        <title>Pipeline Management</title>
+       
+        <!--CSS
+        <link rel="stylesheet" href="{!URLFOR($Resource.PipelineManagementResources, 'css/jquery-ui-1.10.3.custom.min.css')}" media="screen, projection" type="text/css" />
+        <link rel="stylesheet" href="{!URLFOR($Resource.PipelineManagementResources, 'css/timeline.css')}" media="screen, projection" type="text/css" /> 
+        <link rel="stylesheet" href="{!URLFOR($Resource.PipelineManagementResources, 'css/styles.css')}" media="screen, projection" type="text/css" /> 
+        <link rel="stylesheet" href="{!URLFOR($Resource.PipelineManagementResources, 'js/ShadowBoxJs/shadowbox.css')}" media="screen, projection" type="text/css" />
+ 
+        
+         <!--JQuery
+        <script type="text/javascript" src="{!URLFOR($Resource.PipelineManagementResources, 'js/jquery-1.9.1.js')}"></script>
+        <script type="text/javascript" src="{!URLFOR($Resource.PipelineManagementResources, 'js/jquery-ui-1.10.3.custom.min.js')}"></script>
+        <script type="text/javascript" src="//www.google.com/jsapi"></script>
+        <script type="text/javascript" src="{!URLFOR($Resource.PipelineManagementResources, 'js/timeline.js')}"></script>
+        <script type="text/javascript" src="{!URLFOR($Resource.PipelineManagementResources, 'js/ShadowBoxJs/shadowbox.js')}"></script>
+         <script type="text/javascript">            
+             Shadowbox.init();
+         </script>
+        
+        <script type="text/javascript">
+            $(function() {
+                $( ".accordionRegion" ).accordion({collapsible: true, active: false, heightStyle: "content"});
+                $( ".accordionSales" ).accordion({collapsible: true, active: false, heightStyle: "content"});
+                $( ".accordionProjects" ).accordion({collapsible: true, heightStyle: "content"});
+                           
+                $('.filter-button').button({
+                    icons: { secondary: "ui-icon-triangle-1-s" }
+                });
+                
+                $( "#event_start_date" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    changeYear: true,
+                    numberOfMonths: 1,
+                    dateFormat:"mm-dd-yy",
+                    altField: "#event_start_date_alternate",
+                    altFormat: "yy-mm-dd",
+                    showAnim: "slide"
+                });   
+                
+                         
+            });
+        </script>
+        
+        <script type="text/javascript">
+ 
+            
+ 
+             
+           function accordionReactivate() {
+                $( ".accordionRegion" ).accordion({collapsible: true, active: false, heightStyle: "content"});
+                $( ".accordionSales" ).accordion({collapsible: true, active: false, heightStyle: "content"});
+                $( ".accordionProjects" ).accordion({collapsible: true, heightStyle: "content"});
+                               
+                
+                $('.filter-button').button({
+                    icons: { secondary: "ui-icon-triangle-1-s" }
+                })
+            }
+
+ 
+        </script>
+        
+        <script type="text/javascript">
+
+             
+    
+            google.load("visualization", "1");
+    
+            // Set callback to run when API is loaded
+            google.setOnLoadCallback(drawVisualization);
+            
+           
+            // Called when the Visualization API is loaded.
+            function drawVisualization() {
+                
+    
+                // Draw our timeline with the created data and options when a salesperson's name is clicked, since the active panel will automatically show
+               $('h3').click(function() {
+                
+                var ownerId = $(this).attr("id"); 
+               
+                var startDate  = document.getElementById('{!$Component.filterForm.startDate}').value;
+                var endDate  = document.getElementById('{!$Component.filterForm.endDate}').value;
+                var probSign  = document.getElementById('{!$Component.filterForm.ProbabilitySign}').value;
+                var probValue = document.getElementById('{!$Component.filterForm.ProbabilityValue}').value;
+                
+                
+                
+                var n = ownerId.indexOf(":");                
+                var timediv = 'T-'+$(this).attr("id");
+               
+                // specify options
+                    var options = {
+                        width:  "auto",
+                        height: "auto",
+                        layout: "box",
+                        editable: false,
+                        'scale':links.Timeline.StepDate.SCALE.DAY,
+                        'step':1,
+                        zoomable: true,
+                        showMajorLabels: true,
+                        axisOnTop: true,
+                        groupsChangeable : true,
+                        groupsOnRight: false,
+                        showCurrentTime: false
+                    };
+                if(n==2 || n==3)  
+                { 
+                    PipelineManagementController.getAEOpportunities(ownerId,startDate  ,endDate,probSign  ,probValue,    function (result, event) {                                        
+                        if (event.status) {                        
+                            if (result.length) {
+                                
+                                
+                                var timeline = new links.Timeline(document.getElementById(timediv));
+                                 
+                                var data = new google.visualization.DataTable();
+                                
+                                data.addColumn('datetime', 'start');
+                                data.addColumn('string', 'content');
+                                data.addColumn('string', 'group');
+                                //alert('** '+result.length);            
+                                for (var i = 0; i < result.length; i++) { 
+                                    // Close Date Logic      
+                                    var closedt = new Date(result[i].CloseDate); 
+                                    var todayDate = new Date();
+                                    var closedtFormatted = (closedt.getUTCMonth() + 1) + "/" + closedt.getUTCDate() + "/" + (closedt.getUTCFullYear() % 100);                                
+                                    var start = new Date(closedtFormatted);                                     
+                                    var content;
+                                    var styClass='size4';
+                                    
+                                    console.log('Am** '+result[i].Amount);
+                                    console.log('am** '+result[i].amount);
+                                    console.log('AM** '+result[i].AMOUNT);
+                                    
+                                    if(result[i].Amount == null || (result[i].Amount >= 20000 && result[i].Amount < 50000 ) )
+                                    {
+                                        styClass = 'size2';
+                                    }    
+                                    else if(result[i].Amount < 20000)
+                                    {
+                                        styClass = 'size1';
+                                    }
+                                    else if(result[i].Amount >= 50000 && result[i].Amount < 75000)
+                                    {
+                                        styClass = 'size3';
+                                    }
+                                    else if(result[i].Amount > 75000)
+                                    {
+                                        styClass = 'size4';
+                                    }
+                                    
+                                    
+                                    var acctName;
+                                    if(result[i].StageName == 'Qualified')
+                                    {
+                                        acctName = "<a style='background-color:#FF9900' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Assigned to Field Sales')
+                                    {
+                                        acctName = "<a style='background-color:#FFCC33' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Sales Visit Scheduled')
+                                    {
+                                        acctName = "<a style='background-color:#FFFF33' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Sales Process Ongoing')
+                                    {
+                                        acctName = "<a style='background-color:#FFFF99' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'On Hold')
+                                    {
+                                        acctName = "<a style='background-color:#A1A1A1' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Unresponsive')
+                                    {
+                                        acctName = "<a style='background-color:#C9C9C9' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Closed - Lost')
+                                    {
+                                        acctName = "<a style='background-color:#FF0000' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Contract Cancelled')
+                                    {
+                                        acctName = "<a style='background-color:#fd6e76' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else if(result[i].StageName == 'Closed - Won')
+                                    {
+                                        acctName = "<a style='background-color:#61Af3f' target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                    else
+                                    {
+                                        acctName = "<a target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                    }
+                                                                        
+                                    if(result[i].StageName == 'Closed - Lost')
+                                    {
+                                         
+                                         if(result[i].System_Design_Quote__c == null)
+                                         {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_Bad_Outlined.png')}' class='"+styClass +"'>"; 
+                                         }
+                                         else {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_Bad_Solid.png')}' class='"+styClass +"'>"; 
+                                         }
+                                    }
+                                    else if (result[i].StageName == 'Closed - Won')                                        
+                                    {
+                                         if(result[i].System_Design_Quote__c == null)
+                                         {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_Good_Outlined.png')}' class='"+styClass +"'>"; 
+                                         }
+                                         else {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_Good_Solid.png')}' class='"+styClass +"'>";     
+                                         } 
+                                    }
+                                    else if (result[i].StageName == 'Contract Cancelled')                                        
+                                    {
+                                         if(result[i].System_Design_Quote__c == null)
+                                         {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_VeryBad_Outlined.png')}' class='"+styClass +"'>"; 
+                                         }
+                                         else {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_VeryBad_Solid.png')}' class='"+styClass +"'>";     
+                                         } 
+                                    }
+                                    else
+                                    {
+                                      if(start >= todayDate ) {
+                                         if(result[i].System_Design_Quote__c == null)
+                                         {
+                                              content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_Neutral_Outlined.png')}' class='"+styClass +"'>";                                
+                                         }
+                                         else {
+                                             content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_Neutral_Solid.png')}' class='"+styClass +"'>";                                 
+                                         }
+                                          
+                                      }  
+                                      else
+                                      {
+                                         if(result[i].System_Design_Quote__c == null)
+                                         {                                          
+                                           content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_BadNeutral_Outlined.png')}' class='"+styClass +"'>";                                            
+                                          }
+                                          else
+                                          {
+                                           content =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/CloseDate_BadNeutral_Solid.png')}' class='"+styClass +"'>";                                            
+                                          }
+                                      }
+                                      
+                                    }                            
+                                    content = "<div title='Close Date : " + closedtFormatted + " Probability : " + result[i].Probability + " ' class='projectStatus'>" + content + "</div>";                                
+                                    
+                                    data.addRow([start, content , acctName ]);
+                                    
+                                    // Qualified Date Logic                                     
+                                    var qualifiedDate = new Date(result[i].CreatedDate);  
+                                    var qualifiedDateFormatted = (qualifiedDate.getUTCMonth() + 1) + "/" + qualifiedDate.getUTCDate() + "/" + (qualifiedDate.getUTCFullYear() % 100);                                
+                                    var startq = new Date(qualifiedDateFormatted );                                                                 
+                                    var contentq;
+                                    contentq =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/QualifiedDate_Neutral_Outlined.png')}' class='"+styClass +"'>";                                        
+                                                              
+                                    contentq = "<div title='Qualified Date : " + qualifiedDateFormatted + "' class='projectStatus'>" + contentq + "</div>";                                
+                                   
+                                    data.addRow([startq, contentq, acctName ]);
+                                   
+                                   
+                                    if(result[i].Tasks != null) {
+                                        for(var e = 0; e < result[i].Tasks.length; e++)
+                                        {
+                                            //alert(e);
+                                             
+                                            var taskDate = new Date(result[i].Tasks[e].ActivityDate);  
+                                            var taskDateFormatted = (taskDate.getUTCMonth() + 1) + "/" + taskDate.getUTCDate() + "/" + (taskDate.getUTCFullYear() % 100);                                
+                                            var startt = new Date(taskDateFormatted ); 
+                                            //alert('startq '+startq);                               
+                                            var contentt = "";
+                                            contentt =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/InactivityNotice_VeryBad_Outlined.png')}' class='"+styClass +"'>";                                          
+                                                                      
+                                            contentt = "<div title='Inactivity Notice Date : " + taskDateFormatted  + "' class='projectStatus'>" + contentt + "</div>";                                
+                                            //var acctName = "<a target='_blank' href='/" + result[i].Id + "' >"+result[i].Account.Name+"</a>" ;
+                                            // var acctName = "<a href='/'" + (result[i].Id +" target='_blank' style='text-decoration: underline;'>" + result[i].Account.Name + "</a>";        
+                                            data.addRow([startt, contentt, acctName ]);                                   
+                                        
+                                        }
+                                    }
+                                    
+                                    if(result[i].Events != null) {
+                                        for(var e = 0; e < result[i].Events.length; e++)
+                                        {
+                                            //alert(e);
+                                             
+                                            var eventDate = new Date(result[i].Events[e].StartDateTime);  
+                                            var eventDateFormatted = (eventDate.getUTCMonth() + 1) + "/" + eventDate.getUTCDate() + "/" + (eventDate.getUTCFullYear() % 100);                                
+                                            var starte = new Date(eventDateFormatted); 
+                                            //alert('startq '+startq);                               
+                                            var contente = "";
+                                            
+                                            if(result[i].Events[e].RecordType.Name == 'Sales Visit Onsite' )
+                                            {
+                                                console.log(result[i].Events[e].Ever_Been_Missed__c + ' A** '+ result[i].Events[e].Min_Not_Complete_Action_Date__c );                                                
+                                                if(result[i].Events[e].Ever_Been_Missed__c && result[i].Events[e].Min_Not_Complete_Action_Date__c > 2 && result[i].Events[e].Min_Not_Complete_Action_Date__c <= 5)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_BadNeutral_Solid.png')}' class='"+styClass +"'>";  
+                                                }
+                                                else if(result[i].Events[e].Ever_Been_Missed__c && result[i].Events[e].Min_Not_Complete_Action_Date__c > 5 && result[i].Events[e].Min_Not_Complete_Action_Date__c < 100000)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Bad_Solid.png')}' class='"+styClass +"'>";     
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Scheduled')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Neutral_Solid.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Completed')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Good_Solid.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Rescheduled')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_BadNeutral_Solid.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Canceled by Customer' || result[i].Events[e].Event_Status__c == 'Disqualified-Approved')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Bad_Solid.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Missed' || result[i].Events[e].Event_Status__c == 'Disqualified')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_VeryBad_Solid.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == '' || result[i].Events[e].Event_Status__c == null)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/NoEventStatus_Solid.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                            }
+                                            else if(result[i].Events[e].RecordType.Name == 'Sales Visit Remote')
+                                            {
+                                                if(result[i].Events[e].Ever_Been_Missed__c && result[i].Events[e].Min_Not_Complete_Action_Date__c > 2 && result[i].Events[e].Min_Not_Complete_Action_Date__c <= 5)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_BadNeutral_Outlined.png')}' class='"+styClass +"'>";  
+                                                }
+                                                else if(result[i].Events[e].Ever_Been_Missed__c && result[i].Events[e].Min_Not_Complete_Action_Date__c > 5 && result[i].Events[e].Min_Not_Complete_Action_Date__c < 100000)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Bad_Outlined.png')}' class='"+styClass +"'>";     
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Scheduled')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Neutral_Outlined.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Completed')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Good_Outlined.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Rescheduled')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_BadNeutral_Outlined.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Canceled by Customer' || result[i].Events[e].Event_Status__c == 'Disqualified-Approved')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_Bad_Outlined.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == 'Missed' || result[i].Events[e].Event_Status__c == 'Disqualified')
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SalesVisit_VeryBad_Outlined.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                                else if(result[i].Events[e].Event_Status__c == '' || result[i].Events[e].Event_Status__c == null)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/NoEventStatus_Outlined.png')}' class='"+styClass +"'>";                                               
+                                                }
+                                            }
+                                            else if(result[i].Events[e].RecordType.Name == 'Site Survey Onsite' )
+                                            {
+                                               
+                                                console.log(starte   + ' SSO-A** '+ result[i].Events[e].Completed__c ); 
+                                                if(starte  >= todayDate && result[i].Events[e].Completed__c == false)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SiteSurvey_Neutral_Solid.png')}' class='"+styClass +"'>";                                                
+                                                    
+                                                }
+                                                else if(starte  < todayDate && result[i].Events[e].Completed__c == false)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SiteSurvey_VeryBad_Solid.png')}' class='"+styClass +"'>";                                                
+                                                   
+                                                }
+                                                else if(result[i].Events[e].Completed__c == true)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SiteSurvey_Good_Solid.png')}' class='"+styClass +"'>";
+                                                                                                
+                                                }   
+                                                console.log(contente + ' SSO-B** '+ result[i].Events[e].Completed__c ); 
+                                                                                            
+                                            }
+                                            else if(result[i].Events[e].RecordType.Name == 'Site Survey Remote')
+                                            {
+                                                if(starte  >= todayDate && result[i].Events[e].Completed__c == false)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SiteSurvey_Neutral_Outlined.png')}' class='"+styClass +"'>";                                                
+                                                }
+                                                else if(starte  < todayDate && result[i].Events[e].Completed__c == false)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SiteSurvey_VeryBad_Outlined.png')}' class='"+styClass +"'>";                                             
+                                                }
+                                                else if(result[i].Events[e].Completed__c == true)
+                                                {
+                                                    contente =  "<img src='{!URLFOR($Resource.PipelineManagementResources, 'icons/SiteSurvey_Good_Outlined.png')}' class='"+styClass +"'>";                                              
+                                                }                                                
+                                            }
+                                                                      
+                                            contente = "<div title='Event Date : " + eventDateFormatted + "' class='projectStatus'>" + contente + "</div>";                                
+                                            
+                                            data.addRow([starte, contente, acctName ]);                                   
+                                        
+                                        }
+                                    }
+                                      
+                                }
+                               
+                                timeline.draw(data, options);
+                                
+                            }
+                            
+                        } else {
+                            alert('err '+event.message);
+                        }               
+                    });
+              
+                
+                
+                    // Instantiate our timeline object.
+                 
+                    timeline.draw(data, options);
+                   
+                    timeline.setVisibleChartRangeAuto();
+                    
+                                  
+                  }   
+               
+               });
+              
+            }
+            
+             
+               
+    
+        </script>
+     </head>
+    <body>
+     <apex:form id="filterForm">  
+        <div id="PipelineManagement">
+        
+         
+              <apex:actionFunction name="queryBuilder" action="{!refresh}" rerender="panel">
+               
+              </apex:actionFunction>
+
+                                
+              <table>
+                <tr>
+                  <td class="page-title"><apex:sectionHeader title="Pipeline Management"/></td>
+                  <td class="filter-block">
+                    <span class="filter-label">Filters:</span>
+                     <div class="filter-button-container"><span class="filter-button-label">Probability</span>
+                        <apex:selectList value="{!probabilitySign}" size="1" id="probabilitySign" style="width=20px;">
+                                        <apex:selectOptions value="{!probabilitySigns}"/>   
+                        </apex:selectList> 
+                        <apex:inputText id="probabilityValue" value="{!probabilityValue}" style="width=10px;" maxlength="3"/>
+                    </div>
+                    <div class="filter-button-container"><span class="filter-button-label">Start Date</span>
+                       <apex:inputText id="startDate" value="{!startDateT}" style="width:75px;"  onfocus="DatePicker.pickDate(true, '{!$Component.startDate}', false);"/>
+                        <c:DatePickerComponent dateFieldId="{!$Component.startDate}" /> 
+                    </div>
+                    <div class="filter-button-container"><span class="filter-button-label">End Date</span>
+                       <apex:inputText id="endDate" value="{!endDateT}" style="width:75px;" onfocus="DatePicker.pickDate(true, '{!$Component.endDate}', false);"/>
+                        <c:DatePickerComponent dateFieldId="{!$Component.endDate}" />   
+                    </div>
+                    
+                   </td>
+                   
+                   
+                   <td class="filter-apply-clear-container">
+                    <apex:actionFunction name="doSubmit" action="{!refresh}"  />
+                    
+                    <button class="filter-apply" type="button" onClick="doSubmit();accordionReactivate();">Apply Filters</button>
+                    
+                    <br />
+                    <button class="filter-clear" type="button">Clear Filters</button></td>
+
+                    
+                </tr>
+              </table>
+              
+          
+          <apex:outputPanel id="panel" >
+          <apex:outputPanel id="innerpanel" rendered="{!showSummary }">
+              <div id="overallSummary">
+                <h2>Overall Summary</h2>
+                <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!overallSummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!overallSummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!overallSummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!overallSummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!overallSummaryInfo.VisitsMissed}</span>
+              </div>
+              
+              <div class="accordionRegion">
+                <h3><span class="accordionTitle">MA Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!MASummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!MASummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!MASummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!MASummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!MASummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!MAownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="MA:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="MA:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-MA:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="MA:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-MA:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="MA:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-MA:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">CT Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!CTSummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!CTSummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!CTSummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!CTSummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!CTSummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!CTownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="CT:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="CT:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-CT:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="CT:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-CT:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="CT:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-CT:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">CA Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!CASummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!CASummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!CASummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!CASummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!CASummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!CAownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="CA:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="CA:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-CA:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="CA:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-CA:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="CA:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-CA:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">MD Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!MDSummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!MDSummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!MDSummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!MDSummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!MDSummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!MDownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="MD:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="MD:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-MD:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="MD:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-MD:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="MD:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-MD:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">NYC Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!NYSummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!NYSummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!NYSummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!NYSummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!NYSummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!NYownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="NYC:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="NYC:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-NYC:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="NYC:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-NYC:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="NYC:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-NYC:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">OH Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!OHSummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!OHSummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!OHSummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!OHSummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!OHSummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!OHownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="OH:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="OH:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-OH:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="OH:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-OH:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="OH:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-OH:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">PA Region</span> <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!PASummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!PASummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!PASummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!PASummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!PASummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!PAownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="PA:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="PA:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-PA:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="PA:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-PA:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="PA:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-PA:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+                <h3><span class="accordionTitle">WNY Region</span><span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!WYSummaryInfo.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!WYSummaryInfo.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!WYSummaryInfo.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!WYSummaryInfo.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!WYSummaryInfo.VisitsMissed}</span></h3>
+                <div>
+                  <div class="accordionSales">
+                    <apex:repeat value="{!WYownerSummaryInfo}" var="ownerSummary">
+                        
+                        <h3 id="WNY:Active:{!ownerSummary.OwnerId}" ><span class="accordionTitle">{!ownerSummary.OwnerName}</span>                 
+                        <span class="SummaryLabel">Closed-Won:</span> <span class="SummaryNumber">{!ownerSummary.ClosedWon} </span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Closed-Lost:</span> <span class="SummaryNumber">{!ownerSummary.ClosedLost}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Open Opportunities:</span> <span class="SummaryNumber">{!ownerSummary.OpenOppty}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Site Surveys:</span> <span class="SummaryNumber">{!ownerSummary.SiteSurveys}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Scheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsScheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Completed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCompleted}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Rescheduled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsRescheduled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Cancelled:</span> <span class="SummaryNumber">{!ownerSummary.VisitsCanceled}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqualified}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Disqualified-Approved:</span> <span class="SummaryNumber">{!ownerSummary.VisitsDisqApproved}</span> <span class="SummaryDivider">|</span> <span class="SummaryLabel">Visits Missed:</span> <span class="SummaryNumber">{!ownerSummary.VisitsMissed}</span></h3>
+                        <div>
+                        <div class="accordionProjects">
+                            <h3 id="WNY:Active:{!ownerSummary.OwnerId}" >Active</h3>
+                                <div>
+                                  <div id="T-WNY:Active:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <h3 id="WNY:Passive:{!ownerSummary.OwnerId}" >Passive</h3>
+                                <div>
+                                  <div id="T-WNY:Passive:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                            <h3 id="WNY:Closed:{!ownerSummary.OwnerId}">Closed</h3>
+                                <div>
+                                  <div id="T-WNY:Closed:{!ownerSummary.OwnerId}"></div>
+                                    <div class="timelineKey">
+                                    <div class="timelineKeyLeft">
+                                      <div class="timelineIconLegend"><a rel="shadowbox" href="{!URLFOR($Resource.PipelineManagementResources, 'icons/Icons_Legend.gif')}">View Icon and Color Legend</a></div>
+                                    </div>
+                                    <div class="timelineKeyRight">
+                                      <div class="timelineKeyQualifiedDate"> <span>Qualified Date</span> </div>
+                                      <div class="timelineKeySiteSurvey"> <span>Site Survey</span> </div>
+                                      <div class="timelineKeySalesVisit"> <span>Sales Visit</span> </div>
+                                      <div class="timelineKeyInactivityNotice"> <span>Inactivity Notice</span> </div>
+                                      <div class="timelineKeyCloseDate"> <span>Close Date</span> </div>
+                                    </div>
+                                 </div>
+                               </div>
+                      </div>
+                    </div>    
+                                       
+                    </apex:repeat>
+                    
+                  </div>
+                </div>
+              </div>
+            </apex:outputPanel> 
+            </apex:outputPanel> 
+        </div>
+        </apex:form>
+     </body>
+  </html> -->
+</apex:page>

@@ -1,0 +1,401 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="D2D_ManagerDashboardController"  applyHtmlTag="false" applyBodyTag="false" >
+	<apex:composition template="D2D_SiteTemplate">
+
+		<apex:define name="head-top"> 
+		    <meta name='description' content='D2D - Dashboard' />
+		    <title>D2D - Dashboard</title>
+		    <script>
+		        $j = jQuery.noConflict();
+
+		        $j(document).ready(function(){
+		        
+		        	$j('#chkAllLabel').removeClass('');
+		        	
+		        	var pageScrollPosition = jQuery('[id$=scrollPosition]').val();
+		        	$j('#Content.dashboardContent').scrollTop(pageScrollPosition);
+							
+		       		$j('#Content.dashboardContent').on("scrollstop",function(){
+		        		var pageScrollPosition = $j('#Content.dashboardContent').scrollTop();
+				    	jQuery('[id$=scrollPosition]').val(pageScrollPosition);
+				    	saveFilters();
+		        	});
+		        });
+		       
+		        function resetFilters() { 
+		            //document.getElementById('j_id0:j_id1:filtersForm:dateFilterSelect').selectedIndex = "0";
+		            //document.getElementById('j_id0:j_id1:filtersForm:stateFilterSelect').selectedIndex = "0";
+		            //document.getElementById('j_id0:j_id1:filtersForm:segmentFilterSelect').selectedIndex = "0";
+		            $j('.filterddl').prop('selectedIndex', '0')
+		            $j('input.filterddl').val('');
+		            $j('#AssignedFilter input[type=\'checkbox\']').attr('checked',false).checkboxradio('refresh');
+		            $j('select').selectmenu('refresh', true);
+		        } 
+		       
+				function resetScroll() {
+					$j('#Content.dashboardContent').scrollTop(0);
+		            jQuery('[id$=scrollPosition]').val(0);
+		        }
+		
+		        function refreshTable() {
+		            $j('.DashboardTable').trigger("create");
+		        }
+		
+		        function refreshRowLimit() {
+					//$j('#PrevNext select').selectmenu('refresh', true);
+		            $j('.PrevNext').trigger("create");
+		        }
+		
+		        function refreshCarrierRouteFilter() {
+		             $j('.CarrierRoute').trigger("create");
+		        }
+		        
+		        function checkAssigned() {
+		            $j('input[id*=\'assignedCheckbox\']').attr('checked',true).checkboxradio('refresh');
+		            $j('.DashboardContent').trigger("create");
+		            refreshRowLimit();
+		        }
+
+		        function selectAll(){
+		        	$j('input:checkbox[id*=assignToCheckbox]').prop({
+	        			checked: $j('input[id*=assignToAllCheckbox]').prop('checked')
+        			}).checkboxradio('refresh');
+		        }
+
+		        function resetAssignDdl() {
+					$j('#AssignLead select').selectmenu('refresh', true);
+					$j('#AssignLeadMgr select').selectmenu('refresh', true);
+		        }
+		    </script>
+		</apex:define>
+		
+		<apex:define name="head-bottom">
+		</apex:define>
+		
+		<apex:define name="navigation">
+            <c:D2D_AccountInfo />
+		</apex:define>
+		
+		<apex:define name="panel">
+		    <h2>Filters</h2>
+			<apex:form id="filtersForm" >
+			<div class="dashboardFiltersForm">
+				<div class="filtersColLeft">
+	                <div id="DateFilter">
+	                    <div class="formLabel">Date</div>
+	                    <apex:selectList size="1" value="{!dateFilterOption}" id="dateFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!dateFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="StreetFilter">
+	                    <div class="formLabel">Street</div>
+	                    <apex:inputText size="1" value="{!streetArg}" id="streetFilterText" styleClass="filterddl" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);$j('#sidepanel').panel('close');return false;}"/>
+	                </div>
+	                <div id="CityFilter">
+	                    <div class="formLabel">City</div>
+	                    <apex:inputText size="1" value="{!cityArg}" id="cityFilterText" styleClass="filterddl" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);$j('#sidepanel').panel('close');return false;}"/>
+	                </div>
+	                <div id="StateFilter">
+	                    <div class="formLabel">State</div>
+	                    <apex:selectList size="1" value="{!stateFilterOption}" id="stateFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!stateFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="ZipFilter">
+	                    <div class="formLabel">Zip</div>
+	                    <apex:inputText size="1" value="{!zipArg}" id="zipFilterText" styleClass="filterddl" onkeydown="if(event.keyCode==13){this.blur();setFilter(1);$j('#sidepanel').panel('close');return false;}"/>
+	                </div>
+                </div>
+                <div class="filtersColRight">
+	                <apex:outputPanel layout="block" id="carrierRouteFilterPanel">
+	                <div id="CarrierRouteFilter">
+	                	<div class="CarrierRoute">
+		                    <div class="formLabel">Carrier Route</div>
+		                	<apex:selectList size="1" value="{!carrierRouteFilterOption}" id="carrierRouteFilterSelect" styleClass="filterddl">
+			                    <apex:selectOptions value="{!carrierRoutes}"/>
+			                </apex:selectList>
+		                </div>
+	                </div>
+	                </apex:outputPanel>
+	                <div id="SegmentFilter" style="display:none;">
+	                    <div class="formLabel">Segment</div>
+	                    <apex:selectList size="1" value="{!segmentFilterOption}" id="segmentFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!segmentFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="StatusFilter">
+	                    <div class="formLabel">Lead Status</div>
+	                    <apex:selectList size="1" value="{!statusFilterOption}" id="statusFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!statusFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="SystemSizeFilter">
+	                    <div class="formLabel">System Size</div>
+	                    <apex:selectList size="1" value="{!systemSizeFilterOption}" id="systemSizeFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!systemSizeFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="AssignedFilter">
+	                	<div class="formLabel">Assigned Leads</div>
+	                    <label><apex:inputCheckbox id="assignedCheckbox" value="{!displayAssigned}"/>Show assigned leads</label>
+	                </div>
+	                <div id="ManagerFilter" style="{!IF(showManagerFilter, '', 'display:none;')}">
+	                    <div class="formLabel">Current Manager</div>
+	                    <apex:selectList size="1" value="{!managerFilterOption}" id="managerFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!managerFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+	                <div id="SalesRepFilter">
+	                    <div class="formLabel">Current Sales Rep</div>
+	                    <apex:selectList size="1" value="{!salesRepFilterOption}" id="salesRepFilterSelect" styleClass="filterddl">
+	                        <apex:selectOptions value="{!salesRepFilterOptions}"/>
+	                    </apex:selectList>
+	                </div>
+                </div>
+				<div class="ClearAll"></div>
+                <apex:actionFunction name="setFilter" action="{!filter}" rerender="myRefPanel,contactPanel,pagePanel,carrierRouteFilterPanel,assignErrors,prevNext" status="pageStatus,pageStatus2"
+                    oncomplete="refreshTable();refreshRowLimit();refreshCarrierRouteFilter();">
+                    <apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+                </apex:actionFunction>
+                <div class="filtersFormBtns">
+                 	<apex:commandLink value="Apply" styleClass="ui-btn ui-input-btn ui-btn-green ui-corner-all ui-shadow ui-btn-inline" onclick="setFilter(1); $j('#sidepanel').panel('close');" oncomplete="resetScroll(); saveFiltersOnApply();">
+                 	</apex:commandLink>
+	                <!-- <input type="button" value="Apply"  data-inline="true" data-wrapper-class="ui-btn-green" onclick="setFilter(1);  $j('#sidepanel').panel('close');" oncomplete="resetScroll(); saveFiltersOnApply();"/> -->
+	                <input type="button" value="Reset All"  data-inline="true" data-wrapper-class="ui-btn-grey" onclick="resetFilters();"/>
+                </div>
+				<apex:actionFunction name="saveFiltersOnApply" action="{!saveUserFilters}" rerender="none"/>
+                </div>
+               </apex:form>
+		</apex:define>
+		
+		<apex:define name="header-btns">
+		    <div class="headerBtns managerHeaderBtns">
+            	<h1><i class="fa fa-navicon fa-1x fa-pageicon"></i> Dashboard</h1>
+				<apex:form id="headerForm">
+					<div class="DashboardOptions"><div class="DashboardBtnRow">
+			                <div class="CreatLead" style="{!IF(allowLeadCreation, '', 'display:block;')}"> 
+			                <a href="/d2d/D2D_LeadInformation" target="_self"  data-ajax="false" class="ui-btn ui-btn-large ui-btn-inline ui-btn-green ui-corner-all"><i class="fa fa-plus-circle fa-lg fa-left" onclick="displayLoader('Creating new lead...');"></i>Create Lead</a>
+			                </div>
+							<div class="ClearAll"></div>
+		                </div>
+		                <div class="DashboardBtnRow">
+			                <div class="PrintExport">
+			                    <!-- <div class="Export">
+			                        <a href="{!URLFOR($Page.D2D_SalesRepDashboardExport,null)}" target="_blank" class="ui-btn ui-btn-inline ui-icon-btn ui-corner-all"><i class="fa fa-share-square-o fa-lg fa-inverse fa-greenbg"></i>Export</a>
+			                    </div> -->
+			                    <div class="Print">
+			                        <a href="{!URLFOR($Page.D2D_ManagerDashboardPrint,null)}" target="_blank" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-print fa-lg fa-inverse fa-greenbg"></i>Print</a>
+			                    </div>
+			                </div>
+			                <div class="FilterSearch">
+			                	<div class="filterBtn">
+			                        <a href="#sidepanel" class="ui-btn ui-btn-inline ui-icon-btn"><i class="fa fa-filter fa-lg fa-inverse fa-greenbg"></i>Filters</a>
+			                    </div>
+			                   <div class="SearchForm">
+			                        <apex:inputText value="{!searchArg}" html-placeholder="Search by name" onkeydown="if(event.keyCode==13){this.blur();setSearch(1);return false;}"/>
+			                        <a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="setSearch(1);  return false;"><i class="fa fa-search fa-lg fa-inverse fa-greenbg fa-right"></i></a>
+			                    </div>
+			                </div> 
+							<div class="ClearAll"></div>
+	                </div>
+	                
+	                <apex:actionFunction name="setSearch" action="{!filter}" rerender="myRefPanel,contactPanel,pagePanel,assignErrors,prevNext" status="pageStatus,pageStatus2"
+	                	oncomplete="refreshTable();refreshRowLimit(); resetScroll(); saveFiltersOnSearch();">
+	                    <apex:param name="pageNum" value="" assignTo="{!currentPage}"></apex:param>
+	                </apex:actionFunction>
+					<apex:actionFunction name="saveFiltersOnSearch" action="{!saveUserFilters}" rerender="none"/>
+	           </div>
+				</apex:form>
+		    </div>
+	    </apex:define>
+		<apex:define name="footer-btns">
+			<apex:pageMessages id="assignErrors" escape="false"/>
+		    <div class="footerBtns managerFooterBtns">
+		    	<apex:form id="assignForm">
+		    		<div class="AssignLead">
+		              	<div class="inline-label">Assign to:</div>
+		                <apex:selectList size="1" value="{!assignedSalesRepOption}" id="assignedSalesRepSelect">
+		                    <apex:selectOptions value="{!assignedSalesRepOptions}"/>
+		                </apex:selectList>
+			            <a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="doAssign();return false;"><i class="fa fa-chevron-right fa-lg fa-inverse fa-greenbg fa-left"></i></a>
+		                <apex:pageMessages id="assignMessages" />
+	                </div>
+		    		<div class="AssignLeadMgr">
+		                <div class="inline-label">Transfer to:</div>
+		                <apex:selectList size="1" value="{!assignedManagerOption}" id="assignedManagerSelect">
+		                    <apex:selectOptions value="{!assignedManagerOptions}"/>
+		                </apex:selectList>
+		                <a href="#" class="ui-btn ui-btn-inline ui-icon-btn" onclick="doTransfer();return false;"><i class="fa fa-chevron-right fa-lg fa-inverse fa-greenbg fa-left"></i></a>>
+		                <apex:pageMessages id="transferMessages" />
+	                </div>
+	                <apex:outputPanel id="prevNext" layout="inline">
+		                <div class="PrevNext">
+		                	<div class="inline-label">Rows:</div>
+		                    <apex:selectList size="1" value="{!rowLimit}" id="rowLimitSelect" styleClass="filterddl" onchange="displayLoader('Refreshing...');rowLimitChange(); saveFiltersOnViewChange(); return false;">
+		                    	<apex:selectOptions value="{!rowLimitOptions}"/>
+	                		</apex:selectList>
+		                    <a href="#" class="ui-btn ui-btn-inline ui-icon-btn-white {!IF(currentPage!=0, '', 'ui-state-disabled')}" onclick="displayLoader('Fetching records...');prev(); return false;"><i class="fa fa-chevron-left fa-lg fa-nobgLeft"></i>Prev</a>
+		                    <a href="#" class="ui-btn ui-btn-inline ui-icon-btn-white ui-prevnext-btn {!IF(NOT(isLastPage), '', 'ui-state-disabled')}" onclick="displayLoader('Fetching records...');next(); return false;">Next<i class="fa fa-chevron-right fa-lg fa-nobgArrowRight"></i></a>
+		                </div>
+	                </apex:outputPanel>
+					<div class="ClearAll"></div>
+	                <apex:actionFunction name="doAssign" action="{!assign}" rerender="myRefPanel,contactPanel,pagePanel,assignErrors" status="pageStatus,pageStatus2" oncomplete="checkAssigned();changeAssignCheckbox();">
+	                </apex:actionFunction>
+	                <apex:actionFunction name="doTransfer" action="{!transfer}" rerender="myRefPanel,contactPanel,pagePanel,assignErrors" status="pageStatus,pageStatus2" oncomplete="checkAssigned();changeAssignCheckbox();">
+	                </apex:actionFunction>
+            		<apex:actionFunction name="rowLimitChange" action="{!refresh}" reRender="myRefPanel,prevNext,assignErrors,prevNext" status="pageStatus,pageStatus2" oncomplete="stopLoader();refreshRowLimit();"></apex:actionFunction>
+	                <apex:actionFunction name="prev" action="{!prev}" rerender="myRefPanel,contactPanel,pagePanel,assignErrors,prevNext" status="pageStatus,pageStatus2" oncomplete="stopLoader();checkAssigned();resetAssignDdl();saveFiltersOnViewChange(); ">
+	                </apex:actionFunction>
+	                <apex:actionFunction name="next" action="{!next}" rerender="myRefPanel,contactPanel,pagePanel,assignErrors,prevNext" status="pageStatus,pageStatus2" oncomplete="stopLoader();checkAssigned();resetAssignDdl();saveFiltersOnViewChange(); ">
+	                </apex:actionFunction>
+					<apex:actionFunction name="saveFiltersOnViewChange" action="{!saveUserFilters}" rerender="none"/> 
+    		</apex:form>
+    		</div>
+	    </apex:define>
+		
+		<apex:define name="content">
+			<div id="Content" class="dashboardContent">
+            	<div class="sixteen columns">
+					<apex:form id="dashboardForm">
+					    <div id="FullColumn">
+					        <div class="MyDashboard">
+					           <div class="DashboardContent">
+					                <apex:outputPanel layout="block" id="myRefPanel" styleClass="DashboardTable">
+					                    <apex:dataTable value="{!referrals}" var="r">
+					                        <apex:column headerClass="DashboardColFirst assignCol" styleClass="DashboardColFirst AssignCol">
+					                            <apex:facet name="header">
+					                            	<div class="assignAll">
+					                            	<!-- <label id="chkAllLabel"> -->
+							                            <div class="assignAllText">Assign/<br/>Transfer</div>
+							                            <input type="checkbox" id="assignToAllCheckbox" onclick="selectAll();changeAssignCheckbox();" />
+						                            <!-- </label> -->
+						                            </div>
+					                            </apex:facet>
+					                            <apex:inputCheckbox id="assignToCheckbox" value="{!r.Selected}" onclick="changeAssignCheckbox();" />
+					                        </apex:column>
+					                        <apex:column rendered="{!assignedManagerOptions.size>2}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Manager" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='D2D_Manager__r.Name',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="D2D_Manager__r.Name"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <apex:outputText value="{!r.PortalReferral.D2D_Manager__r.Name}"/> 
+					                        </apex:column>
+					                        <apex:column >
+					                        	<apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Assigned To" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='D2D_Sales_Rep__r.Name',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="D2D_Sales_Rep__r.Name"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <apex:outputText value="{!r.PortalReferral.D2D_Sales_Rep__r.Name}" rendered="{!NOT(ISNULL(r.PortalReferral.D2D_Sales_Rep__c))}"/> 
+					                        </apex:column>
+					                        <apex:column >
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Date" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='Lead_Created_Date__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Lead_Created_Date__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <apex:outputText value="{0,date,MM/dd/yy}">
+					                                <apex:param value="{!r.PortalReferral.Lead_Created_Date__c}"/>
+					                            </apex:outputText>
+					                        </apex:column>
+					                        <apex:column >
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Name" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='Full_Name__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Full_Name__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                            <a href="D2D_LeadMenu?id={!r.PortalReferral.Id}" onclick="displayLoader('Opening lead...');" data-ajax="false">{!r.PortalReferral.Full_Name__c}</a>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.Street__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Street" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='Street__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Street__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.City__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="City" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='City__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="City__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.State__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="State" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='State__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="State__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.Zip__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Zip" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='Zip__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Zip__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.Carrier_Route__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Carrier Route" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='Carrier_Route__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Carrier_Route__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.Walk_Sequence__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Walk Seq" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='Walk_Sequence__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Walk_Sequence__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <!--
+					                        <apex:column value="{!r.PortalReferral.Segment_Priority__c}" headerClass="DashboardCol7 SegmentPriorityCol" styleClass="DashboardCol7 SegmentPriorityCol">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Segment Priority" rerender="myRefPanel,contactPanel,pagePanel"
+					                                    styleClass="{!IF(sortExpression=='Segment_Priority__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="Segment_Priority__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        -->
+					                        <apex:column value="{!r.PortalReferral.D2D_System_Size__c}">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="System Size" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='D2D_System_Size__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="D2D_System_Size__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                        <apex:column value="{!r.PortalReferral.D2D_Lead_Status__c}" headerClass="DashboardColLast" styleClass="DashboardColLast">
+					                            <apex:facet name="header">
+					                                <apex:commandLink action="{!refresh}" value="Lead Status" rerender="myRefPanel,contactPanel,pagePanel" oncomplete="saveFilters(); checkAssigned();"
+					                                    styleClass="{!IF(sortExpression=='D2D_Lead_Status__c',IF(sortDirection='ASC','SortDown','SortUp'),'')}">
+					                                    <apex:param value="D2D_Lead_Status__c"  assignTo="{!sortExpression}" ></apex:param>
+					                                </apex:commandLink>
+					                            </apex:facet>
+					                        </apex:column>
+					                    </apex:dataTable>
+						                <apex:actionFunction name="changeAssignCheckbox" action="{!processSelected}" rerender="none">
+						                </apex:actionFunction>
+										<apex:inputHidden value="{!scrollYPos}" id="scrollPosition"/>
+										<apex:actionFunction name="saveFilters" action="{!saveUserFilters}" rerender="scrollPosition"/>
+					                </apex:outputPanel>
+					           </div>
+					        </div>
+					    </div>
+					</apex:form>
+				</div>
+			</div>
+		</apex:define>
+	</apex:composition>
+</apex:page>

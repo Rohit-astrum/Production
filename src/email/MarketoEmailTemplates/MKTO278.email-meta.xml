@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>August Promotion.1,000 Discount</name>
+    <style>none</style>
+    <subject>We have another offer so bright you need to put on your shades</subject>
+    <textOnly>&lt;http://www.directenergysolar.com&gt;
+Dear {{lead.First Name:default=Friend}},
+Direct Energy Solar is offering another special promotion for you. Starting today August 26  through September 15, 2015 for every qualified lead you will receive an additional $50. Remember you don’t have to be a solar expert to make this program a success, but it helps to ensure you understand the basics. Learn more &lt;http://www.directenergysolar.com/the-basics/energy-savings&gt; on energy savings, how solar works and a compiled list of frequently asked questions to better address your solar questions. More conversations with your customer mean more money in your pocket.
+As a part of the Direct Energy family, you can help your customers take advantage of our great monthly promotions &lt;http://www.directenergysolar.com&gt;. What a great way to open up a conversation about solar with an additional offer to motivate your customers. Customers who sign a contract by September 15, 2015 will receive $1,000 discount off of a new solar system .We want our customers to get on the road to electricity savings as quickly as possible so if we do not install their solar system by December 31, 2015, customers will receive an additional $500 rebate or deduction from their final invoice. And there is still more, just for meeting with us customer receive a free 6-month Heating and Cooling Repair Essentials Plan from Direct Energy.
+
+ 
+  &lt;http://partners.directenergysolar.com/&gt;
+Questions? 
+ Email partners@directenergysolar.com
+ Call 240-278-8616
+You are receiving this email because you are a member of the Direct Energy Solar Partner Program.
+Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar between August 16, 2015–September 15, 2015. No extensions will be granted. For customers who purchase their system, they will receive a $1,000 discount off the contract price at the time of their purchase. For lease customers, $1,000 discount can be applied as a down payment to reduce their monthly solar fees. Minimum system size is 4 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+For systems with signed contracts between August 16, 2015–September 15, 2015, if Direct Energy Solar fails to install your solar system and/or your solar system does not pass electrical inspection by December 31, 2015, you will receive a $500 rebate or deduction from final invoice. The number of days due to the following potential delays not caused by Direct Energy Solar will be added to the applicable timeframe: customer scheduling conflicts, structural issues, roof replacements, tree removal, utility transformer issues, and HOA delays. Ground mounts, non-standard roof mounts, commercial systems, leased systems, and systems over 15 kW are excluded. The timeframe begins on the day Direct Energy Solar receives a signed contract and deposit payment (if applicable) for the system. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+Meet with a Direct Energy Solar consultant for an in-home consultation between August 16, 2015–September 15, 2015 and receive a free 6-month trial of our Heating &amp; Cooling Repair Essentials Plan. No extensions will be granted. An in-home consultation is contingent on your home passing a qualifying process for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the “Plan”) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one offer per household.
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+Direct Energy Solar
+
+7101 Riverwood Drive
+
+Columbia, MD  21046
+
+P: 800-903-6130
+
+F: 443-267-0036
+© 2015 Astrum Solar, Inc. All Rights Reserved.   |   Privacy Policy &lt;http://www.directenergysolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.directenergysolar.com/terms-and-conditions&gt;   |   DirectEnergySolar.com &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

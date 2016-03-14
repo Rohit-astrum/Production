@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Wake-up email to be sent to Opportunities in Connecticut after leaving a VoiceMail message.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Inactive Opportunities Connecticut</name>
+    <style>freeForm</style>
+    <subject>Hello from Direct Energy Solar!</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you again for your interest in going solar with Direct Energy Solar.
+
+
+
+Our records indicate that you recently had a sales visit with one of our Solar Consultants so I’m just following up to see how things went, and to see if there is anything else you need as you reach a decision on solar.
+
+
+
+With the CEFIA rebate and all of the many available financing options there has never been a better time to go solar in Connecticut, and at Direct Energy Solar we want to help you reach the best possible decision for you and your energy needs.
+
+
+
+
+Please feel free to call or email me if you have any questions.
+
+
+
+Best regards,
+
+
+
+{!User.FirstName} {!User.LastName}
+{!User.Title}
+
+P (844) 473-4274
+E {!User.Email}
+
+
+
+www.directenergysolar.com</textOnly>
+    <type>html</type>
+</EmailTemplate>

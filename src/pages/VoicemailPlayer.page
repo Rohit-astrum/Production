@@ -1,0 +1,11 @@
+<apex:page standardController="Case" extensions="VoicemailPlayerExtension">
+
+	<apex:repeat value="{!emailAudioFiles}" var="a" rows="1">
+		
+		<audio controls="true" preload="true">
+			<source src="/servlet/servlet.FileDownload?file={!a.Id}" type="audio/wav" />
+		</audio>
+				
+	</apex:repeat>
+
+</apex:page>

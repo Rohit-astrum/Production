@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>BatteryBackup.BatteryBackup</name>
+    <style>none</style>
+    <subject>Power for your home when the power goes out</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com&gt;
+
+A special message for our valued customers.
+
+POWER FOR YOUR HOME WHEN THE POWER GOES OUT
+
+Solar Power + Storage Capability = Security and Grid Stability through Battery Storage
+
+With financial support from the Maryland Energy Administration, Astrum Solar is launching a groundbreaking project to bring affordable, smart battery storage to a select group of Maryland homeowners. Through innovative software development our systems utilize proven, tested technology to create ground breaking opportunities for YOU!!
+
+Solar energy gave homeowners the first chance at real control over their power sources. The next stage in smart grid development is utilizing battery storage to harness the full potential of your solar system to interact with the grid and provide monthly revenue and security to your home.
+
+Security
+When the grid goes down your solar panels will operate to charge the batteries, allowing a predetermined set of critical loads in your home (heat, refrigerator, lighting, security system, sump or well pump) to continue functioning until grid power is restored.
+
+Grid Stability
+In addition, the batteries will be monitored and used to help maintain the stability of the grid through frequency regulation. This “frequency market participation” will even generate a small amount of revenue for the customer each year.
+
+Be one of the first 20 customers in all of Maryland to enjoy this ground breaking system
+
+This offer is truly at the forefront of Smart Grid technology. No other solar installer can provide such an innovative offering to help homeowners fully harness their solar system’s power while also protecting their assets in the event of a grid outage and generating revenue from grid participation.
+
+Interested? Contract Astrum Solar Today to Get Started
+
+Battery System Specialists:
+
+Mike Kirby: 
+Call 410-980-5789   
+Email: michael.kirby@astrumsolar.com
+
+Otha Smith: 
+Call 410-443-8871   
+Email: otha.smith@astrumsolar.com
+
+
+You’re receiving this email because you are a valued Astrum Solar customer.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Astrum Solar, Inc.
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy &lt;http://www.astrumsolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions &lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com &lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

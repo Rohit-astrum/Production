@@ -1,0 +1,260 @@
+<apex:page Controller="AstrumDailyReportSettingsController" showHeader="true" sidebar="true" standardStylesheets="false">
+
+  <head>   
+    <title>Astrum Solar Daily Report</title>
+    
+    <style type="text/css">
+   
+    </style>
+   
+  </head>
+  <body>
+  	 <apex:form >
+  	 <div align="center"><strong>Astrum Solar Daily Report Goals Setting</strong></div>	
+	 <br/>
+
+	 <div align="center">
+	     <apex:commandButton value="Edit" action="{!edit}" rendered="{!NOT(isEdit)}"/>        
+	     <apex:commandButton value="Save" action="{!save}" rendered="{!isEdit}"/>
+		 <apex:commandButton value="Cancel" action="{!cancel}" rendered="{!isEdit}"/>       
+     </div>
+
+     <br/>
+
+	 <table width="80%" border="1" align="center" >
+      <tr><!-- Row 1 -->
+         <td></td><!-- Col 1 -->
+         <td><div align="center"><strong>LE2 Daily Goals</strong></div></td><!-- Col 2 -->
+         <!--<td><div align="center"><strong>Daily Stretch Goals</strong></div></td> Col 3 -->
+         
+
+         <td><div align="center"><strong>LE2 Monthly Goals</strong></div></td><!-- Col 5 -->
+         <!--<td><div align="center"><strong>Monthly Stretch Goals</strong></div></td> Col 6 -->
+         
+
+         <td><div align="center"><strong>LE2 Yearly Goals</strong></div></td><!-- Col 8 -->
+         <!--<td><div align="center"><strong>Yearly Stretch Goals</strong></div></td> Col 9 -->
+         
+      </tr>
+  
+  <tr><!-- Row 3 -->
+     <td>Leads #</td><!-- Col 1 -->
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Leads_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Leads_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_Leads_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_Leads_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+ 
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Leads_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Leads_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_Leads_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_Leads_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Leads_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Leads_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_Leads_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_Leads_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+     
+  </tr>
+  <tr><!-- Row 4 -->
+     <td>Opportunities #</td><!-- Col 1 -->
+      <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Oppty_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Oppty_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_Oppty_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_Oppty_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Oppty_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Oppty_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_Oppty_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_Oppty_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Oppty_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Oppty_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8-->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_Oppty_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_Oppty_Num__c}" rendered="{!isEdit}"/></div></td> Col 9-->
+    
+  </tr>
+  <tr><!-- Row 5 -->
+     <td>Sales #</td><!-- Col 1 -->
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Sales_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Sales_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_Sales_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_Sales_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Sales_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Sales_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_Sales_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_Sales_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+      
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Sales_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Sales_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_Sales_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_Sales_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+     
+  </tr>
+  <tr><!-- Row 6 -->
+     <td>Cancellations #</td><!-- Col 1 -->
+    
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Cancel_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Cancel_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_cancel_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_cancel_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Cancel_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Cancel_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_cancel_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_cancel_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Cancel_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Cancel_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_cancel_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_cancel_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+    
+  </tr>
+  <tr><!-- Row 7 -->
+     <td>Inspections #</td><!-- Col 1 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Inspection_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Inspection_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_inspection_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_inspection_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Inspection_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Inspection_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_inspection_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_inspection_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Inspection_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Inspection_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_inspection_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_inspection_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+     
+  </tr>
+  <tr><!-- Row 8 -->
+     <td></td><!-- Col 1 -->
+     <td></td><!-- Col 2 -->
+     <td></td><!-- Col 3 -->
+     <td></td><!-- Col 4 -->
+    
+  </tr>
+  <tr><!-- Row 9 -->
+     <td>Sales KW</td><!-- Col 1 -->
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Sales_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Sales_KW_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_Sales_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_Sales_kw_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Sales_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Sales_KW_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_Sales_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_Sales_kw_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Sales_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Sales_KW_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_Sales_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_Sales_kw_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+    
+  </tr>
+  <tr><!-- Row 10 -->
+     <td>Cancellations KW</td><!-- Col 1 -->
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Cancel_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Cancel_KW_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_cancel_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_cancel_kw_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Cancel_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Cancel_KW_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_cancel_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_cancel_kw_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Cancel_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Cancel_KW_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_cancel_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_cancel_kw_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+     
+  </tr>
+  <tr><!-- Row 11 -->
+     <td>Inspections KW</td><!-- Col 1 -->
+      <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Inspection_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Inspection_KW_Num__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_inspection_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_inspection_kw_Num__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Monthly_Goal_Inspection_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Goal_Inspection_KW_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Monthly_Stretch_Goal_inspection_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Monthly_Stretch_Goal_inspection_kw_Num__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Inspection_KW_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Inspection_KW_Num__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Yearly_Stretch_Goal_inspection_kw_Num__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Stretch_Goal_inspection_kw_Num__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+    
+  </tr>
+   <tr><!-- Row 12 -->
+     <td></td><!-- Col 1 -->
+     <td></td><!-- Col 2 -->
+     <td></td><!-- Col 3 -->
+     <td></td><!-- Col 4 -->
+    
+  </tr>
+  <tr><!-- Row 13 -->
+     <td>Avg Time: Opportunity Creation to Sales Visit (Days)</td><!-- Col 1 -->
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Avg_Time_Opty_to_Sales_Visit__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Avg_Time_Opty_to_Sales_Visit__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_Avg_Time_to_Sales__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_Avg_Time_to_Sales__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Month_Goal_Avg_Time_Opty_to_Sales_Visit__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Month_Goal_Avg_Time_Opty_to_Sales_Visit__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Month_Stretch_Goal_Avg_Time_to_Sales__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Month_Stretch_Goal_Avg_Time_to_Sales__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Avg_Time_Opty_to_Sales_Visit__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Avg_Time_Opty_to_Sales_Visit__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Year_Stretch_Goal_Avg_Time_to_Sales__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Year_Stretch_Goal_Avg_Time_to_Sales__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+    
+  </tr>
+  <tr><!-- Row 14 -->
+     <td>Avg Time: Sales to Inspection (Days)</td><!-- Col 1 -->
+     <td><div align="center"><apex:outputText value="{!adr.Daily_Goal_Avg_Time_Sales_to_Inspection__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Goal_Avg_Time_Sales_to_Inspection__c}" rendered="{!isEdit}"/>
+     </div></td><!-- Col 2 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Daily_Stretch_Goal_Avg_Time_to_Ins__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Daily_Stretch_Goal_Avg_Time_to_Ins__c}" rendered="{!isEdit}"/>
+     </div></td> Col 3 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Month_Goal_Avg_Time_Sales_to_Inspection__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Month_Goal_Avg_Time_Sales_to_Inspection__c}" rendered="{!isEdit}"/></div></td><!-- Col 5 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Month_Stretch_Goal_Avg_Time_to_Ins__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Month_Stretch_Goal_Avg_Time_to_Ins__c}" rendered="{!isEdit}"/></div></td> Col 6 -->
+
+     <td><div align="center"><apex:outputText value="{!adr.Yearly_Goal_Avg_Time_Sales_to_Inspection__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Yearly_Goal_Avg_Time_Sales_to_Inspection__c}" rendered="{!isEdit}"/></div></td><!-- Col 8 -->
+     <!--<td><div align="center"><apex:outputText value="{!adr.Year_Stretch_Goal_Avg_Time_to_Ins__c}" rendered="{!NOT(isEdit)}"/>
+     <apex:inputText value="{!adr.Year_Stretch_Goal_Avg_Time_to_Ins__c}" rendered="{!isEdit}"/></div></td> Col 9 -->
+     
+  </tr>
+</table>
+</apex:form>
+  </body>
+
+</apex:page>

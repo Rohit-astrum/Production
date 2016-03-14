@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When A Sales Order is Changed By Sales After Approval and Project Creation</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Change Alert</name>
+    <style>none</style>
+    <subject>NOTICE OF CHANGE: {!Milestone1_Project__c.Sales_Order__c} FOR {!Milestone1_Project__c.Name}</subject>
+    <textOnly>Sales Order: {!Milestone1_Project__c.Sales_Order__c}
+Sales Order Link: https://na8.salesforce.com/{!Milestone1_Project__c.Sales_OrderId__c}
+
+For 
+
+Project: {!Milestone1_Project__c.Name}
+Project Link: https://na8.salesforce.com/{!Milestone1_Project__c.Id}
+
+has been changed by Sales.</textOnly>
+    <type>custom</type>
+</EmailTemplate>

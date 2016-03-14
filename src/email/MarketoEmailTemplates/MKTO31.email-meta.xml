@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Thanks for your comments (1409889659.0)</name>
+    <style>none</style>
+    <subject>Thanks for your comments (1409889659.0)</subject>
+    <textOnly>- 
+	-     
+	- 
+	-   Clean Clean false     false false false  EN-US ZH-TW AR-SA                                                                                                                                                                                                                                                                                                                                                                                                                    Mr. Beller- Just a quick note to thank you for sharing your thoughts about your Astrum Solar experience.  Hearing from existing customers is an important input to our efforts to consistently improve our processes, so we appreciate you taking the time to comment.  Great to hear you thought the process was easy – we try to make things as simple as possible for homeowners.  If we can help you with your system, please let us know.  If you have friends or family members who we might be able to help lower electricity bills, would love to have any referrals as well. Have a great rest of the week and thank you again! Best regards,Jose                        &lt;http://www.astrumsolar.com/&gt;
+Jose RamosChief Marketing OfficerP  707.495.8049 &lt;tel:707.495.8049&gt;F  855.850.3351 &lt;tel:855.850.3351&gt;E  jose.ramos@astrumsolar.com &lt;mailto:jose.ramos@astrumsolar.com&gt;6200 Stoneridge Mall Road, Suite 300Pleasanton, CA 94588www.astrumsolar.com &lt;http://www.astrumsolar.com/&gt;  </textOnly>
+    <type>custom</type>
+</EmailTemplate>

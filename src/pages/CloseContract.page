@@ -1,0 +1,116 @@
+<!--
+	FILE: CloseContract.page
+    AUTHOR: Dan Kelner
+    DATE: 03/23/15
+    PURPOSE: UI for closing out a sold Contract
+    MODIFICATION HISTORY
+    	03/24/15  DK  apex:inputFile doesn't play nice with rerenders, so use a Javascript solution instead
+-->
+<apex:page controller="CloseContractCtrl" title="Close Contract {!contr.Name}" showHeader="true" >
+	<style>
+	.activeRow {
+		background: #53CA51;
+		font-weight: bold;
+	}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<apex:form id="frm">
+	<apex:pageMessages id="msg"/>
+
+		<apex:commandButton value="Go to Contract Preview" action="{!backToContractPreview}" rendered="{!hideAll}"/>
+
+		<apex:pageBlock title="Upload the Signed Contract" rendered="{!NOT(hideAll)}">
+			<apex:pageBlockButtons location="top">
+				<apex:commandButton value="Back to Contract Preview" action="{!backToContractPreview}"/>
+	    		<apex:commandButton value="Reset" action="{!reset}"/>
+	    	</apex:pageBlockButtons>
+			<apex:pageBlockSection columns="1">
+	            <div>
+	                <label>PDF File</label>&emsp;<input id="fileInput" type="file" value="" accept="application/pdf" onchange="readFile(event)"/>
+	            </div>
+	            <apex:inputText value="{!pdfURL}" id="pdf_url" maxlength="512000" style="visibility:hidden" />
+	        </apex:pageBlockSection>
+	        <!--<apex:pageBlockSection columns="1" rendered="{!pdfSubmitted}">
+	        	<apex:outputText value="Signed Contract PDF has been successfully uploaded, and will be saved to the new Sales Order in the following page." style="color:#136313; font-weight:bold"/>
+	        </apex:pageBlockSection>-->
+	    </apex:pageBlock>
+
+	    <apex:pageBlock title="Select the Related Opportunity" id="oppBlock" rendered="{!NOT(hideAll)}">
+	    	<apex:pageBlockButtons location="bottom">
+	    		<apex:actionStatus id="closeStatus">
+	    			<apex:facet name="start">
+	    				<apex:commandButton value="Close Opportunity" rendered="{!AND(selectedOpp.ID != null, !showUpdateExistingOppBtn)}" disabled="true" status="closeStatus"/>
+	    			</apex:facet>
+	    			<apex:facet name="stop">
+	    				<apex:commandButton value="Close Opportunity" action="{!closeOpportunity}" rendered="{!AND(selectedOpp.ID != null, !showUpdateExistingOppBtn)}" rerender="oppBlock, jsPanel, msg" status="closeStatus"/>
+	    			</apex:facet>
+	    		</apex:actionStatus>
+	    		<apex:actionStatus id="updateStatus">
+	    			<apex:facet name="start">
+	    				<apex:commandButton value="Update Existing Opportunity" rendered="{!AND(selectedOpp.ID != null, showUpdateExistingOppBtn)}" disabled="true" status="updateStatus"/>
+	    			</apex:facet>
+	    			<apex:facet name="stop">
+	    				<apex:commandButton value="Update Existing Opportunity" action="{!updateExistingOpportunity}" rendered="{!AND(selectedOpp.ID != null, showUpdateExistingOppBtn)}" rerender="oppBlock, jsPanel, msg" status="updateStatus"/>
+	    			</apex:facet>
+	    		</apex:actionStatus>
+	    	</apex:pageBlockButtons>
+	    	<apex:pageBlockSection columns="1">
+	    		There are {!relatedOppsSize} Opportunities associated with the Property <a href="/{!contr.Proposal__r.System_Design_Quote__r.System_Design__r.Property__c}" target="_blank">{!contr.Proposal__r.System_Design_Quote__r.System_Design__r.Property__r.Name}.</a>
+	    	</apex:pageBlockSection>
+
+	    	<apex:pageBlockSection columns="1">
+				<apex:actionFunction name="chooseOpportunity" action="{!selectOpportunity}" rerender="oppBlock, jsPanel">
+					<apex:param name="opportunityID" value="" />
+				</apex:actionFunction>
+				<apex:pageBlockTable id="opportunityTable" value="{!relatedOpps}" var="opp" styleClass="tbl" width="100%">
+				    <apex:column headerValue="Opportunity Name" styleClass="{!IF(opp.ID == selectedOpp.ID, 'activeRow', '')}" html-data-opportunityID="{!opp.ID}" style="cursor:pointer">
+						<apex:outputLink value="/{!opp.ID}" target="_blank"><apex:outputText value="{!opp.Name}"/></apex:outputLink>
+					</apex:column>
+					<apex:column headerValue="Account" styleClass="{!IF(opp.ID == selectedOpp.ID, 'activeRow', '')}" html-data-opportunityID="{!opp.ID}" style="cursor:pointer">
+						<apex:outputLink value="/{!opp.AccountID}" target="_blank"><apex:outputText value="{!opp.Account.Name}"/></apex:outputLink>
+					</apex:column>
+					<apex:column headerValue="Stage" styleClass="{!IF(opp.ID == selectedOpp.ID, 'activeRow', '')}" html-data-opportunityID="{!opp.ID}" style="cursor:pointer">
+						<apex:outputField value="{!opp.StageName}" />
+					</apex:column>
+					<apex:column headerValue="Close Date" styleClass="{!IF(opp.ID == selectedOpp.ID, 'activeRow', '')}" html-data-opportunityID="{!opp.ID}" style="cursor:pointer">
+						<apex:outputField value="{!opp.CloseDate}" />
+					</apex:column>
+					<apex:column headerValue="Sales Order Count" styleClass="{!IF(opp.ID == selectedOpp.ID, 'activeRow', '')}" html-data-opportunityID="{!opp.ID}" style="cursor:pointer">
+						<apex:outputText value="{!BLANKVALUE(opp.Number_of_Sales_Orders__c, 0)}" />
+					</apex:column>
+				</apex:pageBlockTable>
+			</apex:pageBlockSection>
+	    </apex:pageBlock>
+
+	    <apex:outputPanel id="jsPanel">
+		    <script>
+		    	function readFile(evt){
+			        var file = evt.target.files[0];
+			        var reader = new FileReader();
+			        var input_pdf = document.querySelector('input[id$=pdf_url]');
+			        reader.onloadend = function (){
+						input_pdf.value = reader.result;	//Send the base64 encoded string to this HTML component
+					}
+			        reader.readAsDataURL(file);
+			    }
+
+				$(document).ready(function() {
+					//OnClick action for dataRow in opportunityTable
+					$("table[id$='opportunityTable'] tr.dataRow").click(function() {
+						//Get the Opportunity ID from the row's cells
+					    var oppID = $(this).children("td.dataCell").attr("data-opportunityID");
+					    if (!oppID){
+					    	alert("Something went wrong. Please refresh the page and try again.")
+					    } else {
+					    	//Call the actionFunction to select this Opportunity
+					    	chooseOpportunity(oppID);
+					    }
+					});
+					
+				});
+			</script>
+		</apex:outputPanel>
+    </apex:form>
+</apex:page>

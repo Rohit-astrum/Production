@@ -1,0 +1,879 @@
+<apex:page contentType="application/javascript" cache="false" expires="0" >
+/* FILE: CPQinput_services.js
+ * AUTHOR: Larry Hovind
+ * DATE: Aug 20, 2014
+ * PURPOSE: AngularJS logic for CPQ visualforce page
+ * MODIFICATION HISTORY
+ * 12/30/14 - LLH - moved to seperate file
+ */
+//<script>
+'use strict';
+
+
+var SFConnector = angular.module('SFRM', []);
+
+SFConnector.factory("CPQ", function($q, $rootScope){
+
+    var obj = function(){
+    
+        this.related = [];
+        this.onload = [];
+        this.onsave = [];
+        this.fields = [];
+        this.financingTypes = [];
+        this.stdAdjustmentTypes = [];
+        
+        this.acct = new SObjectModel["Account"]();
+        
+        this.contact = new SObjectModel["Contact"]();
+        this.contacts = [];
+        
+        this.opport = new SObjectModel["Opportunity"]();
+        this.opports = [];
+        
+        this.property = new SObjectModel["Property__c"]();
+        this.properties = [];
+        
+        this.sd = new SObjectModel["System_Design__c"]();
+        this.sds = [];
+        this.sdPanel = new SObjectModel["System_Design_Product__c"]();
+        this.sdInverter = new SObjectModel["System_Design_Product__c"]();
+        
+        this.sda = new SObjectModel["System_Design_Array__c"]();
+        this.sdas = [];
+        this.sdaList = [];
+        
+        this.sdp = new SObjectModel["System_Design_Product__c"]();
+        this.sdps = [];
+        
+        this.sdis = []; // System_Design_Items__c
+        
+        this.us = new SObjectModel["Utility_Service__c"]();
+        this.uss = [];
+        this.usConProfiles = [];
+        
+        this.uc = new SObjectModel["Utility_Company__c"](); // which is actually Utility Rate Code
+        this.ucs = [];  // before rate code
+        this.ucTerr = null;
+        this.ucTerrs = [];
+        this.uca = new SObjectModel["Utility_Company__c"](); // which is actually Utility Rate Code
+        this.ucas = []; // after rate code
+        
+        this.ucm = new SObjectModel["Utility_Company_master__c"]();
+        this.ucms = [];
+        
+        this.sdq = new SObjectModel["System_Design_Quote__c"]();
+        this.sdqStatus = 'Loading';
+        this.sdqPricing= "DONE";
+        this.sdqPricingMsg = 'Getting Pricing...';
+        this.sdqs = [];
+        this.sdqList = [];
+        this.sdqsupp = {};
+        //this.sdqscenarios = [ 'Scenario_1_', 'Scenario_2_', 'Scenario_3_', 'Scenario_4_'];
+        this.sdqscenarios = [ 'Scenario_1_' ];
+        var scenarioFields = ['Apply_Standard_Adjustment__c', 'Set_Standard_Adjustment_Type__c', 'Set_Standard_Adjustment_Amoun__c'];
+        this.sdqSRECoptions = [];
+        this.sdqSRECchoices = [];
+        this.sdqSRECupfronts = [];
+        
+        this.pa = new SObjectModel["Price_Adjustment__c"]();
+        this.pas = [];
+        this.aio = new SObjectModel["Available_Incentive_Offer__c"]();
+        this.aios = [];
+        this.asco = new SObjectModel["Available_SREC_Contract_Offer__c"]();
+        this.ascos = [];
+        
+        this.lf = new SObjectModel["Lease_Fund__c"]();
+        this.lfs = [];
+        
+        this.proposalGenMsg = '';
+        
+        
+        
+        
+        this.related['sd'] = { sdPanel : 'System_Panel__c', sdInverter : 'System_Inverter__c', property : 'Property__c' };
+        this.related['us'] = { uc : 'Utility_Rate_Code_Before_Solar__c', uca : 'Utility_Rate_Code_After_Solar__c' };
+        this.related['uc'] = { ucm : 'Utility_Company_Master__c' };
+        this.related['property'] = { acct : 'Property_Owner__c'};
+        
+        this.onload['uc'] = function(tobj) {
+            // get Utility Rate Codes for all that match to this UCM, All_Electric
+            //console.log('UCM: ' + JSON.stringify(tobj.uc._props.Utility_Company_Master__c));
+            console.log('AES: ' + tobj.uc._props.All_Electric_Service__c);
+            // TODO - if(All Electric is !undefined - add to query)
+            var where = { 'where' : { Utility_Company_Master__c : { eq : tobj.uc._props.Utility_Company_Master__c }, Sector__c : { eq : tobj.property._props.RecordTypeDeveloperName__c } }};
+            if(tobj.uc._props.All_Electric_Service__c !== undefined) {
+                where['where']['All_Electric_Service__c'] = { 'eq' : tobj.uc._props.All_Electric_Service__c };
+                // this applies only for All Electric Service checked
+                // the case of any type of service is met by the default query
+            }
+            //console.log(JSON.stringify(where));
+            tobj.getAll('ucs', where , tobj.uc, function(records){
+                //console.log("*** Utility Rate Code(s) ***");
+                //console.log(JSON.stringify(tobj.uc));
+                //console.log(JSON.stringify(tobj.ucs));
+                
+                // try to match the returned UCS to the current UC
+                for( var i=0; i<records.length; i++ ) {
+                    //console.log(records[i]._props.Id);
+                    if( tobj.uc._props.Id == records[i]._props.Id ) {
+                        tobj.uc = records[i];
+                        console.log("Found UC match in UCS.");
+                    }
+                }
+
+                // copy results to ucas field since they are the same list
+                tobj.ucas = records;
+                // try to match the returned UCAS to the current UCA
+                //console.log("UCA: " + tobj.uca._props.Id);
+                for( var i=0; i<records.length; i++ ) {
+                    //console.log("UCAS[" + i + "]: " + records[i]._props.Id);
+                    if( tobj.uca._props.Id == records[i]._props.Id ) {
+                        tobj.uca = records[i];
+                        console.log("Found UCA match in UCAS.");
+                    }
+                }
+                
+                tobj.getUtilityTerritories();
+
+            });
+            
+        };
+        
+        this.onload['sd'] = function(tobj) {
+
+             // get System Design Arrays
+             tobj.getAll( 'sdas', { where: { System_Design__c : { eq : tobj.sd._props.Id}}}, tobj.sda);
+             // new method - call Remote Action
+             CPQController.getSysDesignArrayList( tobj.sd._props.Id, function(result, event){
+             	console.log(result);
+             	tobj.sdaList = result;
+             	// search each SDA for it's mounting type and wire material
+             	for( var i=0; i<tobj.sdaList.length; i++ ) {
+             		if( Array.isArray(tobj.sdaList[i].System_Design_Items__r) ) {
+             			for( var j=0; j< tobj.sdaList[i].System_Design_Items__r.length; j++ ) {
+             				if( tobj.sdaList[i].System_Design_Items__r[j].System_Design_Product__r.RecordType.DeveloperName === 'Mounting' ) {
+             					tobj.sdaList[i].Mounting_Type = tobj.sdaList[i].System_Design_Items__r[j].System_Design_Product__r.Description__c;
+             				}
+             				if( tobj.sdaList[i].System_Design_Items__r[j].System_Design_Product__r.RecordType.DeveloperName === 'Trenching' ) {
+             					tobj.sdaList[i].Wire_Material = tobj.sdaList[i].System_Design_Items__r[j].System_Design_Product__r.Description__c;
+             				}
+             			}
+             		}
+             	}
+             });
+             
+             // get Special Parts
+             CPQController.getSpcParts( tobj.sd._props.Id, function(result, event){
+                tobj.sdis = result;
+                $rootScope.$apply();
+             });
+             
+             // get Utility Service(s)
+             CPQController.getUtilityService( tobj.sd._props.Id, function(result, event){
+                for( var i=0; i<result.length; i++ ){
+                    tobj.uss[i] = result[i];
+                }
+                //console.log('Utility Service: ' + tobj.uss);
+                tobj.get('us', tobj.uss[0]);
+             });
+             
+             // get System Design Quotes
+             CPQController.getSDQsList( tobj.sd._props.Id, function(result, event){
+                tobj.sdqList = result;
+                // TODO - make sure sdq is one of the listed ones.
+                for( var i=0; i<tobj.sdqList.length; i++ ) {
+                    if( tobj.sdqList[i].Current__c ) {
+                        // TODO - make the current sdq the displayed sdq
+                        
+                        tobj.get('sdq', tobj.sdqList[i].Id);
+                        break;
+                    }
+                }
+                $rootScope.$apply();
+             });
+             
+        };
+        
+        this.onload['acct'] = function(tobj) {
+            tobj.getAll( 'contacts', { where: { AccountId: { eq: tobj.acct._props.Id}}}, tobj.contact);
+        };
+        
+        this.onload['opport'] = function(tobj) {
+            //console.log(tobj);
+            if(tobj.acct._props.Id !== tobj.opport._props.AccountId) {
+                tobj.get('acct', tobj.opport._props.AccountId);
+            }
+            if( tobj.property._props.Id !== tobj.opport._props.Property__c) {
+                tobj.get('property', tobj.opport._props.Property__c);
+            }
+            //if(tobj.opport._props.System_Design_Quote__c !== undefined) {
+            //  tobj.get('sdq', tobj.opport._props.System_Design_Quote__c);
+            //}
+        };
+        
+        this.onload['property'] = function(tobj) {
+        };
+        
+        this.onload['sdq'] = function(tobj) {
+        
+            //console.log(tobj.sdq);
+            //console.log(JSON.stringify(tobj.sdq));
+            
+			// initialize null valued fields, since SF doesn't do this for us            
+           	tobj.sdq._props.Scenario_1_Financing_Type__c = tobj.sdq._props.Scenario_1_Financing_Type__c || null;
+           	tobj.sdq._props.Scenario_1_SAC_Loan__c = tobj.sdq._props.Scenario_1_SAC_Loan__c || null;
+           	tobj.sdq._props.Scenario_1_Term_Loan__c = tobj.sdq._props.Scenario_1_Term_Loan__c || null;
+           	tobj.sdq._props.Scenario_1_Lease_Fund__c = tobj.sdq._props.Scenario_1_Lease_Fund__c || null;
+
+            // set SDQ status
+            if( tobj.sdq._props.Valid__c ) {
+                tobj.sdqStatus = 'VALID';
+            }
+
+            // populate Scenario supplemental fields
+            for( var i=0; i<tobj.sdqscenarios.length; i++ ) {
+                for( var j=0; j<scenarioFields.length; j++ ) {
+                    tobj.sdqsupp[tobj.sdqscenarios[i] + scenarioFields[j]] = tobj.sdq._props[tobj.sdqscenarios[i] + scenarioFields[j]];
+                }
+                if( tobj.sdqsupp[tobj.sdqscenarios[i] + 'Apply_Standard_Adjustment__c'] == false ) {
+                    tobj.sdqsupp[tobj.sdqscenarios[i] + 'Set_Standard_Adjustment_Type__c'] = 'None';
+                }
+            }
+
+            // get System Design if different from SDQ.System_Design            
+            if( tobj.sd._props.Id !== tobj.sdq._props.System_Design__c) {
+                //console.log("Retrieving System Design from SDQ.");
+                tobj.get('sd', tobj.sdq._props.System_Design__c);
+            }
+            
+            // get Available SREC Contract Offers
+            tobj.getAll( 'ascos', { where: { System_Design_Quote__c : { eq : tobj.sdq._props.Id}, Current_Matching_SREC_Offer__c : { eq : true }} }, tobj.asco, function(records){
+                console.log("SRECs (" + records.length + ")");
+                //console.log(JSON.stringify(records));
+                //for( var i=0; i<records.length; i++ ) {
+                //  console.log("Avail SREC Offer: " + records[i]._props.RecordTypeDeveloperName__c + " " + records[i]._props.Applicable_Scenario__c + " " + records[i]._props.Contract_Offer_Applied__c);
+                //}
+                
+                // reset SREC fields
+                tobj.sdqSRECoptions = [];
+                tobj.sdqSRECchoices = [];
+                tobj.sdqSRECupfronts = [];
+                
+                // assign Applied SREC offers
+                for( var i=0; i< tobj.ascos.length; i++ ) {
+                
+                    if( tobj.sdqSRECoptions[tobj.ascos[i]._props.Applicable_Scenario__c] == undefined ) {
+                        tobj.sdqSRECoptions[tobj.ascos[i]._props.Applicable_Scenario__c] = ['None'];
+                        tobj.sdqSRECchoices[tobj.ascos[i]._props.Applicable_Scenario__c] = 'None';
+                    }
+                    
+                    tobj.sdqSRECoptions[tobj.ascos[i]._props.Applicable_Scenario__c].push( tobj.ascos[i]._props.RecordTypeDeveloperName__c );
+                    //tobj.sdqSRECoptions[tobj.ascos[i]._props.Applicable_Scenario__c] = tobj.ascos[i];
+                    //console.log(tobj.sdqSRECoptions[tobj.ascos[i]._props.Applicable_Scenario__c]);
+
+                    if( tobj.ascos[i]._props.Contract_Offer_Applied__c === true ) {
+                        tobj.sdqSRECchoices[tobj.ascos[i]._props.Applicable_Scenario__c] = tobj.ascos[i]._props.RecordTypeDeveloperName__c;
+                    }
+                    if( tobj.ascos[i]._props.RecordTypeDeveloperName__c == 'Upfront' ) {
+                        tobj.sdqSRECupfronts[tobj.ascos[i]._props.Applicable_Scenario__c] = tobj.ascos[i]._props.Upfront_Effective_Dollar_Amount__c;
+                    }
+                }
+                //console.log(tobj.sdqSRECoptions);
+                //console.log(tobj.sdqSRECupfronts);
+            });
+            
+            // get Available Incentive Offers
+            tobj.getAll( 'aios', { where: { System_Design_Quote__c : { eq : tobj.sdq._props.Id}}}, tobj.aio);
+            
+            // get Price Adjustments
+            tobj.getAll( 'pas', { where: { System_Design_Quote__c : { eq : tobj.sdq._props.Id}}}, tobj.pa);
+
+            // get Lease Funds
+            tobj.getAll( 'lfs', { where: { Available_Fund__c : { eq: true }, Active_Fund__c : { eq: true } }}, tobj.lf, function(){
+            	//console.log(tobj.lfs);
+            	// add 'None' objects
+            	var tmpobj = null;
+            	tmpobj = new SObjectModel['Lease_Fund__c']();
+            	tmpobj._props.Id = null;
+            	tmpobj._props.Name = "None";
+            	tmpobj._props.RecordTypeDeveloperName__c = "SAC_Loan";
+            	tobj.lfs.unshift(tmpobj);
+            	tmpobj = new SObjectModel['Lease_Fund__c']();
+            	tmpobj._props.Id = null;
+            	tmpobj._props.Name = "None";
+            	tmpobj._props.RecordTypeDeveloperName__c = "Term_Loan";
+            	tobj.lfs.unshift(tmpobj);
+            	
+            });
+        };
+        
+        this.onsave['sdq'] = function(tobj) {
+        
+            // save all price adjustment records
+            // save all incentive records
+            
+            // THEN
+            
+            // save the SDQ
+        };
+        
+        this.fields['Contact'] = [
+        	'Id',
+        	'MailingStreet',
+        	'MailingCity',
+        	'MailingState',
+        	'MailingPostalCode'
+        	];
+        
+        this.fields['Utility_Service__c'] = [
+            'Id',
+            'Monthly_Electric_Consumption_KWH_Jan__c',
+            'Monthly_Electric_Consumption_KWH_Feb__c',
+            'Monthly_Electric_Consumption_KWH_Mar__c',
+            'Monthly_Electric_Consumption_KWH_Apr__c',
+            'Monthly_Electric_Consumption_KWH_May__c',
+            'Monthly_Electric_Consumption_KWH_Jun__c',
+            'Monthly_Electric_Consumption_KWH_Jul__c',
+            'Monthly_Electric_Consumption_KWH_Aug__c',
+            'Monthly_Electric_Consumption_KWH_Sep__c',
+            'Monthly_Electric_Consumption_KWH_Oct__c',
+            'Monthly_Electric_Consumption_KWH_Nov__c',
+            'Monthly_Electric_Consumption_KWH_Dec__c',
+            'Forecasted_Add_Consumption_kWh_Jan__c',
+            'Forecasted_Add_Consumption_kWh_Feb__c',
+            'Forecasted_Add_Consumption_kWh_Mar__c',
+            'Forecasted_Add_Consumption_kWh_Apr__c',
+            'Forecasted_Add_Consumption_kWh_May__c',
+            'Forecasted_Add_Consumption_kWh_Jun__c',
+            'Forecasted_Add_Consumption_kWh_Jul__c',
+            'Forecasted_Add_Consumption_kWh_Aug__c',
+            'Forecasted_Add_Consumption_kWh_Sep__c',
+            'Forecasted_Add_Consumption_kWh_Oct__c',
+            'Forecasted_Add_Consumption_kWh_Nov__c',
+            'Forecasted_Add_Consumption_kWh_Dec__c',
+            'Utility_Rate_Code_Before_Solar__c',
+            'Utility_Rate_Code_After_Solar__c',
+            'Consumption_Profile__c'
+            ];
+        
+        this.fields['System_Design_Quote__c'] = [
+            'Id',
+            'All_Electric_Service__c',
+            'Electric_Vehicle__c',
+            'Property_in_Revocable_Trust__c',
+            'Property_in_Historic_Trust__c',
+            'Previously_Received_State_Tax_Credit__c',
+            'Previously_Received_State_Rebate__c',
+            'Previously_Received_County_Tax_Credit__c',
+            'Previously_Received_Utility_Rebate__c',
+            'Annual_Property_Tax_Bill__c',
+            'Income_Corporate_Tax_Rate__c',
+            'Primary_Residence__c',
+            'Moderate_Home_Value_Adder_Eligible__c',
+            'Moderate_Income_Value_Adder_Eligible__c',
+            'Natural_Disaster_Adder_Eligible__c',
+            'Scenario_1_Included_in_Proposal__c',
+            'Scenario_1_Financing_Type__c',
+            'Scenario_1_SAC_Loan__c',
+            'Scenario_1_Term_Loan__c',
+            'Scenario_1_Lease_Fund__c',
+            'Scenario_1_Lease_Option__c',
+            'Scenario_1_Credit_Tier__c',
+            'Scenario_1_Lease_Escalator__c',
+            'Scenario_1_Apply_Standard_Adjustment__c',
+            'Scenario_1_Set_Standard_Adjustment_Type__c',
+            'Scenario_1_Set_Standard_Adjustment_Amoun__c',
+            'Scenario_1_Loan_Fund_Term__c',
+            'Scenario_1_Down_Payment__c'
+            ];
+            
+        this.fields['Available_SREC_Contract_Offer__c'] = [
+            'Id',
+            'Contract_Offer_Applied__c'
+        ];
+                        
+                        
+        this.getUtilityTerritories = function() {
+            var tobj = this;
+            
+            // get Territories that match
+            //      which is the list of Service_Territory__c WHERE Name = uc.Name
+            
+            //tobj.getListFromFld('ucTerrs', tobj.ucs, 'Service_Territory__c', where, function(list){
+            //  console.log(list);
+            //}); 
+
+            tobj['ucTerrs'] = [];
+            for( var i=0; i<tobj.ucs.length; i++ ) {
+            	// For TESTING
+            	// console.log("Utility Rate Code: " + tobj.ucs[i]._props.Name + " has Territory: " + tobj.ucs[i]._props.Utility_Service_Territory__c);
+            	// end TESTING
+            	tobj.ucs[i]._props.Utility_Service_Territory__c = tobj.ucs[i]._props.Utility_Service_Territory__c || null;
+                if( tobj.ucTerrs.indexOf(tobj.ucs[i]._props.Utility_Service_Territory__c) < 0  ) {
+                    // add fldname.value to 
+                    var len = tobj.ucTerrs.push(tobj.ucs[i]._props.Utility_Service_Territory__c);
+                    // check if this is the currently selected Territory - matches the Territory of CPQ.uc
+                    if( tobj.uc._props.Utility_Service_Territory__c == tobj.ucs[i]._props.Utility_Service_Territory__c ) {
+                    	tobj.ucTerr = tobj.ucTerrs[len - 1];
+                    }
+                }
+            }
+            //console.log("Utility Territories found: " + JSON.stringify(tobj.ucTerrs) );
+            
+            //thenFunc(tobj[target]);
+            //console.log(tobj.ucTerrs);
+
+        };
+        
+        this.populateUtilityUsage = function( Actual_Forecast, kWh, weighting) {
+            var tobj = this;
+        
+            var months = [];
+            var total = 0;
+            
+            switch (weighting) {
+                case "summer" :
+                        months[0] = (Math.round(kWh * 9.75554) / 100).toFixed(0);   // Jan
+                        total += +months[0];
+                        months[1] = (Math.round(kWh * 8.58706) / 100).toFixed(0);   // Feb
+                        total += +months[1];
+                        months[2] = (Math.round(kWh * 8.13763) / 100).toFixed(0);   // Mar
+                        total += +months[2];
+                        months[3] = (Math.round(kWh * 6.86330) / 100).toFixed(0);   // Apr
+                        total += +months[3];
+                        months[4] = (Math.round(kWh * 6.80713) / 100).toFixed(0);   // May
+                        total += +months[4];
+                        months[5] = (Math.round(kWh * 8.02559) / 100).toFixed(0);   // Jun
+                        total += +months[5];
+                        months[6] = (Math.round(kWh * 10.31357) / 100).toFixed(0);  // Jul
+                        total += +months[6];
+                        months[7] = (Math.round(kWh * 9.30518) / 100).toFixed(0);   // Aug
+                        total += +months[7];
+                        months[8] = (Math.round(kWh * 8.84748) / 100).toFixed(0);   // Sep
+                        total += +months[8];
+                        months[9] = (Math.round(kWh * 6.98534) / 100).toFixed(0);   // Oct
+                        total += +months[9];
+                        months[10] = (Math.round(kWh * 7.27595) / 100).toFixed(0);  // Nov
+                        total += +months[10];
+                        //months[11] = (Math.round(kWh * 9.09624) / 100).toFixed(0);    // Dec
+                        months[11] = (kWh - total).toFixed(0);
+                    break;
+                default :
+                    total = 0;
+                    for( var i=0; i<11; i++ ) {
+                        months[i] = Math.round(kWh / 12);
+                        total += +months[i];
+                    }
+                    months[11] = kWh - total;
+            }
+            // **** FOR DEBUG ONLY
+            //    total = 0;
+            //    for( var i=0; i<12; i++) {
+            //        total += +months[i];
+            //    }
+            //   console.log('Total kWh - Requested: ' + kWh + '  Returned: ' + total);
+            // *** DEBUG END
+            
+                        
+            // populate US monthly fields
+            
+            if( Actual_Forecast ) { // if true then Actual values else Forecasted Values
+            
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Jan__c = months[0];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Feb__c = months[1];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Mar__c = months[2];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Apr__c = months[3];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_May__c = months[4];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Jun__c = months[5];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Jul__c = months[6];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Aug__c = months[7];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Sep__c = months[8];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Oct__c = months[9];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Nov__c = months[10];
+                tobj.us._props.Monthly_Electric_Consumption_KWH_Dec__c = months[11];
+                
+            } else {
+            
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Jan__c = months[0];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Feb__c = months[1];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Mar__c = months[2];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Apr__c = months[3];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_May__c = months[4];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Jun__c = months[5];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Jul__c = months[6];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Aug__c = months[7];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Sep__c = months[8];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Oct__c = months[9];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Nov__c = months[10];
+                tobj.us._props.Forecasted_Add_Consumption_kWh_Dec__c = months[11];   
+            }
+            
+        };
+        
+        this.SRECchange = function(scenario) {
+        
+            var tobj = this;
+            
+                for( var i=0; i< tobj.ascos.length; i++ ) {
+        
+                    if( tobj.ascos[i]._props.Applicable_Scenario__c == scenario ) {
+                        // change Contract_Offer_Applied__c to true for the selected one and false for all others
+                        if( tobj.ascos[i]._props.RecordTypeDeveloperName__c == tobj.sdqSRECchoices[scenario] ) {
+                            tobj.ascos[i]._props.Contract_Offer_Applied__c = true;
+                        } else {
+                            tobj.ascos[i]._props.Contract_Offer_Applied__c = false;
+                        }
+                        //console.log(tobj.ascos[i]._props.Id + ": " + tobj.ascos[i]._props.RecordTypeDeveloperName__c + "  Default: " + tobj.ascos[i]._props.Default_Offer__c + "  Applied: " + tobj.ascos[i]._props.Contract_Offer_Applied__c);
+                        tobj.saveObj(tobj.ascos[i]);
+                    }
+                    
+                }
+        };
+        
+        this.getPricing = function() {
+        
+        	var tobj = this;
+        	tobj.sdqPricing = "In Progress";
+        	
+        	// save Utility Service
+			tobj.save('us', function(){
+				// run Utility Pricing
+				console.log('Id: ' + tobj.sd._props.Id + ' Rate Code: ' + tobj.us._props.Utility_Rate_Code_Before_Solar__c);
+				CPQController.runUtilityPricing( tobj.sd._props.Id, tobj.us._props.Utility_Rate_Code_Before_Solar__c, function(result, event){
+				} );
+			});
+        	
+        	try {
+                // save Price Adjustments
+                tobj.saveAll('pas', function() {
+                    // save Incentives
+                    tobj.saveAll('aios', function() {
+                        // save SRECs
+                        tobj.saveAll('ascos', function(){})
+                    })
+                });
+            } catch (err){
+                console.log("Failed to save related objects in getPricing(): " + err.message);
+            }
+        	
+        	// call WorkflowOnEdit
+        	CPQController.systemDesignQuoteWorkflowOnEdit(tobj.sdq._props.Id, false, function(result, event){
+        		console.log("Result of systemDesignQuoteWorkflowOnEdit is " + result);
+        		// save SDQ (and Promotions) which runs pricing
+				tobj.save('sdq', function(){
+					tobj.sdqPricing = "DONE";
+					$rootScope.$apply();
+				});
+        	
+        	
+        	});
+
+        	
+        };
+        
+        this.makeSDQCurrent = function(sdqId) {
+        
+            var tobj = this;
+            tobj.sdqStatus = 'Loading';
+      
+            CPQController.makeSDQcurrent(sdqId, function(result, event){
+                if( result === "Valid" ||
+                	result === "VALID" ) {
+                    	// reload SD which will reload the current SDQ
+                    	tobj.get('sd', tobj.sd._props.Id);
+                } else {
+                    // process error condition
+                    tobj.sdqStatus = result;
+                }
+                $rootScope.$apply();
+            });
+
+        };
+        
+        this.makeNewSDQ = function(sdqId) {
+        
+            var tobj = this;
+            tobj.sdqStatus = 'Creating New SDQ...';
+      
+            CPQController.makeNewSDQ(sdqId, function(result, event){
+                if( result === "Valid" ||
+                	result === "VALID" ||
+                	result === "OK" ) {
+                    	// reload SD which will reload the current SDQ
+                    	tobj.get('sd', tobj.sd._props.Id);
+                } else {
+                    // process error condition
+                    tobj.sdqStatus = result;
+                }
+                $rootScope.$apply();
+            });
+
+        };
+        
+    };
+    
+    obj.prototype.get = function( prop, id, getRelated ) {
+
+        var tobj = this;
+        var sfobj = tobj[prop];
+
+        // TODO - check that 'id' is not undefined
+        
+        sfobj.retrieve( { where : { Id : { eq: id} } }, function(err, records, evt){
+            if( err ) {
+                // handle error
+                console.log('Retrieve Error for ' + prop + ' for Id: ' + id);
+                console.log(err.message);
+                console.log(JSON.stringify(evt));
+            } else {
+                // handle result
+                if( records.length > 0 ) {
+                    tobj[prop] = records[0];
+                    //console.log(tobj[prop]);
+                    if( tobj.related[prop] !== undefined) {
+                        tobj.getRelated(prop);
+                    };
+                    if( tobj.onload[prop] !== undefined) {
+                        tobj.onload[prop](tobj, prop);
+                    };
+                    $rootScope.$apply();
+                }
+            }
+        });
+    
+    };
+    
+    obj.prototype.getRelated = function(prop) {
+        var arry = this.related[prop];
+        //console.log(arry);
+        for( var obj in arry ){
+            if( arry.hasOwnProperty(obj) ) {
+                var tmpId = this[prop]._props[arry[obj]];
+                if( tmpId !== undefined ) {
+                    this.get(obj, tmpId);
+                }
+            }
+        };
+    };
+    
+    obj.prototype.getAll = function( prop, where, objectModel, thenFunc ) {
+        var tobj = this;
+        var sfobj = tobj[prop];
+
+        objectModel.retrieve( where, function(err, records, evt){
+            if( err ) {
+                // handle error
+                console.log(err.message);
+                console.log(JSON.stringify(evt));
+            } else {
+                // handle result
+                if( records.length > 0 ) {
+                    tobj[prop] = records;
+                    
+                    // TODO - should we get related?
+                    //if( getRelated !== undefined) {
+                    //  tobj.getRelated(prop);
+                    //}
+                    
+                    if( thenFunc !== undefined ) {
+                    //if( thenFunc === "function" ) {
+                        //console.log("Calling: " + thenFunc.name);
+                        thenFunc(records);
+                    };
+                    
+                    $rootScope.$apply();
+                }
+            }
+        });
+    };
+    
+    obj.prototype.getListFromFld = function(target, objArray, fldname, where, thenFunc ) {
+        var tobj = this;
+        
+        // where = { 'where' : cond }
+        
+        tobj[target] = [];
+        for( var i=0; i<objArray.length; i++ ) {
+            if( objArray[i] !== undefined ) {
+                // add fldname.value to 
+                tobj[target].push(objArray[i]._props[fldname]);
+            }
+        }
+        
+        thenFunc(tobj[target]);
+    };
+    
+    obj.prototype.saveObj = function(obj, callback) {
+        var tobj = this;
+    
+        // create new SObjectModel, populate ONLY with specified fields, pushback newly created and populated SObjectModel
+        
+        // create new SObjectModel
+        var newObj = new SObjectModel[obj._name]();
+        
+        // forEach field in fields list, populate newObj
+        var i = tobj.fields[obj._name].length;
+        while( i-- ) {
+            var fldnm = tobj.fields[obj._name][i];
+            if(obj._props[fldnm] !== undefined) {
+                console.log( "Set " + fldnm + " to " + obj._props[fldnm]);
+                newObj.set( fldnm, obj._props[fldnm]);
+            }
+        }
+        
+        //pushback sObject
+        newObj.update( function(err, records, evt){
+            if( err ) {
+                // handle error
+                console.log(err.message);
+                console.log(JSON.stringify(evt));
+            } else {
+                // execute callback if any
+                if( callback !== undefined ) {
+                    callback(records);
+                }
+            };
+        });
+
+    };
+    
+    obj.prototype.save = function(prop, callback) {
+        var tobj = this;
+        var sfobj = tobj[prop];
+
+        var id = tobj[prop]._props.Id;
+        
+        tobj.saveObj(sfobj, function(){
+            tobj.get(prop, id);
+            // execute callback if any
+            if( callback !== undefined ) {
+                callback();
+            }
+        });
+        
+        /*
+//console.log(tobj[prop]);
+        // create new SObjectModel, populate ONLY with specified fields, pushback newly created and populated SObjectModel
+        
+        // create new SObjectModel
+        var newObj = new SObjectModel[tobj[prop]._name]();
+        
+        // forEach field in fields list, populate newObj
+        var i = tobj.fields[tobj[prop]._name].length;
+        while( i-- ) {
+            var fldnm = tobj.fields[tobj[prop]._name][i];
+            if(tobj[prop]._props[fldnm] !== undefined) {
+                //console.log( "Set " + fldnm + " to " + tobj[prop]._props[fldnm]);
+                newObj.set( fldnm, tobj[prop]._props[fldnm]);
+            }
+        }
+        
+        //pushback sObject
+        //console.log("Pushing back " + newObj.Name);
+        newObj.update( function(err, records, evt){
+            if( err ) {
+                // handle error
+                console.log(err.message);
+                console.log(JSON.stringify(evt));
+            } else {
+                // retrieve updated object
+                tobj.get(prop, id);
+            };
+        });
+        */
+    };
+    
+    obj.prototype.saveAll = function(prop) {
+        var tobj = this;
+        // check for array of objects
+        if( Array.isArray(tobj[prop]) ) {
+            // loop through array
+            for(var i=0; i<tobj[prop].length; i++ ) {
+                // save each object
+                tobj.saveObj(tobj[prop][i]);    //tobj[prop][i].saveObj();
+            }
+        }
+    };
+    
+    obj.prototype.getFinancingRecordTypes = function() {
+        var tobj = this;
+        
+        tobj.financingRecordTypes = [];
+        //tobj.financingTypes.push({"active":true,"defaultValue":false,"label":"None","value":"None"});
+
+        // get picklist values from Salesforce
+        CPQController.getFinancingRecordTypes( function(result, event){
+            for( var i=0; i<result.length; i++ ){
+                tobj.financingRecordTypes.push(result[i]);
+            }
+        });
+
+    };
+    
+    obj.prototype.getFinancingTypes = function() {
+        var tobj = this;
+        
+        tobj.financingTypes = [];
+        tobj.financingTypes.push({"active":true,"defaultValue":false,"label":"None","value": null});
+
+        // get picklist values from Salesforce
+        CPQController.getFinancingTypes( function(result, event){
+            for( var i=0; i<result.length; i++ ){
+                tobj.financingTypes.push(result[i]);
+            }
+        });
+
+    };
+    
+    obj.prototype.getConsumptionProfiles = function() {
+        var tobj = this;
+        
+        tobj.usConProfiles = [];
+        // get picklist values from Salesforce
+        CPQController.getConsumptionProfiles( function(result, event){
+            for( var i=0; i<result.length; i++ ){
+                tobj.usConProfiles.push(result[i]);
+            }
+            //console.log("Consumption Profiles: " + JSON.stringify(tobj.usConProfiles));
+        });
+		
+    };
+    
+    obj.prototype.getStdAdjustmentTypes = function() {
+        var tobj = this;
+        
+        tobj.stdAdjustmentTypes = [];
+        tobj.stdAdjustmentTypes.push({"active":true,"defaultValue":false,"label":"None","value":"None"});
+
+        // get picklist values from Salesforce
+        CPQController.getStdAdjustmentTypes( function(result, event){
+            for( var i=0; i<result.length; i++ ){
+                tobj.stdAdjustmentTypes.push(result[i]);
+            }
+        });
+
+    };
+    
+    obj.prototype.getPromotions = function() {
+        var tobj = this;
+        
+        tobj.promotions = [];
+        var sobj = new SObjectModel['Promotion__c']();
+        var qry = {
+            where: {
+                RecordTypeDeveloperName__c : { eq: 'Standard' }
+            },
+            orderby: [ {Promo_Amount__c: 'DESC'}, {Promo_Amount_W__c: 'DESC'}, {Promo_Amount_Percent__c: 'DESC'}]
+        };
+        
+        tobj.getAll('promotions', qry, sobj);
+        //tobj.getAll('promotions', qry, sobj, function(records){ console.log(JSON.stringify(records)); });
+    };
+    
+    
+    return new obj();
+});
+
+//</script>
+</apex:page>

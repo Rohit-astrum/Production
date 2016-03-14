@@ -1,0 +1,425 @@
+<apex:page doctype="html-5.0" controller="EmployeeLandingPageController" showHeader="false" sidebar="false" standardStyleSheets="false">
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+        <title>Solarize Mass Home Solar Panels Lower Your Utility Bill</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--<meta name="google-site-verification" content="vzNX2Vizola_A88N5vjQ-RSIrMiUp7RwHup00Y9wdNA" />-->
+        <meta name="description" content="Turn your Lexington-Bedford roof into a clean utility plant. All installations are done through Astrum Solar, Lexington-Bedford's sole source Solarize installer." />
+        <meta name="keywords" content="Astrum Solar, Solarize Mass, Solarize Mass Lexington-Bedford, Lexington-Bedford solar, Lexington-Bedford home solar, Lexington-Bedford solar company" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0" /> -->
+    </meta>
+    
+    <link rel="Shortcut Icon" href="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/favicon.ico')}" />
+    
+    <apex:insert name="head-top"/>
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'fonts/avenir1stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'fonts/avenir2stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'fonts/avenir3stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'fonts/avenir4stylesheet.css')}" media="screen, projection" type="text/css" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'styles/screen.css')}" media="screen, projection" type="text/css" /> 
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <style type="text/css">
+         .gradient {
+            filter: none;
+     }
+    </style>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'javascript/plugins.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'javascript/scripts.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'javascript/jquery.maskedinput.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'javascript/jquery.validate.js')}"></script>
+    <script src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'javascript/jquery.cookie-new.js')}"></script>
+    
+    <script type="text/javascript">
+    
+        function getURLParam(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
+            );
+        }
+        
+        var a_gclid = getURLParam('gclid');
+        var a_utmSource = getURLParam('utm_source');
+        var a_utmMedium = getURLParam('utm_medium');
+        var a_utmTerm = getURLParam('utm_term');
+        var a_utmCampaign = getURLParam('utm_campaign');
+        var a_utmContent = getURLParam('utm_content');
+        
+        if (a_gclid!=''){
+        $.cookie('apex__gclid', a_gclid, { expires: 30, path: '/' });
+        }
+        if (a_utmSource!=''){
+        $.cookie('apex__astrum_utm_source', a_utmSource, { expires: 30, path: '/' });
+        }
+        if (a_utmMedium!=''){
+        $.cookie('apex__astrum_utm_medium', a_utmMedium, { expires: 30, path: '/' });
+        }
+        if (a_utmTerm!=''){
+        $.cookie('apex__astrum_utm_term', a_utmTerm, { expires: 30, path: '/' });
+        }
+        if (a_utmCampaign!=''){
+        $.cookie('apex__astrum_utm_campaign', a_utmCampaign, { expires: 30, path: '/' });
+        }
+        if (a_utmContent!=''){
+        $.cookie('apex__astrum_utm_content', a_utmContent, { expires: 30, path: '/' });
+        }
+    
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        $.cookie();
+        }
+    </script>
+
+
+    <apex:insert name="head-bottom"/>
+
+</head>
+
+<body>
+
+    <div id="main-container">
+    <div id="body-container">
+    
+        <div id="header">
+            <p class="acc"><a href="#content" title="Skip to content">Skip to content</a></p>
+            <header role="banner" class="wrapper group">
+                <hgroup>
+                    <h1 id="logo"><a href="http://www.astrumsolar.com" title="Astrum Solar"><span>Astrum Solar</span></a></h1>
+                    <h2 id="logo2"><a href="http://www.masscec.com/solicitations/solarize-lexington-bedford" title="Solarize Mass: Lexington-Bedford"><span>Solarize Mass: Lexington-Bedford</span></a></h2>
+                </hgroup>
+                <div id="UpperRightNav">
+                     <h2><span>Call Us: 800-903-6130</span></h2>
+                     <h3><span>See a Sunny Day in a Whole New Way</span></h3>
+                     
+                </div>
+            </header>
+        </div>
+    
+        <div id="content" role="main">
+            <div class="wrapper group"> 
+                <article>
+                    <section id="main" class="group MainBackground">
+                        <div class="content-container">
+                            <h2 class="first">Join Us and Together We Can Solarize</h2>
+                            <h2 class="second">Lexington-Bedford</h2>
+                            <div id="tab-content">
+        
+                                <!--BEGIN TAB ONE-->
+                                <div id="home">
+        
+                                    <!--Logo Left-->
+                                    <div class="logo-spot logo no-border">
+                                        <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/Logos_MassCEC_DOER.gif')}" title="Solarize Lexington-Bedford is a collaboration between MassCEC and the DOER and Local Volunteers" />
+                                        <p>Solarize Lexington-Bedford is a collaboration between MassCEC and the DOER and Local Volunteers.</p>                        
+                                   </div>
+                                    <!--END Logo Left-->
+                                    
+                                            
+                                    <apex:insert name="home-image">
+                                        <p class="annotation left">Dan and Ruth, 7 kW System &mdash; ELECTRICITY SAVINGS: $1,247/year</p>
+                       
+                                    </apex:insert>
+                                </div>
+                                <!--END TAB ONE-->
+                                
+                                <!--BEGIN TAB TWO-->
+                                <div id="about">
+                                    <h3>About Solarize Lexington-Bedford</h3>
+                                    <h4>Now is the Time to Switch to Solar Power</h4>
+                                    <div class="pic-content group">
+                                    
+                                     <div class="pic-details">
+                                     <p><img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/installation.jpg')}" title="Astrum Solar installation" align="left" />Lexington and Bedford have been selected to participate in Solarize Mass, a program designed to encourage the adoption of home solar power by deploying a coordinated community outreach effort, combined with a tiered pricing structure. The more residents who sign up to install solar, the more the price decreases for everyone who participates in the community. And because the installer, the technology and the exact prices are provided upfront, it is much easier for residents to make the decision to go solar. For more information and to learn whether your house is suitable for solar, sign up for your home assessment.</p>
+                                     <p>Questions? Lexington residents please email <a href="mailto:solarizelexington@gmail.com">solarizelexington@gmail.com</a> and Bedford residents please email <a href="mailto:solarizebedford@gmail.com">solarizebedford@gmail.com</a>.</p>
+                                      <p>Sign up for a site survey on this site. For events and more information, visit: <a href="http://www.masscec.com/solicitations/solarize-lexington-bedford">http://www.masscec.com/solicitations/solarize-lexington-bedford</a></p>
+                                      </div>
+                                     </div> 
+                                </div>
+                                <!--END TAB TWO-->
+                                        
+                                <!--BEGIN TAB THREE-->
+                                <div id="customers" class="group">
+                                <h3>Meet Our Customers</h3>
+                                    <ul id="slideshow" class="group">
+                                        <li>
+                                            <h3>The Altman Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,377</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/altman.jpg')}" class="one" title="Altman" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">I had to sell my wife a bit on the idea. She had some aesthetic concerns. To me, solar panels are a complete no-brainer.&rdquo;</p>
+                                                    <p class="author">&mdash; Wayne and Vanna</p>
+                                                    <p class="author small">6.975 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Goldberg Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $683</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/goldberg.jpg')}" class="one" title="Goldberg" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Our solar panels were cash-flow positive from day one. It&rsquo;s like we&rsquo;re getting our electricity for free!&rdquo;</p>
+                                                    <p class="author">&mdash; Avrum and Shelia</p>
+                                                    <p class="author small">3.96 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Papandrea Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,414</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/papandrea.jpg')}" class="one" title="Papandrea" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Our solar panels were shockingly affordable.&rdquo;</p>
+                                                    <p class="author">&mdash; Tony and Karen</p>
+                                                    <p class="author small">9.6 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Vesay Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,805</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/vesay.jpg')}" class="one" title="Vesay" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Last summer, before solar, our electric bill was $300 a month. This summer our bill ranged from $40 to 60 a month.&rdquo;</p>
+                                                    <p class="author">&mdash; Dave and Michelle</p>
+                                                    <p class="author small">10.08 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Rogus Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,304</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/rogus.jpg')}" class="one" title="Rogus" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Astrum offered the best technology. They quoted exactly what we wanted without compromise.&rdquo;</p>
+                                                    <p class="author">&mdash; Mei and Joseph</p>
+                                                    <p class="author small">9.36 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--END TAB THREE-->
+                                    
+                            </div>
+                        </div>
+        
+                        <div class="form-container">
+                            <div class="referredBy"><p><apex:insert name="referred-by"/></p></div>
+                            <!--BEGIN TAB NAV-->
+                            <ul id="tabs" class="group">
+                                <li class="home"><a href="javaScript:void(0);" title="Home" id="home-btn"><img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, 'images/home-btn.png')}" title="Home" /></a></li>
+                                <li><a href="javaScript:void(0);" title="About Solarize Lexington-Bedford" id="about-btn">About Solarize<br/>Lexington-Bedford</a></li>
+                                <li><a href="javaScript:void(0);" title="Meet Our Customers" id="customers-btn">Meet<br />Our Customers</a></li>
+                            </ul>
+                            <!--END TAB NAV-->
+        
+                            <!--BEGIN FORM-->
+                            <div id="form">
+                                <apex:form styleClass="save-form">
+        
+        <apex:actionRegion >
+    
+        <apex:outputPanel id="formArea" layout="block">
+        
+            <apex:outputPanel rendered="{!NOT(submitted=true)}">
+    
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <legend>Find Out How Much You Can Save</legend>
+            <ul>
+                <li class="fname">
+                    <label for="fname" class="acc">First Name</label>
+                    <input type="text" id="fname" name="fname" value="First Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="lname">
+                    <label for="lname" class="acc">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="Last Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="email">
+                    <label for="email" class="acc">Email Address</label>
+                    <input type="text" id="email" name="email" value="Email Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="phone">
+                    <label for="phone" class="acc">Phone</label>
+                    <input type="text" id="phone" name="phone" value="Phone" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="street">
+                    <label for="street" class="acc">Street Address</label>
+                    <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="city">
+                    <label for="city" class="acc">City</label>
+                    <input type="text" id="city" name="city" maxlength="100" value="City" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="state">
+                    <label for="state" class="acc">State</label>
+                    <select id="state" name="state" class="noPlaceholder required" >
+                      <apex:repeat value="{!mastates}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>                      
+                    </select>
+                </li>
+                <li class="zip">
+                    <label for="zip" class="acc">Zip</label>
+                    <input type="text" id="zip" name="zip" value="Zip" placeholder="" class="noPlaceholder" />
+                </li>
+                
+               
+                
+                
+                <li class="heard">
+                    <label for="heard" class="acc">How Did You Hear About Us? </label>
+                    <apex:outputPanel layout="block" id="abourUsSelect">
+                        <select id="heard" name="heard" class="noPlaceholder notSelected">
+                            <option value="">How Did You Hear About Us? </option>
+                            <apex:repeat value="{!ctleadSources}" var="u"><option value="{!u.value}">{!u.label}</option></apex:repeat>
+                        </select>
+                    </apex:outputPanel>
+                </li>
+                
+                <li id="more-info" class="heard_detail" style="display: none;">
+                    <label class="acc" for="heard_detail">More Details</label>
+                        <input type="text" class="noPlaceholderMoreDetails" placeholder="" value="" name="heard_detail" id="heard_detail" />
+                    </li>
+                <li class="errorMessage">
+                    <p>Please complete all required fields.</p>
+                </li>
+                 
+                
+                <li class="submit">
+                    <input type="submit" value=""  class="button" id="submit-btn" />
+                </li>
+                <li class="updates group">
+                    <label for="updates" class="acc">I want to receive alerts &amp; Solarize program updates from Astrum Solar.</label>
+                    <input type="checkbox" id="updates" name="updates" value="yes" checked="yes" />
+                    <p>I want to receive alerts &amp; Solarize program updates from Astrum Solar.</p>
+                </li>
+            </ul>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!OR(submitted==true)}">
+                <h2>Find Out How Much You Can Save</h2>
+                <h3>Thank You</h3>
+                <p class="thanks">Thank you for requesting a solar consultation. One of our solar experts will <span>contact you within the next 48 hours</span> to 
+                follow up on your request for a no obligation home solar site assessment.</p>
+
+                <p class="thanks icon"><img src="{!URLFOR($Resource.SolarizeLexingtonBedfordLandingPage_Resources, '/images/Form_KnowledgeIcon.png')}" alt="Lightbulb"/>To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.</p>
+    
+                <p class="thanks"><span>We hope to have the opportunity to help you go solar.</span></p>
+    
+            </apex:outputPanel>
+        
+        </apex:outputPanel>
+
+        <apex:actionFunction name="doSubmit" action="{!submit}" rerender="formArea"/>
+        
+        </apex:actionRegion>
+            <input type="hidden" id="communityprogram" name="communityprogram" value="Solarize Lexington-Bedford"/>
+
+        </apex:form>
+                            </div>
+        <div class="call-to-action">
+                        <p class="promo-text">158 homeowners have already gone solar!</p>
+                     </div>
+                            
+                        </div>
+                    </section>
+                    
+                   <!--<section id="event-content" class="group">
+                       <div class="event-content-left">
+                            <h2>Meet the Installer Night</h2>
+                             <h3>Monday, February 24 from 7:00pm to 9:00pm</h3>
+                        </div>
+                        <div class="event-content-right">
+                            <p class="location">Cary Memorial Building<br/>Battin Hall</p> 
+                            <p class="locationdetail">1605 Massachusetts Ave.</p> 
+                            <p class="locationdetail">Lexington, MA</p>
+                        </div>
+                    </section>-->
+                    
+                   <!--<section id="event-content-2" class="group">
+                       <div class="event-content-left">
+                            <h2>Lexington Meet the Installer Night</h2>
+                            <h3>Monday, February 24 from 7:00pm to 9:00pm</h3>
+                            <p class="location">Cary Memorial Building, Battin Hall</p> 
+                            <p class="locationdetail">1605 Massachusetts Ave &nbsp;|&nbsp; Lexington, MA</p>
+                        </div>
+                        <div class="event-content-right">
+                            <h2>Bedford Meet the Installer Night</h2>
+                            <h3>Thursday, March 6 from 7:00pm to 9:00pm</h3>
+                            <p class="location">Bedford Town Hall, Multi-Purpose Room</p> 
+                            <p class="locationdetail">10 Mudge Way &nbsp;|&nbsp; Bedford, MA</p>
+                        </div>
+                    </section>-->
+                    
+                    <section id="landing-content" class="group">
+                       <div class="landing-detail">
+                            <p class="marketing-content">Every Lexington or Bedford resident who enrolls in the Solarize Mass program saves even more when additional community members sign up for solar. Together we can take advantage of extra discounts available at the best pricing tier. <span>Astrum Solar is continuing to honor the group pricing through October 31, 2014. Request your no obligation home solar site assessment today.</span></p>
+                        </div>
+                        <div class="landing-detail-2">
+                            <p class="marketing-content">Astrum Solar is proud to have helped thousands of homeowners become clean energy producers. Switch to solar today and instantly free yourself from unpredictable energy costs. Astrum Solar makes it so easy and rewarding that you have nothing to lose &mdash; and a lifetime of carefree energy savings to gain. <span>To get started with Solarize Lexington-Bedford, request your no obligation home solar site assessment today.</span></p>
+                        </div>
+                        <div class="landing-cta">
+                            <p>Astrum Solar is Solarize Lexington-Bedford&rsquo;s sole source installer.</p>
+                            <p class="pic"><img src="{!URLFOR($Resource.SolarizeNeedhamLandingPage_Resources, 'images/Inc500No2_2012.gif')}" title="" /></p>
+                            <p class="pic"><a id="bbblink" class="ruvtbus" href="http://www.bbb.org/greater-maryland/business-reviews/solar-energy-system-design-and-installation/astrum-solar-in-annapolis-junction-md-90168289#bbbseal" title="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" style="display: block;position: relative;overflow: hidden; width: 40px; height: 72px; margin: 0px; padding: 0px;"><img style="padding: 0px; border: none;" id="bbblinkimg" src="http://seal-greatermd.bbb.org/logo/ruvtbus/astrum-solar-90168289.png" width="80" height="72" alt="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" /></a><script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-greatermd.bbb.org' + unescape('%2Flogo%2Fastrum-solar-90168289.js') + "' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                        </div>
+                    </section>
+                        
+                </article>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <footer role="contentinfo" class="container group">
+                <div id="copyright">
+                    <p>Copyright &copy; {!YEAR(TODAY())} Astrum Solar, Inc.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/" title="Astrum Solar website">AstrumSolar.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/terms-and-conditions" title="Terms and Conditions">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/contact-us" title="Contact Us">Contact Us</a></p>
+                </div>
+
+
+                <!--<p class="promoDisclaimer">* The first ten (10) community members to sign a solar contract with Astrum Solar under the program will receive an additional $1,000 Cash Back for leading the way.</p>-->
+                
+               <p class="companyDisclaimer">You must be a Lexington, MA or Bedford, MA resident to participate in this program. A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Solarize Mass, Massachusetts Clean Energy Center, Massachusetts Department of Energy Resources or any affiliate thereof, should be deemed to arise through the use of such names and marks. MA HIC 168228</p>
+               
+                
+            </footer>
+
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
+</apex:page>

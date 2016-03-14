@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumPM - Circuit Breaker Panel - This is an object to keep track of the panels available on a utility service to which System Design Arrays can be attached.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Bus_Rating_Amps__c</fullName>
+        <description>What Current is This Panel&apos;s Bus Rated For</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What Current is This Panel&apos;s Bus Rated For?</inlineHelpText>
+        <label>Bus Rating (Amps)</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Count_of_Open_Circuits__c</fullName>
+        <description>Number of Open Circuits in CB Panel available</description>
+        <externalId>false</externalId>
+        <label>Count of Open Circuits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Main_Breaker_Rating_Amps__c</fullName>
+        <description>What Current is This Panel&apos;s Main Breaker Rated For</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What Current is This Panel&apos;s Main Breaker Rated For?</inlineHelpText>
+        <label>Main Breaker Rating (Amps)</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maximum_Available_Solar_Connection__c</fullName>
+        <externalId>false</externalId>
+        <formula>(Bus_Rating_Amps__c * 1.2) -  Main_Breaker_Rating_Amps__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Maximum Available Solar Connection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_Required_Solar_Available_Amps__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Required Solar Available Amps</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Panel_Location__c</fullName>
+        <description>Where is this CB Panel Located?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Where is this CB Panel Located?</inlineHelpText>
+        <label>Panel Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_CB_Panel__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Parent CB Panel</label>
+        <referenceTo>CB_Panel__c</referenceTo>
+        <relationshipLabel>CB Panels</relationshipLabel>
+        <relationshipName>CB_Panels</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <description>Property Where This CB Panel is Located</description>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( Utility_Service__r.Property__r.Id , Utility_Service__r.Property__r.Name )</formula>
+        <inlineHelpText>Property Where This CB Panel is Located</inlineHelpText>
+        <label>Property</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upgrade_Required__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Minimum_Required_Solar_Available_Amps__c &gt;  Maximum_Available_Solar_Connection__c , true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Upgrade Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Upgrade_Valid__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Minimum_Required_Solar_Available_Amps__c  &gt;  Upgraded_Maximum_Available_Solar_Connect__c , FALSE , TRUE)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Upgrade Valid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Upgraded_Bus_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Upgrade_Required__c , IF( Bus_Rating_Amps__c &lt;= 225 , 225 , Bus_Rating_Amps__c ),NULL)</formula>
+        <label>Upgraded Bus Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upgraded_Main_Breaker_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Upgraded_Bus_Rating__c == NULL, NULL , IF(Upgraded_Bus_Rating__c == 225 , IF (Main_Breaker_Rating_Amps__c  &lt;= 150 , 150 ,  Main_Breaker_Rating_Amps__c ), Main_Breaker_Rating_Amps__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Upgraded Main Breaker Rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upgraded_Maximum_Available_Solar_Connect__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Upgraded_Bus_Rating__c * 1.2) -  Upgraded_Main_Breaker_Rating__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Upgraded Maximum Available Solar Connect</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility_Service__c</fullName>
+        <description>Meter ID of the Utility Service This CB Panel is connected to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Meter ID of the Utility Service This CB Panel is connected to.</inlineHelpText>
+        <label>Meter ID</label>
+        <referenceTo>Utility_Service__c</referenceTo>
+        <relationshipLabel>CB Panels</relationshipLabel>
+        <relationshipName>CB_Panels</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>CB Panel</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>CB Panel Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>CB Panels</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Property__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Utility_Service__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Parent_CB_Panel__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LAST_UPDATE</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

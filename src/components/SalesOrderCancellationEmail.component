@@ -1,0 +1,15 @@
+<apex:component controller="SalesOrderCancellationEmailController" access="global" >
+    <apex:attribute name="salesorder" description="salesorder Id" type="String" required="required" assignTo="{!salesorderId}"/>
+    <html>
+        <body>
+            <p> Hello,</p>
+            <p> Please note that Sales Order {!salesOrderInfo.salesOrderNumber} is cancelled.</p>
+        
+            <ul style="list-style:none">
+            <li>Account: {!salesOrderInfo.accountName} </li>
+            <li>PM Project: {!salesOrderInfo.projectName}</li>
+            <li>Comments: {!salesOrderInfo.comments}</li>    
+            </ul>            
+        </body>        
+    </html>
+</apex:component>

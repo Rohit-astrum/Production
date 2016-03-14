@@ -1,0 +1,137 @@
+<apex:page standardController="Installed_System__c"
+	extensions="Installed_Systems_Controller_Extension" showHeader="true">
+
+	<style type="text/css">
+.Summary {
+	text-align: right;
+	border: 0px solid #D4DADC;
+	padding-left: 0px;
+	border-spacing: 0px;
+}
+
+body .pbBody table.list tr th {
+	border: 0px;
+}
+</style>
+
+	<apex:tabPanel switchType="client" selectedTab="tabdetails"
+		id="InstalledSystemsTabPanel">
+
+		<apex:tab label="Overview" name="overview" id="overView">
+
+			<apex:pageBlock id="pageBlock" title="Overview">
+
+				<apex:pageBlockSection >
+					<apex:image url="{!URLFOR($Resource.defaultimage,'logosys.gif')}"
+						width="350px" style="margin-left:120px" />
+					<apex:image url="{!URLFOR($Resource.defaultimage,'logosysdes.gif')}"
+						width="350px" />
+				</apex:pageBlockSection>
+
+				<apex:pageBlockSection title="Gauranteed vs Actual Production"
+					columns="1">
+
+					<apex:image url="{!SysGrntURL}" />
+
+				</apex:pageBlockSection>
+
+				<apex:pageBlockSection title="Production History" columns="1">
+
+					<center>
+						<apex:image url="{!SRECChartURL}" />
+					</center>
+
+				</apex:pageBlockSection>
+
+				<apex:pageBlockSection title="Projected vs Actual SRECS" columns="1">
+					<apex:variable var="count" value="0" />
+					<apex:variable var="tempYear" value="str" />
+					<apex:pageBlockTable value="{!ProductionHistory}" var="item"
+						footerClass="Summary">
+
+						<apex:column headerValue="Year" style="width=50px;">
+							<apex:outputLabel value="{!item.year}"
+								rendered="{!tempYear != item.year}" />
+							<apex:variable var="tempYear" value="{!item.year}" />
+
+							<apex:facet name="footer">
+								<apex:outputText value="Total"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="Month" value="{!item.month}">
+						</apex:column>
+
+						<apex:column headerValue="Annual Guarantee"
+							value="{!item.annlgrnt}" style="text-align:right;">
+						</apex:column>
+
+						<apex:column headerValue="kWh(Guaranteed)"
+							value="{!item.monthgrnt}" style="text-align:right;">
+							<apex:facet name="footer">
+								<apex:outputText value="{!prodSummary.monthgrnt}"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="kWh(Actual)" value="{!item.monthactl}"
+							style="text-align:right;">
+							<apex:facet name="footer">
+								<apex:outputText value="{!prodSummary.monthactl}"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="kWh(Difference)"
+							value="{!item.monthproddiff}" style="text-align:right;">
+							<apex:facet name="footer">
+								<apex:outputText value="{!prodSummary.monthproddiff}"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="Production Guarantee Perfomance(%)"
+							value="{!ROUND(item.monthprodperf,1)} %"
+							style="background:{!IF(item.monthprodperf < 0.0,'#EF4839','#61AF3F')};text-align:right;">
+							<apex:facet name="footer">
+								<apex:outputText value="{!ROUND(prodSummary.monthprodperf,1)} %"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="SREC(Projected)"
+							value="{!item.monthprojsrec}" style="text-align:right;">
+
+							<apex:facet name="footer">
+								<apex:outputText value="{!prodSummary.monthprojsrec}"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="SREC(Actual)"
+							value="{!item.monthactlsrec}" style="text-align:right;">
+
+							<apex:facet name="footer">
+								<apex:outputText value="{!prodSummary.monthactlsrec}"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<apex:column headerValue="SREC(Difference)"
+							value="{!item.monthsrecdiff}"
+							style="background:{!IF(item.monthsrecdiff< 0.0,'#EF4839','#61AF3F')};text-align:right;">
+
+							<apex:facet name="footer">
+								<apex:outputText value="{!prodSummary.monthsrecdiff}"></apex:outputText>
+							</apex:facet>
+						</apex:column>
+
+						<!-- footer for summary row-->
+						<apex:facet name="footer">
+
+						</apex:facet>
+
+					</apex:pageBlockTable>
+
+				</apex:pageBlockSection>
+
+			</apex:pageBlock>
+
+		</apex:tab>
+
+	</apex:tabPanel>
+</apex:page>

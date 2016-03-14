@@ -1,0 +1,17 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false">
+
+<html>
+<head>
+<!-- forces Google Chrome Frame --> 
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+</head>
+<body>
+
+<c:DocumentBin binName="{!$CurrentPage.parameters.binName}" 
+			   projectId="{!$CurrentPage.parameters.id}"
+			   appName="{!$CurrentPage.parameters.appName}"/>
+
+</body>
+</html>
+
+</apex:page>

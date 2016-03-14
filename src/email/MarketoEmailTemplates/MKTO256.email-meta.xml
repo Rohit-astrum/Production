@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Lead Autoresponses.DE Solar: Mass Solar Connect Autoresponse</name>
+    <style>none</style>
+    <subject>Thank you for requesting your free solar consultation</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://go.directenergysolar.com/mass-solar-connect&gt;
+
+Mass Solar Connect
+&lt;http://www.masssolarconnect.org&gt;
+
+Thousands of Customers Have Switched to Solar!
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for requesting your free solar consultation through the Mass Solar Connect program.
+
+One of our solar experts will contact you within the next 48 hours to follow up on your request for a no obligation home solar site assessment. To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.
+
+There has never been a better time to go solar. Direct Energy Solar offers cash purchase, monthly payment, and purchase financing options—we have an option to meet your specific needs. We hope to have the opportunity to help you go solar.
+
+
+Let Direct Energy Solar help you understand your solar options. Download your free guide!
+
+We’re pleased to offer you our downloadable guide which will help you better understand the benefits of going solar, financing options available, and the factors that influence the amount of your financial return. Plus, much more!
+Download your free copy of “Your Guide to Understanding Solar Power.” &lt;http://pages.directenergysolar.com/rs/astrumsolarinc/images/DirectEnergySolar_UnderstandingSolarPower.pdf&gt;
+
+
+Hear from our satisfied customers.
+
+“It started out with,‘Wouldn’t it be cool to do this,’ but then I saw how quickly this would pay out.”
+
+Dale and Janice, Derwood, MD
+ELECTRICITY SAVINGS: $1,202/yr
+
+Thousands of Direct Energy Solar customers are harnessing the sun’s full potential for their homes and saving money on electricity. Read their stories. &lt;http://www.directenergysolar.com/customer-stories&gt;
+
+
+Mass Solar Connect is a partnership between Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumers Alliance (Mass Energy) and Direct Energy Solar.
+&lt;http://www.masscec.com&gt;
+&lt;http://www.massenergy.org&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Mass Solar Connect.
+
+The Mass Solar Connect program is open to Mass Energy members and members of affiliated nonprofits but Direct Energy Solar’s low pricing is only guaranteed for the first 200 people to sign contracts. The enrollment period begins March 2, 2015 and lasts through August 31, 2015. Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details. Brand names and product names are trademarks or services marks of their respective holders. No obligation of Massachusetts Clean Energy Center (MassCEC), Mass Energy Consumer Alliance (Mass Energy) or any affiliate thereof, should be deemed to arise through the use of such names and marks.
+
+MA HIC 168228/ELC 21555A
+
+Direct Energy Solar
+ 15 Avenue E
+ Hopkinton, MA 01748
+ P: 800-903-6130
+ F: 508-302-7994
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

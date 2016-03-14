@@ -1,0 +1,10 @@
+<!-- 
+   FILE: SystemDesignASTRUMReCall
+ * AUTHOR: Rohit Jain
+ * DATE: Sep 24, 2013
+ * PURPOSE: ASTRUM Web Service Callout for Site Quality Called from Button on System Design
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="System_Design__c" extensions="SystemDesignASTRUMReCallExtension" action="{!reCallASTRUM}">  
+
+</apex:page>

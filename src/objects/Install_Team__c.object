@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumTIME - Teams of Employees for Installations (either Installers or Electricians).</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Number_Of_Projects_Ahead_of_Budget__c</fullName>
+        <description>Number of Projects Currently Within Budgeted Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Projects Currently Within Budgeted Hours</inlineHelpText>
+        <label>Number Of Projects Ahead of Budget</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Projects_Behind_Budget__c</fullName>
+        <description>Number of Projects Currently Beyond Budgeted Hours</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Projects Currently Beyond Budgeted Hours</inlineHelpText>
+        <label>Number of Projects Behind Budget</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Employee Who Leads This Team</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Employee Who Leads This Team</inlineHelpText>
+        <label>Team Lead</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>Employee__c.Job_Title__c</field>
+                <operation>contains</operation>
+                <value>Lead</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Install Teams</relationshipLabel>
+        <relationshipName>Install_Teams</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Team_Office__c</fullName>
+        <description>This Team&apos;s Home Office</description>
+        <externalId>false</externalId>
+        <formula>Team_Lead__r.Home_Office_Location__r.City__c + &apos;, &apos; + Team_Lead__r.Home_Office_Location__r.State__c</formula>
+        <inlineHelpText>This Team&apos;s Home Office</inlineHelpText>
+        <label>Team Office</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Team_Type__c</fullName>
+        <description>Is this an INSTALLER or ELECTRICIAN Team?</description>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(TEXT(Team_Lead__r.Job_Title__c), &apos;Installer&apos;),&apos;INSTALLER&apos;,  IF(CONTAINS(TEXT(Team_Lead__r.Job_Title__c), &apos;Electrician&apos;),&apos;ELECTRICIAN&apos;,&apos;OTHER&apos;))</formula>
+        <inlineHelpText>Is this an INSTALLER or ELECTRICIAN Team?</inlineHelpText>
+        <label>Team Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Number_of_Hours_Ahead_Behind__c</fullName>
+        <description>Total Number of Hours Ahead/Behind on Projects This Quarter</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Number of Hours Ahead/Behind on Projects This Quarter</inlineHelpText>
+        <label>Total Number of Hours Ahead/Behind</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Install Team</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Team_Office__c</columns>
+        <columns>Team_Lead__c</columns>
+        <columns>NAME</columns>
+        <columns>Number_Of_Projects_Ahead_of_Budget__c</columns>
+        <columns>Number_of_Projects_Behind_Budget__c</columns>
+        <columns>Total_Number_of_Hours_Ahead_Behind__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Install Team Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Install Teams</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Team_Lead__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Team_Office__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Number_Of_Projects_Ahead_of_Budget__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Number_of_Projects_Behind_Budget__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Total_Number_of_Hours_Ahead_Behind__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Team_Lead__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Team_Lead__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Team_Lead_Required</fullName>
+        <active>false</active>
+        <description>A team lead is required for the install team.</description>
+        <errorConditionFormula>NOT(CONTAINS(TEXT(Team_Lead__r.Job_Title__c), &apos;Lead&apos;))</errorConditionFormula>
+        <errorDisplayField>Team_Lead__c</errorDisplayField>
+        <errorMessage>A team lead is required for the install team.</errorMessage>
+    </validationRules>
+</CustomObject>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Use this e-mail to request an electric bill in LIPA</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>SalesLetterhead</letterhead>
+    <name>Long Island - Request Electric Bill</name>
+    <style>formalLetter</style>
+    <subject>Direct Energy Solar: what’s next!</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+It was great talking to you today about Direct Energy  Solar and how you might qualify for our free installation to take control of unpredictable electricity bills. Thanks for taking the time to learn about us and how you can become your own energy provider.
+
+As we discussed in our conversation, we&apos;re eager to conduct an on-site survey of your roof. In order to schedule this survey for you, we need to look at your usage. To get this information to us, call LIPA at 800-692-2626 option 2 and make sure you have your account number ready.
+
+The information we need is the total kWh used in the past 12 months.
+
+Once you have this information, send in a copy of your last LIPA bill, together with the total amount of kWh used. below are options to send in your bill:
+
+If you have on-line access to your account, you can save a copy of your bill on your computer, usually as an Adobe pdf. You can then e-mail this copy attached to the reply to me.
+
+If you don’t have on-line access, you can scan a paper copy of your bill and attach the scanned image or pdf to the reply to me.
+
+Should neither of these options work for you then you can fax a copy to (800) 949-1408. Please make sure you write my name on the first page of the fax, so I may identify it.
+
+Once we have received your usage, we will schedule your survey. You do not have to be home for the survey. The surveyor will take care of everything and will inform you before they come to visit, just to remind you.
+
+We are exclusively a home solar provider, so you can trust we’ll handle your solar installation and service the right way.
+
+Congratulations on taking this first step toward becoming energy independent!
+
+Again, thanks for your time and your interest in Direct Energy Solar!
+Best regards,
+
+{!User.FirstName}
+7101 Riverwood Drive 
+Columbia, MD 21046
+P: 800-903-6130
+F: 800-949-1408
+directenergysolar.com
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+© 2016 Direct Energy. All Rights Reserved.</textOnly>
+    <type>html</type>
+</EmailTemplate>

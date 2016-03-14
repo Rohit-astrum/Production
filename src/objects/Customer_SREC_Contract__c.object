@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>SREC Contract with Customer for an Installed System</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account on Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account on Contract</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Customer SREC Contracts</relationshipLabel>
+        <relationshipName>Customer_SREC_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date__c</fullName>
+        <description>Contract End Date</description>
+        <externalId>false</externalId>
+        <formula>Contract_Start_Date__c  + ((Contract_Term_months__c /12)*365)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Contract End Date</inlineHelpText>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Execution_Date__c</fullName>
+        <description>Date Contract Was Signed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Contract Was Signed</inlineHelpText>
+        <label>Contract Execution Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Start_Date__c</fullName>
+        <description>Contract Start Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract Start Date</inlineHelpText>
+        <label>Contract Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Open</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Expired</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Renewed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Term_months__c</fullName>
+        <description>Contract Length in Months</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract Length in Months</inlineHelpText>
+        <label>Contract Term (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Type__c</fullName>
+        <description>Contract Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Contract Type</inlineHelpText>
+        <label>Contract Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Brokerage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Upfront</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yearly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Estimated_Annual_Production__c</fullName>
+        <externalId>false</externalId>
+        <formula>Sales_Order__r.Projected_Annual_SRECs_UnTruncated__c *1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Estimated Annual Production</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Installed System Related To This Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Installed System Related To This Contract</inlineHelpText>
+        <label>Installed System</label>
+        <referenceTo>Installed_System__c</referenceTo>
+        <relationshipLabel>Customer SREC Contracts</relationshipLabel>
+        <relationshipName>Customer_SREC_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PA_Yearly_Contract_Trigger_Amount__c</fullName>
+        <description>PA Yearly Contract Trigger Amount ($)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PA Yearly Contract Trigger Amount ($)</inlineHelpText>
+        <label>PA Yearly Contract Trigger Amount ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>PA_Yearly_Contract_Trigger_Reset__c</fullName>
+        <description>PA Yearly Contract Trigger Reset Amount (%)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PA Yearly Contract Trigger Reset Amount (%)</inlineHelpText>
+        <label>PA Yearly Contract Trigger Reset (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Terms__c</fullName>
+        <description>How Often Is Astrum Supposed to Be Paying The Customer on this Contract?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How Often Is Astrum Supposed to Be Paying The Customer on this Contract?</inlineHelpText>
+        <label>Payment Terms</label>
+        <picklist>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Semi-annual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Registry_Unit_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>SREC_Registry_Unit__r.Unit_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Registry Unit ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Fund__c</fullName>
+        <description>Who Owns The SRECs Generated on this Contract?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Who Owns The SRECs Generated on this Contract?</inlineHelpText>
+        <label>SREC Fund</label>
+        <picklist>
+            <picklistValues>
+                <fullName>EJF</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Exvor Fund II</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Skyview</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SREC_Registry_Unit_Record_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>SREC_Registry_Unit__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SREC Registry Unit Record Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SREC_Registry_Unit__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>This is the SREC Registry Unit generating SRECs under the Customer SREC Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the SREC Registry Unit generating SRECs under the Customer SREC Contract</inlineHelpText>
+        <label>SREC Registry Unit</label>
+        <referenceTo>SREC_Registry_Unit__c</referenceTo>
+        <relationshipLabel>Customer SREC Contracts</relationshipLabel>
+        <relationshipName>Customer_SREC_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Sales Order</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sales Order</inlineHelpText>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Customer SREC Contracts</relationshipLabel>
+        <relationshipName>Customer_SREC_Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Upfront_Contract_Amount_kW__c</fullName>
+        <description>Upfront Contract Amount ($/kW)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Upfront Contract Amount ($/kW)</inlineHelpText>
+        <label>Upfront Contract Amount ($/kW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Verified__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This Contract Has Been Checked</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This Contract Has Been Checked</inlineHelpText>
+        <label>Verified</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Yearly_Contract_Terms_Amount__c</fullName>
+        <description>Yearly Contract Terms Amount ($ or %)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Yearly Contract Terms Amount ($ or %)</inlineHelpText>
+        <label>Yearly Contract Terms Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Yearly_Contract_Terms_Type__c</fullName>
+        <description>Yearly Contract Terms Type ($ or %)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Yearly Contract Terms Type ($ or %)</inlineHelpText>
+        <label>Yearly Contract Terms Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>$</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>%</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Customer SREC Contract</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Contract_Term_months__c</columns>
+        <columns>Contract_Start_Date__c</columns>
+        <columns>Contract_Type__c</columns>
+        <columns>Sales_Order__c</columns>
+        <columns>SREC_Fund__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>SREC-CONTRACT-{0000000000}</displayFormat>
+        <label>Customer SREC Contract Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer SREC Contracts</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Brokerage</fullName>
+        <active>true</active>
+        <description>If Brokerage Yearly and Upfront Should be Blank</description>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Contract_Type__c,&apos;Brokerage&apos;), OR(NOT(ISBLANK( PA_Yearly_Contract_Trigger_Amount__c )), NOT(ISBLANK(  PA_Yearly_Contract_Trigger_Reset__c )), NOT(ISBLANK(Upfront_Contract_Amount_kW__c )), NOT(ISBLANK( Yearly_Contract_Terms_Amount__c )), NOT(ISBLANK(    TEXT(Yearly_Contract_Terms_Type__c ))))),TRUE,FALSE)</errorConditionFormula>
+        <errorDisplayField>Contract_Type__c</errorDisplayField>
+        <errorMessage>Brokerage Contracts Cannot Have Upfront or Yearly Fields Populated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Upfront</fullName>
+        <active>true</active>
+        <description>Upfront Contract Cannot Have Yearly Fields Populated</description>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Contract_Type__c,&apos;Upfront&apos;), OR(NOT(ISBLANK( PA_Yearly_Contract_Trigger_Amount__c )), NOT(ISBLANK(  PA_Yearly_Contract_Trigger_Reset__c )), NOT(ISBLANK( Yearly_Contract_Terms_Amount__c )), NOT(ISBLANK(TEXT(Yearly_Contract_Terms_Type__c ))))),TRUE,FALSE)</errorConditionFormula>
+        <errorDisplayField>Contract_Type__c</errorDisplayField>
+        <errorMessage>Upfront Contract Cannot Have Yearly Fields Populated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Yearly</fullName>
+        <active>true</active>
+        <description>Yearly Contract Cannot Have Upfront Fields Populated</description>
+        <errorConditionFormula>IF(AND(ISPICKVAL(Contract_Type__c,&apos;Yearly&apos;), NOT(ISBLANK(Upfront_Contract_Amount_kW__c ))),TRUE,FALSE)</errorConditionFormula>
+        <errorDisplayField>Contract_Type__c</errorDisplayField>
+        <errorMessage>Yearly Contract Cannot Have Upfront Fields Populated</errorMessage>
+    </validationRules>
+</CustomObject>

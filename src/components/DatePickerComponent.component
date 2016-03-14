@@ -1,0 +1,9 @@
+<apex:component controller="DatePickerComponentController">
+    <apex:attribute name="dateFieldId" required="true" type="String" description="id of field to set Date"/>
+ 
+        [ 
+        <apex:outputLink value="javascript:DatePicker.insertDate('{!currentDate}', '{!dateFieldId}', true);">{!currentDate}
+        </apex:outputLink>
+         ]
+ 
+</apex:component>

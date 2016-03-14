@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Setting for pipeline status setting emails: Lead and Opportunity</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>LEAD_EARLY_STAGE_EMAILS_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Flag to enable Lead early stage emails.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Flag to enable Lead early stage emails.</inlineHelpText>
+        <label>LEAD_EARLY_STAGE_EMAILS_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LEAD_LATE_STAGE_EMAILS_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>LEAD_LATE_STAGE_EMAILS_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LEAD_MEDIUM_STAGE_EMAILS_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>LEAD_MEDIUM_STAGE_EMAILS_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OPPORTUNITY_EARLY_STAGE_EMAILS_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>OPPORTUNITY_EARLY_STAGE_EMAILS_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OPPORTUNITY_LATE_STAGE_EMAILS_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>OPPORTUNITY_LATE_STAGE_EMAILS_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OPPORTUNITY_MEDIUM_STAGE_EMAILS_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>OPPORTUNITY_MEDIUM_STAGE_EMAILS_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TEST_MODE_ENABLED__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>TEST_MODE_ENABLED</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Pipeline Status Settings</label>
+</CustomObject>

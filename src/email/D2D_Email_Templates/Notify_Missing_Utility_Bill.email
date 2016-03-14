@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div><font face="arial">The following D2D lead is missing a utility bill:</font></div><div><font face="arial"><br></font></div><div><font face="arial">{!Portal_Referral__c.Full_Name__c}</font></div><div><font face="arial"><br></font></div><div><font face="arial">Please log into the D2D portal and upload a utility bill. A system design cannot be created until a utility bill is uploaded.</font></div>]]></td>
+</tr>
+</table>

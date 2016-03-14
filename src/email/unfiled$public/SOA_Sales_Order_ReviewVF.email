@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="The Sales Order for {!relatedTo.AccountId__r.Name} Requires Your Review" recipientType="User" relatedToType="SCRB_SalesOrder__c">
+<messaging:HtmlEmailBody >
+<html>
+
+<body>
+
+<p>A <strong><a href="https://na8.salesforce.com/{!relatedTo.Id}">Sales Order</a></strong> with the following details has been submitted for your review.</p>
+
+<p><u>Approval Comments</u> : </p>
+<b><c:SalesOrderApprovalHistory sorderId="{!relatedTo.Id}"/></b>
+
+<ul style="list-style:disc">
+    <li>Customer Name  : {!relatedTo.AccountId__r.Name}</li>   
+    <li>City, State of Property  : {!relatedTo.Installation_City__c}, {!relatedTo.Installation_State__c}</li>
+    <li>Total System Size       : {!relatedTo.System_Size_kW__c}</li>
+    <li>Final System Price      : &nbsp; <apex:outputText value="{0, number, currency}"> <apex:param value="{!relatedTo.Amount__c}"/></apex:outputText>    </li>
+    <li>Purchase/Lease      : {!relatedTo.Financing_Type__c}</li>
+    <li>Financing Option      : {!relatedTo.Financing_Option__c}</li>
+    <li>Lease Fund      : {!relatedTo.Lease_PPA_Fund__c}</li>
+    <li>Leasing Option      : {!relatedTo.Leasing_Option__c}</li>
+    <li>Total Panel Count       : <apex:outputText value="{0,number,#,##0}"> <apex:param value="{!relatedTo.Total_Panel_Count__c}"/></apex:outputText></li>
+    <li>Type and Quantity      : {!relatedTo.System_Makeup__c}</li>
+    <li>Hand Off Notes          :  &nbsp;<apex:outputText escape="false" value="{!relatedTo.Hand_Off_Notes__c}" /></li>
+    <li>Sales Order Number      : <u>{!relatedTo.Name}</u></li>   
+</ul>
+
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

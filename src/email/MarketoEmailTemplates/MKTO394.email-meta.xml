@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Our Mission</name>
+    <style>none</style>
+    <subject>Our promise to you.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=ourpromise&amp;utm_campaign=nurtur=&amp;utm_content=ourpromise-logo&gt;
+
+Your Sun. Your Power. Your Way.
+
+Our Promise to You
+
+Solar power is a miracle. That’s how it feels.
+
+This life-giving ball of fire rises in the east and sets in the west every day of every year, and with the simple technology of solar panels on your roof, it can power your entire home with free electricity. No fuels. No emissions. Just free electricity.
+
+{{lead.First Name:default=Friend}}, we have dedicated ourselves to making this miracle come true for you...
+
+...in whatever way makes the most sense for you, your home, and your finances. We want to help you make this happen. In fact, we want to make getting solar power from us one of the most deeply satisfying decisions you’ve ever made.
+
+- We treat each of our customers as individuals and provide no cookie-cutter options.
+
+- We design a custom system for your home, because we want your system to generate maximum energy.
+
+- We make the financing easy, so you can choose what’s best for you.
+
+- We provide you with the best guarantees and will be here to support you through the life of your system.
+
+We are backed by the security of Direct Energy.
+
+We are part of the Direct Energy family of brands, one of the largest suppliers of retail energy and home services in North America, which has long been committed to providing alternatives to traditional utility power. With $19.5 billion in 2014 revenue and nearly five million customers, we have the resources to give you peace of mind that we’ll be here to support your solar system for years to come.
+
+We harness our energy expertise to make a difference in people’s lives. We believe in saving you money. We want to put power back in your hands.
+
+You’ll look up at your roof and marvel that this miracle is paying for your electricity.
+
+That the very same thing that is saving you money every single day is also keeping carbon out of the environment. That while saving money, you’ve become part of a movement to take back control, to lead the charge (yes, pun intended), to change the world.
+
+Every so often, you’ll add up how much Direct Energy Solar has saved you, and you’ll be amazed—and proud—you did it. Was going with Direct Energy Solar a windfall? A profitable investment? A successful protection against rising energy prices? The right thing to do? Yes. Yes. Yes. And yes.
+
+And yes, it will be among the most deeply satisfying decisions you’ve ever made.
+ 
+Learn More About Our Company:
+&lt;http://www.directenergysolar.com/company/our-company?utm_medium=email&amp;utm_source=ourpromise&amp;utm_campaign=nurtur=&amp;utm_content=ourpromise-button-learn&gt;
+
+“They offered the best technology. They quoted exactly what we wanted without compromise.” - Mei and Joseph
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=ourpromise&amp;utm_campaign=nurtur=&amp;utm_content=ourpromise-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=ourpromise&amp;utm_campaign=nurtur=&amp;utm_content=ourpromise-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=ourpromise&amp;utm_campaign=nurtur=&amp;utm_content=ourpromise-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,158 @@
+<apex:page controller="EmployeeLandingPageController" sidebar="false" showHeader="false" standardStylesheets="false" >
+
+<style type="text/css">
+    .req {
+        color: red; 
+    }
+    .invalid {
+        background-color: pink;
+    }
+</style>
+
+<apex:composition template="{!template}">
+
+    <apex:define name="partnername">{!partnerName}</apex:define>
+     <apex:define name="page-headline">
+        <apex:outputText escape="false" value="{0}">
+            <apex:param value="{!pageHeadline}"/>        
+        </apex:outputText>
+    </apex:define>
+    <apex:define name="logo-tagline">
+        <apex:outputText escape="false" value="{0}">
+            <apex:param value="{!logoTagline}"/>        
+        </apex:outputText>
+    </apex:define>
+
+    <apex:define name="partner-logo">
+        <apex:image value="{!URLFOR($Action.Attachment.Download, partnerLogoId)}" style="vertical-align:middle;" rendered="{!NOT(ISNULL(partnerLogoId))}" title="{!JSENCODE(partnerName)}"/>
+    </apex:define>
+    
+    <apex:define name="contact-name">{!contactName}</apex:define>
+    <apex:define name="contact-phone">{!contactPhone}</apex:define>
+    <apex:define name="contact-email">{!contactEmail}</apex:define>
+    
+    <apex:define name="promo-text"><apex:outputText value="{!promoText}" escape="false"/></apex:define>
+    <apex:define name="marketing-content"><apex:outputText value="{!marketingContent}" escape="false"/></apex:define>
+    
+    
+    <apex:define name="leadform">
+
+        <apex:form styleClass="save-form">
+        
+        <apex:actionRegion >
+    
+        <apex:outputPanel id="formArea" layout="block">
+        
+            <apex:outputPanel rendered="{!NOT(submitted=true)}">
+    
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <legend>How Much Can You Save?</legend>
+            <ul>
+                <li class="fname">
+                    <label for="fname" class="acc">First Name</label>
+                    <input type="text" id="fname" name="fname" value="First Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="lname">
+                    <label for="lname" class="acc">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="Last Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="email">
+                    <label for="email" class="acc">Email Address</label>
+                    <input type="text" id="email" name="email" value="Email Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="phone">
+                    <label for="phone" class="acc">Phone</label>
+                    <input type="text" id="phone" name="phone" value="Phone" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="street">
+                    <label for="street" class="acc">Street Address</label>
+                    <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="city">
+                    <label for="city" class="acc">City</label>
+                    <input type="text" id="city" name="city" maxlength="100" value="City" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="state">
+                    <label for="state" class="acc">State</label>
+                    <select id="state" name="state" class="noPlaceholder required" >
+                        <apex:repeat value="{!states}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>
+                    </select>
+                </li>
+                <li class="zip">
+                    <label for="zip" class="acc">Zip</label>
+                    <input type="text" id="zip" name="zip" value="Zip" placeholder="" class="noPlaceholder" />
+                </li>
+                
+               
+                
+                
+                <li class="heard">
+                    <label for="heard" class="acc">How Did You Hear About Us? </label>
+                    <apex:outputPanel layout="block" id="abourUsSelect">
+                        <select id="heard" name="heard" class="noPlaceholder notSelected">
+                            <option value="">How Did You Hear About Us? </option>
+                            <apex:repeat value="{!leadSources}" var="u"><option value="{!u.value}">{!u.label}</option></apex:repeat>
+                        </select>
+                    </apex:outputPanel>
+                </li>
+                
+                <li id="more-info" class="heard_detail" style="display: none;">
+                    <label class="acc" for="heard_detail">More Details</label>
+                        <input type="text" class="noPlaceholderMoreDetails" placeholder="" value="" name="heard_detail" id="heard_detail" />
+                    </li>
+                <li class="errorMessage">
+                    <p>Please complete all required fields.</p>
+                </li>
+                 
+                
+                <li class="submit">
+                    <input type="submit" value=""  class="button" id="submit-btn" />
+                </li>
+                <li class="updates group">
+                    <label for="updates" class="acc">I want to receive alerts &amp; updates from Direct Energy Solar.</label>
+                    <input type="checkbox" id="updates" name="updates" value="yes" checked="yes" />
+                    <p>I want to receive alerts &amp; updates from Direct Energy Solar.</p>
+                </li>
+            </ul>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!OR(submitted==true)}">
+                <h2>How Much Can You Save?</h2>
+                <h3>Thank You</h3>
+                <p class="thanks">Thank you for requesting a solar consultation. One of our solar experts will <span>contact you within the next 48 hours</span> to 
+                follow up on your request for a no obligation home solar site assessment.</p>
+
+                <p class="thanks icon"><img src="{!URLFOR($Resource.EmployeeLandingPage_Resources, '/images/Form_KnowledgeIcon.png')}" alt="Lightbulb"/>To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.</p>
+    
+                <p class="thanks"><span>We hope to have the opportunity to help you go solar.</span></p>
+    
+            </apex:outputPanel>
+        
+        </apex:outputPanel>
+
+        <apex:actionFunction name="doSubmit" action="{!submit}" rerender="formArea"/>
+        
+        </apex:actionRegion>
+
+        </apex:form>
+    
+    </apex:define>
+    <apex:define name="program-disclaimer"><apex:outputText value="{!programDisclaimer}" escape="false"/></apex:define>
+    <apex:define name="promo-disclaimer"><apex:outputText value="{!promoDisclaimer}" escape="false"/></apex:define>
+    <apex:define name="disclaimer-content"><apex:outputText value="{!disclaimerContent}" escape="false"/></apex:define>
+    <apex:define name="contract-numbers"><apex:outputText value="{!contractNumbers}" escape="false"/></apex:define>
+</apex:composition>
+
+<site:googleAnalyticsTracking />
+<site:previewAsAdmin />
+
+</apex:page>

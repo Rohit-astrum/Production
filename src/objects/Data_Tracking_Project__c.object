@@ -1,0 +1,2905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Data Tracking Project for 2012 Summer Interns</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account_Check__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Have all accounts checks been completed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Have all accounts checks been completed?</inlineHelpText>
+        <label>Account Check</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Account_ID_Notes__c</fullName>
+        <description>Enter notes for Account ID field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Account ID field</inlineHelpText>
+        <label>Account ID Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_ID__c</fullName>
+        <description>Account ID Picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Account ID</inlineHelpText>
+        <label>Account ID</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Account_Notes__c</fullName>
+        <description>Enter notes for Account field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account Notes</inlineHelpText>
+        <label>Account Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Account Field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Project Account</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Notes__c</fullName>
+        <description>Enter notes for Address field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Address field</inlineHelpText>
+        <label>Address Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <description>Property Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Property Address</inlineHelpText>
+        <label>Address</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Attachment_Installed_System_Notes__c</fullName>
+        <description>Enter notes for Attachment Installed System field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Attachment Installed System field</inlineHelpText>
+        <label>Attachment Installed System Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attachment_Installed_System__c</fullName>
+        <description>Jpeg Attachment to Installed System</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Attachment Installed System</inlineHelpText>
+        <label>Attachment Installed System</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Billing_Address_Notes__c</fullName>
+        <description>Enter notes for Billing Address field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Billing Address field</inlineHelpText>
+        <label>Billing Address Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Address__c</fullName>
+        <description>Billing Address Picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Billing Address</inlineHelpText>
+        <label>Billing Address</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CB_Panel_Notes__c</fullName>
+        <description>Enter notes for CB Panel field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for CB Panel field</inlineHelpText>
+        <label>CB Panel Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CB_Panel__c</fullName>
+        <description>Property CB Panel</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Property CB Panel</inlineHelpText>
+        <label>CB Panel</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Ben1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Ben?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Ben?</inlineHelpText>
+        <label>Checked by Ben</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Ben3__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Ben?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Ben?</inlineHelpText>
+        <label>Checked by Ben</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Ben4__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Ben?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Ben?</inlineHelpText>
+        <label>Checked by Ben</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Ben5__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Ben?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Ben?</inlineHelpText>
+        <label>Checked by Ben</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Ben6__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Ben?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Ben?</inlineHelpText>
+        <label>Checked by Ben</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Ben__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Ben?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Ben?</inlineHelpText>
+        <label>Checked by Ben</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Michelle1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Michelle?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Michelle?</inlineHelpText>
+        <label>Checked by Michelle</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Michelle2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Michelle?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Michelle?</inlineHelpText>
+        <label>Checked by Michelle</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Michelle__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Michelle?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Michelle?</inlineHelpText>
+        <label>Checked by Michelle</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy10__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy3__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy4__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy5__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy6__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy7__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy8__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy9__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Checked_by_Sandy__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this field been checked by Sandy?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has this field been checked by Sandy?</inlineHelpText>
+        <label>Checked by Sandy</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Notes__c</fullName>
+        <description>Enter notes for Contact field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contact field</inlineHelpText>
+        <label>Contact Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_Contract_Notes__c</fullName>
+        <description>Enter notes for Contact Role: Contract field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contact Role: Contract field</inlineHelpText>
+        <label>Contact Role: Contract Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_Contract__c</fullName>
+        <description>Contact Role for Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Contract Contact Role</inlineHelpText>
+        <label>Contact Role: Contract</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_Enphase_Notes__c</fullName>
+        <description>Enter notes for Contact Role: Enphase field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contact Role: Enphase field</inlineHelpText>
+        <label>Contact Role: Enphase Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_Grant_Notes__c</fullName>
+        <description>Enter notes for Contact Role: Grant field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contact Role: Grant field</inlineHelpText>
+        <label>Contact Role: Grant Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_Grant__c</fullName>
+        <description>Contact Role for Grants</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Contact Role for Grants (Check Grant App)</inlineHelpText>
+        <label>Contact Role: Grant</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_SREC_Contract_Notes__c</fullName>
+        <description>Enter notes for Contact Role: SREC Contracts field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contact Role: SREC Contracts field</inlineHelpText>
+        <label>Contact Role: SREC Contract Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Role_SREC_Contract__c</fullName>
+        <description>Contact Role for SREC Contract</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Contact Role for SREC Contract</inlineHelpText>
+        <label>Contact Role: SREC Contract</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contact_Role__c</fullName>
+        <description>Contact Role for Enphase</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Enphase Contact Role (Check Enphase Email address.)</inlineHelpText>
+        <label>Contact Role: Enphase</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <description>Is Contact mixed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if Contact is mixed (husband and wife in one)</inlineHelpText>
+        <label>Contact</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Matches_SO_Notes__c</fullName>
+        <description>Enter notes for Contract Matches SO field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contract Matches SO field</inlineHelpText>
+        <label>Contract Matches SO Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Matches_SO__c</fullName>
+        <description>Contract Matches Sales Order?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of &apos;Contract Matches Sales Order?&apos;</inlineHelpText>
+        <label>Contract Matches SO</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Uploaded_Notes__c</fullName>
+        <description>Enter notes for Contract Uploaded field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Contract Uploaded field</inlineHelpText>
+        <label>Contract Uploaded Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contract_Uploaded__c</fullName>
+        <description>Sales Order Contract Uploaded?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Contract Uploaded</inlineHelpText>
+        <label>Contract Uploaded</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Enphase_ID_Notes__c</fullName>
+        <description>Enter notes for Enphase ID field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Enphase ID field</inlineHelpText>
+        <label>Enphase ID Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enphase_ID__c</fullName>
+        <description>Enphase ID</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Enphase ID</inlineHelpText>
+        <label>Enphase ID</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Generation_Start_Date_Notes__c</fullName>
+        <description>Enter notes for Generation Start Date field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Generation Start Date field</inlineHelpText>
+        <label>Generation Start Date Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Generation_Start_Date__c</fullName>
+        <description>Generation Start Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Generation Start Date</inlineHelpText>
+        <label>Generation Start Date</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Inspection_Date_Notes__c</fullName>
+        <description>Enter notes for Inspection Date field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Inspection Date field</inlineHelpText>
+        <label>Inspection Date Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inspection_Date__c</fullName>
+        <description>Project Inspection Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Inspection Date</inlineHelpText>
+        <label>Inspection Date</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Install_Locations_Notes__c</fullName>
+        <description>Enter notes for Install Locations field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Install Locations field</inlineHelpText>
+        <label>Install Locations Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Install_Locations__c</fullName>
+        <description>Property Install Locations</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter Status of Install Locations</inlineHelpText>
+        <label>Install Locations</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Installation_Date_Notes__c</fullName>
+        <description>Enter notes for Installation Date field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Installation Date field</inlineHelpText>
+        <label>Installation Date Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Date__c</fullName>
+        <description>Project Installation Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Installation Date</inlineHelpText>
+        <label>Installation Date</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Installed_Inverter_Notes__c</fullName>
+        <description>Enter notes for Installed Inverter field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Installed Inverter field</inlineHelpText>
+        <label>Installed Inverter Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_Inverter__c</fullName>
+        <description>Inverter Serial Numbers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Inverter Serial Numbers</inlineHelpText>
+        <label>Installed Inverter</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Installed_Panel_Notes__c</fullName>
+        <description>Enter notes for Installed Panel field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Installed Panel field</inlineHelpText>
+        <label>Installed Panel Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_Panel__c</fullName>
+        <description>Panel Serial Numbers (Leased systems only)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Panel Serial Numbers (Leased systems only)</inlineHelpText>
+        <label>Installed Panel</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Installed_System_Notes__c</fullName>
+        <description>Enter notes for Installed System field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Installed System field</inlineHelpText>
+        <label>Installed System Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System_Picklist_Notes__c</fullName>
+        <description>Enter notes for Installed System Picklist field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Installed System Picklist field</inlineHelpText>
+        <label>Installed System Picklist Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installed_System_Picklist__c</fullName>
+        <description>Picklist for Installed System</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Installed System</inlineHelpText>
+        <label>Installed System Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Installed_System__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Data Tracking Project Installed System</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Data Tracking Project Installed System</inlineHelpText>
+        <label>Installed System</label>
+        <referenceTo>Installed_System__c</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Inverter_Serial_Numbers_Notes__c</fullName>
+        <description>Enter notes for Inverter Serial Numbers field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Inverter Serial Numbers field</inlineHelpText>
+        <label>Inverter Serial Numbers Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inverter_Serial_Numbers__c</fullName>
+        <description>Inverter Serial Numbers</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Inverter Serial Numbers</inlineHelpText>
+        <label>Inverter Serial Numbers</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Jpeg_Uploaded_Notes__c</fullName>
+        <description>Enter notes for Jpeg Uploaded field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Jpeg Uploaded field</inlineHelpText>
+        <label>Jpeg Uploaded Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Jpeg_Uploaded__c</fullName>
+        <description>jpeg attached to SD?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>jpeg attached to SD?</inlineHelpText>
+        <label>Jpeg Uploaded</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Multiple_Contact_Roles_Notes__c</fullName>
+        <description>Enter notes for Multiple Contract Roles field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Multiple Contract Roles field</inlineHelpText>
+        <label>Multiple Contact Roles Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Multiple_Contact_Roles__c</fullName>
+        <description>Two names signed contract/grant app/Enphase/SREC, but only one contact in SF</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Two names signed contract/grant app/Enphase/SREC, but only one contact in SF</inlineHelpText>
+        <label>Multiple Contact Roles?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Name_Notes__c</fullName>
+        <description>Enter notes for Name field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Name field</inlineHelpText>
+        <label>Name Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <description>Account Name Picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Account Name</inlineHelpText>
+        <label>Name</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Notes__c</fullName>
+        <description>Enter notes for Opportunity field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Opportunity field</inlineHelpText>
+        <label>Opportunity Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Picklist_Notes__c</fullName>
+        <description>Enter notes for Opportunity Picklist field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Opportunity Picklist field</inlineHelpText>
+        <label>Opportunity Picklist Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Picklist__c</fullName>
+        <description>What is the status of the Opportunity?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the status of the Opportunity?</inlineHelpText>
+        <label>Opportunity Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Data Project Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Data Project Opportunity</inlineHelpText>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ops_Check__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Have all operations checks been completed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Have all operations checks been completed?</inlineHelpText>
+        <label>Ops Check</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PJM_ID_Notes__c</fullName>
+        <description>Enter notes for PJM ID field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for PJM ID field</inlineHelpText>
+        <label>PJM ID Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PJM_ID__c</fullName>
+        <description>PJM ID</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of PJM ID</inlineHelpText>
+        <label>PJM ID</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Paid_in_Full_Date_Notes__c</fullName>
+        <description>Enter notes for Paid in Full Date field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Paid in Full Date field</inlineHelpText>
+        <label>Paid in Full Date Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Paid_in_Full_Date__c</fullName>
+        <description>Project Paid in Full Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Paid in Full Date</inlineHelpText>
+        <label>Paid in Full Date</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Panel_Serial_Numbers_Leased_Systems_Onl__c</fullName>
+        <description>Panel Serial Numbers (Leased systems only)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Panel Serial Numbers (for leased systems only)</inlineHelpText>
+        <label>Panel Serial Numbers (Leased Systems Onl</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Panel_Serial_Numbers_Notes__c</fullName>
+        <description>Enter notes for Panel Serial Numbers field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Panel Serial Numbers field</inlineHelpText>
+        <label>Panel Serial Numbers Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pitch_and_Azimuth_Notes__c</fullName>
+        <description>Enter notes for Pitch and Azimuth field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Pitch and Azimuth field</inlineHelpText>
+        <label>Pitch and Azimuth Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pitch_and_Azimuth__c</fullName>
+        <description>Pitch and Azimuth of Property.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Property&apos;s Pitch and Azimuth</inlineHelpText>
+        <label>Pitch and Azimuth</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Production_Start_Date_Notes__c</fullName>
+        <description>Enter notes for Production Start Date field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Production Start Date field</inlineHelpText>
+        <label>Production Start Date Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Production_Start_Date__c</fullName>
+        <description>Production Start Date (Used to be Ops SD)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Production Start Date (used to be Ops SD)</inlineHelpText>
+        <label>Production Start Date</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Lead_Notes__c</fullName>
+        <description>Enter notes for Project Lead field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Project Lead field</inlineHelpText>
+        <label>Project Lead Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Lead__c</fullName>
+        <description>Project Lead</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Project Lead</inlineHelpText>
+        <label>Project Lead</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Notes__c</fullName>
+        <description>Enter notes for Project field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Project field</inlineHelpText>
+        <label>Project Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Picklist_Notes__c</fullName>
+        <description>Enter notes for Project Picklist field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Project Picklist field</inlineHelpText>
+        <label>Project Picklist Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Picklist__c</fullName>
+        <description>Picklist for Project of Data Tracking Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Project</inlineHelpText>
+        <label>Project Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Status__c</fullName>
+        <description>Status of Data Tracking Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of Data Tracking Project</inlineHelpText>
+        <label>Project Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <color>#F3D904</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Review</fullName>
+                <color>#FF0000</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ready for Check</fullName>
+                <color>#33FF33</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Started</fullName>
+                <color>#DDDDDD</color>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Project of Data Tracking Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Project of Data Tracking Project</inlineHelpText>
+        <label>Project</label>
+        <referenceTo>Milestone1_Project__c</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Property_Notes__c</fullName>
+        <description>Enter notes for Property field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Property field</inlineHelpText>
+        <label>Property Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Picklist_Notes__c</fullName>
+        <description>Enter notes for Property Picklist field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Property Picklist field</inlineHelpText>
+        <label>Property Picklist Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Property_Picklist__c</fullName>
+        <description>Picklist for Data Tracking Project Property</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Property</inlineHelpText>
+        <label>Property Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Property__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Data Tracking Project Property</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Data Tracking Project Property</inlineHelpText>
+        <label>Property</label>
+        <referenceTo>Property__c</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_Address_1__c</fullName>
+        <description>QuickBooks Billing Address 1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing Address 1</inlineHelpText>
+        <label>QB Billing Address 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_Address_2__c</fullName>
+        <description>QuickBooks Billing Address 2</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing Address 2</inlineHelpText>
+        <label>QB Billing Address 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_City__c</fullName>
+        <description>QuickBooks Billing City</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing City</inlineHelpText>
+        <label>QB Billing City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_Email__c</fullName>
+        <description>QuickBooks Billing Email</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing Email</inlineHelpText>
+        <label>QB Billing Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_Name__c</fullName>
+        <description>QuickBooks Billing Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing Name</inlineHelpText>
+        <label>QB Billing Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_Phone__c</fullName>
+        <description>QuickBooks Billing Phone Number</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing Phone Number</inlineHelpText>
+        <label>QB Billing Phone</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_State__c</fullName>
+        <description>QuickBooks Billing State</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing State</inlineHelpText>
+        <label>QB Billing State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Billing_Zip__c</fullName>
+        <description>QuickBooks Billing Zip Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Billing Zip Code</inlineHelpText>
+        <label>QB Billing Zip</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Inspection_Date__c</fullName>
+        <description>QuickBooks Inspection Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Inspection Date</inlineHelpText>
+        <label>QB Inspection Date</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Inspection_Payment_Date__c</fullName>
+        <description>QuickBooks Inspection Payment Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Inspection Payment Date</inlineHelpText>
+        <label>QB Inspection Payment Date</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QB_Revenue__c</fullName>
+        <description>QuickBooks Revenue ($)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>QuickBooks Revenue ($)</inlineHelpText>
+        <label>QB Revenue ($)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDQ_Matches_Contract_Notes__c</fullName>
+        <description>Enter notes for SDQ Matches Contract field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for SDQ Matches Contract field</inlineHelpText>
+        <label>SDQ Matches Contract Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDQ_Matches_Contract__c</fullName>
+        <description>PURCHASE ONLY. SDQ Final Adjusted Price is not equal to Total of Invoices</description>
+        <externalId>false</externalId>
+        <inlineHelpText>PURCHASE ONLY. System Design Quote Final Adjusted Price is not equal to Total of Invoices</inlineHelpText>
+        <label>SDQ Matches Contract</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Check__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Have all sales checks been completed?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Have all sales checks been completed?</inlineHelpText>
+        <label>Sales Check</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Notes__c</fullName>
+        <description>Enter notes for Sales Order field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Sales Order field</inlineHelpText>
+        <label>Sales Order Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Picklist_Notes__c</fullName>
+        <description>Enter notes for Sales Order Picklist field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Sales Order Picklist field</inlineHelpText>
+        <label>Sales Order Picklist Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Picklist__c</fullName>
+        <description>Sales Order Picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Sales Order</inlineHelpText>
+        <label>Sales Order Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled/Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Data Tracking Project Sales Order</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Data Tracking Project Sales Order</inlineHelpText>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>System_Design_Array_Notes__c</fullName>
+        <description>Enter notes for System Design Array field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for System Design Array field</inlineHelpText>
+        <label>System Design Array Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Array__c</fullName>
+        <description>System Design Array</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of System Design Array</inlineHelpText>
+        <label>System Design Array</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>System_Design_Items_Notes__c</fullName>
+        <description>Enter notes for System Design Items field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for System Design Items field</inlineHelpText>
+        <label>System Design Items Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Items__c</fullName>
+        <description>System Design Items</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of System Design Items</inlineHelpText>
+        <label>System Design Items</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>System_Design_Q__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>System Design Quote</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System Design Quote</inlineHelpText>
+        <label>System Design Quote</label>
+        <referenceTo>System_Design_Quote__c</referenceTo>
+        <relationshipLabel>Data Tracking Projects</relationshipLabel>
+        <relationshipName>Data_Tracking_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>System_Design_Quote_Notes__c</fullName>
+        <description>Enter notes for System Design Quote field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for System Design Quote field</inlineHelpText>
+        <label>System Design Quote Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Quote_Picklist_Notes__c</fullName>
+        <description>Enter notes for System Design Quote Picklist field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for System Design Quote Picklist field</inlineHelpText>
+        <label>System Design Quote Picklist Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Quote__c</fullName>
+        <description>System Design Quote Picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of System Design Quote</inlineHelpText>
+        <label>System Design Quote Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>System_Makeup_Opp_Notes__c</fullName>
+        <description>Enter notes for System Makeup Opp field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for System Makeup Opp field</inlineHelpText>
+        <label>System Makeup Opp Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Makeup_Opp__c</fullName>
+        <description>Quoted System Makeup on Opp matches Invoice and Enphase (i.e. shows correct panel count and type)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Quoted System Makeup on Opp matches Invoice and Enphase (i.e. shows correct panel count and type)</inlineHelpText>
+        <label>System Makeup Opp</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>System_Makeup_SO_Notes__c</fullName>
+        <description>Enter notes for System Makeup SO field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for System Makeup SO field</inlineHelpText>
+        <label>System Makeup SO Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Makeup_SO__c</fullName>
+        <description>System Makeup on Sales Order is inconsistent with System Design on Opp?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System Makeup on Sales Order is inconsistent with System Design on Opp?</inlineHelpText>
+        <label>System Makeup SO</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TSRF_Notes__c</fullName>
+        <description>Enter notes for TSRF field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for TSRF field</inlineHelpText>
+        <label>TSRF Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TSRF__c</fullName>
+        <description>Property TSRF. Generally TSRF is calculated by dividing IL&apos;s SQ by optimal SQ.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Property&apos;s TSRF</inlineHelpText>
+        <label>TSRF</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Utility_Notes__c</fullName>
+        <description>Enter notes for Utility field</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter notes for Utility field</inlineHelpText>
+        <label>Utility Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Utility__c</fullName>
+        <description>Property Utility</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter status of Property Utility</inlineHelpText>
+        <label>Utility</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Already Correct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Missing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Added</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incorrect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corrected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t Find</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Data Tracking Project</label>
+    <listViews>
+        <fullName>DTP_with_Accounts</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Account_Check__c</columns>
+        <columns>Account_ID__c</columns>
+        <columns>Sales_Order__c</columns>
+        <columns>System_Design_Q__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Account__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>DTP with Accounts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>DTP_with_Quickbooks_Data</fullName>
+        <columns>NAME</columns>
+        <columns>Account__c</columns>
+        <columns>Account_Notes__c</columns>
+        <columns>QB_Billing_Name__c</columns>
+        <columns>QB_Billing_Address_1__c</columns>
+        <columns>QB_Billing_Address_2__c</columns>
+        <columns>QB_Billing_City__c</columns>
+        <columns>QB_Billing_State__c</columns>
+        <columns>QB_Billing_Zip__c</columns>
+        <columns>QB_Billing_Email__c</columns>
+        <columns>QB_Billing_Phone__c</columns>
+        <columns>QB_Inspection_Date__c</columns>
+        <columns>QB_Inspection_Payment_Date__c</columns>
+        <columns>QB_Revenue__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>DTP with Quickbooks Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Data_Tracking_Project_Table_View</fullName>
+        <columns>NAME</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>Project_Status__c</columns>
+        <columns>Account_Check__c</columns>
+        <columns>Sales_Check__c</columns>
+        <columns>Ops_Check__c</columns>
+        <columns>Account__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Property__c</columns>
+        <columns>Sales_Order__c</columns>
+        <columns>System_Design_Q__c</columns>
+        <columns>Project__c</columns>
+        <columns>Installed_System__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Data Tracking Project Table View</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Data_Tracking_Project_Table_View</fullName>
+        <columns>NAME</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>Project_Status__c</columns>
+        <columns>Account_Check__c</columns>
+        <columns>Sales_Check__c</columns>
+        <columns>Ops_Check__c</columns>
+        <columns>Account__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Property__c</columns>
+        <columns>Sales_Order__c</columns>
+        <columns>System_Design_Q__c</columns>
+        <columns>Project__c</columns>
+        <columns>Installed_System__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Data Tracking Project Table View</label>
+    </listViews>
+    <listViews>
+        <fullName>Unclaimed_Data_Tracking_Projects</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>Project_Status__c</columns>
+        <columns>Account_Check__c</columns>
+        <columns>Sales_Check__c</columns>
+        <columns>Ops_Check__c</columns>
+        <columns>Account__c</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Property__c</columns>
+        <columns>Sales_Order__c</columns>
+        <columns>System_Design_Q__c</columns>
+        <columns>Project__c</columns>
+        <columns>Installed_System__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OWNER.ALIAS</field>
+            <operation>equals</operation>
+            <value>srosk</value>
+        </filters>
+        <filters>
+            <field>OWNER.ALIAS</field>
+            <operation>equals</operation>
+            <value>Steve</value>
+        </filters>
+        <label>Unclaimed Data Tracking Projects</label>
+    </listViews>
+    <nameField>
+        <label>Data Tracking Project Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Data Tracking Projects</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

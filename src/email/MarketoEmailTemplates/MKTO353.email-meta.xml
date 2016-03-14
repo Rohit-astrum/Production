@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Commercial Email 1.Commercial Email 1 - Going solar will improve your bottom lin</name>
+    <style>none</style>
+    <subject>Going solar will improve your bottom line.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+New Money Saving Maryland Program
+
+Boost your business with solar. Going solar will improve your bottom line.
+
+Get an energy evaluation:
+&lt;http://www.directenergysolar.com/CPACE?utm_medium=email&amp;utm_source=cpace&amp;utm_campaign=cpacemd&amp;utm_content=email-cpacemd1&gt;
+
+Your business can benefit from today’s low solar prices and incentives. Now is the perfect time to consider solar.
+
+Direct Energy Solar, a leading Maryland-based solar installer, is pleased to announce a new solar financing plan (CPACE). Available to commercial facilities located in Maryland.
+
+KEY BENEFITS OF SOLAR:
+• Immediate electricity savings
+• No upfront investment
+• Substantial long-term electricity savings
+• Guaranteed power production
+
+Electricity costs drain your bottom line. Go solar with $0 down financing and immediately boost operating income.
+
+Let Direct Energy Solar show you how Maryland’s newly-approved solar financing program (CPACE) makes it easy to reduce your energy costs by going solar with no out-of-pocket costs.
+
+EVERY DIRECT ENERGY SOLAR INSTALLATION INCLUDES:
+• A custom-designed system to maximize your ROI
+• Guaranteed system production
+• Consistent, quality installation
+• We manage your project from start to finish
+• The best worry-free guarantees in the business
+
+Get an energy evaluation:
+ &lt;http://www.directenergysolar.com/CPACE?utm_medium=email&amp;utm_source=cpace&amp;utm_campaign=cpacemd&amp;utm_content=email-cpacemd1&gt;
+
+You are receiving this email because your business could benefit from a Direct Energy Solar installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your facility, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy 
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com 
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

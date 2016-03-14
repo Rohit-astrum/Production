@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Document templates including permits, grant applications</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Bin__c</fullName>
+        <description>Astrum PM Bin</description>
+        <externalId>false</externalId>
+        <label>Bin</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Kickoff Photos</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Signed Conduit Run and Layout</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Drivers Licenses</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Install Prep Sheet</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility Bill</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ SREC Docs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Permit Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Review</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Building Permit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Permit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility Interconnect Part 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grant Reservation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HOA Submitted Documents</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invoice at Start of Installation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Installation Photos</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Panel and Inverter Serial Numbers</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pull List</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sunpower Warranty Cards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enphase</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proof of Inspection</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility Interconnect Part 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Grant Completion</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Property Tax</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SREC Docs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submit Utility Interconnect Part 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Utility Interconnect Part 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted Utility Interconnect Part 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Utility Interconnect Part 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enphase Map</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Branch Map</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Finance Notice to Construct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Finance Equip. Delivery</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Finance Completion Forms</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Finance Subst. Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <picklist>
+            <controllingField>Bin__c</controllingField>
+            <picklistValues>
+                <fullName>Acceptance Letter</fullName>
+                <controllingFieldValues>NJ SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Affidavit</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Application Approved</fullName>
+                <controllingFieldValues>Property Tax</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Application Submitted</fullName>
+                <controllingFieldValues>Property Tax</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Application</fullName>
+                <controllingFieldValues>Grant Completion</controllingFieldValues>
+                <controllingFieldValues>Grant Reservation</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Building Permit</fullName>
+                <controllingFieldValues>Building Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Electrical Permit</fullName>
+                <controllingFieldValues>Electrical Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Utility Interconnect Part 1</fullName>
+                <controllingFieldValues>Utility Interconnect Part 1</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Utility Interconnect Part 2</fullName>
+                <controllingFieldValues>Utility Interconnect Part 2</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Array Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Branch Map</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Building Permit Application</fullName>
+                <controllingFieldValues>Building Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Building Permit Approval</fullName>
+                <controllingFieldValues>Building Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Building Permit Package</fullName>
+                <controllingFieldValues>Building Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CB Panel, Interconnect, Disconnect Box Photos</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Certificate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Certification Document</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commissioning and Production Verification Checklists</fullName>
+                <controllingFieldValues>Finance Completion Forms</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commissioning Form</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completion Package</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conduit (Roof, Interior, Exterior) Photos</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conduit Run and Layout - Customer Signed</fullName>
+                <controllingFieldValues>Signed Conduit Run and Layout</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contract</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delivered Materials Photo (NRG only)</fullName>
+                <controllingFieldValues>Finance Equip. Delivery</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Drawing Package</fullName>
+                <controllingFieldValues>Permit Design</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Drivers License</fullName>
+                <controllingFieldValues>Drivers Licenses</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Drawings</fullName>
+                <controllingFieldValues>Electrical Review</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Permit Application</fullName>
+                <controllingFieldValues>Electrical Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Permit Approval</fullName>
+                <controllingFieldValues>Electrical Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Permit Package</fullName>
+                <controllingFieldValues>Electrical Permit</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Electrical Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Energy Audit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enphase Map</fullName>
+                <controllingFieldValues>Enphase</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Equip. Signed Confirmation Form (NRG only)</fullName>
+                <controllingFieldValues>Finance Equip. Delivery</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Historical Document</fullName>
+                <controllingFieldValues>HOA Submitted Documents</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HOA Document</fullName>
+                <controllingFieldValues>HOA Submitted Documents</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Homeowner Acceptance Form (NRG only)</fullName>
+                <controllingFieldValues>Finance Completion Forms</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Install Prep Sheet</fullName>
+                <controllingFieldValues>Install Prep Sheet</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inverter Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invoice</fullName>
+                <controllingFieldValues>Invoice at Start of Installation</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invoice at Start of Installation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kickoff Property Photo</fullName>
+                <controllingFieldValues>Kickoff Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lease Design and Engineering Package</fullName>
+                <controllingFieldValues>Finance Notice to Construct</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lease Substantially Complete Approval</fullName>
+                <controllingFieldValues>Finance Subst. Complete</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lease Substantially Complete Package</fullName>
+                <controllingFieldValues>Finance Subst. Complete</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Master Electrician Review</fullName>
+                <controllingFieldValues>Electrical Review</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Master Electriction Review</fullName>
+                <controllingFieldValues>Permit Design</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meter Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meter Worksheet</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ SREC Application Package</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ SREC Registration Form</fullName>
+                <controllingFieldValues>NJ SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Package Approval and Notice-to Construct</fullName>
+                <controllingFieldValues>Finance Notice to Construct</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prepared Application</fullName>
+                <controllingFieldValues>Grant Completion</controllingFieldValues>
+                <controllingFieldValues>Grant Reservation</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proof of Inspection</fullName>
+                <controllingFieldValues>Proof of Inspection</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Property Photo</fullName>
+                <controllingFieldValues>Kickoff Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Property Tax Credit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pull List</fullName>
+                <controllingFieldValues>Pull List</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PV Watts Printout</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rail Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Recognition of Assignment</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>REC Purchase Agreement</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Roof Electrical Box Photos</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Roof Grounding Photo</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Roof Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Schedule A</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Serial Numbers</fullName>
+                <controllingFieldValues>Panel and Inverter Serial Numbers</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Signed Application</fullName>
+                <controllingFieldValues>Grant Completion</controllingFieldValues>
+                <controllingFieldValues>Grant Reservation</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Site Change Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Site Map</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Technical Worksheet</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SREC Application Package</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SREC Registration Form</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Structural Changes Photo</fullName>
+                <controllingFieldValues>Installation Photos</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Structural Drawings</fullName>
+                <controllingFieldValues>Permit Design</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Structural Engineer Review</fullName>
+                <controllingFieldValues>Permit Design</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted Application</fullName>
+                <controllingFieldValues>Grant Completion</controllingFieldValues>
+                <controllingFieldValues>Grant Reservation</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted Utility Interconnect Part 2</fullName>
+                <controllingFieldValues>Utility Interconnect Part 2</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submit Utility Interconnect Part 1</fullName>
+                <controllingFieldValues>Utility Interconnect Part 1</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sun Eye Report</fullName>
+                <controllingFieldValues>SREC Docs</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Design Plan</fullName>
+                <controllingFieldValues>Permit Design</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility Bill</fullName>
+                <controllingFieldValues>Utility Bill</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility Interconnect - Application</fullName>
+                <controllingFieldValues>Submit Utility Interconnect Part 1</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Utility Interconnect - Approval</fullName>
+                <controllingFieldValues>Approved Utility Interconnect Part 1</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Warranty Cards</fullName>
+                <controllingFieldValues>Sunpower Warranty Cards</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>County__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>County-related document</inlineHelpText>
+        <label>County</label>
+        <referenceTo>County__c</referenceTo>
+        <relationshipName>Astrum_Templates</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Financing_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Financing Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Lease</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Buy</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Form_Design__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Form Design</label>
+        <referenceTo>Form_Design__c</referenceTo>
+        <relationshipLabel>Templates</relationshipLabel>
+        <relationshipName>Templates</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Municipality__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Municipal-level template</inlineHelpText>
+        <label>Municipality</label>
+        <referenceTo>Municipality__c</referenceTo>
+        <relationshipName>Astrum_Templates</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Category__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Recommended Category</inlineHelpText>
+        <label>Recommendation Category</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recommendation_Note__c</fullName>
+        <externalId>false</externalId>
+        <label>Recommendation Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>State-level template</inlineHelpText>
+        <label>State</label>
+        <referenceTo>State__c</referenceTo>
+        <relationshipName>Astrum_Templates</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Template</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Bin__c</columns>
+        <columns>Category__c</columns>
+        <columns>State__c</columns>
+        <columns>County__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Template Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Templates</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Bin__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Category__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>State__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>County__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Municipality__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <searchFilterFields>Bin__c</searchFilterFields>
+        <searchFilterFields>Category__c</searchFilterFields>
+        <searchFilterFields>State__c</searchFilterFields>
+        <searchFilterFields>County__c</searchFilterFields>
+        <searchFilterFields>Municipality__c</searchFilterFields>
+        <searchResultsAdditionalFields>Bin__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>State__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>County__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Municipality__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

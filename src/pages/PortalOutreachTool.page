@@ -1,0 +1,56 @@
+<apex:page standardController="Portal_Outreach_Tool__c" extensions="PortalOutreachToolExtension">
+
+<apex:sectionHeader title="Portal Outreach Tools" subtitle="New Portal Outreach Tool"/>
+
+<apex:form >
+
+    <apex:pageMessages />
+    
+    <apex:PageBlock mode="edit">
+    
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!doSave}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection title="Outreach Tool Information" collapsible="false" columns="1">
+
+            <apex:inputField value="{!Portal_Outreach_Tool__c.Name}" required="true"/>
+            
+            <apex:inputField value="{!Portal_Outreach_Tool__c.Type__c}" required="true"/>
+            
+          
+        
+            <apex:inputField value="{!Portal_Outreach_Tool__c.Description__c}"/>
+            
+            <apex:inputField value="{!Portal_Outreach_Tool__c.Partner_Type__c}" />
+
+            <apex:inputField value="{!Portal_Outreach_Tool__c.Portal_Availability__c}"/>
+            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Document"/>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:outputLink value="{!URLFOR($Action.Attachment.Download, documentAttachment.Id)}" target="_blank" rendered="{!NOT(ISNULL(documentAttachment))}">{!documentAttachment.Name}</apex:outputLink>
+                    <apex:inputFile value="{!documentContent}" fileName="{!documentFileName}" contentType="{!documentContentType}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Thumbnail"/>
+                <apex:outputPanel styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:outputLink value="{!URLFOR($Action.Attachment.Download, thumbAttachment.Id)}" target="_blank" rendered="{!NOT(ISNULL(thumbAttachment))}">{!thumbAttachment.Name}</apex:outputLink>
+                    <apex:inputFile value="{!thumbContent}" fileName="{!thumbFileName}" contentType="{!thumbContentType}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:inputField value="{!Portal_Outreach_Tool__c.Active__c}"/>
+        
+        </apex:pageBlockSection>
+    
+    </apex:PageBlock>
+    
+</apex:form>
+
+</apex:page>

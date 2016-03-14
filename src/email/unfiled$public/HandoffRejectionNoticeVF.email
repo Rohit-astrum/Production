@@ -1,0 +1,43 @@
+<messaging:emailTemplate subject="Handoff Checklist for Project {!relatedTo.name} Requires Revision" recipientType="User" relatedToType="PM_Project__c">
+<messaging:HtmlEmailBody >
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="Template" content="Response"/>
+</head>
+<body>
+
+
+<p>A Handoff Checklist for <strong><a href="https://na28.salesforce.com/{!RelatedTo.Id}">PM Project</a></strong> with the following details has been Rejected.</p>
+
+<p><u><strong>Comments from Customer Care :</strong></u></p>
+<b><c:HandoffApprovalHistory projectId="{!relatedTo.Id}"/></b>
+<ul style="list-style:none">
+<li><u>System Location</u> : {!RelatedTo.Handoff_System_Location__c}</li>
+<li><u>If not on Main House, what is the estimated Distance to main supply (ft.):</u> : {!RelatedTo.Handoff_Distance_to_Mail_Supply_ft__c}</li>
+<li><u>Does Customer have internet ?</u> : {!RelatedTo.Handoff_Is_Internet_Access__c}</li>
+<li><u>Type of Internet</u> : {!RelatedTo.Handoff_Type_of_Internet_Access__c}</li>
+<li><u>Other Internet Type</u> : {!RelatedTo.Handoff_Other_Internet_Access_Type__c}</li>
+<li><u>Is Bridge Installed ?</u> : {!RelatedTo.Handoff_Bridge_Installed__c}</li>
+<li><u>Type of bridge</u> : {!RelatedTo.Handoff_Bridge_Type__c}</li>
+<li><u>Envoy Location Relative to Electrical Panel</u> : {!RelatedTo.Handoff_Envoy_Location__c}</li>
+<li><u>Envoy Location Explanation</u> : {!RelatedTo.Handoff_Envoy_Location_Explanation__c}</li>
+<li><u>Dedicated outlet breaker location</u> : {!RelatedTo.Handoff_Dedicate_Outlet_Breaker_Location__c}</li>
+<li><u>Other Dedicated outlet breaker location</u> : {!RelatedTo.Handoff_Other_Outlet_Breaker_Location__c}</li>
+<li><u>Dedicated outlet for Envoy ?</u> : {!RelatedTo.Handoff_Dedicated_Outlet_for_Envoy__c}</li>
+<li><u>Is Dedicated outlet is GFCI</u> : {!RelatedTo.Handoff_Dedicated_Outlet_is_GFCI__c}</li>
+<li><u>Is Revenue Grade Meter Installed ?</u> : {!RelatedTo.Handoff_Revenue_Grade_Meter_Installed__c}</li>
+<li><u>Type of Revenue Grade Meter Installed </u> : {!RelatedTo.Handoff_Revenue_Grade_Meter_Type__c}</li>
+<li><u> Does Customer have any large electrical appliances ? </u> : {!RelatedTo.Handoff_Big_Ticket_Electrical_Item__c}</li>
+<li><u> Handoff Large Electrical Appliance Present </u> : {!RelatedTo.Handoff_Big_Ticket_Electrical_Type__c}</li>
+<li><u> Is Enlighten fully activated, with no current alerts or issues ?</u> : {!RelatedTo.Handoff_Enlighten_Activated__c}</li>
+<li><u> Enphase ID Number  </u> : {!RelatedTo.Handoff_Enphase_ID__c}</li>
+<li><u> Enphase Verification Date  </u> : {!RelatedTo.Handoff_Enlighten_Verification_Date__c}</li>
+</ul>
+
+<p>To Revise This Checklist, please <strong><a href="https://na28.salesforce.com/{!RelatedTo.Id}">Review Here</a></strong></p>
+
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

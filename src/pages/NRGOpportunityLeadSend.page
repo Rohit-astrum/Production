@@ -1,0 +1,10 @@
+<!-- 
+   FILE: NRGOpportunityLeadSend
+ * AUTHOR: Rohit Jain
+ * DATE: July 24, 2013
+ * PURPOSE: NRG Lead Send with Credit Flag On
+ * MODIFICATION HISTORY 
+-->
+<apex:page standardController="Opportunity" extensions="NRGOpportunityLeadSendController" action="{!sendNRGLead}">  
+
+</apex:page>

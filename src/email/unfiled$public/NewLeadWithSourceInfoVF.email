@@ -1,0 +1,45 @@
+<messaging:emailTemplate subject="New Lead : {!relatedTo.CreatedDate} : Lead Source : {!relatedTo.LeadSource}" recipientType="User" relatedToType="Lead">
+<messaging:HtmlEmailBody >
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta name="Template" content="Response"/>
+</head>
+<body>
+
+<p>A new Lead <strong><a href="https://na28.salesforce.com/{!relatedTo.Id}">{!relatedTo.Name}</a></strong> has been created in Prism on {!relatedTo.CreatedDate} </p>
+<p><u>Lead Detail</u>:</p>
+<ul style="list-style:none">
+    <li><u>First Name</u>  : {!relatedTo.FirstName}</li>     
+    <li><u>Last Name</u>       : {!relatedTo.LastName}</li>
+    <li><u>Street</u>      : {!relatedTo.Street}</li>
+    <li><u>City</u>      : {!relatedTo.City}</li>
+    <li><u>State</u>      : {!relatedTo.State}</li>
+    <li><u>Zip</u>  : {!relatedTo.PostalCode}</li> 
+    <li><u>Lead Date</u>  : {!relatedTo.Lead_Date__c}</li>       
+</ul>
+<p><u>Lead Source Information</u>:</p>
+<ul style="list-style:none">
+    <li><u>Method of Contact</u>  : {!relatedTo.Method_of_Contact__c}</li>     
+    <li><u>Lead Source</u>       : {!relatedTo.LeadSource}</li>
+    <li><u>Lead Source Detail</u>      : {!relatedTo.Lead_Source_Detail__c}</li>
+    <li><u>Referring Account</u>      : {!relatedTo.Referring_Account__r.Name}</li>
+    <li><u>Primary Source Campaign</u>      : {!relatedTo.Primary_Source_Campaign__r.Name}</li>
+    <li><u>Second Lead Source</u>  : {!relatedTo.Second_Lead_Source__c}</li>   
+    <li><u>Second Lead Source Detail</u>       : {!relatedTo.Second_Lead_Source_Detail__c}</li>
+    <li><u>Secondary Referring Account</u>      : {!relatedTo.Secondary_Referring_Account__r.Name}</li>
+    <li><u>Secondary Source Campaign</u>      : {!relatedTo.Secondary_Source_Campaign__r.Name}</li>
+    <li><u>Lead Source Notes</u>      : {!relatedTo.Lead_Source_Notes__c}</li>
+    <li><u>Contact Detail</u>  : {!relatedTo.Contact_Detail__c}</li> 
+    <li><u>Self Generated ?</u>  : {!relatedTo.Self_Generated__c}</li>  
+   
+         
+</ul>
+
+
+<p>To Review this Lead, Please <strong><a href="https://na28.salesforce.com/{!relatedTo.Id}">Click Here</a></strong></p>
+
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

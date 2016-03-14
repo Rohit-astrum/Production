@@ -1,0 +1,35 @@
+<apex:page standardController="Opportunity"           
+           extensions="Opportunity_Status_Controller_Extension" showHeader="true" sidebar="true" id="page" tabStyle="Pipeline_O__tab">
+           
+        <apex:messages />
+
+        <apex:sectionHeader title="Opportunity Pipeline" /> 
+         
+        <apex:pageBlock title="Opportunities"> 
+            
+			<c:Site_Survey_Legend scheduledColor="{!scheduledColor}" pastDueColor="{!pastDueColor}" completedColor="{!completedColor}" />
+			                  
+            <c:Opportunity_Status_Table title="Opportunities Not Contacted Within 1 Business Day." opportunityStatusHolders="{!earlyStageOpportunitiesToContact}" />            
+
+            <c:Opportunity_Status_Table title="Opportunities Not Contacted 2 Times Within 5 Business Days." opportunityStatusHolders="{!mediumStageOpportunitiesToContact}" />            
+
+            <c:Opportunity_Status_Table title="Opportunities Not Contacted 3 Times Within 10 Business Days." opportunityStatusHolders="{!lateStageOpportunitiesToContact}" />            
+
+	        <apex:pageBlockSection title="All of My Opportunities" columns="1">
+            	<c:Opportunity_Status_Table title="Stage: Qualified" opportunityStatusHolders="{!qualifiedOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Assigned to Field Sales" opportunityStatusHolders="{!assignedToFieldSalesOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Sales Visit Scheduled" opportunityStatusHolders="{!siteVisitScheduledOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Sales Process Ongoing" opportunityStatusHolders="{!salesProcessOngoingOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: On Hold" opportunityStatusHolders="{!onHoldOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Closed - Won" opportunityStatusHolders="{!closedWonOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Contract Cancelled" opportunityStatusHolders="{!contractCancelledOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Closed - Lost" opportunityStatusHolders="{!closedLostOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Unqualified - Site Quality" opportunityStatusHolders="{!unqualifiedSiteQualityOpportunities}" />            
+            	<c:Opportunity_Status_Table title="Stage: Unresponsive" opportunityStatusHolders="{!unresponsiveOpportunities}" />            
+			</apex:pageBlockSection>
+
+			<c:Site_Survey_Legend scheduledColor="{!scheduledColor}" pastDueColor="{!pastDueColor}" completedColor="{!completedColor}" />
+
+        </apex:pageBlock>
+
+</apex:page>

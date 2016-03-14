@@ -1,0 +1,75 @@
+<apex:page >
+
+<apex:variable var="theme" value="a"/>
+<apex:variable var="contentTheme" value="c"/>
+<apex:variable var="pageTitle" value="Astrum Solar Referral Network"/>
+<apex:variable var="showFooter" value="N"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="Shortcut Icon" href="{!URLFOR($Resource.PortalResources, 'images/favicon.ico')}" />
+
+<apex:insert name="head-custom"/>
+
+<meta name='description' content='{!pageTitle}' />
+<title>{!pageTitle}</title>
+
+<apex:insert name="css-theme">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" type="text/css"/>
+    <link rel="stylesheet" href="{!URLFOR($Resource.PortalMobileTheme,'themes/AstrumPortalMobile.min.css')}" type="text/css"/>
+    <style type="text/css">
+        .messageText h4 { display: none; }
+        .messageText { color: red; }
+        input[type="text"].ui-body-{!contentTheme},
+        input[type="password"].ui-body-{!contentTheme} {
+            background-color: white;
+        }
+    </style>
+</apex:insert>
+
+<apex:insert name="css-custom"/>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+
+<apex:insert name="script-mobileinit">
+    <script>
+        $(document).bind('mobileinit', function() {
+            $.mobile.ajaxEnabled = false;
+            $.mobile.allowCrossDomainPages = true;
+        });
+    </script>
+</apex:insert>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+<apex:insert name="script-custom"/>
+
+<div data-role="page" data-theme="{!theme}" data-content-theme="{!contentTheme}" data-title="{!pageTitle}">
+
+    <div data-role="header" style="padding:4px;">
+        <img src="{!URLFOR($Resource.PortalResources,'images/connect-logo.png')}"/>
+        <apex:insert name="top-nav">
+        </apex:insert>
+    </div>
+    
+    <div data-role="content">
+        <apex:insert name="content"/>
+        <apex:insert name="body"/>
+    </div>
+
+    <apex:outputPanel layout="none" rendered="{!showFooter=='Y'}">
+    
+        <div data-role="footer" class="ui-bar" style="height: 28px;margin-bottom: 10em;">
+            <apex:insert name="bottom-nav">
+                <a onclick="logoutOfMobile();return false;" href="{!$Site.Prefix}/secur/logout.jsp" data-role="button" data-icon="delete" class="ui-btn-right" data-inline="true" data-mini="true" rel="external">Log Out</a>
+            </apex:insert>
+        </div>
+    
+    </apex:outputPanel> 
+
+</div>
+    
+<site:googleAnalyticsTracking />
+<site:previewAsAdmin />
+    
+</apex:page>

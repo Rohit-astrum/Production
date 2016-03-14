@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Solar Webinars CA Fresno Feb 2016.Webinar Fresno 021716 Leads, Send 2: Don’t for</name>
+    <style>none</style>
+    <subject>Don’t forget! Tune into our webinar tomorrow.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Is Solar Right for You? Find Out by Tuning into Our Webinar Series.
+
+RSVP Today!
+&lt;[[http://directenergysolar.omnovia.com/register/67831454960885]]&gt;
+
+Mark your calendar! We’re hosting a webinar series for Fresno residents and wanted to remind you that one of the webinars is tomorrow. Learn why so many of your neighbors have gone solar and how Direct Energy Solar can help you go solar to dramatically shave your utility bill!
+
+Go Solar in Fresno &lt;[[http://directenergysolar.omnovia.com/register/67831454960885]]&gt;
+Tomorrow: February 17, 6:30 PM PST
+Meet your local solar team at Direct Energy Solar and learn the latest on solar in our market.
+
+WHAT YOU’LL LEARN:
+• How solar saves you money on your energy costs
+ • Cost benefits of solar vs. PG&amp;E and SCE.
+ • How and why solar power works
+ • Why choose Direct Energy Solar for your solar installation
+• No money down financing, purchase, and lease options—which are right for you?
+
+RSVP to Reserve Your Spot!
+&lt;[[http://directenergysolar.omnovia.com/register/67831454960885]]&gt;
+
+Can’t make it? Don’t worry, we’ll host another webinar in 2 weeks. Stay tuned for a reminder!
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+CA CSLB 992952
+
+Direct Energy Solar
+ 8050 North Palm Ave, Suite 334
+ Fresno, CA 93711
+ P: 800-903-6130
+ F: 951-602-6159
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

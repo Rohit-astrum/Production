@@ -1,0 +1,17 @@
+The Proof of Inspection Date on {!PM_Project__c.Name} has been added or changed.
+
+Project Lead:
+{!PM_Project__c.OwnerFullName}
+
+Sales Consultant:
+{!PM_Project__c.Salesperson__c}
+
+Installation Address:
+{!PM_Project__c.Installation_Address__c}
+{!PM_Project__c.Installation_City__c}, {!PM_Project__c.Installation_State__c}  {!PM_Project__c.Installation_Zip_Code__c}
+
+Installation Date:
+{!PM_Project__c.Installation_Date__c}
+
+Proof of Inspection Date:
+{!PM_Project__c.Proof_of_Inspection__c}

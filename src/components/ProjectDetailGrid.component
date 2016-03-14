@@ -1,0 +1,1190 @@
+<!--
+FILE: ProjectDetailGrid.component
+AUTHOR: Tino Mattheou
+DATE: April 18, 2012
+PURPOSE: Displays project grid for one project
+MODIFICATION HISTORY:
+08/13/2012 TCM - unable to update work completed date on detail page grid zen-47
+-->
+<apex:component controller="ProjectDetailGridController">
+
+<apex:attribute name="projectId"
+                description="Id of project to show documents for"
+                type="String"
+                required="true"
+                assignTo="{!projectId}"/>
+                
+<apex:variable var="prefix" value="projgrid-"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.jqgrid433, 'css/ui.jqgrid.css')}" />
+<apex:stylesheet value="{!URLFOR($Resource.timepicker100, 'jquery-ui-timepicker-addon.css')}" />
+
+<style type="text/css">
+
+    .ui-widget .ui-widget {
+        font-size: 11px;
+    }
+    
+    #gbox_preApproval, #gbox_preInstall, #gbox_postInstall, #gbox_postInspect {
+        margin-bottom: 5px; 
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-ltr { border-left : 1px solid; border-right : 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-rtl { border-left : 1px solid; border-right : 1px solid; }
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { border-top: 1px solid; border-bottom: 1px solid; }
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #1D5987; }
+    .ui-jqgrid .ui-jqgrid-htable th { height: auto; }
+    .ui-jqgrid .ui-jqgrid-htable th div { overflow: visible; height: auto; }
+    
+    /* bug in Chrome v19 box-sizing and fixed table layout */
+    div.ui-jqgrid table.ui-jqgrid-htable th,
+    div.ui-jqgrid tr.jqgfirstrow td,
+    div.ui-jqgrid tr.jqgrow td {
+        padding: 0px 2px 0px 2px;
+        /* box-sizing: border-box; 
+        -webkit-box-sizing: border-box; */
+    }
+    
+    div.ui-jqgrid tr.jqgrow td {
+        border-left : 1px solid #ececec; border-right : 1px solid #ececec; 
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column-header,
+    .ui-jqgrid .ui-jqgrid-htable th.ui-th-column { 
+        overflow: hidden;
+        background-image: none; 
+    }
+    
+    div.ui-jqgrid table.ui-jqgrid-htable, 
+    div.ui-jqgrid table.ui-jqgrid-btable {
+        border-collapse: collapse;
+    }
+    
+    div.ui-jqgrid div.ui-jqgrid-hdiv, 
+    div.ui-jqgrid div.ui-jqgrid-bdiv {
+        overflow: hidden;
+    }
+    
+    div.ui-jqgrid div.ui-jqgrid-view div.ui-jqgrid-hdiv {
+        border: none;
+    }
+    
+    #newProjects_name {
+        border-top: 0px none;
+    }
+    
+    #preApproval_Kickoff__c { 
+        background-image: none; 
+        background-color: #fba751; /* astrum sunset 80% */ 
+    }
+    #preApproval_Survey_Date__c { 
+        background-image: none; 
+        background-color: #c014e1; /* purple */ 
+    }
+    #preInstall_Approval_Date__c { 
+        background-image: none; 
+        background-color: #008080; /* teal */ 
+    }
+    #jqgh_preInstall_Approval_Date__c { 
+        color: white; 
+    }
+    #jqgh_preApproval_Kickoff__c { 
+        color: black; 
+    }
+    #jqgh_preApproval_Survey_Date__c { 
+        color: white; 
+    }
+    #postInstall_Install__c { 
+        background-image: none; 
+        border-top: 0px none; 
+        background-color: #009DDC; /* astrum sky */ 
+    }
+    #jqgh_postInstall_Install__c { 
+        color: white; 
+    }
+    #postInspect_Inspection__c {
+        background-image: none; 
+        border-top: 0px none; 
+        background-color: #61AF3F; /* astrum leaf */ 
+    }
+    #jqgh_postInspect_Inspection__c { 
+        color: white; 
+    }
+    #postInspect_Customer_Care_Handoff__c { 
+        background-image: none; 
+        border-top: 0px none; 
+        background-color: #fdf097; /* astrum sun 40% */
+    }
+    
+    table#preApproval td.pcell,
+    table#preInstall td.pcell,
+    table#postInstall td.pcell,
+    table#postInspect td.pcell {
+        vertical-align: middle;
+    }
+    
+    table#preInstall .grid-checkbox {
+        vertical-align: middle;
+    }
+    table#preApproval .grid-checkbox {
+        vertical-align: middle;
+    }
+    
+    .gridAltRows { color: black; background-color: #eee; }
+
+    .ui-widget-overlay { background-color: #404040; opacity: .65; background-image: none; }
+
+    .ui-dialog .ui-dialog-buttonpane { 
+        margin: 0; 
+        border-top: 2px groove white;
+        background-color: #e3e3e3;
+    }
+    .ui-dialog .ui-dialog-buttonpane button { margin: 0; }
+    
+    .ui-jqgrid tr.jqgrow td {
+        font-weight: bold;
+    }
+    
+    .ui-jqgrid-sortable, .ui-jqgrid .ui-th-div-ie {
+        white-space: normal;
+        height: auto;
+    }
+    
+    #gbox_preApproval {
+        margin-top: 10px;
+    }
+    #gbox_preInstall {
+        margin-top: 0px;
+    }
+
+    #gbox_postInspect {
+        margin-bottom: 10px;
+    }
+    
+    #{!prefix}binDialog {
+        overflow: hidden;
+    }
+    
+    .alert-plus-note {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+    }
+    
+    .green-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .orange-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+
+    .alert-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')});
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    
+    .green-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')});
+    }
+    
+    .orange-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')});
+    }
+
+    .note-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+        background-position: right top;
+        background-repeat: no-repeat;
+    }
+    
+    .ui-state-highlight, .ui-widget-content .ui-state-highlight {
+        background-image: none;
+        background-color: #faf6de;
+    }
+
+    .ui-state-highlight.alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .ui-state-highlight.green-alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.green-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+    
+    .ui-state-highlight.orange-alert-plus-note, .ui-state-highlight, .ui-widget-content .ui-state-highlight.orange-alert-plus-note {
+        background-position: left top, right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')}), url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+
+    .ui-state-highlight.alert-only, .ui-widget-content .ui-state-highlight.alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/red-corner.png')});
+    }
+    
+    .ui-state-highlight.green-alert-only, .ui-widget-content .ui-state-highlight.green-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/green-corner.png')});
+    }
+    
+    .ui-state-highlight.orange-alert-only, .ui-widget-content .ui-state-highlight.orange-alert-only {
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/orange-corner.png')});
+    }
+
+    .ui-state-highlight.note-only, .ui-widget-content .ui-state-highlight.note-only {
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-color: #faf6de;
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/yellow-corner.png')});
+    }
+
+    .inprogress-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')});
+        background-position: center;
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+    }
+    .ui-state-highlight.inprogress-only, .ui-widget-content .ui-state-highlight.inprogress-only {
+        background-image: url({!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')});
+        background-position: center;
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+    }
+
+    
+    #customer-action-notes {
+        width: 600px;
+        height: 400px;
+        margin: 3px;
+        resize: none;
+    }
+
+
+</style>
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"/>
+<apex:includeScript value="{!URLFOR($Resource.jqgrid433, 'js/i18n/grid.locale-en.js')}"/>
+<script type='text/javascript'>$.jgrid.no_legacy_api = true;</script>
+<apex:includeScript value="{!URLFOR($Resource.jqgrid433, 'js/jquery.jqGrid.min.js')}"/> 
+<apex:includeScript value="{!URLFOR($Resource.timepicker100tino)}"/>
+
+
+<script type='text/javascript'>
+
+    $(function() {
+    
+        //fix for jqgrid width cutoff
+        $.jgrid.cellWidth = function() { return false; }
+    
+        var binDialog = '#{!prefix}binDialog';
+        var binFrame = '#{!prefix}binFrame';
+        var binFrameLoading = '#{!prefix}binFrameLoading';
+        var lastDateTimePick = null;
+
+        //formats integer from remote to a date
+        var remoteDateFormatter = function (cellValue, options, rowObject) {
+            if (cellValue) {
+                var dt = new Date(cellValue);
+                if (isNaN(dt)) {
+                    return cellValue;
+                }
+                var dtFormatted = (dt.getUTCMonth() + 1) + "/" + dt.getUTCDate() + "/" + (dt.getUTCFullYear() % 100); 
+                //var dtFormatted = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + (dt.getFullYear() % 100); 
+                
+                if (dt.getFullYear() > 30000) {                   
+                     return '<span>' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 27000) {                   
+                   return '<span style="color:darkorange">' + dtFormatted + '</span>';
+                }                
+                else if (dt.getFullYear() > 24000) {                   
+                    return '<span style="color:#FF0000">'  + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 20000) {                   
+                    return '<span style="color:#FF0000">' +  '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 16000) {                   
+                    return '<span style="color:#FF0000">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.gif')}"/>';
+                }
+                else if (dt.getFullYear() > 14000) {                   
+                    return '<span style="color:#542172">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_fixed.gif')}"/>';
+                }    
+                else if (dt.getFullYear() > 8000) {
+                    return '<span style="color:darkorange">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/S-circle.gif')}"/>';
+                } else if (dt.getFullYear() > 6000) {
+                    return '<span style="color:blue">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/signed-16.png')}"/>';
+                } else if (dt.getFullYear() > 4000) {
+                    return '<span style="color:green">' + dtFormatted + '</span><img width="16" height="16" style="margin-left:3px;vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/artists_alphabet_p.gif')}"/>';
+                } else {
+                    return dtFormatted;
+                }
+            } else {
+                return "";
+            } 
+        };
+        
+                //formats integer from remote to a date
+        var dateTimeFormatter = function (cellValue, options, rowObject) {
+            if (cellValue) {
+                //alert('FORMATTER: ' + cellValue);
+            }
+            return remoteDateFormatter(cellValue, options, rowObject);
+        };
+
+        var dateTimeUnformatter = function (cellValue, options) {
+            //alert('UNFORMATTER: ' + $.datepicker.parseDate('m/d/y hh:mm tt', cellValue));
+        };
+        
+        var customerActionFormatter = function (cellValue, options, rowObject) {
+           if (rowObject['Customer_Action_Notes__c'] && !rowObject['Customer_Action_Resolved__c'] && !rowObject['CR_Status__c'] && !rowObject['Lease_Funding_Status__c']) {
+                return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+            }
+            else if (rowObject['Customer_Action_Notes__c'] && !rowObject['Customer_Action_Resolved__c'] && (rowObject['CR_Status__c'] || rowObject['Lease_Funding_Status__c'])) {
+                if(rowObject['CR_Status__c'] == 'S' || rowObject['Lease_Funding_Status__c'] == 'Change Pending'  )
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}"/><img width="16" height="16" style="vertical-align:middle;padding-left:3px;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'P' || rowObject['Lease_Funding_Status__c'] == 'Ready to Prepare' )
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}"/><img width="16" height="16" style="vertical-align:middle;padding-left:3px;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'C' || rowObject['Lease_Funding_Status__c'] == 'Ready to Install'  )
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}"/><img width="16" height="16" style="vertical-align:middle;padding-left:3px;" src="{!URLFOR($Resource.DocumentBinResources, 'images/alert.png')}"/>';
+                                        
+            }
+            else if (!rowObject['Customer_Action_Notes__c'] && !rowObject['Customer_Action_Resolved__c'] && (rowObject['CR_Status__c'] || rowObject['Lease_Funding_Status__c']))
+            {
+                if(rowObject['CR_Status__c'] == 'S' || rowObject['Lease_Funding_Status__c'] == 'Change Pending')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'P' || rowObject['Lease_Funding_Status__c'] == 'Ready to Prepare')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'C' || rowObject['Lease_Funding_Status__c'] == 'Ready to Install')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}"/>';
+                                        
+            }
+            
+             else if (rowObject['Customer_Action_Notes__c'] && rowObject['Customer_Action_Resolved__c'] && (rowObject['CR_Status__c'] || rowObject['Lease_Funding_Status__c']))
+            {
+                if(rowObject['CR_Status__c'] == 'S' || rowObject['Lease_Funding_Status__c'] == 'Change Pending')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Submitted.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'P' || rowObject['Lease_Funding_Status__c'] == 'Ready to Prepare')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_ApprovedPending.png')}"/>';
+                if(rowObject['CR_Status__c'] == 'C' || rowObject['Lease_Funding_Status__c'] == 'Ready to Install')
+                    return '<img width="16" height="16" style="vertical-align:middle;" src="{!URLFOR($Resource.DocumentBinResources, 'images/icon_ChangeRequest_Completed.png')}"/>';
+                                        
+            }
+ 
+            return '';
+        }
+        
+        var addDatePicker = function (elem) {
+            $(elem).datepicker({
+                dateFormat: "m/d/y", 
+                numberOfMonths: 2,
+                onClose: function(dateText, inst) {
+                    var $grid = $('.project-grid', inst.input.closest('div.ui-jqgrid'));
+                    var iCol = inst.input.parent().index();
+                    var iRow = inst.input.attr('id').split('_')[0];
+                    $grid.jqGrid('saveCell', iRow, iCol)
+                    .jqGrid('resetSelection');
+                },
+            })
+            .css('width', '92%');
+            ;
+        }
+
+        var addDateTimePicker = function (elem) {
+            var oldWidth = 80; //= $column.first().width();
+            lastDateTimePick = null; 
+            $(elem).datetimepicker({
+                dateFormat: "m/d/y", 
+                stepMinute: 15,
+                ampm: true,
+                showButtonPanel: false,
+                alwaysSetTime: true,
+                beforeShow: function ( input, inst ) {
+                    var rowId = inst.input.closest('tr').attr('id');
+                    var $jqgrid = inst.input.closest('div.ui-jqgrid');
+                    var $grid = $('.project-grid', $jqgrid);
+                    var row = $grid.jqGrid('getLocalRow', rowId);
+                    var elemId = inst.input.attr('id');
+                    var dateField = elemId.substr(elemId.indexOf('_') + 1);
+                    var savedValue = row[dateField];
+                    //convert to date time format 
+                    if (savedValue && typeof(savedValue) == 'number' ) {
+                        var dateValue = new Date(savedValue /* + timezoneOffset */);
+                        var inputValue = $.datepicker.formatDate('m/d/y', dateValue) + ' ' 
+                            + $.datepicker.formatTime('h:mm tt', {hour: dateValue.getHours(), minute: dateValue.getMinutes()}, {ampm: true});
+                        inst.input.val(inputValue);
+                    }
+                    var index = inst.input.parent().index();
+                    var $column = $('table.ui-jqgrid-htable tr:first th:eq(' + index + '), table.ui-jqgrid-btable tr:first td:eq(' + index + ')', $jqgrid); 
+                    oldWidth = $column.first().width();
+                    $column.width(100);
+                },
+                onClose: function(dateText, inst) {
+                    lastDateTimePick = $(this).datetimepicker('getDate');
+                    var index = inst.input.parent().index();
+                    var $jqgrid = inst.input.closest('div.ui-jqgrid');
+                    var $column = $('table.ui-jqgrid-htable tr:first th:eq(' + index + '), table.ui-jqgrid-btable tr:first td:eq(' + index + ')', $jqgrid); 
+                    $column.width(oldWidth);
+                    var $grid = $('.project-grid', inst.input.closest('div.ui-jqgrid'));
+                    var iCol = inst.input.parent().index();
+                    var iRow = inst.input.attr('id').split('_')[0];
+                    
+                    //MIS-212 PB 01/28/2016
+                    //console.log('datetext is:' + dateText);
+                    if(inst.id.toLowerCase().indexOf("survey_date__c") >=0){
+                        ProjectDetailGridController.updateSurveyEventDate('{!projectId}',dateText, function (result, event) {
+                            if (event.status) {
+                                $grid.jqGrid('saveCell', iRow, iCol)
+                                .jqGrid('resetSelection');                                
+                            } else {
+                                alert(event.message);
+                            }
+                        });
+                    }else{
+                        $grid.jqGrid('saveCell', iRow, iCol)
+                        .jqGrid('resetSelection');
+                    }
+                    
+                },
+            });
+        }
+
+        var cmTemplate = {
+            align: 'center',
+            formatter: remoteDateFormatter,
+            width: 80,
+            classes: "pcell",
+            sortable: false,
+            resizable: false
+        };
+        
+        var onCellSelect =  function (rowId, colId, cellContent, evt) {
+            
+            if (rowId == "EMPTYID") {
+                $(this).jqGrid('resetSelection');
+                return false;
+            }
+            var binName = $(this).jqGrid('getGridParam', "colNames")[colId];
+
+            //editing a project date
+            if (binName == "Kickoff" || binName == "Install" || binName == "Inspection" || binName == 'Work Completed' || binName == 'Approval' || binName == 'Survey') {
+                return;
+            }
+            //non-editable columns
+            if (binName == "Project" || binName == "Ready for Install"
+            || binName == "State" || binName == "Finance Type" || binName == "County" || binName == "City" || binName == "County"   
+            || binName == "Project Lead" || binName == "Astrum Office") {
+                return;
+            }
+            //customer action notes dialog
+            if (binName == "Customer Action Notes") {
+                var row = $(this).jqGrid('getLocalRow', rowId);
+                $('#customer-action-notes').val(row.Customer_Action_Notes__c);
+                if (row.Customer_Action_Resolved__c) {
+                    $('#customer-action-resolved').attr('checked', 'checked');
+                } else {
+                    $('#customer-action-resolved').removeAttr('checked');
+                }
+                $("#customer-action-dialog")
+                    .dialog("option", "title", "Customer Action Notes")
+                    .data("customerAction", { 
+                        rowId: rowId,
+                        jqGrid: $(this) 
+                    }) 
+                    .dialog('open');
+                return false;
+            }
+            
+            //Handoff to Customer Care dialog
+          if (binName == "Handoff to Customer Care") {
+                var handoffUrl = "/apex/ProjectHandoff?id=" + rowId;
+                var $handoffDialog = $("#handoffDialog");
+                var $handoffFrame = $("#handoffFrame");                 
+                $handoffDialog.dialog("option", "title", "Handoff to Customer Care");
+                
+                $("#handoffFrame").hide();
+                $("#handoffLoading").show();
+                $("#handoffFrame").load(function () {
+                    $(this).unbind('load');
+                    $("#handoffLoading").hide();
+                    $("#handoffFrame").show();
+                });
+                 $('#handoffDialog').dialog("open");
+                $("#handoffFrame").attr("src", handoffUrl );               
+                
+                return false;   
+                
+             }
+        
+        
+            $('td.ui-state-highlight', '#'+rowId).removeClass('ui-state-highlight'); 
+            var binUrl = "/apex/DocumentBinDialog?id=" + rowId + "&binName=" + encodeURIComponent(binName) + "&appName=PL" //TODO: + appName;
+            $(binDialog).dialog("option", "title", binName);
+            $(binFrame).hide();
+            $(binFrameLoading).show();
+            $(binFrame).load(function () {
+                $(this).unbind('load');
+                $(binFrameLoading).hide();
+                $(binFrame).show();
+            });
+            //store data to use to update the grid after close
+            $(binDialog).data("binDialog", { 
+                rowId: rowId,
+                colId: colId,
+                binName: binName,
+                jqGrid: $(this) 
+            });
+            $(binDialog).dialog("open");
+            $(binFrame).attr("src", binUrl);
+            return false;   
+        }
+        
+        var beforeSaveCell = function (rowid, cellname, value, iRow, iCol) {
+//TODO: validate that time is set (required for a date)
+                //return the last datetimepicker date and time, if there is one
+                if (lastDateTimePick && (cellname == 'Kickoff__c' || cellname == 'Inspection__c' || cellname == 'Survey_Date__c')) {
+                    return lastDateTimePick.getTime() /* - timezoneOffset */;
+                }
+                return value;
+        };
+                
+        var afterSaveCell = function (rowid, cellname, value, iRow, iCol) {
+            if (cellname == 'Ready_for_Installation__c') {
+                return;
+            }
+            var eventId = rowid + ':' + cellname;
+            var formattedDate = null;
+            var newDate = null;
+//TODO: date validation
+            if (value) {
+               if (typeof(value) == 'string') {
+                    var dateParts = value.split('/');
+                    newDate = new Date(parseInt(dateParts[2],10)+2000, dateParts[0]-1, dateParts[1]);
+                    formattedDate = $.datepicker.formatDate('mm/dd/yy', newDate) 
+                } else if (typeof(value) == 'number') {
+                    newDate = new Date(value /* + timezoneOffset */);
+                    formattedDate = '' + value;
+                } else if (typeof(value) == 'date') {
+                    newDate = value;
+                    formattedDate = $.datepicker.formatDate('mm/dd/yy', newDate)
+                }
+            }
+            //update salesForce
+            ProjectDetailGridController.setProjectDate(rowid, cellname, formattedDate, function (result, event) {
+                if (event.status) {
+                    //do nothing...
+                } else {
+                    alert(event.message);
+                }
+            });
+        };
+
+        //////Pre Approval Grid Start//////
+
+        //definition for grids
+        $("#preApproval").jqGrid({
+            datatype: 'local',
+            sortable: false,
+            colNames: [
+                'Kickoff',
+                'Survey',
+
+                <!-- Pre-Approval Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Approval'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+            ],
+            cmTemplate: cmTemplate,
+            colModel: [  
+                 {name: 'Kickoff__c', editable: true, width: 55, formatter: dateTimeFormatter, unformat: dateTimeUnformatter, 
+                    editoptions: { dataInit: addDateTimePicker } },
+                 {name: 'Survey_Date__c', editable: true, width: 55, formatter: dateTimeFormatter, unformat: dateTimeUnformatter, 
+                    editoptions: { dataInit: addDateTimePicker } },
+
+                <!-- Post-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Approval'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c}, </apex:outputPanel> 
+                        },
+                    </apex:outputPanel>
+                </apex:repeat>
+
+            ],
+            height: 'auto',
+            cellEdit: true,
+            cellsubmit: 'clientArray',
+            altRows: true,
+            altclass: 'gridAltRows',
+            onCellSelect: onCellSelect,
+            prmNames: {
+                id: "Id"
+            },
+            beforeSaveCell: beforeSaveCell,
+            afterSaveCell: afterSaveCell,
+        });
+
+
+
+        //////Pre Approval Grid End//////
+         
+        $('#preInstall').jqGrid({
+            datatype: 'local',
+            sortable: false,
+            colNames: [
+                'Approval',
+                
+                <!-- Pre-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Installation'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                'Customer Action Notes',
+                'Customer Action Resolved', //hidden field
+                'Change Request Status', //hidden field
+                'Lease Funding Status', //hidden field
+                'Ready for Install',                 
+            ],
+            cmTemplate: cmTemplate,
+            colModel: [  
+                {name: 'Approval_Date__c', editable: false, width: 55, formatter: dateTimeFormatter, unformat: dateTimeUnformatter, 
+                    editoptions: { dataInit: addDateTimePicker } },
+
+                <!-- Pre-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Installation'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c}, </apex:outputPanel> 
+                        },
+                    </apex:outputPanel>
+                </apex:repeat>
+
+                {name: 'Customer_Action_Notes__c', width: 65, formatter: customerActionFormatter },
+                {name: 'Customer_Action_Resolved__c', width: 0, hidden: true },
+                 {name: 'CR_Status__c', width: 0, hidden: true },
+                   {name: 'Lease_Funding_Status__c', width: 0, hidden: true },
+                {name: 'Ready_for_Installation__c', formatter: "checkbox", edittype: 'checkbox', editable: false, 
+                    formatoptions: { disabled: true }, editoptions: "true:false", width: 50, classes: "grid-checkbox" },
+            ],
+            height: 'auto',
+            cellEdit: true,
+            cellsubmit: 'clientArray',
+            altRows: true,
+            altclass: 'gridAltRows',
+            onCellSelect: onCellSelect,
+            prmNames: {
+                id: "Id"
+            },
+            beforeSaveCell: beforeSaveCell,
+            afterSaveCell: afterSaveCell,
+        });
+        
+        //definition for grids
+        $("#postInstall").jqGrid({
+            datatype: 'local',
+            sortable: false,
+            colNames: [
+                'Install',
+                'Work Completed',
+
+                <!-- Post-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Installation'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+            ],
+            cmTemplate: cmTemplate,
+            colModel: [  
+                {name: 'Install__c', editable: true, width: 50, editoptions: { dataInit: addDatePicker }  },
+                {name: 'Work_Completed__c', editable: true, width: 70, editoptions: { dataInit: addDatePicker }  },
+
+                <!-- Post-Installation Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Installation'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c}, </apex:outputPanel> 
+                        },
+                    </apex:outputPanel>
+                </apex:repeat>
+
+            ],
+            height: 'auto',
+            cellEdit: true,
+            cellsubmit: 'clientArray',
+            altRows: true,
+            altclass: 'gridAltRows',
+            onCellSelect: onCellSelect,
+            prmNames: {
+                id: "Id"
+            },
+            beforeSaveCell: beforeSaveCell,
+            afterSaveCell: afterSaveCell,
+        });
+
+        //definition for grids
+        $("#postInspect").jqGrid({
+            datatype: 'local',
+            sortable: false,
+            colNames: [
+                'Inspection',
+                
+                <!-- Post-Inspection Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Inspection'}">
+                        '{!JSENCODE(bc.Bin__c)}',
+                    </apex:outputPanel>
+                </apex:repeat>
+                
+                'Handoff to Customer Care'
+            ],
+            cmTemplate: cmTemplate,
+            colModel: [  
+                {name: 'Inspection__c', width: 80, editable: true, editoptions: { dataInit: addDateTimePicker } },
+
+                <!-- Post-Inspection Bins -->
+                <apex:repeat value="{!binConfig}" var="bc">
+                    <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Inspection'}">
+                        {name: '{!bc.Field_Name__c}'
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(bc.Bin_Column_Width__c))}">, width: {!bc.Bin_Column_Width__c}, </apex:outputPanel> 
+                        },
+                    </apex:outputPanel>
+                </apex:repeat>
+                
+                 {name: 'Customer_Care_Handoff__c', width: 70, formatter: dateTimeFormatter, unformat: dateTimeUnformatter }
+            ],
+            height: 'auto',
+            cellEdit: true,
+            cellsubmit: 'clientArray',
+            altRows: true,
+            altclass: 'gridAltRows',
+            onCellSelect: onCellSelect,
+            prmNames: {
+                id: "Id"
+            },
+            beforeSaveCell: beforeSaveCell,
+            afterSaveCell: afterSaveCell,
+        });
+        
+        //get the name to column mapping to populate the issues and notes
+        ProjectDetailGrid.mapColumns();
+        
+        //populate the grids
+        ProjectDetailGrid.reload();
+        
+        //handle ready for install clicks
+        $('#preApproval,#preInstall,#postInstall,#postInspect').on('change', '.grid-checkbox input:checkbox', function (e) {
+            var projectId = $(this).parents('tr').attr('id');
+            var ready = Boolean($(this).attr('checked'));
+            ProjectDetailGridController.setReadyForInstall(projectId, ready, function (result, event) {
+                if (event.status) {
+                    //do nothing...
+                } else {
+                    alert(event.message);
+                }
+            });
+        });
+        
+        $(binDialog).dialog({
+            autoOpen: false,
+            modal: true,
+            width: 950,
+            height: 600,
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    $(binFrame)[0].contentWindow.isValid(function() {
+                        $(that).dialog("close");
+                    });
+                    return false;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }
+        });
+        
+        $(binDialog).bind('dialogclose', function (evt, ui) {
+            var data = $(this).data('binDialog');
+            ProjectDetailGrid.reload();
+            if (ProjectDocuments) {
+                ProjectDocuments.reloadBin(data.binName);
+            }
+        });
+        
+        //define the customer action notes dialog
+        $('#customer-action-dialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 'auto',
+            height: 'auto',
+            resizable: false,
+            buttons: { 
+                "Save": function() {
+                    var that = this;
+                    var data = $("#customer-action-dialog").data('customerAction');
+                    var notes = $('#customer-action-notes').val();
+                    var resolved = Boolean($('#customer-action-resolved').attr('checked'));
+                    ProjectDetailGridController.updateCustomerAction(data.rowId, notes, resolved, function (result, event) {
+                        if (event.status) {
+                            var row = data.jqGrid.jqGrid('getLocalRow', data.rowId);
+                            row.Customer_Action_Notes__c = notes;
+                            row.Customer_Action_Resolved__c = resolved;
+                            data.jqGrid.jqGrid('setRowData', data.rowId, row);
+                        } else {
+                            alert(event.message);
+                        }
+                        $(that).dialog("close"); 
+                    });
+                    return false;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }
+        })
+        .css('overflow', 'hidden').css('padding', '0');
+        
+        
+        //define the handoff to customer care dialog
+        $('#handoffDialog').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 950,
+            height: 600,
+            title: 'Handoff to Customer Care',
+            resizable: false,
+            buttons: { 
+                "Save": function() {
+                    $('#handoffFrame')[0].contentWindow.doSubmit();
+                     $(this).dialog("close");      
+                },
+                "Cancel": function() {
+                    $(this).dialog("close"); 
+                }
+            }            
+        })
+        .css('overflow', 'hidden').css('padding', '0')
+        .bind('dialogclose', function() { $(document).disableSelection(); });
+        
+        
+    });
+    
+    var ProjectDetailGrid = {
+        nameToColIdMap: {}, 
+        nameToColIndexMap: {},
+        nameToGridMap: {},
+        preApprovalCols: [
+            <!-- Pre-Installation Bins -->
+            <apex:repeat value="{!binConfig}" var="bc">
+                <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Approval'}">
+                    '{!bc.Field_Name__c}',
+                </apex:outputPanel>
+            </apex:repeat>
+        ],
+        preInstallCols: [
+            <!-- Pre-Installation Bins -->
+            <apex:repeat value="{!binConfig}" var="bc">
+                <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Pre-Installation'}">
+                    '{!bc.Field_Name__c}',
+                </apex:outputPanel>
+            </apex:repeat>
+            'Ready_for_Installation__c',
+        ],
+        postInstallCols: [
+            <!-- Post-Installation Bins -->
+            <apex:repeat value="{!binConfig}" var="bc">
+                <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Installation'}">
+                    '{!bc.Field_Name__c}',
+                </apex:outputPanel>
+            </apex:repeat>
+        ],
+        postInspectCols: [
+            <!-- Post-Inspection Bins -->
+            <apex:repeat value="{!binConfig}" var="bc">
+                <apex:outputPanel layout="none" rendered="{!bc.Bin_Grouping_Name__c = 'Post-Inspection'}">
+                    '{!bc.Field_Name__c}',
+                </apex:outputPanel>
+            </apex:repeat>
+        ],
+        mapColumns: function() {
+            //load the map of column names to column id's
+            $('#preApproval,#preInstall,#postInstall,#postInspect').each(function() {
+                $t = $(this);
+                var colNames = $t.jqGrid('getGridParam', 'colNames');
+                var colModel = $t.jqGrid('getGridParam', 'colModel');
+                for (var i = 0; i < colNames.length; i++) {
+                    ProjectDetailGrid.nameToColIdMap[colNames[i]] = colModel[i].name; 
+                    ProjectDetailGrid.nameToColIndexMap[colNames[i]] = i;
+                    ProjectDetailGrid.nameToGridMap[colNames[i]] = $t; 
+                }
+            });
+        },
+        reload: function() {
+            ProjectDetailGridController.getProject('{!projectId}', function (result, event) {
+                if (event.status) {
+                    var hasNJ = false;
+                    var hasMD = false;
+                    var hasNY = false;
+                    if (result && result.Sales_Order__r && result.Sales_Order__r.Property__r && result.Sales_Order__r.Property__r.Property_State__c == 'NJ') {
+                        hasNJ = true;
+                    }
+                    if (result && result.Sales_Order__r && result.Sales_Order__r.Property__r && result.Sales_Order__r.Property__r.Property_State__c == 'MD') {
+                        hasMD = true;
+                    }
+                    if (result && result.Sales_Order__r && result.Sales_Order__r.Property__r && result.Sales_Order__r.Property__r.Property_State__c == 'NY') {
+                        hasNY = true;
+                    }
+                    var $grids = $('#preApproval,#preInstall,#postInstall,#postInspect'); 
+                    $grids.jqGrid('clearGridData');
+                    $grids.jqGrid('addRowData', result.Id, result);
+                    $grids.jqGrid(hasNJ ? 'showCol' : 'hideCol', 'NJ_SREC_Docs__c');
+                    // SOA PB 11/10/2015
+                    $grids.jqGrid('hideCol', 'Pull_List__c');
+                    $grids.jqGrid('hideCol', 'Invoice_at_Start_of_Installation__c');
+                    // SOA PB 11/10/2015
+                    $grids.jqGrid((hasMD || hasNY) ? 'showCol' : 'hideCol', 'Property_Tax_Approved__c');
+                    ProjectDetailGrid.addIssuesAndNotes(result);
+                    ProjectDetailGrid.markInProgress(result);
+                } else {
+                    alert(event.message);
+                }
+            });
+        },
+        markInProgress: function (row) {
+            if(typeof row.Kickoff_Documents__c !== 'undefined' && typeof row.Survey_Docs__c !== 'undefined'){
+                var dt = new Date(row.Kickoff_Documents__c);
+                var dt2 = new Date(row.Survey_Docs__c);            
+                
+                var rowid = row.Id;
+                //Mark cells as in progress based on bin completion of certain bins
+                if(dt.getFullYear() < 4000 && dt2.getFullYear() < 4000 ){
+                    if(row.Prelim_Structural_Engineering_Review__c == null){
+                        var colid = ProjectDetailGrid.nameToColIdMap['Prelim Structural Engineering Review'];
+                        var grid = ProjectDetailGrid.nameToGridMap['Prelim Structural Engineering Review'];
+                        if (colid && grid) {
+                            var colIndex1 = ProjectDetailGrid.nameToColIndexMap['Prelim Structural Engineering Review'];                       
+                            var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';
+                            $(selector1).addClass('inprogress-only');
+                            //grid.jqGrid('setCell', rowid, colid, '', 'inprogress-only', { title: description });
+                        }                    
+                    }
+                    if(row.Preliminary_Electric_Review__c == null){
+                        var colid = ProjectDetailGrid.nameToColIdMap['Preliminary Electric Review'];
+                        var grid = ProjectDetailGrid.nameToGridMap['Preliminary Electric Review'];
+                        if (colid && grid) {
+                            var colIndex1 = ProjectDetailGrid.nameToColIndexMap['Preliminary Electric Review'];                       
+                            var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';
+                            $(selector1).addClass('inprogress-only');
+                            //grid.jqGrid('setCell', rowid, colid, '', 'inprogress-only', { title: description });
+                        }
+                    }
+                    if(row.Prelim_Solar_Engineering_Review__c == null){
+                        var colid = ProjectDetailGrid.nameToColIdMap['Prelim Solar Engineering Review'];
+                        var grid = ProjectDetailGrid.nameToGridMap['Prelim Solar Engineering Review'];
+                        if (colid && grid) {
+                            var colIndex1 = ProjectDetailGrid.nameToColIndexMap['Prelim Solar Engineering Review'];                       
+                            var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';
+                            $(selector1).addClass('inprogress-only');
+                            //grid.jqGrid('setCell', rowid, colid, '', 'inprogress-only', { title: description });
+                        }
+                    }
+                }
+            }
+
+            //MIS-205 PB 01/28/2016 
+            //If Survey event completed make survey date not editable
+            var hasSurveyEvent = row.Events != null && row.Events.length > 0;            
+            var hasSurveyEventCompleted;
+
+            if(hasSurveyEvent){
+                console.log('hasSurveyEvent');
+                hasSurveyEventCompleted = row.Events[0].Completed__c ;               
+            }
+            if(typeof hasSurveyEventCompleted !== 'undefined' && hasSurveyEventCompleted){
+                console.log('hasSurveyEventCompleted');
+                var colIndex1 = ProjectDetailGrid.nameToColIndexMap['Survey'];                       
+                var selector1 = '#' + row.Id + ' td:eq(' + colIndex1 + ')'; 
+                console.log(selector1);                        
+                $(selector1).addClass('not-editable-cell');
+            }                                  
+        },
+        addIssuesAndNotes: function (row) {
+            //determine if there are any alerts
+            var rowid = row.Id;
+            
+            var hasIssues = row.PM_Project_Issues__r != null && row.PM_Project_Issues__r.length > 0;
+            var hasNotes = row.Astrum_Docs__r != null && row.Astrum_Docs__r.length > 0;       
+            
+            /*
+            if (hasIssues) {
+                for (var j = 0; j < row.PM_Project_Issues__r.length; j++) {
+                    var issue = row.PM_Project_Issues__r[j];
+                    if (issue.Bin__c) {
+                        var colid = ProjectDetailGrid.nameToColIdMap[issue.Bin__c];
+                        var grid = ProjectDetailGrid.nameToGridMap[issue.Bin__c];
+                        if (colid && grid) {
+                            var description = 'ISSUE: ' + issue.Description__c;
+                            grid.jqGrid('setCell', rowid, colid, '', 'alert-only', { title: description });
+                        }
+                    }
+                }
+            }
+            
+            if (hasNotes) {
+                for (var j = 0; j < row.Astrum_Docs__r.length; j++) {
+                    var note = row.Astrum_Docs__r[j];
+                    if (note.Bin__c) {
+                        var colIndex = ProjectDetailGrid.nameToColIndexMap[note.Bin__c];
+                        var grid = ProjectDetailGrid.nameToGridMap[note.Bin__c];
+                        if (colIndex && grid) {
+                            var $selector = $('#' + rowid + ' td:eq(' + colIndex + ')', grid);
+                            if ($selector.hasClass('alert-plus-note') || $selector.hasClass('note-only')) {
+                                //nothing to do here, already set
+                            } else if ($selector.hasClass('alert-only')) {
+                                $selector.removeClass('alert-only').addClass('alert-plus-note');
+                            } else {
+                                $selector.removeClass('alert-only').addClass('note-only');
+                            }
+                        }
+                    }
+                }
+            } */
+                
+            if (hasIssues) {
+                for (var j = 0; j < row.PM_Project_Issues__r.length; j++) {
+                   
+                    var issue = row.PM_Project_Issues__r[j];                                  
+                    if (issue.Bin__c) {                      
+                       
+                        var colid = ProjectDetailGrid.nameToColIdMap[issue.Bin__c];
+                        var grid = ProjectDetailGrid.nameToGridMap[issue.Bin__c];
+                        
+                        if (colid && grid) {    
+                            
+                            var colIndex1 = ProjectDetailGrid.nameToColIndexMap[issue.Bin__c];                       
+                            var selector1 = '#' + rowid + ' td:eq(' + colIndex1 + ')';                                
+                            var description = 'ISSUE: ' + issue.Description__c;                                          
+                            if(issue.Status__c == 'Fixed' && issue.To__c != 'PL') 
+                            {  
+                                if ($(selector1).hasClass('orange-alert-only'))
+                                {
+                                    $(selector1).removeClass('orange-alert-only').addClass('green-alert-only');
+                                }     
+                                grid.jqGrid('setCell', rowid, colid, '', 'green-alert-only', { title: description });
+                            }    
+                            else if(issue.Status__c == 'Open' && issue.To__c != 'PL')  
+                            {                                     
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });
+                            }    
+                            else if(issue.Status__c == 'Open' && issue.To__c == 'PL') 
+                            {
+                                if ($(selector1).hasClass('orange-alert-only') )                                    
+                                     $(selector1).removeClass('orange-alert-only').addClass('alert-only');      
+                                if ($(selector1).hasClass('green-alert-only') )                                    
+                                     $(selector1).removeClass('green-alert-only').addClass('alert-only'); 
+                                
+                                grid.jqGrid('setCell', rowid, colid, '', 'alert-only', { title: description }); 
+                            }    
+                            else if(issue.Status__c == 'Fixed' && issue.To__c == 'PL' && issue.Bin__c == 'Electrical Review') 
+                            {
+                                if (!($(selector1).hasClass('alert-only')))   
+                                    grid.jqGrid('setCell', rowid, colid, '', 'green-alert-only', { title: description });  
+                             }       
+                            else if(issue.Status__c == 'Open' && issue.To__c == 'PL' && issue.Bin__c == 'Electrical Review')                                    
+                                grid.jqGrid('setCell', rowid, colid, '', 'alert-only', { title: description });                                   
+                            else
+                                grid.jqGrid('setCell', rowid, colid, '', 'orange-alert-only', { title: description });
+                                    
+                        }    
+                    }
+                }
+            }
+            
+            if (hasNotes) {
+                for (var j = 0; j < row.Astrum_Docs__r.length; j++) {
+                    var note = row.Astrum_Docs__r[j];
+                    if (note.Bin__c) {
+                        var colIndex = ProjectDetailGrid.nameToColIndexMap[note.Bin__c];
+                        var grid = ProjectDetailGrid.nameToGridMap[note.Bin__c];
+                        if (colIndex && grid) {
+                            var selector = '#' + rowid + ' td:eq(' + colIndex + ')';
+                            if ($(selector).hasClass('alert-plus-note') || $(selector).hasClass('green-alert-plus-note') || $(selector).hasClass('orange-alert-plus-note') || $(selector).hasClass('note-only')) {
+                                //nothing to do here, already set
+                            } else if ($(selector).hasClass('alert-only')) {
+                                $(selector).removeClass('alert-only').addClass('alert-plus-note');     
+                            } else if ($(selector).hasClass('green-alert-only')) {
+                                $(selector).removeClass('green-alert-only').addClass('green-alert-plus-note');                                 
+                            } else if ($(selector).hasClass('orange-alert-only')) {
+                                $(selector).removeClass('orange-alert-only').addClass('orange-alert-plus-note');                                 
+                            } else {
+                                $(selector).removeClass('alert-only').addClass('note-only');
+                            }
+                        }        
+                    }
+                }
+            } 
+        }
+        
+    }
+    
+</script>
+
+<table id="preApproval" class="project-grid"></table>
+
+<table id="preInstall" class="project-grid"></table>
+
+<table id="postInstall" class="project-grid"></table>
+
+<table id="postInspect" class="project-grid"></table>
+
+<div style="display:none">
+<div id="{!prefix}binDialog">
+    <div id="{!prefix}binFrameLoading" style="display:none;text-align:center;width:100%;height:100%;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+    <iframe id="{!prefix}binFrame" width="100%" height="100%" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+</div>
+</div>
+
+<div style="display:none">
+    <div id="customer-action-dialog">
+        <input id="customer-action-resolved" type="checkbox"/><label for="customer-action-resolved">Resolved</label> 
+        <div>
+            <textarea id="customer-action-notes" placeholder="Enter Customer Action Notes" maxLength="32000"></textarea>
+        </div> 
+    </div>
+</div>
+
+<div id="handoffDialog">
+    <div id="handoffLoading" style="display:none;text-align:center;width:100%;height:100%;vertical-align:middle;"><img src="{!URLFOR($Resource.AjaxLoader)}" style="margin-top:100px;"/></div>
+    <iframe id="handoffFrame" width="100%" height="100%" sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation" frameborder="0" seemless="seemless"></iframe>
+</div>
+
+
+</apex:component>

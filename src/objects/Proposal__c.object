@@ -1,0 +1,1644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>PreviewProposal</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Annual_Power_Price_Escalator__c</fullName>
+        <externalId>false</externalId>
+        <label>Annual Power Price Escalator</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Closed_Scenario__c</fullName>
+        <externalId>false</externalId>
+        <label>Closed Scenario</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Closed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Closed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Current__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Current</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Days_Proposal_Valid__c</fullName>
+        <externalId>false</externalId>
+        <label>Days Proposal Valid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disqualifying_Validation_Errors__c</fullName>
+        <externalId>false</externalId>
+        <label>Disqualifying Validation Errors</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Estimated_Operational_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>System_Design_Quote__r.Pricing_Date__c + 90</formula>
+        <label>Estimated Operational Start Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Locked</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Non_Disqualifying_Validation_Errors__c</fullName>
+        <externalId>false</externalId>
+        <label>Non-Disqualifying Validation Errors</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Open_Quote__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Open Quote</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Proposal_Discount_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposal Discount Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Proposal_Expiration_Date__c</fullName>
+        <defaultValue>Today() + 21</defaultValue>
+        <externalId>false</externalId>
+        <label>Proposal Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SDQ_Reconstruction_Record__c</fullName>
+        <externalId>false</externalId>
+        <label>SDQ Reconstruction Record</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SDQ_Stored_State__c</fullName>
+        <externalId>false</externalId>
+        <label>SDQ Stored State</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Annual_Degradation_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Annual Degradation Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Cash_Payback__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Cash Payback</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Cumulative_Cash_Benefit__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Cumulative Cash Benefit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Cumulative_Guaranteed_Prod__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Cumulative Guaranteed Prod</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Cumulative_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Cumulative Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Cumulative_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Cumulative Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Cumulative_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Cumulative Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_EOT_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 EOT Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_EOT_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 EOT Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_EOT_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 EOT Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Estimated_Operational_Start_D__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Estimated Operational Start D</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_FIT_Annual_Earnings_After_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 FIT Annual Earnings After Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_FIT_Term_Length_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 FIT Term Length (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Financing_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Financing Plan</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Included__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>For creating Contracts</description>
+        <externalId>false</externalId>
+        <label>Scenario 1 Included</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Leveled_Cost_of_Guartd_Energy__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Leveled Cost of Guartd Energy</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Payment_Due_Final_Inspection__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Payment Due Final Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Payment_Due_Installation__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Payment Due Installation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Payment_Due_Signing__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Payment Due Signing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Present_Value_Financing_Pmt__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Present Value Financing Pmt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Production_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Production Guarantee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Proposal_Term_months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Proposal Term (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Rate_of_Return__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Rate of Return</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Solar_Electric_Rate__c</fullName>
+        <description>Essentially Scenario 1 Financing Rate Year 1 ($/kWh) for purchase/loan options</description>
+        <externalId>false</externalId>
+        <label>Scenario 1 Solar Electric Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year 1 Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year1 Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year1 Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Avg_Mthly_SREC_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year1 Avg Mthly SREC Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Mthly_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year1 Mthly Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Mthly_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year1 Mthly Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Mthly_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year1 Mthly Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year1_Total_Monthly_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scenario_1_Year1_Mthly_Uty_Bill_Savings__c +  Scenario_1_Year1_Avg_Mthly_SREC_Earnings__c - Scenario_1_Year_1_Monthly_Solar_Payment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scenario 1 Year1 Total Monthly Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_1_Year_1_Monthly_Solar_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 1 Year 1 Monthly Solar Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Annual_Degradation_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Annual Degradation Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Cash_Payback__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Cash Payback</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Cumulative_Cash_Benefit__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Cumulative Cash Benefit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Cumulative_Guaranteed_Prod__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Cumulative Guaranteed Prod</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Cumulative_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Cumulative Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Cumulative_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Cumulative Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Cumulative_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Cumulative Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_EOT_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 EOT Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_EOT_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 EOT Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_EOT_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 EOT Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Estimated_Operational_Start_D__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Estimated Operational Start D</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_FIT_Annual_Earnings_After_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 FIT Annual Earnings After Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_FIT_Term_Length_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 FIT Term Length (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Financing_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Financing Plan</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Included__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>For creating Contracts</description>
+        <externalId>false</externalId>
+        <label>Scenario 2 Included</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Leveled_Cost_of_Guartd_Energy__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Leveled Cost of Guartd Energy</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Payment_Due_Final_Inspection__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Payment Due Final Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Payment_Due_Installation__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Payment Due Installation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Payment_Due_Signing__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Payment Due Signing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Present_Value_Financing_Pmt__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Present Value Financing Pmt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Production_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Production Guarantee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Proposal_Term_months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Proposal Term (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Rate_of_Return__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Rate of Return</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Solar_Electric_Rate__c</fullName>
+        <description>Essentially Scenario 2 Financing Rate Year 1 ($/kWh) for purchase/loan options</description>
+        <externalId>false</externalId>
+        <label>Scenario 2 Solar Electric Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year 1 Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year1 Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year1 Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Avg_Mthly_SREC_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year1 Avg Mthly SREC Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Mthly_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year1 Mthly Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Mthly_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year1 Mthly Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Mthly_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year1 Mthly Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year1_Total_Monthly_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scenario_2_Year1_Mthly_Uty_Bill_Savings__c  +  Scenario_2_Year1_Avg_Mthly_SREC_Earnings__c - Scenario_2_Year_1_Monthly_Solar_Payment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scenario 2 Year1 Total Monthly Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_2_Year_1_Monthly_Solar_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 2 Year 1 Monthly Solar Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Annual_Degradation_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Annual Degradation Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Cash_Payback__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Cash Payback</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Cumulative_Cash_Benefit__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Cumulative Cash Benefit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Cumulative_Guaranteed_Prod__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Cumulative Guaranteed Prod</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Cumulative_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Cumulative Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Cumulative_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Cumulative Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Cumulative_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Cumulative Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_EOT_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 EOT Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_EOT_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 EOT Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_EOT_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 EOT Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Estimated_Operational_Start_D__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Estimated Operational Start D</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_FIT_Annual_Earnings_After_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 FIT Annual Earnings After Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_FIT_Term_Length_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 FIT Term Length (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Financing_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Financing Plan</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Included__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>For creating Contracts</description>
+        <externalId>false</externalId>
+        <label>Scenario 3 Included</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Leveled_Cost_of_Guartd_Energy__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Leveled Cost of Guartd Energy</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Payment_Due_Final_Inspection__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Payment Due Final Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Payment_Due_Installation__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Payment Due Installation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Payment_Due_Signing__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Payment Due Signing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Present_Value_Financing_Pmt__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Present Value Financing Pmt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Production_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Production Guarantee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Proposal_Term_months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Proposal Term (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Rate_of_Return__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Rate of Return</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Solar_Electric_Rate__c</fullName>
+        <description>Essentially Scenario 3 Financing Rate Year 1 ($/kWh) for purchase/loan options</description>
+        <externalId>false</externalId>
+        <label>Scenario 3 Solar Electric Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year 1 Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year1 Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year1 Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Avg_Mthly_SREC_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year1 Avg Mthly SREC Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Mthly_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year1 Mthly Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Mthly_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year1 Mthly Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Mthly_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year1 Mthly Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year1_Total_Monthly_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scenario_3_Year1_Mthly_Uty_Bill_Savings__c +  Scenario_3_Year1_Avg_Mthly_SREC_Earnings__c - Scenario_3_Year_1_Monthly_Solar_Payment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scenario 3 Year1 Total Monthly Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_3_Year_1_Monthly_Solar_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 3 Year 1 Monthly Solar Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Annual_Degradation_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Annual Degradation Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Cash_Payback__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Cash Payback</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Cumulative_Cash_Benefit__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Cumulative Cash Benefit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Cumulative_Guaranteed_Prod__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Cumulative Guaranteed Prod</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Cumulative_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Cumulative Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Cumulative_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Cumulative Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Cumulative_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Cumulative Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_EOT_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 EOT Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_EOT_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 EOT Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_EOT_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 EOT Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Estimated_Operational_Start_D__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Estimated Operational Start D</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_FIT_Annual_Earnings_After_Tax__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 FIT Annual Earnings After Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_FIT_Term_Length_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 FIT Term Length (Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Financing_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Financing Plan</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Included__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>For creating Contracts</description>
+        <externalId>false</externalId>
+        <label>Scenario 4 Included</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Leveled_Cost_of_Guartd_Energy__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Leveled Cost of Guartd Energy</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Payment_Due_Final_Inspection__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Payment Due Final Inspection</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Payment_Due_Installation__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Payment Due Installation</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Payment_Due_Signing__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Payment Due Signing</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Present_Value_Financing_Pmt__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Present Value Financing Pmt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Production_Guarantee__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Production Guarantee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Proposal_Term_months__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Proposal Term (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Rate_of_Return__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Rate of Return</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Solar_Electric_Rate__c</fullName>
+        <description>Essentially Scenario 4 Financing Rate Year 1 ($/kWh) for purchase/loan options</description>
+        <externalId>false</externalId>
+        <label>Scenario 4 Solar Electric Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Annual_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year 1 Annual Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Annual_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year1 Annual Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Annual_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year1 Annual Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Avg_Mthly_SREC_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year1 Avg Mthly SREC Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Mthly_Uty_Bill_After__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year1 Mthly Uty Bill After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Mthly_Uty_Bill_Before__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year1 Mthly Uty Bill Before</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Mthly_Uty_Bill_Savings__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year1 Mthly Uty Bill Savings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year1_Total_Monthly_Earnings__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scenario_4_Year1_Mthly_Uty_Bill_Savings__c +  Scenario_4_Year1_Avg_Mthly_SREC_Earnings__c - Scenario_4_Year_1_Monthly_Solar_Payment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scenario 4 Year1 Total Monthly Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scenario_4_Year_1_Monthly_Solar_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Scenario 4 Year 1 Monthly Solar Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Sighten_Scenario_1_Quote_uuid__c</fullName>
+        <description>Contains the uuid for the scenario 1 quote in the Sighten system</description>
+        <externalId>true</externalId>
+        <label>Sighten Scenario 1 Quote uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Scenario_2_Quote_uuid__c</fullName>
+        <description>Contains the uuid for the scenario 2 quote in the Sighten system</description>
+        <externalId>true</externalId>
+        <label>Sighten Scenario 2 Quote uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Scenario_3_Quote_uuid__c</fullName>
+        <description>Contains the uuid for the scenario 3 quote in the Sighten system</description>
+        <externalId>true</externalId>
+        <label>Sighten Scenario 3 Quote uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sighten_Scenario_4_Quote_uuid__c</fullName>
+        <description>Contains the uuid for the scenario 4 quote in the Sighten system</description>
+        <externalId>true</externalId>
+        <label>Sighten Scenario 4 Quote uuid</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Quote__c</fullName>
+        <externalId>false</externalId>
+        <label>System Design Quote</label>
+        <referenceTo>System_Design_Quote__c</referenceTo>
+        <relationshipLabel>Proposals</relationshipLabel>
+        <relationshipName>Proposals</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>System_Design_Reconstruction_Record__c</fullName>
+        <externalId>false</externalId>
+        <label>System Design Reconstruction Record</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>System_Design_Stored_State__c</fullName>
+        <externalId>false</externalId>
+        <label>System Design Stored State</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Valid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Valid</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Proposal</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>PR-{00000}</displayFormat>
+        <label>Proposal Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Proposals</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Record_is_Locked</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Profile.Name = &apos;System Administrator&apos;, false, PRIORVALUE(Locked__c) = true)</errorConditionFormula>
+        <errorMessage>Record is part of a closed Contract, and is locked from further editing</errorMessage>
+    </validationRules>
+</CustomObject>

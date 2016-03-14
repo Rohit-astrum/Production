@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Use this e-mail to inform customer that this is the last time we&apos;re reaching out. Only send this after the last VoiceMail.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Final E-mail</name>
+    <style>none</style>
+    <subject>Don’t miss out on going solar for nothing out-of-pocket!</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+We’ve been trying to reach you and we haven’t heard back from you. We’re wondering if you have any questions or concerns about switching to solar. 
+At Astrum, we concentrate exclusively on home solar power. We can tell you about our free installation and customized system design services — it won’t take much time and may answer a lot of your questions. 
+
+Don’t lose out on this chance to go solar for nothing out-of-pocket and start saving right away! This is the last time we’ll be reaching out to you, so if you’re still interested, please call us back at
+800-903-6130 and select the option for Sales.
+
+We can’t wait to hear from you!
+
+Best,
+
+
+{!User.FirstName}
+
+Astrum Solar
+8955 Henkels Lane Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+{!User.Email}
+www.astrumsolar.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<title>Thank you for requesting a solar consultation.</title>
+
+<style type="text/css">
+.appleLinksGray a {
+        color: #666666;
+        text-decoration: none;
+}
+.appleLinksWhite a {
+        color: #ffffff;
+        text-decoration: none;
+}
+.appleLinksBlue a {
+        color: #1cef94;
+        text-decoration: none;
+}
+.appleLinksGreen a {
+        color: #61af3f;
+        text-decoration: none;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ><table style="width:100%; background-color:#e8e8e8; padding-bottom:30px; " ><tr ><td ><table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><div class="mktEditable" id="Header" style="margin-left:33px; margin-right:33px; margin-top:15px; margin-bottom:15px; font-size:0px; " ><table width="634" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+<tr>
+<td width="302" height="85" style="vertical-align: top;">
+<div style="margin-top: 10px;"><a href="http://www.directenergysolar.com"><img src="http://pages.astrumsolar.com/rs/astrumsolarinc/images/DirectEnergySolar_logo.jpg" border="0" height="64" width="295" alt="Direct Energy Solar"></a></div>
+</td>
+<td width="472" height="85" style="vertical-align: top;" align="right">
+<div style="margin-top: 13px;"><img src="http://pages.astrumsolar.com/rs/astrumsolarinc/images/PhoneTagline.jpg" border="0" height="40" width="273" alt="Your Sun. Your Power. Your Way. Call Us: 800-903-6130"></div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+<tr ><td ><div class="mktEditable" id="Menu" style="margin-left:33px; margin-right:33px; font-size:0px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; " ><img src="http://pages.astrumsolar.com/rs/astrumsolarinc/images/Navigation.jpg" width="634" height="40" usemap="#Map" border="0"> <map name="Map">
+<area shape="rect" coords="1,12,102,27" href="http://www.directenergysolar.com/solar-done-right/the-direct-energy-solar-difference" alt="Why Choose Us">
+<area shape="rect" coords="121,12,224,28" href="http://www.directenergysolar.com/solar-by-state/choose-your-state" alt="Solar By State">
+<area shape="rect" coords="240,11,314,27" href="http://www.directenergysolar.com/the-basics/energy-savings" alt="The Basics">
+<area shape="rect" coords="331,12,454,27" href="http://www.directenergysolar.com/customer-stories" alt="Customer Stories">
+<area shape="rect" coords="471,12,535,26" href="http://www.directenergysolar.com/company/our-company" alt="Company">
+<area shape="rect" coords="556,12,632,28" href="http://www.directenergysolar.com/get-started-free-solar-quote" alt="Get Started"></map></div>
+</td>
+</tr>
+<tr ><td width="634" style="padding-left:33px; padding-right:33px; " ><div class="mktEditable" id="BodyCopy" ><div style="margin-top: 20px; margin-bottom: 40px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 28px; margin-bottom: 5px; margin-top: 35px; color: #1c3f94;"><span style="color: #666666; font-size: 16px; line-height: normal;">Dear&nbsp;</span><span style="color: #666666; font-size: 16px; line-height: normal;">{{lead.First Name:default=Solar Owner}},</span></p>
+<div style="margin-bottom: 15px; margin-top: 10px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<p>I just wanted to send a quick note to thank you for choosing Direct Energy Solar for your solar installation. &nbsp;We know solar is a competitive business and that you have many choices for an installer, so we are honored that you selected us. &nbsp;We are excited to welcome you as our newest customer in {{lead.City:default=edit me}}!</p>
+<p><span>{{company.Account Owner First Name:default=edit me}} will take good care of you as the process unfolds, but if I can be of any assistance to you, please do not hesitate to reach out.</span></p>
+<p><span><span>We really appreciate your business!</span></span></p>
+<p><span><span>Jose</span></span></p>
+</div>
+</div>
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="font-  family: Arial, Helvetica, sans-serif; color: #e45206; font-size: 18px; font-weight: bold; line-height: 18px;" height="22" valign="top"><span>Jose Ramos</span></td>
+</tr>
+<tr>
+<td style="font-family: Arial,   Helvetica, sans-serif; color: #1c3f94; font-size: 14px; font-weight: bold; line-height: 14px;" height="27" valign="top"><span>Chief   Marketing Officer</span></td>
+</tr>
+<tr>
+<td style="font-family: Arial,   Helvetica, sans-serif; color: #666666; font-size: 11px; line-height: 11px;" height="14" valign="top"><span style="color: #61af3f; font-weight: bold;">P&nbsp;</span> <a style="color: #666666; text-  decoration: none;" href="tel:707.495.8049">707.495.8049</a></td>
+</tr>
+<tr>
+<td style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; line-height: 11px;" height="14" valign="top"><span style="color: #61af3f; font-weight: bold;">F&nbsp;</span> <a style="color: #666666; text-  decoration: none;" href="tel:855-850-3351">855-850-3351</a></td>
+</tr>
+<tr>
+<td style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; line-height: 11px;" height="24" valign="top"><span style="color: #61af3f; font-weight: bold;">E&nbsp;</span> <a style="color: #666666; text-decoration: none;" href="mailto:jose.ramos@directenergysolar.com">jose.ramos@directenergysolar.com</a></td>
+</tr>
+<tr>
+<td style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; line-height: 11px;" height="14" valign="top"><span>6200 Stoneridge Mall Road, Suite 300</span></td>
+</tr>
+<tr>
+<td style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; line-height: 11px;" height="14" valign="top"><span>Pleasanton, CA 94588</span></td>
+</tr>
+<tr>
+<td style="font-family: Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; line-height: 11px;" height="14" valign="top"><a style="color: #666666; text-decoration: none; font-weight: bold;" href="http://www.directenergysolar.com">www.directenergysolar.com</a></td>
+</tr>
+<tr>
+<td height="85" valign="middle"><a href="http://www.astrumsolar.com"><img src="https://astrumsolar.box.com/shared/static/e7qkqrevejpxrvx60qwvqxpbk4j0fgt6.jpg" border="0" alt="Direct Energy Solar" align="left" /></a></td>
+</tr>
+<tr>
+<td style="font-family: Arial,   Helvetica, sans-serif; color: #e45206; font-size: 11px; line-height: 11px; font-weight: bold; text-transform: uppercase;" height="14" valign="top">Your Sun. Your Power. Your Way.&trade;</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><table width="634" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; " ><tr ><td width="634" style="vertical-align:top; text-align:center; " ><div style="margin-top:25px; margin-bottom:25px; " class="mktEditable" id="PhoneTagline" ><img src="http://pages.astrumsolar.com/rs/astrumsolarinc/images/PhoneTagline.jpg" border="0" height="40" width="273" alt="Your Sun. Your Power. Your Way. Call Us: 800-903-6130"></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td style="padding-top:20px; padding-bottom:33px; padding-left:33px; padding-right:33px; " ><div style="color:#666666; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; " ><div class="mktEditable" id="disclaimerCopyWhy" ><p style="color:#666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">You&rsquo;re receiving this email because you&rsquo;ve expressed interest in a Direct Energy Solar system installation.</p>
+</div>
+<div class="mktEditable" id="disclaimerCopyTerms" ><p style="color:#666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.</span></p>
+<p style="color:#666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532</span></p>
+</div>
+<div class="mktEditable" id="OfficeDetails" ><p style="margin-bottom: 10px;"><span class="appleLinksGray">Direct Energy Solar</span><br>
+<span class="appleLinksGray">8955 Henkels Lane, Suite 508</span><br>
+<span class="appleLinksGray">Annapolis Junction, MD 20701</span><br>
+<span class="appleLinksGray">P: 800-903-6130</span><br>
+<span class="appleLinksGray">F: 443-267-0036</span></p>
+</div>
+<div class="mktEditable" id="TermsConditions" ><p style="font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px;">&copy; <span class="appleLinksGray">2015 Astrum Solar, Inc.</span> All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com/privacy-policy" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com/terms-and-conditions" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">DirectEnergySolar.com</a></p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Astrum CRM Settings</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Annapolis_Junction_MD_Sales_Coord__c</fullName>
+        <description>Annapolis Junction, MD Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Annapolis Junction, MD Sales Coord</inlineHelpText>
+        <label>Annapolis Junction, MD Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bridgewater_NJ_Sales_Coord__c</fullName>
+        <description>Bridgewater, NJ Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Bridgewater, NJ Sales Coord</inlineHelpText>
+        <label>Bridgewater, NJ Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Henrietta_NY_Sales_Coord__c</fullName>
+        <description>Henrietta, NY Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Henrietta, NY Sales Coord</inlineHelpText>
+        <label>Henrietta, NY Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hopkinton_MA_Sales_Coord__c</fullName>
+        <description>Hopkinton, MA Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Hopkinton, MA Sales Coord</inlineHelpText>
+        <label>Hopkinton, MA Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MA_Sales_Coord__c</fullName>
+        <description>MA Office Sales Coordinator</description>
+        <externalId>false</externalId>
+        <inlineHelpText>MA Office Sales Coordinator</inlineHelpText>
+        <label>MA Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MI_Sales_Coord__c</fullName>
+        <description>MI Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>MI Sales Coord</inlineHelpText>
+        <label>MI Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NY_Sales_Coord__c</fullName>
+        <description>NY Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>NY Sales Coord</inlineHelpText>
+        <label>NY Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Norristown_PA_Sales_Coord__c</fullName>
+        <description>Norristown, PA Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Norristown, PA Sales Coord</inlineHelpText>
+        <label>Norristown, PA Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>White_Plains_NY_Sales_Coord__c</fullName>
+        <description>White Plains, NY Sales Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>White Plains, NY Sales Coord</inlineHelpText>
+        <label>White Plains, NY Sales Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Youngstown_OH_Coord__c</fullName>
+        <description>Youngstown, OH Coord</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Youngstown, OH Coord</inlineHelpText>
+        <label>Youngstown, OH Coord</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>AstrumCRMSettings</label>
+</CustomObject>

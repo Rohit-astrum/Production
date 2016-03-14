@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Rebrand: Customers.Rebrand: Customers 3/15/15</name>
+    <style>none</style>
+    <subject>We want to share some exciting news with you.</subject>
+    <textOnly>Astrum Solar
+&lt;http://www.astrumsolar.com&gt;
+
+A special message for our valued customers.
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for being an Astrum Solar customer. We appreciate your business and hope that we are continuing to provide you with exceptional service and that you are enjoying your solar savings.
+
+We have some exciting, insider news for you!
+
+A New Name. The Same Mission.
+
+As you may already be aware, Astrum Solar became a proud part of the Direct Energy family in July of 2014. We are now in the middle of an exciting brand transformation and will be revealing our new name, Direct Energy Solar, to the public on April 1!
+
+While we are undergoing a name change and our communications with you will have a new look and feel, our mission remains the same—to provide an exceptional customer experience and ensure that our customers get the most out of their solar panels: the most energy generated, the most electricity savings, the most beneficial environmental impact, and the most joy each time they see a sunny day.
+
+The Experience of Serving Over Six Million Homeowners
+
+This is an exciting time for Astrum Solar and our customers. Our company’s growth benefits you, our customer. The Direct Energy family of companies has served over six million homeowners across North America for over 15 years. Direct Energy has become the largest home services provider on the continent by providing professional, affordable and high-quality energy products and home services to your neighbors and we would like to do the same for you. You can trust us with your solar installation and many other home services needs.
+
+Thank you, and we look forward to revealing our new brand to you on April 1. If you have any questions, please call our Customer Care team at 888-603-6085.
+
+Call Customer Care: 888-603-6085
+See a Sunny Day in a Whole New Way®
+
+
+You’re receiving this email because you are an Astrum Solar customer.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Astrum Solar, Inc.
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy &lt;http://www.astrumsolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions &lt;http://www.astrumsolar.com/terms-and-conditions&gt;
+
+www.astrumsolar.com &lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

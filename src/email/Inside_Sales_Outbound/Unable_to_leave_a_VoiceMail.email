@@ -1,0 +1,15 @@
+<p>Dear {!Lead.FirstName},</p>
+<p>Thank you for your interest in Astrum Solar, where we do home solar the right way. We just called you but were unable to leave you a phone message. We're reaching out via e-mail because we want to get you started on your way to instantly lowering your electricity costs as soon as we can!</p>
+<p>We’d like to learn more about your home and what you want from your solar experience. We exclusively deal in home solar installations, and we would like to connect you with one of our home solar specialists. The specialist can schedule a survey of your roof and design a system that will lower your electricity costs immediately and free you from unpredictable utility rates. </p>
+<p>Please call us back at <b>800-903-6130</b> and select the option for sales, or reply to this email and let us know the best time to reach you. </p>
+<p>We look forward to speaking with you and getting you started on experiencing solar the right way!</p>
+<p>Best,</p>
+<p>{!User.FirstName}</p>
+<p>
+<img src="https://c.na8.content.force.com/servlet/servlet.ImageServer?id=015800000017MZ3&oid=00D80000000dNiA&lastMod=1274981283000" /><br />
+8955 Henkels Lane Suite 508<br />
+Annapolis Junction, MD 20701<br />
+P: 800-903-6130<br />
+F: 443-267-0036<br />
+{!User.Email}<br />
+<a href="http://www.astrumsolar.com">www.astrumsolar.com</a></p>

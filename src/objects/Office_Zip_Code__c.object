@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Main_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Main City</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Main_County__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The main county that this zip code resides within. This field is populated manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The main county that this zip code resides within. This field is populated manually.</inlineHelpText>
+        <label>Main County</label>
+        <referenceTo>County__c</referenceTo>
+        <relationshipLabel>Office Zip Codes</relationshipLabel>
+        <relationshipName>Office_Zip_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Marketing_Priority__c</fullName>
+        <description>The numerical marketing priority that has been set for this zip code. The Pricing &amp; Analysis team uses an internal formula to calculate this value. This field is populated manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The numerical marketing priority that has been set for this zip code. The Pricing &amp; Analysis team uses an internal formula to calculate this value. This field is populated manually.</inlineHelpText>
+        <label>Marketing Priority</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OOH_75k_Total_OOH__c</fullName>
+        <description>Total Owner-Occupied Households with income above $75,000 divided by the total number of Owner-Occupied Households. This field is populated manually by the Pricing &amp; Analysis team. They use census data to figure this out.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Owner-Occupied Households with income above $75,000 divided by the total number of Owner-Occupied Households. This field is populated manually by the Pricing &amp; Analysis team. They use census data to figure this out.</inlineHelpText>
+        <label>OOH 75k/Total OOH</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Office_Location__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The office this zip code is assigned to. This field is populated manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The office this zip code is assigned to. This field is populated manually.</inlineHelpText>
+        <label>Office Location</label>
+        <referenceTo>Office_Location__c</referenceTo>
+        <relationshipLabel>Office Zip Codes</relationshipLabel>
+        <relationshipName>Office_Zip_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <description>A categorization of priority. This field is populated manually.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A categorization of priority. This field is populated manually.</inlineHelpText>
+        <label>Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This is for reference, and may be re-worked. There are Zip Codes that cross state lines. A Junction Object may be more appropriate in the future, or supplying a Geo-Lat-Long point for each Zip Code would also aid in reporting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is for reference, and may be re-worked. There are Zip Codes that cross state lines. A Junction Object may be more appropriate in the future, or supplying a Geo-Lat-Long point for each Zip Code would also aid in reporting</inlineHelpText>
+        <label>State</label>
+        <referenceTo>State__c</referenceTo>
+        <relationshipLabel>Office Zip Codes</relationshipLabel>
+        <relationshipName>Office_Zip_Codes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_OOH_75k__c</fullName>
+        <description>Total Owner-Occupied Households with incomes above $75,000. This field is populated manually by the Pricing &amp; Analysis team. They use census data to figure this out.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Owner-Occupied Households with incomes above $75,000. This field is populated manually by the Pricing &amp; Analysis team. They use census data to figure this out.</inlineHelpText>
+        <label>Total OOH 75k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zip_Code_Copy__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This is a copy field (populated by the Zip Code Copy Process) that has validation set up to prevent duplicate records. Right now, it only accepts 5 digits for a zip code. If we expand to Canada or somewhere that has letters for zip codes, the validation rules will need to be adjusted.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is a copy field (populated by the Zip Code Copy Process) that has validation set up to prevent duplicate records. Right now, it only accepts 5 digits for a zip code.</inlineHelpText>
+        <label>Zip Code Copy</label>
+        <length>5</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Office Zip Code</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Main_City__c</columns>
+        <columns>Office_Location__c</columns>
+        <columns>State__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Office Zip Code Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Office Zip Codes</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Zip_Code_must_be_5_digits</fullName>
+        <active>true</active>
+        <description>Right now, this field only accepts 5 digits for a zip code. If we expand to Canada or somewhere that has letters for zip codes, this validation rule will need to be adjusted.</description>
+        <errorConditionFormula>!REGEX(Name, &quot;^\\d{5}?$&quot;)</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>The Zip Code must be 5 digits</errorMessage>
+    </validationRules>
+</CustomObject>

@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumCRM - An object for tracking pricing adjustments to be applied to a calculated system price on a System Design Quote.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Adjustment_Applied__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Adjustment Applied</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_per_Watt__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount per Watt</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Applicable_Scenario__c</fullName>
+        <externalId>false</externalId>
+        <label>Applicable Scenario</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Apply_as_Net_Adjustment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Apply as Net Adjustment</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Channel_Partner_Adjustment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is to signify that this adjustment is handled automatically by the Financing Product Pricing module.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is to signify that this adjustment is handled automatically by the Financing Product Pricing module.</inlineHelpText>
+        <label>Channel Partner Adjustment</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DE_Outbound_Referral_Offer__c</fullName>
+        <description>Look up Entitlement Offer Picklist value willl determine the destination for outbound lead generation among DE sister companies.</description>
+        <externalId>false</externalId>
+        <formula>Entitlement_Offer__r.DE_Outbound_Referral_Offer__c</formula>
+        <inlineHelpText>Look up Entitlement Offer Picklist value willl determine the destination for outbound lead generation among DE sister companies.</inlineHelpText>
+        <label>DE Outbound Referral Offer</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Effective_Dollar_Amount__c</fullName>
+        <description>This is the dollar amount that is calculated during the pricing process, this is what is see on the customer facing documents.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the dollar amount that is calculated during the pricing process, this is what is see on the customer facing documents.</inlineHelpText>
+        <label>Effective Dollar Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Entitlement_Offer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Entitlement Offer</label>
+        <referenceTo>Entitlement_Offer__c</referenceTo>
+        <relationshipLabel>Price Adjustments</relationshipLabel>
+        <relationshipName>Price_Adjustments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Financing_Option__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(Promotion__c != null
+  ,text(Promotion__r.Financing_Option__c)
+  ,text(Entitlement_Offer__r.Financing_Option__c)
+)</formula>
+        <label>Financing Option</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Financing_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(Promotion__c != null
+  ,text(Promotion__r.Financing_Type__c)
+  ,text(Entitlement_Offer__r.Financing_Type__c)
+)</formula>
+        <label>Financing Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Guaranteed_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Guaranteed Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Lease_Fund__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(Promotion__c != null
+  ,Promotion__r.Lease_Fund__r.Name
+  ,Entitlement_Offer__r.Lease_Fund__r.Name
+)</formula>
+        <label>Lease Fund</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Leasing_Option__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(Promotion__c != null
+  ,text(Promotion__r.Leasing_Option__c)
+  ,text(Entitlement_Offer__r.Leasing_Option__c)
+)</formula>
+        <label>Leasing Option</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Locked</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opt_Out_of_Adjustment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Opt Out of Adjustment</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Percent__c</fullName>
+        <externalId>false</externalId>
+        <label>Percent</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Procurement_Required__c</fullName>
+        <externalId>false</externalId>
+        <formula>Entitlement_Offer__r.Procurement_Required__c</formula>
+        <label>Procurement Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Production_Guarantee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Production Guarantee?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Promotion_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Promotion__r.RecordType.DeveloperName</formula>
+        <label>Promotion Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Promotion__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Promotion</label>
+        <referenceTo>Promotion__c</referenceTo>
+        <relationshipLabel>Price Adjustments</relationshipLabel>
+        <relationshipName>Price_Adjustments</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>RecordTypeDeveloperName__c</fullName>
+        <externalId>false</externalId>
+        <formula>RecordType.DeveloperName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>RecordTypeDeveloperName</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>System_Design_Quote__c</fullName>
+        <externalId>false</externalId>
+        <label>System Design Quote</label>
+        <referenceTo>System_Design_Quote__c</referenceTo>
+        <relationshipLabel>Price Adjustments</relationshipLabel>
+        <relationshipName>Price_Adjustments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Program</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VP Override</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Price Adjustment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Description</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Price Adjustments</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Dollar_Amount</fullName>
+        <active>true</active>
+        <label>Dollar Amount</label>
+        <picklistValues>
+            <picklist>Applicable_Scenario__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Line Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Program</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP Override</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Percentage</fullName>
+        <active>true</active>
+        <label>Percentage</label>
+        <picklistValues>
+            <picklist>Applicable_Scenario__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Line Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Program</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP Override</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Rate</fullName>
+        <active>true</active>
+        <label>Rate</label>
+        <picklistValues>
+            <picklist>Applicable_Scenario__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Line Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Program</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP Override</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Applicable_Scenario_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>isblank( text(Applicable_Scenario__c) )</errorConditionFormula>
+        <errorDisplayField>Applicable_Scenario__c</errorDisplayField>
+        <errorMessage>Applicable Scenario required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Record_is_Locked</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF($Profile.Name = &apos;System Administrator&apos;, false, PRIORVALUE(Locked__c) = true)</errorConditionFormula>
+        <errorMessage>Record is part of a closed Contract, and is locked from further editing</errorMessage>
+    </validationRules>
+</CustomObject>

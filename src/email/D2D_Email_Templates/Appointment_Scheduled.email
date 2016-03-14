@@ -1,0 +1,41 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<font color="#999999"><font size="5"><font face="Arial,Sans-Serif"><font color="#666666" size="3">Dear {!Lead.FirstName},</font></font></font></font>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<font color="#666666">It 
+was great talking to you today about Direct Energy Solar and how you 
+might save money and take control of unpredictable electricity bills. 
+Thanks for taking the time to learn about us and
+ how you can become your own energy provider.<br><br></font><font color="#666666">
+</font><p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><font color="#666666">Your appointment with the Direct Energy Solar Consultant is scheduled for <span tabindex="0" class="aBn" data-term="goog_786680272"><span class="aQJ">{!Event.ActivityDate}</span></span>.
+</font></p><font color="#666666">
+</font><p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><font color="#666666">If 
+you were not able to provide an electricity bill at the time of the 
+visit, please use this e-mail address to send me a copy of your latest 
+electric bill. Below are some options for sending
+ a copy of your bill in:</font></p><font color="#666666"></font><font color="#666666"><span>•</span> If you have
+<b>on-line access</b> to your account, you can save a copy of your bill 
+on your computer, usually as an Adobe pdf. You can then e-mail this copy
+ attached to the reply to me.</font><font color="#666666"><span><br><br>•<span style="font:7.0pt &quot;Times New Roman&quot;"> </span></span>If you don’t have on-line access, you can
+<b>scan a paper copy</b> of your bill and attach the scanned image or pdf to the reply to me.</font><font color="#666666"><span><br><br>•<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp; </span></span>Should neither of these options work for you then you can
+<b>fax a copy</b> to <a href="tel:%28800%29%20949-1408" value="+18009491408" target="_blank">(800) 949-1408</a>. Please make sure you write my name on the first page of the fax, so I may identify it.</font><font color="#666666">
+</font><p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><font color="#666666"><br>
+If you have any questions, you may contact us Monday to <span tabindex="0" class="aBn" data-term="goog_786680273"><span class="aQJ">Friday</span></span> <span tabindex="0" class="aBn" data-term="goog_786680274"><span class="aQJ">9 am to 5 pm EST</span></span> at <a href="tel:1-844-473-4274" value="+18444734274" target="_blank">1-844-473-4274</a> or
+<a href="mailto:sales.support@directenergysolar.com" target="_blank">sales.support@<wbr>directenergysolar.com</a>.
+</font></p><font color="#666666">
+</font><p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><font color="#666666">Congratulations on taking this first step toward becoming energy independent!
+</font></p><font color="#666666">
+</font><p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><font color="#666666">And thanks for your time and your interest in Direct Energy Solar!</font></p><p class="MsoNormal"><br><font face="Arial, sans-serif" color="#666666" size="3"></font></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<font face="Arial,Sans-Serif" color="#666666" size="3">Best,</font><br><br><font face="Arial,Sans-Serif" color="#666666" size="3">{!User.FirstName}</font><br><br><font color="#666666"><font size="2"><font face="Arial,Sans-Serif">7101 Riverwood Drive <br>Columbia, MD 21046</font></font></font><p class="MsoNormal"><font face="Arial,Sans-Serif" color="#666666" size="2">P: 800-903-6130</font></p>
+
+<p class="MsoNormal"><font face="Arial,Sans-Serif" color="#666666" size="2">F: 800-949-1408</font></p>
+
+<p class="MsoNormal"><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;">directenergysolar.com</span></p><p class="MsoNormal"><br><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;"></span></p><span style="font-size: small; color: rgb(102, 102, 102); font-family: Arial, sans-serif;"><font size="1">Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.<br><br>AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532<br><br>© 2016 Direct Energy. All Rights Reserved.</font></span>]]></td>
+</tr>
+</table>

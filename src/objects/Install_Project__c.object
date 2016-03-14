@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>AstrumTIME - Installation Project For the Bonus Program</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AstrumPM_Project_Job_Id__c</fullName>
+        <description>AstrumPM Project Job Id</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c), 
+  AstrumPM_Project__r.Job_Id__c,
+  Sales_Order__r.Job_Id__c
+)</formula>
+        <inlineHelpText>AstrumPM Project Job Id</inlineHelpText>
+        <label>AstrumPM Project Job Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AstrumPM_Project__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>AstrumPM Project That Spawned This Installer/Electrician Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>AstrumPM Project That Spawned This Installer/Electrician Project</inlineHelpText>
+        <label>AstrumPM Project</label>
+        <referenceTo>Milestone1_Project__c</referenceTo>
+        <relationshipLabel>Installer Projects</relationshipLabel>
+        <relationshipName>Install_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Astrum_Office__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (ISBLANK(Sales_Order__c),
+  AstrumPM_Project__r.Sales_Order__r.Astrum_Office__c,
+  Sales_Order__r.Astrum_Office__c
+)</formula>
+        <label>Astrum Office</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Astrum_PM_2_0_Unique_Index__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>false</externalId>
+        <label>Astrum PM 2.0 Unique Index</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Complete2__c</fullName>
+        <description>Install Project Complete - determined by looking a Date_Completed2</description>
+        <externalId>false</externalId>
+        <formula>!ISBLANK(Date_Completed2__c) &amp;&amp; (Date_Completed2__c &lt; Today())</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Complete</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Complete__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Project is Complete (Please Enter the Date Completed)
+/* Replaced by formular field Complete2__c */</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Project is Complete (Please Enter the Date Completed)</inlineHelpText>
+        <label>Complete_Old</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Date_Completed2__c</fullName>
+        <description>Project Completion Date - referenced from the PM 2.0 Project</description>
+        <externalId>false</externalId>
+        <formula>IF( (PM_Project__c == null), Date_Completed__c, PM_Project__r.Work_Completed__c )</formula>
+        <label>Date Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_Completed__c</fullName>
+        <description>Date Project Was Completed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date Project Was Completed</inlineHelpText>
+        <label>Date Completed Old</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Drive_Time_Office_To_Site__c</fullName>
+        <description>Installer Drive Time in HOURS from Nearest Astrum Office to Project Site</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Installer Drive Time in HOURS from Nearest Astrum Office to Project Site</inlineHelpText>
+        <label>Installer Drive Time Office-To-Site</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Bonus_Budget_Hours__c</fullName>
+        <description>Calculated Hours Budgeted for ELECTRICIAN Bonus Program</description>
+        <externalId>false</externalId>
+        <formula>$Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Intercept__c + Electrician_Param_Number_of_Panels__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Num_Panels__c +  $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Num_Installers__c *  $Setup.AstrumTIME_Settings__c.CONST_BONUS_ELECTRIC_Electrician_Per_Job__c +  IF(CONTAINS(Electrician_Param_Baltimore_County__c,&apos;Yes&apos;), 1, 0) * $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Baltimore_County__c +  IF( CONTAINS(Electrician_Param_Inside_Only_Conduit__c,&apos;Yes&apos;) , 1, 0) * $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Inside_Only_Conduit__c +  IF( CONTAINS(Electrician_Param_Outbuilding_Install__c,&apos;Yes&apos;) , 1, 0) * $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Outbuilding_Install__c + Electrician_Param_Hours_to_Office__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Distance_Hours__c + IF(CONTAINS(Electrician_Param_Flat_Roof__c,&apos;Yes&apos;), 1,0)* $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Flat_Roof__c + IF(CONTAINS(Electrician_Param_Ground_Mount__c,&apos;Yes&apos;), 1, 0) * $Setup.AstrumTIME_Settings__c.COEF_BONUS_ELECTRIC_Ground_Mount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calculated Hours Budgeted for ELECTRICIAN Bonus Program</inlineHelpText>
+        <label>Electrician Bonus Budget Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Bonus_Hours_Used_vs_Budget__c</fullName>
+        <description>ELECTRICIAN - Budget vs Actual Project Hours</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Bonus_Budget_Hours__c - Electrician_Bonus_Used_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>ELECTRICIAN - Budget vs Actual Project Hours</inlineHelpText>
+        <label>Electrician Bonus Hours Used vs Budget</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Bonus_Used_Hours__c</fullName>
+        <description>ELECTRICIAN Bonus Hours Used to Date</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Install_Hours__c + (($Setup.AstrumTIME_Settings__c.COEF_BONUS_Overtime_Hour_Multiplier__c -1.0)* Electrician_Overtime_Hours__c) + ($Setup.AstrumTIME_Settings__c.COEF_BONUS_Maintenance_After_Month__c *Electrician_Post30_Maintenance_Hours__c) + ( $Setup.AstrumTIME_Settings__c.COEF_BONUS_Maintenance_Within_Month__c *Electrician_Pre30_Maintenance_Hours__c) + ( Electrician_Hotel_Costs__c / $Setup.AstrumTIME_Settings__c.COEF_BONUS_Hotel_Cost__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>ELECTRICIAN Bonus Hours Used to Date</inlineHelpText>
+        <label>Electrician Bonus Used Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Drive_Time_To_Site__c</fullName>
+        <description>Electrician Drive Time To the Astrum Office</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Electrician Drive Time To the Astrum Office</inlineHelpText>
+        <label>Electrician Drive Time Office-To-Site</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Hotel_Costs__c</fullName>
+        <description>Total Hotel Costs ($) for Electricians on this Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Hotel Costs ($) for Electricians on this Project</inlineHelpText>
+        <label>Electrician Hotel Costs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Electrician_Install_Hours__c</fullName>
+        <description>ELECTRICIAN Installation Bonus Hours Used To Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Installation Bonus Hours Used To Date</inlineHelpText>
+        <label>Electrician Install Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Install_Pay__c</fullName>
+        <description>The electrician install pay.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The electrician install pay.</inlineHelpText>
+        <label>Electrician Install Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Electrician_Overtime_Hours__c</fullName>
+        <description>How Many ELECTRICIAN Installation Hours were Overtime?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How Many ELECTRICIAN Installation Hours were Overtime?</inlineHelpText>
+        <label>Electrician Overtime Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Overtime_Pay__c</fullName>
+        <description>The electrician overtime pay.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The electrician overtime pay.</inlineHelpText>
+        <label>Electrician Overtime Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Baltimore_County__c</fullName>
+        <description>Is this project in Baltimore County?</description>
+        <externalId>false</externalId>
+        <formula>IF (ISBLANK(Sales_Order__c),
+  IF( ISPICKVAL( AstrumPM_Project__r.Sales_Order__r.Property__r.Property_County__c , &apos;Baltimore&apos;) , &apos;Yes&apos;,&apos;No&apos;),
+  IF(ISPICKVAL( Sales_Order__r.Property__r.Property_County__c , &apos;Baltimore&apos;) , &apos;Yes&apos;,&apos;No&apos;)
+)</formula>
+        <inlineHelpText>Is this project in Baltimore County?</inlineHelpText>
+        <label>Electrician Param Baltimore County</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Flat_Roof__c</fullName>
+        <description>Does This Project Include Any Arrays on Flat Roofs?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF(AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays_on_Flat_Roofs__c &gt;0, &apos;Yes&apos;,&apos;No&apos;),
+  IF(Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays_on_Flat_Roofs__c &gt;0, &apos;Yes&apos;,&apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Project Include Any Arrays on Flat Roofs?</inlineHelpText>
+        <label>Electrician Param Flat Roof</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Ground_Mount__c</fullName>
+        <description>Does This Project Include a Ground Mount?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Ground_Mount_Arrays__c &gt;0, &apos;Yes&apos;, &apos;No&apos;),
+  IF(Sales_Order__r.System_Design_Quote__r.System_Design__r.Ground_Mount_Arrays__c &gt;0, &apos;Yes&apos;, &apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Project Include a Ground Mount?</inlineHelpText>
+        <label>Electrician Param Ground Mount</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Hours_to_Office__c</fullName>
+        <description>Driving Distance (Hours) to Nearest Astrum Office</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Drive_Time_To_Site__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Driving Distance (Hours) to Nearest Astrum Office</inlineHelpText>
+        <label>Electrician Param Hours to Office</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Inside_Only_Conduit__c</fullName>
+        <description>Is This Project Using Only Inside Conduit?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF(AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Inside_Only_Conduit__c , &apos;Yes&apos;, &apos;No&apos;),
+  IF(Sales_Order__r.System_Design_Quote__r.System_Design__r.Inside_Only_Conduit__c , &apos;Yes&apos;, &apos;No&apos;)
+)</formula>
+        <inlineHelpText>Is This Project Using Only Inside Conduit?</inlineHelpText>
+        <label>Electrician Param Inside Only Conduit</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Number_of_Electricians__c</fullName>
+        <description>Number of Electricians Assumed On Each Job</description>
+        <externalId>false</externalId>
+        <formula>$Setup.AstrumTIME_Settings__c.CONST_BONUS_ELECTRIC_Electrician_Per_Job__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of Electricians Assumed On Each Job</inlineHelpText>
+        <label>Electrician Param Number of Electricians</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Number_of_Panels__c</fullName>
+        <description>Total Number of Panels in System Design</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Panel_Count__c,
+  Sales_Order__r.System_Design_Quote__r.System_Design__r.Panel_Count__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Number of Panels in System Design</inlineHelpText>
+        <label>Electrician Param Number of Panels</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Param_Outbuilding_Install__c</fullName>
+        <description>Does This Install Include an Outbuilding Install?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Includes_Outbuilding_Installation__c , &apos;Yes&apos;,&apos;No&apos;),
+  IF(Sales_Order__r.System_Design_Quote__r.System_Design__r.Includes_Outbuilding_Installation__c , &apos;Yes&apos;,&apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Install Include an Outbuilding Install?</inlineHelpText>
+        <label>Electrician Param Outbuilding Install</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Post30_Maintenance_Hours__c</fullName>
+        <description>ELECTRICIAN Total Maintenance Hours Spent AFTER First Month After Project Completion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Total Maintenance Hours Spent AFTER First Month After Project Completion</inlineHelpText>
+        <label>Electrician Post30 Maintenance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Post30_Maintenance_Pay__c</fullName>
+        <description>The Electrician Post30 Maintenance Pay</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Electrician Post30 Maintenance Pay</inlineHelpText>
+        <label>Electrician Post30 Maintenance Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Electrician_Pre30_Maintenance_Hours__c</fullName>
+        <description>ELECTRICIAN Total Maintenance Hours Spent in First Month After Project Completion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ELECTRICIAN Total Maintenance Hours Spent in First Month After Project Completion</inlineHelpText>
+        <label>Electrician Pre30 Maintenance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Electrician_Pre30_Maintenance_Pay__c</fullName>
+        <description>The Electrician Pre30 Maintenance Pay</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Electrician Pre30 Maintenance Pay</inlineHelpText>
+        <label>Electrician Pre30 Maintenance Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Electrician_Team__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Electrician Team Working On This Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Electrician Team Working On This Project</inlineHelpText>
+        <label>Electrician Team</label>
+        <referenceTo>Install_Team__c</referenceTo>
+        <relationshipLabel>Install Projects (Electrician Team)</relationshipLabel>
+        <relationshipName>Install_Projects_Electricians</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Installer_Bonus_Budget_Hours__c</fullName>
+        <description>Calculated Hours Budgeted for INSTALLER Bonus Program</description>
+        <externalId>false</externalId>
+        <formula>Installer_Param_Hours_to_Office__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Distance_Hours__c + Installer_Param_Number_of_Panels__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Num_Panels__c + Installer_Param_Max_Roof_Pitch__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Roof_Pitch__c +  Installer_Param_Number_of_Roofs__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Num_Roofs__c +  $Setup.AstrumTIME_Settings__c.CONST_BONUS_INSTALLER_Installers_Per_Job__c *$Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Num_Installers__c + IF( CONTAINS(Installer_Param_Vent_Stacks_Moved__c,&apos;Yes&apos;),1, 0) * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Vent_Stack_Move__c + IF(CONTAINS(Installer_Param_Trenching_Required__c,&apos;Yes&apos;) , 1, 0)* $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Trenching_Req__c + Installer_Param_Max_Install_Stories__c * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Num_Stories__c +  IF(CONTAINS(Installer_Param_Flat_Roof__c,&apos;Yes&apos;), 1,0)* $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Flat_Roof__c +  IF(CONTAINS(Installer_Param_Ground_Mount__c,&apos;Yes&apos;), 1, 0) * $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Ground_Mount__c + $Setup.AstrumTIME_Settings__c.COEF_BONUS_INSTALLER_Intercept__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calculated Hours Budgeted for INSTALLER Bonus Program</inlineHelpText>
+        <label>Installer Bonus Budget Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Bonus_Hours_Used_vs_Budget__c</fullName>
+        <description>INSTALLER - Budget vs Actual Project Hours</description>
+        <externalId>false</externalId>
+        <formula>Installer_Bonus_Budget_Hours__c -  Installer_Bonus_Used_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>INSTALLER - Budget vs Actual Project Hours</inlineHelpText>
+        <label>Installer Bonus Hours Used vs Budget</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Bonus_Used_Hours__c</fullName>
+        <description>INSTALLER Bonus Hours Used to Date</description>
+        <externalId>false</externalId>
+        <formula>Installer_Install_Hours__c + (($Setup.AstrumTIME_Settings__c.COEF_BONUS_Overtime_Hour_Multiplier__c -1.0)*  Installer_Overtime_Hours__c ) + ($Setup.AstrumTIME_Settings__c.COEF_BONUS_Maintenance_After_Month__c * Installer_Post30_Maintenance_Hours__c) + ( $Setup.AstrumTIME_Settings__c.COEF_BONUS_Maintenance_Within_Month__c *Installer_Pre30_Maintenance_Hours__c) + ( Installer_Hotel_Costs__c / $Setup.AstrumTIME_Settings__c.COEF_BONUS_Hotel_Cost__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>INSTALLER Bonus Hours Used to Date</inlineHelpText>
+        <label>Installer Bonus Used Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Hotel_Costs__c</fullName>
+        <description>Total Hotel Costs ($) for Installers on this Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total Hotel Costs ($) for Installers on this Project</inlineHelpText>
+        <label>Installer Hotel Costs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Installer_Install_Hours__c</fullName>
+        <description>INSTALLER Installation Bonus Hours Used To Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Installation Bonus Hours Used To Date</inlineHelpText>
+        <label>Installer Install Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Install_Pay__c</fullName>
+        <description>The installer pay amount.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The installer pay amount.</inlineHelpText>
+        <label>Installer Install Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Installer_Overtime_Hours__c</fullName>
+        <description>How Many INSTALLER Installation Hours were Overtime?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How Many INSTALLER Installation Hours were Overtime?</inlineHelpText>
+        <label>Installer Overtime Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Overtime_Pay__c</fullName>
+        <description>The installer overtime pay.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The installer overtime pay.</inlineHelpText>
+        <label>Installer Overtime Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Flat_Roof__c</fullName>
+        <description>Does This Project Include Any Arrays on Flat Roofs?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays_on_Flat_Roofs__c &gt;0, &apos;Yes&apos;,&apos;No&apos;),
+  IF(Sales_Order__r.System_Design_Quote__r.System_Design__r.Number_of_Arrays_on_Flat_Roofs__c &gt;0, &apos;Yes&apos;,&apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Project Include Any Arrays on Flat Roofs?</inlineHelpText>
+        <label>Installer Param Flat Roof</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Ground_Mount__c</fullName>
+        <description>Does This Project Include a Ground Mount?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Ground_Mount_Arrays__c &gt;0, &apos;Yes&apos;, &apos;No&apos;),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Ground_Mount_Arrays__c &gt;0, &apos;Yes&apos;, &apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Project Include a Ground Mount?</inlineHelpText>
+        <label>Installer Param Ground Mount</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Hours_to_Office__c</fullName>
+        <description>Driving Distance (Hours) to Nearest Astrum Office</description>
+        <externalId>false</externalId>
+        <formula>Drive_Time_Office_To_Site__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Driving Distance (Hours) to Nearest Astrum Office</inlineHelpText>
+        <label>Installer Param Hours to Office</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Max_Install_Stories__c</fullName>
+        <description>The Maximum Number of Stories of Any Install Location On This Project</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Max_Install_Location_Stories__c,
+  Sales_Order__r.System_Design_Quote__r.System_Design__r.Max_Install_Location_Stories__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The Maximum Number of Stories of Any Install Location On This Project</inlineHelpText>
+        <label>Installer Param Max Install Stories</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Max_Roof_Pitch__c</fullName>
+        <description>Maximum Pitch (Degrees) of Install Locations</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Max_Install_Location_Pitch__c,
+  Sales_Order__r.System_Design_Quote__r.System_Design__r.Max_Install_Location_Pitch__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Maximum Pitch (Degrees) of Install Locations</inlineHelpText>
+        <label>Installer Param Max Roof Pitch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Number_of_Installers__c</fullName>
+        <description>Number of Installers Assumed On Each Job</description>
+        <externalId>false</externalId>
+        <formula>$Setup.AstrumTIME_Settings__c.CONST_BONUS_INSTALLER_Installers_Per_Job__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of Installers Assumed On Each Job</inlineHelpText>
+        <label>Installer Param Number of Installers</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Number_of_Panels__c</fullName>
+        <description>Total Number of Panels</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Panel_Count__c,
+  Sales_Order__r.System_Design_Quote__r.System_Design__r.Panel_Count__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Number of Panels</inlineHelpText>
+        <label>Installer Param Number of Panels</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Number_of_Roofs__c</fullName>
+        <description>Number of Arrays in Installation</description>
+        <externalId>false</externalId>
+        <formula>Number_of_Roofs__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of Arrays in Installation</inlineHelpText>
+        <label>Installer Param Number of Roofs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Trenching_Required__c</fullName>
+        <description>Does This Project Require Trenching?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Trenching_Required__c , &apos;Yes&apos;,&apos;No&apos;),
+  IF( Sales_Order__r.System_Design_Quote__r.System_Design__r.Trenching_Required__c , &apos;Yes&apos;,&apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Project Require Trenching?</inlineHelpText>
+        <label>Installer Param Trenching Required</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Param_Vent_Stacks_Moved__c</fullName>
+        <description>Does This Project Require Vent Stacks To Be Moved?</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Sales_Order__c),
+  IF( AstrumPM_Project__r.Sales_Order__r.System_Design_Quote__r.System_Design__r.Vent_Stack_Movement_Required__c ,&apos;Yes&apos;,&apos;No&apos;),
+  IF( Sales_Order__r.System_Design_Quote__r.System_Design__r.Vent_Stack_Movement_Required__c ,&apos;Yes&apos;,&apos;No&apos;)
+)</formula>
+        <inlineHelpText>Does This Project Require Vent Stacks To Be Moved?</inlineHelpText>
+        <label>Installer Param Vent Stacks Moved</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Post30_Maintenance_Hours__c</fullName>
+        <description>INSTALLER Total Maintenance Hours Spent AFTER First Month After Project Completion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Total Maintenance Hours Spent AFTER First Month After Project Completion</inlineHelpText>
+        <label>Installer Post30 Maintenance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Post30_Maintenance_Pay__c</fullName>
+        <description>The Installer Post30 Maintenance Pay</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Installer Post30 Maintenance Pay</inlineHelpText>
+        <label>Installer Post30 Maintenance Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Installer_Pre30_Maintenance_Hours__c</fullName>
+        <description>INSTALLER Total Maintenance Hours Spent In First Month After Project Completion</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INSTALLER Total Maintenance Hours Spent In First Month After Project Completion</inlineHelpText>
+        <label>Installer Pre30 Maintenance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installer_Pre30_Maintenance_Pay__c</fullName>
+        <description>The Installer Pre30 Maintenance Pay</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Installer Pre30 Maintenance Pay</inlineHelpText>
+        <label>Installer Pre30 Maintenance Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Installer_Team__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Installer Team Working On This Project</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Installer Team Working On This Project</inlineHelpText>
+        <label>Installer Team</label>
+        <referenceTo>Install_Team__c</referenceTo>
+        <relationshipLabel>Install Projects (Installer Team)</relationshipLabel>
+        <relationshipName>Install_Projects_Installers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Roofs__c</fullName>
+        <description>Number of Roofs In This Installation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of Roofs In This Installation</inlineHelpText>
+        <label>Number of Roofs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PM_Project__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Astrum PM 2.0 Project</label>
+        <referenceTo>PM_Project__c</referenceTo>
+        <relationshipLabel>Install Projects</relationshipLabel>
+        <relationshipName>Install_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>QR_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>IMAGE(&apos;https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl=&apos; +   Id , &apos;Install Project Id QR Code&apos;  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>QR Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Order__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Order</label>
+        <referenceTo>SCRB_SalesOrder__c</referenceTo>
+        <relationshipLabel>Install Projects</relationshipLabel>
+        <relationshipName>Install_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Standard_Project__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This Project is a Standard Project and Should Be Included in All Calculations for the Bonus Program</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This Project is a Standard Project and So Should Be Included in All Calculations for the Bonus Program</inlineHelpText>
+        <label>Standard Project</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Total_Hotel_Costs__c</fullName>
+        <description>Total Hotel Costs for Both Electricians and Installers on this Project</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Hotel_Costs__c + Installer_Hotel_Costs__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Hotel Costs for Both Electricians and Installers on this Project</inlineHelpText>
+        <label>Total Hotel Costs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Install_Pay__c</fullName>
+        <description>The total installation pay.</description>
+        <externalId>false</externalId>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The total installation pay.</inlineHelpText>
+        <label>Total Installation Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Installation_Hours__c</fullName>
+        <description>Total Hours Spent By Electricians AND Installers on Installation</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Install_Hours__c + Installer_Install_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Hours Spent By Electricians AND Installers on Installation</inlineHelpText>
+        <label>Total Installation Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Maintenance_Hours__c</fullName>
+        <description>Total Hours Spent By Electricians AND Installers on Maintenance</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Post30_Maintenance_Hours__c + Electrician_Pre30_Maintenance_Hours__c + Installer_Post30_Maintenance_Hours__c + Installer_Pre30_Maintenance_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total Hours Spent By Electricians AND Installers on Maintenance</inlineHelpText>
+        <label>Total Maintenance Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Maintenance_Pay__c</fullName>
+        <externalId>false</externalId>
+        <formula>0</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Maintenance Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Pay__c</fullName>
+        <description>Total pay for the install project.</description>
+        <externalId>false</externalId>
+        <formula>Electrician_Install_Pay__c + Electrician_Overtime_Pay__c + Electrician_Pre30_Maintenance_Pay__c + Installer_Post30_Maintenance_Pay__c +
+Installer_Install_Pay__c + Installer_Overtime_Pay__c + Installer_Pre30_Maintenance_Pay__c + Installer_Post30_Maintenance_Pay__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total pay for the install project.</inlineHelpText>
+        <label>Total Pay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>WO_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Work_Order__r.rstk__wocst_ordsts__c == &apos;9&apos; ,&apos;Closed&apos;, &apos;Open&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>WO Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Work Order</label>
+        <referenceTo>rstk__wocst__c</referenceTo>
+        <relationshipLabel>Install Projects</relationshipLabel>
+        <relationshipName>Install_Projects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Install Project</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Date_Completed2__c</columns>
+        <columns>Complete2__c</columns>
+        <columns>Drive_Time_Office_To_Site__c</columns>
+        <columns>Electrician_Bonus_Budget_Hours__c</columns>
+        <columns>Electrician_Bonus_Used_Hours__c</columns>
+        <columns>Electrician_Bonus_Hours_Used_vs_Budget__c</columns>
+        <columns>Electrician_Team__c</columns>
+        <columns>Installer_Bonus_Budget_Hours__c</columns>
+        <columns>Installer_Bonus_Used_Hours__c</columns>
+        <columns>Installer_Bonus_Hours_Used_vs_Budget__c</columns>
+        <columns>Installer_Team__c</columns>
+        <columns>Installer_Param_Max_Install_Stories__c</columns>
+        <columns>Installer_Param_Number_of_Roofs__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Install Project Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Install Projects</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>AstrumPM_Project__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Installer_Bonus_Budget_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Installer_Bonus_Used_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Installer_Bonus_Hours_Used_vs_Budget__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Installer_Team__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Electrician_Bonus_Budget_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Electrician_Bonus_Used_Hours__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Electrician_Bonus_Hours_Used_vs_Budget__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Electrician_Team__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>AstrumPM_Project__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Installer_Team__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Installer_Bonus_Budget_Hours__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Electrician_Bonus_Budget_Hours__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>UPDATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LAST_UPDATE</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchResultsAdditionalFields>Installer_Team__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AstrumPM_Project__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Electrician_Bonus_Budget_Hours__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Installer_Bonus_Budget_Hours__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Drive_Time_Must_Be_Greater_Than_Zero</fullName>
+        <active>true</active>
+        <description>Drive Time To the Nearest Astrum Office Must Be Greater Than Zero</description>
+        <errorConditionFormula>OR( ISBLANK( Drive_Time_Office_To_Site__c ) ,  Drive_Time_Office_To_Site__c  &lt;=0, ISNULL( Drive_Time_Office_To_Site__c ) )</errorConditionFormula>
+        <errorDisplayField>Drive_Time_Office_To_Site__c</errorDisplayField>
+        <errorMessage>&quot;Drive Time Office-To-Site&quot; Must Be Greater Than Zero</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Electrician_Drive_Time_Greater_Than_Zero</fullName>
+        <active>true</active>
+        <description>Electrician Drive Time To the Nearest Astrum Office Must Be Greater Than Zero</description>
+        <errorConditionFormula>OR( ISBLANK( Electrician_Drive_Time_To_Site__c ) , Electrician_Drive_Time_To_Site__c &lt;=0, ISNULL( Electrician_Drive_Time_To_Site__c ) )</errorConditionFormula>
+        <errorDisplayField>Electrician_Drive_Time_To_Site__c</errorDisplayField>
+        <errorMessage>&quot;Electrician Drive Time Office-To-Site&quot; Must Be Greater Than Zero</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Project_Complete_Check_Needs_Date</fullName>
+        <active>true</active>
+        <description>When Project is Checked Complete It Needs a Completed Date</description>
+        <errorConditionFormula>AND(Complete__c,  ISNULL( Date_Completed__c ) )</errorConditionFormula>
+        <errorDisplayField>Date_Completed__c</errorDisplayField>
+        <errorMessage>Projects Marked Complete Must Have a Completion Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Project_Complete_Date_Needs_Check</fullName>
+        <active>true</active>
+        <description>When Project is Has a Completed Date it should be  Checked Complete</description>
+        <errorConditionFormula>AND( NOT( ISNULL(Date_Completed__c) ) ,  NOT(Complete__c ))</errorConditionFormula>
+        <errorDisplayField>Complete__c</errorDisplayField>
+        <errorMessage>Projects With a Completion Date Must Be Checked Complete</errorMessage>
+    </validationRules>
+</CustomObject>

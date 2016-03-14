@@ -1,0 +1,825 @@
+<apex:page doctype="html-5.0" showHeader="false" sidebar="false" standardStyleSheets="false" controller="PortalRegistrationController">
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>Join the Direct Energy Solar Referral Partner Network</title>
+        
+        <link href="{!URLFOR($Resource.PartnerPortal2_Resources,'css/applyStyles.css')}"  type="text/css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+         <!--Google JQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="{!URLFOR($Resource.PartnerPortal2_Resources,'javascript/scripts.js')}" ></script>
+        <style>
+        
+            @font-face{
+            font-family:"ConduitITCW01-ExtraLigh_731268";
+            src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}');
+            src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/56e483c2-8f13-4a25-a380-5f99bd42a54e.eot?#iefix')}') format("eot"),
+                url('{!URLFOR($Resource.WebFontResources, 'Conduit/6d9d0397-2f59-4797-9d05-fc3dea90773e.woff2')}') format("woff2"),
+                url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2edcd10-e47c-46ce-a26e-abc326913231.woff')}') format("woff"),
+                url('{!URLFOR($Resource.WebFontResources, 'Conduit/2ca7ac3e-e9ad-4469-ad0f-7ca39807abb6.ttf')}') format("truetype"),
+                url('{!URLFOR($Resource.WebFontResources, 'Conduit/97620ad5-a20b-4d15-846e-062fa737d4c2.svg#97620ad5-a20b-4d15-846e-062fa737d4c2')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-ExtraLigh_731271";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d31e151-fbaf-4f45-82ac-e92d05d395aa.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/2e1ec13f-ffb9-4785-8366-29fa78edab7d.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/cc4ea450-48c9-45ae-9905-49e4becb52cd.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e475c09-527f-4b4c-92d7-6f4bc0d2b863.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/c6005481-1bb3-4e65-9f23-3bf8f317d9e9.svg#c6005481-1bb3-4e65-9f23-3bf8f317d9e9')}') format("svg");
+            }
+            @font-face{
+                font-family:"Conduit ITC W01 Light";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/45fa0132-0858-4e18-9594-5a070788a059.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/cf39e66c-fff7-43d5-b865-0a45543d590a.svg#cf39e66c-fff7-43d5-b865-0a45543d590a')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-LightItal";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/9e32d14b-d2cb-4be9-8244-4518db105eb7.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/a4b3a81c-1256-49cb-a816-5d8931d352cb.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/cb1d6e54-081d-429a-a0e2-e09f003b52f6.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/4e4ba5dd-4e46-4afe-804b-624ab0b31d9e.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/64bf7dd4-f691-4801-b042-b720c1c115bd.svg#64bf7dd4-f691-4801-b042-b720c1c115bd')}') format("svg");
+            }
+            @font-face{
+                font-family:"Conduit ITC W01 Regular";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/367b2d50-c71b-4348-b8e2-d364f82386ea.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/8846bd5f-2288-474a-9e36-1f6a456687e8.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/e328f17d-e8e5-424f-92e8-31af32b2ebac.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/97556a76-3d0b-4ad7-ae17-02b5d97e928b.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/407529ad-dcaa-4637-ac62-6cf9265d4f52.svg#407529ad-dcaa-4637-ac62-6cf9265d4f52')}') format("svg");
+            }
+            @font-face{
+                font-family:"Conduit ITC W01 Italic";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/6c436973-c7bc-4fa8-8015-3e3a5fe41514.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/8f5aa48d-d6a8-44d6-8f8b-05a27be61180.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/0d4b4097-9f7f-486f-b108-07f6ab48ca1d.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/8e21264d-f678-4005-b90c-8d8288a0d179.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/a084d860-2279-4910-b924-82b72dcc36e0.svg#a084d860-2279-4910-b924-82b72dcc36e0')}') format("svg");
+            }
+            @font-face{
+                font-family:"Conduit ITC W01 Medium";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/62fbb38e-9226-47f8-90d8-3c37328ab6c9.svg#62fbb38e-9226-47f8-90d8-3c37328ab6c9')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-MediumIta";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/832ee4d2-f75a-4d88-9d27-05a07a814921.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/8eff5488-0bde-4d4c-8f56-058189978841.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/ebda6846-73f6-43d3-9197-a9577947f6c6.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/3df60eaf-797e-4c19-aa7c-b7f071f0cb44.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/29fffbbc-8876-445e-9ec0-1895f243a630.svg#29fffbbc-8876-445e-9ec0-1895f243a630')}') format("svg");
+            }
+            @font-face{
+                font-family:"Conduit ITC W01 Bold";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ef1cf8c3-989e-4b7e-ad89-9e034d47686d.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/4680ad80-371f-497c-8926-35654adc2249.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/fdaf48d4-c023-4a03-b948-53535ee4d571.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/ca6dc25e-d400-4735-9fb9-ee2d025ebb5c.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/aa206b9b-b888-4ce6-8039-669469e9b429.svg#aa206b9b-b888-4ce6-8039-669469e9b429')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-BoldItali";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/63c0d040-592d-47b6-863c-91a96339b9b6.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/9d7196b2-01b1-40b5-96e0-fc359188ba6f.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/12c62c8a-5fa0-42e5-9dbe-d81e2cd53756.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/ec4d359c-2645-4fe6-81c9-a6926f0faefa.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/92dde6c0-7bec-4165-81cd-6565fa13067c.svg#92dde6c0-7bec-4165-81cd-6565fa13067c')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-ExtraBold_731262";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/ae547e5a-f574-470b-9431-3a16c0f73e7d.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/7002aae3-e27a-49d5-b79b-44bcc8364444.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/a0afe27e-7751-4c93-8499-b73d4801ce53.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/2960bd08-c8ab-4549-8aab-dfc6245541f7.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/e9d182a6-38a1-4923-9d37-756b5cc46682.svg#e9d182a6-38a1-4923-9d37-756b5cc46682')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-ExtraBold_731265";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/86810c3e-354e-417f-9ffe-195b27736151.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/d8515268-a189-493a-a1d4-5061408b4c84.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/b2fbf317-cd76-4a7a-bc66-4108d3ce5a94.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/d96fd761-8451-4d01-8443-fcb4d10fb3ce.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/7e039442-211a-4159-b641-e456210be8e3.svg#7e039442-211a-4159-b641-e456210be8e3')}') format("svg");
+            }
+            @font-face{
+                font-family:"Conduit ITC W01 Black";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/dbf358dd-4b73-4f9d-9c2a-6f9260f9da69.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/2a06e006-d37c-4d8f-a4bc-c9eec5d41e24.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/e560b829-e02c-4a01-bbe1-ddc574c1f8e8.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/d3baf0dc-04c7-4f98-a85b-6eb2d44be02a.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/9372a370-abb4-4516-836c-d7ca85e7f06a.svg#9372a370-abb4-4516-836c-d7ca85e7f06a')}') format("svg");
+            }
+            @font-face{
+                font-family:"ConduitITCW01-BlackItal";
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}');
+                src:url('{!URLFOR($Resource.WebFontResources, 'Conduit/614372b5-0385-47e4-8b8a-40bd28e7e475.eot?#iefix')}') format("eot"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/0f76f551-2973-4ff9-bcb8-d440bdbe93fa.woff2')}') format("woff2"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/1ce906cc-1f63-4410-ad83-e2251b2a9ed9.woff')}') format("woff"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/376e972f-a10d-46fa-8042-362f94ef52ec.ttf')}') format("truetype"),
+                    url('{!URLFOR($Resource.WebFontResources, 'Conduit/d35847aa-1943-4214-bc22-81eba2f6a3af.svg#d35847aa-1943-4214-bc22-81eba2f6a3af')}') format("svg");
+            }       
+
+        </style>
+    </head>
+    
+    
+    <body>
+    <div id="Frame">
+      <div id="Header">
+          <div class="wrapper">
+                <h1 id="Logo"><a href="http://www.directenergysolar.com">Direct Energy Solar</a></h1>
+                            <div id="UpperRightNav">
+                                     <a href="http://www.directenergysolar.com/get-started-free-solar-quote"><img src="{!URLFOR($Resource.PartnerPortal2_Resources, 'images/ContactUs_Tagline.jpg')}" ALT="Contact Us: 800-903-6130" /></a>
+                            </div>
+                <div id="HeaderRightDropdown">
+                     <ul id="navigation_new_dropdown">
+    <li id="nav_solar_done_right" class="upperlevel"><a href="/solar-done-right/the-direct-energy-solar-difference" class="upperlevel {if embed:sectionname == 'solar-done-right'}selected{/if}">Solar Done Right</a>
+      <ul class="lowerlevel" id="solar_done_right_sub">
+        <li><a href="/solar-done-right/the-direct-energy-solar-difference">The Direct Energy Solar Difference</a></li>
+        <li><a href="/solar-done-right/free-solar-installation">Free Solar Installation</a></li>
+        <li><a href="/solar-done-right/our-design-process">Our Design Process</a></li>
+        <li><a href="/solar-done-right/home-solar-expertise">Home Solar Expertise</a></li>
+        <li><a href="/solar-done-right/your-going-solar-experience">Your Going Solar Experience</a></li>
+        <li><a href="/solar-done-right/worry-free-guarantees">Worry-Free Guarantees</a></li>
+      </ul>
+    </li>
+    <li id="nav_state" class="upperlevel"><a href="/solar-by-state/choose-your-state" class="upperlevel {if embed:sectionname == 'solar-by-state'}selected{/if}">Solar by State</a>
+      <ul class="lowerlevel" id="state_sub">
+        <li><a href="/solar-by-state/connecticut-ct">Connecticut</a></li>
+        <li><a href="/solar-by-state/maryland-md">Maryland</a></li>
+        <li><a href="/solar-by-state/massachusetts-ma">Massachusetts</a></li>
+        <li><a href="/solar-by-state/new-jersey-nj">New Jersey</a></li>
+        <li><a href="/solar-by-state/new-york-ny">New York</a></li>
+        <li><a href="/solar-by-state/washington-dc">Washington, DC</a></li>
+      </ul>
+    </li>
+    <li id="nav_payback" class="upperlevel"><a href="/the-basics/energy-savings" class="upperlevel {if embed:sectionname == 'the-basics'}selected{/if}">Basics</a>
+      <ul class="lowerlevel" id="payback_sub">
+        <li><a href="/the-basics/energy-savings">Energy Savings</a></li>
+        <li><a href="/the-basics/home-value-increases">Home Value Increases</a></li>
+        <li><a href="/the-basics/environmental-benefits">Environmental Benefits</a></li>
+        <li><a href="/the-basics/how-solar-works">How Solar Works</a></li>
+        <li><a href="/the-basics/is-my-home-good-for-solar">Is My Home Good for Solar?</a></li>
+        <li><a href="/the-basics/solar-technology">Solar Technology</a></li>
+        <li><a href="/solar-myths">Solar Myths</a></li>
+        <li><a href="/the-basics/frequently-asked-questions">Frequently Asked Questions</a></li>
+      </ul>
+    </li>
+    <li id="nav_customerstories" class="upperlevel"><a href="/customer-stories/" class="upperlevel {if embed:sectionname == 'customer-stories'}selected{/if}">Customer Stories</a></li>
+    <li id="nav_about" class="upperlevel"><a href="/company/our-company" class="upperlevel {if embed:sectionname == 'company'}selected{/if}">Company</a>
+      <ul class="lowerlevel" id="about_sub">
+        <li><a href="/company/our-company">Our Company</a></li>
+        <li><a href="/company/executive-team">Executive Team</a></li>
+        <li><a href="/events-calendar">Events Calendar</a></li>
+        <li><a href="/in-the-news">In the News</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/refer">Referral Program</a></li>
+        <li><a href="/company/partner-programs">Partner Programs</a></li>
+        <li><a href="/company/contact-us">Contact Us</a></li>
+      </ul>
+    </li>
+    <li id="nav_blog" class="upperlevel"><a href="/blog" class="upperlevel {if embed:sectionname == 'blog'}selected{/if}">Blog</a></li>
+    <li id="nav_commercial" class="upperlevel"><a href="/solar-for-business/control-your-energy-costs-with-solar" class="upperlevel {if embed:sectionname == 'solar-for-business'}selected{/if}">Solar for Business</a>
+      <ul class="lowerlevel" id="commercial_sub">
+        <li><a href="/solar-for-business/control-your-energy-costs-with-solar">Control Your Energy Costs</a></li>
+        <li><a href="/solar-for-business/benefits-of-going-solar">Benefits of Going Solar</a></li>
+        <li><a href="/solar-for-business/why-choose-our-company">Why Choose Our Company</a></li>
+        <li><a href="/solar-for-business/solar-project-showcase">Solar Project Showcase</a></li>
+        <li><a class="selected" href="/solar-for-business/request-an-energy-evaluation">Energy Evaluation</a></li>
+      </ul>
+    </li>
+    <li id="nav_getstarted" class="upperlevel"><a href="/get-started-free-solar-quote" class="upperlevel {if embed:sectionname == 'get-started-free-solar-quote'}selected{/if}">Get Started</a></li>
+  </ul>
+                </div>
+            </div>   
+        </div>
+        
+           
+        <div id="Content">
+            <div id="BodyText">
+            
+                <apex:form id="ApplicationForm" rendered="{!NOT(done)}" styleClass="PartnerApplicationForm">  
+                <div id="FullColSecondary">
+                    <h2>Join the Direct Energy Solar Referral Partner Network</h2>
+                </div>
+                
+                
+                <div id="MainColSecondary">
+                    <h4>Exclusive rewards and benefits are available for every customer, employee or member who switches to solar power with Direct Energy Solar.</h4>
+                    
+                    <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                        <table>
+                            <tr>
+                                <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                <td style="vertical-align: middle;"><span style="color: red;">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                                <td>{!errorFields}</td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[term]'),!(CONTAINS(errorFields,'[1]')),!(CONTAINS(errorFields,'[2]')))}">
+                        <table>
+                            <tr>
+                                <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                <td style="vertical-align: middle;"><span style="color: red;">Please accept terms and conditions.</span></td>                               
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                    
+                    
+                    <h3>Please select the program that best meets your needs:</h3>
+                    <div class="programSelect">
+                        
+                        <apex:outputPanel layout="none" rendered="{!partnerType='Professional'}">
+                            <div class="programSelectRow">
+                                <input type="radio" name="programType" value="Professional" id="Professional" checked="checked"/> <p><span class="programTitle">Professional Referral Program</span> <span class="programDescription">&mdash; I represent a business and want to share Direct Energy Solar with my customers.</span></p>
+                            </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!NOT(partnerType='Professional')}">
+                            <div class="programSelectRow">
+                                <input type="radio" name="programType" value="Professional" id="Professional" /> <p><span class="programTitle">Professional Referral Program</span> <span class="programDescription">&mdash; I represent a business and want to share Direct Energy Solar with my customers.</span></p>
+                            </div>
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel layout="none" rendered="{!partnerType='Affiliate'}">
+                        <div class="programSelectRow">
+                            <input type="radio" name="programType" value="Affiliate" id="Affiliate" checked="checked"/> <p><span class="programTitle">Affiliate Referral Program</span> <span class="programDescription">&mdash; I represent a nonprofit or membership organization and want to share Direct Energy Solar with our supporters or members.</span></p>
+                        </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!NOT(partnerType='Affiliate')}">
+                        <div class="programSelectRow">
+                            <input type="radio" name="programType" value="Affiliate" id="Affiliate"/> <p><span class="programTitle">Affiliate Referral Program</span> <span class="programDescription">&mdash; I represent a nonprofit or membership organization and want to share Direct Energy Solar with our supporters or members.</span></p>
+                        </div>
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel layout="none" rendered="{!partnerType='Affinity'}">
+                        <div class="programSelectRow">
+                            <input type="radio" name="programType" value="Affinity" id="Affinity" checked="checked"/> <p><span class="programTitle">Affinity Referral Program</span> <span class="programDescription">&mdash; I represent an employer and want to share Direct Energy Solar with our employees.</span></p>
+                        </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!NOT(partnerType='Affinity')}">
+                        <div class="programSelectRow">
+                            <input type="radio" name="programType" value="Affinity" id="Affinity"/> <p><span class="programTitle">Affinity Referral Program</span> <span class="programDescription">&mdash; I represent an employer and want to share Direct Energy Solar with our employees.</span></p>
+                        </div>
+                        </apex:outputPanel>
+                        
+                    </div>
+                    
+                    <div id="ProfessionalForm" >                                         
+                        <div id="ApplyForm">
+                            <div class="ApplyFormSection">
+                                <h3>About Me</h3>
+                                <div class="ApplyFormRow">
+                                    <label>First Name <span class="required">*</span></label> <apex:inputField id="firstName" value="{!app_prof.First_Name__c}" styleClass="LongField {!IF(AND(CONTAINS(errorFields,'[fname]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Last Name <span class="required">*</span></label><apex:inputField id="lastName" value="{!app_prof.Last_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[lname]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Title <span class="required">*</span></label><apex:inputField id="title" value="{!app_prof.Title__c}"  styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[title]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Email <span class="required">*</span></label><apex:inputText id="email" value="{!app_prof.Email__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[email]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Phone <span class="required">*</span></label><apex:inputField id="phone" value="{!app_prof.Phone__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[phone]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Fax</label><apex:inputField id="fax" value="{!app_prof.Fax__c}" styleclass="LongField"/>
+                                </div>
+                            </div>
+                            
+                            <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[1]'),CONTAINS(errorFields,'[prof]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <div class="ApplyFormSection">
+                                <h3>About My Organization</h3>
+                                <div class="ApplyFormRow">
+                                    <label>Business Name <span class="required">*</span></label> <apex:inputField id="company" value="{!app_prof.Company_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[cname]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Website</label> <apex:inputField id="website" value="{!app_prof.Website__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[website]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Address <span class="required">*</span></label><apex:inputField id="address" value="{!app_prof.Address__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[addr]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>City <span class="required">*</span></label><apex:inputField id="city" value="{!app_prof.City__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[city]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="State " for="state"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" >
+                                        <apex:selectList id="state" value="{!app_prof.State__c}" size="1" styleClass="LongField {!IF(AND(CONTAINS(errorFields,'[state]'),CONTAINS(errorFields,'[prof]')),'invalid','')}">
+                                            <apex:selectOptions value="{!states}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </div>   
+                                 
+                               
+                                <div class="ApplyFormRow">
+                                    <label>Zip Code <span class="required">*</span></label> <apex:inputField id="zip" value="{!app_prof.Zip_Code__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[zip]'),CONTAINS(errorFields,'[prof]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="Industry " for="industry"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" styleClass="select-wrapper ">
+                                        <apex:selectList id="industry" value="{!app_prof.Industry__c}" size="1" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[indu]'),CONTAINS(errorFields,'[prof]')),'invalid','')}">
+                                            <apex:selectOptions value="{!industries}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>                                    
+                                </div>
+                                
+                                <div class="ApplyFormRow">
+                                    <label>If Other, explain:</label><apex:inputField id="otherIndustry" value="{!app_prof.Other_Industry__c}" styleclass="LongField"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="Number of Employees " for="employees"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" styleClass="select-wrapper ">
+                                        <apex:selectList id="employees" value="{!app_prof.Employees__c}" size="1" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[emp]'),CONTAINS(errorFields,'[prof]')),'invalid','')}">
+                                            <apex:selectOptions value="{!employees}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </div>
+                            </div>
+                            
+                            <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[2]'),CONTAINS(errorFields,'[prof]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <div class="ApplyFormSectionSolidBlue">
+                                <p>Direct Energy Solar will make referral payments to the person or organization listed on your tax W-9 form. Please use the name of the person or organization that matches your tax identification information.</p>
+                            </div>
+                            
+                            <div class="ApplyFormSection noBottomPadding">
+                                <div class="ApplyFormSubSection">
+                                    <label>Your Direct Energy Solar Contact</label>
+                                    <p>If you were invited to join the Referral Partner Network by an Direct Energy Solar Employee, please list his/her name here:</p>
+                                    <apex:inputField id="referby" value="{!app_prof.Refer_By_Employee__c}" styleclass="FullWidthField" />                                   
+                                </div>
+                                <div class="ApplyFormSubSection">
+                                    <label>Additional Comments</label>
+                                    <apex:inputField id="comments" value="{!app_prof.Comments__c}" styleclass="FullWidthField" />                                   
+                                </div>
+                                
+                                <div class="ApplyFormSubSection">
+                                    <label class="TermsConditionsLabel">Terms and Conditions</label>
+                                    <p class="TermsConditionsParagraph">Please review the program terms and conditions.</p>
+                                    <div class="Print">
+                                        <a href="{!URLFOR($Page.PortalTermsPrint,null)}?type=P" target="_blank">Print</a>
+                                    </div>
+                                    <div class="TermsConditionsText">
+                                        <h1>Direct Energy Solar Professional Referral Network Agreement</h1>
+                <p class="intro">Once a Referral Partner has completed the free, no obligation registration process and has been verified as a participant in the program, an introduction will be sent via email.</p>
+                <ul>
+                    <li><span>When a registered Referral Partner submits a Qualified Lead to Direct Energy Solar, the Referral Partner will receive a payment specified as a Qualified Lead Bonus. This money is the Referral Partner&rsquo;s to keep regardless of whether any of these leads convert to sales.</span></li>
+                    <li><span>&ldquo;Qualified Leads&rdquo; shall be defined as follows:</span></li>
+                    <div class="subList">
+                        <ul>
+                            <li><span>Customer must have had no prior contact with Direct Energy Solar</span></li>
+                            <li><span>Customer owns Customer&rsquo;s property</span></li>
+                            <li><span>Customer is a potential candidate for solar, as reasonably determined by Direct Energy Solar</span></li>
+                            <li><span>Referral Partner has discussed Direct Energy Solar with the customer and the customer is expecting to be contacted</span></li>
+                            <li><span>Partner has not shared customer&rsquo;s information with any other solar services company</span></li>
+                            <li><span>Customer agrees to a sales visit to discuss the site evaluation and has a genuine interest in going solar, as reasonably determined by Direct Energy Solar</span></li>
+                        </ul>
+                    </div>
+                    <li><span>When Referral Partner&rsquo;s Qualified Lead enters into a contract for a solar power system with Direct Energy Solar, the Referral Partner receives a flat sale reward payment specified as a Sales Bonus.</span></li>
+                    <li><span>Payments are aggregated and paid by check and sent via U.S. mail the month following the activity.</span></li>
+                    <li><span>Qualified Leads who sign contracts for solar power systems with Direct Energy Solar may / may not  receive a discount toward their systems. Only one referral discount can be applied to any system dependent of the current Direct Energy Solar discount promotion.</span></li>
+                    <li><span>Partners are entitled to compensation for initiating a relationship with a new Direct Energy Solar customer, subject to other terms of the partner program. Once Direct Energy Solar has converted a partner submitted lead to a customer, partners are not entitled to any compensation for any additional products or services sold to that customer at a later date.</span></li>
+                    <li><span>Referral Partner must submit a completed W-9 form to Direct Energy Solar prior to receiving payments.</span></li>  
+                    <li><span>Referral Partner should submit a company logo to assist Direct Energy Solar in creating marketing collateral.</span></li>
+                    <li><span>All work for the solar power system sold will be performed by Direct Energy Solar.</span></li>
+                    <li><span>Referral Partner agrees to hold the terms of the agreement confidential, including payment amounts.</span></li>
+                    <li><span>Referral Partner agrees to only utilize marketing materials approved by Direct Energy Solar when promoting the program and to perform no marketing or advertising activities without permission of Direct Energy Solar.</span></li>
+                    <li><span>This agreement can be terminated by either party with a written notification. Referral Partner will get paid for any Qualified Leads referred prior to the date of cancellation.</span></li>
+                </ul>
+<p>By accepting this agreement, you acknowledge and agree to the terms and conditions above. Direct Energy Solar will permit individuals, employer affinity programs, lead generation services, non-profit and membership affiliate organizations into the program at the sole discretion of the program manager.</p>
+                                    </div>
+                                    <div class="TermsConditionsCheckbox">
+                                        <apex:inputCheckbox value="{!app_prof.Terms_Accepted__c}" styleclass="{!IF(AND(CONTAINS(errorFields,'[term]'),CONTAINS(errorFields,'[prof]')),'invalid','')}" /><label>Yes, I have read and accept the Direct Energy Solar Referral Program Terms and Conditions. <span class="required">*</span></label>
+                                         
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div class="ApplyFormSubmitButton">
+                            
+                                <apex:commandButton action="{!apply}" styleClass="standardButton"  value="{!'Submit'}"/>
+                                
+                            </div>
+                            
+                           </div>
+                        
+                           </div>   <!-- /form old-->
+                        
+               
+                        
+                 <div id="AffiliateForm">
+                        <div id="ApplyForm">
+                            <div class="ApplyFormSectionSolidBlue">
+                                <p>To be eligible for the Direct Energy Solar Referral Partner Network, your organization must have more than 100 members, a valid EIN number, and must agree to endorse Direct Energy Solar.</p>
+                            </div>
+                            
+                            <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[1]'),CONTAINS(errorFields,'[afl]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <div class="ApplyFormSection">                                
+                                <h3>About Me</h3>
+                                <div class="ApplyFormRow">
+                                    <label>First Name <span class="required">*</span></label> <apex:inputField id="firstName1" value="{!aff_app.First_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[fname]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Last Name <span class="required">*</span></label><apex:inputField id="lastName1" value="{!aff_app.Last_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[lname]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Title <span class="required">*</span></label><apex:inputField id="title1" value="{!aff_app.Title__c}"  styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[title]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Email <span class="required">*</span></label><apex:inputText id="email1" value="{!aff_app.Email__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[email]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Phone <span class="required">*</span></label><apex:inputField id="phone1" value="{!aff_app.Phone__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[phone]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Fax</label><apex:inputField id="fax1" value="{!aff_app.Fax__c}" styleclass="LongField"/>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
+                            <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[3]'),CONTAINS(errorFields,'[afl]'),CONTAINS(errorFields,'[E100]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">To be eligible for the Direct Energy Solar Referral Partner Network, your organization must have more than 100 members.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[2]'),CONTAINS(errorFields,'[afl]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                                                        
+                            <div class="ApplyFormSection">
+                                <h3>About My Organization</h3>
+                                <div class="ApplyFormRow">
+                                    <label>Name of Organization <span class="required">*</span></label> <apex:inputField id="company1" value="{!aff_app.Company_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[cname]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Website</label> <apex:inputField id="website1" value="{!aff_app.Website__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[website]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Address <span class="required">*</span></label><apex:inputField id="address1" value="{!aff_app.Address__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[addr]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>City <span class="required">*</span></label><apex:inputField id="city1" value="{!aff_app.City__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[city]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="State " for="state"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" >
+                                        <apex:selectList id="state1" value="{!aff_app.State__c}" size="1" styleClass="LongField {!IF(AND(CONTAINS(errorFields,'[state]'),CONTAINS(errorFields,'[afl]')),'invalid','')}">
+                                            <apex:selectOptions value="{!states}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </div>   
+                                 
+                               
+                                <div class="ApplyFormRow">
+                                    <label>Zip Code <span class="required">*</span></label> <apex:inputField id="zip1" value="{!aff_app.Zip_Code__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[zip]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="Type of Organization " for="organization"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" styleClass="select-wrapper">
+                                        <apex:selectList id="organization" value="{!aff_app.Industry__c}" size="1" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[indu]'),CONTAINS(errorFields,'[afl]')),'invalid','')}">
+                                            <apex:selectOptions value="{!orgindustries}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>                                    
+                                </div>
+                                
+                                <div class="ApplyFormRow">
+                                    <label>If Other, explain:</label><apex:inputField id="otherIndustry1" value="{!aff_app.Other_Industry__c}" styleclass="LongField"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="Number of Members " for="employees"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" styleClass="select-wrapper ">
+                                        <apex:selectList id="employees1" value="{!aff_app.Number_of_Members__c}" size="1" styleclass="LongField {!IF(OR(AND(CONTAINS(errorFields,'[E100]'),CONTAINS(errorFields,'[afl]')),AND(CONTAINS(errorFields,'[mem]'),CONTAINS(errorFields,'[afl]'))),'invalid','')}">
+                                            <apex:selectOptions value="{!members}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </div>
+                                
+                                <div class="ApplyFormRow">
+                                    <label>EIN Number <span class="required">*</span></label><apex:inputField id="EIN_Number__c" value="{!aff_app.EIN_Number__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[ein]'),CONTAINS(errorFields,'[afl]')),'invalid','')}"/>
+                                </div>
+                            </div>
+                            
+                          
+                            
+                              <div class="ApplyFormSectionSolidBlue">
+                                <p>If applicable, Direct Energy Solar will make any donations earned to the organization associated with your EIN number. Please use the name of the organization that matches your tax-exempt identification number.</p>
+                            </div>
+                            
+                            
+                            
+                            <div class="ApplyFormSection noBottomPadding">
+                                <div class="ApplyFormSubSection">
+                                    <label>Your Direct Energy Solar Contact</label>
+                                    <p>If you were invited to join the Referral Partner Network by an Direct Energy Solar Employee, please list his/her name here:</p>
+                                    <apex:inputField id="referby1" value="{!aff_app.Refer_By_Employee__c}" styleclass="FullWidthField" />                                   
+                                </div>
+                                <div class="ApplyFormSubSection">
+                                    <label>Additional Comments</label>
+                                    <apex:inputField id="comments1" value="{!aff_app.Comments__c}" styleclass="FullWidthField" />                                   
+                                </div>
+                                
+                                <div class="ApplyFormSubSection">
+                                    <label class="TermsConditionsLabel">Terms and Conditions</label>
+                                    <p class="TermsConditionsParagraph">Please review the program terms and conditions.</p>
+                                    <div class="Print">
+                                       <a href="{!URLFOR($Page.PortalTermsPrint,null)}?type=AF" target="_blank">Print</a>
+                                    </div>
+                                       <div class="TermsConditionsText">
+                                        <h1>Direct Energy Solar Affiliate Network Agreement</h1>
+                <p class="intro">Once an Affiliate Candidate has completed the free, no obligation registration process and has been verified as a participant in the program, an addendum detailing payment amounts will be sent via email.</p>
+                <ul>
+                    <li><span>As an Direct Energy Solar Affiliate, the organization will take active steps to promote Direct Energy Solar to its constituents (members, visitors, citizens, etc.) including, but not limited to, providing a written endorsement of Direct Energy Solar, including the Direct Energy Solar offer on the organization&rsquo;s official website, newsletters, e-newsletters, and social media vehicles, and posting of flyers in appropriate areas.</span></li>
+                    <li><span>Affiliate Organization must have 100 or more constituents to qualify for this program.</span></li>
+                    <li><span>Each time a properly-registered constituent signs a contract for solar services with Direct Energy Solar, the Affiliate will receive an established Direct Energy Solar Affiliate program payment as a donation.</span></li>
+                    <li><span>In lieu of receiving the entire Affiliate program payment, the Affiliate may elect to split the reward 50/50 with the constituent, passing along half of the amount as a referral discount. </span></li>
+                    <li><span>A customer may only receive one referral discount per system.</span></li>
+                    <li><span>In order for the constituent and/or Affiliate to receive their applicable discount and donation, the constituent&rsquo;s lead information must be properly registered with Direct Energy Solar in one of the following ways:</span></li>
+                    <div class="subList">
+                        <ul>
+                            <li><span>Register on a co-branded landing page, provided by Direct Energy Solar</span></li>
+                            <li><span>Register via the lead entry form on the Affiliate web portal</span></li>
+                            <li><span>Contact Direct Energy Solar directly and cite the Affiliate Code, provided by Direct Energy Solar, during the first contact</span></li>
+                        </ul>
+                    </div>
+                    <li><span>When a constituent becomes an Direct Energy Solar customer and helps spread the word within the Affiliate organization, he/she can qualify for a separate appreciation payment in addition to the amount(s) paid to the constituent and/or Affiliate. In order to receive the separate appreciation reward, the referring constituent&rsquo;s name must be cited at the time of lead registration.</span></li>
+                    <li><span>Constituents who have already established contact with Direct Energy Solar are considered duplicate leads and are not eligible for the Affiliate payment/discount structure.</span></li>
+                    <li><span>Partners are entitled to compensation for initiating a relationship with a new Direct Energy customer, subject to other terms of the partner program. Once Direct Energy Solar has converted a partner submitted lead to a customer, partners are not entitled to any compensation for any additional products or services sold to that customer at a later date.</span></li>
+                    <li><span>All work for the solar power system sold will be performed by Direct Energy Solar.</span></li>
+                    <li><span>Affiliate agrees to hold the terms of the agreement confidential, including payment amounts.</span></li>  
+                    <li><span>Affiliate agrees to only utilize marketing materials approved by Direct Energy Solar when promoting the program and to perform no marketing or advertising activities without the express permission of Direct Energy Solar.</span></li>
+                    <li><span>This agreement can be terminated at anytime by either party with a written notification. Referral Partner will get paid for any Qualified Leads referred prior to the date of cancellation.</span></li>
+                </ul>
+<p>By accepting this agreement, you acknowledge and agree to the terms and conditions above. You also confirm that you are an authorized representative of a qualifying non-profit or membership-based organization.</p>
+                                    </div>
+                                    <div class="TermsConditionsCheckbox">
+                                        <apex:inputCheckbox value="{!aff_app.Terms_Accepted__c}"/><label>Yes, I have read and accept the Direct Energy Solar Referral Program Terms and Conditions. <span class="required">*</span></label>
+                                         
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div class="ApplyFormSubmitButton">
+                                <apex:commandButton action="{!apply}" styleClass="standardButton"  value="{!'Submit'}"/>
+                            </div>
+                            
+                           </div>
+                        </div>    <!-- /form old-->
+                        
+                        <div id="AffinityForm">
+                        
+                        <div id="ApplyForm">
+                            <div class="ApplyFormSectionSolidBlue">
+                                <p>To be eligible for the Direct Energy Solar Referral Partner Network, your organization must have more than 100 employees, and must agree to endorse Direct Energy Solar.</p>
+                            </div>
+                            
+                             <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[1]'),CONTAINS(errorFields,'[afn]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <div class="ApplyFormSection">
+                                <h3>About Me</h3>
+                                <div class="ApplyFormRow">
+                                    <label>First Name <span class="required">*</span></label> <apex:inputField id="firstName2" value="{!afn_app.First_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[fname]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Last Name <span class="required">*</span></label><apex:inputField id="lastName2" value="{!afn_app.Last_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[lname]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Title <span class="required">*</span></label><apex:inputField id="title2" value="{!afn_app.Title__c}"  styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[title]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Email <span class="required">*</span></label><apex:inputText id="email2" value="{!afn_app.Email__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[email]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Phone <span class="required">*</span></label><apex:inputField id="phone2" value="{!afn_app.Phone__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[phone]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Fax</label><apex:inputField id="fax2" value="{!afn_app.Fax__c}" styleclass="LongField"/>
+                                </div>
+                            </div>
+                            
+                           <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[2]'),CONTAINS(errorFields,'[afn]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">Please make sure that all required fields are filled out and formatted correctly.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <apex:outputPanel layout="none" rendered="{!AND(CONTAINS(errorFields,'[3]'),CONTAINS(errorFields,'[afn]'),CONTAINS(errorFields,'[E100]'))}">
+                            <table>
+                                <tr>
+                                    <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                                    <td style="vertical-align: middle;"><span class="user-error">To be eligible for the Direct Energy Solar Referral Partner Network, your organization must have more than 100 Employess.</span></td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            
+                            <div class="ApplyFormSection">
+                                <h3>About My Organization</h3>
+                                <div class="ApplyFormRow">
+                                    <label>Company Name <span class="required">*</span></label> <apex:inputField id="company2" value="{!afn_app.Company_Name__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[cname]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Website <span class="required">*</span></label> <apex:inputField id="website2" value="{!afn_app.Website__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[website]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>Address <span class="required">*</span></label><apex:inputField id="address2" value="{!afn_app.Address__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[addr]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                <div class="ApplyFormRow">
+                                    <label>City <span class="required">*</span></label><apex:inputField id="city2" value="{!afn_app.City__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[city]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div>
+                                
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="State " for="state"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" >
+                                        <apex:selectList id="state2" value="{!afn_app.State__c}" size="1" styleClass="LongField {!IF(AND(CONTAINS(errorFields,'[state]'),CONTAINS(errorFields,'[afn]')),'invalid','')}">
+                                            <apex:selectOptions value="{!states}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </div>   
+                                 
+                               
+                                <div class="ApplyFormRow">
+                                    <label>Zip Code <span class="required">*</span></label> <apex:inputField id="zip2" value="{!afn_app.Zip_Code__c}" styleclass="LongField {!IF(AND(CONTAINS(errorFields,'[zip]'),CONTAINS(errorFields,'[afn]')),'invalid','')}"/>
+                                </div> 
+                                
+                                <div class="ApplyFormRow">
+                                    <apex:outputLabel value="Number of Employees " for="employees"><span class="required">*</span></apex:outputLabel>
+                                    <apex:outputPanel layout="block" styleClass="select-wrapper">
+                                        <apex:selectList id="employees2" value="{!afn_app.Number_of_Members__c}" size="1" styleclass="LongField {!IF(OR(AND(CONTAINS(errorFields,'[E100]'),CONTAINS(errorFields,'[afn]')),AND(CONTAINS(errorFields,'[mem]'),CONTAINS(errorFields,'[afn]'))),'invalid','')}">
+                                            <apex:selectOptions value="{!members}"/>
+                                        </apex:selectList>
+                                    </apex:outputPanel>
+                                </div>
+                            </div>
+                            
+                            
+                                                       
+                            <div class="ApplyFormSection noBottomPadding">
+                                <div class="ApplyFormSubSection">
+                                    <label>Your Direct Energy Solar Contact</label>
+                                    <p>If you were invited to join the Referral Partner Network by an Direct Energy Solar Employee, please list his/her name here:</p>
+                                    <apex:inputField id="referby2" value="{!afn_app.Refer_By_Employee__c}" styleclass="FullWidthField" />                                   
+                                </div>
+                                <div class="ApplyFormSubSection">
+                                    <label>Additional Comments</label>
+                                    <apex:inputField id="comments2" value="{!afn_app.Comments__c}" styleclass="FullWidthField" />                                   
+                                </div>
+                                
+                                <div class="ApplyFormSubSection">
+                                    <label class="TermsConditionsLabel">Terms and Conditions</label>
+                                    <p class="TermsConditionsParagraph">Please review the program terms and conditions.</p>
+                                    <div class="Print">
+                                        <a href="{!URLFOR($Page.PortalTermsPrint,null)}?type=AN" target="_blank">Print</a>
+                                    </div>
+                                   <div class="TermsConditionsText">
+                                        <h1>Direct Energy Solar Corporate Affinity Agreement</h1>
+                <p class="intro">Once a Corporate Affinity Partner Candidate has completed the free, no obligation registration process and has been verified as a participant in the program, an addendum detailing payment amounts will be sent via email.</p>
+                <ul>
+                    <li><span>The registered Affinity Partner agrees to provide a written endorsement of Direct Energy Solar and incorporate Direct Energy Solar&rsquo;s offer to any existing corporate affinity/employee discount program. The Affinity partner also agrees to post a customized link, provided by Direct Energy Solar, on its affinity site, where applicable.</span></li>
+                    <li><span>The corporation must have 100 or more employees to qualify for this program.</span></li>
+                    <li><span>When a properly-registered employee lead from the Affinity Partner signs a contract for solar services with Direct Energy Solar, Direct Energy Solar will extend to them an established Affinity discount, provided as a credit on the first invoice if the employee purchases the system, or as a cash rebate if the employee enrolls in Direct Energy Solar&rsquo;s monthly payment program.</span></li>
+                    <li><span>The employee discount amount is applied in addition to the current publicly-available promotional discount.</span></li>
+                    <li><span>In order for the Affinity Partner&rsquo;s employee to receive the discount, the employee must be properly registered with Direct Energy Solar in one of the following ways:</span></li>
+                    <div class="subList">
+                        <ul>
+                            <li><span>Register on a co-branded landing page, provided by Direct Energy Solar</span></li>
+                            <li><span>Register via the lead entry form on the Affinity Partner web portal</span></li>
+                            <li><span>Contact Direct Energy Solar directly and cite the Affinity Code, provided by Direct Energy Solar, during the first contact</span></li>
+                        </ul>
+                    </div>
+                    <li><span>Employees of the Affinity Partner who have already established contact with Direct Energy Solar are considered duplicate leads and are not eligible for the Affinity Partner discount.</span></li>
+                    <li><span>When an Affinity Partner&rsquo;s employee becomes an Direct Energy Solar customer and helps spread the word within the organization, he/she can qualify for a separate appreciation reward payment. In order to receive the separate appreciation reward, the referring employee&rsquo;s name must be cited at the time of lead registration.</span></li>
+                    <li><span>A customer may only receive one referral discount per system.</span></li>
+                    <li><span>Partners are entitled to compensation for initiating a relationship with a new Direct Energy customer, subject to other terms of the partner program. Once Direct Energy Solar has converted a partner submitted lead to a customer, partners are not entitled to any compensation for any additional products or services sold to that customer at a later date.</span></li>
+                    <li><span>All work for the solar power system sold will be performed by Direct Energy Solar.</span></li>  
+                    <li><span>Affinity Partner agrees to hold the terms of the agreement confidential.</span></li>
+                    <li><span>Affinity Partner agrees to only utilize marketing materials approved by Direct Energy Solar when promoting the program and to perform no marketing or advertising activities without the express permission of Direct Energy Solar.</span></li>
+                    <li><span>This agreement can be terminated at anytime by either party with a written notification. Referral Partner will get paid for any Qualified Leads referred prior to the date of cancellation.</span></li>
+                </ul>
+<p>By accepting this agreement, you acknowledge and agree to the terms and conditions above.  You also confirm that you are an authorized representative of a qualifying employer.</p>
+                                    </div>
+                                    <div class="TermsConditionsCheckbox">
+                                        <apex:inputCheckbox value="{!afn_app.Terms_Accepted__c}"/><label>Yes, I have read and accept the Direct Energy Solar Referral Program Terms and Conditions. <span class="required">*</span></label>
+                                         
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div class="ApplyFormSubmitButton">
+                                <apex:commandButton action="{!apply}" styleClass="standardButton"  value="{!'Submit'}"/>
+                            </div>
+                            
+                           </div>
+                        </div>    <!-- /form old-->
+                    
+                </div>
+               
+                
+                </apex:form>
+                
+                <apex:outputPanel layout="block" rendered="{!done}">
+                <div id="FullColSecondary">
+                    <h2>Thank You</h2>
+                </div>
+                <div id="MainColSecondary">
+                    <h4>Thank you for submitting your application for the Direct Energy Solar Referral Partner Network. We will contact you shortly.</h4>
+                </div>
+                </apex:outputPanel>
+                
+                
+                <div id="SubColSecondary">
+                    <img src="{!URLFOR($Resource.PartnerPortal2_Resources, 'images/ApplyImage1.jpg')}" />
+                    <img src="{!URLFOR($Resource.PartnerPortal2_Resources, 'images/ApplyImage2.jpg')}" />
+                </div>
+            </div>
+        </div>
+        
+          
+      
+
+<div class="ClearAll"></div>    
+<div id="Copyright">
+<div id="CopyrightLeft">
+            <h4><a href="http://www.directenergysolar.com/company/our-company" target="_blank">Company</a> | <a href="http://www.directenergysolar.com/in-the-news" target="_blank">In The News</a> | <a href="http://www.directenergysolar.com/careers" target="_blank">Careers</a> | <a href="http://www.directenergysolar.com/company/contact-us" target="_blank">Contact Us</a> | <a href="http://www.directenergysolar.com/the-basics/frequently-asked-questions" target="_blank">Frequently Asked Questions</a></h4></div>
+<div id="CopyrightRight"><h4>&copy; {!YEAR(TODAY())} Clockwork IP, LLC. | <a href="http://www.directenergysolar.com/privacy-policy" target="_blank">Privacy Policy</a> | <a href="http://www.directenergysolar.com/terms-and-conditions" target="_blank">Terms &amp; Conditions</a></h4></div>
+        </div>
+    </div><!-- /Frame -->
+
+    </body>
+</html>
+</apex:page>

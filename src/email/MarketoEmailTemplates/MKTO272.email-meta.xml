@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nest Thank-You 8/21/15.Nest Thank-You 8/21/15</name>
+    <style>none</style>
+    <subject>Thank you for choosing us. Here&apos;s some information regarding your Nest.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Thank You for Choosing Direct Energy Solar and Nest
+
+Dear {{lead.First Name:default=Friend}},
+
+Thank you for choosing Direct Energy Solar for your solar installation. We are honored that you have selected us. Your solar-powered home can be even more energy-efficient with the Nest Learning Thermostat™ you’ll soon receive with our compliments. It will be mailed 30 days from the date you signed your contract*. Thermostats control half of your home’s energy. Teach Nest well and you could save up to 20% on your energy bill.
+
+We truly appreciate your business and hope that you are as excited as we are about your upcoming solar installation.
+
+
+Nest Support
+
+While Direct Energy Solar cannot install your Nest, Nest Support &lt;http://nest.com/support/thermostat&gt; has a wealth of information.
+
+If you’re comfortable changing a light fixture, you can install Nest. Most people install the Nest Thermostat themselves in 30 minutes or less.
+
+Watch the Nest installation video, quickly solve problems, or get help from a pro. Check out nest.com/support/thermostat &lt;http://nest.com/support/thermostat&gt;.
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+*Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar between July 16, 2015–August 15, 2015. No extensions will be granted. Your Nest Thermostat will be mailed 30 days after your contract signing. Direct Energy Solar is not responsible for installing your Nest Thermostat. Minimum system size is 4 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household. Nest®, Nest Learning Thermostat™, Nest Leaf™, Airwave™, Auto-Away™ and the Nest logo are trademarks or servicemarks of Nest Labs, Inc.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

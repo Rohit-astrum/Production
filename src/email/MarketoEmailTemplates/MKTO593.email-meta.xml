@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Sunny Shout-Outs: Wayne and Vanna</name>
+    <style>none</style>
+    <subject>Our customers are talking.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=custtestim&amp;utm_campaign=nurture-tk&amp;utm_content=custtestim-logo]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+Sunny Shout-Outs Direct from Our Customers
+
+Dear {{lead.First Name:default=Friend}},
+
+Our customers love us, but we can’t claim all of the credit—let’s face it, the sun does most of the work to power their homes!
+
+We’ve helped thousands of people turn their sunny roofs into electricity savings. And each of our customers had their own reasons for going solar. Our custom-tailored approach helped them meet their specific energy needs and goals.
+
+But now we’ll let Wayne and Vanna do the talking.
+
+Wayne looked into getting solar panels 5 or 10 years ago but found it to be cost-prohibitive. Then, he says, he heard a commercial on the radio that was a turning point in his decision to go solar. It was not only a matter of dollars.
+
+Wayne very much supports the collective effort of using energy efficiently and furthering independence from foreign oil. Ultimately, it’s free money and free energy, he believes.
+
+“If a lot of us did this, what a big difference we could all make.”
+
+Read Their Full Story:
+ &lt;[[http://www.directenergysolar.com/customer-stories/page/home-solar-reviews-woburn-massachusetts-ma?utm_medium=email&amp;utm_source=custtestim&amp;utm_campaign=nurture-tk&amp;utm_content=custtestim-button-fullstory]]&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=custtestim&amp;utm_campaign=nurture-tk&amp;utm_content=custtestim-footer-priv&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=custtestim&amp;utm_campaign=nurture-tk&amp;utm_content=custtestim-footer-terms&gt;
+
+ DirectEnergySolar.com
+&lt;http://www.directenergysolar.com?utm_medium=email&amp;utm_source=custtestim&amp;utm_campaign=nurture-tk&amp;utm_content=custtestim-footer-home&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

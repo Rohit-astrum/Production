@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Add</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>CanUseQuantitySchedule</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CanUseRevenueSchedule</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Family</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>None</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>IsActive</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAAllowDeleteInUse__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Allow Deletion of Product in Use</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAExternalId__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAIncludeInIncomeSchedule__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Deprecated: Include in Income Schedule</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAIncomeSchedule__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Income Schedule</label>
+        <referenceTo>c2g__codaIncomeScheduleDefinition__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAInputTaxCode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Input VAT Code</label>
+        <referenceTo>c2g__codaTaxCode__c</referenceTo>
+        <relationshipLabel>Products (Purchase Tax Code)</relationshipLabel>
+        <relationshipName>ProductsPurchase</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAPurchaseAnalysisAccount__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Purchase Analysis Account</label>
+        <referenceTo>c2g__codaGeneralLedgerAccount__c</referenceTo>
+        <relationshipLabel>Products (Purchase Analysis Account)</relationshipLabel>
+        <relationshipName>ProductsPurchase</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODASalesRevenueAccount__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The general ledger account to which sales revenues for this product be posted.</description>
+        <externalId>false</externalId>
+        <label>Sales Revenue Account</label>
+        <referenceTo>c2g__codaGeneralLedgerAccount__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODASalesTaxRule__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>External Sales Tax Code</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>c2g__CODASalesTaxStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Tax Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Taxable</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Exempt</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Exempt for Qualifying Accounts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODATaxCode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Output VAT Code</label>
+        <referenceTo>c2g__codaTaxCode__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>c2g__CODAUnitOfWork__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Unit of Work</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>c2g__Email__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_configsoprod__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rootstock Configured Product</label>
+        <referenceTo>rstk__soprod__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>configsoprodProducts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_fromsf__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product_fromsf</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_icitem__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inventory Item</label>
+        <referenceTo>rstk__icitem__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>icitemProducts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_invdiv__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Inventory Division</label>
+        <referenceTo>rstk__sydiv__c</referenceTo>
+        <relationshipLabel>Products (Inventory Division)</relationshipLabel>
+        <relationshipName>invdivProudcts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_peitemdesc__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rootstock Mfg Item Description</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_reficitem__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reference an Inventory Item</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_refrtindoper__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reference an Independent Operation</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_refsoprod__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reference a Configured Product</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rs_addprod__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Add to Rootstock Product Catalog</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rs_comcod__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product Group</label>
+        <referenceTo>rstk__socomm__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rs_div__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Division</label>
+        <referenceTo>rstk__sydiv__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rs_prodtype__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Stock</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Configured</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Miscellaneous</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Recurring</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rs_product__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rootstock Product</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rs_slsuom__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales UOM</label>
+        <referenceTo>rstk__syuom__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__Product_rtindoper__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Independent Operation</label>
+        <referenceTo>rstk__rtindoper__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>rtindoperProducts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rstk__altextid__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>altextid</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>rstk__triggeroptions__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>triggeroptions</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>AllProducts</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Products</label>
+    </listViews>
+    <listViews>
+        <fullName>rstk__AllProducts</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <columns>PRODUCT2.ACTIVE</columns>
+        <columns>rstk__Product_rs_product__c</columns>
+        <columns>rstk__Product_rs_div__c</columns>
+        <columns>rstk__Product_rs_slsuom__c</columns>
+        <columns>PRODUCT2.LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Products</label>
+        <language>en_US</language>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>PRODUCT2.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.DESCRIPTION</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.DESCRIPTION</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.FAMILY</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.DESCRIPTION</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.FAMILY</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.DESCRIPTION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.FAMILY</searchResultsAdditionalFields>
+    </searchLayouts>
+    <validationRules>
+        <fullName>rstk__Product_Description_Must_Match_Rootstock</fullName>
+        <active>true</active>
+        <description>Product Description must match Rootstock Mfg Item Description</description>
+        <errorConditionFormula>AND(NOT( ISBLANK( rstk__Product_peitemdesc__c ) ), rstk__Product_peitemdesc__c !=  Description )</errorConditionFormula>
+        <errorMessage>Product Description must match Rootstock Mfg Item Description</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>rstk__assc_rsproduct</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Associated Rootstock Entity</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>//This script is used in a custom button on the Salesforce Quote page 
+//Label: Create Rootstock Sales Order 
+//Display Type: Detail Page Button 
+//Behavior: Execute Javascript 
+//Content Source: OnClick JavaScript 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+var result = sforce.connection.describeGlobal(); 
+var sobjects = result.getArray(&quot;sobjects&quot;); 
+if (sobjects.length == 0) { sobjects = result.getArray(&quot;types&quot;); }
+var re = /([A-Za-z0-9]+)?(__)?(icixr__c)/; 
+var prefix = &apos;&apos;; 
+for (var i=0; i&lt;sobjects.length; i++) { 
+var mData = re.exec(sobjects[i]); 
+if (mData ==null) continue; 
+if (mData[3] == &apos;icixr__c&apos;) { 
+prefix = mData[1]==null?&apos;&apos;:(mData[1]+mData[2]); 
+break; 
+} 
+} 
+parent.location.href=&quot;/apex/&quot;+prefix+&quot;AssocRSProduct?pid={!Product2.Id}&quot;</url>
+    </webLinks>
+</CustomObject>

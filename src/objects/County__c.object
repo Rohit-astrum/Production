@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents a County in a State</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Available_Field_Sales__c</fullName>
+        <description>Assignable Field Sales Reps for Scheduling Sales Visits</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Assignable Field Sales Reps for Scheduling Sales Visits</inlineHelpText>
+        <label>Available Field Sales</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>County_Lease_Tax_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>County Lease Tax Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>FIPS_Code__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>FIPS Code for county (2-digit state + 3 digit county code)</description>
+        <externalId>true</externalId>
+        <label>FIPS Code</label>
+        <length>5</length>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Permit_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Permit Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Region__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Pricing Region</label>
+        <referenceTo>Pricing_Region__c</referenceTo>
+        <relationshipLabel>Counties</relationshipLabel>
+        <relationshipName>Counties</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Region</label>
+        <picklist>
+            <picklistValues>
+                <fullName>MA Region</fullName>
+                <color>#FFCC33</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MD Region</fullName>
+                <color>#6600CC</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NYC Region</fullName>
+                <color>#FF0000</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OH Region</fullName>
+                <color>#3366FF</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PA Region</fullName>
+                <color>#33CC00</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WNY Region</fullName>
+                <color>#FFFF66</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CA Region</fullName>
+                <color>#006600</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CT Region</fullName>
+                <color>#33FFFF</color>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NJ Region</fullName>
+                <color>#F96FB7</color>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>State_Abbreviation__c</fullName>
+        <externalId>false</externalId>
+        <formula>State__r.State_Abbreviation__c</formula>
+        <label>State Abbreviation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <description>State County belongs to</description>
+        <externalId>false</externalId>
+        <label>State</label>
+        <referenceTo>State__c</referenceTo>
+        <relationshipLabel>Counties</relationshipLabel>
+        <relationshipName>Counties</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>County</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CA</fullName>
+        <columns>NAME</columns>
+        <columns>Available_Field_Sales__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>CA Region</value>
+        </filters>
+        <label>CA Counties</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MA_Region_Counties</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>MA Region</value>
+        </filters>
+        <label>MA Region Counties</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MD_Region_Counties</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>MD Region</value>
+        </filters>
+        <label>MD Region Counties</label>
+    </listViews>
+    <listViews>
+        <fullName>NYC_Region_Counties</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>NYC Region</value>
+        </filters>
+        <label>NYC Region Counties</label>
+    </listViews>
+    <listViews>
+        <fullName>OH_Region_Counties</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>OH Region</value>
+        </filters>
+        <label>OH Region Counties</label>
+    </listViews>
+    <listViews>
+        <fullName>PA_Region_Counties</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>PA Region</value>
+        </filters>
+        <label>PA Region Counties</label>
+    </listViews>
+    <listViews>
+        <fullName>WNY_Region_Counties</fullName>
+        <columns>NAME</columns>
+        <columns>State__c</columns>
+        <columns>Sales_Region__c</columns>
+        <columns>FIPS_Code__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>WNY Region</value>
+        </filters>
+        <label>WNY Region Counties</label>
+    </listViews>
+    <nameField>
+        <label>County Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Counties</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

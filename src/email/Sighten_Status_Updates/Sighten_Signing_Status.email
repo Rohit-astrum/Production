@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Contract Signing Status Update" recipientType="User" relatedToType="Astrum_Contract__c">
+<messaging:htmlEmailBody >
+	<c:Sighten_EmailComponent providedEmailTemplateType="SIGNING" providedRecordId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

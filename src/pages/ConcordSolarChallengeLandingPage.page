@@ -1,0 +1,394 @@
+<apex:page doctype="html-5.0" controller="EmployeeLandingPageController" showHeader="false" sidebar="false" standardStyleSheets="false">
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+        <title>Concord MA Home Solar Panels Lower Your Utility Bill</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--<meta name="google-site-verification" content="vzNX2Vizola_A88N5vjQ-RSIrMiUp7RwHup00Y9wdNA" />-->
+        <meta name="description" content="Turn your Concord roof into a clean utility plant. All installations are done through Astrum Solar, the official installer of the Concord Solar Challenge." />
+        <meta name="keywords" content="Astrum Solar, Concord Solar, Concord Solar Challenge, Concord, Concord solar program, Concord solar company, Concord conserves, Concord Light Plant" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0" /> -->
+    </meta>
+    
+    <link rel="Shortcut Icon" href="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/favicon.ico')}" />
+    
+    <apex:insert name="head-top"/>
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'fonts/avenir1stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'fonts/avenir2stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'fonts/avenir3stylesheet.css')}" media="screen, projection" type="text/css" /> 
+    <link rel="stylesheet" href="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'fonts/avenir4stylesheet.css')}" media="screen, projection" type="text/css" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'styles/screen.css')}" media="screen, projection" type="text/css" /> 
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <style type="text/css">
+         .gradient {
+            filter: none;
+     }
+    </style>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'javascript/plugins.js')}"></script>
+    <script src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'javascript/scripts.js')}"></script>
+    <script src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'javascript/jquery.maskedinput.js')}"></script>
+    <script src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'javascript/jquery.validate.js')}"></script>
+    <script src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'javascript/jquery.cookie-new.js')}"></script>
+    
+    <script type="text/javascript">
+    
+        function getURLParam(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
+            );
+        }
+        
+        var a_gclid = getURLParam('gclid');
+        var a_utmSource = getURLParam('utm_source');
+        var a_utmMedium = getURLParam('utm_medium');
+        var a_utmTerm = getURLParam('utm_term');
+        var a_utmCampaign = getURLParam('utm_campaign');
+        var a_utmContent = getURLParam('utm_content');
+        
+        if (a_gclid!=''){
+        $.cookie('apex__gclid', a_gclid, { expires: 30, path: '/' });
+        }
+        if (a_utmSource!=''){
+        $.cookie('apex__astrum_utm_source', a_utmSource, { expires: 30, path: '/' });
+        }
+        if (a_utmMedium!=''){
+        $.cookie('apex__astrum_utm_medium', a_utmMedium, { expires: 30, path: '/' });
+        }
+        if (a_utmTerm!=''){
+        $.cookie('apex__astrum_utm_term', a_utmTerm, { expires: 30, path: '/' });
+        }
+        if (a_utmCampaign!=''){
+        $.cookie('apex__astrum_utm_campaign', a_utmCampaign, { expires: 30, path: '/' });
+        }
+        if (a_utmContent!=''){
+        $.cookie('apex__astrum_utm_content', a_utmContent, { expires: 30, path: '/' });
+        }
+    
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        $.cookie();
+        }
+    </script>
+
+
+    <apex:insert name="head-bottom"/>
+
+</head>
+
+
+<body>
+
+    <div id="main-container">
+    <div id="body-container">
+    
+        <div id="header">
+            <p class="acc"><a href="#content" title="Skip to content">Skip to content</a></p>
+            <header role="banner" class="wrapper group">
+                <hgroup>
+                    <h1 id="logo"><a href="http://www.astrumsolar.com" title="Astrum Solar"><span>Astrum Solar</span></a></h1>
+                    <h2 id="logo2"><span>Concord Solar Challenge</span></h2>
+                </hgroup>
+                <div id="UpperRightNav">
+                     <h2><span>Call Us: 800-903-6130</span></h2>
+                     <h3><span>See a Sunny Day in a Whole New Way</span></h3>
+                     
+                </div>
+            </header>
+        </div>
+    
+        <div id="content" role="main">
+            <div class="wrapper group"> 
+                <article>
+                    <section id="main" class="group MainBackground">
+                        <div class="content-container">
+                            <h2 class="first">It is never too late to go solar!</h2>
+                            <div id="tab-content">
+        
+                                <!--BEGIN TAB ONE-->
+                                <div id="home">
+        
+                                    <!--Logo Left-->
+                                    <div class="logo-spot logo no-border">
+                                        <a href="http://www.concordnet.org/pages/ConcordMA_CSE/Index" target="_blank"><img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/CSEC_logo.gif')}" title="Comprehensive Sustainable Energy Committee" /></a>
+                                        <p>The Concord Solar Challenge is a program sponsored by the Town of Concord Comprehensive Sustainable Energy Committee.</p>                        
+                                   </div>
+                                    <!--END Logo Left-->
+                                    
+                                            
+                                    <apex:insert name="home-image">
+                                        <p class="annotation left">Kim and Mark, 9.36kW System &mdash; ELECTRICITY SAVINGS: $1,260/year and CARBON OFFSET: 5.14 tons/year</p>
+                       
+                                    </apex:insert>
+                                </div>
+                                <!--END TAB ONE-->
+                                
+                                <!--BEGIN TAB TWO-->
+                                <div id="about">
+                                    <h3>About the Concord Solar Challenge</h3>
+                                    <h4>Now is the Time to Switch to Solar Power</h4>
+                                     <p>The Concord Solar Challenge is a program designed to encourage the adoption of home solar power by deploying a coordinated community outreach effort, combined with a tiered pricing structure. The more Concordians who sign up to install solar, the more the price decreases for everyone who participates in the program. And because the installer, the technology and the exact prices are provided upfront, it is much easier for Concord residents to make the decision to go solar. <span>Read more about the program in the <a href="http://www.wickedlocal.com/concord/news/x171167650/New-program-helps-homeowners-businesses-nonprofits-go-solar#axzz2PJcxkUkR" target="_blank">Concord Journal</a>.</span></p>
+                                      <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/JillAppel.jpg')}" title="Jill Appel, Concord Solar Challenge Selection Committee" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">My solar system saves both energy and money. I hope the Challenge motivates many of you join me. If we all make a few small changes it will make a difference. And we will feel good about ourselves and be better role models for our children!&rdquo;</p>
+                                                    <p class="author"><span>Jill Appel</span><br/>Concord Solar Challenge Selection Committee</p>
+                                                </div>
+                                            </div>
+                                </div>
+                                <!--END TAB TWO-->
+                                        
+                                <!--BEGIN TAB THREE-->
+                                <div id="customers" class="group">
+                                <h3>Meet Our Customers</h3>
+                                    <ul id="slideshow" class="group">
+                                        <li>
+                                            <h3>The Altman Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,377</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/altman.jpg')}" class="one" title="Altman" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">I had to sell my wife a bit on the idea. She had some aesthetic concerns. To me, solar panels are a complete no-brainer.&rdquo;</p>
+                                                    <p class="author">&mdash; Wayne and Vanna</p>
+                                                    <p class="author small">6.975 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Polyakov Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $669</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/polyakov.jpg')}" class="one" title="Goldberg" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">It is true that you do see a sunny day in a whole new way when you know your investment is ticking away.&rdquo;</p>
+                                                    <p class="author">&mdash; Eugene and Lena</p>
+                                                    <p class="author small">4.21 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Papandrea Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,414</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/papandrea.jpg')}" class="one" title="Papandrea" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Our solar panels were shockingly affordable.&rdquo;</p>
+                                                    <p class="author">&mdash; Tony and Karen</p>
+                                                    <p class="author small">9.6 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Hall Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,108</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/hall.jpg')}" class="one" title="Vesay" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote-smaller">You put them up and there&rsquo;s less energy you have to take from other sources. Our decision to go solar was based on our values, but the financials made it feasible.&rdquo;</p>
+                                                    <p class="author">&mdash; Wendy and Richard</p>
+                                                    <p class="author small">5.775 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h3>The Rogus Family Clean Power Plant</h3>
+                                            <h4>Year 1 Electricity Savings: $1,304</h4>
+                                            <div class="pic-content group">
+                                                <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/rogus.jpg')}" class="one" title="Rogus" />
+                                                <div class="pic-details">
+                                                    <img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/quotations.gif')}" title="quotations" />
+                                                    <p class="quote">Astrum offered the best technology. They quoted exactly what we wanted without compromise.&rdquo;</p>
+                                                    <p class="author">&mdash; Mei and Joseph</p>
+                                                    <p class="author small">9.36 kW System</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--END TAB THREE-->
+                                    
+                            </div>
+                        </div>
+        
+                        <div class="form-container">
+                            <div class="referredBy"><p><apex:insert name="referred-by"/></p></div>
+                            <!--BEGIN TAB NAV-->
+                            <ul id="tabs" class="group">
+                                <li class="home"><a href="javaScript:void(0);" title="Home" id="home-btn"><img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, 'images/home-btn.png')}" title="Home" /></a></li>
+                                <li><a href="javaScript:void(0);" title="About Concord Solar Challenge" id="about-btn">About Concord<br/>Solar Challenge</a></li>
+                                <li><a href="javaScript:void(0);" title="Meet Our Customers" id="customers-btn">Meet<br />Our Customers</a></li>
+                            </ul>
+                            <!--END TAB NAV-->
+        
+                            <!--BEGIN FORM-->
+                            <div id="form">
+                                <apex:form styleClass="save-form">
+        
+        <apex:actionRegion >
+    
+        <apex:outputPanel id="formArea" layout="block">
+        
+            <apex:outputPanel rendered="{!NOT(submitted=true)}">
+    
+            <apex:outputPanel layout="none" rendered="{!OR(CONTAINS(errorFields,'[unknown]'))}">
+                <table>
+                    <tr>
+                        <td><apex:image value="{!URLFOR($Resource.PortalResources, 'images/error.gif')}" width="25" height="16"/></td>
+                        <td style="vertical-align: middle;"><span class="user-error">We're sorry.  An unexpected error occured.  Please try again later.</span></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <legend>Find Out How Much You Can Save</legend>
+            <ul>
+                <li class="fname">
+                    <label for="fname" class="acc">First Name</label>
+                    <input type="text" id="fname" name="fname" value="First Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="lname">
+                    <label for="lname" class="acc">Last Name</label>
+                    <input type="text" id="lname" name="lname" value="Last Name" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="email">
+                    <label for="email" class="acc">Email Address</label>
+                    <input type="text" id="email" name="email" value="Email Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="phone">
+                    <label for="phone" class="acc">Phone</label>
+                    <input type="text" id="phone" name="phone" value="Phone" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="street">
+                    <label for="street" class="acc">Street Address</label>
+                    <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
+                </li>
+                <li class="city">
+                    <label for="city" class="acc">City</label>
+                    <input type="text" id="city" name="city" maxlength="100" value="Concord" placeholder="" class=""/>
+                </li>
+                <li class="state">
+                    <label for="state" class="acc">State</label>
+                    <select id="state" name="state" class="noPlaceholder required" >
+                      <apex:repeat value="{!mastates}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>                      
+                    </select>
+                </li>
+                <li class="zip">
+                    <label for="zip" class="acc">Zip</label>
+                    <input type="text" id="zip" name="zip" value="01742" placeholder="" class="" />
+                </li>
+                
+               
+                
+                
+                <li class="heard">
+                    <label for="heard" class="acc">How Did You Hear About Us? </label>
+                    <apex:outputPanel layout="block" id="abourUsSelect">
+                        <select id="heard" name="heard" class="noPlaceholder notSelected">
+                            <option value="">How Did You Hear About Us? </option>
+                            <apex:repeat value="{!ctleadSources}" var="u"><option value="{!u.value}">{!u.label}</option></apex:repeat>
+                        </select>
+                    </apex:outputPanel>
+                </li>
+                
+                <li id="more-info" class="heard_detail" style="display: none;">
+                    <label class="acc" for="heard_detail">More Details</label>
+                        <input type="text" class="noPlaceholderMoreDetails" placeholder="" value="" name="heard_detail" id="heard_detail" />
+                    </li>
+                <li class="errorMessage">
+                    <p>Please complete all required fields.</p>
+                </li>
+                 
+                
+                <li class="submit">
+                    <input type="submit" value=""  class="button" id="submit-btn" />
+                </li>
+                <li class="updates group">
+                    <label for="updates" class="acc">I want to receive alerts &amp; Solarize program updates from Astrum Solar.</label>
+                    <input type="checkbox" id="updates" name="updates" value="yes" checked="yes" />
+                    <p>I want to receive alerts &amp; Solarize program updates from Astrum Solar.</p>
+                </li>
+            </ul>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!OR(submitted==true)}">
+                <h2>Find Out How Much You Can Save</h2>
+                <h3>Thank You</h3>
+                <p class="thanks">Thank you for requesting a solar consultation. One of our solar experts will <span>contact you within the next 48 hours</span> to 
+                follow up on your request for a no obligation home solar site assessment.</p>
+
+                <p class="thanks icon"><img src="{!URLFOR($Resource.ConcordSolarChallenge_Resources, '/images/Form_KnowledgeIcon.png')}" alt="Lightbulb"/>To get a jump start, gather your past 12 months of electricity usage (in kilowatt-hours) from your utility provider.</p>
+    
+                <p class="thanks"><span>We hope to have the opportunity to help you go solar.</span></p>
+    
+            </apex:outputPanel>
+        
+        </apex:outputPanel>
+
+        <apex:actionFunction name="doSubmit" action="{!submit}" rerender="formArea"/>
+        
+        </apex:actionRegion>
+        
+            <input type="hidden" id="communityprogram" name="communityprogram" value="Concord Solar Challenge"/>
+        </apex:form>
+                            </div>
+        <div class="call-to-action">
+                        <p>166 Systems sold for 1,300 kW<br/>of clean electricity!</p>
+                     </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section id="landing-content" class="group">
+                       <div class="landing-detail">
+                            <p class="marketing-content">Although the enrollment period for the Concord Solar Challenge has officially ended, you can still switch to solar and save as much as ever! Astrum Solar makes it so easy and rewarding that you have nothing to lose&mdash;and a lifetime of carefree energy savings to gain. <span>Request your no obligation home solar site assessment today.</span></p>
+                        </div>
+                        <div class="landing-cta">
+                            <p>Astrum Solar is the Concord Solar Challenge installer partner.</p>
+                            <p class="pic"><img src="{!URLFOR($Resource.SolarizeNeedhamLandingPage_Resources, 'images/Inc500No2_2012.gif')}" title="" /></p>
+                            <p class="pic"><a id="bbblink" class="ruvtbus" href="http://www.bbb.org/greater-maryland/business-reviews/solar-energy-system-design-and-installation/astrum-solar-in-annapolis-junction-md-90168289#bbbseal" title="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" style="display: block;position: relative;overflow: hidden; width: 40px; height: 72px; margin: 0px; padding: 0px;"><img style="padding: 0px; border: none;" id="bbblinkimg" src="http://seal-greatermd.bbb.org/logo/ruvtbus/astrum-solar-90168289.png" width="80" height="72" alt="Astrum Solar, Inc., Solar Energy System Design & Installation, Annapolis Junction, MD" /></a><script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-greatermd.bbb.org' + unescape('%2Flogo%2Fastrum-solar-90168289.js') + "' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                        </div>
+                    </section>
+                        
+                </article>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <footer role="contentinfo" class="container group">
+                <div id="copyright">
+                    <p>Copyright &copy; {!YEAR(TODAY())} Astrum Solar, Inc.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/" title="Astrum Solar website">AstrumSolar.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/terms-and-conditions" title="Terms and Conditions">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.astrumsolar.com/contact-us" title="Contact Us">Contact Us</a></p>
+                </div>
+                
+                
+               <p class="companyDisclaimer">You must be a Concord, MA resident to participate in this program. A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. Brand names and product names are trademarks or services marks of their respective holders. No obligation of the Concord Comprehensive Sustainability Energy Committee or any affiliate thereof, should be deemed to arise through the use of such names and marks. MA HIC 168228</p>
+               
+                
+            </footer>
+
+        </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
+</apex:page>

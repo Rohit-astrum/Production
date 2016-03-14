@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Use this e-mail if you&apos;ve called, but were unable to leave a voicemail message.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Unable to leave a VoiceMail</name>
+    <style>none</style>
+    <subject>Don’t miss out on going solar for nothing out-of-pocket!</subject>
+    <textOnly>Dear {!Lead.FirstName},
+
+Thank you for your interest in Astrum Solar, where we do home solar the right way. We just called you but were unable to leave you a phone message. We&apos;re reaching out via e-mail because we want to get you started on your way to instantly lowering your electricity costs as soon as we can!
+
+We’d like to learn more about your home and what you want from your solar experience. We exclusively deal in home solar installations, and we would like to connect you with one of our home solar specialists. The specialist can schedule a survey of your roof and design a system that will lower your electricity costs immediately and free you from unpredictable utility rates. 
+
+Please call us back at 800-903-6130 and select the option for sales, or reply to this email and let us know the best time to reach you. 
+
+We look forward to speaking with you and getting you started on experiencing solar the right way! 
+
+Best, 
+
+
+{!User.FirstName}
+
+Astrum Solar
+8955 Henkels Lane Suite 508
+Annapolis Junction, MD 20701
+P: 800-903-6130
+F: 443-267-0036
+{!User.Email}
+www.astrumsolar.com</textOnly>
+    <type>custom</type>
+</EmailTemplate>

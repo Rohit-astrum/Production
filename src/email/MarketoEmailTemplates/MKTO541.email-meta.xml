@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>MA SREC II Limited Availability: February 2016.MA SREC II 022316 Customers: Frie</name>
+    <style>none</style>
+    <subject>Friends don’t let friends miss out.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/&gt;
+
+A Special Message for Our Valued Customers
+
+Friends don’t let friends miss out...on SRECs!
+
+Dear {{lead.First Name:default=Friend}},
+
+As a valued Direct Energy Solar customer, you are already well aware of the benefits of Solar Renewable Energy Certificates (SRECs). Not only are you saving money with solar, but you are offsetting your cost of going solar as well!
+
+Remaining capacity in the SREC II program is filling up fast—how does this affect you?
+
+On January 5, the Massachusetts Department of Energy Resources (DOER) announced that 120 MW would be set aside in the SREC II program for solar projects under 25 kW. On February 18, DOER provided a program status update—only 67 MW of the initial 120 MW remained. A mad rush to go solar in Massachusetts is under way—at this pace, it’s highly possible that the remaining 67 MW could be gone as early as April!
+
+At this time, there are no plans to increase or adjust the program cap. While this current situation has no impact on your SRECs, it does affect people you know who may be considering going solar and may therefore miss out on a great incentive. But, you can help!
+
+February 29 is an important date for 2 reasons.
+
+As you know, we are currently running a very generous referral promotion and have extended it until February 29. When you refer your friends, family, neighbors—anyone you think would be a great candidate for solar—to us, and they sign their contract by February 29, you receive $750.(1)
+
+Based on the most current program status information available, we are confident that your referral will be successfully registered for participation in the SREC II program if they sign their contract with Direct Energy Solar on or before February 29.(2) Why so soon? For a project to be successfully registered for SREC II participation, we need to secure the necessary approvals and municipal permits.
+
+So, this means your referral will get to enjoy the benefits of SRECs, and you earn some extra cash!
+
+HURRY! Refer your friends today:
+directenergysolar.com/refer &lt;[[http://www.directenergysolar.com/refer]]&gt;
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you are a Direct Energy Solar customer.
+
+(1)You must be a Direct Energy Solar customer to participate in the Direct Energy Solar Referral Program. For each referral who signs a contract with Direct Energy Solar between November 25, 2015–February 29, 2016, you will receive $750. This referral offer is not valid within special community pricing programs or in combination with any other offer—if your referral receives special community pricing on their solar contract, you will receive $200. Individuals may not refer themselves. Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral. Payment in the form of a check is sent within 60 days of the sale.
+
+(2)Should project fail to qualify for the program due to unforeseen circumstances, your referral will have the option to cancel their contract with us.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

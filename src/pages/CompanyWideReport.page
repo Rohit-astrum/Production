@@ -1,0 +1,20 @@
+<apex:page controller="CompanyWideReportDebugController" showHeader="true" sidebar="true">
+<apex:form >
+	<apex:actionRegion >
+		<apex:selectList value="{!selectedReportType}" size="1">
+			<apex:selectOptions value="{!reportTypes}"/>
+		</apex:selectList>
+		<br/>
+		Management Only?<apex:inputCheckbox value="{!selectedManagementOnly}" /> (*Only applies to Weekly)
+		<br/>
+		<apex:commandButton value="View" action="{!view}" reRender="preview"/>
+		<apex:commandButton value="Process" action="{!process}" reRender="preview"/>
+	</apex:actionRegion>
+	<apex:outputPanel id="preview">
+		<br/>
+		<apex:outputLabel value="{!numberofqueries}" rendered="{!showLimits}"/><br/>
+		<apex:outputLabel value="{!numberofcallouts}" rendered="{!showLimits}"/><br/>
+		<c:CompanyWideReportComponent providedReportType="{!selectedReportType}" rendered="{!showPreview}" providedManagementFlag="{!selectedManagementOnly}"/>
+	</apex:outputPanel>
+</apex:form>
+</apex:page>

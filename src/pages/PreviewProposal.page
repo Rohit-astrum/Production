@@ -1,0 +1,343 @@
+<apex:page standardcontroller="Proposal__c" extensions="PreviewProposalCtrl" action="{!saveProposalPDF}" title="Proposal {!prop.Name}" showHeader="true">
+	<style>
+		.activeRow {
+			background: #53CA51;
+			font-weight: bold;
+		}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<apex:form id="frm">
+
+		<apex:pageBlock title="Proposal {!prop.Name}" id="propBlock">
+			<apex:pageBlockButtons location="top">
+				<apex:outputLink value="/apex/SystemDesignQuoteConfig?scontrolCaching=1&sfdc.override=1&id={!prop.System_Design_Quote__c}" styleClass="btn">Return to SDQ Input Page</apex:outputLink>
+				<!--<button onclick="location.href = '/apex/SystemDesignQuoteConfig?scontrolCaching=1&sfdc.override=1&id={!prop.System_Design_Quote__c}'" class="btn">Return to SDQ Input Page</button>-->
+			</apex:pageBlockButtons>
+
+			<apex:pageBlockSection columns="2">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Customer Name" />
+					<apex:outputText value="{!property.Property_Owner__r.Name}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="System Size" />
+					<apex:outputField value="{!prop.System_Design_Quote__r.System_Size_kW__c}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Address" />
+					<apex:outputText value="{!property.Name}, {!property.Property_City__c}, {!property.Property_State__c} {!property.Property_ZIP__c}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Panel Type" />
+					<apex:outputText value="{!panelProduct.Description__c}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Phone" />
+					<apex:outputText value="{!property.Property_Owner__r.Phone}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Panel Count" />
+					<apex:outputField value="{!prop.System_Design_Quote__r.Panel_Count__c}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Email" />
+					<apex:outputText value="{!property.Property_Owner__r.Billing_Email_Address__c}" />
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Inverter Type" />
+					<apex:outputText value="{!inverterProduct.Description__c}" />
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+
+			<apex:pageBlockSection columns="1">
+				<apex:actionFunction name="reselectProposal" action="{!switchProposal}" rerender="frm">
+					<apex:param name="proposalID" value="" />
+				</apex:actionFunction>
+				<apex:actionFunction name="makeCurrent" action="{!makeProposalCurrent}" rerender="frm">
+					<apex:param name="proposalID" value="" />
+				</apex:actionFunction>
+				<apex:pageBlockTable id="proposalTable" value="{!propList}" var="pr" styleClass="tbl" width="100%">
+					<apex:column styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" width="1%" style="{!IF(pr.Current__c, 'cursor:pointer', '')}">
+						<apex:commandButton id="makeCurrentBtn" value="Make Current" onclick="if (confirm('This action will alter this Proposal\'s SDQ and System Design. Continue?')) makeCurrent('{!pr.ID}'); else return false;" rendered="{!AND(!pr.Current__c, !pr.Locked__c)}" rerender="frm"/>
+					</apex:column>
+				    <apex:column headerValue="Proposal Name" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Name}" />
+					</apex:column>
+					<apex:column headerValue="Finance Option 1" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Scenario_1_Financing_Plan__c}"/>
+					</apex:column>
+					<apex:column headerValue="Finance Option 2" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Scenario_2_Financing_Plan__c}"/>
+					</apex:column>
+					<apex:column headerValue="Finance Option 3" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Scenario_3_Financing_Plan__c}"/>
+					</apex:column>
+					<apex:column headerValue="Finance Option 4" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Scenario_4_Financing_Plan__c}"/>
+					</apex:column>
+					<apex:column headerValue="Current Proposal" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Current__c}"/>
+					</apex:column>
+					<apex:column headerValue="Proposal Expiration Date" styleClass="{!IF(pr.ID == prop.ID, 'activeRow', '')}" html-data-proposalID="{!pr.ID}" style="cursor:pointer">
+						<apex:outputField value="{!pr.Proposal_Expiration_Date__c}"/>
+					</apex:column>
+				</apex:pageBlockTable>
+
+				<apex:outputPanel style="display:{!IF(makeCurrentResult == null || makeCurrentResult == 'Valid', 'none', 'block')}">
+					<br/>
+					<apex:outputText value="{!makeCurrentResult}" style="color:#9F0606"/>
+				</apex:outputPanel>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+
+		<apex:pageBlock id="previewBlock">
+			<apex:pageBlockButtons location="top">
+				<apex:commandLink value="Open PDF" action="{!goToProposalPDF}" target="_blank" rendered="{!propPdfID != null}" styleClass="btn"/>
+			</apex:pageBlockButtons>
+			<iframe src="/servlet/servlet.FileDownload?file={!propPdfID}" style="width:90%; height:750px; margin-left:5%;"></iframe>
+		</apex:pageBlock>
+		
+		<apex:pageBlock title="Contracts for {!prop.Name}" id="contractBlock" >
+			<apex:pageMessages />
+			<apex:outputText value="The Proposal must be made current before contracts can be created." style="color:#9F0606" rendered="{!NOT(prop.Current__c)}"/>
+			<apex:pageBlockSection columns="2" collapsible="false">
+
+				<apex:outputPanel id="option1_panel" rendered="{!prop.Scenario_1_Included__c}">
+					<apex:pageBlockSection title="Option 1: {!prop.Scenario_1_Financing_Plan__c}" columns="1" collapsible="false">
+						<apex:outputPanel rendered="{!prop.Current__c}">
+							<apex:outputPanel rendered="{!AND(scenario1IsSighten, prop.Locked__c == false, credit1 == null)}">
+								<apex:actionStatus id="creditcheck1Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Initiate Credit Check" disabled="true" status="creditcheck1Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Initiate Credit Check" action="{!initiateCreditCheck}" rerender="contractBlock" status="creditcheck1Status">
+											<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="1" />
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(scenario1IsSighten, prop.Locked__c == false, credit1 != null, credit1.Credit_Status__c != 'APPROVED')}">
+								<apex:actionStatus id="creditupdate1Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Update Credit Status" disabled="true" status="creditupdate1Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:outputPanel layout="inline">
+											<apex:commandButton value="Update Credit Status" action="{!updateCreditStatus}" rerender="contractBlock" status="creditupdate1Status">
+												<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="1" />
+											</apex:commandButton>
+											<apex:outputText value="{!'  Current Status: ' + credit1.Credit_Status__c}" />
+										</apex:outputPanel>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(contr1 == null, prop.Locked__c == false, OR(NOT(scenario1IsSighten), AND(credit1 != null, credit1.Credit_Status__c == 'APPROVED')))}">
+								<apex:actionStatus id="contract1Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Create Contract" disabled="true" status="contract1Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:outputPanel layout="inline">
+											<apex:commandButton value="Create Contract" action="{!saveContractPDF}" rerender="contractBlock" status="contract1Status">
+												<apex:param name="scenarioNum" assignTo="{!scenarioNum}" value="1" />
+												<apex:param name="apiServerURL" assignTo="{!apiServerURL}" value="{!URLENCODE($Api.Partner_Server_URL_80)}" /> 
+											</apex:commandButton>
+											<apex:outputText value="{!'  Current Status: ' + credit1.Credit_Status__c}" rendered="{!scenario1IsSighten}" />
+										</apex:outputPanel>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!contr1 != null}">
+								<apex:outputLink value="/apex/PreviewContract?id={!contr1.ID}" styleClass="btn">View Contract</apex:outputLink>
+							</apex:outputPanel>
+						</apex:outputPanel>
+					</apex:pageBlockSection>
+				</apex:outputPanel>
+
+				<apex:outputPanel id="option2_panel" rendered="{!prop.Scenario_2_Included__c}">
+					<apex:pageBlockSection title="Option 2: {!prop.Scenario_2_Financing_Plan__c}" columns="1" collapsible="false">
+						<apex:outputPanel rendered="{!prop.Current__c}">
+							<apex:outputPanel rendered="{!AND(scenario2IsSighten, prop.Locked__c == false, credit2 == null)}">
+								<apex:actionStatus id="creditcheck2Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Initiate Credit Check" disabled="true" status="creditcheck2Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Initiate Credit Check" action="{!initiateCreditCheck}" rerender="contractBlock" status="creditcheck2Status">
+											<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="2" />
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(scenario2IsSighten, prop.Locked__c == false, credit2 != null, credit2.Credit_Status__c != 'APPROVED')}">
+								<apex:actionStatus id="creditupdate2Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Update Credit Status" disabled="true" status="creditupdate2Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:outputPanel layout="inline">
+											<apex:commandButton value="Update Credit Status" action="{!updateCreditStatus}" rerender="contractBlock" status="creditupdate2Status">
+												<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="2" />
+											</apex:commandButton>
+											<apex:outputText value="{!'  Current Status: ' + credit2.Credit_Status__c}" />
+										</apex:outputPanel>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(contr2 == null, prop.Locked__c == false, OR(NOT(scenario2IsSighten), AND(credit2 != null, credit2.Credit_Status__c == 'APPROVED')))}">
+								<apex:actionStatus id="contract2Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Create Contract" disabled="true" status="contract2Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Create Contract" action="{!saveContractPDF}" rerender="contractBlock" status="contract2Status">
+											<apex:param name="scenarioNum" assignTo="{!scenarioNum}" value="2" />
+											<apex:param name="apiServerURL" assignTo="{!apiServerURL}" value="{!URLENCODE($Api.Partner_Server_URL_80)}" /> 
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!contr2 != null}">
+								<apex:outputLink value="/apex/PreviewContract?id={!contr2.ID}" styleClass="btn">View Contract</apex:outputLink>
+							</apex:outputPanel>
+						</apex:outputPanel>
+					</apex:pageBlockSection>
+				</apex:outputPanel>
+
+				<apex:outputPanel id="option3_panel" rendered="{!prop.Scenario_3_Included__c}">
+					<apex:pageBlockSection title="Option 3: {!prop.Scenario_3_Financing_Plan__c}" columns="1" collapsible="false">
+						<apex:outputPanel rendered="{!prop.Current__c}">
+							<apex:outputPanel rendered="{!AND(scenario3IsSighten, prop.Locked__c == false, credit3 == null)}">
+								<apex:actionStatus id="creditcheck3Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Initiate Credit Check" disabled="true" status="creditcheck3Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Initiate Credit Check" action="{!initiateCreditCheck}" rerender="contractBlock" status="creditcheck3Status">
+											<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="3" />
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(scenario3IsSighten, prop.Locked__c == false, credit3 != null, credit3.Credit_Status__c != 'APPROVED')}">
+								<apex:actionStatus id="creditupdate3Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Update Credit Status" disabled="true" status="creditupdate3Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:outputPanel layout="inline">
+											<apex:commandButton value="Update Credit Status" action="{!updateCreditStatus}" rerender="contractBlock" status="creditupdate3Status">
+												<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="3" />
+											</apex:commandButton>
+											<apex:outputText value="{!'  Current Status: ' + credit3.Credit_Status__c}" />
+										</apex:outputPanel>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(contr3 == null, prop.Locked__c == false, OR(NOT(scenario3IsSighten), AND(credit3 != null, credit3.Credit_Status__c == 'APPROVED')))}">
+								<apex:actionStatus id="contract3Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Create Contract" disabled="true" status="contract3Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Create Contract" action="{!saveContractPDF}" rerender="contractBlock" status="contract3Status">
+											<apex:param name="scenarioNum" assignTo="{!scenarioNum}" value="3" />
+											<apex:param name="apiServerURL" assignTo="{!apiServerURL}" value="{!URLENCODE($Api.Partner_Server_URL_80)}" /> 
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!contr3 != null}">
+								<apex:outputLink value="/apex/PreviewContract?id={!contr3.ID}" styleClass="btn">View Contract</apex:outputLink>
+							</apex:outputPanel>
+						</apex:outputPanel>
+					</apex:pageBlockSection>
+				</apex:outputPanel>
+
+				<apex:outputPanel id="option4_panel" rendered="{!prop.Scenario_4_Included__c}">
+					<apex:pageBlockSection title="Option 4: {!prop.Scenario_4_Financing_Plan__c}" columns="1" collapsible="false">
+						<apex:outputPanel rendered="{!prop.Current__c}">
+							<apex:outputPanel rendered="{!AND(scenario4IsSighten, prop.Locked__c == false, credit4 == null)}">
+								<apex:actionStatus id="creditcheck4Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Initiate Credit Check" disabled="true" status="creditcheck4Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Initiate Credit Check" action="{!initiateCreditCheck}" rerender="contractBlock" status="creditcheck4Status">
+											<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="4" />
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(scenario4IsSighten, prop.Locked__c == false, credit4 != null, credit4.Credit_Status__c != 'APPROVED')}">
+								<apex:actionStatus id="creditupdate4Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Update Credit Status" disabled="true" status="creditupdate4Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:outputPanel layout="inline">
+											<apex:commandButton value="Update Credit Status" action="{!updateCreditStatus}" rerender="contractBlock" status="creditupdate4Status">
+												<apex:param name="buttonScenario" assignTo="{!buttonScenario}" value="4" />
+											</apex:commandButton>
+											<apex:outputText value="{!'  Current Status: ' + credit4.Credit_Status__c}" />
+										</apex:outputPanel>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!AND(contr4 == null, prop.Locked__c == false, OR(NOT(scenario4IsSighten), AND(credit4 != null, credit4.Credit_Status__c == 'APPROVED')))}">
+								<apex:actionStatus id="contract4Status">
+									<apex:facet name="start">
+										<apex:commandButton value="Create Contract" disabled="true" status="contract4Status"/>
+									</apex:facet>
+									<apex:facet name="stop">
+										<apex:commandButton value="Create Contract" action="{!saveContractPDF}" rerender="contractBlock" status="contract4Status">
+											<apex:param name="scenarioNum" assignTo="{!scenarioNum}" value="4" />
+											<apex:param name="apiServerURL" assignTo="{!apiServerURL}" value="{!URLENCODE($Api.Partner_Server_URL_80)}" /> 
+										</apex:commandButton>
+									</apex:facet>
+								</apex:actionStatus>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!contr4 != null}">
+								<apex:outputLink value="/apex/PreviewContract?id={!contr4.ID}" styleClass="btn">View Contract</apex:outputLink>
+							</apex:outputPanel>
+						</apex:outputPanel>
+					</apex:pageBlockSection>
+				</apex:outputPanel>
+
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	    <apex:outputPanel id="sightenMessages">
+	        <apex:outputPanel rendered="{!displaySightenPopup}">
+	            <apex:outputPanel id="sightenPopUp" styleClass="popupBackground" layout="block">
+	            </apex:outputPanel>
+	            <apex:outputPanel styleClass="custErrorPopup" layout="block">
+	                <apex:pageMessages escape="false" />
+	                <div style="text-align:center"  >
+	                    <apex:commandButton value="OK" action="{!closeSightenPopUp}" reRender="sightenMessages"/>
+	                </div>
+	            </apex:outputPanel>
+	        </apex:outputPanel>
+	    </apex:outputPanel>
+
+		<script>
+			$(document).ready(function() {
+				//OnClick action for dataRow in proposalTable. We filter out the cell containing the Make Current button so that canceling the confirmation box doesn't trigger the switch action.
+				$("table[id$='proposalTable'] tr.dataRow").on("click", "td.dataCell:not(:has(input[id$='makeCurrentBtn']))", function() {
+					//Get the Proposal ID from the row's cells
+				    var propID = $(this).attr("data-proposalID");	//if using click() instead of on(): $(this).children("td.dataCell").attr("data-proposalID");
+				    if (!propID){
+				    	alert("Something went wrong. Please refresh the page and try again.")
+				    } else {
+				    	//Call the actionFunction to switch the page's active Proposal
+				    	reselectProposal(propID);
+				    }
+				});
+				
+			});
+		</script>
+
+	</apex:form>
+</apex:page>

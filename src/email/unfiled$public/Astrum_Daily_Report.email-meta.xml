@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Astrum Daily Report</name>
+    <style>none</style>
+    <subject>Direct Energy Solar Daily Report</subject>
+    <textOnly>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;   
+    &lt;title&gt;Direct Energy Astrum Solar Daily Report&lt;/title&gt;
+    
+    &lt;style type=&quot;text/css&quot;&gt;
+    &lt;!--
+    body {
+      color:#000000;
+      background-color:#FFFFFF;
+      background-image:url(&apos;Background Image&apos;);
+      background-repeat:no-repeat;
+    }   
+    --&gt;
+    &lt;/style&gt;
+   
+  &lt;/head&gt;
+  &lt;body&gt;
+  	 &lt;div align=&quot;center&quot;&gt;Direct Energy Solar daily Report&lt;/div&gt;	
+	 &lt;table width=&quot;100%&quot; border=&quot;1&quot; &gt;
+      &lt;tr&gt;&lt;!-- Row 1 --&gt;
+         &lt;td&gt;&lt;/td&gt;&lt;!-- Col 1 --&gt;
+         &lt;td colspan=&quot;2&quot;&gt;&lt;div align=&quot;center&quot;&gt;Daily&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+         
+         &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+         &lt;td colspan=&quot;2&quot;&gt;&lt;div align=&quot;center&quot;&gt;Month To Date&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+         
+         &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+         &lt;td colspan=&quot;2&quot;&gt;&lt;div align=&quot;center&quot;&gt;Year To Date&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+         
+      &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;div align=&quot;center&quot;&gt;Actual&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;div align=&quot;center&quot;&gt;Goal&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;div align=&quot;center&quot;&gt;Actual&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;div align=&quot;center&quot;&gt;Goal&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;div align=&quot;center&quot;&gt;Actual&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;div align=&quot;center&quot;&gt;Goal&lt;/div&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 3 --&gt;
+     &lt;td&gt;Leads #&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 4 --&gt;
+     &lt;td&gt;Opportunities #&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 5 --&gt;
+     &lt;td&gt;Sales #&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 6 --&gt;
+     &lt;td&gt;Cancellations #&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 7 --&gt;
+     &lt;td&gt;Inspections #&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 9 --&gt;
+     &lt;td&gt;Sales KW&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 10 --&gt;
+     &lt;td&gt;Cancellations KW&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;!-- Row 11 --&gt;
+     &lt;td&gt;Inspections KW&lt;/td&gt;&lt;!-- Col 1 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 2 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 3 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 4 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 5 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 6 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 7 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 8 --&gt;
+     &lt;td&gt;&lt;/td&gt;&lt;!-- Col 9 --&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+		
+  &lt;/body&gt;
+&lt;/html&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

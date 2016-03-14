@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner: General, You Earned a Solar Sales Reward Bonus</name>
+    <style>none</style>
+    <subject>Let’s Celebrate! You have just earned a solar sales reward bonus.</subject>
+    <textOnly>Dear {{lead.Referring Account Name:default=Astrum Partner}},
+Let’s Celebrate! You have just earned a sales reward from Astrum Solar. Your referral, {{lead.Full Name:default=Lead Name}}, has purchased a solar system from us and they are excited about their new system. We encourage you to reach out and congratulate them. You will receive your reward bonus soon.
+Please do not hesitate to contact us with any questions. Again, thank you for referring one of your contacts to Astrum Solar.
+Best regards,
+Astrum Solar
+partners@astrumsolar.com &lt;mailto:partners@astrumsolar.com&gt;
+You are receiving this email because you are an active participant in the Astrum Solar Partner Program.
+A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. CT 0628993, DC 42021-20000078, DE 2010602230, MD 126447, MA 168228, NJ 13VH05618900, NYSERDA Certified Installer, OH 201021101310, PA 023535, VA 2705 130161, WV 2243-5702
+Astrum Solar, Inc.
+
+8955 Henkels Lane, Suite 508
+
+Annapolis Junction, MD 20701
+
+P: 800-903-6130
+
+F: 443-267-0036</textOnly>
+    <type>custom</type>
+</EmailTemplate>

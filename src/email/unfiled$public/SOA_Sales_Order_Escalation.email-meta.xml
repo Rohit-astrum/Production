@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SOA Sales Order Escalation</name>
+    <style>none</style>
+    <subject>The Sales Order for {!Account.Name} Has Been Escalated for Your Approval</subject>
+    <textOnly>As Sales Order [contains hyperlink to SO] with the following details has been escalated
+
+Escalation Comments:
+
+{!SCRB_SalesOrder__c.LastModifiedBy}: {!SCRB_SalesOrder__c.Escalation_Comments__c}
+
+Customer Name: {!Account.Name}
+City, State of Property : {!SCRB_SalesOrder__c.Installation_City__c}, {!SCRB_SalesOrder__c.Installation_State__c}
+Total System Size: {!SCRB_SalesOrder__c.System_Size_kW__c}
+Final System Price: {!SCRB_SalesOrder__c.Amount__c}
+Purchase/Lease: {!SCRB_SalesOrder__c.Financing_Type__c}
+Financing Option: {!SCRB_SalesOrder__c.Financing_Option__c}
+Leasing Option: {!SCRB_SalesOrder__c.Leasing_Option__c}
+Total Panel Count: {!SCRB_SalesOrder__c.Total_Panel_Count__c}
+Type &amp; Quantity:
+{!SCRB_SalesOrder__c.System_Makeup__c}
+Hand Off Notes:
+{!SCRB_SalesOrder__c.Hand_Off_Notes__c}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

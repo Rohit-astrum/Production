@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>DER_API_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>DER API URL</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>DER_Consumer_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>DER Consumer Key</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DER_Consumer_Secret__c</fullName>
+        <externalId>false</externalId>
+        <label>DER Consumer Secret</label>
+        <length>20</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DER_Request_Timeout__c</fullName>
+        <defaultValue>120000</defaultValue>
+        <externalId>false</externalId>
+        <label>DER Request Timeout</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DER_Salesforce_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>DER Salesforce Email</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DER_Salesforce_Password__c</fullName>
+        <externalId>false</externalId>
+        <label>DER Salesforce Password</label>
+        <length>50</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DER_Salesforce_Username__c</fullName>
+        <externalId>false</externalId>
+        <label>DER Salesforce Username</label>
+        <length>50</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DER_Solar_Advantage_Campaign_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>DER Solar Advantage Campaign Id</label>
+        <length>20</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DES_Solar_Advantage_Outbound_Campaign_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>DES Solar Advantage Outbound Campaign Id</label>
+        <length>20</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>DER Bundle Settings</label>
+</CustomObject>

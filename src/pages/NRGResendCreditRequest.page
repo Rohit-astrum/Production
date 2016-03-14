@@ -1,0 +1,20 @@
+<!--
+FILE: NRGResendCreditRequest.page
+AUTHOR:Rohit Jain
+DATE: Mar 12, 2014
+PURPOSE: 
+MODIFICATION HISTORY:
+
+-->
+<apex:page standardController="Opportunity" extensions="NRGOpportunityLeadSendController">
+   <apex:form >
+    <apex:outputPanel >
+       
+        <apex:sectionHeader subtitle="Credit Request is already being sent for this Lead. Do you want to Re-send the credit request ?" />        
+        
+         <apex:commandButton action="{!ResendNRGLead}" value="Resend" id="resend"/>
+        <apex:commandButton action="{!cancel}" value="Cancel" id="cancel"/>
+        
+    </apex:outputPanel>
+    </apex:form> 
+</apex:page>

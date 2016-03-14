@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Nurture Campaign.Newsletter: February 2016 (Evaluation)</name>
+    <style>none</style>
+    <subject>Introducing our newsletter, Direct from the Sun.</subject>
+    <textOnly>Direct Energy Solar
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-logo]]&gt;
+
+February 2016 Newsletter
+
+DIRECT FROM THE SUN
+Putting Solar in the Spotlight
+
+A Sunny Welcome
+
+Welcome to the first issue of Direct from the Sun, a monthly newsletter from Direct Energy Solar. We’re excited to bring you the latest solar highlights, exclusive resources, and helpful advice for going solar. In addition to our monthly newsletter, we invite you to continue browsing and learning more about solar (and us!) at Directenergysolar.com &lt;[[http://directenergysolar.com?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-link-learn]]&gt;.
+
+
+LATEST FROM THE BLOG
+
+I’m Getting Bombarded with Solar Offers — How Do I Choose?
+ &lt;[[http://www.directenergysolar.com/blog/post/im-getting-bombarded-with-solar-offers-how-do-i-choose?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-img-latest]]&gt;
+
+About 10 years ago, solar installers numbered in the hundreds. Today, there are nearly 180,000 &lt;[[http://www.seia.org/research-resources/solar-industry-data]]&gt; solar professionals employed across more than 6,000 businesses—just in the United States alone.
+And as a homeowner, you probably feel like you’re receiving solicitations from every single one. New offers via email, post, and phone continue to flood into your life, causing you to feel overwhelmed by the sheer volume of choices.
+So how do you select the right photovoltaic (PV) installer for your needs? We’ve written a free step-by-step guide to help you transform a sea of candidates into a much more manageable pool of options.
+
+Read the Full Blog
+ &lt;[[http://www.directenergysolar.com/blog/post/im-getting-bombarded-with-solar-offers-how-do-i-choose?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-button-read]]&gt;
+
+
+LET’S GET YOUR QUESTIONS ANSWERED!
+
+Do Solar Panels Require Maintenance?
+ &lt;[[http://www.directenergysolar.com/the-basics/frequently-asked-questions?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-img-questions]]&gt;
+
+With the harsh winter-related weather the country has been experiencing recently, you may be wondering how this would affect your solar panels.
+
+Solar panels are basically maintenance-free. They have no moving parts that may wear over time and do not require any cleaning. Seasonal rainfall is typically sufficient to keep your solar panels clean. You may need to occasionally remove larger debris, depending on the slope of your roof. And don’t worry about snow on your solar panels—they do an excellent job of absorbing heat, which helps melt the snow.
+
+Solar panels are incredibly resilient and durable. At Direct Energy Solar, we use high quality PV panels developed by industry-leading manufacturers who rigorously test their products. In addition, we offer both workmanship warrantees and performance guarantees. Should any part of your system fail, Direct Energy Solar will replace it at no charge to you. We’ve got you covered.
+
+Have another question about solar? We&apos;re here to help.
+ &lt;[[http://www.directenergysolar.com/the-basics/frequently-asked-questions?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-button-question]]&gt;
+
+
+ENERGY EFFICIENCY TIP OF THE MONTH
+
+Lower the average temperature of your HVAC and water systems. It’s easy to do, and a few degrees isn’t a noticeable change—try it out yourself!
+
+The more energy efficient you become, the less electricity you use. Reduced power consumption means you’ll need fewer solar panels to cover all of your electricity requirements! So, energy efficiency not only offers instant utility bill savings but also indirect savings if you decide to go solar.
+
+CONTACT US: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+P: 800-903-6130
+F: 443-267-0036
+
+© 2016 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;[[http://www.directenergysolar.com/privacy-policy?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-footer-priv]]&gt;
+
+Terms &amp; Conditions 
+&lt;[[http://www.directenergysolar.com/terms-and-conditions?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-footer-terms]]&gt;
+
+DirectEnergySolar.com
+&lt;[[http://www.directenergysolar.com?utm_medium=email&amp;utm_source=febnews&amp;utm_campaign=nurtur&amp;utm_content=febnews-footer-home]]&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

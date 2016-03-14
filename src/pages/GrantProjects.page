@@ -1,0 +1,100 @@
+<!--
+06/26/2012 TCM - zen-13 Sorting only shows 20 rows.  Set limit per grid to 500. 
+-->
+<apex:page doctype="html-5.0" sidebar="false" title="Grants / Rebates" tabStyle="Grant_Projects__tab">
+
+<!-- forces Google Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+
+	<c:GrantProjectsBase tabName="Grants / Rebates">
+
+			datatype: 'local',
+			colNames: [
+				'Project', 
+
+				"Grant Reservation",
+				"Grant Completion",
+				"Grant Reservation Number",
+				"Grant Reservation Amount",
+				
+				"Kickoff Photos",
+				"Drivers Licenses",
+				"Utility Bill",
+				"Permit Design",
+				"Building Permit",
+				"Electrical Permit",
+				"Invoice at Start of Installation",
+				'Work Completed',
+				"Installation Photos",
+				"Proof of Inspection",
+				"Utility Interconnect Part 2",
+				
+				'State',
+				'Financing Type', 
+				'Installation Address',
+				'City',
+				'County',
+
+				'Kickoff',
+				'Install',
+				'Inspection',
+				'Paid In Full',
+				
+			],
+			cmTemplate: {
+				width: 80,
+				classes: "pcell",
+				resizable: false
+			},
+	   		colModel: [  
+	         	{name: 'Name', width: 150, formatter: projectLinkFormatter },
+
+	         	{name: 'Grant_Documents__c', formatter: remoteDateFormatter, align: 'center' },
+	         	{name: 'Grant_Completion__c', formatter: remoteDateFormatter, align: 'center' },
+	         	{name: 'Grant_Reservation_Number__c', align: 'center', editable: true, width: 90 },
+	         	{name: 'Grant_Reservation_Amount__c', align: 'center', editable: true, width: 90,
+	         		formatter:'currency', formatoptions: {decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 0, prefix: "$ ", defaultValue: '' }
+	         	},
+
+	         	{name: 'Kickoff_Photos__c', formatter: remoteDateFormatter, align: 'center', width: 55 },
+	         	{name: 'Drivers_Licenses__c', formatter: remoteDateFormatter, align: 'center', width: 65},
+	         	{name: 'Utility_Bill__c', formatter: remoteDateFormatter, align: 'center', witdh: 50 },
+	         	{name: 'Permit_Design__c', formatter: remoteDateFormatter, align: 'center', width: 50 },
+	         	{name: 'Building_Permit__c', formatter: remoteDateFormatter, align: 'center', width: 60 },
+	         	{name: 'Electrical_Permit__c', formatter: remoteDateFormatter, align: 'center', width: 60 },
+	         	{name: 'Invoice_at_Start_of_Installation__c', formatter: remoteDateFormatter, align: 'center' },
+	         	{name: 'Work_Completed__c', formatter: remoteDateFormatter, align: 'center', width: 70 },
+	         	{name: 'Installation_Photos__c', formatter: remoteDateFormatter, align: 'center', width: 70 },
+	         	{name: 'Proof_of_Inspection__c', formatter: remoteDateFormatter, align: 'center', width: 70 },
+	         	{name: 'Approved_Utility_Interconnect_Part_2__c', formatter: remoteDateFormatter, align: 'center' },
+	         	
+				{name: 'Property__r.Property_State__c', align: "center", width: 50 },
+				{name: 'Sales_Order__r.Financing_Type__c', align: "center", width: 70 },
+				{name: 'Property__r.Name', width: 200 },
+				{name: 'Property__r.Property_City__c', width: 100 },
+				{name: 'Property__r.Property_County__c' },
+
+				{name: 'Kickoff__c', formatter: remoteDateFormatter, align: 'center', width: 50 }, 
+				{name: 'Install__c', formatter: remoteDateFormatter, align: 'center', width: 50 },
+				{name: 'Inspection__c', formatter: remoteDateFormatter, align: 'center', width: 80 },
+				{name: 'Paid_In_Full__c', formatter: remoteDateFormatter, align: 'center', width: 60 },
+	    	],
+			height: 'auto',
+			rowNum: 500,
+	    	cellEdit: true,
+	    	cellsubmit: 'clientArray',
+	    	altRows: true,
+	    	altclass: 'gridAltRows',
+	    	onCellSelect: cellClick,
+	    	prmNames: {
+	    		id: "Id"
+	    	},
+	    	gridComplete: GrantProjects.gridComplete,
+	    	//when sorting set flag to add back notes and issues
+			onSortCol: function (index, iCol, sortorder) {
+				GrantProjects.sorting = true;
+			}
+	    	
+	</c:GrantProjectsBase>
+
+</apex:page>

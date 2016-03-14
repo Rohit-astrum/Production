@@ -1,0 +1,2744 @@
+<!--<apex:page name="CPQ Proposal" sidebar="false" showHeader="false" standardStyleSheets="false" applyHtmlTag="false" applyBodyTag="false" controller="CPQproposalController">-->
+<apex:page name="CPQ Proposal" sidebar="false" showHeader="false" standardStyleSheets="false" applyHtmlTag="false" applyBodyTag="false" renderAs="pdf" controller="CPQproposalController">
+    <html>
+    <head>
+    <title>Direct Energy Solar Proposal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style type="text/css" media="print">
+    <!--<style>-->
+          
+        @page{ 
+            margin-top: 0.25in;
+            margin-right: 1.25in;
+            margin-bottom: 0.25in;
+            margin-left: 1.25in;
+            size: landscape;
+            @bottom-left {
+            	color: #4c4c4e;
+				content: "Page " counter(page) " of " counter(pages);
+            	font-family: Helvetica, sans-serif;
+            	font-size: 12px;
+			}
+        }
+        
+        /* #Basic Styles
+        ================================================== */
+       
+        body {
+            color: #4c4c4e;
+            font-family: Helvetica, sans-serif;
+            font-size: 13px;
+            left:0;
+            line-height: 20px;
+            margin: 0 auto;
+            max-width: 794px;
+            padding: 0 25px 0 0;
+            right:0;
+        }
+        /* #Typography
+        ================================================== */
+            
+        h1 {
+            color: #e45206;
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 34px;
+            margin: 0 0 20px 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #1c3f94;
+            font-size: 18px;
+            font-weight:normal;
+            line-height: 19px;
+            margin: 0;
+            padding: 0;
+        }
+        h3 {
+            color: #1c3f94;;
+            font-size: 18px;
+            font-weight: normal;
+            line-height: 36px;
+            margin: 0;
+            padding: 0;
+        }
+        h4 {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 26px;
+            margin: 5px 0 0 0;
+            padding: 0px;
+            text-transform: none;
+        }
+        h5 {
+            color: #61af3f;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 21px;
+            margin: 0px;
+            text-transform: none;
+        }
+        p{
+            margin: 0 0 15px 0;
+            padding: 0 25px 0 0;
+        }
+        p.email {
+            font-size: 8.5px;
+            letter-spacing: -.1px;
+            word-break: break-all;
+        }
+        ul {
+            margin-left:18px; 
+            padding:0;
+        }
+        li {
+            margin:0;
+            padding-bottom: 6px;
+        }
+        th {
+            font-weight: normal;
+        }
+        .smallText {
+            font-size: 11px;
+            line-height: 14px;
+        }
+        .lowercase {
+            text-transform: lowercase;
+        }
+        
+        /* #Global
+        ================================================== */
+        
+        .header {
+            padding: 35px 0 25px 0;
+        }
+        .header .title {
+            display:inline-block;
+            margin: 10px 16px;
+        }
+        .header .title.twoLineTitle, .header .title.twoLineTitleSmall {
+            margin: 0px 16px;
+        }
+        .header .title.twoLineTitleSmall h1 {
+            font-size: 24px;
+            line-height: 28px;
+        }
+        .subtitle{
+            color: #1c3f94;
+            font-size: 21px;
+            margin: 10px 0;
+        }
+        .astrumLogo{
+            border-right: 1px solid #bebebe;
+            display:inline-block;
+            padding-right: 25px;
+            vertical-align:top;
+        }
+        .astrumLogo img {
+            width: 250px;
+        }
+        .footer {
+            font-size: 14px;
+        }
+        .standardPage .content {
+            min-height: 670px;
+        }
+        .standardPage .footer {
+            border-top: 1px solid #bebebe;
+            padding: 10px 0;
+        }
+        .standardPage .footerCol{
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            width: 30%;
+        }
+        .standardPage .footerCol .highlight{
+            color: #e45206;
+            font-weight: bold;
+        }
+        .standardTable {
+            border-collapse: collapse;
+            color: #7e7d7e;
+            font-size: 11px;
+            line-height: 11px;
+            text-align: center;
+        }
+        .standardTable th, .standardTable td {
+            background-color: #fefaf7;
+            border-collapse: collapse;
+            padding: 6px 10px;
+        }
+        .standardTable th, .standardTable .header td {
+            background-color: #61af3f;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid #fff;
+        }
+        .standardTable tr.shaded td {
+            background-color: #fcede6;
+        }
+        /*
+        .standardTable td.highlighted  {
+            background-color: #61af3f;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+        .standardTable th.highlighted  {
+            background-color: #61af3f;
+            border: 1px solid #fff;
+            border-top-color: #7e7d7e;
+            color: #fff;
+        }
+        .standardTable tr.shaded td.highlighted {
+            background-color: #81bf65;
+        }
+        .standardTable tr.highlighted td, .standardTable tfoot td  {
+            background-color: #009ddc;
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+        }*/
+        .standardTable tr.highlighted td, .standardTable tfoot td  {
+            color: #e45206;
+            font-weight: bold;
+        }
+        .standardTable tr.highlighted td.highlighted {
+            color: #61af3f;
+        }
+        .leftCol{
+            margin-left: 0;
+            margin-right:3.4%;
+        }
+        .rightCol{
+            margin-left:3.4%;
+            margin-right: 0;
+        }
+        .chartImg {
+            display: inline-block;
+            margin: 0;
+        }
+        .chartLegend {
+            margin: 0;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 9px;
+            line-height:11px;
+            width:82px;
+        }
+        .chartLegend ul{
+            margin-left: 2px;
+        }
+        .chartLegend .legendSquare {
+            display: inline-block;
+            height: 10px;
+            margin: 0 2px 0 0;
+            width:10px;
+        }
+        .chartLegend .legendLabel {
+            color: #4c4c4e;
+            display: inline-block;
+            margin: 0;
+            vertical-align: top;
+            width: 60px;
+        }
+        .chartLegend li {
+            list-style-type: none;
+        }
+        .clearBoth {
+            clear:both;
+        }
+        
+        /* #Front Page
+        ================================================== */
+        #frontPage p{
+            margin: 0;
+            padding: 0;
+        }
+        #frontPage .astrumLogo {
+            border: none;
+        }
+        .preparedFor{
+            display:inline-block;
+            padding-left: 25px;
+            border-left: 1px solid #bebebe;
+        }
+        .preparedBy {
+            background-color: #61af3f;
+            padding: 25px;
+        }
+        .preparedBy p{
+            color:#fff;
+        }
+        .frontPageLabel {
+            color: #1c3f94;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .frontPageImage {
+            margin: 8px 0 16px 0;
+        }
+        .frontPageImage img {
+            width:100%;
+        }
+        .preparedFor .frontPageLabel{
+            color: #e45206;
+        }
+        .footer p.tagline {
+            color: #61af3f;
+            font-weight:bold;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+        #frontPage .astrumLogo img {
+            margin: 10px 0;
+        }
+        #frontPage .footerLeft {
+            display: inline-block;
+            font-size: 13px;
+            margin:0;
+            vertical-align: top;
+            width: 60%;
+        }
+        #frontPage .footerRight {
+            display: inline-block;
+            font-size: 13px;
+            margin:0;
+            text-align: right;
+            vertical-align: top;
+            width: 40%;
+        }
+        #frontPage .footerRight img {
+            height: 80px;
+        }
+        
+        /* #Page 2
+        ================================================== */
+        #pageTwo .content {
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page2_BackgroundImage.jpg')}');
+        }
+        .storyDetailsCol, .storyDetailsCol.leftCol {
+            display:inline-block;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
+            vertical-align:top;
+            width:275px;
+        }
+        .storyDetailsCol.rightCol {
+            display:inline-block;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
+            vertical-align:top;
+            width:268px;
+        }
+        .storyDetailsCol p {
+            padding-top: 10px;
+        }
+        .storyDetailsCol .highlight {
+            color: #61af3f;
+            font-size: 14px;
+        }
+        .storyDetailsImg {
+            margin-left: -8px;
+            padding-bottom: 10px;
+        }
+        .storyDetailsImg img {
+            max-width: 100%;
+        }
+        
+        /* #Page 3
+        ================================================== */
+        
+        .whyAstrumCol{
+            border: 1px solid #ccc;
+            display:inline-block;
+            padding: 0;
+            vertical-align:top;
+            width:29.5%;
+        }
+        .whyAstrumLabel {
+            color: #fff;
+            font-size: 21px;
+            line-height: 26px;
+            margin: 0 0 6px 0;
+            padding:10px 0;
+            text-align: center;
+        }
+        .whyAstrumList {
+            padding: 0 15px;
+            font-size: 15px;
+            min-height: 120px;
+        }
+        .whyAstrumCol.leftCol .whyAstrumLabel {
+            background-color: #1c3f94;
+        }
+        .whyAstrumCol.leftCol p.whyAstrumQuoteSrc{
+            color: #1c3f94;
+        }
+        .whyAstrumCol.middleCol .whyAstrumLabel {
+            background-color: #e45206;
+        }
+        .whyAstrumCol.middleCol p.whyAstrumQuoteSrc{
+            color: #e45206;
+        }
+        .whyAstrumCol.rightCol .whyAstrumLabel {
+            background-color: #61af3f;
+        }
+        .whyAstrumCol.rightCol p.whyAstrumQuoteSrc{
+            color: #61af3f;
+        }
+        .whyAstrumQuote {
+            background-color: #fef4ec;
+            font-size:14px;
+            line-height: 17px;
+            margin:0 9px 9px 9px;
+            min-height: 110px;
+            padding: 30px 10px;
+
+        }
+        .whyAstrumQuote p{
+            margin:0;
+            padding:0;
+        }
+        .whyAstrumQuoteText {
+            margin: 0;
+            text-align: center;
+        }
+        p.whyAstrumQuoteSrc  {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+            padding: 20px 0 0 0;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .whyAstrumImg{
+            text-align: center;
+        }
+        .whyAstrumImg img{
+            width:200px;
+        }
+        
+        /* #Page 4
+        ================================================== */
+        
+        .yourConsultantCol {
+            display:inline-block;
+            padding-bottom: 25px;
+            vertical-align:top;
+        }
+        .yourConsultantCol .highlight {
+            color: #e45206;
+            font-weight: bold;
+        }
+        .yourConsultantImg img {
+            max-width:100%;
+            padding-bottom: 22px;
+            width: 116px;
+        }
+        .yourConsultantVp .yourConsultantImg img {
+            width: 156px;
+        }
+        .yourConsultantCol.leftCol {
+            width: 21%;
+        }
+        .yourConsultantCol.leftCol p {
+            margin: 0;
+            padding: 0;
+        }
+        .yourConsultantCol.middleCol {
+            width: 46%;
+        }
+        .yourConsultantCol.rightCol {
+            border-top: 1px solid #ccc;
+            width: 24%;
+        }
+        .yourConsultantVp .yourConsultantCol.leftCol {
+            width: 30%;
+        }
+        .yourConsultantVp .yourConsultantCol.middleCol {
+            width: 37%;
+        }
+        .yourConsultantVp .yourConsultantCol.middleCol p {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .yourConsultantQuote { 
+            padding: 25px 0 0 10px;
+        }
+        .yourConsultantQuote .quote { 
+            color: #61af3f;
+            font-size: 19px;
+            line-height: 22px;
+        }
+        
+        /* #Page 5
+        ================================================== */
+        
+        .solarYourWayCol.leftCol{
+            display: inline-block;
+            margin-right:1.5%;
+            vertical-align: top;
+            width: 66%;
+        }
+        .solarYourWayCol.rightCol{
+            display: inline-block;
+            margin-left:1.5%;
+            vertical-align: top;
+            width: 30%;
+        }
+        .solarYourWayDisclaimer {
+            background: #f3f3f3;
+        }
+        .solarYourWayDisclaimer p {
+            font-size: 10px;
+            line-height: 12px;
+            margin: 0 0 6px 0;
+            padding: 5px;
+        }
+        .solarYourWayBadge{
+            padding-top: 40px;
+        }
+        .solarYourWayBadgeImg {
+            display: inline-block;
+            margin-right: 1%;
+            text-align: right;
+            vertical-align: top;
+        }
+        #solarYourWaySolarIcon {
+            width: 11%;
+        }
+        .solarYourWayBadgeText {
+            display: inline-block;
+            font-size: 10px;
+            margin-right: 4%;
+            vertical-align: top;
+            width: 34%;
+        }
+        .solarYourWayAnnualProd {
+            display: inline-block;
+            font-size: 10px;
+            margin-right: 2%;
+            vertical-align: top;
+            width: 46%;
+        }
+        .solarYourWayBadgeText .highlight {
+            font-weight: bold;
+        }
+        .solarYourWayBuildingImg {
+            max-height:380px; 
+            overflow: hidden;
+            text-align: center;
+        }
+        .solarYourWayBuildingImg img {
+            max-height: 380px;
+            max-width: 100%;
+        }
+        .detailItem {
+            border: 1px solid #ccc;
+            margin-bottom:16px;
+            text-align: center;
+        }
+        .detailItemHeader {
+            background-color: #fef4ec;
+            color: #e45206;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 6px;
+        }
+        .detailItemContent {
+            padding: 8px 3px;
+        }
+        .detailItemLabel{
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .detailItemLabelSmall {
+            color: #61af3f;
+            display: inline-block;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 12px;
+            text-align: left;
+            text-transform: uppercase;
+            vertical-align: middle;
+            width:42%;
+        }
+        .detailItemNumber {
+            color: #61af3f;
+            font-size: 28px;
+            line-height: 42px;
+        }
+        .detailItemNumberSmall {
+            color: #61af3f;
+            display: inline-block;
+            font-size: 28px;
+            line-height: 42px;
+            margin-right: 1%;
+            text-align: right;
+            vertical-align: middle;
+            width:55%;
+        }
+        
+        /* #Page 6
+        ================================================== */
+        .peaceOfMind {
+            position: relative;
+        }
+        .peaceOfMindTopDetails{
+            position: relative;
+            font-size: 13px;
+            height: 100px;
+            line-height: 17px;
+            width: 75%;
+        }
+        .peaceOfMindTopImg{
+            position:absolute;
+            top:0;
+            right:0;
+            margin: 0 0 3px 0;
+            text-align: right;
+            width: 30%;
+            z-index: -1;
+        }
+        .peaceOfMindTopImg img{
+            margin-top: -130px;
+            max-width: 100%;
+            padding-bottom:12px;
+        }
+        .peaceOfMindCol {
+            display: inline-block;
+            vertical-align: top;
+            height: 340px;
+        }
+        .peaceOfMindCol.leftCol {
+            margin-right:.9%;
+            width: 49%;
+        }
+        .peaceOfMindCol.rightCol {
+            margin-left:.9%;
+            width: 49%;
+        }
+        .peaceOfMindCol.bottomCol {
+            width: 100%;
+        }
+        .peaceOfMindCol table {
+            border: 1px solid #ccc;
+            border-spacing: 0px;
+            height: 100%;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        .peaceOfMindCol th {
+            color: #fff;
+            font-size: 21px;
+            height: 40px;
+            text-align: center;
+        }
+        .peaceOfMindCol.leftCol th {
+            background-color: #1c3f94;
+        }
+        .peaceOfMindCol.rightCol th {
+            background-color: #e45206;
+        }
+        .peaceOfMindCol.bottomCol th {
+            background-color: #61af3f;
+        }
+        .peaceOfMindCol td {
+            font-size:16px;
+            padding: 20px 25px;
+            vertical-align: top;
+        }
+        .peaceOfMindCol td p {
+            font-size:16px;
+            padding: 10px 110px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .peaceOfMindCol td li {
+            margin-bottom: 15px;
+        }
+        
+        /* #Page 7
+        ================================================== */
+        
+        .roadmapInfo{
+            border-collapse: collapse;
+            border-spacing: 0px;
+            margin-bottom: 20px;
+            margin-top: 65px;
+            text-align: center;
+            width: 100%;
+        }
+        .roadmapInfoImg{
+            height: 150px;
+        }
+        .roadmapInfoImg img{
+            margin-top: -65px;
+            height: 200px;
+        }
+        .roadmapInfo td.col1,
+        .roadmapInfo td.col2,
+        .roadmapInfo td.col3{
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            vertical-align: top;
+        }
+        .roadmapInfo td.colSpacer {
+            width: 20px;
+        }
+        .roadmapInfo tr.row4 td {
+            background-color: #bed63a;
+            color: #fff;
+            font-weight: bold;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .roadmapInfo tr td.col1,.roadmapInfo tr td.col2,.roadmapInfo tr td.col3 {
+            max-width: 150px;
+        }
+        .roadmapAction{
+            padding:17px 0;
+        }
+        .roadmapAction img{
+            padding-bottom:10px;
+        }
+        .roadmapAction p{
+            color: #009ddc;
+            font-size: 16px;
+            font-weight: bold;
+            margin:0;
+            padding:0;
+        }
+        .roadmapDetails{
+            min-height:185px;
+            padding: 10px;
+        }
+        .roadmapDetails p {
+            margin:0 0 9px 0;
+        }
+        .roadmapDetails ul {
+            margin-top: 0;
+        }
+        .roadmapDetails p,.roadmapDetails li {
+            font-size: 12px;
+            line-height: 15px;
+            text-align: left;
+            padding:0 0 5px 0;
+        }
+        .roadmapInfoImg{
+            padding-top: 6px;
+        }
+        p.roadmapDetailsLabel {
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            text-align: left;
+        }
+        .roadmapInfo tr.roadmapContact td {
+            border: none;
+            color: #fff;
+            padding: 10px 5px;
+            vertical-align:middle;
+        }
+        .roadmapInfo tr.roadmapContact td.col1 {
+            background-color: #1c3f94;
+        }
+        .roadmapInfo tr.roadmapContact td.col2{
+            background-color: #e45206;
+        }
+        .roadmapInfo tr.roadmapContact td.col3 {
+            background-color: #61af3f;
+        }
+        .roadmapInfo tr.roadmapContact .roadmapContactLabel {
+            font-size: 10px;
+            line-height: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .roadmapInfo tr.roadmapContact td .roadmapContactText {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        
+        /* #Page 8
+        ================================================== */
+        
+        .yourSavingsChart{
+            display: inline-block;
+            padding: 20px 0 20px 0;
+            vertical-align: top;
+            width: 49%;
+        }
+        .yourSavingsChart table {
+            width: 350px;
+            table-layout: fixed;
+        }
+        .yourSavings th {
+            border-right: 1px solid #fff;
+            border-left: 1px solid #fff;
+        }
+        .yourSavings td {
+            border-top: none;
+            border-bottom: none;
+        }
+        .yourSavings tr.highlighted td {
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+        }
+        .yourSavings .chartTitle{
+            color: #1c3f94;
+            font-size: 13px;
+            font-weight: bold;
+            padding-bottom: 20px;
+            padding-right: 70px;
+            text-align: center;
+        } 
+        
+        .yourSavings td.highlighted {
+            color: #61af3f;
+            font-weight: bold;
+        }
+        
+        
+        
+        /* #Page 9
+        ================================================== */
+        
+        .financingOverview {
+            padding-bottom:40px;
+        }
+        .financingOverview .standardTable {
+            width: 100%;
+        }
+        .financingOverview td.header {
+            font-size: 13px;
+        }
+        .financingOverview td.col1 {
+            color: #e45206;
+            font-weight: bold;
+            text-align: left;
+        }
+        .financingOverview tr.row13 td {
+            border-bottom-color: #7e7d7e;
+        }
+        .financingOverview tr.row1, .financingOverview tr.row1 td {
+            background-color: #fff;
+            border: none;
+        }
+        .financingOverview tr.row2 td.col1 {
+            background-color: #fff;   
+        }
+        .financingOverview tr.row2 td.col2 {
+            background-color: #999;            
+            color: #fff;
+        }
+        .financingOverview tr.row1 td.col2  {
+            background-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page9_Icon1.jpg')}');
+            background-position: center;
+            background-repeat: no-repeat;
+            height:43px;
+        }
+        .financingOverview tr.row1 td.col3,
+        .financingOverview tr.row1 td.col4,
+        .financingOverview tr.row1 td.col5,
+        .financingOverview tr.row1 td.col6  {
+            background-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page9_Icon2.jpg')}');
+            background-position: center;
+            background-repeat: no-repeat;
+            height:43px;
+        }
+        .financingOverviewDisclaimer{
+            background: #f3f3f3;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 30%;
+        }
+        .financingOverviewDisclaimer p{
+            margin: 0;
+            padding: 5px;
+            font-size: 10px;
+            line-height: 12px;
+        }
+            
+            
+        /* #Page 10-13
+        ================================================== */
+        
+        .financingPlanCol.leftCol{
+            display: inline-block;
+            margin: 3px 1.5% 0 0;
+            vertical-align: top;
+            width: 30%;
+        }
+        .financingPlanCol.rightCol{
+            display: inline-block;
+            margin: 3px 0 0 1.5%;
+            vertical-align: top;
+            width: 66%;
+        }
+        .financingPlanCol.rightCol .standardTable th, .financingPlanCol.rightCol .standardTable td {
+            padding: 3px 10px;
+        }
+        
+        .financingPlan .warrantiesTable th {
+            color: #e45206;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .financingPlan .standardTable td,
+        .financingPlan .warrantiesTable td {
+            font-size: 10px;
+            line-height: 12px;
+        }
+        .financingPlan .standardTable .header td {
+            color: #e45206;
+            border: none;
+            background-color: #fcede6;
+            font-size: 11px;
+        }
+        .financingPlan .standardTable tr.highlighted td {
+            background-color: #61af3f;
+            border: 1px solid #fff;
+            color: #fff;
+            font-weight: bold;
+        }
+        .financingPlan .standardTable tfoot td{
+            font-size: 13px;
+        }
+        .financingPlan .standardTable th {
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+            vertical-align: bottom;
+        }
+        .financingPlan .standardTable th.col1{
+            border-left: 1px solid #7e7d7e;
+        }
+        .financingPlan .leftCol .standardTable th.col2, .financingPlan .rightCol .standardTable th.col7{
+            border-right: 1px solid #7e7d7e;
+        }
+        .financingPlan .rightCol .standardTable th, .financingPlan .rightCol .standardTable td{
+            padding: 6px 6px;
+        }
+        .financingPlan table {
+            width: 100%;
+        }
+        .financingPlanDisclaimer{
+            background: #f3f3f3;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+        .financingPlanDisclaimer p{
+            margin: 0;
+            padding: 5px;
+            font-size: 10px;
+            line-height: 12px;
+        }
+        
+        /* #Page 14
+        ================================================== */
+        
+        .helpYouSaveCol{
+            border: 1px solid #ccc;
+            display:inline-block;
+            vertical-align:top;
+            width:24%;
+        }
+        .helpYouSaveLabel {
+            background-color: #fef6f2;
+            color: #1c3f94;
+            font-size: 16px;
+            line-height: 20px;
+            margin: 0;
+            min-height: 40px;
+            padding:10px 0;
+            text-align: center;
+        }
+        .helpYouSaveLabelIcon {
+          width: 27px;
+          display: inline-block;
+          padding: 5px;
+        }
+        .helpYouSaveLabelText {
+          display: inline-block;
+          width: 120px;
+          text-align: left;
+          margin-right: 10px;
+        }
+        .helpYouSaveText {
+            font-size: 10px;
+            line-height: 14px;
+            min-height: 175px;
+            padding: 12px;
+        }
+        .helpYouSaveText p{
+            margin:0;
+            padding:0;
+        }
+        .helpYouSaveText li {
+            margin: 0;
+            padding: 0;
+        }
+        .helpYouSaveCol.leftCol {
+            margin-right: .9%;
+        }
+        .helpYouSaveCol.rightCol {
+            margin-left: .9%;
+        }
+        .helpYouSaveCol.rightCol .helpYouSaveText p{
+            font-weight: bold;
+        }
+        .helpYouSave .highlight{
+            color: #e45206;
+            font-weight: bold;
+        }
+        .helpYouSaveImg{
+            text-align: center;
+            width:99%;
+            overflow: hidden;
+        }
+        .helpYouSaveImg img{
+            height: 95px;
+            padding-top: 6px;
+        }
+        .helpYouSaveGetStarted {
+            background-color: #61af3f;
+            height: 100px;
+            margin: 10px 0 0 0;
+        }
+        .helpYouSaveGetStartedCol {
+            color: #fff;
+            display: inline-block;
+            font-size: 11px;
+            line-height: 14px;
+            padding: 12px 4px;
+            vertical-align: middle;
+        }
+        .helpYouSaveGetStartedCol.col1 {
+            width: 242px;
+        }
+        .helpYouSaveGetStartedCol.col2 {
+            width: 190px;
+        }
+        .helpYouSaveGetStartedCol.col3{
+            margin: 0;
+            width: 261px;
+        }
+        .helpYouSaveGetStartedImg img {
+            width: 242px;
+        }
+        .helpYouSaveGetStartedIcon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .helpYouSaveGetStartedIcon img {
+            width: 88px;
+        }
+        .helpYouSaveGetStartedText {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 14px;
+            margin-left: 10px;
+            width: 150px;
+            vertical-align: middle;
+        }
+        .helpYouSaveGetStartedCol p{
+            margin: 0;
+            padding: 0;
+        }
+        .helpYouSaveGetStartedCol .highlight {
+            color: #fff;
+            font-size: 14px;
+            line-height: 18px;
+        }
+        
+        /* #Page 15
+        ================================================== */
+        
+       /* #pageFifteen .headerContainer{
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+        #pageFifteen .header{
+            display: inline-block;
+            margin: 0 3% 0 0;
+            padding: 35px 0 17px 0;
+            vertical-align: top;
+            width: 67%;
+        }
+        #pageFifteen .header .title {
+            margin: 5px 16px;
+        }*/
+        #pageFifteen .content{
+            position: relative;
+        }
+        #pageFifteen .header{
+            padding: 35px 0 0 0;
+        }
+        #pageFifteen .headerNote{
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        #pageFifteen .headerNoteText {
+            display: inline-block;
+            font-size: 10px;
+            font-style: italic;
+            line-height: 14px;
+            margin: 0 30px 10px 30px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .referral {
+            padding-top: 10px;
+            position: relative;
+            width: 100%;
+            z-index:0;
+        }
+        .referralTopImg {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            width: 144px; 
+        }
+        .referralLeftCol {
+            display: inline-block;
+            vertical-align: top;
+            width: 187px;
+        }
+        .referralLeftCol img {
+            padding-bottom: 15px;
+        }
+        .referralRightCol {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 35px;
+            width: 510px;
+        }
+        .referralContent {
+            display: inline-block;
+            font-size: 11px;
+            line-height: 13px;
+            margin-right: 115px;
+            padding-bottom: 5px;
+        }
+        .referralContent .highlight {
+            color: #1c3f94;
+            font-weight: bold;
+        }
+        .referralRewards {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .referralRewards td {
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0 7px 0;
+            vertical-align: top;
+            width: 50%;
+        }
+        .referralRewards td p {
+            margin: 0;
+            padding: 0;
+        }
+        .referralYourReward {
+            border-right: 1px solid #ccc;
+            color: #1c3f94;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .referralYourReward .highlight {
+            color: #61af3f;
+            font-size: 84px;
+            line-height: 90px;
+        }
+        .referralFriendReward {
+            color: #1c3f94;
+            font-size: 12px;
+            text-align: center;
+        }
+        .referralFriendReward a{
+            color: #1c3f94;
+            text-decoration: none;
+        }
+        .referralFriendReward .highlight {
+            color: #61af3f;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 25px;
+            padding: 5px 0; 
+        }
+        .referralOpenHouse {
+            font-size: 9px;
+            padding: 20px 0 15px 0;
+            text-align: center;
+        }
+        .referralOpenHouse p {
+            margin: 0;
+            padding: 0 0 5px 0;
+        }
+        .referralOpenHouse .highlight {
+            color: #1c3f94;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 14px;
+            text-transform: uppercase;
+        }
+        .referralCallout {
+            background-color: #e45206;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .referralCallout a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .referralConditions {
+            font-size: 8px;
+            line-height: 9px;
+        }
+        /*
+        .referral .highlight{
+            color: #e45206;
+            font-weight: bold;
+        }
+        .referralInstructions{
+            display: inline-block;
+            margin: 0 3% 0 0;
+            padding: 0;
+            vertical-align: top;
+            width: 67%;
+        }
+        .referralInstructionsTitle{
+            color: #1c3f94;
+            font-size: 24px;
+            line-height: 20px;
+            margin-bottom: 10px;
+            padding: 10px 0 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .referralInstructionsCol {
+            display:inline-block;
+            vertical-align:top;
+            width:31%;
+        }
+        .referralInstructionsImg img {
+            width: 100%;
+        }
+        .referralInstructionsText {
+            border-right: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            font-size: 11px;
+            line-height: 15px;
+            margin-bottom: 10px;
+            min-height: 110px;
+            padding: 12px;
+            text-align: center;
+        }
+        .referralInstructionsText p, .referralInstructionsDetails p{
+            margin:0;
+            padding:0;
+        }
+        .referralInstructionsDetails  {
+            color: #fff;
+            background-color: #61af3f;
+            font-size: 10px;
+            line-height: 13px;
+            margin: 25px 10px 0 30px;
+            position: relative;
+        }
+        .referralInstructionsDetailsImg {
+          width: 100px;
+          margin-left: -30px;
+          position: absolute;
+          top: -10px;
+        }
+        .referralInstructionsDetailsImg img {
+            width: 75px;
+        }
+        .referralInstructionsDetailsText {
+            display: inline-block;
+            margin: 20px 10px 20px 60px;
+        }
+        .referralInstructionsDetails .highlight {
+            color: #fff;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 20px;
+        }
+        .referralFormWrapper{
+            display: inline-block;
+            margin: 0;
+            width: 29%;
+        }
+        .referralForm{
+            border: 1px solid #ccc;
+            vertical-align: top;
+        }
+        .referralFormTitle{
+            background-color: #fef6f2;
+            color: #e45206;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 10px;
+            padding: 13px 0 12px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .referralFormField {
+            border-top: 1px solid #7e7d7e;
+            font-size: 9px;
+            text-transform: uppercase;
+            width: 88%;
+            margin: 32px 6% 0 6%;
+        }
+        .referralFormTerms {
+            font-size: 7px;
+            line-height: 9px;
+            margin-top: 20px;
+        }
+        .referralFormTerms p{
+            margin: 0 0 9px 0;
+            padding: 0;
+        }*/
+        
+        /* #Page 16
+        ================================================== */
+        #pageSixteen h1 {
+            font-size: 24px;
+        }
+        .summaryTable {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            text-align: left;
+            width: 100%;
+        }
+        .summaryTable .row1 th,
+        .summaryTable .row1 td{
+            background-color: #fef6f2;
+            border: none;   
+            color: #e45206;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 20px;
+            padding:0 0 0 3px;
+        }
+        .summaryTable td{
+            border:none;  
+            border-top: 1px solid #ccc;
+            font-size: 8px;
+            line-height: 12px;
+            padding:0 0 0 3px;
+        }
+        .summaryTable tr.highlighted td {
+            background-color: #61af3f;
+            border: 1px solid #fff;
+            color: #fff;
+            font-weight: bold;
+        }
+        .quoteAssumptionsCol{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .quoteAssumptionsCol.rightCol{
+            margin-left: 0;
+            width: 63%;
+        }
+        .quoteAssumptionsCol.leftCol{
+            margin-right: 0;
+            width: 36%;
+        }
+        .quoteAssumptions .tableContainer {
+            display: inline-block;
+            margin-left: 4%;
+            vertical-align: top;
+            width: 45%;
+            overflow: hidden;
+        }
+        .quoteAssumptionsNote{
+            background: #f3f3f3;
+            display: inline-block;
+            margin-left: 4%;
+            vertical-align: bottom;
+            width: 45%;
+        }
+        .quoteAssumptionsNote p {
+            font-size: 7px;
+            line-height: 8px;
+            margin: 0;
+            padding: 5px;
+        }
+        .quoteAssumptionsTerms{
+            border: 1px solid #ccc;
+            display: inline-block;
+            font-size: 7px;
+            line-height: 8px;
+            margin-left: 4%;
+            padding-bottom: 10px;
+            vertical-align: bottom;
+            width: 45%;
+        }
+        .quoteAssumptionsConsultant{
+            display: inline-block;
+            font-size: 8px;
+            font-weight: bold;
+            line-height: 10px;
+            padding: 10px 0;
+            text-align: left;
+            width: 100%;
+        }
+        .quoteAssumptionsTerms p{
+            margin: 0;
+            padding: 0 10px;
+        }
+        p.quoteAssumptionsConsultantLabel{
+            color: #1c3f94;
+            font-size: 9px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            padding-bottom: 3px;
+            width: 100%;
+        }
+        .quoteAssumptionsFooter {
+            float: right;
+            margin: 20px 0;
+            width: 63%;
+        }
+        .test1 {
+            width:100px !important;
+        }
+        .test2 {
+            width: 400px;
+        }
+        </style>
+  </head>
+  
+  <body>
+
+  
+  <!--FRONT PAGE-->
+  <div id="frontPage" class="container">
+    <div class="header">
+      <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+      <div class="preparedFor">
+        <p class="frontPageLabel">Prepared For:</p>
+        <p><apex:outputField value="{!sysDesign.Property__r.Property_Owner__r.Name}" /></p>
+        <p><apex:outputField value="{!sysDesign.Property__r.Name}" /></p>
+        <p><apex:outputField value="{!sysDesign.Property__r.Property_City__c}" />,&nbsp;<apex:outputField value="{!sysDesign.Property__r.Property_State__c}" />&nbsp;<apex:outputField value="{!sysDesign.Property__r.Property_ZIP__c}" /></p>
+      </div>
+    </div>
+    <!--<div class="content">
+      <div class="preparedBy">
+        <p class="frontPageLabel">Prepared by<apex:outputText value=" {!$User.FirstName} {!$User.LastName}" /></p>
+        <p><apex:outputText value="{!$User.Phone}" />&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<apex:outputText value="{!$User.Email}" /></p>
+      </div>
+    </div> -->
+    <div class="frontPageImage"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page1_MainImage.jpg')}"/></div>
+    <div class="footer">
+      <div class="footerLeft">
+        <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+            <p class="frontPageLabel">Prepared by<apex:outputText value=" {!$User.FirstName} {!$User.LastName}" /></p>
+            <p><apex:outputText value="{!$User.Phone}" />&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<apex:outputText value="{!$User.Email}" /></p>
+        </apex:outputPanel>
+        <apex:outputPanel layout="none" rendered="{!isD2D}">
+            <p>1-844-473-4274&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;sales.support@directenergysolar.com</p>
+        </apex:outputPanel>
+        <p><b>QUOTE DATE: </b><apex:outputText value="{!MID(TEXT(TODAY()), 6, 2)&"/" &MID(TEXT( TODAY() ), 9, 2) &"/" &LEFT( TEXT( TODAY() ) , 4)}" /></p>
+        <p><b>PRICING VALID UNTIL: </b><apex:outputText value="{!MID(TEXT(prop.Proposal_Expiration_Date__c), 6, 2)&"/" &MID(TEXT(prop.Proposal_Expiration_Date__c), 9, 2) &"/" &LEFT( TEXT(prop.Proposal_Expiration_Date__c) , 4)}" /></p>
+        <br/><br/><br/>
+        <apex:outputField value="{!prop.Name}" />&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<apex:outputField value="{!sdq.Name}" />
+      </div><div class="footerRight">
+        <img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page1_Inc_BBB_logos.jpg')}"/>
+      </div>
+    </div>
+  </div>
+  <!-- END FRONT PAGE-->
+  
+  <div style="page-break-after: always;"></div>
+  
+ 
+  
+  <!--PAGE 2 Astrum Story-->
+  <div id="pageTwo" class="container standardPage">
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+            <h1>Our Story</h1>
+          </div>
+        </div>
+        <div class="storyDetails">
+            <div class="storyDetailsCol leftCol">
+                <div class="storyDetailsImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page2_Thumbnail1.png')}"/></div>
+                <h2>Humble Beginnings</h2>
+                <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_blue.png')}');">
+                    <li>Founded as Astrum Solar in 2008</li>
+                    <li>Our Mission: "Spread solar power to the rooftops of America"</li>
+                    <li>Get the most out of your system:
+                        <ul>
+                            <li>The most energy generated</li>
+                            <li>The most electricity savings</li>
+                            <li>The most beneficial environmental impact</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="storyDetailsCol rightCol">
+                <div class="storyDetailsImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page2_Thumbnail2.png')}"/></div>
+                <h2>We Are Now Part of the Direct&nbsp;Energy Family</h2>
+                <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_blue.png')}');">
+                    <li>Astrum Solar became part of Direct Energy as Direct Energy Solar in 2014</li>
+                    <li>Direct Energy Family of Businesses had $19.5 billion in revenue that year</li>
+                    <li>We will continue the same premier customer service as before</li>
+                    <li>Our growth benefits you through our deep relationships with global manufacturers</li>
+                    <li>Our team is always local; your installation will happen from our local office</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+  </div>
+
+  <!-- END Page 2 Astrum Story-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  <!--PAGE 3 Why Astrum-->
+  <div id="pageThree" class="container standardPage">
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+            <h1>Why Choose Us?</h1>
+          </div>
+        </div>
+        <div class="whyAstrum">
+            <div class="whyAstrumCol leftCol">
+                <div class="whyAstrumLabel">Solar Your Way</div>
+                <div class="whyAstrumList">
+                    <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_blue.png')}');">
+                        <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+                            <li>Customized design</li>
+                            <li>Choice of panels</li>
+                            <li>Flexible financing</li>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!isD2D}">
+                            <li>Customer specific design</li>
+                            <li>Multiple panel kit options</li>
+                            <li>Customized to fit your individual energy needs</li>
+                        </apex:outputPanel>
+                    </ul>
+                </div>
+                <div class="whyAstrumImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page3_Image1.jpg')}"/></div>
+                <div class="whyAstrumQuote">
+                    <p class="whyAstrumQuoteText">"With Direct Energy Solar everything, even the paperwork, was included."</p>
+                    <p class="whyAstrumQuoteSrc">Brian &amp; Janice</p>
+                </div>
+            </div><div class="whyAstrumCol middleCol">
+                <div class="whyAstrumLabel">Solar Made Easy</div>
+                <div class="whyAstrumList">
+                    <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange.png')}');">
+                        <li>Worry-free process</li>
+                        <li>No-hassle paperwork</li>
+                        <li>Timely installation</li>
+                    </ul>
+                </div>
+                <div class="whyAstrumImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page3_Image2.jpg')}"/></div>
+                <div class="whyAstrumQuote">
+                    <p class="whyAstrumQuoteText">"We had a great experience with Direct Energy Solar. They wanted to make sure we were happy."</p>
+                    <p class="whyAstrumQuoteSrc">Dan &amp; Ruth</p>
+                </div>
+            </div><div class="whyAstrumCol rightCol">
+                <div class="whyAstrumLabel">Solar Done Right</div>
+                <div class="whyAstrumList">
+                    <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_green.png')}');">
+                        <li>Performance guarantee</li>
+                        <li>Workmanship warranty</li>
+                        <li>NABCEP certified</li>
+                        <li>Lifetime of support</li>
+                    </ul>
+                </div>
+                <div class="whyAstrumImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page3_Image3.jpg')}"/></div>
+                <div class="whyAstrumQuote">
+                    <p class="whyAstrumQuoteText">"Our solar system was shockingly affordable."</p>
+                    <p class="whyAstrumQuoteSrc">Tony &amp; Karen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol"><span class="highlight">Solar Done Right</span></div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 3 Why Astrum-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  <!--PAGE 4 Your Consultant-->
+  <div id="pageFour" class="container standardPage">
+    <div class="content">
+        <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+            <div class="header">
+              <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+              <div class="title">
+                <h1>Your Solar Consultant</h1>
+              </div>
+            </div>
+            <div class="yourConsultant">
+                <div class="yourConsultantCol leftCol smallText">
+                    <div class="yourConsultantImg"><apex:image url="{!usr.FullPhotoUrl}?ver=1"/></div>
+                    <p><span class="highlight"><apex:outputText value="{!$User.FirstName}" />&nbsp;<apex:outputText value="{!$User.LastName}" /></span></p>
+                    <p><b><apex:outputText value="{!$User.Title}" /></b></p>
+                    <br/>
+                    <p><span class="highlight">P: </span><apex:outputText value="{!$User.Phone}" /></p>
+                    <p><span class="highlight">F: </span><apex:outputText value="{!$User.Fax}" /></p>
+                    <p class="email"><apex:outputText value="{!$User.Email}" /></p>
+                    <p><apex:outputText value="{!usr.Consultant_Landing_Page__c}" /></p>
+                    <br/>
+                    <p><b>Direct Energy Solar</b></p>
+                    <p><apex:outputText value="{!$User.Street}" /></p>
+                    <p><apex:outputText value="{!$User.City}, {!$User.State} {!$User.PostalCode}" /></p>
+                </div>
+                <div class="yourConsultantCol middleCol smallText">
+                    <h3>Why I Chose Direct Energy Solar</h3>
+                    <p><apex:outputField value="{!usr.ConsultantBio__c}" /></p>
+                </div>
+                <div class="yourConsultantCol rightCol">
+                    <div class="yourConsultantQuote">
+                        <p class="highlight">MY MOTTO:</p>
+                        <p class="quote"><apex:outputField value="{!usr.Consultant_Motto__c}" /></p>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+        <apex:outputPanel layout="none" rendered="{!isD2D}">
+            <div class="header">
+              <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+              <div class="title twoLineTitleSmall">
+                <h1>Message from our<br/>Direct Energy Solar Leader</h1>
+              </div>
+            </div>
+            <div class="yourConsultant yourConsultantVp">
+                <div class="yourConsultantCol leftCol smallText">
+                    <div class="yourConsultantImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page4_Cory.png')}"/></div>
+                    <p><span class="highlight">Cory Byzewski</span></p>
+                    <p>Vice President and General Manager,<br/>Direct Energy Services</p>
+                    <br/>
+                    <p>1-844-473-4274</p>
+                    <p>sales.support@directenergysolar.com</p>
+                    <br/>
+                    <p><b>Direct Energy Solar</b></p>
+                    <p>7101 Riverwood Drive</p>
+                    <p>Columbia, MD 21046</p>
+                </div>
+                <div class="yourConsultantCol middleCol smallText">
+                    <h3>Why Solar?</h3>
+                    <p>"Going solar empowers you to take control and secure your energy future. By harnessing clean energy from the sun, you are protecting yourself from future electricity rate increases and providing you and your family with peace of mind&mdash;while doing something good for the environment at the same time."</p> 
+                </div>
+                <div class="yourConsultantCol rightCol">
+                    <div class="yourConsultantQuote">
+                        <p class="highlight">MY MOTTO:</p>
+                        <p class="quote">YOUR SUN.<br/>YOUR POWER.<br/>YOUR WAY.&trade;</p>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol"><span class="highlight">Solar Done Right</span></div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 4 Your Consultant-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  <!--PAGE 5 Solar Your Way-->
+  <div id="pageFive" class="container standardPage">
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+            <h1>Your System Design</h1>
+          </div>
+        </div>
+        <div class="solarYourWay">
+            <div class="solarYourWayCol leftCol smallText">
+                <div class="solarYourWayBuildingImg"><apex:image url="/servlet/servlet.FileDownload?file={!latestSketchUpID}&ver=1" rendered="{!NOT(ISBLANK(latestSketchUpID))}" width="460"/></div>
+                <div class="solarYourWayBadge">
+                    <div class="solarYourWayBadgeImg" id="solarYourWaySolarIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page5_SolarIcon.jpg')}" width="100%"/></div>
+                    <div class="solarYourWayBadgeText">Most reliable, up-to-date technology:<br/> tested by our on-staff engineers, including the most efficient inverters and your choice of top solar panels on every installation.</div>
+                    <div class="solarYourWayAnnualProd">Your first year annual production is calculated with a measured Production Factor of&nbsp;<apex:outputText value="{!productionFactor}" /> which is expressed in kWh per installed kW of system.<br/><br/>
+                    In your case this is:<br/><b><apex:outputField value=" {!sdq.System_Size_kW__c}" /> kW x&nbsp;<apex:outputText value="{!productionFactor}" /> =&nbsp;<apex:outputText value="{!estimatedAnnualProduction}" /> kWh</b></div>
+                    
+                </div>
+            </div>
+            <div class="solarYourWayCol rightCol">
+                <div class="solarYourWayDetails">
+                    <div class="detailItem">
+                        <div class="detailItemHeader">Panel Count</div>
+                        <div class="detailItemContent">
+                            <div class="detailItemNumberSmall"><apex:outputField value="{!sdq.Panel_Count__c}" /></div>
+                            <div class="detailItemLabelSmall"><apex:outputField value=" {!panelProduct.Rated_Output_W__c} " /> watt<br/>panels</div>
+                        </div>
+                    </div>
+                    <div class="detailItem">
+                        <div class="detailItemHeader">System Size</div>
+                        <div class="detailItemContent">
+                            <div class="detailItemNumber"><apex:outputField value="{!sdq.System_Size_kW__c}" /> kW</div>
+                        </div>
+                    </div>
+                    <div class="detailItem">
+                        <div class="detailItemHeader">Annual Production</div>
+                        <div class="detailItemContent">
+                            <div class="detailItemNumber"><apex:outputText value="{!estimatedAnnualProduction}" /> kWh</div>
+                        </div>
+                    </div>
+                    <div class="detailItem">
+                        <div class="detailItemHeader">Solar Offset</div>
+                        <div class="detailItemContent">
+                            <div class="detailItemNumber"><apex:outputText value="{!solarOffset}%" /></div>
+                        </div>
+                    </div>
+                </div>
+                <apex:outputPanel layout="none" rendered="{!isD2D}">
+                    <div class="solarYourWayDisclaimer">
+                        <p>Please note this quote is an estimate and does not guarantee actual system production or savings. The system design may change based on a detailed engineering site audit. Actual system production and savings will vary based on the final system size, design, configuration, utility rates, applicable rebates and your family's energy usage. Brand names and product names are trademarks or services marks of their respective holders.</p>
+                    </div>
+                </apex:outputPanel>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol"><span class="highlight">Solar Your Way</span></div><div class="footerCol">Solar Done Right</div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 5 Solar Your Way-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  <!--PAGE 6 Peace of Mind-->
+  
+  <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+      <div id="pageSix" class="container standardPage">
+        <div class="content">
+            <div class="header">
+              <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+              <div class="title twoLineTitle">
+                <h1>Industry Leading<br/>Guarantees</h1>
+              </div>
+            </div>
+            <div class="peaceOfMind">
+                <div class="peaceOfMindTop">
+                    <div class="peaceOfMindTopDetails">
+                        <p class="subtitle">Extend our Industry Leading Guarantees to 20 years.</p>
+                        <p>We want you to be excited about your solar system for many years without concern<br/>for life's inevitable surprises. We offer unique guarantees to give you peace of mind.</p>
+                    </div><div class="peaceOfMindTopImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page6_House.jpg')}"/></div>
+                    <div class="clearBoth"></div>
+                </div>
+                <div class="peaceOfMindCol leftCol">
+                    <table>
+                        <tr>
+                            <th>Standard Guarantees</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_blue.png')}');">
+                                    <li>10-year workmanship warranty</li>
+                                    <li>10-year production guarantee</li>
+                                    <li>Production guaranteed at 90% of estimate</li>
+                                    <li>We pay you when the production is not met</li>
+                                    <li>Guaranteed installation within 120 days</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div><div class="peaceOfMindCol rightCol">
+                    <table>
+                        <tr>
+                            <th>Premium Guarantees</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange.png')}');">
+                                    <li>20-year workmanship warranty</li>
+                                    <li>20-year production warranty</li>
+                                    <li>Production guaranteed at 95% of estimate</li>
+                                    <li>Double payback if production is not met</li>
+                                    <li>Guaranteed installation within 90 days</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+              <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol">Solar Done Right</div><div class="footerCol rightCol"><span class="highlight">Solar Made Easy</span></div>
+        </div>
+      </div>
+    </apex:outputPanel>
+  <!-- END PAGE 6 Peace of Mind-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  
+  <!--PAGE 7 Project Roadmap-->
+  <div id="pageSeven" class="container standardPage">
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+            <h1>Project Roadmap</h1>
+          </div>
+        </div>
+        <div class="projectRoadmap">
+            <table class="roadmapInfo">
+                <tr class="row1">
+                    <td class="col1"><div class="roadmapInfoImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page7_Image1.jpg')}"/></div></td>          
+                    <td class="colSpacer"></td>
+                    <td class="col2"><div class="roadmapInfoImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page7_Image2.jpg')}"/></div></td>
+                    <td class="colSpacer"></td>
+                    <td class="col3"><div class="roadmapInfoImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page7_Image3.jpg')}"/></div></td>
+                </tr>
+                <tr class="row2">
+                    <td class="col1">
+                        <div class="roadmapDetails">
+                            <p><b>We do all the paperwork</b></p>
+                            <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_blue.png')}');">
+                                <li>Utility interconnection</li>
+                                <li>Permits</li>
+                                <li>Building structural review</li>
+                                <li>Grant and rebate applications</li>
+                                <li>Solar Renewable Energy Credit registration</li>
+                                <li>Homeowner's Association approval</li>
+                                <li>Historical review and approval</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="colSpacer"></td>
+                    <td class="col2">
+                        <div class="roadmapDetails">
+                            <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_orange.png')}');">
+                                <li>Install racking</li>
+                                <li>Install system</li>
+                                <li>Electricians wire system</li>
+                                <li>Inspection</li>
+                                <li>Certification of completion</li>
+                                <li>Installation net meter</li>
+                                <li>Performance monitoring</li>
+                                <li>Additional paperwork</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="colSpacer"></td>
+                    <td class="col3">
+                        <div class="roadmapDetails">
+                            <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_green.png')}');">
+                                <li>Post-install survey</li>
+                                <li>Referrals</li>
+                                <li>Dedicated customer care</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="roadmapContact">
+                    <td class="col1">
+                        <div class="roadmapContactLabel">Your point of contact</div>
+                        <div class="roadmapContactText">Project Lead</div>
+                    </td>
+                    <td class="colSpacer"></td>
+                    <td class="col2">
+                        <div class="roadmapContactLabel">Your point of contact</div>
+                        <div class="roadmapContactText">Project Lead</div>
+                    </td>
+                    <td class="colSpacer"></td>
+                    <td class="col3">
+                        <div class="roadmapContactLabel">Your point of contact</div>
+                        <div class="roadmapContactText">Aftercare Specialist</div>
+                    </td>
+                </tr>
+                <!--<tr class="roadmapContact2">
+                    <td class="col2">
+                        <div class="roadmapContactLabel">Managed by</div>
+                        <div class="roadmapContactText">Field Operations Manager</div>
+                    </td>
+                    <td class="col3">
+                        <div class="roadmapContactLabel">Completed by</div>
+                        <div class="roadmapContactText">Installation Team</div>
+                    </td>
+                </tr>-->
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol">Solar Done Right</div><div class="footerCol rightCol"><span class="highlight">Solar Made Easy</span></div>
+    </div>
+  </div>
+
+  <!-- END PAGE 7 Project Roadmap-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  
+  <!--PAGE 8 Your Savings-->
+  <div id="pageEight" class="container standardPage">
+    <div class="content">
+        <div class="header">
+            <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+            <div class="title">
+                <h1>Your Solar Savings</h1>
+            </div>
+        </div>
+        <div class="yourSavings">
+            <div class="yourSavingsTop"  style="padding-top:{!IF(sysDesign.Property__r.Property_State__c != 'CA',"100px","0")};">
+                <!--<div class="yourSavingsChart">
+                    <table class="standardTable">
+                        <tr class="row1 shaded">
+                            <th class="col1"></th>
+                            <th class="col2">Current</th>
+                            <th class="col3">New</th>
+                            <th class="col4">SAVINGS</th>
+                        </tr>
+                        <tr class="row2">
+                            <td class="col1">Utility Monthly Avg Bill</td>
+                            <td class="col2"><apex:outputText value="{!MonthlyAvgBill_Current}" /></td>
+                            <td class="col3"><apex:outputText value="{!MonthlyAvgBill_New}" /></td>
+                            <td class="col4 highlighted"><apex:outputText value="{!MonthlyAvgBill_Savings}" /></td>
+                        </tr>
+                        <tr class="row3 shaded">
+                            <td class="col1">Utility 1st Yr Cost</td>
+                            <td class="col2"><apex:outputText value="{!FirstYearCost_Current}" /></td>
+                            <td class="col3"><apex:outputText value="{!FirstYearCost_New}" /></td>
+                            <td class="col4 highlighted"><apex:outputText value="{!FirstYearCost_Savings}" /></td>
+                        </tr>
+                        <tr class="row4">
+                            <td class="col1">Utility 20th Yr Cost</td>
+                            <td class="col2"><apex:outputText value="{!The20thYearCost_Current}" /></td>
+                            <td class="col3"><apex:outputText value="{!The20thYearCost_New}" /></td>
+                            <td class="col4 highlighted"><apex:outputText value="{!The20thYearCost_Savings}" /></td>
+                        </tr>
+                        <tr class="row5 shaded">
+                            <td class="col1">Utility 1st Yr Avg Price</td>
+                            <td class="col2"><apex:outputText value="{!UtilityRateBefore}" /></td>
+                            <td class="col3">(remaining)<br/><apex:outputText value="{!UtilityRateAfter}" /></td>
+                            <td class="col4 highlighted">(avoided)<br/><apex:outputText value="{!UtilityRateSavings}" /></td>
+                        </tr>
+                        <tr class="row6 highlighted">
+                            <td class="col1">Total Over 20 Years</td>
+                            <td class="col2"><apex:outputText value="{!The20YearTotal_Current}" /></td>
+                            <td class="col3"><apex:outputText value="{!The20YearTotal_New}" /></td>
+                            <td class="col4 highlighted"><apex:outputText value="{!The20YearTotal_Savings}" /></td>
+                        </tr>
+                    </table>
+                </div>-->
+                <div class="yourSavingsChart">
+                    <div class="chartTitle">Utility Cost vs. Cost with Solar</div>
+                    <!--<img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page8_Chart1.jpg')}"/>-->
+                    <div class="chartImg">
+                        <apex:image url="/servlet/servlet.FileDownload?file={!comparativeRatesChartID}" rendered="{!NOT(ISBLANK(comparativeRatesChartID))}" width="260" />
+                    </div>
+                    <div class="chartLegend">
+                        <ul>
+                            <li style="display:{!IF(prop.Scenario_4_Financing_Plan__c != null && prop.Scenario_4_Included__c,"block","none")};">
+                                <div class="legendSquare" style="background-color:#e45206"></div>
+                                <div class="legendLabel"><apex:outputText value="{!prop.Scenario_4_Financing_Plan__c}" /></div>
+                            </li>
+                            <li style="display:{!IF(prop.Scenario_3_Financing_Plan__c != null && prop.Scenario_3_Included__c,"block","none")};">
+                                <div class="legendSquare" style="background-color:#f4824c"></div>
+                                <div class="legendLabel"><apex:outputText value="{!prop.Scenario_3_Financing_Plan__c}" /></div>
+                            </li>
+                            <li style="display:{!IF(prop.Scenario_2_Financing_Plan__c != null && prop.Scenario_2_Included__c,"block","none")};">
+                                <div class="legendSquare" style="background-color:#f8a377"></div>
+                                <div class="legendLabel"><apex:outputText value="{!prop.Scenario_2_Financing_Plan__c}" /></div>
+                            </li>
+                            <li style="display:{!IF(prop.Scenario_1_Financing_Plan__c != null && prop.Scenario_1_Included__c,"block","none")};">
+                                <div class="legendSquare" style="background-color:#fbc7a8"></div>
+                                <div class="legendLabel"><apex:outputText value="{!prop.Scenario_1_Financing_Plan__c}" /></div>
+                            </li>
+                            <li>
+                                <div class="legendSquare" style="background-color:#666666"></div>
+                                <div class="legendLabel"><apex:outputText value="{!sysDesign.Default_CB_Panel__r.Utility_Service__r.Utility_Company_Master__r.Name}" /></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="yourSavingsChart">
+                    <div class="chartTitle">Solar Production vs. Home Electricity Usage</div>
+                    <!--<img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page8_Chart1.jpg')}"/>-->
+                    <div class="chartImg">
+                        <apex:image url="/servlet/servlet.FileDownload?file={!productionVsUsageChartID}" rendered="{!NOT(ISBLANK(productionVsUsageChartID))}" width="260" />
+                    </div>
+                    <div class="chartLegend">
+                        <ul>
+                            <li>
+                                <div class="legendSquare" style="background-color:#fdd2b9"></div>
+                                <div class="legendLabel">Home Energy Consumption</div>
+                            </li>
+                            <li>
+                                <div class="legendSquare" style="background-color:#e45206"></div>
+                                <div class="legendLabel">Solar Production</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <apex:pageBlock rendered="{!sysDesign.Property__r.Property_State__c='CA'}">
+            <div class="yourSavingsTop">
+                <div class="yourSavingsChart">
+                    <div class="chartTitle">Current Utility Bill</div>
+                    <!--<img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page8_Chart2.jpg')}"/><br/>-->
+                    <div class="chartImg">
+                        <apex:image url="/servlet/servlet.FileDownload?file={!currentUtilityBillChartID}" rendered="{!NOT(ISBLANK(currentUtilityBillChartID))}" width="260" />
+                    </div>
+                    <div class="chartLegend">
+                        <ul>
+                            <li style="display:{!IF(currentRatePeriod.Tier_5_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#feeade"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 5 - {!currentRatePeriod.Tier_5_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(currentRatePeriod.Tier_4_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#fbc7a8"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 4 - {!currentRatePeriod.Tier_4_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(currentRatePeriod.Tier_3_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#f8a377"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 3 - {!currentRatePeriod.Tier_3_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(currentRatePeriod.Tier_2_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#f4824c"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 2 - {!currentRatePeriod.Tier_2_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(currentRatePeriod.Tier_1_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#e45206"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 1 - {!currentRatePeriod.Tier_1_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li>
+                                <div class="legendSquare" style="background-color:#666666"></div>
+                                <div class="legendLabel">Fixed Charges</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="yourSavingsChart">
+                    <div class="chartTitle">New Utility Bill</div>
+                    <!--<img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page8_Chart3.jpg')}"/><br/>-->
+                    <div class="chartImg">
+                        <apex:image url="/servlet/servlet.FileDownload?file={!newUtilityBillChartID}" rendered="{!NOT(ISBLANK(newUtilityBillChartID))}" width="260" />
+                    </div>
+                    <div class="chartLegend">
+                        <ul>
+                            <li style="display:{!IF(newRatePeriod.Tier_5_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#feeade"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 5 - {!newRatePeriod.Tier_5_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(newRatePeriod.Tier_4_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#fbc7a8"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 4 - {!newRatePeriod.Tier_4_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(newRatePeriod.Tier_3_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#f8a377"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 3 - {!newRatePeriod.Tier_3_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(newRatePeriod.Tier_2_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#f4824c"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 2 - {!newRatePeriod.Tier_2_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li style="display:{!IF(newRatePeriod.Tier_1_Rate_kWh__c != null,"block","none")};">
+                                <div class="legendSquare" style="background-color:#e45206"></div>
+                                <div class="legendLabel"><apex:outputText value="Tier 1 - {!newRatePeriod.Tier_1_Rate_kWh__c}/Kwh" /></div>
+                            </li>
+                            <li>
+                                <div class="legendSquare" style="background-color:#666666"></div>
+                                <div class="legendLabel">Fixed Charges</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </apex:pageBlock>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol"><span class="highlight">Solar Done Right</span></div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 8 Your Savings-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  
+  <!--PAGE 9 Financing Your Way Overview-->
+  <div id="pageNine" class="container standardPage">
+    <div class="content">
+        <div class="header">
+            <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+            <div class="title">
+                <h1>Financing Your Way</h1>
+            </div>
+        </div>
+        <div class="financingOverview">
+        <apex:pageBlock >
+            <apex:dataTable styleClass="standardTable" value="{!overviewTable}" var="overviewData" columnClasses="col1,col2,col3 highlighted, col4 highlighted, col5 highlighted, col6 highlighted" rowClasses="row1, row2 header, row3,row4 shaded,row5,row6 shaded,row7,row8 shaded,row9 ,row10 shaded,row11,row12 shaded,row13"> 
+                <apex:repeat value="{!overviewData}" var="dataPoint">
+                    <apex:column >
+                        <apex:outputText value="{!dataPoint}"/>  
+                    </apex:column>
+                </apex:repeat>
+            </apex:dataTable>
+        </apex:pageBlock>
+        </div>
+        <apex:outputPanel layout="none" rendered="{!isD2D}">
+            <div class="financingOverviewDisclaimer">
+                <p>Please note this quote is an estimate and does not guarantee actual system production or savings. The system design may change based on a detailed engineering site audit. Actual system production and savings will vary based on the final system size, design, configuration, utility rates, applicable rebates and your family's energy usage. Brand names and product names are trademarks or services marks of their respective holders.</p>
+            </div>
+        </apex:outputPanel>
+    </div>
+    <div class="footer">
+        <div class="footerCol leftCol"><span class="highlight">Solar Your Way</span></div><div class="footerCol">Solar Done Right</div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 9 Financing Your Way Overview-->
+  
+  
+  <div style="page-break-after: always;"></div>
+  
+  
+  <apex:repeat value="{!scenarios}" var="scenario">
+  <!-- Start Scenario Page -->
+  <div id="page-scenario{!scenario.n}" class="container standardPage">   <!-- DK: div ID will be "page-scenario1", "page-scenario2", etc -->
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+              <h1>{!scenario.pageTitle}</h1>
+          </div>
+        </div>
+        <div class="financingPlan">
+            <div class="financingPlanCol leftCol">
+                <table class="standardTable">
+                    <apex:variable var="rowNum" value="{!1}"/>
+                    
+                        <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+                            <apex:repeat value="{!scenario.Table1}" var="t1_vals">
+                                <tr class="row{!rowNum} {!IF(rowNum == 1,'header','')} {!IF(MOD((rowNum+1),2)==1,'','shaded')} {!IF(rowNum == scenario.table1TotalRows,'highlighted','')}">
+                                    <td class="col1">{!t1_vals.primary}</td>
+                                    <td class="col2">{!t1_vals.secondary}</td>
+                                </tr>
+                                <apex:variable var="rowNum" value="{!rowNum + 1}"/> 
+                            </apex:repeat>
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel layout="none" rendered="{!isD2D}">
+                            <apex:repeat value="{!scenario.Table1}" var="t1_vals">
+                                <tr class="row{!rowNum} {!IF(rowNum == 1,'header','')} {!IF(MOD((rowNum+1),2)==1,'','shaded')} {!IF(rowNum >=(scenario.table1TotalRows-3),'highlighted','')}">
+                                    <td class="col1">{!t1_vals.primary}</td>
+                                    <td class="col2">{!t1_vals.secondary}</td>
+                                </tr>
+                                <apex:variable var="rowNum" value="{!rowNum + 1}"/> 
+                            </apex:repeat>
+                        </apex:outputPanel>
+                </table>
+                <br/>
+                <apex:pageBlock rendered="{!scenario.planType=0 || scenario.planType=1}" >
+                    <table class="warrantiesTable">
+                        <tr class="row1">
+                            <th class="col1">Standard Warranties</th>
+                        </tr>
+                        <tr>
+                            <td>10 Year Production Guarantee</td>
+                        </tr>
+                        <tr>
+                            <td>Production Guarantee covers 90% of Estimated Production</td>
+                        </tr>
+                        <tr>
+                            <td>Installation Guaranteed in 120 Days</td>
+                        </tr>
+                    </table>
+                    <apex:dataTable rendered="{!scenario.table3Size > 0}" styleClass="warrantiesTable" value="{!scenario.Table3}" var="t3_vals" columnClasses="col1,col2" rowClasses="row1, row2 header, row3,row4 shaded,row5,row6 shaded,row7,row8 shaded,row9 ,row10 highlighted,row11,row12 shaded,row13"> 
+                        <apex:facet name="header">Premium Warranties</apex:facet>
+                        <apex:repeat value="{!t3_vals}" var="dataPoint">
+                            <apex:column >
+                                <apex:outputText value="{!dataPoint}"/>  
+                            </apex:column>
+                        </apex:repeat>
+                    </apex:dataTable>
+                </apex:pageBlock>
+                
+                <apex:pageBlock rendered="{!scenario.planType=2 || scenario.planType=3}" >
+                    <table class="warrantiesTable">
+                        <tr class="row1">
+                            <th class="col1">Plan Details</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_orange.png')}');">
+                                    <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+                                        <li>Production Guarantee for 20 Years</li>
+                                        <li>Ability to prepay at any time</li>
+                                        <li>Agreement is transferable when you sell your home</li>
+                                        <li>System is insured, maintained and repaired by lessor</li>
+                                        <li>Flexible options at the end of your lease:
+                                            <ul>
+                                                <li>Purchase your system</li>
+                                                <li>Have it removed at no cost</li>
+                                                <li>Renew the agreement</li>
+                                            </ul>
+                                        </li>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel layout="none" rendered="{!isD2D}">
+                                        <li>Agreement is transferable when you sell your home</li>
+                                        <li>System is insured, maintained and repaired by financing company</li>
+                                        <li>Flexible options at the end of your lease:
+                                            <ul>
+                                                <li>Purchase your system</li>
+                                                <li>Have it removed at no cost</li>
+                                                <li>Renew the agreement</li>
+                                            </ul>
+                                        </li>
+                                    </apex:outputPanel>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </apex:pageBlock>
+                <apex:outputPanel layout="none" rendered="{!isD2D}">
+                    <div class="financingPlanDisclaimer">
+                        <p>Please note this quote is an estimate and does not guarantee actual system production or savings. The system design may change based on a detailed engineering site audit. Actual system production and savings will vary based on the final system size, design, configuration, utility rates, applicable rebates and your family's energy usage. Brand names and product names are trademarks or services marks of their respective holders.</p>
+                    </div>
+                </apex:outputPanel>
+                <!--<table class="financingPlanWarrantiesTable">
+                    <tr class="row1">
+                        <th class="col1" colspan="2">Warranties and Guarantees</th>
+                    </tr>
+                    <apex:variable var="rowNum" value="{!2}"/>
+                    <apex:repeat value="{!scenario.Table3}" var="t3_label">
+                        <tr class="row{!rowNum}">
+                            <td class="col1">{!t3_label}</td>
+                            <td class="col2">{!scenario.Table3[t3_label]}</td> 
+                        </tr>
+                        <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                    </apex:repeat>
+                </table>-->
+            </div>
+            <div class="financingPlanCol rightCol">
+                    <apex:variable var="rowNum" value="{!1}"/>
+                <apex:dataTable styleClass="standardTable" value="{!scenario.Table2}" var="dataColumn" columnClasses="col1,col2,col3,col4,col5,col6,col7" rowClasses="row1 header,row2,row3 shaded,row4,row5 shaded,row6,row7 shaded,row8,row9 shaded,row10,row11 shaded,row12,row13 shaded,row14,row15 shaded,row16,row17 shaded,row18,row19 shaded,row20, row21 shaded, row22">
+                    
+                <apex:variable var="colNum" value="{!1}"/>
+                    <apex:repeat value="{!dataColumn}" var="dataPoint">
+                        <apex:column >
+                            <apex:outputText value="{!dataPoint}"/>  
+                        </apex:column>
+                    </apex:repeat>
+                </apex:dataTable>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol"><span class="highlight">Solar Your Way</span></div><div class="footerCol">Solar Done Right</div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- End Scenario Page-->
+  
+  <div style="page-break-after: always;"></div>
+</apex:repeat>
+ 
+  
+  <!--PAGE 14 Let Us Help You Save-->
+  <div id="pageFourteen" class="container standardPage">
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+            <h1>Summary and What's Next</h1>
+          </div>
+        </div>
+        <div class="helpYouSave">
+            <div class="helpYouSaveCol leftCol">
+                <div class="helpYouSaveLabel">
+                    <div class="helpYouSaveLabelIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange_large.png')}"/></div>
+                    <div class="helpYouSaveLabelText">About Direct Energy Solar</div>
+                </div>
+                <div class="helpYouSaveImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page14_Image1.jpg')}"/></div>
+                <div class="helpYouSaveText">
+                    <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_orange.png')}');">
+                        <li>Solar done the right way</li>
+                        <li>Worry-free turn-key experience</li>
+                        <li>Precise upfront design</li>
+                        <li>We handle all paperwork for&nbsp;you</li>
+                    </ul>
+                </div>
+            </div><div class="helpYouSaveCol">
+                <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+                    <div class="helpYouSaveLabel">
+                        <div class="helpYouSaveLabelIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange_large.png')}"/></div>
+                        <div class="helpYouSaveLabelText">Your Solar Consultant</div>
+                    </div>
+                    <div class="helpYouSaveImg"><apex:image url="{!usr.FullPhotoUrl}?ver=2" /></div>
+                    <div class="helpYouSaveText">
+                        <p class="highlight"><apex:outputText value="{!$User.FirstName} {!$User.LastName}" /></p>
+                        <p><b><apex:outputText value="{!$User.Title}" /></b></p>
+                        <br/>
+                        <p><span class="highlight">P: </span><apex:outputText value="{!$User.Phone}" /></p>
+                        <p><span class="highlight">F: </span><apex:outputText value="{!$User.Fax}" /></p>
+                        <p class="email"><apex:outputText value="{!$User.Email}" /></p>
+                        <br/>
+                        <p><b>Direct Energy Solar</b></p>
+                        <p><apex:outputText value="{!$User.Street}" /></p>
+                        <p><apex:outputText value="{!$User.City}, {!$User.State} {!$User.PostalCode}" /></p>
+                    </div>
+                </apex:outputPanel>
+                <apex:outputPanel layout="none" rendered="{!isD2D}">
+                    <div class="helpYouSaveLabel">
+                        <div class="helpYouSaveLabelIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange_large.png')}"/></div>
+                        <div class="helpYouSaveLabelText">Contact Us</div>
+                    </div>
+                    <div class="helpYouSaveImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page14_ContactUs.jpg')}"/></div>
+                    <div class="helpYouSaveText">
+                        <p>1-844-473-4274</p>
+                        <p class="email">sales.support@directenergysolar.com</p>
+                        <br/>
+                        <p><b>Direct Energy Solar</b></p>
+                        <p>7101 Riverwood Drive</p>
+                        <p>Columbia, MD 21046</p>
+                    </div>
+                </apex:outputPanel>
+            </div><div class="helpYouSaveCol rightCol">
+                <div class="helpYouSaveLabel">
+                    <div class="helpYouSaveLabelIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange_large.png')}"/></div>
+                    <div class="helpYouSaveLabelText">Your System Summary</div>
+                </div>
+                <div class="helpYouSaveImg"><apex:image url="/servlet/servlet.FileDownload?file={!latestSketchUpID}&ver=2" rendered="{!NOT(ISBLANK(latestSketchUpID))}"/></div>
+                <div class="helpYouSaveText">
+                    <p class="highlight">Panel Count</p>
+                    <p>&nbsp;<apex:outputField value=" {!sysDesign.Panel_Count__c} " /> Panels (<apex:outputField value="{!panelProduct.Rated_Output_W__c}" /> Watt)</p>
+                    <br/>
+                    <p class="highlight">System Size</p>
+                    <p><apex:outputField value="{!sysDesign.Total_System_Size_kW__c}" /> kW</p>
+                    <br/>
+                    <p class="highlight">Production Factor</p>
+                    <p><apex:outputText value="{!productionFactor}" /></p>
+                    <br/>
+                    <p class="highlight">Annual Production</p>
+                    <p><apex:outputText value="{!estimatedAnnualProduction}" /> kWh</p> 
+                </div>
+            </div><div class="helpYouSaveCol rightCol">
+                <div class="helpYouSaveLabel">
+                    <div class="helpYouSaveLabelIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/checkmark_orange_large.png')}"/></div>
+                    <div class="helpYouSaveLabelText">Benefits of Working With Us</div>
+                </div>
+                <div class="helpYouSaveImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page14_Image4.jpg')}"/></div>
+                <div class="helpYouSaveText">
+                    <ul style="list-style-image: url('{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/bullet_orange.png')}');">
+                        <li>Worry-free process</li>
+                        <li>Flexible financing</li>
+                        <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+                            <li>Choice of panels</li> 
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="none" rendered="{!isD2D}">
+                            <li>Multiple panel kit options</li> 
+                        </apex:outputPanel>
+                        <li>High-quality products</li>
+                        <li>Timely installation</li>
+                        <li>Performance guarantee</li>
+                        <li>Workmanship warranty</li>
+                        <li>Lifetime of support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="helpYouSaveGetStarted">
+                <div class="helpYouSaveGetStartedCol col1">
+                    <div class="helpYouSaveGetStartedImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page14_BottomBar.png')}"/></div>
+                </div>
+                <div class="helpYouSaveGetStartedCol col2">
+                    <p class="highlight">What's Next?</p>
+                    <p>Join the thousands of Direct Energy Solar customers who choose to go solar and save on their electric bills.</p>
+                </div>
+                <div class="helpYouSaveGetStartedCol col3">
+                   <div class="helpYouSaveGetStartedIcon"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page14_Icon1.png')}"/></div>
+                   <div class="helpYouSaveGetStartedText">Sign up now!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol">Solar Done Right</div><div class="footerCol rightCol"><span class="highlight">Solar Made Easy</span></div>
+    </div>
+  </div>
+
+  <!-- END PAGE 14 Let Us Help You Save-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  <!--PAGE 15 Spread the Word-->
+  <div id="pageFifteen" class="container standardPage">
+    <div class="content">
+        <div class="header">
+            <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+            <div class="title twoLineTitle">
+                <h1>Spread the Word.<br/>Get Rewarded.</h1>
+            </div>
+        </div>
+        <div class="referralTopImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Top.jpg')}"/></div>
+        <div class="referral">
+            <div class="referralLeftCol">
+                <img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Image1.jpg')}"/>
+                <img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Image2.jpg')}"/>
+                <img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Image3.jpg')}"/>
+            </div>
+            <div class="referralRightCol">
+                <div class="referralContent">
+                    <p>Our business is based on the numerous referrals we receive from our satisfied customers. We love referrals and reward our customers who spread the word about the benefits of going solar the right way with Direct&nbsp;Energy&nbsp;Solar.</p>
+                    <p><span class="highlight">Do you know someone who may benefit from going solar?</span><br/>As a Direct Energy Solar customer, you can earn a cash reward for any referral that switches to solar with Direct&nbsp;Energy&nbsp;Solar!</p>
+                </div>
+                <table class="referralRewards">
+                    <tr>
+                        <td class="referralYourReward"><p>YOU RECEIVE A CASH REWARD*</p><p class="highlight">$500</p></td>
+                        <td class="referralFriendReward"><p><b>YOUR FRIEND RECEIVES</b></p><p class="highlight">OUR CURRENT MONTHLY OFFER</p><p>Go to <a href="http://www.directenergysolar.com/refer">directenergysolar.com/refer</a> for details.</p></td>
+                    </tr>
+                </table>
+                <div class="referralOpenHouse">
+                    <p class="highlight">Make even more by hosting an open house!<br/>Receive $500 from each sale from your open house.**</p>
+                    <p>Contact Lindsey Williams at 443.239.9809 or email lindsey.williams@directenergysolar.com for more information.</p>
+                </div>
+                <div class="referralCallout">
+                    <b>It's Easy to Refer!</b>&nbsp;&nbsp;&nbsp;<a href="http://www.directenergysolar.com/refer">directenergysolar.com/refer</a>
+                </div>
+            </div>
+            <div class="referralConditions">
+                <p>*You must be a Direct Energy Solar customer to participate in the Direct Energy Solar Referral Program. For each referral who signs a contract with Direct Energy Solar, you will receive $500. This referral offer is not valid within special community pricing programs or in combination with any other offer—if your referral receives special community pricing on their solar contract, you will receive $200. Individuals may not refer themselves. Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral. Payment in the form of a check is sent within 60 days of the sale.</p>
+                <p>**You will receive $500 for each referral who signs a contract with Direct Energy Solar, resulting from the open house. There is no limit to the amount of contracts signed from your open house. This offer is not valid within special community pricing programs or in combination with any other offer—if your referral receives special community pricing on their solar contract, you will receive $200. Individuals may not refer themselves. Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral. Payment in the form of a check is sent within 60 days of the sale. If the customer decides to cancel the open house, they will make every effort to provide Direct Energy Solar with at least four weeks notice. The customer agrees that a Direct Energy Solar sales/marketing representative will be onsite to answer questions for visitors.</p>
+                <p>Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.<br/>AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 132642, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, RI registration number 30377, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532 &copy; 2015-2016 Clockwork IP, LLC.</p>
+            </div>
+            <!-- <div class="referralInstructions">
+                <div class="referralInstructionsTitle">Referring is as easy as 1-2-3!</div>
+                <div class="referralInstructionsCol leftCol">
+                    <div class="referralInstructionsImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Image1.jpg')}"/></div>
+                    <div class="referralInstructionsText">
+                        <p class="highlight">Refer Your Friend</p>
+                        <p>Encourage your friends and family to visit the <b>"Get Started" page</b> at <span class="highlight">directenergysolar.com.</span></p>
+                    </div>
+                </div><div class="referralInstructionsCol">
+                    <div class="referralInstructionsImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Image2.jpg')}"/></div>
+                    <div class="referralInstructionsText">
+                        <p class="highlight">They Go Solar</p>
+                        <p>When your referral fills out the form and reaches the "How did you hear about us" field, they should select "Referral by Customer/Employee."</p>
+                    </div>
+                </div><div class="referralInstructionsCol rightCol">
+                    <div class="referralInstructionsImg"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_Image3.jpg')}"/></div>
+                    <div class="referralInstructionsText">
+                        <p class="highlight">You Get Paid!</p>
+                        <p>A text box will populate. Your referral should include your name as the referring party. That's it!</p>
+                    </div>
+                </div>
+                <div class="referralInstructionsDetails">
+                <div class="referralInstructionsDetailsImg">
+                        <img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/Page15_BottomBar.png')}"/>
+                    </div>
+                    <div class="referralInstructionsDetailsText">
+                        <p class="highlight">Know someone who could benefit from solar?</p>
+                        <p>Direct Energy Solar's business is based on the numerous referrals from our satisfied customers. We love referrals and reward our customers who spread the word about the benefits of going solar the right way with Direct Energy Solar. Do you know someone who may benefit from going solar? As a Direct Energy Solar customer, you can earn a cash reward for any referral that switches to solar with Direct Energy Solar!</p>
+                    </div>
+                </div>
+            </div><div class="referralFormWrapper">
+                <div class="headerNote">
+                    <div class="headerNoteText">Photocopy this page and use over and over for your referrals!</div>
+                </div>
+                <div class="referralForm">
+                    <div class="referralFormTitle">Referral Information</div>
+                    <div class="referralFormField">Name</div>
+                    <div class="referralFormField">Address</div>
+                    <div class="referralFormField">City/State/Zip</div>
+                    <div class="referralFormField">Phone</div>
+                    <div class="referralFormField">Email</div>
+                </div>
+                <div class="referralFormTerms">
+                    <p>You must be a Direct Energy Solar customer to participate in the Direct Energy Solar Referral Program. For each referral that signs a solar contract with Direct Energy Solar, you will receive $250 and your referral will receive $250. Individuals may not refer themselves. Referrals must have no prior contact with Direct Energy Solar to be considered a customer referral. Payment is sent within 30 days of the sale.</p>
+                    <p>Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.</p>
+                    <p>AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/ HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 50840-H, Putnam PC66168, Rockland H-11532, Westchester WC-23664-H10</p>
+                </div>
+             </div>-->
+        </div> 
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol"><span class="highlight">Solar Done Right</span></div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 15 Spread the Word-->
+  
+  <div style="page-break-after: always;"></div>
+  
+  
+  <!--PAGE 16 Quote Assumptions-->
+  <div id="pageSixteen" class="container standardPage">
+    <div class="content">
+        <div class="header">
+          <div class="astrumLogo"><img src="{!URLFOR($Resource.SalesProposalRedesign_Resources, 'images/DElogo.jpg')}"/></div>
+          <div class="title">
+            <h1>Your Proposal Assumptions</h1>
+          </div>
+        </div>
+        <div class="quoteAssumptions">
+            <div class="quoteAssumptionsCol leftCol">
+                <table class="summaryTable" cellspacing="0" cellpadding="0">
+                    <tr class="row1">
+                        <th class="col1" colspan="2">Location</th>
+                    </tr>
+                    <tr class="row2">
+                        <td class="col1">Property Type</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Property__r.RecordType.Name}" /></td>
+                    </tr>
+                    <tr class="row3">
+                        <td class="col1">Name</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Property__r.Property_Owner__r.Name}" /></td>
+                    </tr>
+                    <tr class="row4">
+                        <td class="col1">Address</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Property__r.Name}" /><br/>
+                        <apex:outputField value="{!sysDesign.Property__r.Property_City__c}" />,&nbsp;<apex:outputField value="{!sysDesign.Property__r.Property_State__c}" />&nbsp;<apex:outputField value="{!sysDesign.Property__r.Property_ZIP__c}" /></td>
+                    </tr>
+                    <tr class="row4"> 
+                        <td class="col1">County</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Property__r.Property_County__c}" /></td>
+                    </tr>
+                </table>
+                <table class="summaryTable" cellspacing="0" cellpadding="0">
+                    <tr class="row1">
+                        <th class="col1" colspan="2">System Assumptions</th>
+                    </tr>
+                    <tr class="row2">
+                        <td class="col1">System Size (STC-DC), kW</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Total_System_Size_kW__c}" /></td>
+                    </tr>
+                    <tr class="row3">
+                        <td class="col1">Solar Panel Count</td>
+                        <td class="col2"><apex:outputField value="{!sdq.Panel_Count__c}" /></td>
+                    </tr>
+                    <tr class="row4">
+                        <td class="col1">Solar Panel Type</td>
+                        <td class="col2"><apex:outputField value="{!panelProduct.Description__c}" /></td>
+                    </tr>
+                    <tr class="row5">
+                        <td class="col1">Inverter Type</td>
+                        <td class="col2"><apex:outputField value="{!inverterProduct.Description__c}" /></td>
+                    </tr>
+                    <tr class="row6">
+                        <td class="col1">Mounting Type</td>
+                        <td class="col2"><apex:outputField value="{!mountingProduct.Description__c}" /></td>
+                    </tr>
+                </table>
+                <table class="summaryTable" cellspacing="0" cellpadding="0">
+                    <tr class="row1">
+                        <th class="col1" colspan="2">Production Assumptions</th>
+                    </tr>
+                    <tr class="row2">
+                        <td class="col1">Production Factor</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Overall_Site_Quality__c}" /></td>
+                    </tr>
+                    <tr class="row3">
+                        <td class="col1">Annual Solar Production (kWh)</td>
+                        <td class="col2"><apex:outputText value="{!estimatedAnnualProduction}" /></td>  
+                    </tr>
+                    <tr class="row4">
+                        <td class="col1">Annual Electricity Usage (kWh)</td>
+                        <td class="col2"><apex:outputField value="{!sysDesign.Default_CB_Panel__r.Utility_Service__r.Annual_Electricity_Consumption_kWh_frm__c }" /></td>
+                    </tr>
+                    <tr class="row5">
+                        <td class="col1">Solar Portion of Electricity</td>
+                        <td class="col2"><apex:outputText value="{!SolarPortionOfElectricity}%" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="quoteAssumptionsCol rightCol">
+                <!-- <div class="quoteAssumptionsColTop">
+                <div class="tableContainer">
+                    <table class="standardTable">
+                        <tr class="row1">
+                            <th class="col1" colspan="2">Monthly Savings Plan</th>
+                        </tr>
+                        <tr class="row2">
+                            <td class="col1">Lease Term</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row3">
+                            <td class="col1">Lease Escalator</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row4">
+                            <td class="col1">Down Payment</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row4">
+                            <td class="col1">Monthly Payment (Year 1)</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                    </table>
+                    </div>
+                    <div class="tableContainer">
+                    <table class="standardTable">
+                        <tr class="row1">
+                            <th class="col1" colspan="2">One Pay Plan</th>
+                        </tr>
+                        <tr class="row2">
+                            <td class="col1">Lease Term</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row3">
+                            <td class="col1">One Time Payment</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                <div class="quoteAssumptionsColBottom">
+                    <div class="tableContainer">
+                    <table class="standardTable">
+                        <tr class="row1">
+                            <th class="col1" colspan="2">Solar Ownership Plan</th>
+                        </tr>
+                        <tr class="row2">
+                            <td class="col1">Federal Tax Credit Timing</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row3">
+                            <td class="col1">State Grant Timing</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row4">
+                            <td class="col1">SRECs Purchase Option</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row5">
+                            <td class="col1">SRECs Payment Schedule</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row6">
+                            <td class="col1"></td>
+                            <td class="col2"></td>
+                        </tr>
+                        <tr class="row7">
+                            <td class="col1">10% Due at Contract Signing</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row8">
+                            <td class="col1">60% Due on First Day of Installation</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row9">
+                            <td class="col1">30% Due at Completed System Inspection</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                    </table>
+                    </div>
+                    <div class="tableContainer">
+                    <table class="standardTable">
+                        <tr class="row1">
+                            <th class="col1" colspan="2">Solar Finance Plan</th>
+                        </tr>
+                        <tr class="row2">
+                            <td class="col1">Loan Term</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row3">
+                            <td class="col1">SAC Term</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row4">
+                            <td class="col1">Down Payment</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row5">
+                            <td class="col1">SREC Credit Option</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row6">
+                            <td class="col1">SREC Credit Schedule</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                        <tr class="row7">
+                            <td class="col1">Monthly Payment (Year 1)</td>
+                            <td class="col2">00,000</td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>-->
+                <apex:repeat value="{!scenarios}" var="scenario">
+                    <div class="tableContainer">
+                        <table class="summaryTable" cellspacing="0" cellpadding="0">
+                            <apex:variable var="rowNum" value="{!1}"/>
+                                <apex:repeat value="{!scenario.SummaryTable}" var="summary_vals">
+                                    <tr class="row{!rowNum} {!IF(rowNum == 1,'header','')} {!IF(rowNum >=(scenario.summaryTableTotalRows-2) && isD2D,'highlighted','')}">  
+                                        <td class="col1">{!summary_vals.primary}</td>
+                                        <td class="col2">{!summary_vals.secondary}</td>
+                                    </tr>
+                                <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                            </apex:repeat>
+                        </table>
+                    </div>
+                </apex:repeat>
+            </div>
+            <div class="quoteAssumptionsFooter">
+                <div class="quoteAssumptionsNote">
+                    <p>Please note this quote is an estimate and does not guarantee actual system production or savings. The system design may change based on a detailed engineering site audit. Actual system production and savings will vary based on the final system size, design, configuration, utility rates, applicable rebates and your family's energy usage. Brand names and product names are trademarks or services marks of their respective holders.</p>
+                </div>
+                <div class="quoteAssumptionsTerms">
+                    <apex:outputPanel layout="none" rendered="{!NOT(isD2D)}">
+                        <div class="quoteAssumptionsConsultant">
+                            <p class="quoteAssumptionsConsultantLabel">Your Solar Consultant Contact Information</p>
+                            <p><apex:outputText value="{!$User.FirstName} {!$User.LastName}" /></p>
+                            <p>P: <apex:outputText value="{!$User.Phone}" /></p>
+                            <p>E: <apex:outputText value="{!$User.Email}" /></p>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="none" rendered="{!isD2D}">
+                        <div class="quoteAssumptionsConsultant">
+                            <p class="quoteAssumptionsConsultantLabel">Direct Energy Solar</p>
+                            <p>P: 1-844-473-4274</p>
+                            <p>E: sales.support@directenergysolar.com</p>
+                        </div>
+                    </apex:outputPanel>
+                    <div>
+                        <p>Quote Date: <apex:outputText value="{!MID(TEXT(TODAY()), 6, 2)&"/" &MID(TEXT( TODAY() ), 9, 2) &"/" &LEFT( TEXT( TODAY() ) , 4)}" />, Pricing Valid Until: <apex:outputText value="{!MID(TEXT(prop.Proposal_Expiration_Date__c), 6, 2)&"/" &MID(TEXT(prop.Proposal_Expiration_Date__c), 9, 2) &"/" &LEFT( TEXT(prop.Proposal_Expiration_Date__c) , 4)}" /> All applicable state and federal tax credits are estimates. Please contact your tax professional for specific financial and tax advice.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+    <div class="footer">
+          <div class="footerCol leftCol">Solar Your Way</div><div class="footerCol"><span class="highlight">Solar Done Right</span></div><div class="footerCol rightCol">Solar Made Easy</div>
+    </div>
+  </div>
+
+  <!-- END PAGE 16 Quote Assumptions-->
+  
+  
+  </body>
+ </html>
+</apex:page>

@@ -1,0 +1,30 @@
+<apex:page standardController="Change_Request__c"   extensions="Change_Request_Cancellation_Controller">
+  <apex:form >
+  <apex:pageBlock title="Change Request Cancellation" id="thePageBlock" mode="edit">
+      <apex:pageMessages />
+      <apex:outputpanel rendered="{!AND(NOT(CancelDone),NOT(accessNotAllowed ))}" >
+      <apex:pageBlockSection title="Cancellation Comments" columns="1" >     
+          <apex:inputTextarea value="{!comments}" rendered="{!NOT(CancelDone)}" Style="Width:350px;Height:100px;" />   
+               <apex:outputpanel >
+               <apex:commandButton value="Cancel Change Request" action="{!submitCancellation}" />  
+               <apex:commandButton value="Return"  action="{!cancel}"/>     
+               </apex:outputpanel>
+      </apex:pageBlockSection>
+       </apex:outputpanel> 
+       <apex:outputpanel rendered="{!CancelDone}"  >
+        <apex:pageBlockSection columns="1" >     
+           <apex:outputText value="Change Request is already Marked Cancelled" rendered="{!CancelDone}"  />
+           <apex:commandButton value="Return"  action="{!cancel}" rendered="{!CancelDone}"/>
+            </apex:pageBlockSection>
+       </apex:outputpanel>   
+       
+       <apex:outputpanel rendered="{!accessNotAllowed }"  >
+        <apex:pageBlockSection columns="1" >     
+           <apex:outputText value="You do not have access to cancel this Request. Only Request Owner can cancel it." rendered="{!accessNotAllowed }"  />
+           <apex:commandButton value="Return"  action="{!cancel}" rendered="{!accessNotAllowed }"/>
+            </apex:pageBlockSection>
+       </apex:outputpanel> 
+         
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,197 @@
+<apex:page standardController="Milestone1_Project__c" extensions="Fact_Sheet_Controller_Extension" showHeader="false" sidebar="false">
+  <style type="text/css">
+  @media print {.printButton{display:none;}}
+  </style>
+  <apex:outputPanel >
+  <apex:form style="text-align:right; margin:15px;">
+      <apex:commandButton onclick="window.print();" value="Print" styleClass="printButton"/>
+  </apex:form>
+
+  <apex:pageBlock >
+	  <apex:sectionHeader title="{!Milestone1_Project__c.Sales_Order__r.AccountId__r.name}"/>
+	  <apex:pageBlockSection >
+		  <apex:outputField value="{!Milestone1_Project__c.Sales_Order__r.AccountId__r.Billing_Email_Address__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Sales_Order__r.AccountId__r.AccountNumber}"/>
+
+		  <apex:pageBlockSectionItem >
+			  <apex:outputLabel value="Account Owner" for="AccountOwner"/>
+			  <apex:outputField value="{!Milestone1_Project__c.Sales_Order__r.AccountId__r.Owner.Name}" id="AccountOwner"/>
+		  </apex:pageBlockSectionItem>
+
+		  <apex:outputField value="{!Milestone1_Project__c.Salesperson__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Name}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Project_Lead__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Astrum_Office__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Kickoff__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Benchmark_Completion_Date__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Deadline__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Installation_Start_Date__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Installation_Completion_Date__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Inspection_Date__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Paid_In_Full_Date__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Number_of_Incomplete_Milestones__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Total_Open_Task_Count__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Total_Blocked_Task_Count__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Total_Complete_Task_Count__c}"/>
+		  <apex:outputField value="{!Milestone1_Project__c.Total_Late_Task_Count__c}"/>
+	  </apex:pageBlockSection>
+  </apex:pageBlock>
+
+  <apex:sectionHeader subtitle="{!leasedInverters}" rendered="{!salesOrder.Financing_Type__c = 'Lease'}"/>
+
+  <apex:pageBlock title="Project Notes">
+		<apex:outputField value="{!Milestone1_Project__c.Project_Notes__c}"/>
+  </apex:pageBlock>
+    
+  <apex:pageBlock title="Contacts">
+        <apex:pageBlockTable value="{!contacts}" var="contact">
+            <apex:column value="{!contact.FirstName}"/>
+            <apex:column value="{!contact.LastName}"/>
+            <apex:column value="{!contact.Email}"/>
+            <apex:column value="{!contact.HomePhone}"/>
+            <apex:column value="{!contact.MobilePhone}"/>
+            <apex:column value="{!contact.Phone}"/>
+            <apex:column value="{!contact.Work_Phone__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock> 
+  
+  <apex:pageBlock title="Property">
+        <apex:pageBlockTable value="{!projectProperty}" var="property1">
+            <apex:column value="{!property1.name}"/>
+            <apex:column value="{!property1.Property_Address_2__c}"/>
+            <apex:column value="{!property1.Property_City__c}"/>
+            <apex:column value="{!property1.Property_State__c}"/>
+            <apex:column value="{!property1.Property_ZIP__c}"/>
+            <apex:column value="{!property1.Property_County__c}"/>
+            <apex:column value="{!property1.Permit_Jurisdiction__c}"/>
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!projectProperty}" var="property2">
+            <apex:column value="{!property2.HOA_Contact_Name__c}"/>
+            <apex:column value="{!property2.HOA_Contact_Phone__c}"/>
+            <apex:column value="{!property2.HOA_Contact_Email__c}"/>
+            <apex:column value="{!property2.Optimal_Site_Quality_kWh_y_kW__c}"/>
+            <apex:column value="{!property2.Astrum_Office__c}"/>
+            <apex:column value="{!property2.Hours_From_Nearest_Office__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock> 
+  <apex:pageBlock title="Install Locations">
+        <apex:pageBlockTable value="{!installLocations}" var="il">
+            <apex:column value="{!il.Property__c}"/>
+            <apex:column value="{!il.Name}"/>
+            <apex:column value="{!il.Azimuth__c}"/>
+            <apex:column value="{!il.Pitch__c}"/>
+            <apex:column value="{!il.Number_of_Stories__c}"/>
+            <apex:column value="{!il.Stuctural_Members__c}"/>
+            <apex:column value="{!il.Surface_Type__c}"/>
+            <apex:column value="{!il.TSRF__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock>
+  <apex:pageBlock title="Utility Services">
+        <apex:pageBlockTable value="{!utilityServices}" var="us">
+            <apex:column value="{!us.Property__c}"/>
+            <apex:column value="{!us.Name}"/>
+            <apex:column value="{!us.Service_Account_Number__c}"/>
+            <apex:column value="{!us.Utility_Company__c}"/>
+            <apex:column value="{!us.Amperage__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock> 
+  <apex:pageBlock title="Circuit Breaker Panels">
+        <apex:pageBlockTable value="{!cbPanels}" var="cbp">
+            <apex:column value="{!cbp.Name}"/>
+            <apex:column value="{!cbp.Utility_Service__c}"/>
+            <apex:column value="{!cbp.Panel_Location__c}"/>
+            <apex:column value="{!cbp.Parent_CB_Panel__c}"/>
+            <apex:column value="{!cbp.Main_Breaker_Rating_Amps__c}"/>
+            <apex:column value="{!cbp.Bus_Rating_Amps__c }"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock>
+  <apex:pageBlock title="Sales Order">
+        <apex:pageBlockTable value="{!salesOrder}" var="so">
+            <apex:column value="{!so.Name}"/>
+            <apex:column value="{!so.Has_Field_Survey_Been__c}"/>
+            <apex:column value="{!so.Hand_Off_Notes__c}"/>
+            <apex:column value="{!so.Financing_Type__c}"/>
+            <apex:column value="{!so.Financing_Option__c}"/>
+            <apex:column value="{!so.Leasing_Option__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock>
+    
+  <apex:pageBlock title="System Design Quote">
+        <apex:pageBlockTable value="{!systemDesignQuote}" var="sdq">
+            <apex:column value="{!sdq.Name}"/>
+            <apex:column value="{!sdq.Final_Adjusted_Price__c}"/>
+            <apex:column value="{!sdq.Final_Adjusted_Price_per_Watt__c}"/>
+            <apex:column value="{!sdq.System_Design__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock>
+  <apex:pageBlock title="System Design">
+        <apex:pageBlockTable value="{!systemDesign}" var="sd1">
+            <apex:column value="{!sd1.Property__c}"/>
+            <apex:column value="{!sd1.Name}"/>
+            <apex:column value="{!sd1.Total_Projected_Annual_Output_kWh_y__c}"/>
+            <apex:column value="{!sd1.Total_System_Size_kW__c}"/>
+            <apex:column value="{!sd1.Ground_Mount_Arrays__c}"/>
+            <apex:column value="{!sd1.Panel_Count__c}"/>
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!systemDesign}" var="sd2">
+            <apex:column value="{!sd2.System_Makeup__c}"/>
+            <apex:column value="{!sd2.Number_of_Arrays__c}"/>
+            <apex:column value="{!sd2.Number_of_Arrays_on_Flat_Roofs__c}" headerValue="Arrays on Flat Roofs"/>
+            <apex:column value="{!sd2.Overall_Site_Quality__c}"/>
+            <apex:column value="{!sd2.Overall_TSRF__c}"/>
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!systemDesign}" var="sd3">
+            <apex:column value="{!sd3.Max_Install_Location_Pitch__c}"/>
+            <apex:column value="{!sd3.Max_Install_Location_Stories__c}"/> 
+            <apex:column value="{!sd3.Includes_Outbuilding_Installation__c}" headerValue="Includes Outbuilding"/>
+            <apex:column value="{!sd3.Inside_Only_Conduit__c}"/>
+            <apex:column value="{!sd3.Trenching_Required__c}" headerValue="Trenching?"/>
+            <apex:column value="{!sd3.Vent_Stack_Movement_Required__c}" headerValue="Move Vent Stacks"/>    
+        </apex:pageBlockTable> 
+        <apex:pageBlockTable value="{!systemDesign}" var="sd4">
+            <apex:column value="{!sd4.Notes__c}"/>      
+        </apex:pageBlockTable> 
+  </apex:pageBlock>
+  <apex:pageBlock title="System Design Array(s)">
+        <apex:pageBlockTable value="{!systemDesignArrays}" var="sda">
+            <apex:column value="{!sda.Name}" headerValue="Name"/>
+            <apex:column value="{!sda.Mounting_Type__c}"/>
+            <apex:column value="{!sda.Special_Parts_Required__c}" headerValue="Special Parts?"/>
+            <apex:column value="{!sda.Electrical_Adder__c}"/>
+            <apex:column value="{!sda.CB_Panel__c}"/>
+            <apex:column value="{!sda.Array_Size_kW__c}"/>
+            <apex:column value="{!sda.Items_On_Flat_Roof__c}"/>
+            <apex:column value="{!sda.Max_Install_Location_Pitch__c}"/>
+            <apex:column value="{!sda.Max_Install_Location_Stories__c}"/>
+            <apex:column value="{!sda.Panel_Count__c}"/>
+            <apex:column value="{!sda.Projected_Annual_Output_kWh_y__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock> 
+  <apex:pageBlock title="System Design Item(s)">
+        <apex:pageBlockTable value="{!systemDesignItems}" var="sdi">
+            <apex:column value="{!sdi.System_Design_Array__c}"/>
+            <apex:column value="{!sdi.Name}"/>
+            <apex:column value="{!sdi.Property__c}"/>
+            <apex:column value="{!sdi.Install_Location__c}"/>
+            <apex:column value="{!sdi.Quantity__c}"/>
+            <apex:column value="{!sdi.System_Design_Product__r.Description__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock> 
+  <apex:pageBlock title="Milestone(s)">
+        <apex:pageBlockTable value="{!milestones}" var="ms">
+            <apex:column value="{!ms.Name}"/>
+            <apex:column value="{!ms.Total_Open_Tasks__c}" headerValue="Open Tasks"/>
+            <apex:column value="{!ms.Total_Blocked_Tasks__c}" headerValue="Blocked Tasks"/>
+            <apex:column value="{!ms.Total_Late_Tasks__c}" headerValue="Late Tasks"/>
+            <apex:column value="{!ms.Total_Complete_Tasks__c}" headerValue="Complete Tasks"/>
+            <apex:column value="{!ms.Kickoff__c}"/>
+            <apex:column value="{!ms.Deadline__c}"/>
+            <apex:column value="{!ms.Complete__c}"/>
+        </apex:pageBlockTable> 
+  </apex:pageBlock> 
+  
+  <apex:relatedList title="Log(s)" list="Project_Logs__r" />
+  		
+  </apex:outputPanel>
+  
+</apex:page>

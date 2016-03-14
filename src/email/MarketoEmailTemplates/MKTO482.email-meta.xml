@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>HWA Nurture Campaign - New Customers, Send 1 Unopens.HWA_NewCustomers_Email1_lon</name>
+    <style>none</style>
+    <subject>Protect yourself from utility prices - learn how.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/HWA?utm_medium=email&amp;utm_source=hwa&amp;utm_campaign=hwanewcustwelcome&amp;utm_content=hwanewcust-1-long&gt;
+
+
+Home Warranty of America
+ &lt;http://www.hwahomewarranty.com&gt;
+
+Your Home is Protected with a Warranty. Now Protect Yourself from Utility Prices.
+
+Learn How:
+&lt;http://www.directenergysolar.com/HWA?utm_medium=email&amp;utm_source=hwa&amp;utm_campaign=hwanewcustwelcome&amp;utm_content=hwanewcust-1-long&gt;
+
+Dear Homeowner,
+
+Your warranty from Home Warranty of America is protecting your new home from life’s inevitable surprises. You have a hardworking, trustworthy, helpful and friendly company by your side. When your home systems need repair, there’s no question who you will turn to or how you’ll pay for it. That’s great peace of mind as you settle into your home.
+
+Did you know we’re part of a family of brands?
+
+Your warranty connects you to a bigger family of companies dedicated to servicing your new home and providing you with efficient, affordable energy solutions—you have access to an entire suite of services provided by Direct Energy! That’s even greater peace of mind.
+
+Direct Energy has become one of the largest retail providers of electricity, natural gas, and home services in North America by providing professional, affordable and high-quality energy products and home services to millions of homeowners. We have a track record and the resources to assure you we will stand by what we promise, for years to come.
+
+We’re delighted to introduce you to Direct Energy Solar.
+
+Direct Energy’s vision is to harness our energy expertise to make a difference in people’s lives—our newest division, Direct Energy Solar, has been providing money-saving solar solutions for thousands of customers across the country since 2008. A great way to take control of your energy costs is to use the power of the sun. Solar energy has the potential to save you thousands on your energy bills for decades.
+
+Why are so many Americans switching to solar energy?
+
+We’ve all been there. Month after month, we open the utility bill...only to be shocked at its unpredictability. In contrast, solar will provide a consistent, reliable source of power on your roof—your monthly electricity bills will be less than what you’re currently paying your utility provider and you’ll be insulated from electricity price increases.
+
+Solar is more accessible and affordable than ever. And it’s positive impact on daily life is profound. When your home is solar powered, you can worry less about the small stuff, like recharging your family’s gadgets or turning up the thermostat a few degrees on a chilly night. And you can feel great about the big stuff, like your lighter carbon footprint and the example you are setting for your friends, neighbors and family.
+
+Intrigued? Learn More About Solar:
+ &lt;http://www.directenergysolar.com/HWA?utm_medium=email&amp;utm_source=hwa&amp;utm_campaign=hwanewcustwelcome&amp;utm_content=hwanewcust-1-long&gt;
+
+Contact Us: 800-903-6130
+Your Sun. Your Power. Your Way.
+
+You are receiving this email because you are a Home Warranty of America customer and may want to learn more about Direct Energy Solar installations.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Nassau H24096700, Nassau H24096700, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 7101 Riverwood Drive
+ Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions 
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+ &lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

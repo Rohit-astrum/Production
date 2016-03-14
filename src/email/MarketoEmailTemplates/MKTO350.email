@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<title>Thank you for requesting a solar consultation.</title>
+
+<style type="text/css">
+.appleLinksGray a {
+        color: #666666;
+        text-decoration: none;
+}
+.appleLinksWhite a {
+        color: #ffffff;
+        text-decoration: none;
+}
+.appleLinksBlue a {
+        color: #1cef94;
+        text-decoration: none;
+}
+.appleLinksGreen a {
+        color: #61af3f;
+        text-decoration: none;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" ><table style="width:100%; background-color:#e8e8e8; padding-bottom:30px; " ><tr ><td ><table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><div class="mktEditable" id="Header" style="margin-left:33px; margin-right:33px; margin-top:15px; margin-bottom:15px; font-size:0px; " ><table width="634" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+<tbody>
+<tr>
+<td width="302" height="80" style="vertical-align: top;">
+<div style="margin-top: 10px;"><a href="http://www.directenergysolar.com"><img src="http://pages.astrumsolar.com/rs/astrumsolarinc/images/DirectEnergySolar_logo.jpg" border="0" height="64" width="295" alt="Direct Energy Solar" /></a></div>
+</td>
+<td width="472" height="80" style="vertical-align: top; padding-top: 10px;" align="right"></td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+<tr ><td width="634" style="padding-left:33px; padding-right:33px; " ><div class="mktEditable" id="BodyCopy" ><div style="margin-top: 0px; margin-bottom: 0px;">
+<div style="margin-top: 0px; margin-bottom: 20px;"><a href="http://gosolarinhudsonvalley.eventbrite.com"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/Newtown_MainImage.jpg" alt="You are invited to a Solar Open House" width="634" height="315" /></a></div>
+<p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 26px; margin-bottom: 5px; margin-top: 35px; color: #1c3f94;">Dear {{lead.First Name:default=Friend}},</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 20px; padding-bottom: 0px; text-align: left;">We wanted to send you a quick reminder about Direct Energy Solar&rsquo;s Open House and Fire Safety Training at our Hudson Valley headquarters in Middletown, NY.</p>
+<table width="634" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 0px; margin-bottom: 15px; color: #666666; font-family: Arial, Helvetica, sans-serif;">
+<table border="0" cellspacing="0" cellpadding="0" width="634" align="center" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="vertical-align: top;" width="200">
+<div style="margin-top: 10px; margin-bottom: 0px; padding-right: 0px; padding-left: 40px;"><a href="http://gosolarinhudsonvalley.eventbrite.com"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/MiddletownOpenHouseNovember16.jpg" border="0" alt="November 16" width="123" height="106" /></a></div>
+</td>
+<td style="vertical-align: top;" width="450">
+<div style="margin-top: 10px; margin-bottom: 0px;">
+<p style="font-family: Arial, Helvetica, sans-serif; color: #61af3f; font-weight: normal; font-size: 23px; line-height: 25px; margin-bottom: 5px; margin-top: 0px;">Open House <br /> <strong>TONIGHT,</strong> November 16</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #1c3f94; font-weight: bold; font-size: 15px; line-height: 22px; margin-bottom: 0px; margin-top: 0px;">7:00 &ndash; 7:30pm: Fire Safety Training</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #1c3f94; font-weight: bold; font-size: 15px; line-height: 22px; margin-bottom: 0px; margin-top: 0px;">7:30 &ndash; 9:00pm: Open House and Solar Info Session</p>
+<p style="font-family: Arial, Helvetica, sans-serif; color: #1c3f94; font-weight: normal; font-size: 15px; line-height: 22px; margin-bottom: 0px; margin-top: 0px;">28 Industrial Dr., Middletown NY 10941</p>
+<table width="200" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+<tbody>
+<tr>
+<td align="left" style="padding-top: 5px; padding-bottom: 10px;"><a href="http://gosolarinhudsonvalley.eventbrite.com"><img src="http://pages.directenergysolar.com/rs/410-XAV-850/images/NewtownRSVPbutton.jpg" border="0" alt="RSVP" width="142" height="32" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 0px; padding-bottom: 0px; text-align: left;">During the first part of the evening, our Operations Team will host a Fire Safety Training for regional fire safety officials. Following this half hour presentation you&rsquo;ll have a chance to speak one-on-one with our Solar Consultants, Operations Team, and current customers. You can also learn about special limited-time solar discounts currently available in the Hudson Valley.</p>
+<p style="color: #666666; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 22px; margin-bottom: 15px; margin-top: 0px; padding-bottom: 0px; text-align: left;">While our doors are always open, there&rsquo;s no better opportunity than this event to get your questions answered and find out if switching to solar is right for you.</p>
+<table width="634" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+<tbody>
+<tr>
+<td>
+<p style="color: #1c3f94; font-family: Arial, Helvetica, sans-serif; font-size: 23px; line-height: 30px; margin-bottom: 25px; margin-top: 5px; padding-bottom: 0px; text-align: center;">We look forward to seeing you tonight!</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td ><table width="634" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border-top-color:#cccccc; border-top-style:solid; border-top-width:1px; border-bottom-color:#cccccc; border-bottom-style:solid; border-bottom-width:1px; " ><tr ><td width="634" style="vertical-align:top; text-align:center; " ><div style="margin-top:25px; margin-bottom:25px; " class="mktEditable" id="PhoneTagline" ><img src="http://pages.directenergysolar.com/rs/astrumsolarinc/images/PhoneTagline.jpg" border="0" height="40" width="273" alt="Your Sun. Your Power. Your Way. Call Us: 800-903-6130"></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" ><tr ><td style="padding-top:20px; padding-bottom:33px; padding-left:33px; padding-right:33px; " ><div style="color:#666666; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:16px; " ><div class="mktEditable" id="disclaimerCopyWhy" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;">Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.</p></div>
+<div class="mktEditable" id="disclaimerCopyTerms" ><p style="color: #666666; font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px; margin-top: 0px;"><span class="appleLinksGray">Suffolk 54817-H, Putnam PC66168, Rockland H-11532</span></p></div>
+<div class="mktEditable" id="OfficeDetails" ><p style="margin-bottom: 10px;"><span class="appleLinksGray">Direct Energy Solar</span><br /> <span class="appleLinksGray">28 Industrial Drive</span><br /> <span class="appleLinksGray">Middletown, NY 10941</span><br /> <span class="appleLinksGray">P: 800-903-6130</span><br /> <span class="appleLinksGray">F: 845-853-1620</span></p></div>
+<div class="mktEditable" id="TermsConditions" ><p style="font-size: 11px; font-weight: normal; line-height: 16px; margin-bottom: 10px;">&copy; <span class="appleLinksGray">2015 Clockwork IP, LLC.</span> All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com/privacy-policy" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">Privacy Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com/terms-and-conditions" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="http://www.directenergysolar.com" style="font-size: 11px; color: #666666; font-weight: normal; text-decoration: none;">DirectEnergySolar.com</a></p></div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

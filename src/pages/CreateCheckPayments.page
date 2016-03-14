@@ -1,0 +1,3 @@
+<apex:page standardController="QB_Bill_Payment_Details_Extract__c" extensions="ffirule.IntegrationRuleEngine" action="{!convert}" recordSetVar="records">
+<ffirule:IntegrationRule engine="{!engine}"/>
+</apex:page>

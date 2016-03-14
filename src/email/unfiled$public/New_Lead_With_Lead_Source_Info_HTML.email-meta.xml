@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>New Lead Notification with Lead Source Info</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>New Lead - With Lead Source Info HTML</name>
+    <style>none</style>
+    <subject>New Lead : {!Lead.CreatedDate} : Lead Source : {!Lead.LeadSource}</subject>
+    <textOnly>A new Lead {!Lead.Name} has been created in Prism on {!Lead.CreatedDate}
+
+Lead Detail:
+
+First Name : {!Lead.FirstName}
+Last Name : {!Lead.LastName}
+Street : {!Lead.Street}
+City : {!Lead.City}
+State : {!Lead.State}
+Zip : {!Lead.PostalCode}
+Lead Date : {!Lead.Lead_Date__c}
+
+Lead Source Information:
+
+Method of Contact : {!Lead.Method_of_Contact__c}
+Lead Source : {!Lead.LeadSource}
+Lead Source Detail : {!Lead.Lead_Source_Detail__c}
+Referring Account : {!Lead.Referring_Account_Name__c}
+Primary Source Campaign : {!Lead.Primary_Source_Campaign_Name__c}
+Second Lead Source : {!Lead.Second_Lead_Source__c}
+Second Lead Source Detail : {!Lead.Second_Lead_Source_Detail__c}
+Secondary Referring Account : {!Lead.Secondary_Referring_Account_Name__c}
+Secondary Source Campaign : {!Lead.Secondary_Source_Campaign_Name__c}
+Lead Source Notes : {!Lead.Lead_Source_Notes__c}
+Contact Detail : {!Lead.Contact_Detail__c}
+Self Generated ? : {!Lead.Self_Generated__c}
+
+To Review this Lead, Please Click Here</textOnly>
+    <type>custom</type>
+</EmailTemplate>

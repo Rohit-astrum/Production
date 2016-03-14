@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SolarTompkins102114.SolarTompkins102114</name>
+    <style>none</style>
+    <subject>Last chance to save. Join your neighbors.</subject>
+    <textOnly>Astrum Solar
+&lt;http://astrumsolar.com&gt;
+
+Solar Tompkins
+&lt;http://www.solartompkins.org&gt;
+Last Chance to Save!
+
+Deadline for Solar Tompkins is November 1st. Act now to save!
+
+ &lt;http://www.solartompkins.org&gt;
+
+Solar Tompkins has now reached 90% of its goal to double the solar power in Tompkins County! Join your neighbors now!
+
+If you have enrolled in the program but haven&apos;t made a decision yet, please consider joining the 300 families who have already decided to go solar in the program.
+
+Don’t miss the deadline! Contact  your solar consultant today to discuss your system and how you can go  solar with Solar Tompkins. You can start producing your own electricity  for less than what you are currently paying your utility company.
+
+Join Your Neighbors. Switch to Solar!
+ &lt;http://www.solartompkins.org&gt;
+
+Program Ends NOVEMBER 1
+You’re receiving this email because you’ve requested info about Solar Tompkins.
+You must be a Tompkins County, NY resident to participate in this program. A solar power system is customized for your home, so pricing, savings, utility bill and solar bill amounts and actual returns vary based on location, system size, available solar incentives and local utility rates. Financing terms vary by location and are not available in all areas. NYSERDA Certified Installer
+Astrum Solar, Inc.
+
+395 Summit Point Drive, Suite 4
+
+Henrietta, NY 14467
+
+P: 800-903-6130
+
+F: 315-875-2666
+Copyright © 2014 Astrum Solar, Inc. All Rights Reserved.   |   Privacy Policy &lt;http://www.astrumsolar.com/privacy-policy&gt;   |   Terms &amp; Conditions &lt;http://www.astrumsolar.com/terms-and-conditions&gt;   |   www.astrumsolar.com &lt;http://www.astrumsolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

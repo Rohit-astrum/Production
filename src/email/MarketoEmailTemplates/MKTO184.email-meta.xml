@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email to Opps.Email to Opps in DC/CT/NY/MA</name>
+    <style>none</style>
+    <subject>Brand new solar savings to tell you about.</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com&gt;
+
+Your Sun. Your Power. Your Way.
+
+If you&apos;ve been looking into solar, you can&apos;t afford to miss our best offer ever!
+
+{{lead.First Name:default=Friend}},
+
+I wanted to get this quick note off to you to let you know about a promotion that Direct Energy Solar is offering customers like you who are considering going solar with us.
+
+I’m pretty excited because it is, by far, the best package of deals I’ve ever seen since I’ve been with Direct Energy Solar.
+
+But these deals will only be available in your area until June 15, so you must act today to assure we can lock you into our best pricing ever. Here’s the details of the promotion:
+
+Here’s the deal:
+
+Get $1,500(1) When You Choose to Go Solar With Us!
+
+At Direct Energy Solar, we like to help homeowners save. That’s why we would like to offer you a $1,500 cash back rebate when you sign your contract with us by June 15, 2015. It’s more money to put back into your pocket for better use than electricity bills, and it’s our best cash-back offer yet!
+
+We Guarantee Your Installation or You Get $500!(2)
+
+We want to get you on the road to electricity savings as quickly as possible. If you sign with us by June 15, 2015 and we do not install your solar system within 75 days, you will receive a $500 rebate or deduction from the final invoice.
+
+Just for Meeting with Us, You’ll Get a Free(3) 6-month Heating &amp; Cooling Repair Essentials Plan from Direct Energy!
+
+There’s no obligation to buy when you agree to meet with us to review your potential energy savings. In fact, we’re offering you an instant bonus just for letting us show you how much solar may save you on your monthly energy bill.
+
+Meet with a Direct Energy Solar consultant for an in-home consultation by June 15, 2015 and receive a free 6-month Heating &amp; Cooling Repair Essentials Plan from Direct Energy Protection Plans. This plan provides worry-free coverage for inconvenient repairs.
+
+Your 6-month Plan Includes:
+No service visit charge, no deductibles, no age restrictions
+$500 coverage per repair incident up to $2,000 annually
+24/7 emergency service
+
+
+Contact me today to take advantage of these offers!
+
+David Carpenter
+484-345-9562
+david.carpenter@directenergysolar.com
+
+Your Sun. Your Power. Your Way.
+
+You’re receiving this email because you’ve expressed interest in a Direct Energy Solar system installation.
+
+(1) Offer valid for qualifying homes that sign a new solar system contract with Direct Energy Solar between May 18, 2015–June 15, 2015. In lieu of a cash rebate, customers can opt to use the $1,500 as a down payment to reduce their monthly solar fees or to receive a $1,500 discount off the contract price at the time of their purchase. Otherwise, $1,500 cash back rebate to be mailed approximately 30 days after the system is installed. Minimum system size is 4 kW. Qualifying homes must be located in a territory that Direct Energy Solar serves. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+
+(2) For systems with signed contracts between May 18, 2015–June 15, 2015, if Direct Energy Solar fails to install your solar system and/or your solar system does not pass electrical inspection within the following timeframes, you will receive $500 (60-day timeframe in CA/MD/NJ; 75-day timeframe in all other regions Direct Energy Solar serves). The number of days due to the following potential delays not caused by Direct Energy Solar will be added to the applicable timeframe: customer scheduling conflicts, structural issues, roof replacements, tree removal, utility transformer issues, and HOA delays. Ground mounts, non-standard roof mounts, commercial systems, leased systems, and systems over 15 kW are excluded. The timeframe begins on the day Direct Energy Solar receives a signed contract and deposit payment (if applicable) for the system. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one discount offer per household.
+
+(3) Meet with a Direct Energy Solar consultant for an in-home consultation between April 1, 2015–June 15, 2015 and receive a free 6-month trial of our Heating &amp; Cooling Repair Essentials Plan. No extensions will be granted. An in-home consultation is contingent on your home passing a qualifying process for solar and your home being located in a territory where Direct Energy Solar completes in-home consultations. The Direct Energy Heating &amp; Cooling Repair Essentials Plan (the “Plan”) is provided by Home Warranty of America, Inc., a Direct Energy company. Not available in all states. There is a 30-day waiting period before coverage begins (giving you 5 months of coverage). The Plan is only free for the initial term of 6 months. Plan value is $101.94 ($16.99 per month for 6 months). Terms and conditions apply. Supplies are limited. Offer not valid with any other promotions, discounts, or special community pricing programs. Only one offer per household.
+
+Offers and financing are not available in all areas. We customize our solar power system specifically for your home, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 
+12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+ 8955 Henkels Lane, Suite 508
+ Annapolis Junction, MD 20701
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Astrum Solar, Inc. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

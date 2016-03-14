@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Company_Close_Rate_Goal__c</fullName>
+        <externalId>false</externalId>
+        <label>Company Close Rate Goal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Company_Close_Rate_Stretch__c</fullName>
+        <externalId>false</externalId>
+        <label>Company Close Rate Stretch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Minimum_Opportunity_Count_for_Close_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Opportunity Count for Close Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Goal_NYC_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Goal NYC Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Goal_WNY_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Goal WNY Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_CA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch CA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_CT_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch CT Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_MA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch MA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_MD_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch MD Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_NYC_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch NYC Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_OH_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch OH Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_PA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch PA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opp_Close_Stretch_WNY_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opp Close Stretch WNY Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal_CA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal CA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal_CT_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal CT Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal_MA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal MA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal_MD_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal MD Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal_OH_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal OH Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal_PA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal PA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Goal__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Goal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monthly_Opportunity_Close_Stretch__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Opportunity Close Stretch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_CA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal CA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_CT_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal CT Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_MA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal MA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_MD_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal MD Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_NYC_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal NYC Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_OH_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal OH Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_PA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal PA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal_WNY__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal WNY</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Goal__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Goal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_CA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch CA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_CT_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch CT Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_MA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch MA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_MD_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch MD Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_NYC_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch NYC Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_OH_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch OH Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_PA_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch PA Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch_WNY_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch WNY Region</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Sales_Revenue_Stretch__c</fullName>
+        <externalId>false</externalId>
+        <label>Monthly Sales Revenue Stretch</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>Monthly Sales Goals</label>
+</CustomObject>

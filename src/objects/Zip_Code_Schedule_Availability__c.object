@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Employee_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>false</externalId>
+        <label>Employee Id</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Employee__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Employee</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Zip_Codes_Schedule_Availibility</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Office_Location__c</fullName>
+        <externalId>false</externalId>
+        <formula>Office_Zip_Code__r.Office_Location__r.Name</formula>
+        <label>Office Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Office_Zip_Code__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Office Zip Code</label>
+        <referenceTo>Office_Zip_Code__c</referenceTo>
+        <relationshipName>Zip_Codes_Schedule_Availibility</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Sales Rep</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Surveyor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Zip Code Schedule Availability</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Office_Location__c</columns>
+        <columns>Office_Zip_Code__c</columns>
+        <columns>Employee__c</columns>
+        <columns>Start_Date__c</columns>
+        <columns>End_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>ZSA-{0000000}</displayFormat>
+        <label>Zip Code Schedule Availability Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Zip Codes Schedule Availability</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>End_Date_Must_Follow_Start_Date</fullName>
+        <active>true</active>
+        <description>The specified end date must follow the specified start date</description>
+        <errorConditionFormula>AND(
+NOT(ISBLANK(Start_Date__c)),
+NOT(ISBLANK(End_Date__c)),
+Start_Date__c &gt; End_Date__c
+)</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>The specified end date must follow the specified start date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Zip_Code_Schedule_Availability_Emp_Req</fullName>
+        <active>true</active>
+        <description>Zip_Code_Schedule_Availability__c.Employee is Required</description>
+        <errorConditionFormula>Employee__c == &apos;&apos;</errorConditionFormula>
+        <errorDisplayField>Employee__c</errorDisplayField>
+        <errorMessage>Please select a value for the Employee.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Zip_Code_Schedule_Availability_Type_Req</fullName>
+        <active>true</active>
+        <description>Zip_Code_Schedule_Availability__c.Type is Required</description>
+        <errorConditionFormula>TEXT(Type__c) == &apos;&apos;</errorConditionFormula>
+        <errorDisplayField>Type__c</errorDisplayField>
+        <errorMessage>Please select a value for the Type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Zip_Code_Schedule_Availability_Zip_Req</fullName>
+        <active>true</active>
+        <description>Zip_Code_Schedule_Availability__c.Office Zip Code is Required</description>
+        <errorConditionFormula>Office_Zip_Code__c == &apos;&apos;</errorConditionFormula>
+        <errorDisplayField>Office_Zip_Code__c</errorDisplayField>
+        <errorMessage>Please select a value for the Office Zip Code.</errorMessage>
+    </validationRules>
+</CustomObject>

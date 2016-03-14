@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Commercial Email 1.Commercial Email December 10 Webinar</name>
+    <style>none</style>
+    <subject>Reserve your spot for our solar webinar!</subject>
+    <textOnly>Direct Energy Solar
+&lt;http://www.directenergysolar.com/&gt;
+
+YOUR SUN. YOUR POWER. YOUR WAY.
+
+Tune into Our Webinar!
+
+Learn about a new state program to help
+ Maryland businesses save on energy costs with solar.
+
+RESERVE YOUR PLACE ONLINE
+&lt;http://directenergysolar.omnovia.com/register/17051448900667&gt;
+
+Commercial Solar PACE in Maryland
+&lt;http://directenergysolar.omnovia.com/register/17051448900667&gt;
+December 10th, 11:00AM–11:30AM
+
+Be sure to attend this 30-minute presentation, with a Q&amp;A session, to get the facts on a new program designed for Maryland businesses who want to capitalize on the potential solar energy, hedge against unpredictable energy costs, positively impact their balance sheet, and build sustainability into their business practices.
+
+Here’s what you’ll learn at this free webinar: 
+
+• Why Maryland has introduced the new Commercial PACE program 
+• How it saves businesses on energy costs 
+• How it guarantees positive cash flow from day one 
+• Zero-down, 100% financing terms at a low, fixed rate 
+• Who qualifies for this program 
+• Additional tax benefits 
+• Turn-key solar systems custom-designed for each building 
+• Lifetime energy production guarantees &amp; product support
+
+
+RSVP TO RESERVE YOUR SPOT
+&lt;http://directenergysolar.omnovia.com/register/17051448900667&gt;
+
+
+
+Your Sun. Your Power. Your Way.
+
+You are receiving this email because your business could benefit from a Direct Energy Solar installation.
+
+Offers and financing are available to customers who qualify, vary by location, and are not available in all areas. We customize our solar power system specifically for your facility, therefore, pricing, savings, utility bill, solar bill amounts and actual returns vary based on different factors including but not limited to your location, system size, available solar incentives and local utility rates. See terms and conditions for more details.
+
+AZ ROC 292637, CA CSLB 992952, CT HIC 06289933/ELC 0200988, DE 2014104056/T1-0005731, DC 420212000078/ECC 902554, MA HIC 168228/ELC 21555A, MD ELC 12327/HIC 126447, NJ HIC 13VH05618900/ELC 34EB01175700, PA HIC PA023535, Suffolk 54817-H, Putnam PC66168, Rockland H-11532
+
+Direct Energy Solar
+7101 Riverwood Drive
+Columbia, MD 21046
+ P: 800-903-6130
+ F: 443-267-0036
+
+© 2015 Clockwork IP, LLC. All Rights Reserved.
+
+Privacy Policy
+&lt;http://www.directenergysolar.com/privacy-policy&gt;
+
+Terms &amp; Conditions
+&lt;http://www.directenergysolar.com/terms-and-conditions&gt;
+
+DirectEnergySolar.com
+&lt;http://www.directenergysolar.com&gt;</textOnly>
+    <type>custom</type>
+</EmailTemplate>

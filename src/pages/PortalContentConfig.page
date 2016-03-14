@@ -1,0 +1,60 @@
+<apex:page standardController="Portal_Content__c" extensions="PortalContentConfigExtension" title="{!$ObjectType.Portal_Content__c.Label} Edit">
+
+    <style type="text/css">
+        .preview {
+            width:1024px;
+            height:768px;
+            -webkit-transform:scale(0.25);
+            -webkit-transform-origin:0 0;
+            -ms-transform: scale(0.25);
+            -ms-transform-origin-x: 0%; 
+            -ms-transform-origin-y: 0%;
+            -moz-transform:scale(0.25);
+            -moz-transform-origin:0 0;
+        }
+        .transparent {
+            background-color: white;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+          filter: alpha(opacity=1);
+          -moz-opacity: 0.01;
+          -khtml-opacity: 0.01;
+          opacity: 0.01;
+        }
+    </style>
+
+    <apex:sectionHeader title="{!$ObjectType.Portal_Content__c.Label} Edit" subtitle="{!Portal_Content__c.Name}"/>
+    
+    <apex:pageMessages />
+    
+
+    <apex:form >
+    
+    <apex:pageBlock id="editBlock" title="{!$ObjectType.Portal_Content__c.Label} Edit" mode="edit">
+    
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!savePage}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:pageBlockSection id="dataSection" collapsible="false" title="Information" >
+            <apex:outputField value="{!Portal_Content__c.Name}"/>           
+            <apex:inputField value="{!Portal_Content__c.Portal_Account__c}"/>
+            <apex:inputField value="{!Portal_Content__c.Active__c}"/>            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Partner Account Logo"/>
+                <apex:outputPanel layout="block">
+                    <apex:outputLink value="{!URLFOR($Action.Attachment.Download, logoAttachment.Id)}" target="_blank" rendered="{!NOT(ISNULL(logoAttachment))}">{!logoAttachment.Name}</apex:outputLink>
+                    <apex:inputFile value="{!logoContent}" fileName="{!logoFileName}" contentType="{!logoContentType}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>            
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection collapsible="false" title="Portal Configurations" columns="2">
+             <apex:inputField value="{!Portal_Content__c.Promo_Text__c}"  style="width:450px;height:200px;" />           
+           
+        </apex:pageBlockSection>
+
+    </apex:pageBlock>      
+    
+    </apex:form> 
+</apex:page>

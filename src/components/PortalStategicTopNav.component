@@ -1,0 +1,21 @@
+<apex:component >
+
+    <apex:attribute name="current" 
+                description="Short name for current page (lead,dashboard,outreach)"
+                type="String" 
+                required="true"/>
+                
+    <div id="Navigation">
+        <ul>
+            <li class="{!IF(current='lead','active','')}">
+                <apex:outputLink value="PortalNewReferral" rendered="{!NOT(current='lead')}">New Leads</apex:outputLink>
+                <apex:outputText value="New Leads" rendered="{!current='lead'}"/>
+            </li>
+            <li class="{!IF(current='dashboard','active','')}">
+                <apex:outputLink value="PartnerDashboard" rendered="{!NOT(current='dashboard')}">My Dashboard</apex:outputLink>
+                <apex:outputText value="My Dashboard" rendered="{!current='dashboard'}"/>
+            </li>            
+        </ul>
+    </div>
+
+</apex:component>

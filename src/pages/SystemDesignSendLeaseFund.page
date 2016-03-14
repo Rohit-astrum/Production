@@ -1,0 +1,3 @@
+<apex:page standardController="System_Design__c"
+           extensions="SystemDesignLeaseFundController" showHeader="true" sidebar="true" action="{!sendToLeaseFund}"   >
+</apex:page>
