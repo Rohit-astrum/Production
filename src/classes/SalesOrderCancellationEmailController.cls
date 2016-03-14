@@ -5,8 +5,11 @@ public class SalesOrderCancellationEmailController {
         List<SCRB_SalesOrder__c> salesorders =  [SELECT Name, AccountId__r.Name, Canceled_Comments__c FROM SCRB_SalesOrder__c WHERE Id =: salesorderId];
         List<PM_Project__c> pmprojects = new List<PM_Project__c>();
         pmprojects = [SELECT Id, Name FROM PM_Project__c WHERE Sales_Order__c = :salesorderId];
-        if((!salesorders.isEmpty()) && (!pmprojects.isEmpty())){
-            salesOrderInfo = new SalesOrderWrapper(salesorders[0],pmprojects[0].Name);
+        if((!salesorders.isEmpty())){
+            salesOrderInfo = new SalesOrderWrapper(salesorders[0],null);
+        }
+        if(!pmprojects.isEmpty()){
+            salesOrderInfo.projectName = pmprojects[0].Name;
         }
         return salesOrderInfo;        
     }

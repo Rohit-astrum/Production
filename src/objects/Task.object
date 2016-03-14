@@ -488,35 +488,7 @@
         <picklistValues>
             <picklist>Site_Survey_Type__c</picklist>
             <values>
-                <fullName>Drawing only %28long%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Measurement %2B Draw</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Measurement Only %28long%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pictometry</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Re-Measure %28short%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Redraw %28short%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Residential Field Survey</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Residential Remote Survey</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -846,30 +818,6 @@
             </values>
             <values>
                 <fullName>Commercial Survey</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Drawing only %28long%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Measurement %2B Draw</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Measurement Only %28long%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pictometry</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Re-Measure %28short%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Redraw %28short%29</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -123,7 +123,7 @@
                     <apex:inputText id="address" value="{!Portal_Referral__c.Street__c}" maxLength="80" 
                         styleClass="LongField {!IF(CONTAINS(errorFields,'[street]'),'invalid','')}" disabled="{!duplicate=true}"/>
                 </div>
-                <div class="NewLeadFormRow">
+                <!--<div class="NewLeadFormRow">
                     <apex:outputLabel for="city">City <span class="required">*</span></apex:outputLabel>
                     <apex:inputText id="city" value="{!Portal_Referral__c.City__c}" maxLength="40" 
                         styleClass="LongField {!IF(CONTAINS(errorFields,'[city]'),'invalid','')}" disabled="{!duplicate=true}"/>
@@ -135,7 +135,7 @@
                         styleClass="LongField {!IF(CONTAINS(errorFields,'[state]'),'invalid','')}" disabled="{!duplicate=true}"  >
                         <apex:selectOptions value="{!states}"/>
                     </apex:selectList>                   
-                </div>
+                </div>-->
                 
                 <div class="NewLeadFormRow">
                     <label>Zip <span class="required">*</span></label>

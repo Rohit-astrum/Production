@@ -228,10 +228,10 @@
         <externalId>false</externalId>
         <formula>CASE (LEFT(TEXT(Portal_Site__c), 7),
     &apos;Partner&apos;,
-        IF ($Organization.Id == &apos;00D80000000dNiA&apos;, 
+        IF ($Organization.Id == &apos;00D230000008jEE&apos;, 
            &apos;http://partners.astrumsolar.com/&apos;, /* production */ 
            &apos;http://astrumsolar.&apos; &amp; MID($User.Username,FIND(&apos;@astrumsolar.com.&apos;,LOWER($User.Username))+17,100) &amp; &apos;.cs14.force.com/partner/&apos;),
-        IF ($Organization.Id == &apos;00D80000000dNiA&apos;, 
+        IF ($Organization.Id == &apos;00D230000008jEE&apos;, 
             &apos;http://go.astrumsolar.com/&apos;, /* production */ 
             &apos;http://astrumsolar.&apos; &amp; MID($User.Username,FIND(&apos;@astrumsolar.com.&apos;,LOWER($User.Username))+17,100) &amp; &apos;.cs14.force.com/go/&apos;)
 )</formula>

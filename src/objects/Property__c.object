@@ -258,10 +258,6 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Springfield, MA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
                 <fullName>Syracuse, NY</fullName>
                 <default>false</default>
             </picklistValues>
@@ -3430,10 +3426,6 @@ Arizona is actually on Mountain Standard Time and does not observe daylight time
                 <default>false</default>
             </values>
             <values>
-                <fullName>Springfield%2C MA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Syracuse%2C NY</fullName>
                 <default>false</default>
             </values>
@@ -5450,10 +5442,6 @@ Arizona is actually on Mountain Standard Time and does not observe daylight time
             </values>
             <values>
                 <fullName>Simi Valley%2C CA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Springfield%2C MA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7581,10 +7569,6 @@ Arizona is actually on Mountain Standard Time and does not observe daylight time
             </values>
             <values>
                 <fullName>Simi Valley%2C CA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Springfield%2C MA</fullName>
                 <default>false</default>
             </values>
             <values>

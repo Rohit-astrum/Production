@@ -77,7 +77,7 @@
                     <label for="street" class="acc">Street Address</label>
                     <input type="text" id="street" name="street" value="Street Address" placeholder="" class="noPlaceholder"/>
                 </li>
-                <li class="city">
+                <!--<li class="city">
                     <label for="city" class="acc">City</label>
                     <input type="text" id="city" name="city" maxlength="100" value="City" placeholder=""  class="noPlaceholder"/>
                 </li>
@@ -86,7 +86,7 @@
                     <select id="state" name="state" class="noPlaceholder required" onchange="changeState(this.value)">
                         <apex:repeat value="{!states}" var="s"><option value="{!s.value}">{!s.label}</option></apex:repeat>
                     </select>
-                </li>
+                </li>-->
                 <li class="zip">
                     <label for="zip" class="acc">Zip</label>
                     <input type="text" id="zip" name="zip" value="Zip" placeholder="" class="noPlaceholder" />

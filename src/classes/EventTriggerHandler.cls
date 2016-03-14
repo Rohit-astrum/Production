@@ -8,6 +8,7 @@
  * 	   09/04/15  PB SYS-374
  *     01/29/16  PB MIS-212
  *     02/09/16  RJ SFS-662
+ *     03/03/16  PB MIS-254  
  */
 public without sharing class EventTriggerHandler {
     private boolean m_isExecuting = false;
@@ -90,20 +91,22 @@ public without sharing class EventTriggerHandler {
         m_isExecuting = false;
     }    
 
-    public void OnAfterUpdate(Event[] updatedEvents, Map<Id,Event> oldEventMap){
+    public void OnAfterUpdate(Event[] updatedEvents, Map<Id,Event> oldEventMap, Map<Id,Event> newEventMap){
         //  EXECUTE AFTER UPDATE LOGIC       
         portalReferral(updatedEvents,oldEventMap);
         syncEvents(updatedEvents, oldEventMap);
         updatePMProject(updatedEvents, oldEventMap);
+        updateOppTaskForSalesEvent(newEventMap);
         m_isExecuting = false;
     }
 
     
-    public void OnAfterInsert(Event[] newEvents){
+    public void OnAfterInsert(Event[] newEvents, Map<Id,Event> newEventMap){
         // EXECUTE AFTER INSERT LOGIC
         portalReferral(newEvents,null);
         syncEvents(newEvents, null);
         updatePMProject(newEvents);
+        updateOppTaskForSalesEvent(newEventMap);
         m_isExecuting = false;
     }
 
@@ -876,6 +879,70 @@ public without sharing class EventTriggerHandler {
         if(projsToUpdate!= null && !projsToUpdate.isEmpty()){            
             update projsToUpdate;
         }
+    }
+
+    //MIS-254 PB 03/03/2016
+    //Backfill Task Due date when scheduling a sales visit
+    private void updateOppTaskForSalesEvent(Map<Id,Event> newEventsMap){
+
+        String whatIdStr;
+        String opp_prefix = Schema.SObjectType.Opportunity.getKeyPrefix();
+        System.debug(opp_prefix);
+        Event theEvent;
+        Set<Id> salesvisitrecIds = new Set<Id>();
+        Map<Id,DateTime> oppToDueDateMap = new Map<Id,DateTime>();
+        DateTime currentDateTime = System.now();
+        
+        salesvisitrecIds.add(Schema.Sobjecttype.Event.getRecordTypeInfosByName().get('Sales Visit Onsite').getRecordTypeId());
+        salesvisitrecIds.add(Schema.Sobjecttype.Event.getRecordTypeInfosByName().get('Sales Visit Remote').getRecordTypeId());        
+
+        for(Id theEventId:newEventsMap.keySet()){
+            theEvent = newEventsMap.get(theEventId);
+            whatIdStr = theEvent.WhatId;
+            if(String.isNotBlank(whatIdStr) 
+               && whatIdStr.startsWith(opp_prefix) 
+               && salesvisitrecIds.contains(theEvent.RecordTypeId)
+               && theEvent.StartDateTime > currentDateTime){
+
+                oppToDueDateMap.put(theEvent.WhatId, theEvent.StartDateTime);
+            }            
+        }
+
+        List<Event> eventsList = [SELECT WhatId, StartDateTime 
+                                    FROM Event 
+                                    WHERE WhatId IN:oppToDueDateMap.keySet()
+                                    AND Completed__c = false
+                                    AND RecordTypeId IN:salesvisitrecIds
+                                    AND StartDateTime > :currentDateTime
+                                    ORDER BY WhatId, StartDateTime ASC];
+
+        if(eventsList!= null){
+            Id currentWhatId;
+            for(Event evt:eventsList){
+                if(evt.WhatId != currentWhatId){
+                    if(oppToDueDateMap.get(evt.WhatId) > evt.StartDateTime){
+                        oppToDueDateMap.put(evt.WhatId,evt.StartDateTime);
+                    }
+                }
+            }
+        }                            
+
+        //Query for tasks to update
+        List<Task> tasksToUpdate = [SELECT Id, WhatId, ActivityDate 
+                                    FROM Task 
+                                    WHERE WhatId IN:oppToDueDateMap.keySet() 
+                                    AND RecordType.Name = 'Schedule Event' 
+                                    AND Site_Survey_Type__c <> null 
+                                    AND Status <> 'Completed'];
+
+        if(tasksToUpdate != null){
+            for(Task tsk:tasksToUpdate){
+                tsk.ActivityDate = oppToDueDateMap.get(tsk.WhatId).date().addDays(-1);
+            }
+        }
+
+        update tasksToUpdate; 
+        
     }
 
 }

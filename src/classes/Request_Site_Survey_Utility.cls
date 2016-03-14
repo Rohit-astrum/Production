@@ -1,5 +1,6 @@
 //10/26/2012 - TCM - replace notes with comments
 //09/29/2015 - PB  - Remove reference to Annapolis MD
+//02/29/2016 - PB  - MIS-246 
 public class Request_Site_Survey_Utility {
 
     public static final String TASK_STATUS = 'Not Started';
@@ -33,7 +34,7 @@ public class Request_Site_Survey_Utility {
       public static void submitRequest(Id oppId, String comments, String siteSurveyType, Date requestedDate, Boolean highPriority) {
         
         Set<Id> salesvisitrecIds = new Set<Id>();
-        
+        DateTime currentDateTime = System.now();
         Date activitydate;
         salesvisitrecIds.add(Schema.Sobjecttype.Event.getRecordTypeInfosByName().get('Sales Visit Onsite').getRecordTypeId());
         salesvisitrecIds.add(Schema.Sobjecttype.Event.getRecordTypeInfosByName().get('Sales Visit Remote').getRecordTypeId());
@@ -41,15 +42,21 @@ public class Request_Site_Survey_Utility {
         Opportunity opp = [Select Id, o.Account.Name, o.Property__r.Property_County__c, o.Property__r.Property_ZIP__c, o.Property__r.Property_State__c, o.Property__r.Property_City__c, o.Property__r.Name, o.Property__r.Astrum_Office__c, o.Property__c, 
                                   o.Owner.Email, o.Owner.FirstName, o.Owner.LastName, o.Owner.Manager.Email, o.OwnerId, o.Name  , o.Property__r.Astrum_Office_New__r.Sales_Coordinator__r.Id,  o.Property__r.Astrum_Sales_Region__r.Sales_Coordinator__r.Id                              
                                   , o.Property__r.Astrum_Office_New__r.Regional_Operations_Manager__c, o.Property__r.Astrum_Office_New__r.Survey_Scheduler__c
-                                  , (SELECT StartDateTime FROM Events WHERE RecordTypeId IN:salesvisitrecIds AND Completed__c = false LIMIT 1)                                  
+                                  , (SELECT StartDateTime 
+                                        FROM Events 
+                                        WHERE RecordTypeId IN:salesvisitrecIds
+                                        AND StartDateTime > :currentDateTime
+                                        ORDER BY StartDateTime ASC                                         
+                                        LIMIT 1)                                  
                                   From Opportunity o 
                                   where id = :oppId
                                   limit 1];
         
         if(opp.Events != null && !(opp.Events.isEmpty())){
             activitydate = opp.Events[0].StartDateTime.date();
-        }
-               
+            System.debug('opp.EventsId' + opp.Events[0].Id + 'activityDate' + activityDate);
+        }              
+        
         //User salesCoordinator = getSalesCoordinator(opp);
         //Added by Rohit  
         User  salesCoordinator;
@@ -76,14 +83,13 @@ public class Request_Site_Survey_Utility {
         // assign task
         //assignTask(opp, salesCoordinator, recType, comments, siteSurveyType, requestedDate, highPriority);
         assignTask(opp, salesCoordinator.Id, comments, siteSurveyType, requestedDate, highPriority,activitydate);
-        
-        // 
+         
         // send email
         sendEmail(opp, salesCoordinator, comments, siteSurveyType, requestedDate, highPriority);
         }
            
     }
-
+    /*
     private static User getSalesCoordinator(Opportunity opp) {
 
         User salesCoordinator = null;
@@ -133,6 +139,7 @@ public class Request_Site_Survey_Utility {
         
         return salesCoordinator;
     }
+    */
     
     private static void sendEmail(sObject obj, User salesCoordinator, String comments, String siteSurveyType, Date requestedDate, Boolean highPriority) {
         
@@ -295,20 +302,19 @@ public class Request_Site_Survey_Utility {
     
     public static void assignTask(sObject obj, Id salesCoordinatorId, String comments, String siteSurveyType, Date requestedDate, Boolean highPriority, Date activityDate) {
         Id recTypeId = [SELECT Id FROM RecordType WHERE Name = 'Schedule Event' AND SobjectType = 'Task' limit 1].Id; 
-        System.debug('**recTypeId:' + recTypeId);
         Task tempTask = new Task();
         tempTask.whatId = obj.Id;
         tempTask.RecordTypeId = recTypeId;
-        
-        
         tempTask.ownerId = salesCoordinatorId; 
         
-        // due date
-        if(activityDate != null && Date.today() > activityDate){
-            tempTask.activityDate = activityDate;
-        }else{
+        // Due date
+        if(activityDate != null){
+            tempTask.activityDate = activityDate.addDays(-1);
+        }
+        //MIS-246 PB 02/29/2016
+        /*else{
             tempTask.activityDate = Date.today();
-        }        
+        }*/        
 
         tempTask.description = TASK_DESCRIPTION;
         tempTask.priority = TASK_PRIORITY;
@@ -317,7 +323,7 @@ public class Request_Site_Survey_Utility {
         
         tempTask.Description = comments;
         tempTask.Site_Survey_Type__c = siteSurveyType;
-        tempTask.Requested_Date__c = requestedDate;
+        //MIS-246 PB 02/29/2016//tempTask.Requested_Date__c = requestedDate;
         tempTask.High_Priority__c = highPriority;
 
         schema.sObjectType sourceType = obj.getsObjectType();
@@ -336,13 +342,10 @@ public class Request_Site_Survey_Utility {
             tempTask.status = TASK_STATUS_NOT_STARTED;
             tempTask.priority = TASK_PRIORITY_NORMAL;             
         }
-        
+        System.debug('tempTask.activityDate' + tempTask.activityDate);
         insert tempTask;
         
-        // store this task id on the opportunity
-
-        //Check to see what type of object this is for
-        
+        //Check to see what type is opp        
         if(sourceType == Opportunity.sObjectType){
             Opportunity opp = (Opportunity)obj;
 

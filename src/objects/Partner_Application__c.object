@@ -390,6 +390,10 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>DE</fullName>
                 <default>false</default>
             </picklistValues>
@@ -419,10 +423,6 @@
             </picklistValues>
             <picklistValues>
                 <fullName>PA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>RI</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>

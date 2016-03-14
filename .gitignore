@@ -2,3 +2,7 @@ config/
 Production.sublime-settings
 Production.sublime-workspace
 Production.sublime-project
+Test.sublime-project
+Test.sublime-settings
+Test.sublime-workspace
+src/classes/mm.log

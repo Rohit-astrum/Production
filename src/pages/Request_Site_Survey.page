@@ -4,8 +4,8 @@
         <apex:pageBlock title="Request Site Survey">
             <apex:pageBlockSection columns="1">
                 <apex:inputField value="{!theTask.Description}" style="width:500px;height:100px;"/>
-                <apex:inputField value="{!theTask.Site_Survey_Type__c}" />
-                <apex:inputField value="{!theTask.Requested_Date__c}" />                
+                <apex:inputField value="{!theTask.Site_Survey_Type__c}" required="true" />
+                <!--<apex:inputField value="{!theTask.Requested_Date__c}" /> -->               
                 <apex:inputField value="{!theTask.High_Priority__c}" />                
             
                 <apex:commandButton action="{!submit}" value="Submit"/>

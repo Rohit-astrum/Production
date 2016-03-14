@@ -791,7 +791,7 @@ public class SalesOrderTriggerHandler {
                         FROM SCRB_SalesOrder__c 
                         WHERE Id in:soIds]);
     
-    //MIS-251 PB 03/03/2016
+    /*MIS-251 PB 03/03/2016
     try{
       cancellationRecipients = [SELECT Id 
                                 FROM User 
@@ -799,7 +799,7 @@ public class SalesOrderTriggerHandler {
                                 OR (FirstName = 'Jessica' AND LastName='Treuth') 
                                 OR (FirstName = 'Harry' AND LastName='Keifer')];
     }catch(QueryException qe){System.debug('**User for manager compliance doesn\'t exist');  }
-    //
+    */
     
     for(Id soId:salesordersMap.keySet()){
       List<String> emailrecipients = new List<String>();
@@ -823,13 +823,13 @@ public class SalesOrderTriggerHandler {
           emailrecipients.add(salesordersMap.get(soId).Incentive_Associate__c);
           userIds.add(salesordersMap.get(soId).Incentive_Associate__c);
         }
-        //MIS-251 PB 03/03/2016
+        /*MIS-251 PB 03/03/2016
         if(cancellationRecipients != null){
           for(User recipient:cancellationRecipients){
             emailrecipients.add(recipient.Id);
             userIds.add(recipient.Id);
           }          
-        }//
+        }*/
         if(salesordersMap.get(soId).Sales_Manager__c != null){
           emailrecipients.add(salesordersMap.get(soId).Sales_Manager__c);
           userIds.add(salesordersMap.get(soId).Sales_Manager__c);

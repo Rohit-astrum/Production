@@ -666,24 +666,6 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>Hudson</fullName>
-        <columns>RecordTypeDeveloperName__c</columns>
-        <columns>NAME</columns>
-        <columns>Active_Fund__c</columns>
-        <columns>Available_Fund__c</columns>
-        <columns>Related_Finance_Record__c</columns>
-        <columns>Fund_Open_Date__c</columns>
-        <columns>Fund_Closed_Date__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>NAME</field>
-            <operation>contains</operation>
-            <value>Hudson</value>
-        </filters>
-        <label>Hudson</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>Sunlight</fullName>
         <columns>RecordTypeDeveloperName__c</columns>
         <columns>NAME</columns>

@@ -8,6 +8,10 @@
 
 trigger PMProjectStatusChangeNotification on PM_Project__c (after update) {
 
+	if(TriggerUtility.skipPMProjectTriggers){
+        return;
+    }
+
 	Set<Id> salesOrderIds = new Set<Id>();
 	List<PM_Project__c> statusChangedProjects = new List<PM_Project__c>();
 	

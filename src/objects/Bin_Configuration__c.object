@@ -316,6 +316,10 @@
                 <fullName>Structural Engineering</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>Post Install Electrical Review</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>

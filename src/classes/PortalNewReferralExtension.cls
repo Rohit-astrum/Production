@@ -8,6 +8,7 @@
  *     10/09/2012 TCM - updates to connect referring account leads to portal
  *     10/09/2012 TCM - adding Lead Created Date
  *     10/16/2014 DK  - Populated Community_Program_Offer__c on Portal Referral
+ *     03/09/2016 PB  - MIS-257
  */
  
 public without sharing class PortalNewReferralExtension {
@@ -154,12 +155,13 @@ public without sharing class PortalNewReferralExtension {
         if (referral.Street__c == null || referral.Street__c.trim() == '') {
             errorFields += '[1][street]';
         }
-        if (referral.City__c == null || referral.City__c.trim() == '') {
+        // MIS-257 PB 03/09/2016
+        /*if (referral.City__c == null || referral.City__c.trim() == '') {
             errorFields += '[1][city]';
         }
         if (referral.State__c == null || referral.State__c.trim() == '') {
             errorFields += '[1][state]';
-        }
+        }*/
         if (referral.Zip__c == null || referral.Zip__c.trim() == '') {
             errorFields += '[1][zip]';
         }
@@ -175,8 +177,9 @@ public without sharing class PortalNewReferralExtension {
     private void verifyAddress() {
 
         verifiedStreet = referral.Street__c;
-        verifiedCity = referral.City__c;
-        verifiedState = referral.State__c;
+        // MIS-257 PB 03/09/2016
+        //verifiedCity = referral.City__c;
+        //verifiedState = referral.State__c;
         
         if (Test.isRunningTest()) {
             return;
@@ -281,8 +284,11 @@ public without sharing class PortalNewReferralExtension {
             Phone = referral.Phone__c,
             Email = referral.Email__c,
             Street = referral.Street__c,
-            City = referral.City__c,
-            State = referral.State__c,
+            // MIS-257 PB 03/09/2016
+            //City = referral.City__c,
+            //State = referral.State__c,
+            City = verifiedCity,
+            State = verifiedState,
             PostalCode = referral.Zip__c,
             Lead_Date__c = System.today(),
             Method_of_Contact__c = 'Partner Portal', 

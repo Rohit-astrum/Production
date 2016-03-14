@@ -23,6 +23,7 @@ public with sharing class TriggerUtility {
 	public static boolean skipAstrumEventTrigger = false;
 	public static boolean skipAstrumDocVerificationTrigger = false;
 	public static boolean skipDlrsTriggers = false;
+	public static boolean skipPMProjectTriggers = false;
 
 
 	//Batch Processing 

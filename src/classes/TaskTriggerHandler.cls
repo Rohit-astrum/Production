@@ -12,6 +12,8 @@ public without sharing class TaskTriggerHandler {
     private map<string, Schema.RecordTypeInfo> eventRecordTypeNameMap;
     private map<id, Schema.RecordTypeInfo> eventRecordTypeIDMap;    
     private set<id> salesVisitRTIDs;
+
+    //MIS-212 PB
     final String SURVEYTYPE_RESIDENTIAL_REMOTE_SURVEY = 'Residential Remote Survey';
     final String SURVEYTYPE_RESIDENTIAL_FIELD_SURVEY = 'Residential Field Survey';
     final String SURVEYTYPE_COMMERCIAL_SURVEY = 'Commercial Survey';
@@ -47,17 +49,26 @@ public without sharing class TaskTriggerHandler {
             	system.debug('TaskTriggerHandler '+ ts.whatid );
             }
         }
+        DateTime currentDateTime = System.now();
         Map<id, Opportunity> OppMap = new Map<id,Opportunity>([ Select Id, o.Account.Name, o.Property__r.Property_County__c, o.Property__r.Property_ZIP__c, o.Property__r.Property_State__c, o.Property__r.Property_City__c, o.Property__r.Name, o.Property__r.Astrum_Office__c, o.Property__c, 
                                   o.Owner.Email, o.Owner.FirstName, o.Owner.LastName, o.Owner.Manager.Email, o.OwnerId, o.Name  , o.Property__r.Astrum_Office_New__r.Sales_Coordinator__r.Id,  o.Property__r.Astrum_Sales_Region__r.Sales_Coordinator__r.Id                              
                                   , o.Property__r.Astrum_Office_New__r.Regional_Operations_Manager__c, o.Property__r.Astrum_Office_New__r.Survey_Scheduler__c
-                                  , (SELECT StartDateTime FROM Events WHERE RecordTypeId IN:salesVisitRTIDs AND isChild= false and Completed__c = false LIMIT 1)
+                                  , (SELECT StartDateTime 
+                                        FROM Events 
+                                        WHERE RecordTypeId IN:salesVisitRTIDs 
+                                        AND isChild= false
+                                        AND StartDateTime > :currentDateTime 
+                                        ORDER BY StartDateTime ASC 
+                                        LIMIT 1)
                                   From Opportunity o 
                                   where id in :whatIds]);
 
        system.debug('TaskTriggerHandler oppMap '+ OppMap);
         
+       Id recTypeId = [SELECT Id FROM RecordType WHERE Name = 'Schedule Event' AND SobjectType = 'Task' limit 1].Id; 
+         
        for(Task ts: insertedUpdatedTasks) {
-        	if(ts.whatid != null && ((string)ts.whatid).startsWith('006')){
+            if(ts.whatid != null && ((string)ts.whatid).startsWith('006') && ts.RecordTypeId == recTypeId){
                 if(ts.Site_Survey_Type__c == SURVEYTYPE_RESIDENTIAL_FIELD_SURVEY 
                     || ts.Site_Survey_Type__c == SURVEYTYPE_COMMERCIAL_SURVEY){
                     ts.OwnerId = OppMap.get(ts.whatid).Property__r.Astrum_Office_New__r.Survey_Scheduler__c != null ? 
@@ -76,10 +87,11 @@ public without sharing class TaskTriggerHandler {
 
                 if(OppMap.get(ts.whatid).Events != null 
                     && !(OppMap.get(ts.whatid).Events.isEmpty())
-                    && (ts.activityDate != null && ts.activityDate > OppMap.get(ts.whatid).Events[0].StartDateTime.date())){
+                    && (ts.activityDate == null ||(ts.activityDate != null && ts.activityDate > OppMap.get(ts.whatid).Events[0].StartDateTime.date().addDays(-1)))){
                     System.debug('setting due date: ' + ts.activitydate + 'sales startdate:' + OppMap.get(ts.whatid).Events[0].StartDateTime.date());
-                    ts.activitydate = OppMap.get(ts.whatid).Events[0].StartDateTime.date();
+                    ts.activitydate = OppMap.get(ts.whatid).Events[0].StartDateTime.date().addDays(-1);
                 }
+                System.debug('setting due date: ' + ts.activitydate);
             	
             }
         }

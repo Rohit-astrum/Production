@@ -6,6 +6,9 @@
  *
  */ 
 trigger PMProjectDateTrigger on PM_Project__c (before insert, before update) {
+    if(TriggerUtility.skipPMProjectTriggers){
+        return;
+    }
     Map<Id, PM_Project__c> projectsToCapture  = new Map<Id,PM_Project__c>();   
     for (PM_Project__c project : Trigger.new) {
     

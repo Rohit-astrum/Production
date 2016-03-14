@@ -167,8 +167,9 @@ public without sharing class PartnerLandingPageController {
         referral.Email__c = params.get('email');
         referral.Phone__c = params.get('phone');
         referral.Street__c = params.get('street');
-        referral.City__c = params.get('city');
-        referral.State__c = params.get('state');
+        //MIS-257 PB 03/09/2016
+        //referral.City__c = params.get('city');
+        //referral.State__c = params.get('state');
         referral.Zip__c = params.get('zip');
         referral.Notes__c = params.get('leadSourceNotes');
         
@@ -260,8 +261,8 @@ public without sharing class PartnerLandingPageController {
     private void verifyAddress() {
 
         verifiedStreet = referral.Street__c;
-        verifiedCity = referral.City__c;
-        verifiedState = referral.State__c;
+        //verifiedCity = referral.City__c;
+        //verifiedState = referral.State__c;
         
         if (Test.isRunningTest()) {
             return;
@@ -354,8 +355,11 @@ public without sharing class PartnerLandingPageController {
             Phone = referral.Phone__c,
             Email = referral.Email__c,
             Street = referral.Street__c,
-            City = referral.City__c,
-            State = referral.State__c,
+            // MIS-257 PB 03/09/2016
+            //City = referral.City__c,
+            //State = referral.State__c,
+            City = verifiedCity,
+            State = verifiedState,
             PostalCode = referral.Zip__c,
             Lead_Date__c = System.today(),
             Method_of_Contact__c = 'Astrum Web Form', 

@@ -21,12 +21,12 @@ trigger EventTrigger on Event (before insert, before update, before delete, afte
     
     // After Update 
     else if(Trigger.isUpdate && Trigger.isAfter){
-        handler.OnAfterUpdate(Trigger.new, Trigger.oldMap);
+        handler.OnAfterUpdate(Trigger.new, Trigger.oldMap, Trigger.newMap);
     }
     
     // After Insert 
     else if(Trigger.isInsert && Trigger.isAfter){
-        handler.OnAfterInsert(Trigger.new);
+        handler.OnAfterInsert(Trigger.new, Trigger.newMap);
     }
     
     // After Delete 

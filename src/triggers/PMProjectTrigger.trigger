@@ -7,6 +7,10 @@
  */
 trigger PMProjectTrigger on PM_Project__c (before insert, before update, before delete, after insert, after update, after delete, after undelete) {
 
+    if(TriggerUtility.skipPMProjectTriggers){
+        return;
+    }
+    
     PMProjectTriggerHandler handler = new PMProjectTriggerHandler (true);
 
     

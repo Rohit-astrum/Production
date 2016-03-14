@@ -262,6 +262,10 @@
                 <fullName>Structural Engineering</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>Post Install Electrical Review</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
@@ -628,6 +632,16 @@
             <picklistValues>
                 <fullName>PL Permit Design Package</fullName>
                 <controllingFieldValues>Approval Final Documents</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post Install Review</fullName>
+                <controllingFieldValues>Post Install Electrical Review</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post Install Review Response</fullName>
+                <controllingFieldValues>Post Install Electrical Review</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>

@@ -219,6 +219,18 @@
                 <fullName>Final Permit Documents</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>Solar Engineering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Structural Engineering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post Install Electrical Review</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackHistory>true</trackHistory>
@@ -484,6 +496,16 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>Post Install Review</fullName>
+                <controllingFieldValues>Post Install Electrical Review</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Post Install Review Response</fullName>
+                <controllingFieldValues>Post Install Electrical Review</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Preliminary Conduit Run</fullName>
                 <controllingFieldValues>Kickoff Documents</controllingFieldValues>
                 <default>false</default>
@@ -584,6 +606,10 @@
             </picklistValues>
             <picklistValues>
                 <fullName>Solar BOM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Solar Engineer Documents</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>

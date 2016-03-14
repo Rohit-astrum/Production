@@ -5,10 +5,21 @@
  * MODIFICATION HISTORY
  * 12/09/2014 PB - MARK-40 Change lead status to Unresponsive upon 6th(nth) dial
  * 09/10/2015 PB - FPO-Phase4
+ * 02/29/2016 PB - MIS-252
  *
  */
 trigger LeadTrigger_BI on Lead (before insert, before update) {
 	
+	//Commericial OffLoc
+	Office_Location__c commercialofficeLoc;
+	try{
+		commercialofficeLoc = [Select Name  
+				                FROM Office_Location__c 
+				                WHERE Name = 'Commercial' 
+				                AND Active__c = true];
+	}catch(QueryException qe){}
+	
+
 	//FPO-Phase4
 	Set<String> leadzipcodes = new Set<String>();
 	for(Lead newLead:Trigger.new){
@@ -34,9 +45,19 @@ trigger LeadTrigger_BI on Lead (before insert, before update) {
 	            newLead.Referring_Account__c = acctID;
 
 	        }
+	        
+	        //MIS-252 PB 02/29/2016
+	        if(String.isNotBlank(newLead.Site_Type__c) && newLead.Site_Type__c.equalsIgnoreCase('Commercial')){ 
+	        	if(commercialofficeLoc!= null){	        		
+	        		newLead.Current_Company_Office__c = commercialofficeLoc.Id;
+            		newLead.Orig_Company_Office__c = commercialofficeLoc.Id;
+            	}
+	        }
 
 	        //FPO-Phase4 office assignment
-            if(String.isNotBlank(newLead.PostalCode) && newLead.PostalCode.length() >= 5 && officezipcodeMap.containsKey(newLead.PostalCode.substring(0,5))){
+            else if(String.isNotBlank(newLead.PostalCode) 
+            	&& newLead.PostalCode.length() >= 5 
+            	&& officezipcodeMap.containsKey(newLead.PostalCode.substring(0,5))){
             	newLead.Orig_Company_Office__c = officezipcodeMap.get(newLead.PostalCode.substring(0,5));
             	newLead.Current_Company_Office__c = officezipcodeMap.get(newLead.PostalCode.substring(0,5));
             }     
@@ -53,16 +74,27 @@ trigger LeadTrigger_BI on Lead (before insert, before update) {
                && ( (mol.get(i)).qbdialer__Dials__c == (mnl.get(i)).qbdialer__Dials__c - 1 )       
             ){
                 (mnl.get(i)).status = 'Unresponsive';
-                (mnl.get(i)).OwnerId = UserInfo.getUserId();               
-                
+                (mnl.get(i)).OwnerId = UserInfo.getUserId();                
             }
 
+            //MIS-252 PB 02/29/2016
+	        if(String.isNotBlank((mnl.get(i)).Site_Type__c) && (mnl.get(i)).Site_Type__c.equalsIgnoreCase('Commercial')){ 
+	        	if(commercialofficeLoc!= null 
+	        		&& ((mnl.get(i)).Site_Type__c != (mol.get(i)).Site_Type__c)
+        		){	        		
+	        		(mnl.get(i)).Current_Company_Office__c = commercialofficeLoc.Id;
+            		if(String.isBlank((mnl.get(i)).Orig_Company_Office__c)){
+	            		(mnl.get(i)).Orig_Company_Office__c = commercialofficeLoc.Id;
+	            	}
+            	}
+	        }
+
             //FPO-Phase4 office assignment
-            if(String.isNotBlank((mnl.get(i)).PostalCode)
+            else if(String.isNotBlank((mnl.get(i)).PostalCode)
             	&& (mnl.get(i)).PostalCode.length() >= 5
 				&& officezipcodeMap.containsKey((mnl.get(i)).PostalCode.substring(0,5))
 				&& ((mnl.get(i)).PostalCode != (mol.get(i)).PostalCode)
-				)//String.isBlank((mnl.get(i)).Current_Company_Office__c) 
+				) 
             {
             	(mnl.get(i)).Current_Company_Office__c = officezipcodeMap.get((mnl.get(i)).PostalCode.substring(0,5));
             	if(String.isBlank((mnl.get(i)).Orig_Company_Office__c)){
