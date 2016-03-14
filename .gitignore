@@ -3,3 +3,6 @@ Production.sublime-settings
 Production.sublime-workspace
 Production.sublime-project
 src/classes/mm.log
+*.sublime-project
+*.sublime-settings
+*.sublime-workspace
