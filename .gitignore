@@ -2,7 +2,10 @@ config/
 Production.sublime-settings
 Production.sublime-workspace
 Production.sublime-project
+<<<<<<< HEAD
 Test.sublime-project
 Test.sublime-settings
 Test.sublime-workspace
+=======
+>>>>>>> a11c7fd049c121a1fe896659f30e999633b26075
 src/classes/mm.log
