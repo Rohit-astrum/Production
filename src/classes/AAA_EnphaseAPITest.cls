@@ -3,7 +3,7 @@
  * DATE: October 23, 2012
  * PURPOSE: Test class for EnphaseAPI class
  * MODIFICATION HISTORY:
- * RJ: 2/8/13: Added AAA prefix to get around WebServiceMock bug.  
+ * RJ: 2/8/13: Added AAA prefix to get around WebServiceMock bug.  Test Dev2
  */
 
 @isTest
